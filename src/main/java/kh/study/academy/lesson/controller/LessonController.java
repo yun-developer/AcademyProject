@@ -16,4 +16,8 @@ public class LessonController {
 		return "content/lesson/lesson_main";
 	}
 
+	@GetMapping("/subject")
+	public String selectsubject() {
+		return "";
+	}
 }
