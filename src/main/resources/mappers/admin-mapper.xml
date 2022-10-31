@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="adminMapper">
+	
+	
+	<!-- <resultMap type=" id="">
+		<id column="" 							property="" />
+		<result column="" 								property="" />
+		<result column="" 								property="" />
+		<result column="" 							property="" />
+	
+	</resultMap> -->
+	
+	
+	
+	<!-- 교사리스트 조회 -->
+	<!--LESSONS,SUBJECT CODE 수정 필요... -->
+	<select id="selectTeacherList" resultMap="teacherMapper.teacher">
+	
+		SELECT TEACHER_CODE
+			, NAME
+			, TELL
+			, CAREER
+			, TEACHER_ID
+			, TEACHER_STATUS
+			, LESSONS_CODE
+			, SUBJECT_CODE
+		FROM TEACHER 
+		WHERE TEACHER_ROLE = 'TEACHER' 
+		<!-- 원장도 교사리스트에서 조회?? -->
+	
+	</select>
+	
+	
+		
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

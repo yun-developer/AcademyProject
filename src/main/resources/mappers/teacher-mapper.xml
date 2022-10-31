@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="teacherMapper">
+	<resultMap type="kh.study.academy.teacher.vo.TeacherVO" id="teacher">
+		<id column="TEACHER_CODE" 							property="teacherCode" />
+		<result column="NAME" 								property="name" />
+		<result column="TELL" 								property="tell" />
+		<result column="CAREER" 							property="career" />
+		<result column="TEACHER_ID" 						property="teacherId" />
+		<result column="TEACHER_PW" 						property="teacherPw" />
+		<result column="WRONG_PW_CNT" 						property="wrongPwCnt" />
+		<result column="TEACHER_STATUS" 					property="teacherStatus" />
+		<result column="TEACHER_ROLE" 						property="teacherRole" />
+		
+		<!--아래 수정 필요 -->
+		<!--LESSONS,SUBJECT 매퍼 만들면 하기...? -->
+		<result column="LESSONS_CODE" 						property="lessonsCode" />
+		<result column="SUBJECT_CODE" 						property="subjectCode" />
+		
+	</resultMap>
+	
+	
+	<!-- 회원가입 -->
+	<!--LESSONS,SUBJECT 매퍼 만들면 하기...? -->
+	<insert id="join">
+		<selectKey resultType="String" keyProperty="TEACHER_CODE" order="BEFORE">
+	         SELECT 'TEACHER_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(TEACHER_CODE, 9))), 0) + 1, 3, 0) 
+	         FROM TEACHER  
+	      </selectKey>
+	
+	
+		INSERT INTO TEACHER (
+				TEACHER_CODE
+				, NAME
+				, TELL
+				, CAREER
+				, TEACHER_ID
+				, TEACHER_PW
+				, WRONG_PW_CNT
+				, TEACHER_STATUS
+				, TEACHER_ROLE
+				, LESSONS_CODE
+				, SUBJECT_CODE
+			) VALUES (
+				#{teacherCode}
+				, #{name}
+				, #{tell}
+				, #{career}
+				, #{teacherId}
+				, #{teacherPw}
+				, #{wrongPwCnt}
+				, #{teacherStatus}
+				, #{teacherRole}
+				, #{lessonsCode}
+				, #{subjectCode}
+			)
+	</insert>
+	
+	
+	<!-- 로그인 -->
+	<select id="login" resultMap="teacher">
+		SELECT TEACHER_ID
+			, TEACHER_PW
+			, TEACHER_ROLE
+		FROM TEACHER
+		WHERE TEACHER__ID = #{teacherId}
+	</select>
+	
+	
+	
+	
+		
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
