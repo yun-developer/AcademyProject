@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz.thymeleaf/layout"
+	layout:decorate="~{layout/Join_Login_layout}">
+	
+<th:block layout:fragment="css">
+	<link rel="stylesheet" th:href="@{}">
+</th:block>
+
+
+
+<div layout:fragment="content">
+
+
+
+	<div>
+		<h2>아이디 찾기</h2>
+
+		<div class="row mb-3">
+
+			<label for="teacherName" class="col-sm-2 col-form-label"> 이름
+			</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="teacherName">
+			</div>
+		</div>
+		<div class="row mb-3">
+			<label for="teacherTell" class="col-sm-2 col-form-label">
+				전화번호 </label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="teacherTell">
+			</div>
+		</div>
+		<div class="d-grid gap-2 mb-3">
+			<button th:onclick="findLoginAjax();" class="btn btn-primary" type="button">확인</button>
+			
+			
+		</div>
+
+
+	</div>
+
+
+	<div>
+	<h2>비밀번호도...?</h2>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<script type="text/javascript" th:src="@{/js/teacher/find_loigin.js}"></script>
+
+</div>
+
+
+</html>
