@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kh.study.academy.admin.vo.SubjectVO;
 import kh.study.academy.teacher.vo.TeacherVO;
 
 
@@ -23,14 +24,11 @@ public class AdminServiceImpl implements AdminService{
 		return sqlSession.selectList("adminMapper.selectTeacherList");
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	@Override
+	public void insertSubject(SubjectVO subjectVO) {
+		
+		sqlSession.insert("adminMapper.insertSubject", subjectVO);
+	}
+
+
 }

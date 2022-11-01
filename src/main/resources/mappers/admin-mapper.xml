@@ -33,6 +33,17 @@
 	</select>
 	
 	
+	<!-- 과목 등록 쿼리문  -->
+ 	<insert id="insertSubject">
+
+		INSERT INTO SUBJECT(
+			SUBJECT_CODE
+			, SUBJECT_NAME
+		) VALUES (
+			#{subjectCode}
+			, #{subjectName}
+		)
+	</insert> 
 		
 </mapper>
 
