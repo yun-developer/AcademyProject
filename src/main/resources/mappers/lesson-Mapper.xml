@@ -3,9 +3,22 @@
 
 <mapper namespace="lessonMapper">
 
-	<select id="">
-	
-	</select>
+
+<!-- 과목 등록 쿼리문  -->
+	<insert id="">
+		<selectKey resultType="String" keyProperty="cateCode" order="BEFORE">
+			SELECT 'SUBJECT_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(CATE_CODE, 6))), 0) + 1, 3, 0) 
+			FROM ITEM_CATEGORY  
+		</selectKey>
+		
+		INSERT INTO SUBJECT(
+			SUBJECT_CODE
+			, SUBJECT_NAME
+		) VALUES (
+			#{subjectCode}
+			, #{subjectName}
+		)
+	</insert>
 
 
 </mapper>
