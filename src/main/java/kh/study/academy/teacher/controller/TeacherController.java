@@ -20,17 +20,21 @@ public class TeacherController {
 	
 	
 	
-	//회원가입
+	//회원가입 페이지이동
 	@GetMapping("/joinPage")
+	public String joinPage(TeacherVO teacherVO) {
+		
+		return "content/teacher/join_page";
+	}
+	//회원가입 진행
+	@PostMapping("/join")
 	public String join(TeacherVO teacherVO) {
 		
 		
-		
-		teacherService.join(teacherVO);
-		
-		return "content/teacher/join_page";
+		return "redirect:/teacher/joinPage";
 		
 	}
+	
 	
 	//로그인
 	@GetMapping("/login")

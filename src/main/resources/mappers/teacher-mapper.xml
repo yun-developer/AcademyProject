@@ -4,8 +4,8 @@
 <mapper namespace="teacherMapper">
 	<resultMap type="kh.study.academy.teacher.vo.TeacherVO" id="teacher">
 		<id column="TEACHER_CODE" 							property="teacherCode" />
-		<result column="NAME" 								property="name" />
-		<result column="TELL" 								property="tell" />
+		<result column="NAME" 								property="teacherName" />
+		<result column="TELL" 								property="teacherTell" />
 		<result column="CAREER" 							property="career" />
 		<result column="TEACHER_ID" 						property="teacherId" />
 		<result column="TEACHER_PW" 						property="teacherPw" />
@@ -29,32 +29,26 @@
 	         FROM TEACHER  
 	      </selectKey>
 	
-	
 		INSERT INTO TEACHER (
-				TEACHER_CODE
-				, NAME
-				, TELL
-				, CAREER
-				, TEACHER_ID
-				, TEACHER_PW
-				, WRONG_PW_CNT
-				, TEACHER_STATUS
-				, TEACHER_ROLE
-				, LESSONS_CODE
-				, SUBJECT_CODE
-			) VALUES (
-				#{teacherCode}
-				, #{name}
-				, #{tell}
-				, #{career}
-				, #{teacherId}
-				, #{teacherPw}
-				, #{wrongPwCnt}
-				, #{teacherStatus}
-				, #{teacherRole}
-				, #{lessonsCode}
-				, #{subjectCode}
-			)
+		    TEACHER_CODE
+		    , TEACHER_NAME
+		    , TEACHER_TELL
+		    , CAREER
+		    , SUBJECT_CODE
+		    , TEACHER_ID
+		    , TEACHER_PW
+		 
+		) VALUES (
+			#{teacherCode}
+		    , #{teacherName}
+		    , #{teacherTell}
+		    , #{career}
+		    , 'SUBJECT_001'
+		    , #{teacherId}
+		    , #{teacherPw}
+		    
+		)
+		
 	</insert>
 	
 	

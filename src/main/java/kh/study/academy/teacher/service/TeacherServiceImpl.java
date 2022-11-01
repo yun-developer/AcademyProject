@@ -15,8 +15,7 @@ public class TeacherServiceImpl implements TeacherService {
 	//회원가입
 	@Override
 	public void join(TeacherVO teacherVO) {
-		// TODO Auto-generated method stub
-		// 아직 안했어요 
+		sqlSession.insert("teacherMapper.join", teacherVO);
 		
 	}
 	
