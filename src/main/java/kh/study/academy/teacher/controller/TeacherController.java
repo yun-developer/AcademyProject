@@ -3,6 +3,7 @@ package kh.study.academy.teacher.controller;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -20,18 +21,22 @@ public class TeacherController {
 	
 	
 	//회원가입
-	@PostMapping("/join")
+	@GetMapping("/joinPage")
 	public String join(TeacherVO teacherVO) {
-		
-		
-		//
 		
 		
 		
 		teacherService.join(teacherVO);
 		
-		return null;
+		return "content/teacher/join_page";
 		
+	}
+	
+	//로그인
+	@GetMapping("/login")
+	public String login() {
+		
+		return "content/teacher/login_page";
 	}
 	
 }

@@ -21,8 +21,8 @@
 		  <button class="btn btn-primary me-md-2" type="button" > 학생검색</button>
 		  
 	        <div class="text-end justify-content-end">
-	          <button type="button" class="btn btn-outline-light me-2">Login</button>
-	          <button type="button" class="btn btn-warning">회원가입</button>
+	          <button type="button" class="btn btn-outline-light me-2"  th:onclick="|location.href='@{/teacher/login}'|">Login</button>
+	          <button type="button" class="btn btn-warning"  th:onclick="|location.href='@{/teacher/joinPage}'|">회원가입</button>
 	        </div>
 		</div>
 
@@ -31,6 +31,16 @@
     </div>
   </header>
 
+
+
+
+
+
+
+
+
+<!-- 주소 찾기 -->
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 
 </div>
