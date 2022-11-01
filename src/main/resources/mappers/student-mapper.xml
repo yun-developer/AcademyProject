@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="studentMapper">
+	<resultMap type="kh.study.academy.student.vo.StudentVO" id="student">
+		<id column="STUDENT_CODE" property="studentCode"/>
+		<result column="STUDENT_NAME" property="name"/>
+		<result column="BIRTHDAY" property="birthday"/>
+		<result column="YEAR" property="year"/>
+		<result column="ADDR" property="addr"/>
+		<result column="STUDENT_TELL" property="tell"/>
+		<result column="REG_DATE" property="regDate"/>
+	</resultMap>
+	
+	<resultMap type="kh.study.academy.student.vo.StudentLessonInfoVO" id="studentLessonInfo">
+		<id column="STUDENT_LESSON_CODE" property="studentLessonCode" />
+		<result column="LESSON_INFO_CODE" property="lessonInfoCode"/>
+		<result column="ATTENDANCE_CODE" property="attendanceCode"/>
+		<result column="STUDENT_CODE" property="studentCode"/>
+	</resultMap>
+	
+	<resultMap type="kh.study.academy.student.vo.StudentStepVO" id="studentStep">
+		<id column="STUDENT_STEP_CODE" property="studentStepCode" />
+		<result column="STEP_NAME" property="stepName"/>
+	</resultMap>
+		
+
+
+<insert id="insertStudent">
+
+	<selectKey resultType="String" keyProperty="studentCode" order="BEFORE">
+	   SELECT 'STU_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(STUDENT_CODE, 5))),0) +1, 3, 0) 
+	   FROM STUDENT
+	</selectKey>
+	
+	INSERT INTO STUDENT (
+		STUDENT_CODE
+		, STUDENT_NAME
+		, BIRTHDAY
+		, YEAR
+		, ADDR
+		, STUDENT_TELL		
+	) VALUES (
+		#{studentCode}
+		, #{studentName}
+		, #{birthday}
+		, #{year}
+		, #{addr}
+		, #{studentTell}
+	)
+</insert>
+
+<insert id="insertPayment">
+	<selectKey resultType="String" keyProperty="paymentCode" order="BEFORE">
+	   SELECT 'PAY_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(PAYMENT_CODE, 5))),0) +1, 3, 0) 
+	   FROM PAYMENT
+	</selectKey>
+<!-- 	<selectKey resultType="String" keyProperty="lessonsCode" order="BEFORE">
+	   SELECT 'LESSONS_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(PAYMENT_CODE, 5))),0) +1, 3, 0) 
+	   FROM PAYMENT
+	</selectKey> -->
+	
+	INSERT INTO (
+		PAYMENT_CODE
+		, LESSONS_CODE
+		, IS_PAY
+		, STUDENT_CODE
+	) VALUES (
+		#{paymentCode}
+		, 'LESSONS_001'
+		, #{isPay}
+		, #{studentCode}
+	)
+	
+
+</insert>
+	
+
+	
+	
+</mapper>
+
+
+

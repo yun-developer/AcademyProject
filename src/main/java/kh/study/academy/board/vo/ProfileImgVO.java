@@ -1,8 +1,8 @@
 package kh.study.academy.board.vo;
 
-public class BoardImg {
-	private int boardImgNum;
-	private int boardNum;
+public class ProfileImgVO {
+	private int profileImgNum;
+	private String teacherCode;
 	private String originFileName;
 	private String storedFileName;
 }
