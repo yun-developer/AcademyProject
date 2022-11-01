@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kh.study.academy.teacher.service.TeacherService;
 import kh.study.academy.teacher.vo.TeacherVO;
@@ -36,11 +37,50 @@ public class TeacherController {
 	}
 	
 	
-	//로그인
-	@GetMapping("/login")
-	public String login() {
+	//로그인 페이지로 이동
+	@GetMapping("/loginPage")
+	public String loginPage() {
+		
 		
 		return "content/teacher/login_page";
 	}
+	
+	
+	//로그인 진행
+	@PostMapping("login")
+	public String login(TeacherVO teacherVO) {
+		
+		
+		teacherService.login(teacherVO);
+		
+		
+		
+		
+		return"redirect:/lesson/main";
+	}
+	
+	//로그인정보 찾기 페이지로 이동
+	@GetMapping("findLoginPage")
+	public String findLoginPage( ) {
+		
+		
+		
+		
+		
+		return "content/teacher/find_login";
+	}
+	
+	
+	
+	
+	//로그인정보 찾기 에이작스
+	@ResponseBody
+	@PostMapping("/findLoginAjax")
+	public void findLoginAjax(TeacherVO teacherVO) {
+		
+		teacherService.findLogin(teacherVO);
+		
+	}
+	
 	
 }

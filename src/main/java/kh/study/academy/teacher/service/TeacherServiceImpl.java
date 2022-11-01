@@ -25,6 +25,13 @@ public class TeacherServiceImpl implements TeacherService {
 		return sqlSession.selectOne("teacherMapper.login", teacherVO);
 	}
 	
+	//로그인 정보 찾기 
+	@Override
+	public TeacherVO findLogin(TeacherVO teacherVO) {
+		
+		return sqlSession.selectOne("teacherMapper.findLogin", teacherVO);
+	}
+	
 	
 	
 	
