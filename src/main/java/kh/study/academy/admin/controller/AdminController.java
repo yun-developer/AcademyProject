@@ -45,6 +45,9 @@ public class AdminController {
 		List<String> subjectCodeList = Arrays.asList(subjectCodeArr);
 		
 		SubjectVO subjectVO = new SubjectVO();
+		subjectVO.setSubjectCodeList(subjectCodeList);
+		
+		adminService.deleteSubject(subjectVO);
 		
 		return "redirect:/admin/selectSubject";
 	}
