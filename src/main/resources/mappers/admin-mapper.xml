@@ -19,6 +19,13 @@
 	</resultMap> 
 	
 	
+	<resultMap type="kh.study.academy.admin.vo.LessonRoomVO" id="lessonRoom">
+		<id column="SUBJECT_CODE" 			property="subjectCode" />
+		<result column="SUBJECT_NAME" 		property="subjectName" />
+		
+	</resultMap> 
+	
+	
 	<!-- 교사리스트 조회 -->
 	<!--LESSONS,SUBJECT CODE 수정 필요... -->
 	<select id="selectTeacherList" resultMap="teacherMapper.teacher">
@@ -73,6 +80,33 @@
 	</foreach>
 	
 	</delete>
+	
+	
+	
+	<!-- 교실 등록 쿼리문  -->
+		<insert id="insertLessonRoom">
+ 	
+		<selectKey resultType="String" keyProperty="subjectCode" order="BEFORE">
+			SELECT 'LESSON_ROOM_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(LESSON_ROOM_CODE, 13))), 0) + 1, 3, 0) 
+			FROM LESSON_ROOM
+		</selectKey>
+	
+		INSERT INTO LESSON_ROOM(
+			LESSON_ROOM_CODE
+			, ROOM_CODE
+		) VALUES (
+			#{lessonRoomCode}
+		    , #{roomCode}
+		)
+	</insert> 
+	
+	<!-- 등록된 교실 조회 -->	
+	<select id="selectLessonRoom" resultMap="lessonRoom">
+		SELECT LESSON_ROOM_CODE
+				, ROOM_NAME
+		FROM LESSON_ROOM
+		ORDER BY LESSON_ROOM_CODE 
+	</select>
 	
 	
 </mapper>

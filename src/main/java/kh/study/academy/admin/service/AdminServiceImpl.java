@@ -6,7 +6,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kh.study.academy.admin.vo.LessonRoomVO;
 import kh.study.academy.admin.vo.SubjectVO;
+import kh.study.academy.lesson.vo.LessonVO;
 import kh.study.academy.teacher.vo.TeacherVO;
 
 
@@ -30,7 +32,7 @@ public class AdminServiceImpl implements AdminService{
 		
 		sqlSession.insert("adminMapper.insertSubject", subjectVO);
 	}
-	// 등록된 과목 조회
+	// 등록된 과목리스트 조회
 	@Override
 	public List<SubjectVO> selectSubject() {
 		return sqlSession.selectList("adminMapper.selectSubject");
@@ -40,6 +42,17 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public void deleteSubject(SubjectVO subjectVO) {
 		sqlSession.delete("adminMapper.deleteSubject", subjectVO);
+	}
+	
+	// 교실 등록
+	@Override
+	public void insertLessonRoom(LessonVO lessonVO) {
+		sqlSession.insert("adminMapper.insertLessonRoom", lessonVO);
+	}
+	// 등록된 교실리스트 조회
+	@Override
+	public List<LessonVO> selectLessonRoom() {
+		return sqlSession.selectList("adminMapper.selectLessonRoom");
 	}
 
 

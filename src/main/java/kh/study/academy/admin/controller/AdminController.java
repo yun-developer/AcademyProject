@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import kh.study.academy.admin.service.AdminService;
 import kh.study.academy.admin.vo.SubjectVO;
+import kh.study.academy.lesson.vo.LessonVO;
 
 
 @Controller
@@ -26,7 +27,7 @@ public class AdminController {
 	@PostMapping("/regSubject")
 	public String regSubject(SubjectVO subjectVO) {
 		adminService.insertSubject(subjectVO);
-		System.out.println(subjectVO);
+
 		return "redirect:/admin/selectSubject";
 	}
 	// 내가 등록한 과목들을 조회 (과목등록페이지로 이동)
@@ -35,7 +36,7 @@ public class AdminController {
 		
 		model.addAttribute("selectSubject", adminService.selectSubject());
 		
-		return "content/admin/Reg_subject";
+		return "content/admin/reg_subject";
 	}
 	
 	// 과목 체크박스 삭제
@@ -51,4 +52,28 @@ public class AdminController {
 		
 		return "redirect:/admin/selectSubject";
 	}
+	
+	// 교실 정보 등록
+	
+	 @PostMapping("/insertLessonRoom")
+	 public String insertLessonRoom(LessonVO lsesonVO) { 
+		 
+		 adminService.insertLessonRoom(lsesonVO); 
+		 
+		 return "redirect:/admin/selectLessonRoom";
+	 }
+	 
+	// 내가 등록한 교실 정보 들을 조회 (과목등록페이지로 이동)
+		@GetMapping("/selectLessonRoom")
+			public String selectLessonRoom(Model model){
+			
+			model.addAttribute("selectLesson", adminService.selectLessonRoom());
+			
+			return "content/admin/LessonRoom";
+		}
+	
+	
+	
+	// 내가 등록한 각 반 교실 정보을 조회 (과목등록페이지로 이동)
+	
 }
