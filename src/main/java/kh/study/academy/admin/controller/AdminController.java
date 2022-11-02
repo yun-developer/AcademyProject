@@ -69,7 +69,7 @@ public class AdminController {
 			
 			model.addAttribute("selectLessonRoom", adminService.selectLessonRoom());
 			
-			return "content/admin/";
+			return "content/admin/lesson_room";
 		}
 	
 	
