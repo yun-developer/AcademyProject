@@ -71,10 +71,10 @@ public class TeacherController {
 	
 	//로그인정보 찾기 페이지로 이동
 	@GetMapping("findLoginPage")
-	public String findLoginPage( ) {
+	public String findLoginPage( TeacherVO teacherVO, Model model ) {
 		
 		
-		
+		model.addAttribute("findLoginInfo", teacherService.findLogin(teacherVO));
 		
 		
 		return "content/teacher/find_login";
