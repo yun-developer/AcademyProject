@@ -35,4 +35,10 @@ public class TeacherVO {
 	private String teacherStatus;
 	private String lessonsCode;
 	private String teacherRole;
+	
+	private int check; 
+	
+	
+	
+	
 }

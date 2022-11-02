@@ -99,15 +99,26 @@ public class TeacherController {
 	//로그인정보 찾기 에이작스
 	@ResponseBody
 	@PostMapping("/findLoginAjax")
-	public void findLoginAjax(TeacherVO teacherVO, Model model) {
+	public TeacherVO findLoginAjax(TeacherVO teacherVO, Model model) {
+		
+		
 		
 		TeacherVO teacher =  teacherService.findLogin(teacherVO);
 		
+		System.out.println("@@@@@"+ teacher);
+		
+		
+		
 		if(teacher == null) {
-			model.addAttribute("check", 1);
+			
+			teacherVO = new TeacherVO();
+			teacherVO.setCheck(0);
+			return teacherVO;
 		}else {
-			model.addAttribute("check", 0);
-			model.addAttribute("teacherId", teacher.getTeacherId());
+			teacher.setCheck(1);
+			
+			return teacher;
+		
 		}
 		
 	}
