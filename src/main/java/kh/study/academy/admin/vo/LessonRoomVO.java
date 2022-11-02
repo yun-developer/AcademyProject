@@ -10,6 +10,6 @@ import lombok.Setter;
 
 public class LessonRoomVO {
 	private String lessonRoomCode;
-	private String roomCode;
+	private String roomName;
 	
 }

@@ -37,37 +37,37 @@
                    </tr>
                  </thead>
                  <tbody>
-                  <th:block th:if="${#lists.size(selectLesson) == 0}">
+                  <th:block th:if="${#lists.size(selectLessonRoom == 0}">
                  	<tr> 
-                 		<td colspan="4">등록된 과목이 없습니다.</td>
+                 		<td colspan="4">등록된 교실이 없습니다.</td>
                  	</tr>
                  </th:block>
 
-                 <th:block th:unless="${#lists.size(selectSubject) == 0}">
+                 <th:block th:unless="${#lists.size(selectLessonRoom) == 0}">
                   
-                    <tr th:each="selectLessonRoom, status : ${selectLessonRoom}">
+                    <tr th:each="LessonRoom, status : ${selectLessonRoom}">
                    		<td>
-                     <input th:value="${selectSubject.subjectCode}"  type="checkbox" class="form-check-input chk" >
+                     <input th:value="${LessonRoom.lessonRoomCode}"  type="checkbox" class="form-check-input chk" >
                   		</td>
                    		<td th:text="${status.count}"></td> 
-                   		<td th:text="${selectSubject.subjectCode}" ></td> 
-                   		<td th:text="${selectSubject.subjectName}"></td> 
+                   		<td th:text="${LessonRoom.lessonRoomCode}" ></td> 
+                   		<td th:text="${LessonRoom.roomName}"></td> 
                    </tr>
              
-                 </th:block> 
+                 </th:block>  
                  </tbody>
                </table>
 				</div>
 			</div>
 		  </div>
-		  	<form th:action="@{/admin/deleteSubject}" method="post" id="deleteSubjectForm">  <!-- 폼태그 안에 input가 있어야 데이터를 가져간다.  -->
-             <input type="hidden" name="subjectCodes"  value=""> <!--  submit누르면 데이터 안보이게 데이터 가져갈꺼다.  내가 체크한 체크박스들을 이 input태그의 value값을   -->
+		  	<!-- <form th:action="@{/admin/deleteSubject}" method="post" id="deleteSubjectForm">  폼태그 안에 input가 있어야 데이터를 가져간다. 
+             <input type="hidden" name="subjectCodes"  value="">  submit누르면 데이터 안보이게 데이터 가져갈꺼다.  내가 체크한 체크박스들을 이 input태그의 value값을  
                <div class="row justify-content-end">
                   <div class="col-2"  style="margin-right:4.8rem;">
                         <button th:onclick="subjectDeleteAjax();" type="button" class="btn btn-warning form-control" >삭제</button>
                   </div>
                </div>
-              </form>
+              </form> -->
             </div>
 		</div>
 
