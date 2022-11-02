@@ -20,8 +20,8 @@
 	
 	
 	<resultMap type="kh.study.academy.admin.vo.LessonRoomVO" id="lessonRoom">
-		<id column="SUBJECT_CODE" 			property="subjectCode" />
-		<result column="SUBJECT_NAME" 		property="subjectName" />
+		<id column="LESSON_ROOM_CODE" 	property="lessonRoomCode" />
+		<result column="ROOM_NAME" 		property="roomName" />
 		
 	</resultMap> 
 	
@@ -85,18 +85,19 @@
 	
 	<!-- 교실 등록 쿼리문  -->
 		<insert id="insertLessonRoom">
- 	
-		<selectKey resultType="String" keyProperty="subjectCode" order="BEFORE">
+ 		<!-- keyProperty는 내가 select한 LESSON_ROOM_001 ... 코드를 담을 곳
+ 		 String lessonRoomCode = LESSON_ROOM_001 이라는 뜻-->
+		<selectKey resultType="String" keyProperty="lessonRoomCode" order="BEFORE">
 			SELECT 'LESSON_ROOM_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(LESSON_ROOM_CODE, 13))), 0) + 1, 3, 0) 
 			FROM LESSON_ROOM
 		</selectKey>
 	
 		INSERT INTO LESSON_ROOM(
 			LESSON_ROOM_CODE
-			, ROOM_CODE
+			, ROOM_NAME
 		) VALUES (
 			#{lessonRoomCode}
-		    , #{roomCode}
+		    , #{roomName}
 		)
 	</insert> 
 	

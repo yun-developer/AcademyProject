@@ -46,8 +46,8 @@ public class AdminServiceImpl implements AdminService{
 	
 	// 교실 등록
 	@Override
-	public void insertLessonRoom(LessonVO lessonVO) {
-		sqlSession.insert("adminMapper.insertLessonRoom", lessonVO);
+	public void insertLessonRoom(LessonRoomVO lessonRoomVO) {
+		sqlSession.insert("adminMapper.insertLessonRoom", lessonRoomVO);
 	}
 	// 등록된 교실리스트 조회
 	@Override

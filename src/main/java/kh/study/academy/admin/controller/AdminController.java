@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kh.study.academy.admin.service.AdminService;
+import kh.study.academy.admin.vo.LessonRoomVO;
 import kh.study.academy.admin.vo.SubjectVO;
 import kh.study.academy.lesson.vo.LessonVO;
 
@@ -88,9 +89,9 @@ public class AdminController {
 	// 교실 정보 등록
 	
 	 @PostMapping("/insertLessonRoom")
-	 public String insertLessonRoom(LessonVO lsesonVO) { 
+	 public String insertLessonRoom(LessonRoomVO lessonRoomVO) { 
 		 
-		 adminService.insertLessonRoom(lsesonVO); 
+		 adminService.insertLessonRoom(lessonRoomVO); 
 		 
 		 return "redirect:/admin/selectLessonRoom";
 	 }
@@ -98,8 +99,9 @@ public class AdminController {
 	// 내가 등록한 교실 정보 들을 조회 (과목등록페이지로 이동)
 		@GetMapping("/selectLessonRoom")
 			public String selectLessonRoom(Model model){
-			
-			model.addAttribute("selectLessonRoom", adminService.selectLessonRoom());
+			List<LessonVO> lessonRoomList =  adminService.selectLessonRoom();
+		System.out.println("!!!!!!!!!!!!!!!!!"+lessonRoomList.get(0));
+			model.addAttribute("selectLessonRoom", lessonRoomList);
 			
 			return "content/admin/lesson_room";
 		}

@@ -2,6 +2,7 @@ package kh.study.academy.admin.service;
 
 import java.util.List;
 
+import kh.study.academy.admin.vo.LessonRoomVO;
 import kh.study.academy.admin.vo.SubjectVO;
 import kh.study.academy.lesson.vo.LessonVO;
 import kh.study.academy.teacher.vo.TeacherVO;
@@ -24,7 +25,7 @@ public interface AdminService {
 	void deleteSubject(SubjectVO subjectVO);
 	
 	// 교실 등록
-	void insertLessonRoom(LessonVO lessonVO);
+	void insertLessonRoom(LessonRoomVO lLessonRoomVO);
 	
 	// 등록된 과목리스트 조회
 	List<LessonVO> selectLessonRoom();
