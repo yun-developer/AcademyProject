@@ -43,8 +43,15 @@
 		  <div class="mb-3 row justify-content-center text-center">
 		    <label for="inputCareer" class="col-sm-2 col-form-label">강의과목</label>
 		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="inputCareer" name="lessonsCode" value="SUBJECT_001" placeholder="셀렉트박스로 수정 예정">
+		      <!-- <input type="text" class="form-control" id="inputCareer" name="lessonsCode" value="SUBJECT_001" placeholder="셀렉트박스로 수정 예정"> -->
 		      <!-- name="lessonsCode"... 데이터 가져와서 뽑기 -->
+		      <select id="subjectCode" name="subjectCode" class="form-select">
+			    <th:block th:each ="subject:${subjectList}"  >
+			      <option 
+			      			th:value="${subject.subjectCode}" th:text="${subject.subjectName}" >
+			      </option>
+			    </th:block>
+			  </select>
 		    </div>
 		  </div>
 		  <div class="mb-3 row justify-content-center text-center">
