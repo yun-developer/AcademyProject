@@ -1,5 +1,7 @@
 package kh.study.academy.teacher.controller;
 
+import java.util.Random;
+
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
@@ -103,7 +105,7 @@ public class TeacherController {
 		
 		
 		
-		TeacherVO teacher =  teacherService.findLogin(teacherVO);
+		TeacherVO teacher =  teacherService.findId(teacherVO);
 		
 		System.out.println("@@@@@"+ teacher);
 		
@@ -121,6 +123,9 @@ public class TeacherController {
 		
 		}
 	}
+	
+	
+	
 	
 	
 	//비밀번호 정보 찾기 에이작스

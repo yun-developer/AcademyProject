@@ -4,9 +4,9 @@
 function findLoginIdAjax(){
 
 	//teacherName 값 
-	const teacherName = document.querySelector('#teacherName').value;
+	const teacherName = document.querySelector('#findName').value;
 	//teacherTell 값
-	const teacherTell = document.querySelector('#teacherTell').value;
+	const teacherTell = document.querySelector('#findTell').value;
 		
 	console.log(teacherName);
 	console.log(teacherTell);
@@ -41,22 +41,6 @@ function findLoginIdAjax(){
 			}
 			
 			
-			
-/*			let str = '';
-			str += ' <div class="col-md-4" style="float: none; margin: 0 auto;">  ';
-			str += `<th:block th:if="${result.check == 0}"> `;
-			str += ' <div>  ';
-			str += ' 아이디 조회 결과 입력하신 정보와 일치하는 아이디가 존재하지 않습니다.  ';
-			str += ' </div>  ';
-			str += ' </th:block>  ';
-			str += `<th:block th:if="${result.check == 1}">`  ;
-			str += ' <div> ';
-			str += ' 아이디 조회 결과 입력하신 정보와 일치하는 아이디는 아래와 같습니다 ';
-			str += ` <div> [[${result.teacherId}]]</div>` ;
-			str += ' </div> ';
-			str += ' </th:block>';
-			str += ' </div> ';
-			*/
 			const findResult = document.querySelector('#findResult');
 
 			findResult.innerHTML = ''; /*내용을 지우는것*/

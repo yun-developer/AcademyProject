@@ -1,5 +1,6 @@
 package kh.study.academy.teacher.service;
 
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,10 +28,12 @@ public class TeacherServiceImpl implements TeacherService {
 	
 	//로그인 정보 찾기 
 	@Override
-	public TeacherVO findLogin(TeacherVO teacherVO) {
+	public TeacherVO findId(TeacherVO teacherVO) {
 		
-		return sqlSession.selectOne("teacherMapper.findLogin", teacherVO);
+		return sqlSession.selectOne("teacherMapper.findId", teacherVO);
 	}
+	
+
 	
 	
 	
