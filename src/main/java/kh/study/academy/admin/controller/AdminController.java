@@ -30,7 +30,7 @@ public class AdminController {
 		return "redirect:/admin/selcetSubject";
 	}
 	// 내가 등록한 과목들을 조회 (과목등록페이지로 이동)
-	@PostMapping("/selectSubject")
+	@GetMapping("/selectSubject")
 		public String selectSubject(Model model){
 		
 		model.addAttribute("selectSubject", adminService.selectSubject());
