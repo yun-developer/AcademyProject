@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz.thymeleaf/layout"
 	layout:decorate="~{layout/Join_Login_layout}">
-	
+
 <th:block layout:fragment="css">
 	<link rel="stylesheet" th:href="@{}">
 </th:block>
@@ -13,37 +13,43 @@
 
 
 
-	<div>
-		<h2>아이디 찾기</h2>
+	<div class="findLogin_container mt-3">
+		<div class="col-md-4" style="float: none; margin: 0 auto;">
 
-		<div class="row mb-3">
-
-			<label for="teacherName" class="col-sm-2 col-form-label"> 이름
-			</label>
-			<div class="col-sm-10">
-				<input type="text" class="form-control" id="teacherName">
+			<h2>아이디 찾기</h2>
+			<p class="tip" style="color: #999999; font-size: 14px;">
+				-회원정보에 저장된 이름/연락처 로 아이디를 찾을 수 있습니다
+			</p>
+			<div class="row mb-3">
+				<div class="col-sm-12">
+					<input type="text" class="form-control" id="teacherName" placeholder="이름">
+				</div>
+			</div>
+			<div class="row mb-3">
+				<div class="col-sm-12">
+					<input type="text" class="form-control" id="teacherTell" placeholder="연락처">
+				</div>
+			</div>
+			<div class="d-grid gap-2 mb-3">
+				<button th:onclick="findLoginAjax();" class="btn btn-primary"
+					type="button">확인</button>
 			</div>
 		</div>
-		<div class="row mb-3">
-			<label for="teacherTell" class="col-sm-2 col-form-label">
-				전화번호 </label>
-			<div class="col-sm-10">
-				<input type="text" class="form-control" id="teacherTell">
-			</div>
-		</div>
-		<div class="d-grid gap-2 mb-3">
-			<button th:onclick="findLoginAjax();" class="btn btn-primary" type="button">확인</button>
-			
-			
-		</div>
-
-
 	</div>
 
 
-	<div>
-	<h2>비밀번호도...?</h2>
-</div>
+	<!-- 아래 자스로 바꿀 부분 임시로 -->
+	<div id="findResult"  >
+	<!--여기서부터  -->
+		<div class="col-md-4" style="float: none; margin: 0 auto;">
+			<div>
+				아이디 조회 결과 입력하신 정보와 일치하는 아이디는 아래와 같습니다
+			</div>
+		</div>
+		<div th:text="${teacherId}"></div>
+	
+	<!-- 여기까지 -->
+	</div>
 
 
 
@@ -54,12 +60,10 @@
 
 
 
-
-
-<!-- jquery 문법 로딩 -->
-<!--순서 잘 맞춰서 적어야 함  -->
-<script src="https://code.jquery.com/jquery-latest.min.js"></script>
-<script type="text/javascript" th:src="@{/js/teacher/find_login.js}"></script>
+	<!-- jquery 문법 로딩 -->
+	<!--순서 잘 맞춰서 적어야 함  -->
+	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript" th:src="@{/js/teacher/find_login.js}"></script>
 
 </div>
 
