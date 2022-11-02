@@ -26,13 +26,13 @@ public class SecurityConfig {
 								, "/teacher/login"
 								, "/lesson/main").permitAll() //해당 요청들은 누구나 접근 가능.
 						//.antMatchers("/xxxx").hasAnyRole("TEACHER","ADMIN")	//"/xxxx" 요청은 TEACHER, ADMIN 권한이 필요(둘 중 하나라도 가능)
-						.antMatchers("/admin").hasRole("ADMIN")			//"/admin" 요청은 ADMIN 권한이 필요
+						.antMatchers("/admin/**").hasRole("ADMIN")			//"/admin" 요청은 ADMIN 권한이 필요
 						.anyRequest().authenticated()						//나머지 요청은 누구나 접근 가능. .anyRequest().authenticated() -> 인증 요구
 					.and()
 						.formLogin() 						//인증 및 인가가 없는 상태로 요청에 접근 시 로그인 페이지를 보여줌	(기본적으로 제공하는)		
-						.loginPage("/teacher/login")				//커스터마이징한 로그인 페이지 설정
+						.loginPage("/teacher/loginPage")				//커스터마이징한 로그인 페이지 설정
 						.defaultSuccessUrl("/lesson/main")		//로그인 성공 시 요청경로
-						.failureUrl("/teacher/login")			//로그인 실패 시 요청경로
+						.failureUrl("/teacher/loginPage")			//로그인 실패 시 요청경로
 						.loginProcessingUrl("/teacher/login") //실제 로그인을 진행할 요청 정보. form태그의 경로와 맞춰준다. 기본적으로 "/login"처럼 진행
 						.usernameParameter("teacherId")
 						.passwordParameter("teacherPw")
