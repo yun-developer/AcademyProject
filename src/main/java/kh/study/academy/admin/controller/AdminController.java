@@ -23,6 +23,38 @@ public class AdminController {
 	@Resource(name = "adminService")
 	private AdminService adminService;
 	
+	
+	
+	
+	//교사리스트 페이지로 이동
+	@GetMapping("/teacherList")
+	public String teacherList(Model model) {
+
+		//교사리스트 조회
+		model.addAttribute("teacherList", adminService.selectTeacherList());
+
+
+		return "content/admin/teacherList";
+
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	////////////////////////////////////////////
+	////////////////////////////////////////////
+	
+	
+	
 	// 과목 등록 (수학, 과학) 
 	@PostMapping("/regSubject")
 	public String regSubject(SubjectVO subjectVO) {
