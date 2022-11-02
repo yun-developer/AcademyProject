@@ -59,7 +59,7 @@ public class TeacherController {
 	
 	
 	//로그인 진행
-	@PostMapping("login")
+	@PostMapping("/login")
 	public String login(TeacherVO teacherVO) {
 		
 		
@@ -70,7 +70,7 @@ public class TeacherController {
 	}
 	
 	//로그인정보 찾기 페이지로 이동
-	@GetMapping("findLoginPage")
+	@GetMapping("/findLoginPage")
 	public String findLoginPage( ) {
 		
 		
