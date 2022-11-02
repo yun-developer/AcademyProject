@@ -55,7 +55,7 @@ public class SecurityConfig {
 	//css요청에 대한 인증 무시
 	@Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-		return (web) -> web.ignoring().antMatchers("/js/**",  "/css/**", "/images/**");
+		return (web) -> web.ignoring().antMatchers("/bootstrap/**", "/js/**",  "/css/**", "/images/**");
     }
 	
 	
