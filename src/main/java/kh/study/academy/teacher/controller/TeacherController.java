@@ -31,8 +31,9 @@ public class TeacherController {
 	@PostMapping("/join")
 	public String join(TeacherVO teacherVO) {
 		
+		teacherService.join(teacherVO);
 		
-		return "redirect:/teacher/joinPage";
+		return "redirect:/lesson/main";
 		
 	}
 	
@@ -52,8 +53,6 @@ public class TeacherController {
 		
 		
 		teacherService.login(teacherVO);
-		
-		
 		
 		
 		return"redirect:/lesson/main";
