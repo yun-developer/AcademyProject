@@ -1,8 +1,11 @@
 package kh.study.academy.teacher.controller;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,7 +32,15 @@ public class TeacherController {
 	}
 	//회원가입 진행
 	@PostMapping("/join")
-	public String join(TeacherVO teacherVO) {
+	public String join(@Valid TeacherVO teacherVO
+						, BindingResult bindingResult
+						, Model model) {
+		
+		//validation 체크
+		if(bindingResult.hasErrors()) {
+			System.out.println("~~~error~~~");
+			return "content/teacher/join_page";
+		}
 		
 		teacherService.join(teacherVO);
 		

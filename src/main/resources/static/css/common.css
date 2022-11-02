@@ -24,8 +24,9 @@ a{
 }
 
 .hasError{
-	
 	color: red;
-	font-style:  italic;
+	background-color: #EEEEEE;
+	font-size: 15px;
+	font-style: italic;
 }
 
