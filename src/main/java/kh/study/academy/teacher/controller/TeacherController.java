@@ -71,10 +71,9 @@ public class TeacherController {
 	
 	//로그인정보 찾기 페이지로 이동
 	@GetMapping("findLoginPage")
-	public String findLoginPage( TeacherVO teacherVO, Model model ) {
+	public String findLoginPage( ) {
 		
 		
-		model.addAttribute("findLoginInfo", teacherService.findLogin(teacherVO));
 		
 		
 		return "content/teacher/find_login";
@@ -86,9 +85,16 @@ public class TeacherController {
 	//로그인정보 찾기 에이작스
 	@ResponseBody
 	@PostMapping("/findLoginAjax")
-	public void findLoginAjax(TeacherVO teacherVO) {
+	public void findLoginAjax(TeacherVO teacherVO, Model model) {
 		
-		teacherService.findLogin(teacherVO);
+		TeacherVO teacher =  teacherService.findLogin(teacherVO);
+		
+		if(teacher == null) {
+			model.addAttribute("check", 1);
+		}else {
+			model.addAttribute("check", 0);
+			model.addAttribute("teacherId", teacher.getTeacherId());
+		}
 		
 	}
 	

@@ -64,7 +64,7 @@
 	
 	<select id="findLogin" resultMap="teacher">
 	
-	SELECT TEACHER_ID
+	SELECT TEACHER_CODE
 	FROM TEACHER
 	WHERE TEACHER_NAME = #{teacherName}
 	AND TEACHER_TELL = #{teacherTell}

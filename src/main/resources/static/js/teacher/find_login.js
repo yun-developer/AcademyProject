@@ -7,7 +7,7 @@ function findLoginAjax(){
 	$.ajax({
 		url: '/teacher/findLoginAjax', //요청경로
 		type: 'post',
-		data: {}, //필요한 데이터
+		data: {'teacherName':teacherName, 'teacherTell':teacherTell}, //필요한 데이터
 		success: function(result) {
 			alert('aaa');
 		},

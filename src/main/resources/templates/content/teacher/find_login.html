@@ -22,12 +22,12 @@
 			</p>
 			<div class="row mb-3">
 				<div class="col-sm-12">
-					<input type="text" class="form-control" id="teacherName" placeholder="이름">
+					<input type="text" class="form-control" name="teacherName" id="teacherName" placeholder="이름">
 				</div>
 			</div>
 			<div class="row mb-3">
 				<div class="col-sm-12">
-					<input type="text" class="form-control" id="teacherTell" placeholder="연락처">
+					<input type="text" class="form-control" name="teacherTell" id="teacherTell" placeholder="연락처">
 				</div>
 			</div>
 			<div class="d-grid gap-2 mb-3">
@@ -39,16 +39,23 @@
 
 
 	<!-- 아래 자스로 바꿀 부분 임시로 -->
-	<div id="findResult"  >
-	<!--여기서부터  -->
+	<div id="findResult">
+		<!--여기서부터  -->
 		<div class="col-md-4" style="float: none; margin: 0 auto;">
-			<div>
-				아이디 조회 결과 입력하신 정보와 일치하는 아이디는 아래와 같습니다
-			</div>
+			<th:block th:if="${check == 1}">
+				<div>
+					아이디 조회 결과 입력하신 정보와 일치하는 아이디가 존재하지 않습니다.
+				</div>
+			</th:block>
+			<th:block th:if="${check == 0}">
+				<div>
+					아이디 조회 결과 입력하신 정보와 일치하는 아이디는 아래와 같습니다
+					<div th:text="${teacherId}"></div>
+				</div>
+			</th:block>
 		</div>
-		<div th:text="${teacherId}"></div>
-	
-	<!-- 여기까지 -->
+
+		<!-- 여기까지 -->
 	</div>
 
 
