@@ -31,16 +31,16 @@
 	<select id="selectTeacherList" resultMap="teacherMapper.teacher">
 	
 		SELECT TEACHER_CODE
-			, NAME
-			, TELL
+			, TEACHER_NAME
+			, TEACHER_TELL
 			, CAREER
 			, TEACHER_ID
 			, TEACHER_STATUS
 			, LESSONS_CODE
 			, SUBJECT_CODE
 		FROM TEACHER 
-		WHERE TEACHER_ROLE = 'TEACHER' 
-		<!-- 원장도 교사리스트에서 조회?? -->
+		
+		
 	
 	</select>
 	
