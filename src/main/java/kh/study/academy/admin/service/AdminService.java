@@ -16,7 +16,8 @@ public interface AdminService {
 	//과목등록
 	void insertSubject(SubjectVO subjectVO);
 	
-	
+	// 등록된 과목 조회
+	List<SubjectVO> selectSubject();
 	
 	
 }

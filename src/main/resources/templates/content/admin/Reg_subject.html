@@ -3,18 +3,19 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layout/base_layout}">
 	
+	
 
 <div layout:fragment="content">
 	<div class="row">
-		<div class="col-5">
+		<div class="col-7">
 			<div class="row">
 				<div class="col-12">
 					<h6>과목 등록</h6>
 				</div>
 				<div class="col-12 mb-3">
-					<form class="row g-3" th:action="@{/admin/regCategory}" method="post">
+					<form class="row g-3" th:action="@{/admin/regSubject}" method="post">
                   <div class="col-8">
-                     <input type="text" name="cateName" class="form-control" id="" placeholder="Username">
+                     <input type="text" name="subjectName" class="form-control" id="" placeholder="Username">
                   </div>
                     <div class="col-4">
                      <button type="submit" class="btn btn-primary">등록</button>
@@ -27,33 +28,31 @@
                  <thead>
                    <tr>
                      <th scope="col">No</th>
-                     <th scope="col">CATE_CODE</th>
-                     <th scope="col">CATE_NAME</th>
-                     <th scope="col">사용여부</th>
+                     <th scope="col">과목 코드</th>
+                     <th scope="col">과목 이름</th>
                    </tr>
                  </thead>
                  <tbody>
-                 <th:block th:if="${#lists.size(categoryListAll) == 0}">
-                 	<tr> <!--  -->
-                 		<td colspan="4">등록된 카테고리가 없습니다.</td>
+                 <th:block th:if="${#lists.size(selectSubject) == 0}">
+                 	<tr> 
+                 		<td colspan="4">등록된 과목이 없습니다.</td>
                  	</tr>
                  </th:block>
 
-                 <th:block th:unless="${#lists.size(categoryListAll) == 0}">
-                   <tr th:each="categoryInfo, status : ${categoryListAll}">
+                 <th:block th:unless="${#lists.size(selectSubject) == 0}">
+                   <tr th:each="selectSubject, status : ${selectSubject}">
                    		<td th:text="${status.count}"></td> 
-                   		<td th:text="${categoryInfo.cateCode}"></td> <!-- 카테고리 코드 -->
-                   		<td th:text="${categoryInfo.cateName}"></td><!-- 카테고리 이름 -->
-
+                   		<td th:text="${selectSubject.subjectCode}"></td> 
+                   		<td th:text="${selectSubject.subjectName}"></td>
                    </tr>
-                 </th:block>
+             
+                 </th:block> 
                  </tbody>
                </table>
 				</div>
 			</div>
 		  </div>
-	    <div class="col-6"> <!-- 상품등록 페이지 시작 -->
-	 </div>
+
    </div>
 </div>
 

@@ -23,11 +23,17 @@ public class AdminServiceImpl implements AdminService{
 		
 		return sqlSession.selectList("adminMapper.selectTeacherList");
 	}
-
+	
+	// 과목 등록
 	@Override
 	public void insertSubject(SubjectVO subjectVO) {
 		
 		sqlSession.insert("adminMapper.insertSubject", subjectVO);
+	}
+	// 등록된 과목 조회
+	@Override
+	public List<SubjectVO> selectSubject() {
+		return sqlSession.selectList("adminMapper.selectSubject");
 	}
 
 

@@ -12,6 +12,11 @@
 	
 	</resultMap> -->
 	
+	 <resultMap type="kh.study.academy.admin.vo.SubjectVO" id="subject">
+		<id column="SUBJECT_CODE" 			property="subjectCode" />
+		<result column="SUBJECT_NAME" 		property="subjectName" />
+		
+	</resultMap> 
 	
 	
 	<!-- 교사리스트 조회 -->
@@ -35,7 +40,12 @@
 	
 	<!-- 과목 등록 쿼리문  -->
  	<insert id="insertSubject">
-
+ 	
+		<selectKey resultType="String" keyProperty="subjectCode" order="BEFORE">
+			SELECT 'SUBJECT_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(SUBJECT_CODE, 9))), 0) + 1, 3, 0) 
+			FROM SUBJECT
+		</selectKey>
+	
 		INSERT INTO SUBJECT(
 			SUBJECT_CODE
 			, SUBJECT_NAME
@@ -45,6 +55,15 @@
 		)
 	</insert> 
 		
+		
+	<!--  등록된 과목 조회  -->	
+	<select id="selectSubject" resultMap="subject">
+		SELECT SUBJECT_CODE
+			, SUBJECT_NAME
+		FROM SUBJECT
+		ORDER BY SUBJECT_CODE
+	</select>
+	
 </mapper>
 
 
