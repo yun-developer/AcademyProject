@@ -3,6 +3,8 @@ package kh.study.academy.teacher.controller;
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,6 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import ch.qos.logback.core.encoder.Encoder;
+import kh.study.academy.config.TeacherRole;
+import kh.study.academy.config.TeacherStatus;
 import kh.study.academy.teacher.service.TeacherService;
 import kh.study.academy.teacher.vo.TeacherVO;
 
@@ -21,7 +26,8 @@ public class TeacherController {
 	@Resource(name = "teacherService")
 	private TeacherService teacherService;
 	
-	
+	@Autowired
+	private PasswordEncoder encoder;
 	
 	
 	//회원가입 페이지이동
@@ -41,6 +47,14 @@ public class TeacherController {
 			System.out.println("~~~error~~~");
 			return "content/teacher/join_page";
 		}
+		
+		//Enum (Join메소드나 controller에서 사용)
+		teacherVO.setTeacherStatus(TeacherStatus.Y.toString());
+		teacherVO.setTeacherRole(TeacherRole.UNAPPROVED.toString());
+		
+		//pw암호화
+		teacherVO.setTeacherPw(encoder.encode(teacherVO.getTeacherPw()));
+		
 		
 		teacherService.join(teacherVO);
 		

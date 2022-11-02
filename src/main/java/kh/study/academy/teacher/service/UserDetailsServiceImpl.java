@@ -24,7 +24,7 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 //		
 //		//아이디를 잘 못 입력한 경우
 //		if(loginInfo == null) {
-//			throw new UsernameNotFoundException("아이디를 찾을 수 없습니다.");
+//			throw new UsernameNotFoundException("로그인정보가 일치하지 않습니다");
 //		}
 //		
 //		
