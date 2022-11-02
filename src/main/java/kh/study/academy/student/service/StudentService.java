@@ -7,5 +7,7 @@ import kh.study.academy.student.vo.StudentVO;
 
 @Service
 public interface StudentService {
+	String getNextStudentCode();
+	
 	void insertStudent(StudentVO studentVO, PaymentVO paymentVO);
 }

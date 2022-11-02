@@ -12,13 +12,23 @@ import kh.study.academy.student.vo.StudentVO;
 public class StudentServiceImpl implements StudentService{
 	 @Autowired
 	  SqlSessionTemplate sqlSession;
-
+	 
+	 @Override
+		public String getNextStudentCode() {
+		
+		 return sqlSession.selectOne("studentMapper.getNextStudentCode");
+		}
+	 
+	 
 	@Override
 	@Transactional(rollbackFor = Exception.class)
 	public void insertStudent(StudentVO studentVO, PaymentVO paymentVO) {
+		
 		sqlSession.insert("studentMapper.insertStudent", studentVO);
 		sqlSession.insert("studentMapper.insertPayment", paymentVO);
 	}
+
+	
 
 	 
 	 

@@ -4,11 +4,12 @@
 <mapper namespace="studentMapper">
 	<resultMap type="kh.study.academy.student.vo.StudentVO" id="student">
 		<id column="STUDENT_CODE" property="studentCode"/>
-		<result column="STUDENT_NAME" property="name"/>
+		<result column="STUDENT_NAME" property="studentName"/>
 		<result column="BIRTHDAY" property="birthday"/>
 		<result column="YEAR" property="year"/>
 		<result column="ADDR" property="addr"/>
-		<result column="STUDENT_TELL" property="tell"/>
+		<result column="ADDR_DETAIL" property="addrDetail"/>
+		<result column="STUDENT_TELL" property="studentTell"/>
 		<result column="REG_DATE" property="regDate"/>
 	</resultMap>
 	
@@ -23,15 +24,28 @@
 		<id column="STUDENT_STEP_CODE" property="studentStepCode" />
 		<result column="STEP_NAME" property="stepName"/>
 	</resultMap>
-		
+	
+	<resultMap type="kh.study.academy.student.vo.PaymentVO" id="payment">
+		<id column="PAYMENT_CODE" property="paymentCode" />
+		<result column="LESSONS_CODE" property="lessonsCode"/>
+		<result column="IS_PAY" property="isPay"/>
+		<result column="STUDENT_CODE" property="studentCode"/>
+	</resultMap>
+	
+
+<select id="getNextStudentCode" resultType="String">
+	 SELECT 'STU_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(STUDENT_CODE, 5))),0) +1, 3, 0) 
+	  FROM STUDENT
+</select>
+
 
 
 <insert id="insertStudent">
 
-	<selectKey resultType="String" keyProperty="studentCode" order="BEFORE">
+	<!-- <selectKey resultType="String" keyProperty="studentCode" order="BEFORE">
 	   SELECT 'STU_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(STUDENT_CODE, 5))),0) +1, 3, 0) 
 	   FROM STUDENT
-	</selectKey>
+	</selectKey> -->
 	
 	INSERT INTO STUDENT (
 		STUDENT_CODE
@@ -39,6 +53,7 @@
 		, BIRTHDAY
 		, YEAR
 		, ADDR
+		, ADDR_DETAIL
 		, STUDENT_TELL		
 	) VALUES (
 		#{studentCode}
@@ -46,6 +61,7 @@
 		, #{birthday}
 		, #{year}
 		, #{addr}
+		, #{addrDetail}
 		, #{studentTell}
 	)
 </insert>
@@ -60,15 +76,13 @@
 	   FROM PAYMENT
 	</selectKey> -->
 	
-	INSERT INTO (
+	INSERT INTO PAYMENT (
 		PAYMENT_CODE
 		, LESSONS_CODE
-		, IS_PAY
 		, STUDENT_CODE
 	) VALUES (
 		#{paymentCode}
 		, 'LESSONS_001'
-		, #{isPay}
 		, #{studentCode}
 	)
 	
