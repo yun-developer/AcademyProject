@@ -1,5 +1,7 @@
 package kh.study.academy.student.service;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +28,26 @@ public class StudentServiceImpl implements StudentService{
 		
 		sqlSession.insert("studentMapper.insertStudent", studentVO);
 		sqlSession.insert("studentMapper.insertPayment", paymentVO);
+	}
+
+	
+	// 학생 리스트 조회
+	@Override
+	public List<StudentVO> selectStuList() {
+		return sqlSession.selectList("studentMapper.selectStuList");
+	}
+
+	//학생 선택 삭제
+	@Override
+	public void deleteCheckedStu(StudentVO studentVO) {
+		sqlSession.delete("studentMapper.deleteCheckedStu", studentVO);
+	}
+
+	
+	//학생 삭제
+	@Override
+	public void deleteStu(String studentCode) {
+		sqlSession.delete("studentMapper.deleteStu", studentCode);
 	}
 
 	

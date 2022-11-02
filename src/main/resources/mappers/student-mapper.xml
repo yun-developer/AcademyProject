@@ -39,14 +39,8 @@
 </select>
 
 
-
+<!-- 학생 등록 -->
 <insert id="insertStudent">
-
-	<!-- <selectKey resultType="String" keyProperty="studentCode" order="BEFORE">
-	   SELECT 'STU_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(STUDENT_CODE, 5))),0) +1, 3, 0) 
-	   FROM STUDENT
-	</selectKey> -->
-	
 	INSERT INTO STUDENT (
 		STUDENT_CODE
 		, STUDENT_NAME
@@ -85,11 +79,58 @@
 		, 'LESSONS_001'
 		, #{studentCode}
 	)
-	
-
 </insert>
+
+
+<!-- 학생 리스트 조회 -->
+<select id="selectStuList" resultMap="student">
+	SELECT STUDENT_CODE 
+		,STUDENT_NAME
+		, YEAR
+		<!-- 수강 과목, 반 -->
+	FROM STUDENT
+	ORDER BY STUDENT_CODE DESC
+</select>
+
+	
+	
+<!-- 학생 상세 조회 -->	
+<select id="selectStuDetail" resultMap="student">
+	SELECT STUDENT_NAME
+		, BIRTHDAY
+		, YEAR
+		, ADDR
+		, ADDR_DETAIL
+		, STUDENT_TELL
+		, REG_DATE
+	<!-- 수강과목, 수강 반, 담당강사 -->
+	FROM STUDENT
+</select>
+	
 	
 
+<!-- 학생 선택 삭제 -->	
+<delete id="deleteCheckedStu">
+	DELETE STUDENT    
+	WHERE STUDENT_CODE IN 
+	<foreach collection="studentCodeList" item="studentCode" separator="," open="(" close=")">
+		#{studentCode}
+	</foreach>
+</delete>
+	
+
+<!-- 학생 삭제 -->	
+<delete id="deleteStu">
+	DELETE STUDENT    
+	WHERE STUDENT_CODE = #{studentCode}
+</delete>
+	
+	
+	
+	
+	
+	
+	
 	
 	
 </mapper>

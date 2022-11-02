@@ -1,8 +1,12 @@
 package kh.study.academy.student.controller;
 
+import java.util.Arrays;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,14 +25,15 @@ public class StudentController {
 	
 	
 	
-	
+	//학생 등록 페이지 이동
 	@GetMapping("/regPage")
 	public String regPage(StudentVO studentVO, PaymentVO paymentVO) {
-		System.out.println(studentVO);
 		
 		return "content/student/reg_student";
 	}
 	
+	
+	//학생 등록
 	@PostMapping("/reg")
 	public String regStu(StudentVO studentVO, PaymentVO paymentVO) {
 		String nextStudentCode = studentService.getNextStudentCode();
@@ -37,11 +42,41 @@ public class StudentController {
 		paymentVO.setStudentCode(nextStudentCode);
 		
 		studentService.insertStudent(studentVO, paymentVO);
-		System.out.println(studentVO);
-		System.out.println(paymentVO);
 		return "redirect:/stu/regPage";
 	}
 	
+	
+	//학생 리스트 조회 페이지
+	@GetMapping("/list")
+	public String stuList(Model model) {
+		model.addAttribute("stuList", studentService.selectStuList());
+		
+		
+		return "content/student/student_list";
+	}
+	
+	
+	//학생 선택 삭제
+	@PostMapping("/deleteCheckedStu")
+	public String deleteCheckedStu(String studentCodes) {  
+		String[] studentCodeArr = studentCodes.split(",");
+		List<String> studentCodeList = Arrays.asList(studentCodeArr);
+		
+		StudentVO studentVO = new StudentVO();
+		studentVO.setStudentCodeList(studentCodeList);
+		
+		studentService.deleteCheckedStu(studentVO);
+		
+		return "redirect:/stu/list";
+	}
+	
+	
+	//학생 상세 페이지
+	@GetMapping("/detail")
+	public String stuDetail(String studentCode) {
+		
+		return "content/student/reg_student";
+	}
 	
 	
 	

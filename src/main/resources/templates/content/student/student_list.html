@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/base_layout">
+
+
+
+
+<div layout:fragment="content">
+	<div class="row">
+		<div class="col-12" th:if="${#lists.size(stuList)==0}">
+			데이터가 없습니다.
+		</div>
+		
+		
+		<div class="col-12" style="margin-top: 50px;">
+			<div>
+				총 <span th:text="${#lists.size(stuList)}" style="color:red"></span>명 입니다.
+			</div>
+			<table class="table table-striped text-center" style="margin-top: 20px;">
+				<thead>
+					<tr>
+						<th scope="col">NO</th>
+						<th scope="col">이름</th>
+						<th scope="col">학년</th>
+						<th scope="col"><input type="checkbox" id="checkAll" th:name="selectall" onclick='selectAll(this)'></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="stu, status : ${stuList}">
+						<td scope="row" th:text="${status.count}" th:name="stu"></td>
+						<td><a th:name="stu" th:href="@{/stu/detail(studentCode=${stu.studentCode})}">[[${stu.studentName}]]</a></td>
+						<td th:name="stu"th:text="${stu.year} + 학년"></td>
+						<td><input type="checkbox" class="form-check-input chk" th:value=${stu.studentCode}  th:onclick='checkSelectAll(this)'></td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<form id="deleteStuForm" th:action="@{/stu/deleteCheckedStu}" method="post">
+				<input type="hidden" name="studentCodes" value="">
+				<div class="col-12">
+					<div class="row justify-content-end">
+						<div class="col-1"  style="margin-right: 4.8rem;">
+					   		<button th:onclick="goDelete();" type="button" class="btn btn-warning form-control" >삭제</button>
+						</div>
+					</div>
+				</div>
+			</form>
+			
+		</div>
+	</div>
+	
+	
+	
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>   
+
+<script type="text/javascript" th:src="@{/js/student/student_list.js}"></script>	
+</div>
+</html>
