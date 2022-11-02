@@ -1,7 +1,7 @@
 
 
 //아이디 찾기 버튼을 누르면 진행되는 함수
-function findLoginAjax(){
+function findLoginIdAjax(){
 
 	//teacherName 값 
 	const teacherName = document.querySelector('#teacherName').value;
@@ -16,7 +16,7 @@ function findLoginAjax(){
 
 	//ajax start
 	$.ajax({
-		url: '/teacher/findLoginAjax', //요청경로
+		url: '/teacher/findLoginIdAjax', //요청경로
 		type: 'post',
 		data: {'teacherName':teacherName, 'teacherTell':teacherTell}, //필요한 데이터
 		success: function(result) {
@@ -71,4 +71,12 @@ function findLoginAjax(){
 	});
 	//ajax end
 
+}
+
+
+//비밀번호 찾기 버튼을 누르면 진행되는 함수
+
+function findLoginPwAjax(){
+	
+	
 }

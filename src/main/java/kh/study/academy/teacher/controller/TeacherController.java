@@ -96,10 +96,10 @@ public class TeacherController {
 	
 	
 	
-	//로그인정보 찾기 에이작스
+	//아이디 정보 찾기 에이작스
 	@ResponseBody
-	@PostMapping("/findLoginAjax")
-	public TeacherVO findLoginAjax(TeacherVO teacherVO, Model model) {
+	@PostMapping("/findLoginIdAjax")
+	public TeacherVO findLoginIdAjax(TeacherVO teacherVO, Model model) {
 		
 		
 		
@@ -120,8 +120,17 @@ public class TeacherController {
 			return teacher;
 		
 		}
-		
 	}
 	
 	
+	//비밀번호 정보 찾기 에이작스
+	@ResponseBody
+	@PostMapping("/findLoginPwAjax")
+	public TeacherVO findLoginPwAjax(TeacherVO teacherVO, Model model) {
+		
+		
+		
+		
+		return null;
+	}
 }
