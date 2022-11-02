@@ -11,11 +11,12 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                         
+                         <th:block sec:authorize="hasRole('ROLE_ADMIN')">
                          <div class="sb-sidenav-menu-heading">관리자 기능</div>
                            
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts3" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"> <i class="fas fa-columns"></i></div>
-                                등록
+                                운영 관리
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapseLayouts3" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
@@ -26,6 +27,7 @@
                                     <a class="nav-link" th:href="layout-sidenav-light.html">교사 배정</a>
                                 </nav>
                             </div>
+                         </th:block>
                         
                         
                             <div class="sb-sidenav-menu-heading">학사관리</div>

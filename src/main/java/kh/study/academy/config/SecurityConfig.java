@@ -24,6 +24,7 @@ public class SecurityConfig {
 								, "/teacher/join"
 								, "/teacher/loginPage"
 								, "/teacher/login"
+								, "/teacher/findLoginPage"
 								, "/lesson/main").permitAll() //해당 요청들은 누구나 접근 가능.
 						//.antMatchers("/xxxx").hasAnyRole("TEACHER","ADMIN")	//"/xxxx" 요청은 TEACHER, ADMIN 권한이 필요(둘 중 하나라도 가능)
 						.antMatchers("/admin/**").hasRole("ADMIN")			//"/admin" 요청은 ADMIN 권한이 필요
@@ -36,14 +37,14 @@ public class SecurityConfig {
 						.loginProcessingUrl("/teacher/login") //실제 로그인을 진행할 요청 정보. form태그의 경로와 맞춰준다. 기본적으로 "/login"처럼 진행
 						.usernameParameter("teacherId")
 						.passwordParameter("teacherPw")
+					.and()
+	 					.exceptionHandling()			
+	 					.accessDeniedPage("/lesson/main")	//로그인 후 권한이 없는 페이지로 접근했을 때 보낼 요청
 	 				.and()
 	 					.logout()
 	 					.invalidateHttpSession(true) 		//로그아웃되면 세션 데이터 삭제 (저절로 세션에 저장됨)
-	 					.logoutSuccessUrl("/index")			//로그아웃 성공 시 요청경로
-	 				.and()
-	 					.exceptionHandling()			
-	 					.accessDeniedPage("/lesson/main");	//로그인 후 권한이 없는 페이지로 접근했을 때 보낼 요청
-		
+	 					.logoutSuccessUrl("/lesson/main");			//로그아웃 성공 시 요청경로
+	 				
 		return security.build();
 	}
 	
