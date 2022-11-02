@@ -13,87 +13,52 @@
 <div layout:fragment="content">
 
 
-
-
-
-
-
 감자프로젝트 테스트용
+<!--여기부터  -->
+
+<div class="row">
+		<table class="table table-hover text-center align-middle ">
+			<!-- 세로로 가운데로 notion -->
+			<thead>
+				<tr>
+					<th scope="col">
+						<input type="checkbox">
+					</th>
+					<th scope="col">교사명</th>
+					<th scope="col">담당과목</th>
+					<th scope="col">경력</th>
+					<th scope="col">전화번호</th>
+					<th scope="col">뭐넣지</th>
+					<th scope="col" class="bi bi-arrow-through-heart-fill">상태</th>
+				</tr>
+			</thead>
+			<tbody class="table-group-divider">
+				<th:block th:if="${#lists.size(teacherList)==0}">
+					<tr>
+						<td colspan="7"> 아무도 없고....학원 망함....</td>
+					</tr>
+				</th:block>
+				<th:block th:unless="${#lists.size(teacherList)==0}">
+					<tr th:each="teacher:${teacherList}">
+						<td>
+							<input type="checkbox">
+						</td>
+						<td th:text="${teacher.teacherName}">
+						</td>
+						<td th:text="${teacher}"></td>
+						<td></td>
+						<td th:text="${teacher.teacherTell}"></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</th:block>
+			</tbody>
+		</table>
+	</div>
 
 
 
-<div class="dataTables_scroll">
-<div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%;">
-<div class="dataTables_scrollHeadInner" style="box-sizing: content-box; width: 649.875px; padding-right: 17px;">
-<table class="table table-bordered table-hover table-striped w-100 table-sm dataTable no-footer" role="grid" style="margin-left: 0px; width: 649.875px;">
-<thead>
-<tr class="border-info" role="row">
-	<th class="text-center border-success sorting_disabled" rowspan="1" colspan="1" style="width: 13px;" aria-label="">
-		<input type="checkbox" id="checkAll" name="checkAll">
-	</th>
-	<th class="text-center border-success sorting" tabindex="0" aria-controls="tblBchStt" rowspan="1" colspan="1" style="width: 32.7188px;" aria-label="센터명: 오름차순 정렬">담당과목</th>
-	<th class="text-center border-success sorting" tabindex="0" aria-controls="tblBchStt" rowspan="1" colspan="1" style="width: 15.7812px;" aria-label="구분: 오름차순 정렬">교사명</th>
-	<th class="text-center border-success sorting" tabindex="0" aria-controls="tblBchStt" rowspan="1" colspan="1" style="width: 25.1875px;" aria-label="이름: 오름차순 정렬">전화번호</th>
-	<th class="text-center border-success sorting" tabindex="0" aria-controls="tblBchStt" rowspan="1" colspan="1" style="width: 18.5938px;" aria-label="등록일: 오름차순 정렬">경력</th>
-	<th class="text-center border-success sorting" tabindex="0" aria-controls="tblBchStt" rowspan="1" colspan="1" style="width: 20.4844px;" aria-label="학교명: 오름차순 정렬">뭐넣지</th>
-	<th class="text-center border-success sorting" tabindex="0" aria-controls="tblBchStt" rowspan="1" colspan="1" style="width: 15.7812px;" aria-label="학년: 오름차순 정렬">뭐넣지</th>
-	<th class="text-center border-success sorting" tabindex="0" aria-controls="tblBchStt" rowspan="1" colspan="1" style="width: 15.7812px;" aria-label="성별: 오름차순 정렬">뭐넣지</th>
-	<th class="text-center border-success sorting" tabindex="0" aria-controls="tblBchStt" rowspan="1" colspan="1" style="width: 28.6406px;" aria-label="부모번호: 오름차순 정렬">뭐넣지</th>
-	<th class="text-center border-success sorting_desc" tabindex="0" aria-controls="tblBchStt" rowspan="1" colspan="1" style="width: 21.4219px;" aria-label="인증코드: 오름차순 정렬" aria-sort="descending">뭐넣지</th>
-	<th class="text-center border-success sorting" tabindex="0" aria-controls="tblBchStt" rowspan="1" colspan="1" style="width: 21.4844px;" aria-label="인증여부: 오름차순 정렬">뭐넣지</th>
-</tr>
-</thead>
-</table>
-</div>
-</div>
-<div class="dataTables_scrollBody" style="position: relative; overflow: auto; height: 500px; width: 100%;">
-<table class="table table-bordered table-hover table-striped w-100 table-sm dataTable no-footer dtr-inline" id="tblBchStt" role="grid" aria-describedby="tblBchStt_info" style="width: 100%;"><thead>
-<tr class="border-info" role="row" style="height: 0px;"><th class="text-center border-success sorting_disabled" rowspan="1" colspan="1" style="width: 13px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="">
-<div class="dataTables_sizing" style="height: 0px; overflow: hidden;">
-<input type="checkbox" id="checkAll" name="checkAll"></div></th>
-<th class="text-center border-success sorting" aria-controls="tblBchStt" rowspan="1" colspan="1" style="width: 32.7188px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="센터명: 오름차순 정렬">
-<div class="dataTables_sizing" style="height: 0px; overflow: hidden;">담당과목</div></th>
-<th class="text-center border-success sorting" aria-controls="tblBchStt" rowspan="1" colspan="1" style="width: 15.7812px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="구분: 오름차순 정렬">
-<div class="dataTables_sizing" style="height: 0px; overflow: hidden;">교사명</div></th>
-<th class="text-center border-success sorting" aria-controls="tblBchStt" rowspan="1" colspan="1" style="width: 25.1875px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="이름: 오름차순 정렬">
-<div class="dataTables_sizing" style="height: 0px; overflow: hidden;">전화번호</div></th>
-<th class="text-center border-success sorting" aria-controls="tblBchStt" rowspan="1" colspan="1" style="width: 18.5938px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="등록일: 오름차순 정렬">
-<div class="dataTables_sizing" style="height: 0px; overflow: hidden;">경력</div></th>
-<th class="text-center border-success sorting" aria-controls="tblBchStt" rowspan="1" colspan="1" style="width: 20.4844px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="학교명: 오름차순 정렬"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">뭐넣지</div></th>
-<th class="text-center border-success sorting" aria-controls="tblBchStt" rowspan="1" colspan="1" style="width: 15.7812px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="학년: 오름차순 정렬"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">뭐넣지</div></th>
-<th class="text-center border-success sorting" aria-controls="tblBchStt" rowspan="1" colspan="1" style="width: 15.7812px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="성별: 오름차순 정렬"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">뭐넣지</div></th>
-<th class="text-center border-success sorting" aria-controls="tblBchStt" rowspan="1" colspan="1" style="width: 28.6406px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="부모번호: 오름차순 정렬"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">뭐넣지</div></th>
-<th class="text-center border-success sorting_desc" aria-controls="tblBchStt" rowspan="1" colspan="1" style="width: 21.4219px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="인증코드: 오름차순 정렬" aria-sort="descending"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">뭐넣지</div></th>
-<th class="text-center border-success sorting" aria-controls="tblBchStt" rowspan="1" colspan="1" style="width: 21.4844px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="인증여부: 오름차순 정렬"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">뭐넣지</div></th></tr>
-</thead>
-	<tbody>
-		<tr role="row" class="odd selected">
-			<td class=" text-center border-success" tabindex="0">
-				<input type="checkbox" name="teacherChk" value="">
-			</td>
-			<td class=" text-center border-success">담당과목</td>
-			<td class=" text-center border-success"><a href="javascript:" onclick="('/common/popup/student/detail/ABA/AS121518860', '학생종합정보');">교사명</a></td>
-			<td class=" text-center border-success">전화번호</td>
-			<td class=" text-center border-success">경력</td>
-			<td class=" text-center border-success">뭐넣지</td>
-			<td class=" text-center border-success">뭐넣지</td>
-			<td class=" text-center border-success">뭐넣지</td>
-			<td class=" text-center border-success">뭐넣지</td>
-			<td class="text-center border-success sorting_1">뭐넣지     </td>
-			<td class=" text-center border-success">뭐넣지</td>
-		</tr>
-	</tbody>
-</table>
-</div>
-</div>
-
-
-
-
-
-
-
-
+<!--여기까지  -->
 
 
 
