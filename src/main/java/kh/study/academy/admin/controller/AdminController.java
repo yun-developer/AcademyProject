@@ -1,5 +1,8 @@
 package kh.study.academy.admin.controller;
 
+import java.util.Arrays;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -26,8 +29,8 @@ public class AdminController {
 		System.out.println(subjectVO);
 		return "redirect:/admin/selcetSubject";
 	}
-	
-	@GetMapping("/selectSubject")
+	// 내가 등록한 과목들을 조회 (과목등록페이지로 이동)
+	@PostMapping("/selectSubject")
 		public String selectSubject(Model model){
 		
 		model.addAttribute("selectSubject", adminService.selectSubject());
@@ -35,4 +38,14 @@ public class AdminController {
 		return "content/admin/Reg_subject";
 	}
 	
+	// 과목 체크박스 삭제
+	@PostMapping("/deleteSubject")
+	public String deleteSubject(String subjectCodes) {
+		String[] subjectCodeArr = subjectCodes.split(",");
+		List<String> subjectCodeList = Arrays.asList(subjectCodeArr);
+		
+		SubjectVO subjectVO = new SubjectVO();
+		
+		return "redirect:/admin/selectSubject";
+	}
 }

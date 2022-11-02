@@ -64,6 +64,17 @@
 		ORDER BY SUBJECT_CODE
 	</select>
 	
+	<!-- 등록한 과목을 체크해서 삭제 -->
+	<delete id="deleteSubject">
+	DELETE SUBJECT
+	WHERE SUBJECT_CODE IN
+	<foreach collection="subjectCodeList" item="subjectCode" separator="," open="(" close=")">
+		#{subject_code}
+	</foreach>
+	
+	</delete>
+	
+	
 </mapper>
 
 

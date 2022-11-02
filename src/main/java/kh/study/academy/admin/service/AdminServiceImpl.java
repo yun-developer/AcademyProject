@@ -36,5 +36,11 @@ public class AdminServiceImpl implements AdminService{
 		return sqlSession.selectList("adminMapper.selectSubject");
 	}
 
+	// 과목 삭제(체크박스)
+	@Override
+	public void deleteSubject(SubjectVO subjectVO) {
+		sqlSession.delete("adminMapper.deleteSubject", subjectVO);
+	}
+
 
 }

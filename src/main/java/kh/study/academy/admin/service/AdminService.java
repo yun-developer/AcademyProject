@@ -19,5 +19,6 @@ public interface AdminService {
 	// 등록된 과목 조회
 	List<SubjectVO> selectSubject();
 	
-	
+	// 과목 삭제(체크박스)
+	void deleteSubject(SubjectVO subjectVO);
 }
