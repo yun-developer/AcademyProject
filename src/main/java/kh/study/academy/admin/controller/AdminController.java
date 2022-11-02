@@ -67,9 +67,9 @@ public class AdminController {
 		@GetMapping("/selectLessonRoom")
 			public String selectLessonRoom(Model model){
 			
-			model.addAttribute("selectLesson", adminService.selectLessonRoom());
+			model.addAttribute("selectLessonRoom", adminService.selectLessonRoom());
 			
-			return "content/admin/LessonRoom";
+			return "content/admin/";
 		}
 	
 	

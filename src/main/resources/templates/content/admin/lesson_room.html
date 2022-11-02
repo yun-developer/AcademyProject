@@ -11,10 +11,10 @@
 		<div class="col-12">
 			<div class="row">
 				<div class="col-12">
-					<h6>과목 등록</h6>
+					<h6>교실 등록</h6>
 				</div>
 				<div class="col-12 mb-3">
-					<form class="row g-3" th:action="@{/admin/regSubject}" method="post">
+					<form class="row g-3" th:action="@{/admin/insertLessonRoom}" method="post">
                   <div class="col-10">
                      <input type="text" name="subjectName" class="form-control" id="" placeholder="Username">
                   </div>
@@ -32,12 +32,12 @@
                      <input id="checkAll" type="checkbox" class="form-check-input" >
                   </td>
                      <th scope="col">No</th>
-                     <th scope="col">과목 코드</th>
-                     <th scope="col">과목 이름</th>
+                     <th scope="col">교실 코드</th>
+                     <th scope="col">교실명</th>
                    </tr>
                  </thead>
                  <tbody>
-                 <th:block th:if="${#lists.size(selectSubject) == 0}">
+                 <th:block th:if="${#lists.size(selectLesson) == 0}">
                  	<tr> 
                  		<td colspan="4">등록된 과목이 없습니다.</td>
                  	</tr>
@@ -45,7 +45,7 @@
 
                  <th:block th:unless="${#lists.size(selectSubject) == 0}">
                   
-                    <tr th:each="selectSubject, status : ${selectSubject}">
+                    <tr th:each="selectLessonRoom, status : ${selectLessonRoom}">
                    		<td>
                      <input th:value="${selectSubject.subjectCode}"  type="checkbox" class="form-check-input chk" >
                   		</td>
