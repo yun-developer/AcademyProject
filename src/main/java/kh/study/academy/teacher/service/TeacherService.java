@@ -14,5 +14,8 @@ public interface TeacherService {
 	//로그인 정보 찾기
 	TeacherVO findId(TeacherVO teacherVO);
 	
+	//아이디 중복 검사
+	TeacherVO idDoubleCheck(TeacherVO teacherVO);
+	
 	
 }

@@ -23,7 +23,9 @@
 		      <span class="hasError" th:if="${#fields.hasErrors('teacherId')}" th:errors="*{teacherId}"></span>
 		    </div>
 		    <div class="col-sm-2">
-		    	<button type="button" disabled="disabled" class="btn btn-danger">ID중복검사</button>
+		    	<button type="button" id="idDoubleCheckBtn" th:onclick="idDoubleCheck();" class="btn btn-danger">ID중복확인</button>
+		    	<!-- 아이디 중복 체크 여부 -->
+		    	<input type="hidden" id="isDoubleChk" name="idDoubleChk" value="unChk">
 		    </div>
 		  </div>
 		  <div class="mb-3 row justify-content-center text-center">
@@ -84,6 +86,35 @@
 		</div>
 		  
 	</div>
+
+
+	<!-- 로그인 버튼 클릭 시 실행되는 Modal -->
+	<!-- Modal -->
+	<div class="modal fade" id="idDoubleCheck_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <form class="row g-3" action="/" method="post">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel"> ID 중복 검사</h5>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body">
+	       	<div class="mb-3">
+			  <label for="idDoubleCheck" class="form-label"> 아이디 </label>
+			  <input type="text" class="form-control" id="idDoubleCheck" name="teacherId" placeholder="중복 검사할 아이디를 입력하세요">
+			</div>
+	      </div>
+	      
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+	        <!-- <button type="submit" th:onclick="loginResult()" class="btn btn-primary">ajax Login</button>  --> 
+	        <button type="submit" class="btn btn-primary">사용하기</button>
+	      </div>
+     	 </form>
+	    </div>
+	  </div>
+	</div>
+
 
 
 <!-- javascript 경로 확인  -->

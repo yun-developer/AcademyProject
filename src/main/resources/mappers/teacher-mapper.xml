@@ -4,8 +4,8 @@
 <mapper namespace="teacherMapper">
 	<resultMap type="kh.study.academy.teacher.vo.TeacherVO" id="teacher">
 		<id column="TEACHER_CODE" 							property="teacherCode" />
-		<result column="NAME" 								property="teacherName" />
-		<result column="TELL" 								property="teacherTell" />
+		<result column="TEACHER_NAME" 								property="teacherName" />
+		<result column="TEACHER_TELL" 								property="teacherTell" />
 		<result column="CAREER" 							property="career" />
 		<result column="TEACHER_ID" 						property="teacherId" />
 		<result column="TEACHER_PW" 						property="teacherPw" />
@@ -64,12 +64,19 @@
 	
 	<select id="findId" resultMap="teacher">
 	
-	SELECT TEACHER_CODE
-			,TEACHER_ID
-	FROM TEACHER
-	WHERE TEACHER_NAME = #{teacherName}
-	AND TEACHER_TELL = #{teacherTell}
+		SELECT TEACHER_CODE
+				,TEACHER_ID
+		FROM TEACHER
+		WHERE TEACHER_NAME = #{teacherName}
+		AND TEACHER_TELL = #{teacherTell}
 	
+	</select>
+	
+	<!-- 아이디 중복 검사 -->
+	<select id="idDoubleCheck" resultMap="teacher">
+		SELECT TEACHER_ID
+		FROM TEACHER
+		WHERE TEACHER_ID = #{teacherId}
 	
 	</select>
 	

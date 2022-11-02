@@ -26,7 +26,7 @@ public class SecurityConfig {
 								, "/teacher/login"
 								, "/teacher/findLoginPage"
 								, "/lesson/main").permitAll() //해당 요청들은 누구나 접근 가능.
-						//.antMatchers("/xxxx").hasAnyRole("TEACHER","ADMIN")	//"/xxxx" 요청은 TEACHER, ADMIN 권한이 필요(둘 중 하나라도 가능)
+						//.antMatchers("/teacher/**").hasAnyRole("TEACHER","ADMIN")	//"/xxxx" 요청은 TEACHER, ADMIN 권한이 필요(둘 중 하나라도 가능)
 						.antMatchers("/admin/**").hasRole("ADMIN")			//"/admin" 요청은 ADMIN 권한이 필요
 						.anyRequest().authenticated()						//나머지 요청은 누구나 접근 가능. .anyRequest().authenticated() -> 인증 요구
 					.and()
