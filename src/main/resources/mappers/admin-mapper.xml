@@ -69,7 +69,7 @@
 	DELETE SUBJECT
 	WHERE SUBJECT_CODE IN
 	<foreach collection="subjectCodeList" item="subjectCode" separator="," open="(" close=")">
-		#{subject_code}
+		#{subjectCode}
 	</foreach>
 	
 	</delete>
