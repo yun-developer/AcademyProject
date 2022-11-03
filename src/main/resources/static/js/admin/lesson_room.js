@@ -1,10 +1,13 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////
 ///-------------------------------스크립트 실행과 동시에 변수 생성----------------------------///
 ////////////////////////////////////////////////////////////////////////////////////////////////
+// 신규 교실 등록 모달창
+//const updateLessonRoomModal = new bootstrap.Modal('#updateLessonRoomModal');
 
 
-// 과목 목록에서 제목줄 체크박스(전체 체크박스)
+// 교실 목록에서 제목줄 체크박스(전체 체크박스)
 const checkAll = document.querySelector('#checkAll');
+
 
 //체크박스 전체선택, 전체해제 이벤트
 checkAll.addEventListener('click', function(){
@@ -38,7 +41,10 @@ const chks = document.querySelectorAll('.chk');
 // 체크박스 하나 해제되면 제목줄 체크박스 해제
 
 
-// 과목등록 페이지에서 삭제버튼 클릭 시
+
+////////////////함수 1///////////////////
+
+// 교실등록 페이지에서 삭제버튼 클릭 시
 function lessonRoomDeleteAjax(){
 
 	const LessonRoomForm = document.querySelector('#deleteLessonRoomForm')
@@ -54,7 +60,6 @@ function lessonRoomDeleteAjax(){
 	let lessonRoomCodes = '';
 	for(const checkedChk of checkedChks){
 		lessonRoomCodes = lessonRoomCodes + checkedChk.value + ',';
-		alert(lessonRoomCodes);
 	}	
 
 	LessonRoomForm.querySelector('input').value = lessonRoomCodes;  // cartCode셋팅
@@ -63,3 +68,42 @@ function lessonRoomDeleteAjax(){
 	LessonRoomForm.submit();
 	
 }
+const modal = new bootstrap.Modal('#updateLessonRoomModal');
+
+function updateLessonRoomModal(){
+
+	modal.show();
+}
+
+
+////////////////함수 2///////////////////
+// 교실등록 페이지에서 신규버튼 클릭 시
+function goupdateLessonRoom(){
+	//parentElement : 부모태그 찾아 감.
+	//children : 자식 태그 찾아 감.
+	//previousElementSibling : 이전 형제 노드를 찾아 감.
+	//nextElementSibling : 다음 형제 노드를 찾아 감.
+	//closest() : 가장 가까운 상위태그를 찾아 감
+	
+	//const itemStock = selectedTag.parentElement.previousElementSibling.children[0].value;
+	//const itemStock = selectedTag.closest('td').querySelector('.stockInput').value;
+	
+	//ajax start
+	$.ajax({
+		url: '/admin/regLessonRoom', //요청경로
+		type: 'post',
+		data: {'itemStock': itemStock}, //필요한 데이터
+		success: function(result) {
+			//모달창 띄우고 소스
+			const modal = new bootstrap.Modal('#updateLessonRoomModal');
+			modal.show();
+		},
+		error: function() {
+			alert('실패');
+		}
+	});
+	//ajax end
+}
+
+
+

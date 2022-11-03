@@ -125,7 +125,7 @@ public class AdminController {
 			
 			adminService.deleteLessonRoom(lessonRoomVO);
 			
-			return "redirect:/admin/selectSubject";
+			return "redirect:/admin/selectLessonRoom";
 		}
 
 	

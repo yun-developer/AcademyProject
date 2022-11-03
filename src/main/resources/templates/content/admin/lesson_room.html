@@ -8,6 +8,8 @@
 <div layout:fragment="content">
 
 	<div class="row">
+	
+	
 		<div class="col-12">
 			<div class="row">
 				<div class="col-12">
@@ -22,6 +24,11 @@
                      <button type="submit" class="btn btn-primary">등록</button>
                      
                     </div>
+                    	<div class="row justify-content-end" style="text-align: right; margin: 0.5rem">
+						  <div class="col-2"  style="margin-right:4.8rem;">
+                       		 <button type="button" id="updateLessonRoomModal" class="btn btn-info fal fa-save"  th:onclick="updateLessonRoomModal();"  >신규</button>
+                  		  </div>
+                  		</div> 
               	 </form>
 				</div>
 				<div class="col-11">
@@ -71,9 +78,30 @@
               </form> 
 
             </div>
-            
-               <script src="https://code.jquery.com/jquery-latest.min.js"></script>   
-			<script type="text/javascript" th:src="@{/js/admin/lesson_room_delete.js}"></script>
-			
-		</div>
+          <!-- 교실 신규 버튼 누르면 실행되는 모달창 -->
+			<!-- Modal -->
+			<div class="modal fade" id="updateLessonRoomModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-body">
+			      	<div class="row mb-3">
+			      		<div class="col">
+			      			<div>수량을 변경하시겠습니까?</div>
+			      		</div>
+			      	</div>
+			      	<div class="row">
+			      		<div class="col text-end">
+			      			<button id="updateAmountBtn" data-cart-code="" data-cart-amount=""  th:onclick="updateAmount();" type="button" class="btn btn-primary btn-sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3rem; --bs-btn-font-size: 1rem;">확인</button>
+			      			<button id="cancelBtn" data-origin-amount=""  th:onclick="rollbackAmount();" type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3rem; --bs-btn-font-size: 1rem;">취소</button>
+			      		</div>
+			      	</div>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+
+          <script src="https://code.jquery.com/jquery-latest.min.js"></script>   
+		<script type="text/javascript" th:src="@{/js/admin/lesson_room.js}"></script>
+		
+	</div>
 </html>
