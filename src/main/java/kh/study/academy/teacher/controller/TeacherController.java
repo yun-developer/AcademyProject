@@ -65,6 +65,16 @@ public class TeacherController {
 	}
 	
 	
+	@ResponseBody
+	@PostMapping("/idDoubleCheckAjax")
+	public TeacherVO idDoubleCheckAjax(TeacherVO teacherVO) {
+		
+		
+		return teacherService.idDoubleCheck(teacherVO);
+	}
+	
+	
+	
 	//로그인 페이지로 이동
 	@GetMapping("/loginPage")
 	public String loginPage() {

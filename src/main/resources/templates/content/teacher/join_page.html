@@ -15,7 +15,7 @@
 			<div>계정만들기</div>
 		</div>
 		
-		<form th:action="@{/teacher/join}" method="post" th:object="${teacherVO}">
+		<form action="/teacher/join" method="post" th:object="${teacherVO}" id="joinForm">
 		  <div class="my-3 row justify-content-center text-center">
 		    <label for="inputTeacherId" class="col-sm-2 col-form-label">아이디</label>
 		    <div class="col-sm-3">
@@ -76,11 +76,11 @@
 		      <input type="text" class="form-control" id="inputCareer" name="career" placeholder="예) 입시학원 3년 강의, 과외 2년">
 		    </div>
 		  </div>
+		</form>
 		  
 		  <div class="d-grid gap-2 col-6 mx-auto my-5">
-			  <button class="btn btn-primary ms-5" type="submit">회원가입</button>
-			</div>
-		</form>
+			 <button class="btn btn-primary ms-5" type="button" th:onclick="isDoubleChk();">회원가입</button>
+		</div>
 		
 	
 		</div>
@@ -88,9 +88,9 @@
 	</div>
 
 
-	<!-- 로그인 버튼 클릭 시 실행되는 Modal -->
-	<!-- Modal -->
-	<div class="modal fade" id="idDoubleCheck_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<!-- ID중복검사 버튼 클릭 시 실행되는 Modal -->
+	<!-- 중복 아이디가 있을 경우Modal -->
+	<div class="modal fade" id="idDouble_Yes" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	      <form class="row g-3" action="/" method="post">
@@ -99,16 +99,64 @@
 	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	      </div>
 	      <div class="modal-body">
-	       	<div class="mb-3">
-			  <label for="idDoubleCheck" class="form-label"> 아이디 </label>
-			  <input type="text" class="form-control" id="idDoubleCheck" name="teacherId" placeholder="중복 검사할 아이디를 입력하세요">
+	       	<div class="mb-1">
+	       		사용 불가능한 아이디입니다.
+			</div>
+	      </div>
+	      
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+	        
+	      </div>
+     	 </form>
+	    </div>
+	  </div>
+	</div>
+	
+	<!-- 중복 아이디가 없을 경우Modal -->
+	<div class="modal fade" id="idDouble_No" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel"> ID 중복 검사</h5>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body">
+	       	<div class="mb-1">
+	       		사용가능한 아이디입니다.
 			</div>
 	      </div>
 	      
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
 	        <!-- <button type="submit" th:onclick="loginResult()" class="btn btn-primary">ajax Login</button>  --> 
-	        <button type="submit" class="btn btn-primary">사용하기</button>
+	        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">사용하기</button>
+	      </div>
+     	 
+	    </div>
+	  </div>
+	</div>
+	
+	<!-- ID중복검사를 하지 않았을 때 Modal -->
+	
+	<div class="modal fade" id="isDoubleCheck" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <form class="row g-3" action="/" method="post">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel"> ID 중복 검사</h5>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body">
+	       	<div class="mb-1">
+	       		ID 중복 검사를 실행해주세요!
+			</div>
+	      </div>
+	      
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+	        
 	      </div>
      	 </form>
 	    </div>

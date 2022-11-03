@@ -1,14 +1,104 @@
 
 //////////////////////////변수///////////////////////////
 
+const inputTeacherId = document.querySelector('#inputTeacherId');
+const doubleYesModal = new bootstrap.Modal('#idDouble_Yes');
+const doubleNoModal = new bootstrap.Modal('#idDouble_No');
+const isDoubleCheckModal = new bootstrap.Modal('#isDoubleCheck');
 
- const isDoubleChk = document.querySelector('#isDoubleChk');
+const idDouble_Yes_modal = document.querySelector('#idDouble_Yes');
+const idDouble_No_modal = document.querySelector('#idDouble_No');
+const isDoubleCheck_modal = document.querySelector('#isDoubleCheck');
+
+
+
+//중복확인 수행 여부 TAG
+const isDoubleChkTag =  document.querySelector('#isDoubleChk');
+
+
 
 //////////////////////////함수////////////////////////////
+
+//아이디 중복 검사 여부 확인 후 회원가입 진행
+function isDoubleChk (){
+	
+	//회원가입 진행 폼태그
+	const joinForm = document.querySelector('#joinForm');
+	
+	
+	//중복검사를 하지 않았다면
+	if(isDoubleChkTag.value=="unChk"){
+		
+		isDoubleCheckModal.show();
+		return;
+	}
+	
+	joinForm.submit();
+}
+
+
+
+//아이디 중복 검사 결과
 function idDoubleCheck (){
 	
-	alert('메롱');
+	const inputTeacherIdValue = inputTeacherId.value;
+	 
+	if(inputTeacherIdValue==''){
+		// 요소의 placeholder 속성에 특정값을 설정한다.
+    	inputTeacherId.setAttribute("placeholder", "*ID를 입력하세요.");
+		// 커서를 상세주소 필드로 이동한다.
+	    inputTeacherId.focus();
+	    return;
+	}	
 	
 	
+	//ajax start
+	$.ajax({
+	   url: '/teacher/idDoubleCheckAjax', //요청경로
+	    type: 'post',
+	    data:{'teacherId':inputTeacherIdValue}, //필요한 데이터
+	    success: function(result) {
+		 
+			//중복아이디가 있을 경우
+			if(result.teacherId != null){
+				
+				
+				doubleYesModal.show();
+				
+			}
+			//중복 아이디가 없을 경우
+			else{
+				
+				//모달창 띄우는 소스
+				doubleNoModal.show();
+				
+			}
+			
+	    },
+	    error: function(){
+	       alert('실패');
+	    }
+	});
+	//ajax end
+		
+	//중복검사 수행 확인
+	isDoubleChkTag.setAttribute("value", "Chk");
 	
 }
+
+function resetInput(event){
+	
+	inputTeacherId.value='';
+	inputTeacherId.focus();
+	
+}
+
+
+
+////////////////////////////이벤트///////////////
+//중복 모달이 닫히면 실행되는 이벤트
+idDouble_Yes_modal.addEventListener('hidden.bs.modal', resetInput);
+
+
+
+
