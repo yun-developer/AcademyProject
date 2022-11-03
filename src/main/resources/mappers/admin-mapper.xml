@@ -24,6 +24,11 @@
 		<result column="ROOM_NAME" 		property="roomName" />
 		
 	</resultMap> 
+
+
+
+
+<!-- /////<교시 등록 관련>//////////////////////////////////////////////////////////// -->
 	
 	
 	<!-- 교사리스트 조회 -->
@@ -36,6 +41,7 @@
 			, CAREER
 			, TEACHER_ID
 			, TEACHER_STATUS
+			, TEACHER_ROLE
 			, LESSONS_CODE
 			, SUBJECT_CODE
 		FROM TEACHER 
@@ -43,6 +49,9 @@
 		
 	
 	</select>
+	
+	
+<!-- /////<과목 등록 관련>//////////////////////////////////////////////////////////// -->
 	
 	
 	<!-- 과목 등록 쿼리문  -->
@@ -55,7 +64,7 @@
 	
 		INSERT INTO SUBJECT(
 			SUBJECT_CODE
-			, SUBJECT_NAME
+			, 
 		) VALUES (
 			#{subjectCode}
 			, #{subjectName}
@@ -73,18 +82,21 @@
 	
 	<!-- 등록한 과목을 체크해서 삭제 -->
 	<delete id="deleteSubject">
-	DELETE SUBJECT
-	WHERE SUBJECT_CODE IN
-	<foreach collection="subjectCodeList" item="subjectCode" separator="," open="(" close=")">
-		#{subjectCode}
-	</foreach>
+		DELETE SUBJECT
+		WHERE SUBJECT_CODE IN
+		
+		<foreach collection="subjectCodeList" item="subjectCode" separator="," open="(" close=")">
+			#{subjectCode}
+		</foreach>
 	
 	</delete>
 	
 	
+<!-- /////<교실 등록 관련>////////////////////////////////////////////////////////// -->
+	
 	
 	<!-- 교실 등록 쿼리문  -->
-		<insert id="insertLessonRoom">
+		<insert id="regLessonRoom">
  		<!-- keyProperty는 내가 select한 LESSON_ROOM_001 ... 코드를 담을 곳
  		 String lessonRoomCode = LESSON_ROOM_001 이라는 뜻-->
 		<selectKey resultType="String" keyProperty="lessonRoomCode" order="BEFORE">
@@ -104,11 +116,26 @@
 	<!-- 등록된 교실 조회 -->	
 	<select id="selectLessonRoom" resultMap="lessonRoom">
 		SELECT LESSON_ROOM_CODE
-				, ROOM_NAME
+			, ROOM_NAME
 		FROM LESSON_ROOM
 		ORDER BY LESSON_ROOM_CODE 
 	</select>
 	
+		<!-- 등록한 과목을 체크해서 삭제 -->
+	
+		
+			<delete id="deleteLessonRoom">
+		DELETE LESSON_ROOM
+		WHERE LESSON_ROOM_CODE IN
+		
+		<foreach collection="lessonRoomCodeList" item="subjectCode" separator="," open="(" close=")">
+			#{subjectCode}
+		</foreach>
+	
+	</delete>
+		
+
+
 	
 </mapper>
 

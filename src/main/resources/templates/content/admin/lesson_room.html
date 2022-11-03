@@ -14,9 +14,9 @@
 					<h6>교실 등록</h6>
 				</div>
 				<div class="col-12 mb-3">
-					<form class="row g-3" th:action="@{/admin/insertLessonRoom}" method="post">
+					<form class="row g-3" th:action="@{/admin/regLessonRoom}" method="post">
                   <div class="col-10">
-                     <input type="text" name="subjectName" class="form-control" id="" placeholder="Username">
+                     <input type="text" name="roomName" class="form-control" id="" placeholder="Username">
                   </div>
                     <div class="col-2">
                      <button type="submit" class="btn btn-primary">등록</button>
@@ -61,17 +61,19 @@
 				</div>
 			</div>
 		  </div>
-		  	<!-- <form th:action="@{/admin/deleteSubject}" method="post" id="deleteSubjectForm">  폼태그 안에 input가 있어야 데이터를 가져간다. 
-             <input type="hidden" name="subjectCodes"  value="">  submit누르면 데이터 안보이게 데이터 가져갈꺼다.  내가 체크한 체크박스들을 이 input태그의 value값을  
+		   	<form th:action="@{/admin/deleteLessonRoom}" method="post" id="deleteLessonRoomForm">  <!-- 폼태그 안에 input가 있어야 데이터를 가져간다.  -->
+             <input type="hidden" name="lessonRoomCodes"  value="">  <!-- submit누르면 데이터 안보이게 데이터 가져갈꺼다.  내가 체크한 체크박스들을 이 input태그의 value값을   -->
                <div class="row justify-content-end">
                   <div class="col-2"  style="margin-right:4.8rem;">
-                        <button th:onclick="subjectDeleteAjax();" type="button" class="btn btn-warning form-control" >삭제</button>
+                        <button th:onclick="lessonRoomDeleteAjax();" type="button" class="btn btn-warning form-control" >삭제</button>
                   </div>
                </div>
-              </form> -->
+              </form> 
+
             </div>
+            
+               <script src="https://code.jquery.com/jquery-latest.min.js"></script>   
+			<script type="text/javascript" th:src="@{/js/admin/lesson_room_delete.js}"></script>
+			
 		</div>
-
-
-
 </html>

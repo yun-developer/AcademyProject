@@ -55,6 +55,8 @@ public class AdminController {
 	////////////////////////////////////////////
 	
 	
+/////<과목 등록 관련>//////////////////////////////////////////////////////////// 
+	
 	
 	// 과목 등록 (수학, 과학) 
 	@PostMapping("/regSubject")
@@ -72,10 +74,10 @@ public class AdminController {
 		return "content/admin/reg_subject";
 	}
 	
-	// 과목 체크박스 삭제
+	// 내가 등록한 과목들 체크박스 삭제
 	@PostMapping("/deleteSubject")
 	public String deleteSubject(String subjectCodes) {
-		String[] subjectCodeArr = subjectCodes.split(",");
+		String[] subjectCodeArr = subjectCodes.split(","); // 배열을 리스트로 변환작업 2줄
 		List<String> subjectCodeList = Arrays.asList(subjectCodeArr);
 		
 		SubjectVO subjectVO = new SubjectVO();
@@ -85,29 +87,46 @@ public class AdminController {
 		
 		return "redirect:/admin/selectSubject";
 	}
+
+	
+/////<교실 등록 관련>//////////////////////////////////////////////////////////// 	
+	
 	
 	// 교실 정보 등록
 	
-	 @PostMapping("/insertLessonRoom")
-	 public String insertLessonRoom(LessonRoomVO lessonRoomVO) { 
+	 @PostMapping("/regLessonRoom")
+	 public String regLessonRoom(LessonRoomVO lessonRoomVO) { 
 		 
-		 adminService.insertLessonRoom(lessonRoomVO); 
+		 adminService.regLessonRoom(lessonRoomVO); 
+		 
+		 System.out.println(lessonRoomVO);
 		 
 		 return "redirect:/admin/selectLessonRoom";
 	 }
 	 
-	// 내가 등록한 교실 정보 들을 조회 (과목등록페이지로 이동)
+	// 내가 등록한 교실 정보를 조회 (과목등록페이지로 이동)
 		@GetMapping("/selectLessonRoom")
 			public String selectLessonRoom(Model model){
 			List<LessonVO> lessonRoomList =  adminService.selectLessonRoom();
-		System.out.println("!!!!!!!!!!!!!!!!!"+lessonRoomList.get(0));
 			model.addAttribute("selectLessonRoom", lessonRoomList);
 			
 			return "content/admin/lesson_room";
 		}
 	
-	
-	
-	// 내가 등록한 각 반 교실 정보을 조회 (과목등록페이지로 이동)
+		// 내가 등록한 교실들 체크박스 삭제
+		@PostMapping("/deleteLessonRoom")
+		public String deleteLessonRoom(String lessonRoomCodes) {
+			String[] lessonRoomCodeArr = lessonRoomCodes.split(",");  // 배열을 리스트로 변환작업 2줄
+			List<String> lessonRoomCodeList = Arrays.asList(lessonRoomCodeArr);
+
+			
+			LessonRoomVO lessonRoomVO = new LessonRoomVO();
+			lessonRoomVO.setLessonRoomCodeList(lessonRoomCodeList);
+			
+			adminService.deleteLessonRoom(lessonRoomVO);
+			
+			return "redirect:/admin/selectSubject";
+		}
+
 	
 }

@@ -18,6 +18,12 @@ public class AdminServiceImpl implements AdminService{
 	
 	@Autowired
 	SqlSessionTemplate sqlSession;
+
+	
+	
+/////<교사 관련>/////////////////////////////////////////////////////////////////
+	
+	
 	
 	//교사 리스트 조회
 	@Override
@@ -25,6 +31,12 @@ public class AdminServiceImpl implements AdminService{
 		
 		return sqlSession.selectList("adminMapper.selectTeacherList");
 	}
+
+	
+	
+ /////<과목 등록 관련>//////////////////////////////////////////////////////////// 
+	
+	
 	
 	// 과목 등록
 	@Override
@@ -44,10 +56,16 @@ public class AdminServiceImpl implements AdminService{
 		sqlSession.delete("adminMapper.deleteSubject", subjectVO);
 	}
 	
+
+	
+/////<교실 등록 관련>//////////////////////////////////////////////////////////// 	
+	
+	
+	
 	// 교실 등록
 	@Override
-	public void insertLessonRoom(LessonRoomVO lessonRoomVO) {
-		sqlSession.insert("adminMapper.insertLessonRoom", lessonRoomVO);
+	public void regLessonRoom(LessonRoomVO lessonRoomVO) {
+		sqlSession.insert("adminMapper.regLessonRoom", lessonRoomVO);
 	}
 	// 등록된 교실리스트 조회
 	@Override
@@ -55,5 +73,12 @@ public class AdminServiceImpl implements AdminService{
 		return sqlSession.selectList("adminMapper.selectLessonRoom");
 	}
 
+	// 교실 삭제(체크박스)
+	@Override
+	public void deleteLessonRoom(LessonRoomVO lessonRoomVO) {
+		sqlSession.delete("adminMapper.deleteLessonRoom", lessonRoomVO);
+	}
+
+	
 
 }

@@ -12,8 +12,20 @@ import kh.study.academy.teacher.vo.TeacherVO;
 public interface AdminService {
 
 	
+/////<교사 관련>/////////////////////////////////////////////////////////////////	
+	
+	
 	//교사 리스트 조회
 	List<TeacherVO> selectTeacherList();
+	
+	
+	
+	
+	
+	
+	
+/////<과목 등록 관련>//////////////////////////////////////////////////////////// 	
+	
 	
 	//과목 등록
 	void insertSubject(SubjectVO subjectVO);
@@ -24,10 +36,16 @@ public interface AdminService {
 	// 과목 삭제(체크박스)
 	void deleteSubject(SubjectVO subjectVO);
 	
+	
+/////<교실 등록 관련>//////////////////////////////////////////////////////////// 	
+	
+	
 	// 교실 등록
-	void insertLessonRoom(LessonRoomVO lLessonRoomVO);
+	void regLessonRoom(LessonRoomVO lessonRoomVO);
 	
 	// 등록된 과목리스트 조회
 	List<LessonVO> selectLessonRoom();
 	
+	// 교실 삭제(체크박스)
+	void deleteLessonRoom(LessonRoomVO lessonRoomVO);
 }
