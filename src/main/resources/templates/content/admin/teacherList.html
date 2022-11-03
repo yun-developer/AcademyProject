@@ -14,7 +14,12 @@
 
 
 감자프로젝트 테스트용
-<!--여기부터  -->
+
+<!--여기부터 검색 div  -->
+<!--여기까지 검색 div  -->
+
+
+<!--여기부터 리스트  -->
 
 <div class="row">
 		<table class="table table-hover text-center align-middle ">
@@ -25,10 +30,10 @@
 						<input type="checkbox">
 					</th>
 					<th scope="col">교사명</th>
+					<th scope="col">아이디</th>
 					<th scope="col">담당과목</th>
-					<th scope="col">경력</th>
 					<th scope="col">전화번호</th>
-					<th scope="col">뭐넣지</th>
+					<th scope="col">경력</th>
 					<th scope="col" class="bi bi-arrow-through-heart-fill">상태</th>
 				</tr>
 			</thead>
@@ -43,13 +48,12 @@
 						<td>
 							<input type="checkbox">
 						</td>
-						<td th:text="${teacher.teacherName}">
-						</td>
-						<td th:text="${teacher}"></td>
-						<td></td>
+						<td th:text="${teacher.teacherName}"></td>
+						<td th:text="${teacher.teacherId}"></td>
+						<td th:text="${teacher.subjectCode}" ></td>
 						<td th:text="${teacher.teacherTell}"></td>
-						<td></td>
-						<td></td>
+						<td th:text="${teacher.career}"></td>
+						<td th:text="${teacher.teacherStatus}"></td>
 					</tr>
 				</th:block>
 			</tbody>
