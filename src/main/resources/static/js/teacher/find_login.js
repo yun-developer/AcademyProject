@@ -22,7 +22,7 @@ function findLoginIdAjax(){
 		success: function(result) {
 			
 			
-			alert(11)
+		
 			
 			if(result.check == 0){
 				str += ' <div class="col-md-4" style="float: none; margin: 0 auto;">  ';

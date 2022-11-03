@@ -12,12 +12,74 @@
 
 <div layout:fragment="content">
 
-
-감자프로젝트 테스트용
+여기서부터 검색
 
 <!--여기부터 검색 div  -->
+
+	<div class="row mb-5" style="background-color: yellow;">
+
+		<div class="col-xs-12 col-lg-4" style="background-color: green;">
+			<div class="input-group mb-2">
+				<span class="input-group-addon col-2">이름</span> 
+				<input type="text" class="form-control" id=""  autocomplete="off">											
+			</div>
+		</div>
+		<div class="col-xs-12 col-lg-4" style="background-color: red;">
+			<div class="input-group mb-2">
+				<span class="input-group-addon col-2">과목</span> 
+				<input type="text" class="form-control" id=""  autocomplete="off">											
+			</div>
+		</div>
+		<div class="col-xs-12 col-lg-4" style="background-color: blue;">
+			<div class="input-group mb-2">
+				<span class="input-group-addon col-2">상품명</span> 
+				<input type="text" class="form-control" id=""  autocomplete="off">											
+			</div>
+		</div>
+		<div class="col-xs-12 col-lg-4" style="background-color: green;">
+			<div class="input-group mb-2">
+				<span class="input-group-addon col-2">이름</span> 
+				<input type="text" class="form-control" id=""  autocomplete="off">											
+			</div>
+		</div>
+		<div class="col-xs-12 col-lg-4" style="background-color: red;">
+			<div class="input-group mb-2">
+				<span class="input-group-addon col-2">상태</span> <input type="text"
+					class="form-control" id="" autocomplete="off">
+			</div>
+		</div>
+		<div class="col-xs-12 col-lg-4" style="background-color: gray;">
+			<div class="input-group mb-2">
+				<span class="input-group-addon col-2">권한</span>
+				<div class="in-search-detail NewDataSelect mb-2">
+					<label class="radio-inline lg-mr-10 md-mr-15 rating-form">
+						<input type="radio" class="rating-chk focus" id="search_type1"
+						name="" value="">
+						<span class="lg-ml-5">미승인</span> <!-- 전체에도 밸류값 빈문자열 넣어줘야함(빈문자열은 null이 아님)  -->
+					</label> <label class="radio-inline lg-mr-10 md-mr-15 rating-form">
+						<input type="radio" class="rating-chk focus" id="search_type2"
+						name="itemStatus" value=""> 
+						<span class="lg-ml-5">승인</span>
+					</label> <label class="radio-inline lg-mr-10 md-mr-15 rating-form">
+						<input type="radio" class="rating-chk focus" id="search_type3"
+						name="itemStatus" value=""> <span
+						class="lg-ml-5">관리자</span>
+					</label>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+	</div>
+
+
 <!--여기까지 검색 div  -->
 
+
+여기서부터 리스트
 
 <!--여기부터 리스트  -->
 
@@ -27,33 +89,35 @@
 			<thead>
 				<tr>
 					<th scope="col">
-						<input type="checkbox">
+						<input type="checkbox" id="checkAll">
 					</th>
-					<th scope="col">교사명</th>
+					<th scope="col">이름</th>
 					<th scope="col">아이디</th>
 					<th scope="col">담당과목</th>
 					<th scope="col">전화번호</th>
+					<th scope="col">상태</th>
 					<th scope="col">경력</th>
-					<th scope="col" class="bi bi-arrow-through-heart-fill">상태</th>
+					<th scope="col" class="bi bi-arrow-through-heart-fill">권한</th>
 				</tr>
 			</thead>
 			<tbody class="table-group-divider">
 				<th:block th:if="${#lists.size(teacherList)==0}">
 					<tr>
-						<td colspan="7"> 아무도 없고....학원 망함....</td>
+						<td colspan="8"> 아무도 없고....학원 망함....</td>
 					</tr>
 				</th:block>
 				<th:block th:unless="${#lists.size(teacherList)==0}">
 					<tr th:each="teacher:${teacherList}">
 						<td>
-							<input type="checkbox">
+							<input type="checkbox" class="chk">
 						</td>
 						<td th:text="${teacher.teacherName}"></td>
 						<td th:text="${teacher.teacherId}"></td>
 						<td th:text="${teacher.subjectCode}" ></td>
 						<td th:text="${teacher.teacherTell}"></td>
-						<td th:text="${teacher.career}"></td>
 						<td th:text="${teacher.teacherStatus}"></td>
+						<td th:text="${teacher.career}"></td>
+						<td th:text="${teacher.teacherRole}"></td>
 					</tr>
 				</th:block>
 			</tbody>
@@ -67,7 +131,10 @@
 
 
 
-
+	<!-- jquery 문법 로딩 -->
+	<!--순서 잘 맞춰서 적어야 함  -->
+	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript" th:src="@{/js/admin/teacherList.js}"></script>
 
 
 </div>
