@@ -22,6 +22,8 @@ function findLoginIdAjax(){
 		success: function(result) {
 			
 			
+			alert(11)
+			
 			if(result.check == 0){
 				str += ' <div class="col-md-4" style="float: none; margin: 0 auto;">  ';
 				str += ' <div>  ';
@@ -44,7 +46,6 @@ function findLoginIdAjax(){
 			const findResult = document.querySelector('#findResult');
 
 			findResult.innerHTML = ''; /*내용을 지우는것*/
-
 
 			findResult.insertAdjacentHTML('beforeend', str);
 			

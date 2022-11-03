@@ -101,7 +101,7 @@ public class TeacherController {
 	//아이디 정보 찾기 에이작스
 	@ResponseBody
 	@PostMapping("/findLoginIdAjax")
-	public TeacherVO findLoginIdAjax(TeacherVO teacherVO, Model model) {
+	public TeacherVO findLoginIdAjax(TeacherVO teacherVO) {
 		
 		
 		
