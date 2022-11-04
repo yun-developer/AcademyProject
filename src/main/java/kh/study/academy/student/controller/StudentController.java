@@ -101,5 +101,11 @@ public class StudentController {
 		return "content/student/update_student_page";
 	}
 	
+	//학생을 학급에 배정
+	@GetMapping("/assignment")
+	public String assignmentStu() {
+		
+		return "content/student/assignment_student_page";
+	}
 	
 }
