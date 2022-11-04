@@ -74,7 +74,10 @@ for(const chk of chks){
 //교사 이름 클릭시 팝업 창 띄우는 함수 
 function teacherPopup(){
 	
-	var pop = window.open("/admin/Popup","teacherPopup","width=1100,height=900, scrollbars=yes, resizable=yes");
+	
+	//window.open("[팝업을 띄울 파일명 path]", "[별칭]", "[팝업 옵션]")
+	var pop = window.open("/admin/popup","teacherPopup","width=1100,height=900, scrollbars=yes, resizable=yes");
+	
 	
 }
 

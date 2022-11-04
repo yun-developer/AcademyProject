@@ -40,8 +40,8 @@ public class AdminController {
 	}
 	
 	
-	
-	@RequestMapping("/Popup")
+	//교사 팝업으로 이동 ..
+	@RequestMapping("/popup")
 	public String pop() {
 		return "content/admin/teacherPopup";
 	}
