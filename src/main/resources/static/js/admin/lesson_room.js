@@ -68,17 +68,18 @@ function lessonRoomDeleteAjax(){
 	LessonRoomForm.submit();
 	
 }
-const modal = new bootstrap.Modal('#updateLessonRoomModal');
+//const modal = new bootstrap.Modal('#bb');
 
-function updateLessonRoomModal(){
-
-	modal.show();
+function goRegLessonRoom(){
+	$('#bb').modal('show');
 }
 
 
 ////////////////함수 2///////////////////
 // 교실등록 페이지에서 신규버튼 클릭 시
 function goupdateLessonRoom(){
+	
+	$('#bb').modal('show');
 	//parentElement : 부모태그 찾아 감.
 	//children : 자식 태그 찾아 감.
 	//previousElementSibling : 이전 형제 노드를 찾아 감.
@@ -89,7 +90,7 @@ function goupdateLessonRoom(){
 	//const itemStock = selectedTag.closest('td').querySelector('.stockInput').value;
 	
 	//ajax start
-	$.ajax({
+/*	$.ajax({
 		url: '/admin/regLessonRoom', //요청경로
 		type: 'post',
 		data: {'itemStock': itemStock}, //필요한 데이터
@@ -102,7 +103,7 @@ function goupdateLessonRoom(){
 			alert('실패');
 		}
 	});
-	//ajax end
+	//ajax end*/
 }
 
 

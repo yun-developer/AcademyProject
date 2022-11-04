@@ -22,6 +22,8 @@
 	<resultMap type="kh.study.academy.admin.vo.LessonRoomVO" id="lessonRoom">
 		<id column="LESSON_ROOM_CODE" 	property="lessonRoomCode" />
 		<result column="ROOM_NAME" 		property="roomName" />
+		<result column="LESSON_ROOM_MAX_STUDENT" 		property="lessonRoomMaxStudent" />
+		<result column="IS_USE" 		property="isUse" />
 		
 	</resultMap> 
 
@@ -64,7 +66,7 @@
 	
 		INSERT INTO SUBJECT(
 			SUBJECT_CODE
-			, 
+			, SUBJECT_NAME
 		) VALUES (
 			#{subjectCode}
 			, #{subjectName}
@@ -107,9 +109,13 @@
 		INSERT INTO LESSON_ROOM(
 			LESSON_ROOM_CODE
 			, ROOM_NAME
+			, LESSON_ROOM_MAX_STUDENT 
+			, IS_USE
 		) VALUES (
 			#{lessonRoomCode}
 		    , #{roomName}
+		    , #{lessonRoomMaxStudent}
+		    , #{isUse}
 		)
 	</insert> 
 	
@@ -117,8 +123,11 @@
 	<select id="selectLessonRoom" resultMap="lessonRoom">
 		SELECT LESSON_ROOM_CODE
 			, ROOM_NAME
+			, LESSON_ROOM_MAX_STUDENT 
+			, IS_USE
 		FROM LESSON_ROOM
-		ORDER BY LESSON_ROOM_CODE 
+		ORDER BY ROOM_NAME 
+		
 	</select>
 	
 	

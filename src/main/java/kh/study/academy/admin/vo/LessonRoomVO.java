@@ -14,6 +14,9 @@ import lombok.Setter;
 public class LessonRoomVO {
 	private String lessonRoomCode;
 	private String roomName;
+	private int lessonRoomMaxStudent;
+	private String isUse;
+	
 	
 	private List<String> lessonRoomCodeList;
 }

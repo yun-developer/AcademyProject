@@ -24,9 +24,9 @@
                      <button type="submit" class="btn btn-primary">등록</button>
                      
                     </div>
-                    	<div class="row justify-content-end" style="text-align: right; margin: 0.5rem">
-						  <div class="col-2"  style="margin-right:4.8rem;">
-                       		 <button type="button" id="updateLessonRoomModal" class="btn btn-info fal fa-save"  th:onclick="updateLessonRoomModal();"  >신규</button>
+                    	<div class="row justify-content-end" style="text-align: right; margin: 1rem">
+						  <div class="col-2"  style="margin-right:4.4rem;">
+                       		 <button type="button" id="updateLessonRoomModal" class="btn btn-info fal fa-save"  th:onclick="goRegLessonRoom();">신규</button>
                   		  </div>
                   		</div> 
               	 </form>
@@ -39,8 +39,9 @@
                      <input id="checkAll" type="checkbox" class="form-check-input" >
                   </td>
                      <th scope="col">No</th>
-                     <th scope="col">교실 코드</th>
                      <th scope="col">교실명</th>
+                     <th scope="col">정 원</th>
+                     <th scope="col">사용 여부</th>
                    </tr>
                  </thead>
                  <tbody>
@@ -58,8 +59,9 @@
                      <input th:value="${LessonRoom.lessonRoomCode}"  type="checkbox" class="form-check-input chk" >
                   		</td>
                    		<td th:text="${status.count}"></td> 
-                   		<td th:text="${LessonRoom.lessonRoomCode}" ></td> 
-                   		<td th:text="${LessonRoom.roomName}"></td> 
+                   		<td th:text="${LessonRoom.roomName}" ></td> 
+                   		<td th:text="${LessonRoom.lessonRoomMaxStudent}"></td> 
+                   		<td th:text="${LessonRoom.isUse}"></td> 
                    </tr>
              
                  </th:block>     
@@ -71,31 +73,52 @@
 		   	<form th:action="@{/admin/deleteLessonRoom}" method="post" id="deleteLessonRoomForm">  <!-- 폼태그 안에 input가 있어야 데이터를 가져간다.  -->
              <input type="hidden" name="lessonRoomCodes"  value="">  <!-- submit누르면 데이터 안보이게 데이터 가져갈꺼다.  내가 체크한 체크박스들을 이 input태그의 value값을   -->
                <div class="row justify-content-end">
-                  <div class="col-2"  style="margin-right:4.8rem;">
+                  <div class="col-2"  style="margin-right:4.4rem;">
                         <button th:onclick="lessonRoomDeleteAjax();" type="button" class="btn btn-warning form-control" >삭제</button>
                   </div>
                </div>
               </form> 
 
             </div>
-          <!-- 교실 신규 버튼 누르면 실행되는 모달창 -->
+          <!-- 교실 신규 버튼 누르면 실행되는 Modal -->
 			<!-- Modal -->
-			<div class="modal fade" id="updateLessonRoomModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal fade" id="bb" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			  <div class="modal-dialog">
 			    <div class="modal-content">
+			  	  <!-- 모달 제목글 header -->
+
+	    	      <div class="modal-header"> 
+			        <h5 class="modal-title" id="exampleModalLabel"> 교실 정보 </h5>
+			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			      </div>
+				   <!-- 모달 내용글 body -->
+				   
+				<form action="/admin/regLessonRoom" method="post">
 			      <div class="modal-body">
 			      	<div class="row mb-3">
-			      		<div class="col">
-			      			<div>수량을 변경하시겠습니까?</div>
+			      		<div class="col-10">
+			      			<label for="roomName" class="form-label">교실명</label>
+			      				<input  type="text" class="form-control" id="roomName" name="memberId">
+			      			
+			      		</div>
+			      		<div class="col-10">
+			      			<label for="lessonRoomMaxStudent" class="form-label">정 원</label>
+			      				<input  type="text" class="form-control" id="lessonRoomMaxStudent" name="lessonRoomMaxStudent">
+			      		</div>
+			      		<div class="col-10">
+			      			<label for="isUse" class="form-label">사용여부</label>
 			      		</div>
 			      	</div>
 			      	<div class="row">
 			      		<div class="col text-end">
-			      			<button id="updateAmountBtn" data-cart-code="" data-cart-amount=""  th:onclick="updateAmount();" type="button" class="btn btn-primary btn-sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3rem; --bs-btn-font-size: 1rem;">확인</button>
-			      			<button id="cancelBtn" data-origin-amount=""  th:onclick="rollbackAmount();" type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3rem; --bs-btn-font-size: 1rem;">취소</button>
+			      		
+			      			<button type="button" id="updateAmountBtn" data-cart-code="" data-cart-amount=""  th:onclick="updateAmount();" class="btn btn-primary btn-sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3rem; --bs-btn-font-size: 1rem;">저장</button>
+			      			<button type="button" id="cancelBtn" data-origin-amount=""  th:onclick="rollbackAmount();"  class="btn btn-secondary btn-sm" data-bs-dismiss="modal" aria-label="Close" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3rem; --bs-btn-font-size: 1rem;">닫기</button>
+			      		
 			      		</div>
 			      	</div>
 			      </div>
+			     </form>
 			    </div>
 			  </div>
 			</div>
