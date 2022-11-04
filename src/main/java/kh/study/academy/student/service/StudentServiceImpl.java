@@ -24,10 +24,9 @@ public class StudentServiceImpl implements StudentService{
 	 
 	@Override
 	@Transactional(rollbackFor = Exception.class)
-	public void insertStudent(StudentVO studentVO, PaymentVO paymentVO) {
+	public void insertStudent(StudentVO studentVO) {
 		
 		sqlSession.insert("studentMapper.insertStudent", studentVO);
-		sqlSession.insert("studentMapper.insertPayment", paymentVO);
 	}
 
 	

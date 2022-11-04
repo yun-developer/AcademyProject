@@ -6,7 +6,6 @@
 	
 
 <div layout:fragment="content">
-<form action="" method="post" id="updateForm">
 	<div class="row justify-content-center" style="margin-top: 30px;  margin-bottom: 30px;">
 		<div class="col-6 align-center">
 			<div class="row">
@@ -85,13 +84,12 @@
 <!-- ..에이젝스,,,,? 추가 과목이랑 반 넣으면 -->
 	</div>
 
-	<div class="row justify-content-center" >
+	<div class="row justify-content-center">
 		<div class="col-1 mt-3" >
 			<input type="hidden" th:value="${stu.studentCode}">
-			<button th:onclick="updateStu();" type="button" class="btn btn-warning form-control">수정</button>
+			<button th:onclick="updateStu(this);" type="button" class="btn btn-warning form-control">수정</button>
 		</div>
 	</div>
-</form>
 
 
 

@@ -44,7 +44,7 @@ public class StudentController {
 		studentVO.setStudentCode(nextStudentCode);
 		paymentVO.setStudentCode(nextStudentCode);
 		
-		studentService.insertStudent(studentVO, paymentVO);
+		studentService.insertStudent(studentVO);
 		return "redirect:/stu/regPage";
 	}
 	

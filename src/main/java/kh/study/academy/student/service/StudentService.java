@@ -11,7 +11,7 @@ import kh.study.academy.student.vo.StudentVO;
 public interface StudentService {
 	String getNextStudentCode();
 	
-	void insertStudent(StudentVO studentVO, PaymentVO paymentVO);
+	void insertStudent(StudentVO studentVO);
 	
 	List<StudentVO> selectStuList();
 	
