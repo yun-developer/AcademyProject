@@ -45,6 +45,7 @@ const chks = document.querySelectorAll('.chk');
 ////////////////함수 1///////////////////
 
 // 교실등록 페이지에서 삭제버튼 클릭 시
+
 function lessonRoomDeleteAjax(){
 
 	const LessonRoomForm = document.querySelector('#deleteLessonRoomForm')
@@ -53,7 +54,8 @@ function lessonRoomDeleteAjax(){
 	const checkedChks = document.querySelectorAll('.chk:checked'); // -> 내가 선택한 체크박스들(여러개) // 나는 클래스가 .chk인 애를 선택할 꺼야 클래스호출은 .을 써주기
 	
 	if(checkedChks.length == 0){
-		alert('삭제할 교실을 선택하세요');
+		 const modal = new bootstrap.Modal('#deleteModal');  // #myModal -> 모달창의 id를 가지고 오는 것이다.
+	     modal.show();
 		return ;
 	}
 	// 문자열로 만들어서 던져 줌
@@ -70,41 +72,16 @@ function lessonRoomDeleteAjax(){
 }
 //const modal = new bootstrap.Modal('#bb');
 
+
+
+
+////////////////함수 2///////////////////
+// 교실등록 페이지에서 신규버튼 클릭 시 모달창
 function goRegLessonRoom(){
 	$('#bb').modal('show');
 }
 
 
-////////////////함수 2///////////////////
-// 교실등록 페이지에서 신규버튼 클릭 시
-function goupdateLessonRoom(){
-	
-	$('#bb').modal('show');
-	//parentElement : 부모태그 찾아 감.
-	//children : 자식 태그 찾아 감.
-	//previousElementSibling : 이전 형제 노드를 찾아 감.
-	//nextElementSibling : 다음 형제 노드를 찾아 감.
-	//closest() : 가장 가까운 상위태그를 찾아 감
-	
-	//const itemStock = selectedTag.parentElement.previousElementSibling.children[0].value;
-	//const itemStock = selectedTag.closest('td').querySelector('.stockInput').value;
-	
-	//ajax start
-/*	$.ajax({
-		url: '/admin/regLessonRoom', //요청경로
-		type: 'post',
-		data: {'itemStock': itemStock}, //필요한 데이터
-		success: function(result) {
-			//모달창 띄우고 소스
-			const modal = new bootstrap.Modal('#updateLessonRoomModal');
-			modal.show();
-		},
-		error: function() {
-			alert('실패');
-		}
-	});
-	//ajax end*/
-}
 
 
 

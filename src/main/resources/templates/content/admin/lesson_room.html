@@ -21,10 +21,10 @@
                      <input type="text" name="roomName" class="form-control" id="" placeholder="Username">
                   </div>
                     <div class="col-2">
-                     <button type="submit" class="btn btn-primary">등록</button>
+                     <button type="submit" class="btn btn-primary">검색</button>
                      
                     </div>
-                    	<div class="row justify-content-end" style="text-align: right; margin: 1rem">
+                    	<div class="row justify-content-" style="margin: 1rem">
 						  <div class="col-2"  style="margin-right:4.4rem;">
                        		 <button type="button" id="updateLessonRoomModal" class="btn btn-info fal fa-save"  th:onclick="goRegLessonRoom();">신규</button>
                   		  </div>
@@ -47,7 +47,7 @@
                  <tbody>
                   <th:block th:if="${#lists.size(selectLessonRoom) == 0}">
                  	<tr> 
-                 		<td colspan="4">등록된 교실이 없습니다.</td>
+                 		<td colspan="5">등록된 교실이 없습니다.</td>
                  	</tr>
                 </th:block>
                  
@@ -74,12 +74,17 @@
              <input type="hidden" name="lessonRoomCodes"  value="">  <!-- submit누르면 데이터 안보이게 데이터 가져갈꺼다.  내가 체크한 체크박스들을 이 input태그의 value값을   -->
                <div class="row justify-content-end">
                   <div class="col-2"  style="margin-right:4.4rem;">
-                        <button th:onclick="lessonRoomDeleteAjax();" type="button" class="btn btn-warning form-control" >삭제</button>
+                        <button th:onclick="lessonRoomDeleteAjax();" type="button" class="btn btn-warning form-control-start" >삭제</button>
                   </div>
                </div>
               </form> 
 
             </div>
+            
+
+<!------------------------------------------------------------------------------------------------------------------------------------------------------------->            
+            
+            
           <!-- 교실 신규 버튼 누르면 실행되는 Modal -->
 			<!-- Modal -->
 			<div class="modal fade" id="bb" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -98,21 +103,25 @@
 			      	<div class="row mb-3">
 			      		<div class="col-10">
 			      			<label for="roomName" class="form-label">교실명</label>
-			      				<input  type="text" class="form-control" id="roomName" name="memberId">
+			      				<input  type="text" class="form-control" id="roomName" name="roomName">
 			      			
 			      		</div>
 			      		<div class="col-10">
 			      			<label for="lessonRoomMaxStudent" class="form-label">정 원</label>
 			      				<input  type="text" class="form-control" id="lessonRoomMaxStudent" name="lessonRoomMaxStudent">
 			      		</div>
-			      		<div class="col-10">
-			      			<label for="isUse" class="form-label">사용여부</label>
+				      		<div class="col-8">
+				      			<label for="isUse" class="form-label">교실사용여부</label>
+					      			<select name="isUse" class="form-select" >
+					      				<option  id="isUse" value="Y">Y</option>
+					      				<option  id="isUse" value="N">N</option>
+					      			</select>
 			      		</div>
 			      	</div>
 			      	<div class="row">
 			      		<div class="col text-end">
 			      		
-			      			<button type="button" id="updateAmountBtn" data-cart-code="" data-cart-amount=""  th:onclick="updateAmount();" class="btn btn-primary btn-sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3rem; --bs-btn-font-size: 1rem;">저장</button>
+			      			<button type="submit" id="updateAmountBtn" class="btn btn-primary btn-sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3rem; --bs-btn-font-size: 1rem;">저장</button>
 			      			<button type="button" id="cancelBtn" data-origin-amount=""  th:onclick="rollbackAmount();"  class="btn btn-secondary btn-sm" data-bs-dismiss="modal" aria-label="Close" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3rem; --bs-btn-font-size: 1rem;">닫기</button>
 			      		
 			      		</div>
@@ -122,6 +131,8 @@
 			    </div>
 			  </div>
 			</div>
+
+<!------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
           <script src="https://code.jquery.com/jquery-latest.min.js"></script>   
 		<script type="text/javascript" th:src="@{/js/admin/lesson_room.js}"></script>

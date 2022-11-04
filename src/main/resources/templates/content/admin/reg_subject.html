@@ -18,7 +18,7 @@
                      <input type="text" name="subjectName" class="form-control" id="" placeholder="Username">
                   </div>
                     <div class="col-2">
-                     <button type="submit" class="btn btn-primary">등록</button>
+                     <button type="submit" th:onclick="rdgSubject();" class="btn btn-primary">등록</button>
                      
                     </div>
               	 </form>
@@ -62,8 +62,8 @@
 		  	<form th:action="@{/admin/deleteSubject}" method="post" id="deleteSubjectForm">  <!-- 폼태그 안에 input가 있어야 데이터를 가져간다.  -->
              <input type="hidden" name="subjectCodes"  value=""> <!--  submit누르면 데이터 안보이게 데이터 가져갈꺼다.  내가 체크한 체크박스들을 이 input태그의 value값을   -->
                <div class="row justify-content-end">
-                  <div class="col-2"  style="margin-right:4.8rem;">
-                        <button th:onclick="subjectDeleteAjax();" type="button" class="btn btn-warning form-control" >삭제</button>
+                  <div class="col-2"  style="margin-right:4.8rem; ">
+                        <button th:onclick="subjectDeleteAjax();" type="button" class="btn btn-warning flex-end" >삭제</button>
                   </div>
                </div>
               </form>
