@@ -46,7 +46,7 @@ function idDoubleCheck (){
 	if(inputTeacherIdValue==''){
 		// 요소의 placeholder 속성에 특정값을 설정한다.
     	inputTeacherId.setAttribute("placeholder", "*ID를 입력하세요.");
-		// 커서를 상세주소 필드로 이동한다.
+		// 커서를 아이디 인풋태그로 이동한다.
 	    inputTeacherId.focus();
 	    return;
 	}	
@@ -93,6 +93,13 @@ function resetInput(event){
 	
 }
 
+function isDoubleChkChange(event){
+	
+	isDoubleChkTag.setAttribute("value", "unChk");
+	
+}
+
+
 
 
 ////////////////////////////이벤트///////////////
@@ -100,5 +107,6 @@ function resetInput(event){
 idDouble_Yes_modal.addEventListener('hidden.bs.modal', resetInput);
 
 
+inputTeacherId.addEventListener('keydown', isDoubleChkChange)
 
 
