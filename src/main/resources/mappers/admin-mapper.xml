@@ -20,10 +20,10 @@
 	
 	
 	<resultMap type="kh.study.academy.admin.vo.LessonRoomVO" id="lessonRoom">
-		<id column="LESSON_ROOM_CODE" 	property="lessonRoomCode" />
-		<result column="ROOM_NAME" 		property="roomName" />
+		<id column="LESSON_ROOM_CODE" 					property="lessonRoomCode" />
+		<result column="ROOM_NAME" 						property="roomName" />
 		<result column="LESSON_ROOM_MAX_STUDENT" 		property="lessonRoomMaxStudent" />
-		<result column="IS_USE" 		property="isUse" />
+		<result column="IS_USE" 						property="isUse" />
 		
 	</resultMap> 
 
@@ -35,6 +35,7 @@
 	
 	<!-- 교사리스트 조회 -->
 	<!--LESSONS,SUBJECT CODE 수정 필요... -->
+	<!-- SUBJECT_NAME 저렇게 할 필요가 없었던 건가...??일단-->
 	<select id="selectTeacherList" resultMap="teacherMapper.teacher">
 	
 		SELECT TEACHER_CODE
@@ -46,7 +47,8 @@
 			, TEACHER_ROLE
 			, LESSONS_CODE
 			, SUBJECT_CODE
-		FROM TEACHER 
+			, (SELECT SUBJECT_NAME FROM SUBJECT WHERE SUBJECT_CODE = T.SUBJECT_CODE) AS SUBJECT_NAME
+		FROM TEACHER T
 		
 		
 	

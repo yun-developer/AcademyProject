@@ -41,10 +41,10 @@ public class AdminController {
 	
 	
 	
-	
-	
-	
-	
+	@RequestMapping("/Popup")
+	public String pop() {
+		return "content/admin/teacherPopup";
+	}
 	
 	
 	
@@ -52,6 +52,7 @@ public class AdminController {
 	
 	
 	////////////////////////////////////////////
+	///////위에 내 구역~~~~!!!!!////////////////
 	////////////////////////////////////////////
 	
 	

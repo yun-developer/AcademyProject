@@ -111,9 +111,9 @@
 						<td>
 							<input type="checkbox" class="chk">
 						</td>
-						<td th:text="${teacher.teacherName}"></td>
+						<td th:text="${teacher.teacherName}" th:onclick="teacherPopup();"></td>
 						<td th:text="${teacher.teacherId}"></td>
-						<td th:text="${teacher.subjectCode}" ></td>
+						<td th:text="${teacher.subjectCode}"  th:value="${teacher.subjectCode}"></td>
 						<td th:text="${teacher.teacherTell}"></td>
 						<td th:text="${teacher.teacherStatus}"></td>
 						<td th:text="${teacher.career}"></td>
