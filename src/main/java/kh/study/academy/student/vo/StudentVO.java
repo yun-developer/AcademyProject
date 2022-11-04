@@ -2,6 +2,7 @@ package kh.study.academy.student.vo;
 
 import java.util.List;
 
+import kh.study.academy.admin.vo.SubjectVO;
 import lombok.Data;
 
 @Data
@@ -16,5 +17,6 @@ public class StudentVO {
 	private String regDate;
 	
 	
+	private SubjectVO subjectVO;
 	private List<String> studentCodeList;
 }

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	layout:decorate="~{layout/base_layout}"> 
+	
+
+<div layout:fragment="content">
+<form action="" method="post" id="updateForm">
+	<div class="row justify-content-center" style="margin-top: 30px;  margin-bottom: 30px;">
+		<div class="col-6 align-center">
+			<div class="row">
+				<div class="form-floating mb-3 col-6">
+					<div>
+						<label for="readonly input example" class="form-label">이름</label> 
+						<input class="form-control" type="text" th:value="${stu.studentName}" aria-label="readonly input example" readonly>
+					</div>
+				</div>
+				<div class="form-floating mb-3 col-6">
+					<div>
+						<label for="year" class="form-label">학년</label> 
+						<input type="text" class="form-control" id="year" th:value="${stu.year}" readonly>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-floating mb-3 col-6">
+					<div>  <!-- 포문 돌리기 -->
+						<label for="subject" class="form-label">현재 수강과목</label> 
+						<input type="text" class="form-control" id="subject" >
+					</div>
+				</div>
+				<div class="form-floating mb-3 col-6">
+					<div>
+						<label for="lessonInfo" class="form-label">반</label> 
+						<input type="text" class="form-control" id="lessonInfo" >
+					</div>
+				</div>
+			</div>
+			
+			<div class="row" >
+				<div class="form-floating mb-3 col-6" >
+					<div >
+						<label for="subject" class="form-label">추가 수강과목</label> 
+						<select class="form-select" aria-label=".form-select example">
+							<option selected>해당 없음</option>
+						  	<option th:each="sub : ${subjectList}" th:value="subjectCode">[[${sub.subjectName}]]</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-floating mb-3 col-6">
+					<div >
+						<label for="subject" class="form-label">추가 반</label> 
+						<select class="form-select" aria-label=".form-select example">
+							<option selected>해당 없음</option>
+						  	<option  th:each="sub : ${subjectList}">반</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			
+			
+			<div class="form-floating mb-3">
+				<div>
+					<label for="tell" class="form-label">연락처</label> 
+					<input type="text" class="form-control" id="tell" th:value="${stu.studentTell}">
+				</div>
+			</div>
+			<div class="form-floating mb-3">
+				
+				<div>
+					<label for="addr" class="form-label">주소</label> 
+					<input type="text" class="form-control" id="addr" th:value="${stu.addr}" readonly>
+				</div>
+			</div>
+			<div class="form-floating mb-3">
+				<div>
+					<label for="regDate" class="form-label">등록일</label> 
+					<input type="text" class="form-control" id="regDate" th:value="${stu.regDate}" readonly>
+				</div>
+			</div>
+		</div>
+
+
+<!-- ..에이젝스,,,,? 추가 과목이랑 반 넣으면 -->
+	</div>
+
+	<div class="row justify-content-center" >
+		<div class="col-1 mt-3" >
+			<input type="hidden" th:value="${stu.studentCode}">
+			<button th:onclick="updateStu();" type="button" class="btn btn-warning form-control">수정</button>
+		</div>
+	</div>
+</form>
+
+
+
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>   
+
+<!-- js 파일 연결 -->
+<script type="text/javascript" th:src="@{/js/student/update_student.js}"></script>
+
+
+</div>
+</html>

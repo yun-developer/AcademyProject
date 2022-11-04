@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import kh.study.academy.admin.service.AdminService;
 import kh.study.academy.student.service.StudentService;
 import kh.study.academy.student.vo.PaymentVO;
 import kh.study.academy.student.vo.StudentVO;
@@ -22,6 +23,8 @@ public class StudentController {
 	@Resource(name="studentService")
 	private StudentService studentService;
 	
+	@Resource(name="adminService")
+	private AdminService adminService;
 	
 	
 	
@@ -89,12 +92,13 @@ public class StudentController {
 	}
 	
 	
-	//학생 정보 수정
+	//학생 정보 수정페이지로 이동
 	@GetMapping("/updateStu")
-	public String updateStu(String studentCode) {
+	public String updateStu(String studentCode, Model model) {
+		model.addAttribute("stu", studentService.selectStuDetail(studentCode));
+		model.addAttribute("subjectList", adminService.selectSubject());
 		
-		
-		return "";
+		return "content/student/update_student_page";
 	}
 	
 	

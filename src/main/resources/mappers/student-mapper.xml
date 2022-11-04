@@ -11,6 +11,7 @@
 		<result column="ADDR_DETAIL" property="addrDetail"/>
 		<result column="STUDENT_TELL" property="studentTell"/>
 		<result column="REG_DATE" property="regDate"/>
+		<collection property="subjectVO" resultMap="adminMapper.subject" />
 	</resultMap>
 	
 	<resultMap type="kh.study.academy.student.vo.StudentLessonInfoVO" id="studentLessonInfo">
@@ -85,11 +86,15 @@
 <!-- 학생 리스트 조회 -->
 <select id="selectStuList" resultMap="student">
 	SELECT STUDENT_CODE 
-		,STUDENT_NAME
+		, STUDENT_NAME
 		, YEAR
 		<!-- 수강 과목, 반 -->
-	FROM STUDENT
-	ORDER BY STUDENT_CODE DESC
+		<!-- , SUBJECT_NAME -->
+	FROM STUDENT STU <!-- SUBJECT SUB, PAYMENT PAY, LESSONS LES
+	WHERE STU.STUDENT_CODE = PAY.STUDENT_CODE
+	AND LES.SUBJECT_CODE = SUB.SUBJECT_CODE 
+	AND PAY.LESSONS_CODE = LES.LESSONS_CODE -->
+	ORDER BY STUDENT_CODE ASC
 </select>
 
 	
