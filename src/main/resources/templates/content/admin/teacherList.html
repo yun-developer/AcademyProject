@@ -12,78 +12,106 @@
 
 <div layout:fragment="content">
 
-여기서부터 검색
+	여기서부터 검색
 
-<!--여기부터 검색 div  -->
+	<!--여기부터 검색 div  -->
 
-	<div class="row mb-5" style="background-color: yellow;">
-
-		<div class="col-xs-12 col-lg-4" style="background-color: green;">
-			<div class="input-group mb-2">
-				<span class="input-group-addon col-2">이름</span> 
-				<input type="text" class="form-control" id=""  autocomplete="off">											
-			</div>
+	<section>
+		<div class="info mb-2">
+			<i class="fas fa-exclamation-circle color-blue2"></i> <b> 검색조건</b>
 		</div>
-		<div class="col-xs-12 col-lg-4" style="background-color: red;">
-			<div class="input-group mb-2">
-				<span class="input-group-addon col-2">과목</span> 
-				<input type="text" class="form-control" id=""  autocomplete="off">											
+		<div class="row search-detail-form">
+			<div class="col-xs-12 col-lg-6">
+				<div class="input-group mb-2">
+					<span class="input-group-addon col-2">이름</span> 
+					<input type="text"class="form-control" id="" name="teacherName" autocomplete="off">
+				</div>
 			</div>
-		</div>
-		<div class="col-xs-12 col-lg-4" style="background-color: blue;">
-			<div class="input-group mb-2">
-				<span class="input-group-addon col-2">상품명</span> 
-				<input type="text" class="form-control" id=""  autocomplete="off">											
+			<div class="col-xs-12 col-lg-6">
+				<div class="input-group mb-2">
+					<span class="input-group-addon col-2">아이디</span> 
+					<input type="text" class="form-control" id="" name="teacherId" autocomplete="off">
+				</div>
 			</div>
-		</div>
-		<div class="col-xs-12 col-lg-4" style="background-color: green;">
-			<div class="input-group mb-2">
-				<span class="input-group-addon col-2">이름</span> 
-				<input type="text" class="form-control" id=""  autocomplete="off">											
+			<div class="col-xs-12 col-lg-6">
+				<div class="input-group mb-2">
+					<span class="input-group-addon col-2">전화번호</span> 
+					<input type="text" class="form-control" id="" name="teacherTell" autocomplete="off">
+				</div>
 			</div>
-		</div>
-		<div class="col-xs-12 col-lg-4" style="background-color: red;">
-			<div class="input-group mb-2">
-				<span class="input-group-addon col-2">상태</span> <input type="text"
-					class="form-control" id="" autocomplete="off">
+			<div class="col-xs-12 col-lg-6">
+				<div class="input-group mb-2">
+					<span class="input-group-addon col-2">아이디</span> 
+					<input type="text" class="form-control" id="" name="teacherId" autocomplete="off">
+				</div>
 			</div>
-		</div>
-		<div class="col-xs-12 col-lg-4" style="background-color: gray;">
-			<div class="input-group mb-2">
-				<span class="input-group-addon col-2">권한</span>
-				<div class="in-search-detail NewDataSelect mb-2">
-					<label class="radio-inline lg-mr-10 md-mr-15 rating-form">
-						<input type="radio" class="rating-chk focus" id="search_type1"
-						name="" value="">
-						<span class="lg-ml-5">미승인</span> <!-- 전체에도 밸류값 빈문자열 넣어줘야함(빈문자열은 null이 아님)  -->
-					</label> <label class="radio-inline lg-mr-10 md-mr-15 rating-form">
-						<input type="radio" class="rating-chk focus" id="search_type2"
-						name="itemStatus" value=""> 
-						<span class="lg-ml-5">승인</span>
-					</label> <label class="radio-inline lg-mr-10 md-mr-15 rating-form">
-						<input type="radio" class="rating-chk focus" id="search_type3"
-						name="itemStatus" value=""> <span
-						class="lg-ml-5">관리자</span>
-					</label>
+			<div class="col-xs-12 col-lg-6">
+				<div class="input-group mb-2">
+					<span class="input-group-addon col-2">수업일</span> 
+					<input type="date"
+						class="form-control" id="" name="fromDate" autocomplete="off">
+					<!--변수 인식하기 위해 value말고 th:value  -->
+					<input type="date" class="form-control" id="" name="toDate"
+						autocomplete="off">
+					<!--notion  -->
+				</div>
+			</div>
+			<div class="col-xs-12 col-lg-6">
+				<div class="input-group">
+					<span class="input-group-addon col-2">상태</span>
+					<div class="in-search-detail NewDataSelect mb-2">
+						<label class="radio-inline lg-mr-10 md-mr-15 rating-form">
+							<input type="radio" class="rating-chk focus" id="search_type1"
+							name="itemStatus" value=""> <span class="lg-ml-5">전체</span>
+							<!-- 전체에도 밸류값 빈문자열 넣어줘야함(빈문자열은 null이 아님)  -->
+						</label> <label class="radio-inline lg-mr-10 md-mr-15 rating-form">
+							<input type="radio" class="rating-chk focus" id="search_type2"
+							name="teacherStatus" value="Y"> 
+ 							<span class="lg-ml-5">재직중</span>
+						</label> <label class="radio-inline lg-mr-10 md-mr-15 rating-form">
+							<input type="radio" class="rating-chk focus" id="search_type3"
+							name="teacherStatus" value="N"> 
+							<span class="lg-ml-5">퇴직</span>
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-lg-6">
+				<div class="input-group">
+					<span class="input-group-addon col-2"> 담당과목</span> <select
+						class="form-select" aria-label="Default select example"
+						name="cateCode">
+						<option>전체</option>
+						<option>과목목록넣어</option>
+					</select>
+				</div>
+			</div>
+			<div class="col-xs-12 col-lg-6">
+				<div class="d-grid gap-2">
+					<div class="d-grid gap-2">
+						<button type="submit" name="btn-detail-search"
+							class="btn btn-outline-dark me-md-2">검색</button>
+					</div>
 				</div>
 			</div>
 		</div>
+	</section>
 
 
 
 
 
-	</div>
 
 
 <!--여기까지 검색 div  -->
 
 
-여기서부터 리스트
+
 
 <!--여기부터 리스트  -->
 
-<div class="row">
+<div class="row mt-5">
+여기서부터 리스트
 		<table class="table table-hover text-center align-middle ">
 			<!-- 세로로 가운데로 notion -->
 			<thead>
@@ -95,7 +123,7 @@
 					<th scope="col">아이디</th>
 					<th scope="col">담당과목</th>
 					<th scope="col">전화번호</th>
-					<th scope="col">상태</th>
+					<th scope="col">재직상태</th>
 					<th scope="col">경력</th>
 					<th scope="col" class="bi bi-arrow-through-heart-fill">권한</th>
 				</tr>
@@ -113,7 +141,7 @@
 						</td>
 						<td th:text="${teacher.teacherName}" th:onclick="teacherPopup();"></td>
 						<td th:text="${teacher.teacherId}"></td>
-						<td th:text="${teacher.subjectCode}"  th:value="${teacher.subjectCode}"></td>
+						<td th:text="${teacher.SubjectVO.subjectName}"  th:value="${teacher.subjectCode}"></td>
 						<td th:text="${teacher.teacherTell}"></td>
 						<td th:text="${teacher.teacherStatus}"></td>
 						<td th:text="${teacher.career}"></td>
