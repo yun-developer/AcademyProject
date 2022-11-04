@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/base_layout">
+
+<div layout:fragment="content">
+
+<div class="row">
+	<div class="col-12" style="margin-top: 50px;">
+		<table class="table table-striped text-center" style="margin-top: 20px;">
+				<thead>
+					<tr>
+						<th scope="col">이름</th>
+						<th scope="col">생일</th>
+						<th scope="col">학년</th>
+						<th scope="col">주소</th>
+						<th scope="col">전화번호</th>
+						<th scope="col">등록일</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>[[${stu.studentName}]]</td>
+						<td>[[${stu.birthday}]]</td>
+						<td>[[${stu.year}]]학년</td>
+						<td>[[${stu.addr}]]</td>
+						<td>[[${stu.studentTell}]]</td>
+						<td>[[${stu.regDate}]]</td>
+					</tr>
+				</tbody>
+		</table>
+	
+	
+	<div class="col-12" style="margin-top: 25px;">
+		<div class="row justify-content-center">
+			<span class="col-1">
+				<input type="button" value="수정" class="btn btn-warning form-control btn-sm" th:onclick="|location.href='@{stu/updateStu(studentCode=${stu.studentCode})}|">
+			</span>
+			<span class="col-1">
+				<input type="button" value="삭제" class="btn btn-warning form-control btn-sm" th:onclick="|location.href='@{/stu/deleteStu(studentCode=${stu.studentCode})}'|">
+			</span>
+		</div>
+	</div>
+	
+	</div>
+</div>
+
+
+
+
+
+	
+
+
+</div>
+</html>

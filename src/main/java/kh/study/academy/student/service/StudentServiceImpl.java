@@ -51,6 +51,13 @@ public class StudentServiceImpl implements StudentService{
 	}
 
 	
+	//학생 상세 조회
+	@Override
+	public StudentVO selectStuDetail(String studentCode) {
+		return sqlSession.selectOne("studentMapper.selectStuDetail", studentCode);
+	}
+
+	
 
 	 
 	 

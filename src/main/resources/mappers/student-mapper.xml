@@ -34,7 +34,7 @@
 	
 
 <select id="getNextStudentCode" resultType="String">
-	 SELECT 'STU_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(STUDENT_CODE, 5))),0) +1, 3, 0) 
+	 SELECT 'STUDENT_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(STUDENT_CODE, 9))),0) +1, 3, 0) 
 	  FROM STUDENT
 </select>
 
@@ -62,7 +62,7 @@
 
 <insert id="insertPayment">
 	<selectKey resultType="String" keyProperty="paymentCode" order="BEFORE">
-	   SELECT 'PAY_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(PAYMENT_CODE, 5))),0) +1, 3, 0) 
+	   SELECT 'PAYMENT_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(PAYMENT_CODE, 9))),0) +1, 3, 0) 
 	   FROM PAYMENT
 	</selectKey>
 <!-- 	<selectKey resultType="String" keyProperty="lessonsCode" order="BEFORE">
@@ -96,15 +96,16 @@
 	
 <!-- 학생 상세 조회 -->	
 <select id="selectStuDetail" resultMap="student">
-	SELECT STUDENT_NAME
-		, BIRTHDAY
+	SELECT STUDENT_CODE
+		, STUDENT_NAME
+		, TO_CHAR(BIRTHDAY, 'YYYY-MM-DD') AS BIRTHDAY
 		, YEAR
-		, ADDR
-		, ADDR_DETAIL
+		, ADDR||' ' ||ADDR_DETAIL AS ADDR
 		, STUDENT_TELL
-		, REG_DATE
+		, TO_CHAR(REG_DATE, 'YYYY-MM-DD') AS REG_DATE 
 	<!-- 수강과목, 수강 반, 담당강사 -->
 	FROM STUDENT
+	WHERE STUDENT_CODE = #{studentCode}
 </select>
 	
 	
@@ -125,8 +126,17 @@
 	WHERE STUDENT_CODE = #{studentCode}
 </delete>
 	
-	
-	
+
+<!-- 학생 수정 -->
+<!-- 년도 지나면 학년도 자동으로 업뎃되게,, 바꾸고 싶은데 -->
+<update id="updateStu">
+	UPDATE STUDENT
+	SET STUDENT_TELL = #{studentTell}
+		, ADDR = #{addr}
+		, ADDR_DETAIL = #{addrDetail}
+		<!-- 반, 과목 -->
+	WHERE STUDENT_CODE = #{studentCode}
+</update>
 	
 	
 	

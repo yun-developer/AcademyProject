@@ -4,7 +4,7 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="layout/base_layout">
 
-
+<!-- 페이징 라이브러리 사용..? -->
 
 
 <div layout:fragment="content">
@@ -14,7 +14,7 @@
 		</div>
 		
 		
-		<div class="col-12" style="margin-top: 50px;">
+		<div class="col-12" style="margin-top: 50px;" id="table_box_bootstrap">
 			<div>
 				총 <span th:text="${#lists.size(stuList)}" style="color:red"></span>명 입니다.
 			</div>
@@ -24,6 +24,7 @@
 						<th scope="col">NO</th>
 						<th scope="col">이름</th>
 						<th scope="col">학년</th>
+						<th scope="col">반</th>
 						<th scope="col"><input type="checkbox" id="checkAll" th:name="selectall" onclick='selectAll(this)'></th>
 					</tr>
 				</thead>
@@ -32,6 +33,7 @@
 						<td scope="row" th:text="${status.count}" th:name="stu"></td>
 						<td><a th:name="stu" th:href="@{/stu/detail(studentCode=${stu.studentCode})}">[[${stu.studentName}]]</a></td>
 						<td th:name="stu"th:text="${stu.year} + 학년"></td>
+						<td th:name="stu"></td>
 						<td><input type="checkbox" class="form-check-input chk" th:value=${stu.studentCode}  th:onclick='checkSelectAll(this)'></td>
 					</tr>
 				</tbody>
@@ -41,7 +43,7 @@
 				<input type="hidden" name="studentCodes" value="">
 				<div class="col-12">
 					<div class="row justify-content-end">
-						<div class="col-1"  style="margin-right: 4.8rem;">
+						<div class="col-1"  style="margin-right: 3.9rem;">
 					   		<button th:onclick="goDelete();" type="button" class="btn btn-warning form-control" >삭제</button>
 						</div>
 					</div>
@@ -52,7 +54,7 @@
 	</div>
 	
 	
-	
+<script th:src="@{/js/student/paginator.js}"></script>	
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>   
 
 <script type="text/javascript" th:src="@{/js/student/student_list.js}"></script>	

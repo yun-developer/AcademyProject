@@ -71,7 +71,10 @@ function goDelete() {
 
 
 
-
-
-
+var box = paginator({
+    table: document.getElementById("table_box_bootstrap").getElementsByTagName("table")[0],
+    box_mode: "list",
+});
+box.className = "box";
+document.getElementById("table_box_bootstrap").appendChild(box);
 

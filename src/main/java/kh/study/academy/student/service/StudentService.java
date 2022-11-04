@@ -17,4 +17,6 @@ public interface StudentService {
 	
 	void deleteCheckedStu(StudentVO studentVO);
 	void deleteStu(String studentCode);
+	
+	StudentVO selectStuDetail(String studentCode);
 }

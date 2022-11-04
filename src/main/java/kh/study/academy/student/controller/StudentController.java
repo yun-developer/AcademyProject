@@ -73,11 +73,29 @@ public class StudentController {
 	
 	//학생 상세 페이지
 	@GetMapping("/detail")
-	public String stuDetail(String studentCode) {
+	public String stuDetail(String studentCode, Model model) {
+		model.addAttribute("stu", studentService.selectStuDetail(studentCode));
 		
-		return "content/student/reg_student";
+		return "content/student/detail_student";
 	}
 	
+	
+	//상세페이지에서 학생 삭제
+	@GetMapping("/deleteStu")
+	public String deleteStu(String studentCode) {
+		studentService.deleteStu(studentCode);
+		
+		return "redirect:/stu/list";
+	}
+	
+	
+	//학생 정보 수정
+	@GetMapping("/updateStu")
+	public String updateStu(String studentCode) {
+		
+		
+		return "";
+	}
 	
 	
 }
