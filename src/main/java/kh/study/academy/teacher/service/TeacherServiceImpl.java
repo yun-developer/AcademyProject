@@ -39,6 +39,13 @@ public class TeacherServiceImpl implements TeacherService {
 		return sqlSession.selectOne("teacherMapper.idDoubleCheck", teacherVO);
 	}
 	
+	//회원 정보 조회
+	@Override
+	public TeacherVO selectTeacherInfo(TeacherVO teacherVO) {
+		
+		return sqlSession.selectOne("teacherMapper.selectTeacherInfo", teacherVO);
+	}
+	
 
 	
 	

@@ -6,6 +6,8 @@ import javax.annotation.Resource;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -64,7 +66,7 @@ public class TeacherController {
 		
 	}
 	
-	
+	//아이디 중복 체크 결과 Ajax
 	@ResponseBody
 	@PostMapping("/idDoubleCheckAjax")
 	public TeacherVO idDoubleCheckAjax(TeacherVO teacherVO) {
@@ -148,4 +150,24 @@ public class TeacherController {
 		
 		return null;
 	}
+	
+	//회원정보 조회
+	@GetMapping("/selectInfo")
+	public String selectTeacherInfo(Authentication authentication, Model model) {
+		
+		//주문자 정보
+		//security에 저장한 정보 사용
+		//로그인한 유저의 정보를 가져 옴
+		User user = (User)authentication.getPrincipal();
+		TeacherVO teacherVO = new TeacherVO();
+		teacherVO.setTeacherId(user.getUsername());
+		
+		model.addAttribute("teacher", teacherService.selectTeacherInfo(teacherVO));
+		
+		return "content/teacher/teacher_info";
+		
+	}
+	
+	
+	
 }

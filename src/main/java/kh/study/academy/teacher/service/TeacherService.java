@@ -17,5 +17,8 @@ public interface TeacherService {
 	//아이디 중복 검사
 	TeacherVO idDoubleCheck(TeacherVO teacherVO);
 	
+	//회원 정보 조회
+	TeacherVO selectTeacherInfo(TeacherVO teacherVO);
+	
 	
 }

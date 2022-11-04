@@ -4,6 +4,7 @@ package kh.study.academy.teacher.vo;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import kh.study.academy.admin.vo.SubjectVO;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -38,7 +39,7 @@ public class TeacherVO {
 	
 	private int check; 
 	
-	
+	private SubjectVO subjectVO;
 	
 	
 }
