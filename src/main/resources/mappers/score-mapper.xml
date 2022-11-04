@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="adminMapper">
+
+
+	<resultMap type="kh.study.academy.score.vo.ScoreVO"			id="score">
+		<id column="TEST_CODE" 									property="testCode" />
+		<result column="TEST_DATE" 								property="testDate" />
+		<result column="SCORE" 									property="score" />
+		<result column="RANK" 									property="rank" />
+		
+		
+		<!-- 아래 칼럼 수정 필요 -->
+		<result column="LESSON_INFO_CODE" 						property="lessonInfoCode" />
+		<result column="STUDENT_CODE" 							property="studentCode" />
+	</resultMap>
+
+	
+	
+	
+	<!-- 점수 등록 -->
+	<!-- 수정 중임..!!!!!  -->
+	<insert id="regScore">
+		<selectKey resultType="String" keyProperty="testCode" order="BEFORE">
+	         SELECT 'TEST_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(TEST_CODE, 5))), 0) + 1, 3, 0) 
+	         FROM TEST
+	     </selectKey>
+	INSERT INTO SCORE (
+		TEST_CODE
+		, TEST_DATE
+		, SCORE
+	) VALUES(
+		#{testCode}
+		, #{testDate}
+		, #{score}
+	)
+	</insert>
+
+
+
+
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
