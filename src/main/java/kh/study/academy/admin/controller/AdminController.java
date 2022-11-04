@@ -15,6 +15,7 @@ import kh.study.academy.admin.service.AdminService;
 import kh.study.academy.admin.vo.LessonRoomVO;
 import kh.study.academy.admin.vo.SubjectVO;
 import kh.study.academy.lesson.vo.LessonVO;
+import kh.study.academy.teacher.vo.TeacherVO;
 
 
 @Controller
@@ -42,7 +43,12 @@ public class AdminController {
 	
 	//교사 팝업으로 이동 ..
 	@RequestMapping("/popup")
-	public String pop() {
+	public String pop(String teacherCode, Model model) {
+		
+		
+	//	TeacherVO teacher = adminService.selectTeacheDetail(teacherCode);
+		
+		
 		return "content/admin/teacherPopup";
 	}
 	
