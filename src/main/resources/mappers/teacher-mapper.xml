@@ -4,14 +4,17 @@
 <mapper namespace="teacherMapper">
 	<resultMap type="kh.study.academy.teacher.vo.TeacherVO" id="teacher">
 		<id column="TEACHER_CODE" 							property="teacherCode" />
-		<result column="TEACHER_NAME" 								property="teacherName" />
-		<result column="TEACHER_TELL" 								property="teacherTell" />
+		<result column="TEACHER_NAME" 						property="teacherName" />
+		<result column="TEACHER_TELL" 						property="teacherTell" />
 		<result column="CAREER" 							property="career" />
 		<result column="TEACHER_ID" 						property="teacherId" />
 		<result column="TEACHER_PW" 						property="teacherPw" />
 		<result column="WRONG_PW_CNT" 						property="wrongPwCnt" />
 		<result column="TEACHER_STATUS" 					property="teacherStatus" />
 		<result column="TEACHER_ROLE" 						property="teacherRole" />
+		<result column="TEACHER_EMAIL" 						property="teacherEmail" />
+		<result column="TEACHER_GENDER" 					property="teacherGender" />
+		<result column="TEACHER_BIRTHDAY" 					property="teacherBirthday" />
 		
 		<!--아래 수정 필요 -->
 		<!--LESSONS,SUBJECT 매퍼 만들면 하기...? -->
@@ -38,6 +41,7 @@
 		    , SUBJECT_CODE
 		    , TEACHER_ID
 		    , TEACHER_PW
+		    , TEACHER_EMAIL
 		 
 		) VALUES (
 			#{teacherCode}
@@ -47,6 +51,7 @@
 		    , #{subjectCode}
 		    , #{teacherId}
 		    , #{teacherPw}
+		    , #{teacherEmail}
 		)
 		
 	</insert>

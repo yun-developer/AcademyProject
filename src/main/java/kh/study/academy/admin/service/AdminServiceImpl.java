@@ -1,6 +1,7 @@
 package kh.study.academy.admin.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,21 @@ public class AdminServiceImpl implements AdminService{
 	public List<TeacherVO> selectTeacherList() {
 		
 		return sqlSession.selectList("adminMapper.selectTeacherList");
+	}
+	
+	//교사 리스트 페이지에서 교사 검색
+	@Override
+	public List<TeacherVO> searchTeacher(Map<String, String> map) {
+	
+		return sqlSession.selectList("adminMapper.searchTeacher", map);
+	}
+	
+	// 교사 리스트에서 아이디 클릭 시 해당 교사 상세정보 조회 
+	//수정중
+	@Override
+	public TeacherVO selectTeacherDetail(TeacherVO teacherVO) {
+		
+		return sqlSession.selectOne("adminMapper.selectTeacherDetail", teacherVO);
 	}
 
 	
@@ -78,6 +94,10 @@ public class AdminServiceImpl implements AdminService{
 	public void deleteLessonRoom(LessonRoomVO lessonRoomVO) {
 		sqlSession.delete("adminMapper.deleteLessonRoom", lessonRoomVO);
 	}
+
+
+
+
 
 	
 

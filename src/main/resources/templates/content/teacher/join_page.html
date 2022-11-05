@@ -64,6 +64,14 @@
 		    	
 		    </div>
 		  </div>
+		  <div class="mb-3 row justify-content-center text-center">
+		    <label for="inputTeacherEmail" class="col-sm-2 col-form-label">이메일</label>
+		    <div class="col-sm-5">
+		      <input type="email" class="form-control" id="inputTeacherEmail"  name="teacherEmail" >
+		      <span class="hasError" th:if="${#fields.hasErrors('teacherEmail')}" th:errors="*{teacherEmail}"></span>
+		    	
+		    </div>
+		  </div>
 		  <div class="mb-3 row justify-content-center">
 		  	<div class="col-sm-7 border-top">
 		     <h5 class="pt-3" style="padding-left: 50px;"> 선택항목</h5>
@@ -74,6 +82,15 @@
 		    <label for="inputCareer" class="col-sm-2 col-form-label">경력사항</label>
 		    <div class="col-sm-5">
 		      <input type="text" class="form-control" id="inputCareer" name="career" placeholder="예) 입시학원 3년 강의, 과외 2년">
+		    </div>
+		  </div>
+		 
+		 <!-- 성별 필수/선택 묻고 하려고 아직 추가 안했음!!  -->
+		 
+		  <div class="mb-3 row justify-content-center text-center">
+		    <label for="inputTeacherBirthday" class="col-sm-2 col-form-label">생년월일</label>
+		    <div class="col-sm-5">
+		      <input type="date" class="form-control" id="inputTeacherBirthday" name="teacherBirthday" >
 		    </div>
 		  </div>
 		</form>

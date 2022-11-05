@@ -1,6 +1,7 @@
 package kh.study.academy.admin.service;
 
 import java.util.List;
+import java.util.Map;
 
 import kh.study.academy.admin.vo.LessonRoomVO;
 import kh.study.academy.admin.vo.SubjectVO;
@@ -18,8 +19,12 @@ public interface AdminService {
 	//교사 리스트 조회
 	List<TeacherVO> selectTeacherList();
 	
+	//교사 리스트 페이지에서 교사 검색
+	List<TeacherVO> searchTeacher(Map<String, String> map);
 	
-	
+	// 교사 리스트에서 아이디 클릭 시 해당 교사 상세정보 조회 
+	//수정중
+	TeacherVO selectTeacherDetail(TeacherVO teacherVO);
 	
 	
 	

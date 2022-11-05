@@ -42,4 +42,16 @@ public class TeacherVO {
 	private SubjectVO subjectVO;
 	
 	
+	//이메일 형식 수정필요
+	@NotBlank(message = "* 이메일은 필수 입력입니다.")
+	private String teacherEmail;
+	
+	
+	//젠더는 not null 아닌데, 그냥 필수 입력인게 좋지않을까..? 조원들에게 의견묻기..!
+	private String teacherGender;
+	private String teacherBirthday;
+	
+	
+  
+	
 }

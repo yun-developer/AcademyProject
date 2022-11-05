@@ -2,6 +2,7 @@ package kh.study.academy.admin.controller;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -10,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kh.study.academy.admin.service.AdminService;
 import kh.study.academy.admin.vo.LessonRoomVO;
@@ -30,11 +32,13 @@ public class AdminController {
 	
 	//교사리스트 페이지로 이동
 	@GetMapping("/teacherList")
-	public String teacherList(Model model) {
+	public String teacherList(@RequestParam Map<String, String> paramMap , Model model) {
 
-		//교사리스트 조회
+		//교사리스트
 		model.addAttribute("teacherList", adminService.selectTeacherList());
-
+		
+		//교사 검색
+		model.addAttribute("searchTeacher", adminService.searchTeacher(paramMap));
 
 		return "content/admin/teacherList";
 
@@ -45,21 +49,28 @@ public class AdminController {
 	@RequestMapping("/popup")
 	public String pop(String teacherCode, Model model) {
 		
+	// 왜 오류? 일단 수정중	
+	//	model.addAttribute(teacherCode, adminService.selectTeacherDetail(teacherCode));
 		
-	//	TeacherVO teacher = adminService.selectTeacheDetail(teacherCode);
 		
 		
 		return "content/admin/teacherPopup";
 	}
 	
+	//통계 페이지로 이동 
+	
+	@GetMapping("/statistics")
+	public String statistics(Model model) {
+
+		
+
+
+		return "content/admin/statistics";
+
+	}
 	
 	
 	
-	
-	
-	////////////////////////////////////////////
-	///////위에 내 구역~~~~!!!!!////////////////
-	////////////////////////////////////////////
 	
 	
 /////<과목 등록 관련>//////////////////////////////////////////////////////////// 
