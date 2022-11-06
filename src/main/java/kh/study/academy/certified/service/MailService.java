@@ -11,6 +11,7 @@ import kh.study.academy.certified.vo.MailVO;
 
 @Service
 public class MailService {
+	
 	@Autowired
 	private JavaMailSender javaMailSender;
 
@@ -57,6 +58,9 @@ public class MailService {
             str += charSet[idx];
         }
         return str;
+        
     }
+	
+	
 
 }

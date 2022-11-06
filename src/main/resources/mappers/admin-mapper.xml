@@ -30,7 +30,7 @@
 
 
 
-<!-- /////<교시 등록 관련>//////////////////////////////////////////////////////////// -->
+<!-- /////<교사 등록 관련>//////////////////////////////////////////////////////////// -->
 	
 	
 	<!-- 교사리스트 조회 -->
@@ -53,29 +53,28 @@
 	
 	<!--교사리스트 페이지에서 교사 조회 -->
 	<!--LESSONS_CODE, SUBJECT_CODE 및 WHERE 절 수정중-->
-	<select id="searchTeacher" resultMap="teacherMapper.teacher">
+	<select id="searchTeacher" resultMap="teacherMapper.teacher" parameterType="hashMap">
 		SELECT TEACHER_CODE
 			, TEACHER_NAME
 			, TEACHER_TELL
 			, CAREER
-			, SUBJECT_CODE
 			, TEACHER_ID
 			, TEACHER_PW
 			, TEACHER_STATUS
-			, LESSONS_CODE
-			, SUBJECT_CODE
+			<!-- , LESSONS_CODE -->
+			, T.SUBJECT_CODE
 			, TEACHER_ROLE
 			, TEACHER_GENDER
 			, TEACHER_BIRTHDAY
 			, TEACHER_EMAIL
-		FROM TEACHER
-		<!-- WHERE 
+		FROM TEACHER T, SUBJECT S
+		WHERE T.SUBJECT_CODE = S.SUBJECT_CODE
 		<if test="teacherName != null and !teacherName.equals('')">
-		TEACHER_NAME LIKE ('%'||#{teacherName}||'%')
+		AND TEACHER_NAME LIKE ('%'||#{teacherName}||'%')
 		</if>
-		<if test="teacherStatus !=null and !teacherStatus.equals('')">
+		<!-- <if test="teacherStatus !=null and !teacherStatus.equals('')">
 		AND TEACHER_STATUS = #{teacherStatus}
-		</if> --> 
+		</if> -->
 	</select>
 	
 	
@@ -93,8 +92,23 @@
 			, LESSONS_CODE
 			, SUBJECT_CODE
 			, (SELECT SUBJECT_NAME FROM SUBJECT WHERE SUBJECT_CODE = T.SUBJECT_CODE) AS SUBJECT_NAME
+			, TEACHER_GENDER
+			, TEACHER_BIRTHDAY
+			, TEACHER_EMAIL
 		FROM TEACHER T
+		WHERE TEACHER_CODE = #{teacherCode}
 	</select>
+	
+	
+	<!--교사 상태 변경  -->
+	<update id="changeTeacherStatus">
+		UPDATE TEACHER
+		SET
+		TEACHER_STATUS = #{teacherStatus}
+		WHERE TEACHER_CODE = #{teacherCode}
+	</update>
+	
+	
 	
 <!-- /////<과목 등록 관련>//////////////////////////////////////////////////////////// -->
 	

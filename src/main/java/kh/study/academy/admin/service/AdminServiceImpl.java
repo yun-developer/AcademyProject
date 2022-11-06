@@ -43,11 +43,16 @@ public class AdminServiceImpl implements AdminService{
 	// 교사 리스트에서 아이디 클릭 시 해당 교사 상세정보 조회 
 	//수정중
 	@Override
-	public TeacherVO selectTeacherDetail(TeacherVO teacherVO) {
+	public TeacherVO selectTeacherDetail(String teacherCode) {
 		
-		return sqlSession.selectOne("adminMapper.selectTeacherDetail", teacherVO);
+		return sqlSession.selectOne("adminMapper.selectTeacherDetail", teacherCode);
 	}
-
+	
+	@Override
+	public void changeTeacherStatus(TeacherVO teacherVO) {
+		sqlSession.update("adminMapper.changeTeacherStatus",teacherVO);
+		
+	}
 	
 	
  /////<과목 등록 관련>//////////////////////////////////////////////////////////// 
@@ -94,6 +99,8 @@ public class AdminServiceImpl implements AdminService{
 	public void deleteLessonRoom(LessonRoomVO lessonRoomVO) {
 		sqlSession.delete("adminMapper.deleteLessonRoom", lessonRoomVO);
 	}
+
+
 
 
 

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kh.study.academy.admin.service.AdminService;
 import kh.study.academy.admin.vo.LessonRoomVO;
@@ -31,9 +32,18 @@ public class AdminController {
 	
 	
 	//교사리스트 페이지로 이동
-	@GetMapping("/teacherList")
+	@RequestMapping("/teacherList")
 	public String teacherList(@RequestParam Map<String, String> paramMap , Model model) {
 
+		
+		
+		//System.out.println("이름 : " + paramMap.get("teacherName"));
+		
+		
+		
+		
+		
+		
 		//교사리스트
 		model.addAttribute("teacherList", adminService.selectTeacherList());
 		
@@ -47,14 +57,23 @@ public class AdminController {
 	
 	//교사 팝업으로 이동 ..
 	@RequestMapping("/popup")
-	public String pop(String teacherCode, Model model) {
+	public String pop( String teacherCode, Model model) {
+	
 		
-	// 왜 오류? 일단 수정중	
-	//	model.addAttribute(teacherCode, adminService.selectTeacherDetail(teacherCode));
+		System.out.println("@@@@@@@@@@"+teacherCode);
+		model.addAttribute("teacherDetail", adminService.selectTeacherDetail(teacherCode));
 		
-		
+
 		
 		return "content/admin/teacherPopup";
+	}
+	
+	//교사 상태 변경 클릭시
+	//수정 중 아직 Ajax 안 만들었음
+	@ResponseBody
+	@PostMapping("/changeTeacherStatusAjax")
+	public void changeTeacherStatus(TeacherVO teacherVO) {
+		adminService.changeTeacherStatus(teacherVO);
 	}
 	
 	//통계 페이지로 이동 

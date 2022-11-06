@@ -24,8 +24,10 @@ public interface AdminService {
 	
 	// 교사 리스트에서 아이디 클릭 시 해당 교사 상세정보 조회 
 	//수정중
-	TeacherVO selectTeacherDetail(TeacherVO teacherVO);
+	TeacherVO selectTeacherDetail(String teacherCode);
 	
+	//팝업 페이지에서 교사 상태 변경
+	void changeTeacherStatus(TeacherVO teacherVO);
 	
 	
 	
