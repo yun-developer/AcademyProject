@@ -36,14 +36,6 @@ const chks = document.querySelectorAll('.chk');
 
 // 체크박스 하나 해제되면 제목줄 체크박스 해제
 
-// 과목등록 페이지에서 빈칸에서 등록버튼 클릭 시
-function rdgSubject(){
-
-	alert('과목을 작성해주세요');
-
-
-}
-
 
 // 과목등록 페이지에서 삭제버튼 클릭 시
 function subjectDeleteAjax(){
@@ -69,4 +61,4 @@ function subjectDeleteAjax(){
 	
 	subjectForm.submit();
 	
-}
+	}

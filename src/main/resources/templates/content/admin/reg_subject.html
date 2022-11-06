@@ -13,12 +13,12 @@
 					<h6>과목 등록</h6>
 				</div>
 				<div class="col-12 mb-3">
-					<form class="row g-3" th:action="@{/admin/regSubject}" method="post">
+					<form class="row g-3" th:action="@{/admin/regSubject}" method="post" >
                   <div class="col-10">
                      <input type="text" name="subjectName" class="form-control" id="" placeholder="Username">
                   </div>
                     <div class="col-2">
-                     <button type="submit" th:onclick="rdgSubject();" class="btn btn-primary">등록</button>
+                     <button type="submit" class="btn btn-primary">등록</button>
                      
                     </div>
               	 </form>

@@ -100,7 +100,7 @@ public class AdminController {
 	@PostMapping("/regSubject")
 	public String regSubject(SubjectVO subjectVO) {
 		adminService.insertSubject(subjectVO);
-
+        
 		return "redirect:/admin/selectSubject";
 	}
 	// 내가 등록한 과목들을 조회 (과목등록페이지로 이동)
