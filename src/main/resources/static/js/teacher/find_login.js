@@ -1,5 +1,3 @@
-
-
 //아이디 찾기 버튼을 누르면 진행되는 함수
 function findLoginIdAjax(){
 
@@ -59,9 +57,178 @@ function findLoginIdAjax(){
 }
 
 
+
+
+
+
+
+
 //비밀번호 찾기 버튼을 누르면 진행되는 함수
 
 function findLoginPwAjax(){
 	
 	
 }
+
+
+
+
+
+//이메일 or 전화번호로 찾기 누를 때 진행/////////////////////////////////
+
+
+
+//이메일로 찾기 눌렀을 때 
+$('#findByEmail').click(function(){
+	
+		alert(11);
+	let str = '';
+	
+	//ajax start
+	$.ajax({
+		url: '/teacher/findByEmailAjax', //요청경로
+		type: 'post',
+		data: {}, //필요한 데이터
+		success: function(result) {
+			str += `	
+			  `;
+			  
+			  
+			 const changeFindPwDiv = document.querySelector('#changeFindPwDiv');
+
+			 changeFindPwDiv.innerHTML = ''; /*내용을 지우는것*/
+
+
+			 changeFindPwDiv.insertAdjacentHTML('beforeend', str);
+			  
+			  
+		},
+		error: function() {
+			alert('실패');
+		}
+	});
+//ajax end
+
+
+	
+	
+});
+
+
+//전화번호로 찾기 눌렀을 때 
+$('#findByTell').click(function(){
+	alert(22);
+	
+	let str = '';
+	
+	//ajax start
+	$.ajax({
+		url: '/teacher/findByTellAjax', //요청경로
+		type: 'post',
+		data: {}, //필요한 데이터
+		success: function(result) {
+			
+			str += `
+			  `;
+			  
+			  
+			 const changeFindPwDiv = document.querySelector('#changeFindPwDiv');
+
+			 changeFindPwDiv.innerHTML = ''; /*내용을 지우는것*/
+
+
+			 changeFindPwDiv.insertAdjacentHTML('beforeend', str);
+		},
+		error: function() {
+			alert('실패');
+		}
+	});
+//ajax end
+
+	
+	
+	
+	
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////
+///////////////////////이벤트///////////////////////////////
+////////////////////////////////////////////////////////////
+
+//비밀번호 찾기에서 연락처로 문자전송을 눌렀을 때 
+
+ $('#sendPhoneNumber').click(function(){
+	
+	
+	//teacherName 값 
+	const teacherName = document.querySelector('#teacherName').value;
+	//teacherTell 값
+	const teacherId = document.querySelector('#teacherId').value;
+	
+	//값 나오는지 확인하고 지우자
+	
+	
+	
+	//아이디 + 이름 + 전화번호가 동시에 맞아야 문자 보내야지..번호만 넣으면 보내지잖아..
+	/*if(){
+		
+	}
+	else{
+		
+	}*/
+	
+	
+    let teacherTell = $('#teacherTell').val();
+    Swal.fire('인증번호 발송 완료!')
+
+
+    $.ajax({
+        type: "GET",
+        url: "/sms/sendSMS",
+        data: {
+            "teacherTell" : teacherTell
+        },
+        success: function(res){
+            $('#checkBtn').click(function(){
+                if($.trim(res) ==$('#inputCertifiedNumber').val()){
+                    Swal.fire(
+                        '인증성공!',
+                        '휴대폰 인증이 정상적으로 완료되었습니다.',
+                        'success'
+                    )
+                  /*   $.ajax({
+                        type: "GET",
+                        url: "/update/phone",
+                        data: {
+                            "teacherTell" : $('#teacherTell').val()
+                        }
+                    })
+                    document.location.href="/home"; */
+                }else{
+                    Swal.fire({
+                        icon: 'error',
+                        title: '인증오류',
+                        text: '인증번호가 올바르지 않습니다!',
+                        footer: '<a href="/teacher/findLoginPage">다시 인증하기</a>'
+                    })
+                }
+            })
+
+
+        }
+    })
+});

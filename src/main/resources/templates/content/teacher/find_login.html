@@ -18,7 +18,7 @@
 
 			<h2>아이디 찾기</h2>
 			<p class="tip" style="color: #999999; font-size: 14px;">
-				-회원정보에 저장된 이름/연락처 로 아이디를 찾을 수 있습니다
+				-회원정보에 저장된 이름/전화번호 로 아이디를 찾을 수 있습니다
 			</p>
 			<div class="row mb-3">
 				<div class="col-sm-12">
@@ -27,7 +27,7 @@
 			</div>
 			<div class="row mb-3">
 				<div class="col-sm-12">
-					<input type="text" class="form-control" id="findTell" placeholder="연락처">
+					<input type="text" class="form-control" id="findTell" placeholder="전화번호">
 				</div>
 			</div>
 			<div class="d-grid gap-2 mb-3">
@@ -38,7 +38,7 @@
 	</div>
 
 
-	<!-- 아래 자스에 넣을 부분 -->
+	<!-- findLoginIdAjax()가 실행되면서 생기는 div -->
 	<div id="findResult">
 		<!--여기서부터  -->
 		
@@ -52,11 +52,23 @@
 
 			<h2>비밀번호 찾기</h2>
 			<p class="tip" style="color: #999999; font-size: 14px; " >
-			-수정중....<br>
-			-아이디/이름/연락처 로 아이디를 찾을 수 있습니다<br>
-			-아이디가 확인되면 임시비밀번호를 보내드립니다<br> 
+			-아이디/이름/이메일 또는 아이디/이름/전화번호로 아이디를 찾을 수 있습니다<br>
+			-회원정보가 확인되면 임시비밀번호를 보내드립니다<br> 
 			-로그인 후 개인정보수정에서 비밀번호를 수정해주세요.
 			</p>
+			<div class="row mb-3">
+				<div class="col-sm-6">
+					<h5><span id="findByEmail">이메일로 찾기</span></h5>
+				</div>
+				<div class="col-sm-6">
+					<h5><span id="findByTell">전화번호로 찾기</span></h5>
+				</div>
+			</div>
+			<!-- 이메일 or 전화번호로 찾기 누를 때마다 달라져야 하는 div -->
+			<div id="changeFindPwDiv">
+			
+			</div>
+			<!-- <!--여기까지 이메일 or 전화번호로 찾기 누를 때마다 달라져야 하는 div  -->
 			<div class="row mb-3">
 				<div class="col-sm-12">
 					<input type="text" class="form-control" name="teacherId"
@@ -70,22 +82,32 @@
 				</div>
 			</div>
 			<div class="row mb-3">
-				<div class="col-sm-9">
+				<div class="col-sm-12">
 					<input type="text" class="form-control" name="teacherTell"
 						id="teacherTell" placeholder="연락처">
 				</div>
-					<div class="col-sm-3">
-						<button id="sendPhoneNumber" class="btn btn-primary"
-						type="button" >인증번호전송</button>
-					</div>
 			</div>
-			<div class="">
-			
+			<div class="row mb-3">
+				<div class="d-grid gap-2 mb-3">
+					<button th:onclick="" id="sendPhoneNumber" class="btn btn-primary"
+						type="button">문자 전송</button>
+				</div>
 			</div>
-			
-			
-			
-			<!-- 여기부터 -->
+			아래 div도 ajax...?로? 해야 할듯?ㅠㅠ 
+			<div class="row mb-3">
+				<div class="col-sm-12">
+					<input type="text" class="form-control" name="inputCertifiedNumber"
+						id="inputCertifiedNumber" placeholder="인증번호">
+				</div>
+			</div>
+			<div class="row mb-3">	
+				<div class="d-grid gap-2 mb-3">
+					<button id="checkBtn" class="btn btn-primary" type="button">확인</button>
+				</div>
+			</div>
+
+
+			여기부터
 			<form action="/mail/send" method="post">
 				<div class="row mb-3">
 					<div class="col-sm-9">
@@ -99,108 +121,65 @@
 				</div>
 				</div>
 			</form>
-	<!--  -->
-			<!--임시 비번 모달-->
-			<div id="sendEmailModal" class="modal fade">
-				<div class="modal-dialog modal-dialog-centered modal-login">
-					<div class="modal-content">
-						<div class="modal-body">
+			 
+			
 
-							<div class="container my-auto">
-								<div class="row">
-									<div class="card z-index-0 fadeIn3 fadeInBottom">
-										<div
-											class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-											<div
-												class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
-												<h4
-													class="text-black font-weight-bolder text-center mt-2 mb-0">비밀번호
-													찾기</h4>
-											</div>
-										</div>
-										<div class="card-body">
-											<form role="form" class="text-start"
-												action="/member/sendEmail" method="post" name="sendEmail">
-												<div class="text-center">
-													<p>입력한 이메일로 임시 비밀번호가 전송되었습니다</p>
-													<p>로그인 후 개인정보수정에서 비밀번호를 수정해주세요</p>
-													
-													<button type="button"
-														class="btn bg-gradient-primary w-100 my-4 mb-2" id="">확인</button>
-												</div>
-											</form>
-										</div>
+			<!--여기까지 테스트 00-->
+			<!-- 이 ajax 안쓰고 있는데 지울까? 일단 냅둠 -->
+			<!-- <div class="d-grid gap-2 mb-3">
+				<button th:onclick="findLoginPwAjax();" class="btn btn-primary"
+					type="button">확인</button>
+			</div> -->
+		</div>
+	</div>
+
+ <!-- 자스 임시 여기부터 -->
+ 
+
+ 
+ <!-- 여기까지 임시 -->
+	<!--임시 비번 모달-->
+	<div id="sendEmailModal" class="modal fade">
+		<div class="modal-dialog modal-dialog-centered modal-login">
+			<div class="modal-content">
+				<div class="modal-body">
+
+					<div class="container my-auto">
+						<div class="row">
+							<div class="card z-index-0 fadeIn3 fadeInBottom">
+								<div
+									class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+									<div
+										class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
+										<h4
+											class="text-black font-weight-bolder text-center mt-2 mb-0">비밀번호
+											찾기</h4>
 									</div>
+								</div>
+								<div class="card-body">
+									<form role="form" class="text-start" action="/member/sendEmail"
+										method="post" name="sendEmail">
+										<div class="text-center">
+											<p>입력한 이메일로 임시 비밀번호가 전송되었습니다</p>
+											<p>로그인 후 개인정보수정에서 비밀번호를 수정해주세요</p>
+
+											<button type="button"
+												class="btn bg-gradient-primary w-100 my-4 mb-2" id="">확인</button>
+										</div>
+									</form>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<!--  -->			
-			
-
-			<!--여기까지 테스트-->
-			<div class="d-grid gap-2 mb-3">
-				<button th:onclick="findLoginPwAjax();" class="btn btn-primary"
-					type="button">확인</button>
-			</div>
 		</div>
 	</div>
-
- <!-- 자스 임시 여기부터 -->
- 
- <script>
-        $('#sendPhoneNumber').click(function(){
-            let phoneNumber = $('#teacherTell').val();
-            Swal.fire('인증번호 발송 완료!')
-
-
-            $.ajax({
-                type: "GET",
-                url: "/sms/sendSMS",
-                data: {
-                    "teacherTell" : teacherTell
-                },
-                success: function(res){
-                    $('#checkBtn').click(function(){
-                        if($.trim(res) ==$('#inputCertifiedNumber').val()){
-                            Swal.fire(
-                                '인증성공!',
-                                '휴대폰 인증이 정상적으로 완료되었습니다.',
-                                'success'
-                            )
-
-                            $.ajax({
-                                type: "GET",
-                                url: "/update/phone",
-                                data: {
-                                    "teacherTell" : $('#teacherTell').val()
-                                }
-                            })
-                            document.location.href="/home";
-                        }else{
-                            Swal.fire({
-                                icon: 'error',
-                                title: '인증오류',
-                                text: '인증번호가 올바르지 않습니다!',
-                                footer: '<a href="/home">다음에 인증하기</a>'
-                            })
-                        }
-                    })
-
-
-                }
-            })
-        });
-</script>
- 
- <!-- 여기까지 임시 -->
+	<!--  -->
 
 
 
-
-
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script> 
 	<!-- jquery 문법 로딩 -->
 	<!--순서 잘 맞춰서 적어야 함  -->
 	<script src="https://code.jquery.com/jquery-latest.min.js"></script>

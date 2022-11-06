@@ -137,7 +137,20 @@ public class TeacherController {
 	}
 	
 	
+	//이메일로 찾기 눌렀을 때 
+	@ResponseBody
+	@PostMapping("/findByEmailAjax")
+	public void findByEmailAjax() {
+		
+	}
 	
+	
+	//전화번호로 찾기 눌렀을 때 
+	@ResponseBody
+	@PostMapping("/findByTellAjax")
+	public void findByTellAjax() {
+		
+	}
 	
 	
 	//비밀번호 정보 찾기 에이작스
