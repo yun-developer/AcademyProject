@@ -101,7 +101,7 @@
 	
 	
 	<!--교사 상태 변경  -->
-	<update id="changeTeacherStatus">
+ 	<update id="changeTeacherStatus">
 		UPDATE TEACHER
 		SET
 		TEACHER_STATUS = #{teacherStatus}

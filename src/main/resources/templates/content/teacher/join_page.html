@@ -67,7 +67,7 @@
 		  <div class="mb-3 row justify-content-center text-center">
 		    <label for="inputTeacherEmail" class="col-sm-2 col-form-label">이메일</label>
 		    <div class="col-sm-5">
-		      <input type="email" class="form-control" id="inputTeacherEmail"  name="teacherEmail" >
+		      <input type="email" class="form-control" id="inputTeacherEmail"  name="teacherEmail" placeholder="수정중..똑같은 이메일 넣으면 오류남!">
 		      <span class="hasError" th:if="${#fields.hasErrors('teacherEmail')}" th:errors="*{teacherEmail}"></span>
 		    	
 		    </div>

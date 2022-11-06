@@ -5,86 +5,102 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz.thymeleaf/layout"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>	
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-	<link href="/css/common.css" rel="stylesheet"> <!--위치 중요함 -->
+<head>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+	crossorigin="anonymous">
+<link href="/css/common.css" rel="stylesheet">
+<!--위치 중요함 -->
 
 </head>
 <body>
-<div>
+	<div>
 
-<!-- 교사 정보  div 여기부터 -->
-<div class="container text-center">
-  <h2>교사 정보</h2>
-  <div class="row">
-    <div class="col-sm-3" style="background-color: yellow;">
-    	<div> 
-    		<img th:src=@{/images/선생님.png} class="img-thumbnail" width="100%">
-    	</div>
-    </div>
-    <div class="col-sm-9" style="background-color: red;">
-      <div class="row">
-        <div class="col-6 col-sm-12 " >
-          <div class="input-group mb-2">
-				<span class="input-group-addon col-2">나오냐[[${teacherCode}]]</span> 
-				<input type="text" th:text="${teacherCode}" class="form-control" id=""  autocomplete="off" readonly>
+		<!-- 교사 정보  div 여기부터 -->
+		<div class="card mb-5 mx-auto" style="max-width: 1000px;">
+			<div class="card-body">
+				<h3 class="card-title">교사정보</h3>
+				<p class="card-text ">
+					<small class="text-muted">미승인 교사의 상태를 변경할 수 있습니다</small>
+				</p>
+				<div class="row">
+					<div class="col-2">
+						<img th:src=@{/images/선생님.png} class="img-thumbnail" width="100%">				
+					</div>
+					<div class="col-10">
+						<h5>승인상태</h5>
+						<div class="row mb-2">
+							<div class="col-2 text-secondary">권한</div>
+							<div class="col" th:text="${teacherDetail.teacherRole}"></div>
+						</div>
+					</div>
+
+				</div>
+				
+				<div class="card-text">
+					<h5>상세 정보</h5>
+					<div class="row mb-2 align-items-center">
+						<div class="col-2 text-secondary">이름</div>
+						<div class="col" th:text="${teacherDetail.teacherName}"></div>
+					</div>
+					<div class="row mb-2 align-items-center">
+						<div class="col-2 text-secondary">성별</div>
+						<div class="col" th:text="${teacherDetail.teacherGender}"></div>
+					</div>
+					<div class="row mb-2 align-items-center">
+						<div class="col-2 text-secondary">이메일</div>
+						<div class="col" th:text="${teacherDetail.teacherEmail}"></div>
+					</div>
+
+					<div class="row mb-2 align-items-center">
+						<div class="col-2 text-secondary">연락처</div>
+						<div class="col" th:text="${teacherDetail.teacherTell}"></div>
+					</div>
+
+					<div class="row mb-2">
+						<div class="col-2 text-secondary">강의과목</div>
+						<div class="col" th:text="${teacherDetail.SubjectVO.subjectName}"></div>
+
+					</div>
+
+					<div class="row mb-2">
+						<div class="col-2 text-secondary">경력사항</div>
+						<div class="col" th:text="${teacherDetail.career}"></div>
+					</div>
+					<div class="row mb-2">
+						<div class="col-2 text-secondary">생년월일</div>
+						<div class="col" th:text="${teacherDetail.teacherBirthday}"></div>
+					</div>
+
+					<div class="row mb-4">
+						<div class="col-2 text-secondary">재직상태</div>
+						<div class="col" th:text="${teacherDetail.teacherStatus}"></div>
+					</div>
+
+					
+
+				</div>
 			</div>
-        </div>
-        <div class="col-6 col-sm-12 " >
-          <div class="input-group mb-2">
-				<span class="input-group-addon col-2">아이디</span> 
-				<input th type="text" class="form-control" id="" autocomplete="off" readonly>
-			</div>
-        </div>
-        <div class="col-6 col-sm-12 " >
-          <div class="input-group mb-2">
-				<span class="input-group-addon col-2">담당과목</span> 
-				<input type="text" class="form-control" id="" autocomplete="off" readonly>
-			</div>
-        </div>
-        <div class="col-6 col-sm-12 " >
-          <div class="input-group mb-2">
-				<span class="input-group-addon col-2">전화번호</span> 
-				<input type="text" class="form-control" id="" autocomplete="off" readonly>
-			</div>
-        </div>
-        <div class="col-6 col-sm-12 " >
-          <div class="input-group mb-2">
-				<span class="input-group-addon col-2">재직상태</span> 
-				<input type="text" class="form-control" id="" autocomplete="off" readonly>
-			</div>
-        </div>
-        <div class="col-6 col-sm-12 " >
-          <div class="input-group mb-2">
-				<span class="input-group-addon col-2">경력</span> 
-				<input type="text" class="form-control" id="" autocomplete="off" readonly>
-			</div>
-        </div>
-        <div class="col-6 col-sm-12 " >
-          <div class="input-group mb-2">
-				<span class="input-group-addon col-2">권한</span> 
-				<span class="col-4"><input type="text" class="form-control" id="" autocomplete="off" readonly></span>
-				<span class="col-6"><button class="btn btn-outline-dark me-md-2">변경</button></span>
-			</div>
-        </div>
-      
-      </div>
-   
-    </div>
-  </div>
-</div>
+		</div>
 
 
 
-<div>
-	<div th:text="${teacherDetail}"></div>
-	<button>닫기</button>
-</div>
 
+		<!-- 임시 -->
+		<div>
+			<div th:text="${teacherDetail}"></div>
+			<button>닫기</button>
+		</div>
+		<!-- 임시 여기까지-->
 
-</div>
+	</div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+		crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 </body>
 </html>
