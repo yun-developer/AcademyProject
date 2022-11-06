@@ -167,4 +167,21 @@ public class AdminController {
 		}
 
 	
+
+
+
+
+/////<학급 편성 등록 관련>//////////////////////////////////////////////////////////// 
+
+
+		@PostMapping("/regLessonInfo")
+			public String regLessonInfo(LessonRoomVO lessonRoomVO) { 
+	 
+			 adminService.regLessonRoom(lessonRoomVO); 
+			 
+			 System.out.println(lessonRoomVO);
+	 
+			 return "redirect:/admin/selectLessonRoom";
+			}
+		
 }
