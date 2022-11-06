@@ -183,6 +183,9 @@
 			, LESSON_ROOM_MAX_STUDENT 
 			, IS_USE
 		FROM LESSON_ROOM
+		<if test="_parameter != null and !_parameter.equals('')">  <!-- 검색기능 -->
+		WHERE ROOM_NAME LIKE '%' || #{roomName} || '%'
+		</if>
 		ORDER BY LESSON_ROOM_CODE 
 		
 	</select>

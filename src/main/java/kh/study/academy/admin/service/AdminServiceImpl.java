@@ -90,8 +90,8 @@ public class AdminServiceImpl implements AdminService{
 	}
 	// 등록된 교실리스트 조회
 	@Override
-	public List<LessonVO> selectLessonRoom() {
-		return sqlSession.selectList("adminMapper.selectLessonRoom");
+	public List<LessonVO> selectLessonRoom(String roomName) {
+		return sqlSession.selectList("adminMapper.selectLessonRoom", roomName);
 	}
 
 	// 교실 삭제(체크박스)

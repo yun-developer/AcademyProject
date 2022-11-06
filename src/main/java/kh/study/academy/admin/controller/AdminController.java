@@ -143,12 +143,12 @@ public class AdminController {
 	 }
 	 
 	// 내가 등록한 교실 정보를 조회 (과목등록페이지로 이동)
-		@GetMapping("/selectLessonRoom")
-			public String selectLessonRoom(Model model){
-			List<LessonVO> lessonRoomList =  adminService.selectLessonRoom();
+		@RequestMapping("/selectLessonRoom")
+			public String selectLessonRoom(Model model, String roomName){
+			List<LessonVO> lessonRoomList =  adminService.selectLessonRoom(roomName);
 			model.addAttribute("selectLessonRoom", lessonRoomList);
 			
-			return "content/admin/lesson_room";
+			return "content/admin/reg_lessonroom";
 		}
 	
 		// 내가 등록한 교실들 체크박스 삭제

@@ -16,12 +16,12 @@
 					<h6>교실 등록</h6>
 				</div>
 				<div class="col-12 mb-3">
-					<form class="row g-3" th:action="@{/admin/regLessonRoom}" method="post">
+					<form class="row g-3" th:action="@{/admin/selectLessonRoom}" method="post">
                   <div class="col-10">
-                     <input type="text" name="roomName" class="form-control" id="" placeholder="Username">
+                     <input type="text" name="roomName" class="form-control" id="" placeholder="LessonRoomName">
                   </div>
                     <div class="col-2">
-                     <button type="submit" class="btn btn-primary">검색</button>
+                     <button type="submit" class="btn btn-primary" name="findClass">검색</button>
                      
                     </div>
                     	<div class="row justify-content-" style="margin: 1rem">

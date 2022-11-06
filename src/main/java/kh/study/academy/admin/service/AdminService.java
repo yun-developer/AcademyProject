@@ -51,7 +51,7 @@ public interface AdminService {
 	void regLessonRoom(LessonRoomVO lessonRoomVO);
 	
 	// 등록된 과목리스트 조회
-	List<LessonVO> selectLessonRoom();
+	List<LessonVO> selectLessonRoom(String roomName);
 	
 	// 교실 삭제(체크박스)
 	void deleteLessonRoom(LessonRoomVO lessonRoomVO);
