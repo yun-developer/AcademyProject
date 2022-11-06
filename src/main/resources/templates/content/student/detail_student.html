@@ -35,7 +35,7 @@
 	<div class="col-12" style="margin-top: 25px;">
 		<div class="row justify-content-center">
 			<span class="col-1">
-				<input type="button" value="수정" class="btn btn-warning form-control btn-sm" th:onclick="teacherPopup([[${teacher.teacherCode}]]);">
+				<input type="button" value="수정" class="btn btn-warning form-control btn-sm" th:onclick="|location.href='@{/stu/updateStu(studentCode=${stu.studentCode})}'|">
 			</span>
 			<span class="col-1">
 				<input type="button" value="삭제" class="btn btn-warning form-control btn-sm" th:onclick="|location.href='@{/stu/deleteStu(studentCode=${stu.studentCode})}'|">
