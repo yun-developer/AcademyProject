@@ -90,7 +90,10 @@
 		, YEAR
 		<!-- 수강 과목, 반 -->
 		<!-- , SUBJECT_NAME -->
-	FROM STUDENT STU <!-- SUBJECT SUB, PAYMENT PAY, LESSONS LES
+	FROM STUDENT STU 
+	<if test="_parameter != null and !_parameter.equals('')">
+		WHERE STUDENT_NAME LIKE '%' || #{studentName} || '%'
+	</if><!-- SUBJECT SUB, PAYMENT PAY, LESSONS LES
 	WHERE STU.STUDENT_CODE = PAY.STUDENT_CODE
 	AND LES.SUBJECT_CODE = SUB.SUBJECT_CODE 
 	AND PAY.LESSONS_CODE = LES.LESSONS_CODE -->

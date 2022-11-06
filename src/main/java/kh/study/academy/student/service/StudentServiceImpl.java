@@ -21,7 +21,7 @@ public class StudentServiceImpl implements StudentService{
 		 return sqlSession.selectOne("studentMapper.getNextStudentCode");
 		}
 	 
-	 
+	 //학생 등록
 	@Override
 	@Transactional(rollbackFor = Exception.class)
 	public void insertStudent(StudentVO studentVO) {
@@ -32,8 +32,12 @@ public class StudentServiceImpl implements StudentService{
 	
 	// 학생 리스트 조회
 	@Override
-	public List<StudentVO> selectStuList() {
-		return sqlSession.selectList("studentMapper.selectStuList");
+	public List<StudentVO> selectStuList(String studentName) {
+		System.out.println(studentName);
+		System.out.println(studentName);
+		System.out.println(studentName);
+		return sqlSession.selectList("studentMapper.selectStuList", studentName);
+		
 	}
 
 	//학생 선택 삭제

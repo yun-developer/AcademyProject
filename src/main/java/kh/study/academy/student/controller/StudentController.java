@@ -50,9 +50,9 @@ public class StudentController {
 	
 	
 	//학생 리스트 조회 페이지
-	@GetMapping("/list")
-	public String stuList(Model model) {
-		model.addAttribute("stuList", studentService.selectStuList());
+	@RequestMapping("/list")
+	public String stuList(Model model, String studentName) {
+		model.addAttribute("stuList", studentService.selectStuList(studentName));
 		
 		
 		return "content/student/student_list";
@@ -107,5 +107,11 @@ public class StudentController {
 		
 		return "content/student/assignment_student_page";
 	}
+	
+	
+	
+	
+	
+	
 	
 }
