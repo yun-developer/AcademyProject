@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/base_layout}"> 
+	<!-- base_layout이 고정으로 뜨고 아래의 fragment="content"가 이 부분으로 교체되서 열림 -->
+
+<div layout:fragment="content">
+	<div class="row">
+		<!-- <div class="col-12" th:if="${#lists.size(stuList)==0}">
+			데이터가 없습니다.
+		</div> -->
+		
+		
+		<div class="col-12" style="margin-top: 40px;" id="table_box_bootstrap">
+			<table class="table table-striped text-center" style="margin-top: 20px;">
+				<thead>
+					<tr>
+						<th scope="col">NO</th>
+						<th scope="col"><input type="checkbox" id="checkAll" th:name="selectall" onclick='selectAll(this)'></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr >
+						<td scope="row" ></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+</div>	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+<script th:src="@{/js/paginator.js}"></script>	
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>   
+<script type="text/javascript" th:src="@{/js/board/board_free_list.js}"></script>		
+</div>
+
+
+</html>

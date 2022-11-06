@@ -16,14 +16,20 @@ public class BoardController {
 	@Resource(name = "boardService")
 	private BoardService boardService;
 	
-	
-	@GetMapping("/list")
-	public String boardList() {
+	//공지사항
+	@GetMapping("/noticeList")
+	public String noticeList() {
 		
-		return "content/board/board_list";
+		return "content/board/board_notice_list";
 	}
 	
 	
+	//자유게시판
+	@GetMapping("/freeList")
+	public String freeList() {
+		
+		return "content/board/board_free_list";
+	}
 	
 	
 	
