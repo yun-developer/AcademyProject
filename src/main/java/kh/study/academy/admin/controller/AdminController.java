@@ -43,13 +43,19 @@ public class AdminController {
 		
 		
 		
-		
+		//이거 지금 안쓰고 있는데 아예 필요 없나?
 		//교사리스트
 		model.addAttribute("teacherList", adminService.selectTeacherList());
 		
 		//교사 검색
 		model.addAttribute("searchTeacher", adminService.searchTeacher(paramMap));
 
+		//과목 카테고리 목록 조회
+		model.addAttribute("subjectList", adminService.selectSubject());
+		
+		model.addAttribute("paramMap", paramMap);
+		
+		
 		return "content/admin/teacherList";
 
 	}

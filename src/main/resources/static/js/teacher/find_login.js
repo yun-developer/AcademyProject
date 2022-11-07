@@ -59,18 +59,12 @@ function findLoginIdAjax(){
 
 
 
-
-
-
-
 //비밀번호 찾기 버튼을 누르면 진행되는 함수
 
 function findLoginPwAjax(){
 	
 	
 }
-
-
 
 
 
@@ -81,7 +75,7 @@ function findLoginPwAjax(){
 //이메일로 찾기 눌렀을 때 
 $('#findByEmail').click(function(){
 	
-		alert(11);
+	
 	let str = '';
 	
 	//ajax start
@@ -90,7 +84,32 @@ $('#findByEmail').click(function(){
 		type: 'post',
 		data: {}, //필요한 데이터
 		success: function(result) {
-			str += `	
+			str += `			<div class="row mb-3">
+				<div class="col-sm-12">
+					<input type="text" class="form-control" name="teacherId"
+						id="teacherId" placeholder="아이디">
+				</div>
+			</div>
+			<div class="row mb-3">
+				<div class="col-sm-12">
+					<input type="text" class="form-control" name="teacherName"
+						id="teacherName" placeholder="이름">
+				</div>
+			</div>
+			<form action="/mail/send" method="post">
+				<div class="row mb-3">
+					<div class="col-sm-9">
+						<input type="email" class="form-control" name="teacherEmail"
+							id="teacherEmail" placeholder="이메일">
+					</div>
+				<div class="col-sm-3">
+					<button class="btn btn-primary"
+						type="button" data-bs-toggle="modal"
+                                            data-bs-target="#sendEmailModal">인증번호전송</button>
+				</div>
+				</div>
+			</form>
+			
 			  `;
 			  
 			  
@@ -117,7 +136,7 @@ $('#findByEmail').click(function(){
 
 //전화번호로 찾기 눌렀을 때 
 $('#findByTell').click(function(){
-	alert(22);
+	
 	
 	let str = '';
 	
@@ -128,7 +147,43 @@ $('#findByTell').click(function(){
 		data: {}, //필요한 데이터
 		success: function(result) {
 			
-			str += `
+			str += `			<div class="row mb-3">
+				<div class="col-sm-12">
+					<input type="text" class="form-control" name="teacherId"
+						id="teacherId" placeholder="아이디">
+				</div>
+			</div>
+			<div class="row mb-3">
+				<div class="col-sm-12">
+					<input type="text" class="form-control" name="teacherName"
+						id="teacherName" placeholder="이름">
+				</div>
+			</div>
+			<div class="row mb-3">
+				<div class="col-sm-12">
+					<input type="text" class="form-control" name="teacherTell"
+						id="teacherTell" placeholder="전화번호">
+				</div>
+			</div>
+			<div class="row mb-3">
+				<div class="d-grid gap-2 mb-3">
+					<button th:onclick="" id="sendPhoneNumber" class="btn btn-primary"
+						type="button">문자 전송</button>
+				</div>
+			</div>
+			<!-- 아래 div도 ajax...?로? 해야 할듯?ㅠㅠ  -->
+			<div class="row mb-3">
+				<div class="col-sm-12">
+					<input type="text" class="form-control" name="inputCertifiedNumber"
+						id="inputCertifiedNumber" placeholder="인증번호">
+				</div>
+			</div>
+			<div class="row mb-3">	
+				<div class="d-grid gap-2 mb-3">
+					<button id="checkBtn" class="btn btn-primary" type="button">확인</button>
+				</div>
+			</div>
+			
 			  `;
 			  
 			  
@@ -171,17 +226,19 @@ $('#findByTell').click(function(){
 
 //비밀번호 찾기에서 연락처로 문자전송을 눌렀을 때 
 
- $('#sendPhoneNumber').click(function(){
+
+ //$('#sendPhoneNumber').click(function(){
 	
 	
+$(document).on("click", "#sendPhoneNumber", function() {
 	//teacherName 값 
 	const teacherName = document.querySelector('#teacherName').value;
 	//teacherTell 값
 	const teacherId = document.querySelector('#teacherId').value;
 	
-	//값 나오는지 확인하고 지우자
 	
 	
+	//셀렉트 쿼리
 	
 	//아이디 + 이름 + 전화번호가 동시에 맞아야 문자 보내야지..번호만 넣으면 보내지잖아..
 	/*if(){

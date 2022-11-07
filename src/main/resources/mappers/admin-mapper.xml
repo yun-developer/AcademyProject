@@ -60,10 +60,11 @@
 			, CAREER
 			, TEACHER_ID
 			, TEACHER_PW
-			, TEACHER_STATUS
+			, DECODE(TEACHER_STATUS, 'Y','재직중','퇴사') AS TEACHER_STATUS
 			<!-- , LESSONS_CODE -->
 			, T.SUBJECT_CODE
-			, TEACHER_ROLE
+			, SUBJECT_NAME
+			, DECODE(TEACHER_ROLE, 'UNAPPROVED','미승인','교사') AS TEACHER_ROLE
 			, TEACHER_GENDER
 			, TEACHER_BIRTHDAY
 			, TEACHER_EMAIL
@@ -72,9 +73,21 @@
 		<if test="teacherName != null and !teacherName.equals('')">
 		AND TEACHER_NAME LIKE ('%'||#{teacherName}||'%')
 		</if>
-		<!-- <if test="teacherStatus !=null and !teacherStatus.equals('')">
+		<if test="teacherId != null and !teacherId.equals('')">
+		AND TEACHER_ID LIKE ('%'||#{teacherId}||'%')
+		</if>
+		<if test="teacherTell != null and !teacherTell.equals('')">
+		AND TEACHER_TELL LIKE ('%'||#{teacherTell}||'%')
+		</if>
+		<if test="teacherStatus !=null and !teacherStatus.equals('')">
 		AND TEACHER_STATUS = #{teacherStatus}
-		</if> -->
+		</if>
+		<if test="teacherRole !=null and !teacherRole.equals('')">
+		AND TEACHER_ROLE = #{teacherRole}
+		</if>
+		<if test="subjectCode !=null and !subjectCode.equals('')">
+		AND T.SUBJECT_CODE = #{subjectCode}
+		</if>
 	</select>
 	
 	

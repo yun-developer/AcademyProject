@@ -90,7 +90,6 @@
 		SELECT TEACHER_ID
 		FROM TEACHER
 		WHERE TEACHER_ID = #{teacherId}
-	
 	</select>
 	
 	
