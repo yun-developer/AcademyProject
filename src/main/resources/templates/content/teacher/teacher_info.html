@@ -18,12 +18,18 @@
 			        <p class="card-text">
 			        
 				        프로필 이미지 첨부
-				        <div class="col-12">
-							<form th:action="@{/teacher/insertProfileImg}" method="post" enctype="multipart/form-data">
-							  <input type="file" class="form-control" id="profileImg" name="profileImg" aria-describedby="basic-addon3">
-							  <input type="hidden" class="form-control" id="teacherCode" name="teacherCode"  th:value="${teacher.teacherCode}" aria-describedby="basic-addon3">
-							</form>  
-					   </div>
+						<form th:action="@{/teacher/insertProfileImg}" method="post" enctype="multipart/form-data">
+							<div class="row">
+						        <div class="col-9">
+									  <input type="file" class="form-control" id="profileImg" name="profileImg" aria-describedby="basic-addon3">
+									  <input type="hidden" class="form-control" id="teacherCode" name="teacherCode"  th:value="${teacher.teacherCode}" aria-describedby="basic-addon3">
+									  
+							    </div>
+							    <div class="col-3">
+								  <button type="submit" class="btn btn-success">파일 업로드</button>
+								</div>  
+							</div>
+						</form>  
 			        </p>
 			      </div>
 			    </div>
@@ -42,8 +48,17 @@
 			    <p class="card-text "><small class="text-muted">개인 정보과 승인 상태를 확인 할 수 있습니다.</small></p>
 			    <div class="card-text">
 			    	<h5>개인 정보</h5>
+			    	
 			    	<div class="row mb-2 align-items-center">
-			    		<div class="col-2 text-secondary">
+			    		<div class="col-2 ms-3 text-secondary">
+				    		아이디
+			    		</div>
+			    		<div class="col" th:text="${teacher.teacherId}"></div>
+		    		</div>
+			    	
+			    	
+			    	<div class="row mb-2 align-items-center">
+			    		<div class="col-2 ms-3 text-secondary">
 				    		이름
 			    		</div>
 			    		<div class="col-3" th:text="${teacher.teacherName}"></div>
@@ -55,10 +70,14 @@
 				    			수정
 				    		</button>
 			    		</div>
+			    		
+			    		
+			    	</div>
+			    		
 			    	</div>
 			    	
 			    	<div class="row mb-2 align-items-center">
-			    		<div class="col-2 text-secondary">
+			    		<div class="col-2 ms-3 text-secondary">
 				    		연락처
 			    		</div>
 			    		<div class="col-3" th:text="${teacher.teacherTell}"></div>
@@ -73,8 +92,32 @@
 			    		
 			    	</div>
 			    	
-			    	<div class="row mb-2">
+			    	<div class="row mb-2 align-items-center">
+			    		<div class="col-2 ms-3 text-secondary">
+				    		이메일
+			    		</div>
+			    		<div class="col-3" th:text="${teacher.teacherEmail}"></div>
 			    		<div class="col-2 text-secondary">
+				    		<button type="button" class="btn btn-outline-secondary btn-sm mt-0" >
+				    			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+								  <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+								</svg>
+				    			수정
+				    		</button>
+			    		</div>
+			    		
+			    	</div>
+			    	
+			    	<div class="row mb-2">
+			    		<div class="col-2 ms-3 text-secondary">
+				    		성별
+			    		</div>
+			    		<div class="col" th:text="${teacher.teacherGender}"></div>
+			    		
+			    	</div>
+			    	
+			    	<div class="row mb-2">
+			    		<div class="col-2 ms-3 text-secondary">
 				    		강의과목
 			    		</div>
 			    		<div class="col" th:text="${teacher.SubjectVO.subjectName}"></div>
@@ -82,14 +125,14 @@
 			    	</div>
 			    	
 			    	<div class="row mb-2">
-			    		<div class="col-2 text-secondary">
+			    		<div class="col-2  ms-3 text-secondary">
 				    		경력사항
 			    		</div>
 			    		<div class="col" th:text="${teacher.career}"></div>
 			    	</div>
 			    	
 			    	<div class="row mb-4">
-			    		<div class="col-2 text-secondary">
+			    		<div class="col-2 ms-3 text-secondary">
 				    		재직상태
 			    		</div>
 			    		<div class="col" th:text="${teacher.teacherStatus}"></div>
@@ -97,7 +140,7 @@
 			    	
 			    	<h5>승인상태</h5>
 			    	<div class="row mb-2">
-			    		<div class="col-2 text-secondary">
+			    		<div class="col-2 ms-3 text-secondary">
 				    		권한
 			    		</div>
 			    		<div class="col" th:text="${teacher.teacherRole}"></div>

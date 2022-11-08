@@ -5,6 +5,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kh.study.academy.teacher.vo.ProfileImgVO;
 import kh.study.academy.teacher.vo.TeacherVO;
 
 @Service("teacherService")
@@ -44,6 +45,13 @@ public class TeacherServiceImpl implements TeacherService {
 	public TeacherVO selectTeacherInfo(TeacherVO teacherVO) {
 		
 		return sqlSession.selectOne("teacherMapper.selectTeacherInfo", teacherVO);
+	}
+	
+	//프로필사진 등록
+	@Override
+	public void insertProfileImg(ProfileImgVO profileImgVO) {
+		sqlSession.insert("teacherMapper.insertProfileImg", profileImgVO);
+		
 	}
 	
 
