@@ -72,8 +72,10 @@ for(const chk of chks){
 ///////////////////////////////////////////////////////////////////
 
 //교사 이름 클릭시 팝업 창 띄우는 함수 
-function teacherPopup(){
-	
+
+function teacherPopup(teacherCode){
+//teacherCode = document.querySelector('#teacherCode').value;
+	//alert(teacherCode);
 	
 	//window.open("[팝업을 띄울 파일명 path]", "[별칭]", "[팝업 옵션]")
 	//별칭 지정 -> 1. 팝업 파일을 열고 웹브라우저 새로고침을 눌렀을 때 똑같은 팝업창이 계속해서 열리는 문제를 해결할 수 있다!
