@@ -131,7 +131,7 @@
 	         FROM PROFILE_IMG 
 	    </selectKey>
 	    
-	    INSERT INTO TEACHER (
+	    INSERT INTO PROFILE_IMG (
 		    PROFILE_IMG_NUM
 			, TEACHER_CODE
 			, ORIGIN_FILE_NAME

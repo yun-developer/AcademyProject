@@ -35,10 +35,7 @@ public class UploadFileUtil {
 			String uuid = UUID.randomUUID().toString();
 			//확장자 추출 [ ㅁㅁㅁ."jpg" ] substring -> 첫글자가 0 부터 시작
 			String extension = originalFilename.substring(originalFilename.lastIndexOf("."));
-				//--> 매개변수로 들어온 문자가 몇번째에 위치하는지 숫자로 알려줌.
-				originalFilename.indexOf(".");
-				originalFilename.lastIndexOf(".");
-				originalFilename.substring(originalFilename.lastIndexOf("."));
+				
 			
 			//실제 첨부될 파일명 생성
 			fileName = uuid + extension;
