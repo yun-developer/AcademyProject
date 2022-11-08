@@ -24,6 +24,14 @@
 		<association property="subjectVO" resultMap="adminMapper.subject"/>
 	</resultMap>
 	
+	<resultMap type="kh.study.academy.teacher.vo.ProfileImgVO" id="profileImg">
+		<id column="PROFILE_IMG_NUM" 						property="profileImgNum" />
+		<result column="TEACHER_CODE" 						property="teacherCode" />
+		<result column="ORIGIN_FILE_NAME" 					property="originFileName" />
+		<result column="STORED_FILE_NAME" 					property="storedFileName" />
+	</resultMap>
+
+	
 	
 	<!-- 회원가입 -->
 	
@@ -109,10 +117,34 @@
 			, DECODE(TEACHER_STATUS, 'Y','재직중','퇴사') AS TEACHER_STATUS
 			, LESSONS_CODE
 			, DECODE(TEACHER_ROLE, 'UNAPPROVED', '미승인', 'TEACHER', '교사', 'ADMIN', '관리자') AS TEACHER_ROLE
+			, DECODE(TEACHER_GENDER, 'W', '여성', '남성')AS TEACHER_GENDER
+            , TEACHER_BIRTHDAY
+            , TEACHER_EMAIL
 		FROM TEACHER T
 		WHERE TEACHER_ID = #{teacherId}
 	</select>
 
+	<!-- 프로필 사진 등록 -->
+	<insert id="insertProfileImg">
+		<selectKey resultType="String" keyProperty="profileImgNum" order="BEFORE">
+	         SELECT 'PROFILE_IMG_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(TEACHER_CODE, 13))), 0) + 1, 3, 0) 
+	         FROM PROFILE_IMG 
+	    </selectKey>
+	    
+	    INSERT INTO TEACHER (
+		    PROFILE_IMG_NUM
+			, TEACHER_CODE
+			, ORIGIN_FILE_NAME
+			, STORED_FILE_NAME
+		 
+		) VALUES (
+			#{profileImgNum}
+		    , #{teacherCode}
+		    , #{originFileName}
+		    , #{storedFileName}
+		)
+	    
+	</insert>
 	
 		
 </mapper>

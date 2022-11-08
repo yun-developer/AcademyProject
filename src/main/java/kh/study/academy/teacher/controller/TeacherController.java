@@ -21,7 +21,9 @@ import org.springframework.web.multipart.MultipartFile;
 import ch.qos.logback.core.encoder.Encoder;
 import kh.study.academy.config.TeacherRole;
 import kh.study.academy.config.TeacherStatus;
+import kh.study.academy.config.UploadFileUtil;
 import kh.study.academy.teacher.service.TeacherService;
+import kh.study.academy.teacher.vo.ProfileImgVO;
 import kh.study.academy.teacher.vo.TeacherVO;
 
 @Controller
@@ -184,9 +186,17 @@ public class TeacherController {
 	
 	//프로필 이미지 등록
 	@PostMapping("/insertProfileImg")
-	public String insertProfileImg( MultipartFile profileImg)  {
+	public String insertProfileImg(ProfileImgVO profileImgVO, MultipartFile profileImg)  {
 		
-		return "";
+		//단일 이미지 파일 첨부 (메인이미지) --> 첨부파일명 리턴
+		ProfileImgVO uploadInfo =  UploadFileUtil.uploadFile(profileImg);
+		
+		uploadInfo.setTeacherCode(profileImgVO.getTeacherCode());
+		
+		System.out.println("!!!!!!!!!!!!!!!!!!111"+uploadInfo);
+		teacherService.insertProfileImg(uploadInfo);
+		
+		return "redirect:/teacher/selectInfo";
 	}
 	
 	

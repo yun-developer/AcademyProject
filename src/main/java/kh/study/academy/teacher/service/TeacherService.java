@@ -1,5 +1,6 @@
 package kh.study.academy.teacher.service;
 
+import kh.study.academy.teacher.vo.ProfileImgVO;
 import kh.study.academy.teacher.vo.TeacherVO;
 
 public interface TeacherService {
@@ -20,5 +21,6 @@ public interface TeacherService {
 	//회원 정보 조회
 	TeacherVO selectTeacherInfo(TeacherVO teacherVO);
 	
-	
+	//프로필사진 등록
+	void insertProfileImg(ProfileImgVO profileImgVO);
 }
