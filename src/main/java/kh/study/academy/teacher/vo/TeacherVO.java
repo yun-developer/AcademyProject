@@ -47,8 +47,10 @@ public class TeacherVO {
 	private String teacherEmail;
 	
 	
-	//젠더는 not null 아닌데, 그냥 필수 입력인게 좋지않을까..? 조원들에게 의견묻기..!
+	//젠더는 not null이기 때문에 필수 입력이에용...!
 	private String teacherGender;
+	
+	
 	private String teacherBirthday;
 	
 	

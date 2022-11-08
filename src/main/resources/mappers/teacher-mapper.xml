@@ -42,6 +42,8 @@
 		    , TEACHER_ID
 		    , TEACHER_PW
 		    , TEACHER_EMAIL
+		    , TEACHER_GENDER
+		    , TEACHER_BIRTHDAY
 		 
 		) VALUES (
 			#{teacherCode}
@@ -52,6 +54,8 @@
 		    , #{teacherId}
 		    , #{teacherPw}
 		    , #{teacherEmail}
+		    , #{teacherGender}
+		    , #{teacherBirthday}
 		)
 		
 	</insert>

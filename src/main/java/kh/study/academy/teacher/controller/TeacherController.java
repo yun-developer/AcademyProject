@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import ch.qos.logback.core.encoder.Encoder;
 import kh.study.academy.config.TeacherRole;
@@ -179,6 +180,13 @@ public class TeacherController {
 		
 		return "content/teacher/teacher_info";
 		
+	}
+	
+	//프로필 이미지 등록
+	@PostMapping("/insertProfileImg")
+	public String insertProfileImg( MultipartFile profileImg)  {
+		
+		return "";
 	}
 	
 	

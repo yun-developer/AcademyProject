@@ -19,8 +19,10 @@
 			        
 				        프로필 이미지 첨부
 				        <div class="col-12">
-							  
-							  <input type="file" class="form-control" id="mainImg" name="mainImg" aria-describedby="basic-addon3">
+							<form th:action="@{/teacher/insertProfileImg}" method="post" enctype="multipart/form-data">
+							  <input type="file" class="form-control" id="profileImg" name="profileImg" aria-describedby="basic-addon3">
+							  <input type="hidden" class="form-control" id="teacherCode" name="teacherCode"  th:value="${teacher.teacherCode}" aria-describedby="basic-addon3">
+							</form>  
 					   </div>
 			        </p>
 			      </div>
