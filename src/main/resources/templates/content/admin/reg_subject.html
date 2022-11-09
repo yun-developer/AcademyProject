@@ -28,7 +28,7 @@
                  <thead>
                    <tr>
                    <td>
-                     <input id="checkAll" type="checkbox" class="form-check-input" >
+                     <input id="checkAll" type="checkbox" class="form-check-input"  th:name="selectall" >
                   </td>
                      <th scope="col">No</th>
                      <th scope="col">과목 코드</th>
@@ -46,11 +46,11 @@
                   
                     <tr th:each="selectSubject, status : ${selectSubject}">
                    		<td>
-                     <input th:value="${selectSubject.subjectCode}"  type="checkbox" class="form-check-input chk" >
+                     <input name="selectSubject" th:value="${selectSubject.subjectCode}"  type="checkbox" class="form-check-input chk" >
                   		</td>
-                   		<td th:text="${status.count}"></td> 
-                   		<td th:text="${selectSubject.subjectCode}" ></td> 
-                   		<td th:text="${selectSubject.subjectName}"></td> 
+                   		<td th:name="selectSubject" th:text="${status.count}"></td> 
+                   		<td th:name="selectSubject" th:text="${selectSubject.subjectCode}" ></td> 
+                   		<td th:name="selectSubject" th:text="${selectSubject.subjectName}"></td> 
                    </tr>
              
                  </th:block> 
