@@ -13,7 +13,7 @@
 	</resultMap> 
 
 	
-	<resultMap type="kh.study.academy.lesson.vo.lessonInfoVO" 	id="lessonInfo">
+	<resultMap type="kh.study.academy.lesson.vo.LessonInfoVO" 	id="lessonInfo">
 		<id column="LESSON_INFO_CODE" 										property="lessonInfoCode" />
 		<result column="LESSONS_CODE" 										property="lessonsCode" />
 		<result column="LESSON_TIME" 										property="lessonTime" />

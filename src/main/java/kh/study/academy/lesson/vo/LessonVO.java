@@ -14,7 +14,7 @@ public class LessonVO {
 	
 	
 	//collection 연결 해놓은 것들
-	private List<lessonInfoVO> lessonInfoList;
+	private List<LessonInfoVO> lessonInfoList;
 	
 	
 }

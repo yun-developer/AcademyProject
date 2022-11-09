@@ -6,7 +6,7 @@ import kh.study.academy.student.vo.StudentLessonInfoVO;
 import lombok.Data;
 
 @Data
-public class lessonInfoVO {
+public class LessonInfoVO {
 	
 	
 	private String lessonInfoCode;
