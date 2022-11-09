@@ -2,24 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="studentMapper">
-	<resultMap type="kh.study.academy.student.vo.StudentVO" id="student">
-		<id column="STUDENT_CODE" property="studentCode"/>
-		<result column="STUDENT_NAME" property="studentName"/>
-		<result column="STUDENT_GENDER" property="studentGender"/>
-		<result column="BIRTHDAY" property="birthday"/>
-		<result column="YEAR" property="year"/>
-		<result column="ADDR" property="addr"/>
-		<result column="ADDR_DETAIL" property="addrDetail"/>
-		<result column="STUDENT_TELL" property="studentTell"/>
-		<result column="REG_DATE" property="regDate"/>
-		<collection property="subjectVO" resultMap="adminMapper.subject" />
+	<resultMap type="kh.study.academy.student.vo.StudentVO" 		id="student">
+		<id column="STUDENT_CODE"									property="studentCode"/>
+		<result column="STUDENT_NAME" 								property="studentName"/>
+		<result column="STUDENT_GENDER" 							property="studentGender"/>
+		<result column="BIRTHDAY" 									property="birthday"/>
+		<result column="YEAR" 										property="year"/>
+		<result column="ADDR" 										property="addr"/>
+		<result column="ADDR_DETAIL"								property="addrDetail"/>
+		<result column="STUDENT_TELL"								property="studentTell"/>
+		<result column="REG_DATE" 									property="regDate"/>
+		<collection property="subjectVO" 							resultMap="adminMapper.subject" />
+		<collection property="studentLessonInfoList" 				resultMap="studentLessonInfo" />
 	</resultMap>
 	
-	<resultMap type="kh.study.academy.student.vo.StudentLessonInfoVO" id="studentLessonInfo">
-		<id column="STUDENT_LESSON_CODE" property="studentLessonCode" />
-		<result column="LESSON_INFO_CODE" property="lessonInfoCode"/>
-		<result column="ATTENDANCE_CODE" property="attendanceCode"/>
-		<result column="STUDENT_CODE" property="studentCode"/>
+	<resultMap type="kh.study.academy.student.vo.StudentLessonInfoVO"   id="studentLessonInfo">
+		<id column="STUDENT_LESSON_CODE" 								property="studentLessonCode" />
+		<result column="LESSON_INFO_CODE"								property="lessonInfoCode"/>
+		<result column="ATTENDANCE_CODE" 								property="attendanceCode"/>
+		<result column="STUDENT_CODE" 									property="studentCode"/>
 	</resultMap>
 	
 	<resultMap type="kh.study.academy.student.vo.StudentStepVO" id="studentStep">

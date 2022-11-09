@@ -18,6 +18,17 @@ public class StudentVO {
 	private String studentGender;
 	
 	
+	
 	private SubjectVO subjectVO;
 	private List<String> studentCodeList;
+
+	
+	
+	//collection 연결 해놓은 것들 
+	private List<StudentLessonInfoVO> studentLessonInfoList; 
+	
+	
+	
+	
+	
 }

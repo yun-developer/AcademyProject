@@ -1,13 +1,20 @@
 package kh.study.academy.lesson.vo;
 
+import java.util.List;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
-@Getter
-@Setter
-@ToString
+@Data
 public class LessonVO {
-
+	private String lessonsCode;
+	private String subjectCode;
+	private int maxStudent;
+	
+	
+	
+	
+	//collection 연결 해놓은 것들
+	private List<lessonInfoVO> lessonInfoList;
+	
+	
 }

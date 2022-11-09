@@ -4,14 +4,31 @@
 <mapper namespace="lessonMapper">
 	
 
-	<!-- <resultMap type="kh.study.academy.lesson.vo.LessonVO" 	id="lesson">
-		<id column="" 										property="" />
-		<result column="" 									property="" />
-		<result column="" 									property="" />
-		<result column="" 									property="" />
-	</resultMap>  -->
+	<resultMap type="kh.study.academy.lesson.vo.LessonVO" 	id="lesson">
+		<id column="LESSONS_CODE" 										property="lessonsCode" />
+		<result column="SUBJECT_CODE" 									property="subjectCode" />
+		<result column="MAX_STUDENT" 									property="maxStudent" />
+		<collection property="lessonInfoList" resultMap="lessonInfo"/>
+		
+	</resultMap> 
 
 	
-
+	<resultMap type="kh.study.academy.lesson.vo.lessonInfoVO" 	id="lessonInfo">
+		<id column="LESSON_INFO_CODE" 										property="lessonInfoCode" />
+		<result column="LESSONS_CODE" 										property="lessonsCode" />
+		<result column="LESSON_TIME" 										property="lessonTime" />
+		<result column="STEP_CODE" 											property="stepCode" />
+		<result column="LESSON_DAY_CODE" 									property="lessonDayCode" />
+		<result column="LESSON_ROOM_CODE" 									property="lessonRoomCode" />
+		<result column="YEAR" 												property="year" />
+		<result column="TEACHER_CODE" 										property="teacherCode" />
+		<result column="SUBJECT_CODE" 										property="subjectCode" />
+		<result column="NOW_STUDENT_CNT" 									property="nowStudentCnt" />
+		<result column="MONEY" 												property="money" />
+		<result column="LESSON_INFO_REGDATE" 								property="lessonInfoRegdate" />
+		<result column="LESSON_INFO_STATUS" 								property="lessonInfoStatus" />
+		<collection property="studentLessonInfoList" 						resultMap="studentLessonInfo"/>
+		
+	</resultMap> 
 
 </mapper>
