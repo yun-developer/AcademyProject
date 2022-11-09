@@ -8,6 +8,8 @@ import kh.study.academy.board.vo.BoardVO;
 
 @Service
 public interface BoardService {
+	int getNextBoardNum();
+
 	void insertNotice(BoardVO boardVO);
 	void insertFree(BoardVO boardVO);
 	
@@ -15,4 +17,6 @@ public interface BoardService {
 	List<BoardVO> selectFreeBoard(int boardKindCode);
 	
 	BoardVO selectBoardDetail(int boardNum);
+	
+	
 }

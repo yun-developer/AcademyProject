@@ -1,5 +1,7 @@
 package kh.study.academy.board.vo;
 
+import java.util.List;
+
 import lombok.Data;
 
 @Data
@@ -12,6 +14,8 @@ public class BoardVO {
 	private String createDate;
 	private String teacherCode;
 	
+	private String teacherId;
 	
+	private List<BoardImgVO> imgList;
 	
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kh.study.academy.board.vo.BoardVO;
 
@@ -12,15 +13,25 @@ import kh.study.academy.board.vo.BoardVO;
 public class BoardServiceImpl implements BoardService{
 	  @Autowired
 	  SqlSessionTemplate sqlSession;
-
+	  
+    @Override
+	public int getNextBoardNum() {
+		return sqlSession.selectOne("boardMapper.getNextBoardNum");
+	}
+		    
+	
+	@Transactional(rollbackFor = Exception.class)  
 	@Override
 	public void insertNotice(BoardVO boardVO) {
 		sqlSession.insert("boardMapper.insertNotice", boardVO);
+		sqlSession.insert("adminMapper.insertImgs", boardVO);
 	}
-
+	
+	@Transactional(rollbackFor = Exception.class)  
 	@Override
 	public void insertFree(BoardVO boardVO) {
 		sqlSession.insert("boardMapper.insertFree", boardVO);
+		sqlSession.insert("adminMapper.insertImgs", boardVO);
 	}
 
 	@Override
@@ -37,7 +48,8 @@ public class BoardServiceImpl implements BoardService{
 	public BoardVO selectBoardDetail(int boardNum) {
 		return sqlSession.selectOne("boardMapper.selectBoardDetail", boardNum);
 	}
-	  
+
+	
 	  
 	  
 	  
