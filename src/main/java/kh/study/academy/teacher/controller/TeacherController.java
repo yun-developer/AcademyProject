@@ -68,6 +68,7 @@ public class TeacherController {
 		teacherVO.setTeacherCode(nextTeacherCode);
 		teacherService.join(teacherVO);
 		
+		//회원가입시 기본 이미지 INSERT
 		ProfileImgVO imgVO = new ProfileImgVO();
 		imgVO.setTeacherCode(nextTeacherCode);
 		imgVO.setOriginFileName("defaultProfile.jpg");

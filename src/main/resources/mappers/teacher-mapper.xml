@@ -133,7 +133,7 @@
 		WHERE TEACHER_ID = #{teacherId}
 	</select>
 
-	<!-- 프로필 사진 등록 -->
+	<!-- 기본 프로필 사진 등록 -->
 	<insert id="insertProfileImg">
 		<selectKey resultType="String" keyProperty="profileImgNum" order="BEFORE">
 	         SELECT 'PROFILE_IMG_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(PROFILE_IMG_NUM, 13))), 0) + 1, 3, 0) 
@@ -155,6 +155,16 @@
 	    
 	</insert>
 	
+	<!-- 프로필이미지 수정 -->
+	<update id="updateProfileImg">
+		UPDATE PROFILE_IMG
+		SET ORIGIN_FILE_NAME = #{originFileName}
+		    , STORED_FILE_NAME = #{storedFileName}
+		WHERE TEACHER_CODE = #{teacherCode}
+	
+	</update>
+	
+
 		
 </mapper>
 
