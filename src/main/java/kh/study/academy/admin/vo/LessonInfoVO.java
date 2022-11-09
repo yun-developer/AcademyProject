@@ -9,6 +9,6 @@ public class LessonInfoVO {
 	private String money; //수강료
 	private String nowStudentCnt; //현정원
 
-		private SubjectVO subjectVO;
+	private SubjectVO subjectVO;
 	private LessonRoomVO lessonRoomVO;
 }
