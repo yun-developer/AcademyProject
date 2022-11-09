@@ -105,8 +105,15 @@ public class AdminController {
 	// 과목 등록 (수학, 과학) 
 	@PostMapping("/regSubject")
 	public String regSubject(SubjectVO subjectVO) {
-		adminService.insertSubject(subjectVO);
-        
+		//adminService.insertSubject(subjectVO);
+		//등록 시 빈문자(아무것도 안썼을 때)일 때 오류가 안나는 방법(조건문if)
+		if(subjectVO.getSubjectName().equals("")) {  // 만약에 등록시 빈문자라면 다시 과목등록 페이지 이동
+			return "redirect:/admin/selectSubject";
+		}
+		else {
+			adminService.insertSubject(subjectVO);  // 빈문자가 아니라면 등록 쿼리 실행하고 과목등록 페이지로 이동
+		}	
+		
 		return "redirect:/admin/selectSubject";
 	}
 	// 내가 등록한 과목들을 조회 (과목등록페이지로 이동)
@@ -180,14 +187,12 @@ public class AdminController {
 /////<학급 편성 등록 관련>//////////////////////////////////////////////////////////// 
 
 
-		@PostMapping("/regLessonInfo")
+		@GetMapping("/regLessonInfo")
 			public String regLessonInfo(LessonRoomVO lessonRoomVO) { 
 	 
-			 adminService.regLessonRoom(lessonRoomVO); 
-			 
-			 System.out.println(lessonRoomVO);
+
 	 
-			 return "redirect:/admin/selectLessonRoom";
+			 return "content/admin/reg_lessonInfo";
 			}
 		
 }

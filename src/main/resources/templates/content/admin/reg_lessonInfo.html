@@ -13,7 +13,7 @@
 		<div class="col-12">
 			<div class="row">
 				<div class="col-12">
-					<h6>교실 등록</h6>
+					<h6>학급 편성 등록</h6>
 				</div>
 				<div class="col-12 mb-3">
 					<form class="row g-3" th:action="@{/admin/selectLessonRoom}" method="post">
@@ -26,7 +26,7 @@
                     </div>
                     	<div class="row justify-content-" style="margin: 1rem">
 						  <div class="col-2"  style="margin-right:4.4rem;">
-                       		 <button type="button" id="updateLessonRoomModal" class="btn btn-info fal fa-save"  th:onclick="goRegLessonRoomAjax();">신규</button>
+                       		 <button type="button" id="updateLessonRoomModal" class="btn btn-info fal fa-save"  th:onclick="goRegLessonInfoAjax();">학급등록</button>
                   		  </div>
                   		</div> 
               	 </form>
@@ -39,20 +39,31 @@
                      <input id="checkAll" type="checkbox" class="form-check-input" >
                   </td>
                      <th scope="col">No</th>
-                     <th scope="col">교실명</th>
-                     <th scope="col">정 원</th>
-                     <th scope="col">사용 여부</th>
+                     <th scope="col">편성년월</th>
+                     <th scope="col">정규</th>
+                     <th scope="col">과목구분</th>
+                     <th scope="col">학급명</th>
+                     <th scope="col">요일</th>
+                     <th scope="col">시간</th>
+                     <th scope="col">교실</th>
+                     <th scope="col">단계</th>
+                     <th scope="col">교사</th>
+                     <th scope="col">정원</th>
+                     <th scope="col">현정원</th>
+
+                     
+                     
                    </tr>
                  </thead>
                  <tbody>
-                  <th:block th:if="${#lists.size(selectLessonRoom) == 0}">
+                  <!-- <th:block th:if="${#lists.size(selectLessonRoom) == 0}">
                  	<tr> 
                  		<td colspan="5">등록된 교실이 없습니다.</td>
                  	</tr>
-                </th:block>
+                </th:block> -->
                  
 
-                    <th:block th:unless="${#lists.size(selectLessonRoom) == 0}">
+                    <!-- <th:block th:unless="${#lists.size(selectLessonRoom) == 0}">
                   
                     <tr th:each="LessonRoom, status : ${selectLessonRoom}">
                    		<td>
@@ -64,7 +75,7 @@
                    		<td th:text="${LessonRoom.isUse}"></td> 
                    </tr>
              
-                 </th:block>     
+                 </th:block>    -->  
                  </tbody>
                </table>
 				</div>
@@ -80,14 +91,12 @@
               </form> 
 
             </div>
-            
-
-<!------------------------------------------------------------------------------------------------------------------------------------------------------------->            
+            <!------------------------------------------------------------------------------------------------------------------------------------------------------------->            
             
             
           <!-- 교실 신규 버튼 누르면 실행되는 Modal -->
 			<!-- Modal -->
-			<div class="modal fade" id="bb" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal fade" id="aa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			  <div class="modal-dialog">
 			    <div class="modal-content">
 			  	  <!-- 모달 제목글 header -->
@@ -136,6 +145,6 @@
 
           <script src="https://code.jquery.com/jquery-latest.min.js"></script>   
 		<script type="text/javascript" th:src="@{/js/admin/lesson_room.js}"></script>
-		
+            
 	</div>
 </html>
