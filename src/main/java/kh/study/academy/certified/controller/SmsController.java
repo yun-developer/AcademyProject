@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kh.study.academy.certified.service.SmsService;
+import kh.study.academy.teacher.service.TeacherService;
 
 @Controller
 @RequestMapping("/sms")
@@ -17,10 +18,15 @@ public class SmsController {
 	@Autowired
 	SmsService smsService;
 	
+	@Autowired
+	TeacherService teacherService;
+	
 	@ResponseBody
 	@GetMapping("/sendSMS")
 	public String sendSMS(String teacherTell) {
-
+		
+		
+		
         Random rand  = new Random();
         String numStr = "";
         for(int i=0; i<4; i++) {

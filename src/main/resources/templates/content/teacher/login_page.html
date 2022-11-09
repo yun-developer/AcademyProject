@@ -17,7 +17,7 @@
 					가입하신 (학원사이트 명) 아이디와 비밀번호를 입력해주세요.<br>
 					비밀번호는 대소문자를 구분합니다.
 				</p>
-				
+
 				<form action="/teacher/login" method="post">
 					<div class="row mb-3">
 
@@ -37,10 +37,11 @@
 						</div>
 					</div>
 					<div class="d-grid gap-2 mb-3">
-						<button class="btn btn-primary" type="submit">로그인</button>
+						<button id="loginBtn" class="btn btn-primary" type="submit">로그인</button>
 					</div>
 
 				</form>
+		
 				<div class="row">
 					<div class="col-md-6">
 					<p>
@@ -59,8 +60,11 @@
 			</div>
 		</div>
 	</div>
-
-
+	
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script> 
+	<!-- jquery 문법 로딩 -->
+	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript" th:src="@{/js/teacher/login_page.js}"></script>
 
 
 </div>

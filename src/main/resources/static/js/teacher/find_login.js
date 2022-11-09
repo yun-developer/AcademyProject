@@ -235,8 +235,12 @@ $(document).on("click", "#sendPhoneNumber", function() {
 	const teacherName = document.querySelector('#teacherName').value;
 	//teacherTell 값
 	const teacherId = document.querySelector('#teacherId').value;
+	//teacherTell
+	//const teacherTell = document.querySelector('#teacherTell').value;
 	
-	
+	console.log(teacherName);
+	console.log(teacherId);
+	console.log(teacherTell);
 	
 	//셀렉트 쿼리
 	
