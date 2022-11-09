@@ -4,7 +4,7 @@
 <mapper namespace="testMapper">
 
 
-	<resultMap type="kh.study.academy.test.vo.testVO"			id="test">
+	<resultMap type="kh.study.academy.test.vo.TestVO"			id="test">
 		<id column="TEST_CODE" 									property="testCode" />
 		<result column="TEST_DATE" 								property="testDate" />
 		<result column="SCORE" 									property="score" />
@@ -39,8 +39,9 @@
 	
 	
 	
-	<!-- 해당 학생의 점수조회 -->
+	<!-- 해당 학생의 점수 조회 -->
 	<!--LESSON_INFO_CODE 수정필요  -->
+	<!--where 검토 필요-->
 	<select id="selectScore" resultMap="test">
 		SELECT TEST_CODE
 			, TEST_DATE
