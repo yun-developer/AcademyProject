@@ -3,6 +3,7 @@ package kh.study.academy.intercepter;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,16 +20,51 @@ public class teacherInfoIntercepter implements HandlerInterceptor {
 	private TeacherService teacherService; 
 
 	@Override
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+			throws Exception {
+		
+		
+		
+	    // 세션이 있는지 체크
+//        HttpSession session = request.getSession();
+//        
+//        
+//        if (session.getAttribute("user") == null) {
+//            System.out.println("1111111111111111111111111111세션에 정보없음");
+//        }
+//        else {
+//        	
+//        	System.out.println("2222222222222222222222222222세션에 정보있음");
+//        	
+//        }
+        
+
+      
+		
+		
+//		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//		
+//		//security에 저장한 정보 사용
+//		//로그인한 유저의 정보를 가져 옴
+//		User user = (User)authentication.getPrincipal();
+//		
+//		TeacherVO teacherVO = new TeacherVO();
+//
+//		System.out.println("!!!!!!!!!!!!!!!!!!!!!!user.getUsername()!!!!!!!!!!!!!!!!!!"+user.getUsername());
+//		
+//		teacherVO.setTeacherId(user.getUsername());
+		
+		
+		return true;
+	}
+
+	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 		
 		//request.setAttribute("teacher", teacherService.selectTeacherInfo(null));
-//		System.out.println("1111111111111111111");
-//		
 //		
 //		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//		
-//		
 //		
 //		if(authentication.getPrincipal() == null) {
 //			System.out.println("12");
@@ -37,23 +73,14 @@ public class teacherInfoIntercepter implements HandlerInterceptor {
 //			System.out.println("34");
 //		}
 //		
-//		
-//		
-//		
 ////		User user = (User)authentication.getPrincipal();
 //		String user = (String)authentication.getPrincipal();
-//		
-//		
-//		
 //		
 //		System.out.println("!!!!" + user);
 //		if(user == null){
 //			System.out.println("!@!@!@!@!@!");
 //		}
 //		System.out.println("2222222222222222222222222");
-//		
-		
-		
 		
 //		if(user.getUsername() == null) {
 //			System.out.println("33333333");

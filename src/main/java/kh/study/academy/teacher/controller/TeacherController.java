@@ -100,16 +100,16 @@ public class TeacherController {
 	}
 	
 	
-	//로그인 진행
-	@PostMapping("/login")
-	public String login(TeacherVO teacherVO) {
-		
-		
-		teacherService.login(teacherVO);
-		
-		
-		return"redirect:/lesson/main";
-	}
+//	//로그인 진행
+//	@PostMapping("/login")
+//	public String login(TeacherVO teacherVO) {
+//		
+//		
+//		teacherService.login(teacherVO);
+//		
+//		
+//		return"redirect:/lesson/main";
+//	}
 	
 	//로그인정보 찾기 페이지로 이동
 	@GetMapping("/findLoginPage")

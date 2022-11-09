@@ -17,6 +17,8 @@ public class LessonController {
 	@GetMapping("/main")
 	public String mainPage( Model model) {
 		
+		System.out.println("mainPage컨트롤러 실행");
+		
 		return "content/lesson/lesson_main";
 	}
 	
