@@ -49,12 +49,13 @@
 
 
 <!-- 글 목록 조회 -->
-<select id="selectBoard" resultMap="board">
+<select id="selectNoticeBoard" resultMap="board">
 	SELECT BOARD_NUM    <!-- 화면에는 INDEX로 글번호 보게,, -->
 		, BOARD_TITLE
 		, TEACHER_NAME
 	FROM BOARD B, TEACHER T
 	WHERE B.TEACHER_CODE = T.TEACHER_CODE
+	AND BOARD_KIND_CODE = '0'
 </select>
 
 
@@ -89,7 +90,15 @@
 	)
 </insert>
 
-
+<!-- 글 목록 조회 -->
+<select id="selectFreeBoard" resultMap="board">
+	SELECT BOARD_NUM    <!-- 화면에는 INDEX로 글번호 보게,, -->
+		, BOARD_TITLE
+		, TEACHER_NAME
+	FROM BOARD B, TEACHER T
+	WHERE B.TEACHER_CODE = T.TEACHER_CODE
+	AND BOARD_KIND_CODE = '1'
+</select>
 
 
 </mapper>

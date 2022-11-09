@@ -7,11 +7,6 @@
 
 <div layout:fragment="content">
 	<div class="row">
-		<div class="col-12" th:if="${#lists.size(stuList)==0}">
-			데이터가 없습니다.
-		</div>
-		
-		
 		<div class="col-12" style="margin-top: 40px;" id="table_box_bootstrap">
 			<div>
 				총 <span th:text="${#lists.size(stuList)}" style="color:red"></span>명 입니다.
@@ -28,14 +23,21 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="stu, status : ${stuList}">
-						<td scope="row" th:text="${status.count}" th:name="stu"></td>
-						<td><a th:name="stu" th:href="@{/stu/detail(studentCode=${stu.studentCode})}">[[${stu.studentName}]]</a></td>
-						<td th:name="stu" th:text="${stu.year} + 학년"></td>
-						<td th:name="stu" th:text=${stu.studentGender} ></td>
-						<td th:name="stu"></td>
-						<td><input type="checkbox" class="form-check-input chk" th:value=${stu.studentCode} th:name="selectCount"></td>
-					</tr>
+					<th:block th:if="${#lists.size(stuList) == 0}">
+						<tr>
+							<td colspan="6">데이터가 없습니다.</td>
+						</tr>
+					</th:block>
+					<th:block th:unless="${#lists.size(stuList) == 0}">
+						<tr th:each="stu, status : ${stuList}">
+							<td scope="row" th:text="${status.count}" th:name="stu"></td>
+							<td><a th:name="stu" th:href="@{/stu/detail(studentCode=${stu.studentCode})}">[[${stu.studentName}]]</a></td>
+							<td th:name="stu" th:text="${stu.year} + 학년"></td>
+							<td th:name="stu" th:text=${stu.studentGender} ></td>
+							<td th:name="stu"></td>
+							<td><input type="checkbox" class="form-check-input chk" th:value=${stu.studentCode} th:name="selectCount"></td>
+						</tr>
+					</th:block>
 				</tbody>
 			</table>
 			
@@ -44,7 +46,9 @@
 				<div class="col-12">
 					<div class="row justify-content-end">
 						<div class="col-1"  style="margin-right: 2.6rem;">
-					   		<button th:onclick="goDelete();" type="button" class="btn btn-warning form-control" >삭제</button>
+					   		<button type="button" th:onclick="goDelete();" class="btn btn-outline-danger btn-sm form-control"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg>삭제</button>
 						</div>
 					</div>
 				</div>
