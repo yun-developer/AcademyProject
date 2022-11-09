@@ -1,5 +1,7 @@
 package kh.study.academy.test.controller;
 
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -7,7 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import kh.study.academy.student.vo.StudentVO;
 import kh.study.academy.test.service.TestService;
 import kh.study.academy.test.vo.TestVO;
 
@@ -21,11 +25,23 @@ public class TestController {
 	
 	
 	
-	//점수 입력 페이지로
-	@GetMapping("/regScore")
-	public String regScorePage(TestVO testVO) {
+	//점수 관리 페이지로
+	@RequestMapping("/scoreManage")
+	public String regScorePage(@RequestParam Map<String, String> paramMap, Model model) {
 		
-		return "content/test/regScore";
+		//데이터 나오는지 확인
+		//System.out.println("@@@!!!!!@@"+testService.searchTest(paramMap));
+		
+		//검색
+		//model.addAttribute("search", testService.searchTest(paramMap));
+		
+		//학급명 목록 조회 
+	//	model.addAttribute(null, model);
+		
+		
+		//model.addAttribute("paramMap", paramMap);
+		
+		return "content/test/testManage";
 	
 	}
 	
@@ -38,16 +54,7 @@ public class TestController {
 	
 		return null;
 	}
-	
-	//해당 학생의 점수 조회
-	//검토 필요
-	@GetMapping("/selectStuScore")
-	public String selectStuScore(TestVO testVO) {
-		
-		testService.selectStuScore(testVO);
-		
-		return null;
-	}
+
 	
 	
 	//반별 테스트 평균 점수 조회
@@ -63,10 +70,10 @@ public class TestController {
 
 	//점수 수정
 	@PostMapping("/updateScore")
-	public String updateScore(TestVO testVO, Model model) {
+	public String updateScore(StudentVO studentVO, Model model) {
 		
 		//수정하기 전에 상세정보 가져오기
-		model.addAttribute("test", testService.selectStuScore(testVO));
+
 		
 		return null;
 	}

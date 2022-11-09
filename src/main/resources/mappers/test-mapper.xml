@@ -39,19 +39,30 @@
 	
 	
 	
-	<!-- 해당 학생의 점수 조회 -->
+	<!-- 평가 관리 페이지에서 검색 조회 -->
 	<!--LESSON_INFO_CODE 수정필요  -->
-	<!--where 검토 필요-->
-	<select id="selectStuScore" resultMap="test">
-		SELECT TEST_CODE
-			, TEST_DATE
-			, SCORE
-			, STUDENT_CODE
+<!--  	<select id="searchTest" resultMap="studentMapper.student" parameterType="hashMap">
+		SELECT S.STUDENT_CODE 
+			, STUDENT_NAME
+			, (SELECT TEACHER_CODE FROM TEACHER) AS TEACHER_CODE
+			, (SELECT TEACHER_NAME FROM TEACHER) TEACHER_NAME
+			, TEST_CODE
+			, STUDENT_LESSON_CODE
 			, LESSON_INFO_CODE
-		FROM TEST
-		WHERE STUDENT_CODE = #{studentCode}
+			, SCORE
+		FROM STUDENT S, STUDENT_LESSON_INFO L
+		WHERE S.STUDENT_CODE = L.STUDENT_CODE
+		<if test="teacherName != null and !teacherName.equals('')">
+		AND TEACHER_NAME LIKE ('%'||#{teacherName}||'%')
+		</if>
+		<if test="studentName != null and !studentName.equals('')">
+		AND STUDENT_NAME LIKE ('%'||#{studentName}||'%')
+		</if>
+		<if test="lessonInfoCode != null and !lessonInfoCode.equals('')">
+		AND LESSON_INFO_CODE LIKE ('%'||#{lessonInfoCode}||'%')
+		</if>
 	</select>
-	
+	  -->
 	
 	
 	

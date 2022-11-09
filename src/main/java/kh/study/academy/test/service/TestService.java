@@ -1,7 +1,9 @@
 package kh.study.academy.test.service;
 
 import java.util.List;
+import java.util.Map;
 
+import kh.study.academy.student.vo.StudentVO;
 import kh.study.academy.test.vo.TestVO;
 
 public interface TestService {
@@ -10,9 +12,9 @@ public interface TestService {
 	//점수 등록
 	int regScore (TestVO testVO);
 	
-	//해당 학생의 점수 조회
+	//평가 관리 페이지에서 검색
 	//검토 필요
-	TestVO selectStuScore(TestVO testVO);
+	List<StudentVO> searchTest(Map<String, String> map);
 	
 	//반별 테스트 평균 점수 조회
 	//검토 필요

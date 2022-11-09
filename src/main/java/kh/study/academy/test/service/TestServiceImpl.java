@@ -1,11 +1,13 @@
 package kh.study.academy.test.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kh.study.academy.student.vo.StudentVO;
 import kh.study.academy.test.vo.TestVO;
 
 @Service("testService")
@@ -19,11 +21,11 @@ public class TestServiceImpl implements TestService{
 		return sqlSession.insert("testMapper.regScore",testVO);
 	}
 	
-	//해당 학생의 점수 조회
+	//평가 관리 페이지에서 검색
 	//검토 필요
 	@Override
-	public TestVO selectStuScore(TestVO testVO) {
-		return sqlSession.selectOne("testMapper.selectStuScore", testVO);
+	public List<StudentVO> searchTest(Map<String, String> map) {
+		return sqlSession.selectList("testMapper.searchTest", map);
 	}
 	
 	//점수 수정

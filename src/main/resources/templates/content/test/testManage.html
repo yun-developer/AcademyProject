@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz.thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	layout:decorate="~{layout/base_layout}">
+	
+<th:block layout:fragment="css">
+	<link rel="stylesheet" th:href="@{}">
+</th:block>
+
+
+
+<div layout:fragment="content">
+
+	<!--조회 div 시작  -->
+	<form th:action="@{/test/scoreManage}" method="post">
+		<section>
+			<div class="info mb-2">
+				<i class="fas fa-exclamation-circle color-blue2"></i> <b> 검색조건</b>
+			</div>
+			<div class="row search-detail-form">
+				<div class="col-xs-12 col-lg-6">
+					<div class="input-group mb-2">
+						<span class="input-group-addon col-2">학생이름</span> 
+						<input type="text" class="form-control" id="" name="studentName" autocomplete="off" th:value="${paramMap['studentName']}">
+					</div>
+				</div>
+				<div class="col-xs-12 col-lg-6">
+					<div class="input-group mb-2">
+						<span class="input-group-addon col-2">교사이름</span> 
+						<input type="text" class="form-control" id="" name="teacherName"
+							autocomplete="off" th:value="${paramMap['teacherName']}">
+					</div>
+				</div>
+				<div class="col-xs-12 col-lg-6">
+					<div class="input-group mb-2">
+						<span class="input-group-addon col-2">학급명</span> 
+						<input type="text" class="form-control" id="" name="lessonInfoCode" autocomplete="off" th:value="${paramMap['lessonInfoCode']}">
+					</div>
+				</div>
+
+
+
+				<div class="col-xs-12 col-lg-6">
+					<div class="d-grid gap-2">
+						<div class="d-grid gap-2">
+							<button type="submit" name="btn-detail-search"
+								class="btn btn-outline-dark me-md-2">검색</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</form>
+	<!--조회 div 끝  -->
+ 
+ 
+ <!--학생 리스트 div 시작  -->
+ <div class="row mt-5">
+		<table class="table table-hover text-center align-middle ">
+			<thead>
+				<tr>
+					<th scope="col">
+						<input type="checkbox" id="checkAll">
+					</th>
+					<th scope="col">학생이름</th>
+					<th scope="col">교사이름</th>
+					<th scope="col">학급명</th>
+					<th scope="col" class="bi bi-arrow-through-heart-fill">평가결과 입력</th>
+				</tr>
+			</thead>
+			<tbody class="table-group-divider">
+				<th:block th:if="${#lists.size(search)==0}">
+					<tr>
+						<td colspan="5"> 조회된 학생이 없습니다</td>
+					</tr>
+				</th:block>
+				<th:block th:unless="${#lists.size(search)==0}">
+					<tr th:each="student:${search}">
+						<td>
+							<input type="checkbox" class="chk">
+						</td>
+						<td th:text="${student.studentName}"></td>
+						<td th:text="${student.teacherName}"></td>
+						<td th:text="${student}"></td>
+						<td>
+							<input type="button" value="수정">
+						</td>
+						
+					</tr>
+				</th:block>
+			</tbody>
+		</table>
+	</div>
+ 
+ <!--학생 리스트 div 끝-->
+
+
+</div>
+
+
+</html>
