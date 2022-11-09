@@ -19,7 +19,15 @@ public class LessonController {
 		
 		return "content/lesson/lesson_main";
 	}
-
+	
+	//주별 학급목록
+	@GetMapping("/listByWeek")
+	public String listByWeek() {
+		
+		return "content/lesson/lessonlist_byweek";
+	}
+	
+	
 	@GetMapping("/subject")
 	public String selectsubject() {
 		

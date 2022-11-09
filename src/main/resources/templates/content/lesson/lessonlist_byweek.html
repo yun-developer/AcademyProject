@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/base_layout}">
+<head>
+	<!-- <link href="/fullcalendar/main.css" rel="stylesheet" />
+	<link href="/bootstrap/css/styles.css" rel="stylesheet" /> -->
+	   
+	<!-- jquery CDN -->
+	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.js"></script>
+	<!-- fullcalendar CDN -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+	<!-- fullcalendar 언어 CDN -->
+	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales-all.min.js"></script>
+	<!--위치 중요함 제일 마지막-->
+	<link href="/css/common.css" rel="stylesheet">
+	 
+
+
+</head>
+
+<div layout:fragment="content">
+
+주별 시간표
+	<div id='calendar'></div>
+	
+	
+	
+	
+	<script type="text/javascript" th:src="@{/js/lesson/lesson_list.js}"></script>  
+	
+</div>
+
+</html>
