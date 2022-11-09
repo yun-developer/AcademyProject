@@ -1,5 +1,7 @@
 package kh.study.academy.test.service;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,8 +22,8 @@ public class TestServiceImpl implements TestService{
 	//해당 학생의 점수 조회
 	//검토 필요
 	@Override
-	public TestVO selectScore(TestVO testVO) {
-		return sqlSession.selectOne("testMapper.selectScore", testVO);
+	public TestVO selectStuScore(TestVO testVO) {
+		return sqlSession.selectOne("testMapper.selectStuScore", testVO);
 	}
 	
 	//점수 수정
@@ -35,5 +37,14 @@ public class TestServiceImpl implements TestService{
 	@Override
 	public void deleteScore(String testCode) {
 		sqlSession.delete("testMapper.deleteScore",testCode);
+	}
+
+	
+	//반별 테스트 평균 점수 조회
+	//검토 필요
+	@Override
+	public List<TestVO> selectLessonScore(TestVO testVO) {
+		
+		return sqlSession.selectList("testMapper.selectLessonScore", testVO);
 	}
 }

@@ -42,15 +42,35 @@
 	<!-- 해당 학생의 점수 조회 -->
 	<!--LESSON_INFO_CODE 수정필요  -->
 	<!--where 검토 필요-->
-	<select id="selectScore" resultMap="test">
+	<select id="selectStuScore" resultMap="test">
 		SELECT TEST_CODE
 			, TEST_DATE
 			, SCORE
+			, STUDENT_CODE
 			, LESSON_INFO_CODE
 		FROM TEST
 		WHERE STUDENT_CODE = #{studentCode}
-			
 	</select>
+	
+	
+	
+	
+	<!-- 통계(반별 테스트 평균점수를 차트화) -->
+	<!-- 검토필요 -->
+	<select id="selectLessonScore" resultMap="test">
+		SELECT TEST_CODE
+			, TEST_DATE
+			, SCORE
+			, STUDENT_CODE
+			, LESSON_INFO_CODE
+		FROM TEST
+		WHERE LESSON_INFO_CODE = #{lessonInfoCode}
+	</select>
+	
+	
+	
+	
+	
 	
 	<!-- 점수 수정  -->
 	<update id="updateScore">
