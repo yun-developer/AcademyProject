@@ -96,51 +96,174 @@
             
           <!-- 교실 신규 버튼 누르면 실행되는 Modal -->
 			<!-- Modal -->
-			<div class="modal fade" id="aa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			  <div class="modal-dialog">
-			    <div class="modal-content">
-			  	  <!-- 모달 제목글 header -->
-
-	    	      <div class="modal-header"> 
-			        <h5 class="modal-title" id="exampleModalLabel"> 교실 정보 </h5>
-			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-			      </div>
-				   <!-- 모달 내용글 body -->
+			
 				   
-				<form action="/admin/regLessonRoom" method="post">
-			      <div class="modal-body">
-			      	<div class="row mb-3">
-			      		<div class="col-10">
-			      			<label for="roomName" class="form-label">교실명</label>
-			      				<input  type="text" class="form-control" id="roomName" name="roomName">
-			      			
-			      		</div>
-			      		<div class="col-10">
-			      			<label for="lessonRoomMaxStudent" class="form-label">정 원</label>
-			      				<input  type="text" class="form-control" id="lessonRoomMaxStudent" name="lessonRoomMaxStudent">
-			      		</div>
-				      		<div class="col-8">
-				      			<label for="isUse" class="form-label">교실사용여부</label>
-					      			<select name="isUse" class="form-select" >
-					      				<option  id="isUse" value="Y">Y</option>
-					      				<option  id="isUse" value="N">N</option>
-					      			</select>
-			      		</div>
-			      	</div>
-			      	<div class="row">
-			      		<div class="col text-end">
-			      		
-			      			<button type="submit" id="updateAmountBtn" class="btn btn-primary btn-sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3rem; --bs-btn-font-size: 1rem;">저장</button>
-			      			<button type="button" id="cancelBtn" data-origin-amount=""  th:onclick="rollbackAmount();"  class="btn btn-secondary btn-sm" data-bs-dismiss="modal" aria-label="Close" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3rem; --bs-btn-font-size: 1rem;">닫기</button>
-			      		
-			      		</div>
-			      	</div>
-			      </div>
-			     </form>
-			    </div>
-			  </div>
-			</div>
+				   
+		<div class="modal fade" id="aa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			 <div class="modal-dialog modal-xl">
+				<div class="modal-content">
+				  	  <!-- 모달 제목글 header -->
+	
+		    	      <div class="modal-header"> 
+				        <h5 class="modal-title" id="exampleModalLabel"> 학급 편성 등록 </h5>
+				        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				      </div>
+					
+					<!-- 모달 내용글 body -->
+				      <div class="modal-body">
+				      	<div class="row mb-3">
+				      		<div class="col-10">
 
+							  <fieldset class="w-100">
+								<h4>학급 정보</h4>
+								
+										<div class="form-group input-group mb-1">
+											<div class="col-6 col-lg-2 px-0">
+												<span class="input-group-text h-100 rounded-0">편성년월</span></div>
+												<!--변수 인식하기 위해 value말고 th:value  -->
+												<!--notion  -->
+												
+												
+											<div class="col-6 col-lg-3 px-1 rounded-0">
+
+
+												<div class="input-group h-100">
+													<input type="date" class="form-control" id="" name="" autocomplete="off">
+														<div class="input-group-append"  data-istyle="year-month">
+														</div>
+												</div>
+
+											</div>
+											<div class="col-6 col-lg-2 px-0"><span class="input-group-text h-100 rounded-0">과정구분</span></div>
+									
+												<div class="col-6 col-lg-3 px-1 rounded-0">
+										      	
+													<select class="form-select"   aria-label="Default select example" id="schClsSn" name="schClsSn" kor="과정구분">
+														<option value="">선택</option>
+									
+										
+															<option value="1">고등1</option>
+														
+															<option value="2">고등2</option>
+														
+															<option value="3">고등3</option>
+													
+										
+									
+													</select>
+												</div>
+											<div class="col-6 col-lg-2 pl-0 pr-1">
+												<select class="form-control input-sm select2-hidden-accessible" id="schAcaSn" name="schAcaSn" kor="과정구분" data-select2-id="schAcaSn" tabindex="-1" aria-hidden="true">
+
+	
+	
+												
+	
+
+												</select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="19" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single rounded-0" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-schAcaSn-container" style="z-index: 9999;"><span class="select2-selection__rendered" id="select2-schAcaSn-container" role="textbox" aria-readonly="true"></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+											</div>
+										</div>
+										
+								<div class="form-group input-group mb-1">
+									<div class="col-6 col-lg-2 px-0"><span class="input-group-text h-100 rounded-0">편성구분</span></div>
+									<div class="col-6 col-lg-3 px-1 rounded-0">
+										<select class="form-control input-sm" id="sbjSpcSn" name="sbjSpcSn">
+											<option value="">전체</option>
+											
+											
+												<option value="1">정규</option>
+												
+													<option value="2">본사특강</option>
+												
+													<option value="3">센터특강</option>
+												
+											
+										</select>
+									</div>
+									<div class="col-6 col-lg-2 px-0"><span class="input-group-text h-100 rounded-0">정원</span></div>
+									<div class="col-6 col-lg-5 px-1 rounded-0">
+										<input type="text" id="cpaCn" name="cpaCn" class="form-control rounded-0 h-100" placeholder="정원" aria-label="8" aria-describedby="cpaCn" value="8">
+									</div>
+								</div>
+								<div class="form-group input-group mb-1">
+									<div class="col-6 col-lg-2 px-0"><span class="input-group-text h-100 rounded-0">재등록기간</span></div>
+									<div class="col-6 col-lg-3 px-1 rounded-0">
+										<div class="input-group h-100"><input type="text" class="form-control" data-istyle="year-month" id="cmpDt" name="cmpDt" value=""><div class="input-group-append"><span class="input-group-text rounded-0"><i class="fal fa-calendar"></i></span></div></div>
+									</div>
+								</div>
+								<div class="form-group input-group mb-1">
+									<div class="col-6 col-lg-2 px-0"><span class="input-group-text h-100 rounded-0">메모</span></div>
+									<div class="col-6 col-lg-10 px-1">
+										<textarea id="memo" name="memo" class="form-control rounded-0" placeholder="메모" aria-label="메모" aria-describedby="memo"></textarea>
+									</div>
+								</div>
+								<div class="form-group input-group mb-1">
+									<div class="col-6 col-lg-2 px-0"><span class="input-group-text h-100 rounded-0">학급명</span></div>
+									<div class="col-6 col-lg-10 px-1 rounded-0">
+										<input type="text" id="classOgnNm" name="classOgnNm" class="form-control rounded-0 h-100" placeholder="학급명" aria-label="학급명" aria-describedby="classOgnNm" value="" kor="학급명">
+									</div>
+								</div>
+								<div class="form-group input-group pt-5 mb-0">
+									<div class="col-12 col-lg-12 align-middle my-auto">
+										<h4 class="easy-pie-title h-100 my-0">학급 프로그램 정보</h4>
+									</div>
+								</div>
+								<div class="form-group input-group mb-0">
+									<div class="col-2 col-lg-2 my-auto">
+										<span class="easy-pie-title">수업시간표</span>
+									</div>
+									<div class="col-2 col-lg-2 my-auto">
+										<span class="easy-pie-title"> 월 수강료 : ₩ </span><span class="easy-pie-title" id="totalPr">0</span>
+									</div>
+									<div class="col-2 col-lg-2 my-auto">
+										<span class="easy-pie-title"> 교재비  : ₩ </span><span class="easy-pie-title" id="totalSbjTxtPr">0</span>
+									</div>
+									<div class="col-2 col-lg-2 my-auto">
+										<span class="easy-pie-title"> 교재비외   : ₩ </span><span class="easy-pie-title" id="totalSum">0</span>
+									</div>
+									<div class="col-4 col-lg-4 text-right align-middle my-auto">
+
+										<button type="button" id="btnClsOrgSchdDetail" class="btn btn-info">프로그램 추가</button>
+
+									</div>
+								</div>
+
+								<div class="form-group input-group mb-1">
+									<div class="col-lg-12">
+										<div id="tblClsOrgSchdDetail_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer"><div class="col-lg-12 d-flex justify-content-start mb-1"><div class="col-lg-12 text-right"><div class="dt-buttons"></div></div></div><div class="dataTables_scroll"><div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%;"><div class="dataTables_scrollHeadInner" style="box-sizing: content-box; width: 738px; padding-right: 0px;"><table class="table table-bordered table-hover table-striped w-100 dataTable dtr-inline table-sm no-footer" role="grid" style="margin-left: 0px; width: 738px;"><thead class="">
+												<tr class="border-info" role="row"><th class="text-center align-middle border-success sorting_desc" rowspan="1" colspan="1" style="width: 26.8125px;" aria-label="선택">선택</th><th class="text-center align-middle sorting_disabled" rowspan="1" colspan="1" style="width: 25.8281px;" aria-label="요일">요일</th><th class="text-center align-middle sorting_disabled" rowspan="1" colspan="1" style="width: 50.5156px;" aria-label="수업시간">수업시간</th><th class="text-center align-middle sorting_disabled" rowspan="1" colspan="1" style="width: 72.3125px;" aria-label="교사(이니셜)">교사(이니셜)</th><th class="text-center align-middle sorting_disabled" rowspan="1" colspan="1" style="width: 25.8281px;" aria-label="교실">교실</th><th class="text-center align-middle sorting_disabled" rowspan="1" colspan="1" style="width: 50.5156px;" aria-label="프로그램">프로그램</th><th class="text-center align-middle sorting_disabled" rowspan="1" colspan="1" style="width: 81.2031px;" aria-label="프로그램/단계">프로그램/단계</th><th class="text-center align-middle sorting_disabled" rowspan="1" colspan="1" style="width: 50.5156px;" aria-label="커리큘럼">커리큘럼</th><th class="text-center align-middle sorting_disabled" rowspan="1" colspan="1" style="width: 25.8281px;" aria-label="수정">수정</th><th class="text-right align-middle sorting_disabled" rowspan="1" colspan="1" style="width: 38.6719px;" aria-label="교습료">교습료</th><th class="text-right align-middle sorting_disabled" rowspan="1" colspan="1" style="width: 38.6719px;" aria-label="교재비">교재비</th><th class="text-right align-middle sorting_disabled" rowspan="1" colspan="1" style="width: 38.6719px;" aria-label="재료비">재료비</th><th class="text-right align-middle sorting_disabled" rowspan="1" colspan="1" style="width: 50.625px;" aria-label="기타비용">기타비용</th></tr>
+											</thead></table></div></div><div class="dataTables_scrollBody" style="position: relative; overflow: auto; height: 250px; width: 100%;"><table class="table table-bordered table-hover table-striped w-100 dataTable dtr-inline table-sm no-footer" id="tblClsOrgSchdDetail" role="grid" style="width: 100%;"><thead class="">
+												<tr class="border-info" role="row" style="height: 0px;"><th class="text-center align-middle border-success sorting_desc" rowspan="1" colspan="1" style="width: 26.8125px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="선택"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">선택</div></th><th class="text-center align-middle sorting_disabled" rowspan="1" colspan="1" style="width: 25.8281px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="요일"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">요일</div></th><th class="text-center align-middle sorting_disabled" rowspan="1" colspan="1" style="width: 50.5156px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="수업시간"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">수업시간</div></th><th class="text-center align-middle sorting_disabled" rowspan="1" colspan="1" style="width: 72.3125px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="교사(이니셜)"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">교사(이니셜)</div></th><th class="text-center align-middle sorting_disabled" rowspan="1" colspan="1" style="width: 25.8281px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="교실"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">교실</div></th><th class="text-center align-middle sorting_disabled" rowspan="1" colspan="1" style="width: 50.5156px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="프로그램"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">프로그램</div></th><th class="text-center align-middle sorting_disabled" rowspan="1" colspan="1" style="width: 81.2031px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="프로그램/단계"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">프로그램/단계</div></th><th class="text-center align-middle sorting_disabled" rowspan="1" colspan="1" style="width: 50.5156px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="커리큘럼"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">커리큘럼</div></th><th class="text-center align-middle sorting_disabled" rowspan="1" colspan="1" style="width: 25.8281px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="수정"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">수정</div></th><th class="text-right align-middle sorting_disabled" rowspan="1" colspan="1" style="width: 38.6719px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="교습료"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">교습료</div></th><th class="text-right align-middle sorting_disabled" rowspan="1" colspan="1" style="width: 38.6719px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="교재비"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">교재비</div></th><th class="text-right align-middle sorting_disabled" rowspan="1" colspan="1" style="width: 38.6719px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="재료비"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">재료비</div></th><th class="text-right align-middle sorting_disabled" rowspan="1" colspan="1" style="width: 50.625px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;" aria-label="기타비용"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">기타비용</div></th></tr>
+											</thead>
+											
+											<tbody><tr class="odd"><td valign="top" colspan="13" class="dataTables_empty">데이터가 없습니다</td></tr></tbody>
+										</table></div></div><div id="tblClsOrgSchdDetail_processing" class="dataTables_processing card" style="display: none;">처리중...</div><div class="row"><div class="col-lg-2"></div><div class="col-lg-2"></div><div class="col-lg-8"></div></div></div>
+									</div>
+								</div>
+								<div class="form-group input-group mb-1">
+
+										<p style="color: red; ">* 복수 요일(프로그램) 학급을 편성 시, 각 프로그램별 금액이 전부 합산되어 학급의 수강료로 책정됩니다.<br> ex) 화 12만원 + 목 12만원 = 화목 24만원</p>
+
+
+								</div>
+							</fieldset>
+							<div class="row">
+		      					<div class="col text-end">
+		      		
+					      			<button type="submit" id="updateAmountBtn" class="btn btn-primary btn-sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3rem; --bs-btn-font-size: 1rem;">저장</button>
+					      			<button type="button" id="cancelBtn" data-origin-amount=""  th:onclick="rollbackAmount();"  class="btn btn-secondary btn-sm" data-bs-dismiss="modal" aria-label="Close" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3rem; --bs-btn-font-size: 1rem;">닫기</button>
+		      		
+					      		</div>
+					      	</div>
+							
+							
+						    </div>
+						  </div>
+						</div>
+					</div>
+				</div>
+			</div>
+						
 <!------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
           <script src="https://code.jquery.com/jquery-latest.min.js"></script>   
