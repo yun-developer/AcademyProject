@@ -5,6 +5,9 @@ import kh.study.academy.teacher.vo.TeacherVO;
 
 public interface TeacherService {
 
+	//다음에 들어갈 TEACHER_CODE 조회
+	String selectNextTeacherCode();
+	
 	//회원가입
 	void join(TeacherVO teacherVO);
 	
@@ -21,6 +24,6 @@ public interface TeacherService {
 	//회원 정보 조회
 	TeacherVO selectTeacherInfo(TeacherVO teacherVO);
 	
-	//프로필사진 등록
+	//프로필사진 커스텀 등록
 	void insertProfileImg(ProfileImgVO profileImgVO);
 }

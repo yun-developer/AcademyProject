@@ -14,6 +14,13 @@ public class TeacherServiceImpl implements TeacherService {
 	@Autowired
 	SqlSessionTemplate sqlSession;
 	
+	//다음에 들어갈 TEACHER_CODE 조회
+	@Override
+	public String selectNextTeacherCode() {
+		
+		return sqlSession.selectOne("teacherMapper.selectNextTeacherCode");
+	}
+	
 	//회원가입
 	@Override
 	public void join(TeacherVO teacherVO) {
@@ -53,7 +60,7 @@ public class TeacherServiceImpl implements TeacherService {
 		sqlSession.insert("teacherMapper.insertProfileImg", profileImgVO);
 		
 	}
-	
+
 
 	
 	

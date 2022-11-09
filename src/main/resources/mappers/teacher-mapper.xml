@@ -22,6 +22,7 @@
 		<result column="SUBJECT_CODE" 						property="subjectCode" />
 		
 		<association property="subjectVO" resultMap="adminMapper.subject"/>
+		<association property="profileImgVO" resultMap="teacherMapper.profileImg"/>
 	</resultMap>
 	
 	<resultMap type="kh.study.academy.teacher.vo.ProfileImgVO" id="profileImg">
@@ -32,14 +33,21 @@
 	</resultMap>
 
 	
+	<!-- 다음에 들어갈 TEACHER_CODE 조회 -->	
+	
+	<select id="selectNextTeacherCode" resultType="String">
+		 SELECT 'TEACHER_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(TEACHER_CODE, 9))), 0) + 1, 3, 0) 
+	     FROM TEACHER  
+	</select>
+	
 	
 	<!-- 회원가입 -->
 	
 	<insert id="join">
-		<selectKey resultType="String" keyProperty="teacherCode" order="BEFORE">
+		<!-- <selectKey resultType="String" keyProperty="teacherCode" order="BEFORE">
 	         SELECT 'TEACHER_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(TEACHER_CODE, 9))), 0) + 1, 3, 0) 
 	         FROM TEACHER  
-	      </selectKey>
+	      </selectKey> -->
 	
 		INSERT INTO TEACHER (
 		    TEACHER_CODE
@@ -120,6 +128,7 @@
 			, DECODE(TEACHER_GENDER, 'W', '여성', '남성')AS TEACHER_GENDER
             , TEACHER_BIRTHDAY
             , TEACHER_EMAIL
+            , (SELECT STORED_FILE_NAME FROM PROFILE_IMG WHERE TEACHER_CODE = T.TEACHER_CODE) AS STORED_FILE_NAME
 		FROM TEACHER T
 		WHERE TEACHER_ID = #{teacherId}
 	</select>
@@ -127,7 +136,7 @@
 	<!-- 프로필 사진 등록 -->
 	<insert id="insertProfileImg">
 		<selectKey resultType="String" keyProperty="profileImgNum" order="BEFORE">
-	         SELECT 'PROFILE_IMG_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(TEACHER_CODE, 13))), 0) + 1, 3, 0) 
+	         SELECT 'PROFILE_IMG_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(PROFILE_IMG_NUM, 13))), 0) + 1, 3, 0) 
 	         FROM PROFILE_IMG 
 	    </selectKey>
 	    

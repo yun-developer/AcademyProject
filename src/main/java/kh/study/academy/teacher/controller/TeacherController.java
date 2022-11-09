@@ -61,9 +61,19 @@ public class TeacherController {
 		
 		//pw암호화
 		teacherVO.setTeacherPw(encoder.encode(teacherVO.getTeacherPw()));
+
+		//다음에 들어갈 티쳐코드
+		String nextTeacherCode =teacherService.selectNextTeacherCode();
 		
-		
+		teacherVO.setTeacherCode(nextTeacherCode);
 		teacherService.join(teacherVO);
+		
+		ProfileImgVO imgVO = new ProfileImgVO();
+		imgVO.setTeacherCode(nextTeacherCode);
+		imgVO.setOriginFileName("defaultProfile.jpg");
+		imgVO.setStoredFileName("defaultProfile.jpg");
+	
+		teacherService.insertProfileImg(imgVO);
 		
 		return "redirect:/lesson/main";
 		
@@ -184,7 +194,7 @@ public class TeacherController {
 		
 	}
 	
-	//프로필 이미지 등록
+	//프로필 이미지 커스텀등록
 	@PostMapping("/insertProfileImg")
 	public String insertProfileImg(ProfileImgVO profileImgVO, MultipartFile profileImg)  {
 		
@@ -193,7 +203,6 @@ public class TeacherController {
 		
 		uploadInfo.setTeacherCode(profileImgVO.getTeacherCode());
 		
-		System.out.println("!!!!!!!!!!!!!!!!!!111"+uploadInfo);
 		teacherService.insertProfileImg(uploadInfo);
 		
 		return "redirect:/teacher/selectInfo";

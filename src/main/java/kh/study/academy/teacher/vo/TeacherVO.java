@@ -39,9 +39,6 @@ public class TeacherVO {
 	
 	private int check; 
 	
-	private SubjectVO subjectVO;
-	
-	
 	//이메일 형식 수정필요
 	@NotBlank(message = "* 이메일은 필수 입력입니다.")
 	private String teacherEmail;
@@ -55,5 +52,9 @@ public class TeacherVO {
 	
 	
   
+	
+	private SubjectVO subjectVO;
+	private ProfileImgVO profileImgVO;
+	
 	
 }

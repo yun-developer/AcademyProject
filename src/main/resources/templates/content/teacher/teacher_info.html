@@ -17,7 +17,7 @@
 			        <p class="card-text"><small class="text-muted">사진을 추가하여 계정을 맞춤설정할 수 있습니다.</small></p>
 			        <p class="card-text">
 			        
-				        프로필 이미지 첨부
+				        <h5>개인 정보</h5>
 						<form th:action="@{/teacher/insertProfileImg}" method="post" enctype="multipart/form-data">
 							<div class="row">
 						        <div class="col-9">
@@ -34,8 +34,12 @@
 			      </div>
 			    </div>
 			    <div class="col-md-3 mx-auto">
-					<img th:src="@{/images/}+human.jpg" class="img-fluid rounded-start"  alt="..."  style="width: 200px; height: 200px;">
-			
+			    	<figure class="figure">
+						<!-- <img th:src="@{/images/}+human.jpg" class="img-fluid rounded-start img-circle"  alt="..."  style="width: 200px; height: 200px;"> -->
+						<img th:src="@{/images/}+${teacher.profileImgVO.storedFileName}" class="img-fluid rounded-start img-circle"  alt="..."  style="width: 200px; height: 200px;">
+					  	<figcaption class="figure-caption text-center border border-secondary">현재 프로필 사진</figcaption>
+					</figure>
+			    	
 			    </div>
 			    
 			  </div>

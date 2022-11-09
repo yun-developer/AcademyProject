@@ -17,8 +17,9 @@ public class SubjectIntercepter implements HandlerInterceptor {
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-		System.out.println("과목목록 인터셉터 실행");
+		
 		request.setAttribute("subjectList", adminService.selectSubject());
+		
 		
 	}
 	
