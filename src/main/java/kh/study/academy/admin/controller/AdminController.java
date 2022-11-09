@@ -185,11 +185,17 @@ public class AdminController {
 
 		@GetMapping("/regLessonInfo")
 			public String regLessonInfo(Model model, LessonRoomVO lessonRoomVO, String roomName) { 
-	 
+			
+			// 과목 리스트를 가져오는 쿼리 실행 문
 			model.addAttribute("subjectList", adminService.selectSubject());
-	 
+			
+			// 교실명 리스트를 가져오는 쿼리 실행 문
 			List<LessonVO> lessonRoomList = adminService.selectLessonRoom(roomName);
 			model.addAttribute("LessonRoomList", lessonRoomList);
+			
+			
+			
+			
 			
 			 return "content/admin/reg_lessonInfo";
 			}
