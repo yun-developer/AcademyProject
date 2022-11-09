@@ -45,16 +45,16 @@
                    </tr>
                  </thead>
                  <tbody>
-                  <th:block th:if="${#lists.size(selectLessonRoom) == 0}">
+                  <th:block th:if="${#lists.size(LessonRoomList) == 0}">
                  	<tr> 
                  		<td colspan="5">등록된 교실이 없습니다.</td>
                  	</tr>
                 </th:block>
                  
 
-                    <th:block th:unless="${#lists.size(selectLessonRoom) == 0}">
+                    <th:block th:unless="${#lists.size(LessonRoomList) == 0}">
                   
-                    <tr th:each="LessonRoom, status : ${selectLessonRoom}">
+                    <tr th:each="LessonRoom, status : ${LessonRoomList}">
                    		<td>
                      <input th:value="${LessonRoom.lessonRoomCode}"  type="checkbox" class="form-check-input chk" >
                   		</td>

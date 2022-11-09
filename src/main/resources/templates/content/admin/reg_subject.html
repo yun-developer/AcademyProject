@@ -36,21 +36,21 @@
                    </tr>
                  </thead>
                  <tbody>
-                 <th:block th:if="${#lists.size(selectSubject) == 0}">
+                 <th:block th:if="${#lists.size(subjectList) == 0}">
                  	<tr> 
                  		<td colspan="4">등록된 과목이 없습니다.</td>
                  	</tr>
                  </th:block>
 
-                 <th:block th:unless="${#lists.size(selectSubject) == 0}">
+                 <th:block th:unless="${#lists.size(subjectList) == 0}">
                   
-                    <tr th:each="selectSubject, status : ${selectSubject}">
+                    <tr th:each="subject, status : ${subjectList}">
                    		<td>
-                     <input name="selectSubject" th:value="${selectSubject.subjectCode}"  type="checkbox" class="form-check-input chk" >
+                     <input  th:value="${subject.subjectCode}"  type="checkbox" class="form-check-input chk" >
                   		</td>
-                   		<td th:name="selectSubject" th:text="${status.count}"></td> 
-                   		<td th:name="selectSubject" th:text="${selectSubject.subjectCode}" ></td> 
-                   		<td th:name="selectSubject" th:text="${selectSubject.subjectName}"></td> 
+                   		<td th:text="${status.count}"></td> 
+                   		<td th:text="${subject.subjectCode}" ></td> 
+                   		<td th:text="${subject.subjectName}"></td> 
                    </tr>
              
                  </th:block> 

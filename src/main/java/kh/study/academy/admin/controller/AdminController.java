@@ -120,7 +120,7 @@ public class AdminController {
 	@GetMapping("/selectSubject")
 		public String selectSubject(Model model){
 		
-		model.addAttribute("selectSubject", adminService.selectSubject());
+		model.addAttribute("subjectList", adminService.selectSubject());
 		
 		return "content/admin/reg_subject";
 	}
@@ -159,7 +159,7 @@ public class AdminController {
 		@RequestMapping("/selectLessonRoom")
 			public String selectLessonRoom(Model model, String roomName){
 			List<LessonVO> lessonRoomList =  adminService.selectLessonRoom(roomName);
-			model.addAttribute("selectLessonRoom", lessonRoomList);
+			model.addAttribute("LessonRoomList", lessonRoomList);
 			
 			return "content/admin/reg_lessonroom";
 		}
@@ -179,19 +179,18 @@ public class AdminController {
 			return "redirect:/admin/selectLessonRoom";
 		}
 
-	
-
-
-
 
 /////<학급 편성 등록 관련>//////////////////////////////////////////////////////////// 
 
 
 		@GetMapping("/regLessonInfo")
-			public String regLessonInfo(LessonRoomVO lessonRoomVO) { 
+			public String regLessonInfo(Model model, LessonRoomVO lessonRoomVO, String roomName) { 
 	 
-
+			model.addAttribute("subjectList", adminService.selectSubject());
 	 
+			List<LessonVO> lessonRoomList = adminService.selectLessonRoom(roomName);
+			model.addAttribute("LessonRoomList", lessonRoomList);
+			
 			 return "content/admin/reg_lessonInfo";
 			}
 		
