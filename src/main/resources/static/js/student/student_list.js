@@ -1,6 +1,9 @@
 //제목줄 체크박스
 const checkAll = document.querySelector('#checkAll');
 
+//제목 줄 제외한 모든 체크박스
+const chks = document.querySelectorAll('.chk');
+
 //체크박스 전체선택, 전체해제 이벤트
 checkAll.addEventListener('click', function(){
 	//제목줄에서 체크박스의 체크여부
@@ -25,22 +28,28 @@ checkAll.addEventListener('click', function(){
 });
 
 
-//체크박스 하나 해제되면 제목줄 체크박스 해제
-function checkSelectAll(checkbox)  {
-  const selectall = document.querySelector('input[name="selectall"]');
-  
-  if(checkbox.checked === false)  {
-    selectall.checked = false;
-  }
+
+//리스트 체크박스 선택 시
+for(const chk of chks){
+	chk.addEventListener('click', chk=>{ //밑줄 와이...?
+		//아래에 있는 전체 체크박스의 수 
+		const cnt = chks.length;
+		//아래에 있는 전체 체크박스 중 체크된 수
+		const checkedCnt = document.querySelectorAll('.chk:checked').length;
+		
+		//수가 같으면 제목 체크박스도 체크
+		if(cnt ==checkedCnt ){
+			document.querySelector('#checkAll').checked = true;
+		}
+		//수가 다르면 제목 체크박스도 해체
+		else{
+			document.querySelector('#checkAll').checked = false;
+		}
+		
+	});
 }
 
-function selectAll(selectAll)  {
-  const checkboxes = document.getElementsByName('stu');
-  
-  checkboxes.forEach((checkbox) => {
-    checkbox.checked = selectAll.checked
-  })
-}
+
 
 
 

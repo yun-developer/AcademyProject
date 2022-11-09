@@ -24,17 +24,17 @@
 						<th scope="col">학년</th>
 						<th scope="col">성별</th>
 						<th scope="col">반</th>
-						<th scope="col"><input type="checkbox" id="checkAll" th:name="selectall" onclick='selectAll(this)'></th>
+						<th scope="col"><input type="checkbox" id="checkAll" th:name="selectall" ></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr th:each="stu, status : ${stuList}">
 						<td scope="row" th:text="${status.count}" th:name="stu"></td>
 						<td><a th:name="stu" th:href="@{/stu/detail(studentCode=${stu.studentCode})}">[[${stu.studentName}]]</a></td>
-						<td th:text="${stu.year} + 학년"></td>
-						<td th:name="studentGender" th:text=${stu.studentGender} ></td>
+						<td th:name="stu" th:text="${stu.year} + 학년"></td>
+						<td th:name="stu" th:text=${stu.studentGender} ></td>
 						<td th:name="stu"></td>
-						<td><input type="checkbox" class="form-check-input chk" th:value=${stu.studentCode}  th:onclick='checkSelectAll(this)'></td>
+						<td><input type="checkbox" class="form-check-input chk" th:value=${stu.studentCode} th:name="selectCount"></td>
 					</tr>
 				</tbody>
 			</table>

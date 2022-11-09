@@ -3,20 +3,90 @@
 
 <mapper namespace="boardMapper">
 
+<resultMap type="kh.study.academy.board.vo.BoardVO" id="board">
+	<id column="BOARD_NUM" property="boardNum"/>
+	<result column="BOARD_KIND_CODE" property="boardKindCode"/> 
+	<result column="BOARD_TITLE" property="boardTitle"/> 
+	<result column="BOARD_CONTENT" property="boardContent"/> 
+	<result column="VIEW_COUNT" property="viewCount"/> 
+	<result column="CREATE_DATE" property="createDate"/> 
+	<result column="TEACHER_CODE" property="teacherCode"/> 
+	<result column="TEACHER_NAME" property="teacherName"/> 
+</resultMap>
+
+<resultMap type="kh.study.academy.board.vo.BoardKindVO" id="boardKind">
+	<id column="BOARD_KIND_CODE" property="boardKindCode"/>
+	<result column="KIND_NAME" property="kindName"/> 
+</resultMap>
+
+<resultMap type="kh.study.academy.board.vo.BoardImgVO" id="boardImg">
+	<id column="BOARD_IMG_NUM" property="boardImgNum"/>
+	<result column="BOARD_NUM" property="boardNum"/> 
+	<result column="ORIGIN_FILE_NAME" property="originFileName"/> 
+	<result column="STORED_FILE_NAME" property="storedFileName"/> 
+</resultMap>
+
+
+
+
 <!-- 공지사항 게시판 -->
 <!-- 글 등록 -->
 <insert id="insertNotice">
-	INSERT INTO 
+	INSERT INTO BOARD (
+		BOARD_NUM
+		, BOARD_KIND_CODE
+		, BOARD_TITLE
+		, BOARD_CONTENT
+		, TEACHER_CODE
+	) VALUES (
+		(SELECT NVL(MAX(BOARD_NUM), 0) + 1 FROM BOARD)
+		, '0'
+		, #{boardTitle}
+		, #{boardContent}
+		, #{teacherCode}
+	)
 </insert>
 
 
+<!-- 글 목록 조회 -->
+<select id="selectBoard" resultMap="board">
+	SELECT BOARD_NUM    <!-- 화면에는 INDEX로 글번호 보게,, -->
+		, BOARD_TITLE
+		, TEACHER_NAME
+	FROM BOARD B, TEACHER T
+	WHERE B.TEACHER_CODE = T.TEACHER_CODE
+</select>
 
+
+<!-- 글 내용 조회 -->
+<select id="selectBoardDetail" resultMap="board">
+	SELECT BOARD_NUM
+		, BOARD_TITLE
+		, BOARD_CONTENT
+		, TEACHER_NAME
+	FROM BOARD B, TEACHER T
+	WHERE B.TEACHER_CODE = T.TEACHER_CODE
+	AND BOARD_NUM = #{boardNum}
+	<!-- AND T.TEACHER_CODE = #{teacherCode} -->
+</select>
 
 
 <!-- 자유게시판  -->
 <!-- 글 등록 -->
 <insert id="insertFree">
-
+	INSERT INTO BOARD (
+		BOARD_NUM
+		, BOARD_KIND_CODE
+		, BOARD_TITLE
+		, BOARD_CONTENT
+		, TEACHER_CODE
+	) VALUES (
+		(SELECT NVL(MAX(BOARD_NUM), 0) + 1 FROM BOARD)
+		, '1'
+		, #{boardTitle}
+		, #{boardContent}
+		, #{teacherCode}
+	)
 </insert>
 
 
