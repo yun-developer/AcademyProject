@@ -28,8 +28,8 @@
 					</th:block>
 					<th:block th:unless="${#lists.size(noticeList) == 0}">
 						<tr th:each="notice, status : ${noticeList}">
-							<td scope="row" th:text="${notice.count}"></td>
-							<td th:text="${notice.boardTitle}"></td>
+							<td scope="row" th:text="${status.count}"></td>
+							<td><a th:href="@{/board/freeList(teacherId=${notice.teacherId})}">[[${notice.boardTitle}]]</a></td>
 							<td th:text="${notice.teacherId}"></td>
 							<td th:text="${notice.createDate}"></td>
 							<td><input type="checkbox" class="form-check-input chk"  ></td>

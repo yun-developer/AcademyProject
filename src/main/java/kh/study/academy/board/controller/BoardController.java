@@ -31,8 +31,6 @@ public class BoardController {
 	//공지사항 글쓰기 페이지 이동
 	@GetMapping("/writeNotice")
 	public String writeNotice(Model model) {
-		model.addAttribute("noticeList", boardService.selectNoticeBoard(0));
-		
 		return "content/board/write_notice_page";
 	}
 	

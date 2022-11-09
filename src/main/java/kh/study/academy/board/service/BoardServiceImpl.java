@@ -24,14 +24,14 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public void insertNotice(BoardVO boardVO) {
 		sqlSession.insert("boardMapper.insertNotice", boardVO);
-		sqlSession.insert("adminMapper.insertImgs", boardVO);
+		//sqlSession.insert("boardMapper.insertImgs", boardVO);
 	}
 	
 	@Transactional(rollbackFor = Exception.class)  
 	@Override
 	public void insertFree(BoardVO boardVO) {
 		sqlSession.insert("boardMapper.insertFree", boardVO);
-		sqlSession.insert("adminMapper.insertImgs", boardVO);
+		sqlSession.insert("boardMapper.insertImgs", boardVO);
 	}
 
 	@Override

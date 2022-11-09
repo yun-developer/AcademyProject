@@ -78,10 +78,10 @@
 <select id="selectNoticeBoard" resultMap="board">
 	SELECT BOARD_NUM    <!-- 화면에는 INDEX로 글번호 보게,, -->
 		, BOARD_TITLE
-		, TEACHER_NAME
+		, B.TEACHER_ID
 		, TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS CREATE_DATE
 	FROM BOARD B, TEACHER T
-	WHERE B.TEACHER_CODE = T.TEACHER_CODE
+	WHERE B.TEACHER_ID = T.TEACHER_ID
 	AND BOARD_KIND_CODE = '0'
 </select>
 
@@ -91,10 +91,10 @@
 	SELECT BOARD_NUM
 		, BOARD_TITLE
 		, BOARD_CONTENT
-		, TEACHER_NAME
+		, B.TEACHER_ID
 		, TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS CREATE_DATE
 	FROM BOARD B, TEACHER T
-	WHERE B.TEACHER_CODE = T.TEACHER_CODE
+	WHERE B.TEACHER_ID = T.TEACHER_ID
 	AND BOARD_NUM = #{boardNum}
 	<!-- AND T.TEACHER_CODE = #{teacherCode} -->
 </select>
@@ -108,11 +108,13 @@
 		, BOARD_KIND_CODE
 		, BOARD_TITLE
 		, BOARD_CONTENT
+		, TEACHER_ID
 	) VALUES (
 		#{boardNum}
 		, '1'
 		, #{boardTitle}
 		, #{boardContent}
+		, #{teacherId}
 	)
 </insert>
 
@@ -121,10 +123,10 @@
 <select id="selectFreeBoard" resultMap="board">
 	SELECT BOARD_NUM    <!-- 화면에는 INDEX로 글번호 보게,, -->
 		, BOARD_TITLE
-		, TEACHER_NAME
+		, B.TEACHER_ID
 		, TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS CREATE_DATE
 	FROM BOARD B, TEACHER T
-	WHERE B.TEACHER_CODE = T.TEACHER_CODE
+	WHERE B.TEACHER_ID = T.TEACHER_ID
 	AND BOARD_KIND_CODE = '1'
 </select>
 
