@@ -65,7 +65,7 @@ public class AdminController {
 	@RequestMapping("/popup")
 	public String pop( String teacherCode, Model model) {
 	
-		//teacherCode 받아야 함...
+		
 		System.out.println("@@@@@@@@@@"+teacherCode);
 		model.addAttribute("teacherDetail", adminService.selectTeacherDetail(teacherCode));
 		
