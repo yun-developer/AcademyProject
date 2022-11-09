@@ -169,6 +169,12 @@
 	
 	</update>
 	
+	<!-- 프로필 사진 조회 -->
+	<select id="selectProfileImg" resultMap="profileImg">
+		SELECT STORED_FILE_NAME 
+		FROM PROFILE_IMG 
+		WHERE TEACHER_CODE = #{teacherCode}
+	</select>
 
 		
 </mapper>

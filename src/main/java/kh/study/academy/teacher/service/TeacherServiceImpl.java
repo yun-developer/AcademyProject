@@ -54,11 +54,25 @@ public class TeacherServiceImpl implements TeacherService {
 		return sqlSession.selectOne("teacherMapper.selectTeacherInfo", teacherVO);
 	}
 	
-	//프로필사진 등록
+	//프로필 기본사진 등록
 	@Override
 	public void insertProfileImg(ProfileImgVO profileImgVO) {
 		sqlSession.insert("teacherMapper.insertProfileImg", profileImgVO);
 		
+	}
+	
+	//프로필 사진 변경
+	@Override
+	public void updateProfileImg(ProfileImgVO profileImgVO) {
+		sqlSession.update("teacherMapper.updateProfileImg", profileImgVO);
+		
+	}
+	
+	//프로필 사진 조회
+	@Override
+	public ProfileImgVO selectProfileImg(ProfileImgVO profileImgVO) {
+		
+		return sqlSession.selectOne("teacherMapper.selectProfileImg", profileImgVO);
 	}
 
 

@@ -3,6 +3,7 @@ package kh.study.academy.teacher.controller;
 import java.util.Random;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -195,16 +196,20 @@ public class TeacherController {
 		
 	}
 	
-	//프로필 이미지 커스텀등록
+	//프로필 이미지 커스텀 변경
 	@PostMapping("/insertProfileImg")
-	public String insertProfileImg(ProfileImgVO profileImgVO, MultipartFile profileImg)  {
+	public String insertProfileImg(ProfileImgVO profileImgVO, MultipartFile profileImg, HttpSession session)  {
 		
 		//단일 이미지 파일 첨부 (메인이미지) --> 첨부파일명 리턴
 		ProfileImgVO uploadInfo =  UploadFileUtil.uploadFile(profileImg);
 		
 		uploadInfo.setTeacherCode(profileImgVO.getTeacherCode());
 		
-		teacherService.insertProfileImg(uploadInfo);
+		
+		teacherService.updateProfileImg(uploadInfo);
+		
+		System.out.println("!@!@!@!@"+profileImgVO.getTeacherCode());
+		session.setAttribute("profileImg", teacherService.selectProfileImg(profileImgVO).getStoredFileName());
 		
 		return "redirect:/teacher/selectInfo";
 	}

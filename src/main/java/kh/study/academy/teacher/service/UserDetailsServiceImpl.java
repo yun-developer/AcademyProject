@@ -47,7 +47,7 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 		if(loginInfo != null){
 			HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
 			HttpSession sesion = request.getSession();
-			sesion.setAttribute("ssssss", loginInfo.getProfileImgVO().getStoredFileName());
+			sesion.setAttribute("profileImg", loginInfo.getProfileImgVO().getStoredFileName());
 		}
 		
 		return userDetails;

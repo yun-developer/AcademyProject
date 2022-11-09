@@ -24,6 +24,12 @@ public interface TeacherService {
 	//회원 정보 조회
 	TeacherVO selectTeacherInfo(TeacherVO teacherVO);
 	
-	//프로필사진 커스텀 등록
+	//프로필 기본사진 등록
 	void insertProfileImg(ProfileImgVO profileImgVO);
+	
+	//프로필 사진 변경
+	void updateProfileImg(ProfileImgVO profileImgVO);
+	
+	//프로필 사진 조회
+	ProfileImgVO selectProfileImg(ProfileImgVO profileImgVO);
 }
