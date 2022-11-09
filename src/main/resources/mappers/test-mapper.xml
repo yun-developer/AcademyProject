@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="adminMapper">
+<mapper namespace="testMapper">
 
 
-	<resultMap type="kh.study.academy.score.vo.ScoreVO"			id="score">
+	<resultMap type="kh.study.academy.test.vo.testVO"			id="test">
 		<id column="TEST_CODE" 									property="testCode" />
 		<result column="TEST_DATE" 								property="testDate" />
 		<result column="SCORE" 									property="score" />
-		<result column="RANK" 									property="rank" />
 		
 		
 		<!-- 아래 칼럼 수정 필요 -->
@@ -26,7 +25,7 @@
 	         SELECT 'TEST_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(TEST_CODE, 5))), 0) + 1, 3, 0) 
 	         FROM TEST
 	     </selectKey>
-	INSERT INTO SCORE (
+	INSERT INTO TEST (
 		TEST_CODE
 		, TEST_DATE
 		, SCORE
@@ -37,7 +36,35 @@
 	)
 	</insert>
 
-
+	
+	
+	
+	<!-- 해당 학생의 점수조회 -->
+	<!--LESSON_INFO_CODE 수정필요  -->
+	<select id="selectScore" resultMap="test">
+		SELECT TEST_CODE
+			, TEST_DATE
+			, SCORE
+			, LESSON_INFO_CODE
+		FROM TEST
+		WHERE STUDENT_CODE = #{studentCode}
+			
+	</select>
+	
+	<!-- 점수 수정  -->
+	<update id="updateScore">
+		UPDATE TEST
+		SET
+		SCORE = #{score}
+		WHERE TEST_CODE = #{testCode}
+	</update>
+	
+	
+	<!-- 점수 삭제 -->
+	<delete id="deleteScore">
+		DELETE TEST
+		WHERE TEST_CODE = #{testCode}
+	</delete>
 
 
 	

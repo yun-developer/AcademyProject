@@ -1,4 +1,4 @@
-package kh.study.academy.score.vo;
+package kh.study.academy.test.vo;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,11 +7,11 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class ScoreVO {
+public class TestVO {
 	private String testCode; 
 	private String testDate; 
 	private int score; 
-	private int rank; 
+
 	
 	
 	private String lessonInfoCode; 

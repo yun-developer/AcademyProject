@@ -1,14 +1,11 @@
-package kh.study.academy.score.service;
+package kh.study.academy.test.service;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service("scoreService")
-public class ScoreServiceImpl implements ScoreService {
-	
+@Service("testService")
+public class TestServiceImpl implements TestService{
 	@Autowired
 	SqlSessionTemplate sqlSession;
-
-	
 }

@@ -1,18 +1,19 @@
-package kh.study.academy.score.controller;
+package kh.study.academy.test.controller;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import kh.study.academy.score.service.ScoreService;
+import kh.study.academy.test.service.TestService;
 
 @Controller
-@RequestMapping("/score")
-public class ScoreController {
+@RequestMapping("/test")
+public class TestController {
+
 	
-	@Resource(name = "scoreService")
-	private ScoreService scoreService;
+	@Resource(name = "testService")
+	private TestService testService;
 	
 	
 	
@@ -21,7 +22,5 @@ public class ScoreController {
 	//점수 수정
 	
 	//점수 삭제..
-	
-	
 	
 }
