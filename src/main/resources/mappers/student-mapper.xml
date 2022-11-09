@@ -5,6 +5,7 @@
 	<resultMap type="kh.study.academy.student.vo.StudentVO" id="student">
 		<id column="STUDENT_CODE" property="studentCode"/>
 		<result column="STUDENT_NAME" property="studentName"/>
+		<result column="STUDENT_GENDER" property="studentGender"/>
 		<result column="BIRTHDAY" property="birthday"/>
 		<result column="YEAR" property="year"/>
 		<result column="ADDR" property="addr"/>
@@ -45,6 +46,7 @@
 	INSERT INTO STUDENT (
 		STUDENT_CODE
 		, STUDENT_NAME
+		, STUDENT_GENDER
 		, BIRTHDAY
 		, YEAR
 		, ADDR
@@ -53,6 +55,7 @@
 	) VALUES (
 		#{studentCode}
 		, #{studentName}
+		, #{studentGender}
 		, #{birthday}
 		, #{year}
 		, #{addr}
@@ -88,6 +91,7 @@
 	SELECT STUDENT_CODE 
 		, STUDENT_NAME
 		, YEAR
+		, STUDENT_GENDER
 		<!-- 수강 과목, 반 -->
 		<!-- , SUBJECT_NAME -->
 	FROM STUDENT STU 

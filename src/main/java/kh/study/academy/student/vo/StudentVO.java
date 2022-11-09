@@ -15,6 +15,7 @@ public class StudentVO {
 	private String addrDetail;
 	private String studentTell;
 	private String regDate;
+	private String studentGender;
 	
 	
 	private SubjectVO subjectVO;
