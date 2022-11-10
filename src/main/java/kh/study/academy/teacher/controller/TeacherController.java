@@ -112,6 +112,13 @@ public class TeacherController {
 //		return"redirect:/lesson/main";
 //	}
 	
+	//security 로그인 성공시 이동 메소드
+	@GetMapping("/loginResult")
+	public String loginResult() {
+		
+		return "content/teacher/login_result";
+	}
+	
 	//로그인정보 찾기 페이지로 이동
 	@GetMapping("/findLoginPage")
 	public String findLoginPage( ) {
@@ -208,9 +215,23 @@ public class TeacherController {
 			//session.removeAttribute("profileImg");
 			session.setAttribute("profileImg", teacherService.selectProfileImg(profileImgVO).getStoredFileName());
 		}
+		else if(uploadInfo.getStoredFileName()==null) {
+			return "redirect:/teacher/selectInfo";
+		}
 		
-		return "redirect:/teacher/selectInfo";
+		return "redirect:/teacher/imgUpdateResult";
 	}
+	
+	//프로필 이미지 수정 후 결과 페이지
+	
+	@GetMapping("/imgUpdateResult")
+	private String imgUpdateResult() {
+		
+		return "content/teacher/img_update_result";
+	}
+	
+	
+	
 	
 	//개인정보 수정
 	@GetMapping("/updateInfo")
@@ -221,12 +242,27 @@ public class TeacherController {
 		User user = (User)authentication.getPrincipal();
 		teacherVO.setTeacherId(user.getUsername());
 		
-		System.out.println("!!!!!!!!!!!!!!@@@@@@@@@@@@@" + teacherVO);
-		
 		teacherService.updateInfo(teacherVO);
 		
 		return "redirect:/teacher/selectInfo";
 	}
+	
+	
+	//탈퇴(TeacherStatus ->N으로 변경)
+	@GetMapping("/leave")
+	public String leaveAcademy(Authentication authentication, TeacherVO teacherVO) {
+		
+		//security에 저장한 정보 사용
+		//로그인한 유저의 정보를 가져 옴
+		User user = (User)authentication.getPrincipal();
+		teacherVO.setTeacherId(user.getUsername());
+		
+		teacherService.leaveAcademy(teacherVO);
+		
+		return "redirect:/lesson/main";
+	}
+	
+	
 	
 	
 	

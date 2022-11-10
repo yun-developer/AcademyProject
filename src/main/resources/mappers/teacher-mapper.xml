@@ -194,6 +194,14 @@
 		WHERE TEACHER_ID = #{teacherId}
 	</update>
 	
+	
+	<!-- 회원탈퇴 :TeacherStatus ->N으로 변경 -->
+	<update id="leaveAcademy">
+		UPDATE TEACHER
+		SET TEACHER_STATUS = 'Y'
+		WHERE TEACHER_ID = #{teacherId}
+	</update>
+	
 			
 </mapper>
 

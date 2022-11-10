@@ -81,6 +81,13 @@ public class TeacherServiceImpl implements TeacherService {
 		sqlSession.update("teacherMapper.updateInfo", teacherVO);
 		
 	}
+	
+	//회원탈퇴(TeacherStatus ->N으로 변경)
+	@Override
+	public void leaveAcademy(TeacherVO teacherVO) {
+		
+		sqlSession.update("teacherMapper.leaveAcademy", teacherVO);
+	}
 
 
 	
