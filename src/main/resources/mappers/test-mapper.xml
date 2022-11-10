@@ -14,7 +14,7 @@
 		<result column="LESSON_INFO_CODE" 						property="lessonInfoCode" />
 		<result column="STUDENT_CODE" 							property="studentCode" />
 		
-		<collection property="" resultMap=""/> 			
+		
 		
 	</resultMap>
 

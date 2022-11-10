@@ -3,6 +3,7 @@ package kh.study.academy.student.vo;
 import java.util.List;
 
 import kh.study.academy.admin.vo.SubjectVO;
+import kh.study.academy.test.vo.TestVO;
 import lombok.Data;
 
 @Data
@@ -27,7 +28,7 @@ public class StudentVO {
 	//collection 연결 해놓은 것들 
 	private List<StudentLessonInfoVO> studentLessonInfoList; 
 	
-	
+
 	
 	
 	
