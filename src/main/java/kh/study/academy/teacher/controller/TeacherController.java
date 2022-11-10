@@ -205,7 +205,6 @@ public class TeacherController {
 		ProfileImgVO uploadInfo =  UploadFileUtil.uploadFile(profileImg);
 		
 		if(uploadInfo.getStoredFileName()!=null) {
-			
 		
 			uploadInfo.setTeacherCode(profileImgVO.getTeacherCode());
 			
@@ -213,6 +212,8 @@ public class TeacherController {
 			
 			System.out.println("!@!@!@!@"+profileImgVO.getTeacherCode());
 			//session.removeAttribute("profileImg");
+			///////////////////////////////////////////////문제....////////////////////////////////
+			session.removeAttribute("profileImg");
 			session.setAttribute("profileImg", teacherService.selectProfileImg(profileImgVO).getStoredFileName());
 		}
 		else if(uploadInfo.getStoredFileName()==null) {
