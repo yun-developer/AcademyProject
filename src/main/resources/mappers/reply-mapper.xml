@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="replyMapper">
+<resultMap type="kh.study.academy.reply.vo.ReplyVO" id="reply">
+	<id column="REPLY_NUM" 	property="replyNum" />
+	<result column="BOARD_NUM" property="boardNum" />
+	<result column="TEACHER_ID" property="teacherId"/>
+	<result column="REPLY_CONTENT" property="replyContent"/>
+	<result column="REPLY_CREATE_DATE" property="replyCreateDate"/>
+</resultMap> 
+
+
+
+<!-- 댓글 작성 -->
+<insert id="insertReply">
+	<selectKey resultType="String" keyProperty="REPLY_NUM" order="BEFORE">
+	   SELECT 'REPLY_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(REPLY_NUM, 7))),0) +1, 3, 0) 
+	   FROM REPLY
+	</selectKey>
+
+	INSERT INTO REPLY (
+		REPLY_NUM
+		, TEACHER_ID
+		, REPLY_CONTENT
+	) VALUES (
+		#{replyNum}
+		, #{teacherId}
+		, #{replyContent}
+	)
+</insert>
+
+
+<!-- 댓글 조회 -->
+<select id="selectReply" resultMap="reply">
+	SELECT REPLY_NUM
+		, TEACHER_ID
+		, REPLY_CONTENT
+		, REPLY_CREATE_DATE
+	FROM REPLY
+	WHERE BOARD_NUM = #{boardNum}
+</select>
+
+
+<!-- 댓글 삭제 -->
+<delete id="deleteReply">
+	DELETE REPLY
+	WHERE REPLY_NUM = #{replyNum}
+</delete>
+
+
+
+
+
+
+</mapper>
