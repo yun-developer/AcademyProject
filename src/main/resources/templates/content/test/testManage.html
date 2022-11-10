@@ -26,20 +26,20 @@
 			<div class="row search-detail-form">
 				<div class="col-xs-12 col-lg-3">
 					<div class="input-group mb-2">
-						<span class="input-group-addon col-2">학생이름</span> 
+						<span class="input-group-addon col-3">학생이름</span> 
 						<input type="text" class="form-control" id="" name="studentName" autocomplete="off" >
 					</div>
 				</div>
 				<div class="col-xs-12 col-lg-3">
 					<div class="input-group mb-2">
-						<span class="input-group-addon col-2">교사이름</span> 
+						<span class="input-group-addon col-3">교사이름</span> 
 						<input type="text" class="form-control" id="" name="teacherName"
 							autocomplete="off" >
 					</div>
 				</div>
 				<div class="col-xs-12 col-lg-3">
 					<div class="input-group mb-2">
-						<span class="input-group-addon col-2">학급명</span> 
+						<span class="input-group-addon col-3">학급명</span> 
 						<input type="text" class="form-control" id="" name="lessonInfoCode" autocomplete="off" >
 					</div>
 				</div>
@@ -74,8 +74,7 @@
 		<table class="table table-hover text-center align-middle ">
 			<thead>
 				<tr>
-					<th scope="col">
-						<input type="checkbox" id="checkAll">
+					<th scope="col"><input type="checkbox" id="checkAll">
 					</th>
 					<th scope="col">학생이름</th>
 					<th scope="col">교사이름</th>
@@ -83,7 +82,7 @@
 					<th scope="col" class="bi bi-arrow-through-heart-fill">평가결과 입력</th>
 				</tr>
 			</thead>
-<!-- 			<tbody class="table-group-divider">
+			<!-- 			<tbody class="table-group-divider">
 				<th:block th:if="${#lists.size(search)==0}">
 					<tr>
 						<td colspan="5"> 조회된 학생이 없습니다</td>
@@ -104,6 +103,21 @@
 					</tr>
 				</th:block>
 			</tbody> -->
+			
+			
+			<!--디자인 잡기용 임시 tr 여기부터  -->
+			<tbody class="table-group-divider">
+				<tr>
+					<td><input type="checkbox" class="chk"></td>
+					<td>나</td>
+					<td>bb</td>
+					<td>수학심화반</td>
+					<td><input type="button"  class="btn btn-outline-dark me-md-2" value="수정"></td>
+				</tr>
+			<!--디자인 잡기용 임시 tr 여기까지  -->
+			
+			
+			</tbody>
 		</table>
 	</div>
  
