@@ -219,29 +219,32 @@
 	
 <!-- /////<학급 편성 관련>//////////////////////////////////////////////////////////// -->	
 
+
+	 <!-- 학급 편성 등록 -->
 	<insert id="regLessonInfo">
 		INSERT INTO LESSON_INFO(
 			LESSON_INFO_CODE
-			, SUBJECT_CODE 
+			, LESSONS_CODE 
 			, STEP_CODE
 			, LESSON_DAY_CODE
-			, LESSON_TIME
-			, LESSON_ROOM_CODE 
+			, LESSON_ROOM_CODE
 			, TEACHER_CODE 
+			, LESSON_TIME 
+			, YEAR
 			, NOW_STUDENT_CNT
 			, MONEY
-			, YEAR
 		) VALUES (
 			# {lessonInfoCode}
-			, # {subjectCode}
+			, # {lessonsCode}
 			, # {stepCode}
 			, # {lessonDayCode}
-			, # {lessonTime}
 			, # {lessonRoomCode}
 			, # {teacherCode}
+			, # {lessonTime}
+			, # {year}
 			, # {nowStudent_cnt}
 			, # {money}
-			, # {year}
+			
 		)
 	</insert>
 

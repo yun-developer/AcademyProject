@@ -16,10 +16,8 @@ public class LessonInfoVO {
 	private String lessonTime;
 	private String stepCode;
 	private String lessonDayCode;
-	private String lessonRoomCode;
 	private int year;
 	private String teacherCode;
-	private String subjectCode;
 	private int nowStudentCnt;
 	private int money;
 	private String lessonInfoRegdate;

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import kh.study.academy.admin.vo.LessonRoomVO;
 import kh.study.academy.admin.vo.SubjectVO;
+import kh.study.academy.lesson.vo.LessonInfoVO;
 import kh.study.academy.lesson.vo.LessonVO;
 import kh.study.academy.teacher.vo.TeacherVO;
 
@@ -55,4 +56,21 @@ public interface AdminService {
 	
 	// 교실 삭제(체크박스)
 	void deleteLessonRoom(LessonRoomVO lessonRoomVO);
+
+
+
+/////<학급 편성 등록 관련>//////////////////////////////////////////////////////////// 
+
+	// 학급 편성 등록
+	void regLessonInfo(LessonInfoVO lessonInfoVO);
+	
+	
+	
+	
+	
+
 }
+
+
+
+

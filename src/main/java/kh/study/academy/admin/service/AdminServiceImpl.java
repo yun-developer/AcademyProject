@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import kh.study.academy.admin.vo.LessonRoomVO;
 import kh.study.academy.admin.vo.SubjectVO;
+import kh.study.academy.lesson.vo.LessonInfoVO;
 import kh.study.academy.lesson.vo.LessonVO;
 import kh.study.academy.teacher.vo.TeacherVO;
 
@@ -98,6 +99,16 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public void deleteLessonRoom(LessonRoomVO lessonRoomVO) {
 		sqlSession.delete("adminMapper.deleteLessonRoom", lessonRoomVO);
+	}
+
+	
+
+/////<학급 편성 등록 관련>//////////////////////////////////////////////////////////// 	
+	
+	// 학급 편성 등록
+	@Override
+	public void regLessonInfo(LessonInfoVO lessonInfoVO) {
+		sqlSession.insert("adminMapper.regLessonInfo", lessonInfoVO);
 	}
 
 

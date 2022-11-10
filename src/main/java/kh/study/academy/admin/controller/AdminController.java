@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import kh.study.academy.admin.service.AdminService;
 import kh.study.academy.admin.vo.LessonRoomVO;
 import kh.study.academy.admin.vo.SubjectVO;
+import kh.study.academy.lesson.vo.LessonInfoVO;
 import kh.study.academy.lesson.vo.LessonVO;
 import kh.study.academy.teacher.vo.TeacherVO;
 
@@ -183,8 +184,8 @@ public class AdminController {
 /////<학급 편성 등록 관련>//////////////////////////////////////////////////////////// 
 
 
-		@GetMapping("/regLessonInfo")
-			public String regLessonInfo(Model model, LessonRoomVO lessonRoomVO, String roomName) { 
+		@PostMapping("/regLessonInfo")
+			public String regLessonInfo(Model model, LessonRoomVO lessonRoomVO, String roomName, LessonInfoVO lessonInfoVO) { 
 			
 			// 과목 리스트를 가져오는 쿼리 실행 문
 			model.addAttribute("subjectList", adminService.selectSubject());
@@ -194,6 +195,7 @@ public class AdminController {
 			model.addAttribute("LessonRoomList", lessonRoomList);
 			
 			
+			adminService.regLessonInfo(lessonInfoVO);
 			
 			
 			
