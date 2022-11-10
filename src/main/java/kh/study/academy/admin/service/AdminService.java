@@ -30,6 +30,9 @@ public interface AdminService {
 	//팝업 페이지에서 교사 상태 변경
 	void changeTeacherStatus(TeacherVO teacherVO);
 	
+	//팝업 페이지에서 교사 권한 승인
+	void changeTeacherRole(TeacherVO teacherVO);
+	
 	
 	
 /////<과목 등록 관련>//////////////////////////////////////////////////////////// 	

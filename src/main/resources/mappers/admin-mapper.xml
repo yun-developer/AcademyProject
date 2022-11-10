@@ -109,7 +109,7 @@
 			, TO_CHAR(TEACHER_BIRTHDAY, 'YYYY-MM-DD') AS TEACHER_BIRTHDAY
 			, TEACHER_EMAIL
 		FROM TEACHER T
-		
+		WHERE TEACHER_CODE = #{teacherCode]
 	</select>
 	
 	
@@ -118,6 +118,16 @@
 		UPDATE TEACHER
 		SET
 		TEACHER_STATUS = #{teacherStatus}
+		WHERE TEACHER_CODE = #{teacherCode}
+	</update>
+	
+	
+	<!--교사 권한 승인 -->
+	<!--교사 권한은 되돌릴 수 없음...한번 승인된 교사는 상태변경을 통해 퇴사 등으로 변경  -->
+ 	<update id="changeTeacherRole">
+		UPDATE TEACHER
+		SET
+		TEACHER_STATUS = 'Y'
 		WHERE TEACHER_CODE = #{teacherCode}
 	</update>
 	

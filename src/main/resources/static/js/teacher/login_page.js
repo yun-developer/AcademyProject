@@ -7,10 +7,12 @@ $(document).on("click", "#loginBtn", function() {
 	
 	
 	
+	
+	alert(teacherId);
 
 	//ajax start
 	$.ajax({
-		url: '/test/ajax1', //요청경로
+		url: '/teacher/loginAjax', //요청경로
 		type: 'post',
 		data: {}, //필요한 데이터
 		success: function(result) {

@@ -84,8 +84,19 @@ public class AdminController {
 	 * changeTeacherStatus(TeacherVO teacherVO) {
 	 * adminService.changeTeacherStatus(teacherVO); }
 	 */
-	//통계 페이지로 이동 
 	
+	
+	
+	 //팝업 페이지에서 교사 권한 승인
+	  @ResponseBody
+	  @PostMapping("/changeTeacherRoleAjax")
+	  public void changeTeacherRoleAjax(TeacherVO teacherVO) {
+		  adminService.changeTeacherRole(teacherVO);
+	  }
+	
+	
+	
+	//통계 페이지로 이동 
 	@GetMapping("/statistics")
 	public String statistics(Model model) {
 

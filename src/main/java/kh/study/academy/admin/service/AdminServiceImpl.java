@@ -49,11 +49,21 @@ public class AdminServiceImpl implements AdminService{
 		return sqlSession.selectOne("adminMapper.selectTeacherDetail", teacherCode);
 	}
 	
+	
+	//팝업 페이지에서 교사 상태 변경
+	//미구현 상태
 	@Override
 	public void changeTeacherStatus(TeacherVO teacherVO) {
 		sqlSession.update("adminMapper.changeTeacherStatus",teacherVO);
 		
 	}
+	
+	//팝업 페이지에서 교사 권한 승인
+	@Override
+	public void changeTeacherRole(TeacherVO teacherVO) {
+		sqlSession.update("adminMapper.changeTeacherRole",teacherVO);
+	}
+	
 	
 	
  /////<과목 등록 관련>//////////////////////////////////////////////////////////// 
@@ -110,6 +120,8 @@ public class AdminServiceImpl implements AdminService{
 	public void regLessonInfo(LessonInfoVO lessonInfoVO) {
 		sqlSession.insert("adminMapper.regLessonInfo", lessonInfoVO);
 	}
+
+	
 
 
 
