@@ -47,6 +47,17 @@ public class TeacherServiceImpl implements TeacherService {
 		return sqlSession.selectOne("teacherMapper.idDoubleCheck", teacherVO);
 	}
 	
+	//전화번호 인증번호 전송 전 입력한 데이터에 일치하는 회원이 있는지 조회
+	//구현 중
+	@Override
+	public TeacherVO findInfoForSendSms(TeacherVO teacherVO) {
+		
+		return sqlSession.selectOne("teacherMapper.findInfoForSendSms", teacherVO);
+	}
+
+	
+	
+	
 	//회원 정보 조회
 	@Override
 	public TeacherVO selectTeacherInfo(TeacherVO teacherVO) {
@@ -89,6 +100,7 @@ public class TeacherServiceImpl implements TeacherService {
 		sqlSession.update("teacherMapper.leaveAcademy", teacherVO);
 	}
 
+	
 
 	
 	

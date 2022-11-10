@@ -240,7 +240,7 @@ $(document).on("click", "#sendPhoneNumber", function() {
 	
 	console.log(teacherName);
 	console.log(teacherId);
-	console.log(teacherTell);
+	//console.log(teacherTell);
 	
 	//셀렉트 쿼리
 	
