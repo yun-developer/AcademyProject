@@ -13,6 +13,9 @@
 		<!-- 아래 칼럼 수정 필요 -->
 		<result column="LESSON_INFO_CODE" 						property="lessonInfoCode" />
 		<result column="STUDENT_CODE" 							property="studentCode" />
+		
+		<collection property="" resultMap=""/> 			
+		
 	</resultMap>
 
 	

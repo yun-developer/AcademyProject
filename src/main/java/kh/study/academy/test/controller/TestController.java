@@ -26,8 +26,10 @@ public class TestController {
 	
 	
 	//점수 관리 페이지로
-	@RequestMapping("/scoreManage")
-	public String regScorePage(@RequestParam Map<String, String> paramMap, Model model) {
+	@RequestMapping("/testManage")
+	public String regScorePage( Model model) {
+		
+		//@RequestParam Map<String, String> paramMap,
 		
 		//데이터 나오는지 확인
 		//System.out.println("@@@!!!!!@@"+testService.searchTest(paramMap));
