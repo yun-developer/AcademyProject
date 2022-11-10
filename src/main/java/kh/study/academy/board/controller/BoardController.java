@@ -66,14 +66,30 @@ public class BoardController {
 		return "redirect:/board/noticeList";
 	}
 	
+	
+	
+	// 공지사항 게시글 삭제
+	@PostMapping("/deleteBoardNotice")
+	public String deleteBoardNotice(String boardNums) {
+		String[] boardNumNotice = boardNums.split(","); // 배열을 리스트로 변환작업 2줄
+		List<String> boardNumNoticeList = Arrays.asList(boardNumNotice);
+		
+		BoardVO boardVO = new BoardVO();
+		boardVO.setBoardNumList(boardNumNoticeList);
+		
+		boardService.deleteBoardNotice(boardVO);
+		
+		return "redirect:/board/freeList";
+	}
+	
+	
+	
 	//공지사항 상세 읽기
 	@GetMapping("/noticeDetail")
 	public String noticeDetail() {
 		
 		return "content/board/notice_detail";
 	}
-	
-	
 	
 	
 	
@@ -125,9 +141,9 @@ public class BoardController {
 	
 	
 	
+
 	
-	
-	// 자유게시판 삭제
+	// 자유게시판 게시글 삭제
 	@PostMapping("/deleteBoard")
 	public String deleteBoard(String boardNums) {
 		String[] boardNumArr = boardNums.split(","); // 배열을 리스트로 변환작업 2줄

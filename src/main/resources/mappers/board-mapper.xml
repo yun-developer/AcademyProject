@@ -102,8 +102,34 @@
 	<!-- AND T.TEACHER_CODE = #{teacherCode} -->
 </select>
 
+<!-- 글 수정 -->
+
+
+
+
+
+<!-- 글 삭제 -->
+	<delete id="deleteBoardNotice">
+	<!-- 등록한 과목을 체크해서 삭제 -->
+		DELETE BOARD
+		WHERE BOARD_NUM IN
+		<foreach collection="boardNumList" item="boardNum" separator="," open="(" close=")">
+			#{boardNum}
+		</foreach>
+	
+	
+	</delete>
+
+
+
+
+
+
+
+
 
 <!-- 자유게시판  -->
+
 <!-- 글 등록 -->
 <insert id="insertFree">
 	INSERT INTO BOARD (

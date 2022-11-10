@@ -20,11 +20,11 @@ public interface BoardService {
 	BoardVO selectBoardDetail(int boardNum);
 	
 	
-	// 공지사항 삭제
 	
-	
-	
-	// 자유게시판 삭제
+	// 공지사항 게시글 삭제
+	void deleteBoardNotice(BoardVO boardVO);
+
+	// 자유게시판 게시글 삭제
 	void deleteBoardFree(BoardVO boardVO);
 	
 	
