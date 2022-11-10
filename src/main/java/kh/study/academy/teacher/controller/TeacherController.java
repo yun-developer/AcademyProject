@@ -176,7 +176,7 @@ public class TeacherController {
 	@GetMapping("/selectInfo")
 	public String selectTeacherInfo(Authentication authentication, Model model) {
 		
-		//주문자 정보
+		
 		//security에 저장한 정보 사용
 		//로그인한 유저의 정보를 가져 옴
 		User user = (User)authentication.getPrincipal();
@@ -213,7 +213,20 @@ public class TeacherController {
 	}
 	
 	//개인정보 수정
-	
+	@GetMapping("/updateInfo")
+	public String updateInfo(Authentication authentication, TeacherVO teacherVO) {
+		
+		//security에 저장한 정보 사용
+		//로그인한 유저의 정보를 가져 옴
+		User user = (User)authentication.getPrincipal();
+		teacherVO.setTeacherId(user.getUsername());
+		
+		System.out.println("!!!!!!!!!!!!!!@@@@@@@@@@@@@" + teacherVO);
+		
+		teacherService.updateInfo(teacherVO);
+		
+		return "redirect:/teacher/selectInfo";
+	}
 	
 	
 	

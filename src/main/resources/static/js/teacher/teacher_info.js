@@ -1,11 +1,18 @@
  ///////////////////////////////변수///////////////
  
- const nameText = document.querySelector('#nameText').innerText;
- const tellText = document.querySelector('#tellText').innerText;
- const emailText = document.querySelector('#emailText').innerText;
 
  const buttons = document.querySelectorAll('.PromptStart');
+ let updateName =''
  
+ /////////////////////////////////함수/////////////////////////////////////
+ 
+ function getText(button){
+	
+	const buttonValue = button.value;
+ 	
+ 	updateName = buttonValue;
+ 
+ }
  
  
  
@@ -21,23 +28,40 @@
     
     (async () => {
 		
-		let updateName =''; 
-		
-		
         const { value: getInfo} = await Swal.fire({
 			icon: 'info',
-            title: '연락처 정보를 수정합니다.',
+            title: updateName + ' 정보를 수정합니다.',
             text: '',
             input: 'text',
-            inputPlaceholder: '수정할 전화번호를 입력..'
+            inputPlaceholder: '수정할 '+ updateName +' 정보를 입력..'
         })
 
         // 이후 처리되는 내용.
         if (getInfo) {
-            Swal.fire(`: ${getInfo}`)
+           /* Swal.fire(`: ${getInfo}`)*/
             
+            if(updateName=='이름'){
+		         location.href=`/teacher/updateInfo?teacherName=${getInfo}`;
+		         
+		          /*Swal.fire('승인이 완료되었습니다.', '화끈하시네요~!', 'success');*/
+			}
+            if(updateName=='연락처'){
+		         location.href=`/teacher/updateInfo?teacherTell=${getInfo}`;
+			}
+            if(updateName=='이메일'){
+		         location.href=`/teacher/updateInfo?teacherEmail=${getInfo}`;
+			}
             
         }
     })()
   });
-  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
