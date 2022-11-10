@@ -229,9 +229,16 @@
 	
 <!-- /////<학급 편성 관련>//////////////////////////////////////////////////////////// -->	
 
+	<!-- SUBJECT_NAME을 들고 오기 위한 select 쿼리문 -->
+	
 
 	 <!-- 학급 편성 등록 -->
 	<insert id="regLessonInfo">
+		<selectKey resultType="String" keyProperty="lessonInfoCode" order="BEFORE">
+					SELECT 'LESSON_INFO_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(LESSON_INFO_CODE, 13))), 0) + 1, 3, 0) 
+					FROM LESSON_INFO
+		</selectKey>
+		
 		INSERT INTO LESSON_INFO(
 			LESSON_INFO_CODE
 			, LESSONS_CODE 
@@ -244,16 +251,16 @@
 			, NOW_STUDENT_CNT
 			, MONEY
 		) VALUES (
-			# {lessonInfoCode}
-			, # {lessonsCode}
-			, # {stepCode}
-			, # {lessonDayCode}
-			, # {lessonRoomCode}
-			, # {teacherCode}
-			, # {lessonTime}
-			, # {year}
-			, # {nowStudent_cnt}
-			, # {money}
+			#{lessonInfoCode}
+			, #{lessonsCode}
+			, #{stepCode}
+			, #{lessonDayCode}
+			, #{lessonRoomCode}
+			, #{teacherCode}
+			, #{lessonTime}
+			, #{year}
+			, #{nowStudent_cnt}
+			, #{money}
 			
 		)
 	</insert>

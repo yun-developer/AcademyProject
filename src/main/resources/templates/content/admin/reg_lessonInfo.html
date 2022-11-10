@@ -16,7 +16,7 @@
 					<h6>학급 편성 등록</h6>
 				</div>
 				<div class="col-12 mb-3">
-					<form class="row g-3" th:action="@{/admin/regLessonInfo}" method="post">
+					<form class="row g-3" th:action="@{/admin/selectLessonRoom}" method="post">
                   <div class="col-10">
                      <input type="text" name="roomName" class="form-control" id="" placeholder="LessonRoomName">
                   </div>
@@ -81,12 +81,14 @@
 				     </div>
 					
 					<!-- 모달 내용글 body -->
+				<form th:action="@{/admin/saveLessonInfo}" method="post">
 				      <div class="modal-body">
 				      	<div class="row mb-3">
 				      		<div class="col-10">
 							  <fieldset class="w-100">
 								<h4>학급 정보</h4>
-									<form action="">
+								
+									
 										<div class="form-group input-group mb-1">
 											<div class="col-6 col-lg-2 px-0">
 												<span class="input-group-text h-100 rounded-0">편성년월</span></div>
@@ -100,6 +102,7 @@
 												</div>
 
 											</div>
+											
 											
 											<div class="col-6 col-lg-2 px-1"><span class="input-group-text h-100 rounded-0">과정구분</span></div>
 									
@@ -122,7 +125,7 @@
 															<option value="">전체</option>
 															<th:block th:each="subject, status : ${subjectList}">	
 															<option value="subjectCode" th:text="${subject.subjectName}"></option>
-						
+																<!-- 옵션의 value는 레슨코드여야 되고, name도 레슨코드  -->
 															</th:block>
 														</select>
 													</div>
@@ -191,7 +194,7 @@
 								<div class="form-group input-group mb-1">
 									<div class="col-6 col-lg-2 px-0"><span class="input-group-text h-100 rounded-0">교실명</span></div>
 									<div class="col-6 col-lg-10 px-1 rounded-0">
-										<select class="form-select rounded-0 h-100"   aria-label="학급명" id="lessonRoomCode" name="lessonRoomCode" value="lessonRoomCode" kor="학급명">
+										<select class="form-select rounded-0 h-100"   aria-label="학급명" id="lessonRoomCode" name="lessonRoomCode" value="" kor="학급명">
 											<th:block th:each="LessonRoom, status : ${LessonRoomList}">	
 												<option th:text="${LessonRoom.roomName}"></option>
 						
@@ -206,7 +209,9 @@
 										<textarea id="memo" name="memo" class="form-control rounded-0" placeholder="메모" aria-label="메모" aria-describedby="memo"></textarea>
 									</div>
 								</div>
-							</form>
+
+						
+
 
 								<div class="form-group input-group mb-1">
 
@@ -220,14 +225,13 @@
 		      		
 					      			<button type="submit" id="updateAmountBtn" class="btn btn-primary btn-sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3rem; --bs-btn-font-size: 1rem;">저장</button>
 					      			<button type="button" id="cancelBtn" data-origin-amount=""  th:onclick="rollbackAmount();"  class="btn btn-secondary btn-sm" data-bs-dismiss="modal" aria-label="Close" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3rem; --bs-btn-font-size: 1rem;">닫기</button>
-		      		
 					      		</div>
 					      	</div>
-							
-							
+					      	
 						    </div>
 						  </div>
 						</div>
+		      		</form>
 					</div>
 				</div>
 			</div>
