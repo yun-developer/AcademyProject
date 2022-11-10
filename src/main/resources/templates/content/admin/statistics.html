@@ -6,7 +6,33 @@
 <div layout:fragment="content">
 
 
-		통계 페이지 입니다~
+<div class="row">
+	<div class="col-6">
+		<div>
+			<!--차트 1가 그려질 부분-->
+			<canvas id="myChart"></canvas>
+		</div>
+
+	</div>
+	<div class="col-6"></div>
+</div>
+<div class="row">
+	<div class="col-6"></div>
+	<div class="col-6"></div>
+</div>
+
+	
+
+
+
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	
+	<!-- jquery 문법 로딩 -->
+	<!--순서 잘 맞춰서 적어야 함  -->
+	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript" th:src="@{/js/admin/statistics.js}"></script>
+	
+	
 	
 </div>
 

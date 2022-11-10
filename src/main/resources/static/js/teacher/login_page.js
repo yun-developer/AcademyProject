@@ -8,8 +8,8 @@ $(document).on("click", "#loginBtn", function() {
 	
 	
 	
-	alert(teacherId);
-
+	//alert(teacherId);
+/*
 	//ajax start
 	$.ajax({
 		url: '/teacher/loginAjax', //요청경로
@@ -23,7 +23,7 @@ $(document).on("click", "#loginBtn", function() {
 		}
 	});
 	//ajax end
-
+*/
 
 
 	
