@@ -50,7 +50,7 @@ for(const chk of chks){
 }
 
 
-//삭제 버튼 클릭
+//자유게시판 리스트에서 삭제 버튼 클릭
 function goDelete() {
 	const deleteForm = document.querySelector('#deleteStuForm');	// from태그의 id가 deleteStuForm 인 것
 	

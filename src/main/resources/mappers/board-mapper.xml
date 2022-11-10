@@ -102,8 +102,16 @@
 	<!-- AND T.TEACHER_CODE = #{teacherCode} -->
 </select>
 
-<!-- 글 수정 -->
 
+
+<!-- 글 수정 -->
+	
+<!-- <update id="updateBoard">
+ 		UPDATE BOARD
+ 		SET
+ 		 = #{}  내가 바꿔야 하는 값
+ 		WHERE BOARD_NUM = #{boardNum}
+ 	 </update>	 -->
 
 
 

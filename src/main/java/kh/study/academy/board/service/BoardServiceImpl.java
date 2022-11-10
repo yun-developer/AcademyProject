@@ -25,14 +25,22 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public void insertNotice(BoardVO boardVO) {
 		sqlSession.insert("boardMapper.insertNotice", boardVO);
-		sqlSession.insert("boardMapper.insertImgs", boardVO);
+		// 이미지를 담는 list의 갯수가 0이 아닐 때 첨부파일 등록이 되는 쿼리문을 실행하겠다.
+		if(boardVO.getImgList().size() != 0) {
+			sqlSession.insert("boardMapper.insertImgs", boardVO);
+			
+		}
 	}
 	
 	@Transactional(rollbackFor = Exception.class)  
 	@Override
 	public void insertFree(BoardVO boardVO) {
 		sqlSession.insert("boardMapper.insertFree", boardVO);
-		sqlSession.insert("boardMapper.insertImgs", boardVO);
+		// 이미지를 담는 list의 갯수가 0이 아닐 때 첨부파일 등록이 되는 쿼리문을 실행하겠다.
+		if(boardVO.getImgList().size() != 0) {
+			sqlSession.insert("boardMapper.insertImgs", boardVO);
+			
+		}
 	}
 
 	@Override

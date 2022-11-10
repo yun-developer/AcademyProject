@@ -40,6 +40,11 @@ public class BoardController {
 		return "content/board/write_notice_page";
 	}
 	
+	// 이미지 파일 없이 컨트롤러에 올 수 있도록 메소드 따로 생성
+	
+	
+	
+	
 	
 	//공지사항 글쓰기
 	@PostMapping("/writeNotice")
@@ -53,6 +58,7 @@ public class BoardController {
 		//다중 이미지 파일 첨부
 		List<BoardImgVO> uploadList = UploadFileUtil2.multiUploadFile(imgs);
 		
+		
 		//이미지 정보를 insert 하기 위한 데이터를 가진 uploadList에 조회한 boardNum 값도 넣어줌
 		for(BoardImgVO vo : uploadList) {
 			vo.setBoardNum(nextBoardNum);
@@ -61,10 +67,33 @@ public class BoardController {
 		//boardVO가 첨부파일에 대한 정보를 세터로 다 가지게 됨
 		boardVO.setImgList(uploadList);
 		
-		boardService.insertNotice(boardVO);
+		// 제목, 내용란에 글이 없다면 insert가 안되게 해야해야하고 다시 글작성 페이지로 와야한다.
+		//첨부파일을 넣지 않고도 insert가 되게 해야한다.
 		
-		return "redirect:/board/noticeList";
+		if(boardVO.getBoardContent().equals("") ) {  // 만약에 등록시 빈문자라면 다시 과목등록 페이지 이동
+			return "redirect:/board/writeNotice";
+		}
+		else if(boardVO.getBoardTitle().equals("")){
+			return "redirect:/board/writeNotice";
+		}
+		
+		else {
+			boardService.insertNotice(boardVO);  // 빈문자가 아니라면 등록 쿼리 실행하고 과목등록 페이지로 이동
+		}	
+		
+			return "redirect:/board/noticeList";
+
 	}
+	
+	// 자유게시판 수정
+	public String updateBoardNotice() {
+		
+		return "";
+	}
+	
+	
+	
+	
 	
 	
 	
@@ -79,7 +108,7 @@ public class BoardController {
 		
 		boardService.deleteBoardNotice(boardVO);
 		
-		return "redirect:/board/freeList";
+		return "redirect:/board/noticeList";
 	}
 	
 	
@@ -129,11 +158,22 @@ public class BoardController {
 		//boardVO가 첨부파일에 대한 정보를 세터로 다 가지게 됨
 		boardVO.setImgList(uploadList);
 		
-		boardService.insertFree(boardVO);
+		if(boardVO.getBoardContent().equals("") ) {  // 만약에 등록시 빈문자라면 다시 과목등록 페이지 이동
+			return "redirect:/board/writeFree";
+		}
+		else if(boardVO.getBoardTitle().equals("")){
+			return "redirect:/board/writeFree";
+		}
 		
-		return "redirect:/board/freeList";
+		else {
+			boardService.insertFree(boardVO);  // 빈문자가 아니라면 등록 쿼리 실행하고 과목등록 페이지로 이동
+		}	
+			return "redirect:/board/freeList";
+
 	}
-	
+		
+		
+		
 	
 	// 자유게시판 수정
 	public String updateBoard() {
@@ -166,7 +206,7 @@ public class BoardController {
 	@GetMapping("/freeDetail")
 	public String freeDetail() {
 		
-		return "content/board/freeList";
+		return "content/board/free_detail";
 	}
 		
 	

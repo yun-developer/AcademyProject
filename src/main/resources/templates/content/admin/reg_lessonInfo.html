@@ -124,7 +124,7 @@
 															
 															<option value="">전체</option>
 															<th:block th:each="subject, status : ${subjectList}">	
-															<option value="subjectCode" th:text="${subject.subjectName}"></option>
+															<option th:value="${subject.subjectCode}" th:text="${subject.subjectName}"></option>
 																<!-- 옵션의 value는 레슨코드여야 되고, name도 레슨코드  -->
 															</th:block>
 														</select>

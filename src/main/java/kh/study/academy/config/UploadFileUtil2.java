@@ -97,12 +97,13 @@ public class UploadFileUtil2 {
 				} catch (Exception e) {
 					e.printStackTrace();
 				} 
+				// 이미지를 담는 것(이것은 첨부파일이 비어있지 않을 때 실행되게 한다.)
+				BoardImgVO imgVO = new BoardImgVO();
+				imgVO.setOriginFileName(originFileName);
+				imgVO.setStoredFileName(fileName);
+				list.add(imgVO);
 			}
 			
-			BoardImgVO imgVO = new BoardImgVO();
-			imgVO.setOriginFileName(originFileName);
-			imgVO.setStoredFileName(fileName);
-			list.add(imgVO);
 		}
 		
 		//컨트롤러에서 쓰기 위해서 리턴시켜줌

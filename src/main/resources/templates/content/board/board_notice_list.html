@@ -44,7 +44,7 @@
 							<td th:text="${notice.teacherId}"></td>
 							<td th:text="${notice.createDate}"></td>
 							<td th:text="${notice.viewCount}"></td>
-							<td><input type="checkbox" class="form-check-input chk"  value="notice.boardNum" ></td>
+							<td><input type="checkbox" class="form-check-input chk"  th:value="${notice.boardNum}" ></td>
 						</tr>
 					</th:block>
 				</tbody>

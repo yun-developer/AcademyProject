@@ -160,6 +160,15 @@
 			, SUBJECT_NAME
 		FROM SUBJECT
 		ORDER BY SUBJECT_CODE
+		
+<!-- 		SELECT LESSON_CODE
+			, SUBJECT_CODE
+			, (SELECT SUBJECT_NAME
+				FROM SUBJECT
+				WHERE SUBJECT_CODE = .SUBJECT_CODE) AS SUBJECT_NAME
+		FROM LESSON L -->
+		
+		
 	</select>
 	
 	<!-- 등록한 과목을 체크해서 삭제 -->
@@ -230,7 +239,11 @@
 <!-- /////<학급 편성 관련>//////////////////////////////////////////////////////////// -->	
 
 	<!-- SUBJECT_NAME을 들고 오기 위한 select 쿼리문 -->
-	
+	<select id="subjectName" resultMap="subject">
+		SELECT SUBJECT_CODE
+		FROM LESSONS
+		ORDER BY SUBJECT_CODE
+	</select>
 
 	 <!-- 학급 편성 등록 -->
 	<insert id="regLessonInfo">

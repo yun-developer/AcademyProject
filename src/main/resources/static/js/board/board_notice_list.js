@@ -53,7 +53,7 @@ for(const chk of chks){
 
 
 
-//삭제 버튼 클릭
+//공지사항 리스트에서 삭제 버튼 클릭
 function goDelete() {
 	
 	const deleteForm = document.querySelector('#deleteStuForm');	// from태그의 id가 deleteStuForm 인 것
@@ -72,7 +72,7 @@ function goDelete() {
 		boardNums = boardNums + checkedChk.value + ',';   // 
 	}
 	
-	 alert(boardNums);  //-> 1,2,  boardNums가져오기 위해서는 반복하고 있는 목록 데이터에서 체크박스 input태그 안에 value값에 baordNum을 넣어줘야 한다.
+	// alert(boardNums);  -> 1,2,  boardNums가져오기 위해서는 반복하고 있는 목록 데이터에서 체크박스 input태그 안에 value값에 baordNum을 넣어줘야 한다.
 	
 	//type이 히든인 input태그를 찾아서 value안에 boardNum을 넣어준다. 목록이라서 boardNums로 변수만듦.
 	deleteForm.querySelector('input[type="hidden"]').value = boardNums;  // 넘어오는 name과 컨트롤러의 매개변수 이름 같으면 알아서 받아줌
