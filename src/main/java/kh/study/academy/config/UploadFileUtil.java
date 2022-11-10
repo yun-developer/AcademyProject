@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 import kh.study.academy.teacher.vo.ProfileImgVO;
 
 
+
 public class UploadFileUtil {
 	
 	//파일이 첨부될 경로
@@ -62,6 +63,10 @@ public class UploadFileUtil {
 			//첨부 된 파일명을 담은 VO 리턴
 			return profileImgVO;
 	}
+	
+	
+
+	
 	
 	
 }

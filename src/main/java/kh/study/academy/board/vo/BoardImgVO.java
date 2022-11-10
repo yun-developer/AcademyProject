@@ -8,4 +8,5 @@ public class BoardImgVO {
 	private int boardNum;
 	private String originFileName;
 	private String storedFileName;
+		
 }
