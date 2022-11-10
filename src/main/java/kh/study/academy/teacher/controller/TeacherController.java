@@ -3,6 +3,7 @@ package kh.study.academy.teacher.controller;
 import java.util.Random;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -41,7 +42,6 @@ public class TeacherController {
 	//회원가입 페이지이동
 	@GetMapping("/joinPage")
 	public String joinPage(TeacherVO teacherVO) {
-		
 		return "content/teacher/join_page";
 	}
 	//회원가입 진행
@@ -101,7 +101,7 @@ public class TeacherController {
 	}
 	
 	
-//	//로그인 진행
+//	//로그인 진행 -> security로 인해 필요없음
 //	@PostMapping("/login")
 //	public String login(TeacherVO teacherVO) {
 //		
@@ -116,9 +116,6 @@ public class TeacherController {
 	@GetMapping("/findLoginPage")
 	public String findLoginPage( ) {
 		
-		
-		
-		
 		return "content/teacher/find_login";
 	}
 	
@@ -129,7 +126,6 @@ public class TeacherController {
 	@ResponseBody
 	@PostMapping("/findLoginIdAjax")
 	public TeacherVO findLoginIdAjax(TeacherVO teacherVO) {
-		
 		
 		
 		TeacherVO teacher =  teacherService.findId(teacherVO);
@@ -173,9 +169,6 @@ public class TeacherController {
 	@PostMapping("/findLoginPwAjax")
 	public TeacherVO findLoginPwAjax(TeacherVO teacherVO, Model model) {
 		
-		
-		
-		
 		return null;
 	}
 	
@@ -200,16 +193,21 @@ public class TeacherController {
 	@PostMapping("/insertProfileImg")
 	public String insertProfileImg(ProfileImgVO profileImgVO, MultipartFile profileImg, HttpSession session)  {
 		
+		
 		//단일 이미지 파일 첨부 (메인이미지) --> 첨부파일명 리턴
 		ProfileImgVO uploadInfo =  UploadFileUtil.uploadFile(profileImg);
 		
-		uploadInfo.setTeacherCode(profileImgVO.getTeacherCode());
+		if(uploadInfo.getStoredFileName()!=null) {
+			
 		
-		
-		teacherService.updateProfileImg(uploadInfo);
-		
-		System.out.println("!@!@!@!@"+profileImgVO.getTeacherCode());
-		session.setAttribute("profileImg", teacherService.selectProfileImg(profileImgVO).getStoredFileName());
+			uploadInfo.setTeacherCode(profileImgVO.getTeacherCode());
+			
+			teacherService.updateProfileImg(uploadInfo);
+			
+			System.out.println("!@!@!@!@"+profileImgVO.getTeacherCode());
+			//session.removeAttribute("profileImg");
+			session.setAttribute("profileImg", teacherService.selectProfileImg(profileImgVO).getStoredFileName());
+		}
 		
 		return "redirect:/teacher/selectInfo";
 	}

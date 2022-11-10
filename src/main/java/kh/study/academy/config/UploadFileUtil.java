@@ -13,7 +13,7 @@ public class UploadFileUtil {
 	
 	//파일이 첨부될 경로
 	//final 상수 -> 값 변경 불가
-	private static final String UPLOAD_PATH = "D:\\workspaceSTS\\AcademyProject\\src\\main\\resources\\static\\images\\";
+	private static final String UPLOAD_PATH = "D:\\workspaceSTS\\AcademyProject\\src\\main\\resources\\static\\images\\profile\\";
 	
 	//파일 첨부
 	//static -> class명. 으로 접근 가능
