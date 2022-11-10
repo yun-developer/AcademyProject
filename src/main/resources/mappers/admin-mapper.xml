@@ -222,7 +222,6 @@
 	<insert id="regLessonInfo">
 		INSERT INTO LESSON_INFO(
 			LESSON_INFO_CODE
-			, LESSON_INFO_REGDATE 
 			, SUBJECT_CODE 
 			, STEP_CODE
 			, LESSON_DAY_CODE
@@ -234,12 +233,12 @@
 			, YEAR
 		) VALUES (
 			# {lessonInfoCode}
-			, # {lessonInfoRegdate}
 			, # {subjectCode}
 			, # {stepCode}
 			, # {lessonDayCode}
 			, # {lessonTime}
 			, # {lessonRoomCode}
+			, # {teacherCode}
 			, # {nowStudent_cnt}
 			, # {money}
 			, # {year}
