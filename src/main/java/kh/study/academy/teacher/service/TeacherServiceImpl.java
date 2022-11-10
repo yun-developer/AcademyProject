@@ -74,6 +74,13 @@ public class TeacherServiceImpl implements TeacherService {
 		
 		return sqlSession.selectOne("teacherMapper.selectProfileImg", profileImgVO);
 	}
+	
+	//개인정보 수정
+	@Override
+	public void updateInfo(TeacherVO teacherVO) {
+		sqlSession.update("teacherMapper.updateInfo", teacherVO);
+		
+	}
 
 
 	

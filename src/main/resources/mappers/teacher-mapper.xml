@@ -175,8 +175,26 @@
 		FROM PROFILE_IMG 
 		WHERE TEACHER_CODE = #{teacherCode}
 	</select>
-
+	
+	<!-- 개인정보 수정 -->
+	<update id="updateInfo">
+		UPDATE TEACHER
+		SET
 		
+		<if test="teacherName !=null and !teacherName.equals('')">
+			TEACHER_NAME = #{teacherName}
+		</if>
+		<if test="teacherTell !=null and !teacherTell.equals('')">
+			TEACHER_TELL = #{teacherTell}
+		</if>
+		<if test="teacherEmail !=null and !teacherEmail.equals('')">
+			TEACHER_EMAIL = #{teacherEmail}
+		</if>
+		
+		WHERE TEACHER_ID = #{teacherId}
+	</update>
+	
+			
 </mapper>
 
 

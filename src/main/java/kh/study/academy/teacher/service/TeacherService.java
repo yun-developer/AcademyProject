@@ -32,4 +32,7 @@ public interface TeacherService {
 	
 	//프로필 사진 조회
 	ProfileImgVO selectProfileImg(ProfileImgVO profileImgVO);
+	
+	//개인정보 수정
+	void updateInfo(TeacherVO teacherVO);
 }

@@ -212,6 +212,9 @@ public class TeacherController {
 		return "redirect:/teacher/selectInfo";
 	}
 	
+	//개인정보 수정
+	
+	
 	
 	
 }
