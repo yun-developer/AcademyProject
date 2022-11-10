@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import kh.study.academy.board.vo.BoardImgVO;
 import kh.study.academy.board.vo.BoardVO;
 
 @Service

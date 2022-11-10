@@ -17,13 +17,14 @@
 						<th scope="col">제목</th>
 						<th scope="col">작성자</th>
 						<th scope="col">작성일</th>
+						<th scope="col">조회수</th>
 						<th scope="col"><input type="checkbox" id="checkAll" ></th>
 					</tr>
 				</thead>
 				<tbody>
 					<th:block th:if="${#lists.size(noticeList) == 0}">
 						<tr>
-							<td colspan="5">데이터가 없습니다.</td>
+							<td colspan="6">데이터가 없습니다.</td>
 						</tr>
 					</th:block>
 					<th:block th:unless="${#lists.size(noticeList) == 0}">
@@ -32,6 +33,7 @@
 							<td><a th:href="@{/board/freeList(teacherId=${notice.teacherId})}">[[${notice.boardTitle}]]</a></td>
 							<td th:text="${notice.teacherId}"></td>
 							<td th:text="${notice.createDate}"></td>
+							<td ></td>
 							<td><input type="checkbox" class="form-check-input chk"  ></td>
 						</tr>
 					</th:block>

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import kh.study.academy.board.vo.BoardImgVO;
 import kh.study.academy.board.vo.BoardVO;
 
 @Service("boardService")
@@ -24,7 +25,7 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public void insertNotice(BoardVO boardVO) {
 		sqlSession.insert("boardMapper.insertNotice", boardVO);
-		//sqlSession.insert("boardMapper.insertImgs", boardVO);
+		sqlSession.insert("boardMapper.insertImgs", boardVO);
 	}
 	
 	@Transactional(rollbackFor = Exception.class)  

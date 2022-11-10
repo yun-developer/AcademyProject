@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kh.study.academy.board.service.BoardService;
+import kh.study.academy.board.vo.BoardImgVO;
 import kh.study.academy.board.vo.BoardVO;
 
 

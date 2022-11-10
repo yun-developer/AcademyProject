@@ -10,8 +10,8 @@
 	<result column="BOARD_CONTENT" property="boardContent"/> 
 	<result column="VIEW_COUNT" property="viewCount"/> 
 	<result column="CREATE_DATE" property="createDate"/> 
-	<result column="TEACHER_CODE" property="teacherCode"/> 
 	<result column="TEACHER_ID" property="teacherId"/> 
+	<collection property="imgList" resultMap="boardImg"/>
 </resultMap>
 
 <resultMap type="kh.study.academy.board.vo.BoardKindVO" id="boardKind">
@@ -55,7 +55,7 @@
 
 
 <!-- 이미지 등록 -->
-<insert id="imsertNoticeImgs">
+<insert id="insertImgs">
 	INSERT INTO BOARD_IMG (
 		BOARD_IMG_NUM
 		, ORIGIN_FILE_NAME
@@ -63,7 +63,7 @@
 		, BOARD_NUM
 	)
 	<foreach collection="imgList" item="img" separator="UNION ALL" index="i">
-		SELECT (SELECT 'IMG_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(IMG_CODE, 5))),0) + 1 + #{i}, 3, 0 FROM BOARD_IMG)
+		SELECT (SELECT 'IMG_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(boardImgNum, 5))),0) + 1 + #{i}, 3, 0 FROM BOARD_IMG)
 			, #{img.originName}
 			, #{img.attachedName}
 			, #{img.boardNum}

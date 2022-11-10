@@ -14,7 +14,7 @@ public class UploadFileUtil2 {
 	//final : 변수 값 바꾸는 것이 안 됨
 	//상수(변하지 않고 항상 같은 값을 가지는 수)는 웬만하면 다 대문자로 이름 짓기
 	//파일이 첨부될 경로 지정. 보통 static 폴더 밑에.. 복붙하고 뒤에 \\ 추가!!
-	private static final String UPLOAD_PATH = "D:\\workspaceSTS\\AcademyProject\\src\\main\\resources\\static\\images\\";
+	private static final String UPLOAD_PATH = "D:\\workspaceSTS\\AcademyProject\\src\\main\\resources\\static\\images\\board\\";
 	
 	
 	//단일 파일 첨부
