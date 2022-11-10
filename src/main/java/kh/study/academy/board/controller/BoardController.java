@@ -86,7 +86,9 @@ public class BoardController {
 	
 	//공지사항 상세 읽기
 	@GetMapping("/noticeDetail")
-	public String noticeDetail() {
+	public String noticeDetail(Model model, int boardNum) {
+		model.addAttribute("notice", boardService.selectBoardDetail(boardNum));
+		
 		
 		return "content/board/notice_detail";
 	}

@@ -6,7 +6,111 @@
 	
 
 <div layout:fragment="content">
+<div class="panel">
+			<div class="panel-hdr" style="margin-bottom: 20px;">
+				<h5>공지사항<span class="fw-300"></span></h5>
+			</div>
+			<div class="panel-container show">
+				<div class="panel-content">
+					<!-- <form class="form-horizontal needs-validation" id="frmBoardContentsDetail" onsubmit="return false;" novalidate="novalidate">
+						<input type="hidden" id="mode" name="mode">
+						<input type="hidden" id="cmpCd" name="cmpCd" value="ABA">
+						<input type="hidden" id="boardId" name="boardId" value="B0005">
+						<input type="hidden" id="contSq" name="contSq" value="1200928221118726751">
+						<input type="hidden" id="contRootSq" name="contRootSq" value="1200928221118726751">
+						<input type="hidden" id="contDepth" name="contDepth" value="1">
+						<input type="hidden" id="contSort" name="contSort" value="0">
+						<input type="hidden" id="title" name="title" value="교사라운지 초대 부탁드립니다! ">
+						<input type="hidden" id="contents" name="contents" value="<p>e-mail: ss88m2@naver.com</p><p><br></p><p>ID: ss88m2</p>">
+					</form> -->
 
+					<div class="subheader pb-6" style="margin-bottom: 20px;">
+						<h3 class="subheader-title">
+							교사라운지 초대 부탁드립니다! <i class="subheader-icon"></i>
+							<small>등록일 : 2022-11-08 14:13:50 조회수 : 10 작성자 : 
+							<a href="javascript:" onclick="showEmployPopup('/common/popup/employ/detail/CE221000035', '교직원정보');">서성민</a>
+							</small>
+						</h3>
+					</div>
+					<div class="subheader pb-6 border-bottom" style="margin-bottom: 10px;"></div>
+					<div id="preview" class="fr-view"><p>e-mail: ss88m2@naver.com</p><p><br></p><p>ID: ss88m2</p></div>
+				</div>
+
+				<div class="panel-content rounded-bottom border-faded border-0 text-right pr-0 pt-2 " style="margin-bottom: 100px;">
+					<div class="col-lg-12 text-center pb-6" style="margin-bottom: 30px;">
+						<button th:onclick="|location.href='@{/board/noticeList}'|" type="button" id="btnHistoryBack" class="btn btn-success waves-effect waves-themed"><span class="fal fa-repeat mr-1"></span>
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+  <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
+  <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
+</svg>목록
+						</button>
+					</div>
+					<div class="col-lg-12 text-center pb-6 border-bottom" ></div>
+				</div>
+
+	
+	
+				<div class="panel-content">
+					<div class="frame-wrap">
+						<form th:action="@{/reply/write}" method="post" class="form-horizontal needs-validation" id="frmBoardContentsComment"  novalidate="novalidate">
+							<input type="hidden" id="cmpCd" name="cmpCd" value="ABA">
+							<input type="hidden" id="contSq" name="contSq" value="1200928221118726751">
+							<input type="hidden" name="boardNum" th:value="${notice.boardNum}"> 
+
+							<fieldset class="w-100">
+								<div class="form-group input-group mb-1">
+									<div id="froala-editor" class="col-12 col-lg-11 px-1 rounded-0">
+										<textarea name="replyContent" class="form-control" rows="5"></textarea>
+										<span id="counter" class="text-muted">(0 / 최대 500자)</span>
+									</div>
+									<div class="col-12 col-lg-1">
+										<div>&nbsp;</div>
+										<button type="submit" id="btnContentsCommentSave" class="btn btn-outline-secondary w-100 h-50 "><span class="fal fa-save"></span>
+											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-all" viewBox="0 0 16 16">
+  <path d="M12.354 4.354a.5.5 0 0 0-.708-.708L5 10.293 1.854 7.146a.5.5 0 1 0-.708.708l3.5 3.5a.5.5 0 0 0 .708 0l7-7zm-4.208 7-.896-.897.707-.707.543.543 6.646-6.647a.5.5 0 0 1 .708.708l-7 7a.5.5 0 0 1-.708 0z"/>
+  <path d="m5.354 7.146.896.897-.707.707-.897-.896a.5.5 0 1 1 .708-.708z"/>
+</svg>
+										</button>
+									</div>
+								</div>
+							</fieldset>
+						</form>
+					</div>
+				</div>
+			<div class="panel-content">
+				<div id="tblBoardContentsComment_wrapper"
+					class="dataTables_wrapper dt-bootstrap4 no-footer">
+					<table id="tblBoardContentsComment"
+						class="table w-100 dataTable no-footer dtr-inline" role="grid"
+						style="width: 1582px;">
+						<thead>
+							<tr role="row">
+								<th class="sorting_disabled" rowspan="1" colspan="1"
+									style="width: 1559.5px;">댓글</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr role="row" class="odd">
+								<td tabindex="0"><div id="1200926170807851778">
+										<div class="mb-2">
+											<strong class="text-muted"><a href="javascript:"onclick="showEmployPopup('/common/popup/employ/detail/AE170600020', '교직원정보');">전략기획팀</a></strong><span
+												class="ml-2 text-muted">2022-11-08 16:52:25</span>
+										</div>
+										<div>
+											<h5>초대하였습니다.</h5>
+											<h5></h5>
+										</div>
+									</div></td>
+							</tr>
+						</tbody>
+					</table>
+					
+				</div>
+			</div>
+
+
+		</div>
+		</div>
 
 
 </div>

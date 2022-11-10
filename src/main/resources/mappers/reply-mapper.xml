@@ -14,7 +14,7 @@
 
 <!-- 댓글 작성 -->
 <insert id="insertReply">
-	<selectKey resultType="String" keyProperty="REPLY_NUM" order="BEFORE">
+	<selectKey resultType="String" keyProperty="replyNum" order="BEFORE">
 	   SELECT 'REPLY_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(REPLY_NUM, 7))),0) +1, 3, 0) 
 	   FROM REPLY
 	</selectKey>
@@ -23,10 +23,12 @@
 		REPLY_NUM
 		, TEACHER_ID
 		, REPLY_CONTENT
+		, BOARD_NUM
 	) VALUES (
 		#{replyNum}
 		, #{teacherId}
 		, #{replyContent}
+		, #{boardNum}
 	)
 </insert>
 
