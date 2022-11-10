@@ -1,5 +1,6 @@
 package kh.study.academy.board.controller;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -116,11 +117,38 @@ public class BoardController {
 	}
 	
 	
+	// 자유게시판 수정
+	public String updateBoard() {
+		
+		return "";
+	}
+	
+	
+	
+	
+	
+	// 자유게시판 삭제
+	@PostMapping("/deleteBoard")
+	public String deleteBoard(String boardNums) {
+		String[] boardNumArr = boardNums.split(","); // 배열을 리스트로 변환작업 2줄
+		List<String> boardNumList = Arrays.asList(boardNumArr);
+		
+		BoardVO boardVO = new BoardVO();
+		boardVO.setBoardNumList(boardNumList);
+		
+		boardService.deleteBoardFree(boardVO);
+		
+		return "redirect:/board/freeList";
+	}
+		
+		
+		
+		
 	//자유게시판 상세 읽기
 	@GetMapping("/freeDetail")
 	public String freeDetail() {
 		
-		return "content/board/free_detail";
+		return "content/board/freeList";
 	}
 		
 	

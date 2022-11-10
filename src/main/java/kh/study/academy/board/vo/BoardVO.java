@@ -16,4 +16,5 @@ public class BoardVO {
 	
 	private List<BoardImgVO> imgList;
 	
+	private List<String> boardNumList;
 }

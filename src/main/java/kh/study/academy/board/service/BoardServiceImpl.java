@@ -50,6 +50,15 @@ public class BoardServiceImpl implements BoardService{
 		return sqlSession.selectOne("boardMapper.selectBoardDetail", boardNum);
 	}
 
+
+	
+	// 자유게시판 삭제
+	@Override
+	public void deleteBoardFree(BoardVO boardVO) {
+		sqlSession.delete("boardMapper.deleteBoardFree", boardVO);
+		
+	}
+
 	
 	  
 	  

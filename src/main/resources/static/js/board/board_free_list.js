@@ -50,29 +50,29 @@ for(const chk of chks){
 }
 
 
-
-
-
 //삭제 버튼 클릭
 function goDelete() {
-	const deleteForm = document.querySelector('#deleteStuForm');	
+	const deleteForm = document.querySelector('#deleteStuForm');	// from태그의 id가 deleteStuForm 인 것
 	
 	//체크한 cartCode 다 들고 온다.
-	const checkedChks = document.querySelectorAll('.chk:checked');
+	const checkedChks = document.querySelectorAll('.chk:checked');  // 내가 체크한 것들
 	
 	if(checkedChks.length == 0) {
-		alert('삭제할 학생을 선택하세요');
+		alert('삭제할 게시글을 선택하세요');
 		return ;
 	}
 	
 	//문자열로 만들어서 던져 줌
-	let studentCodes = '';
-	for(const checkedChk of checkedChks) {
-		studentCodes = studentCodes + checkedChk.value + ',';  
+	let boardNums = '';
+	for(const checkedChk of checkedChks) {				// 내가 체크한 것들을 포문 돌려서 하나씩 삭제한다.
+		boardNums = boardNums + checkedChk.value + ',';   // 
 	}
 	
-	deleteForm.querySelector('input').value = studentCodes;  // 넘어오는 name과 컨트롤러의 매개변수 이름 같으면 알아서 받아줌
+	// alert(boardNums);  -> 1,2,  boardNums가져오기 위해서는 반복하고 있는 목록 데이터에서 체크박스 input태그 안에 value값에 baordNum을 넣어줘야 한다.
 	
+	//type이 히든인 input태그를 찾아서 value안에 boardNum을 넣어준다. 목록이라서 boardNums로 변수만듦.
+	deleteForm.querySelector('input[type="hidden"]').value = boardNums;  // 넘어오는 name과 컨트롤러의 매개변수 이름 같으면 알아서 받아줌
+	// 그리고 submit을 시켜준다. submit을 하면 form태그 액션이 실행된다.
 	deleteForm.submit();
 }
 
