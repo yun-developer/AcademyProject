@@ -12,6 +12,14 @@
 		
 		<div class="col-12" style="margin-top: 40px;" id="table_box_bootstrap">
 			<table class="table table-striped text-center" style="margin-top: 20px;">
+				<colgroup>
+					<col width="10%">
+					<col width="30%">
+					<col width="25%">
+					<col width="20%">
+					<col width="10%">
+					<col width="5%">
+				</colgroup>
 				<thead>
 					<tr>
 						<th scope="col">NO</th>
@@ -34,7 +42,7 @@
 							<td th:text="${free.boardTitle}"></td>
 							<td th:text="${free.teacherId}"></td>
 							<td th:text="${free.createDate}"></td>
-							<td ></td>
+							<td th:text="${free.viewCount}"></td>
 							<td><input type="checkbox" class="form-check-input chk"  ></td>
 						</tr>
 					</th:block>

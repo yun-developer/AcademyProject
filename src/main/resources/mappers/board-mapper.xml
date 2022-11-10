@@ -59,13 +59,14 @@
 	INSERT INTO BOARD_IMG (
 		BOARD_IMG_NUM
 		, ORIGIN_FILE_NAME
-		, STORE_FILE_NAME
+		, STORED_FILE_NAME
 		, BOARD_NUM
 	)
 	<foreach collection="imgList" item="img" separator="UNION ALL" index="i">
-		SELECT (SELECT 'IMG_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(boardImgNum, 5))),0) + 1 + #{i}, 3, 0 FROM BOARD_IMG)
-			, #{img.originName}
-			, #{img.attachedName}
+		SELECT (SELECT 'IMG_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(BOARD_IMG_NUM, 5))),0) + 1 + #{i}, 3, 0)
+				 FROM BOARD_IMG)
+			, #{img.originFileName}
+			, #{img.storedFileName}
 			, #{img.boardNum}
 		FROM DUAL
 	</foreach>
@@ -80,6 +81,7 @@
 		, BOARD_TITLE
 		, B.TEACHER_ID
 		, TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS CREATE_DATE
+		, VIEW_COUNT
 	FROM BOARD B, TEACHER T
 	WHERE B.TEACHER_ID = T.TEACHER_ID
 	AND BOARD_KIND_CODE = '0'
@@ -93,6 +95,7 @@
 		, BOARD_CONTENT
 		, B.TEACHER_ID
 		, TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS CREATE_DATE
+		, VIEW_COUNT
 	FROM BOARD B, TEACHER T
 	WHERE B.TEACHER_ID = T.TEACHER_ID
 	AND BOARD_NUM = #{boardNum}
@@ -125,6 +128,7 @@
 		, BOARD_TITLE
 		, B.TEACHER_ID
 		, TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS CREATE_DATE
+		, VIEW_COUNT
 	FROM BOARD B, TEACHER T
 	WHERE B.TEACHER_ID = T.TEACHER_ID
 	AND BOARD_KIND_CODE = '1'

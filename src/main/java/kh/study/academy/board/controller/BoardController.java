@@ -1,5 +1,7 @@
 package kh.study.academy.board.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.security.core.Authentication;
@@ -9,10 +11,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import kh.study.academy.board.service.BoardService;
 import kh.study.academy.board.vo.BoardImgVO;
 import kh.study.academy.board.vo.BoardVO;
+import kh.study.academy.config.UploadFileUtil2;
 
 
 @Controller
@@ -38,12 +42,23 @@ public class BoardController {
 	
 	//공지사항 글쓰기
 	@PostMapping("/writeNotice")
-	public String writeNotice2(BoardVO boardVO, Authentication authentication) {
+	public String writeNotice2(BoardVO boardVO, Authentication authentication, List<MultipartFile> imgs) {
 		User user = (User)authentication.getPrincipal();
 		boardVO.setTeacherId(user.getUsername());
 		
 		int nextBoardNum = boardService.getNextBoardNum();
 		boardVO.setBoardNum(nextBoardNum);
+		
+		//다중 이미지 파일 첨부
+		List<BoardImgVO> uploadList = UploadFileUtil2.multiUploadFile(imgs);
+		
+		//이미지 정보를 insert 하기 위한 데이터를 가진 uploadList에 조회한 boardNum 값도 넣어줌
+		for(BoardImgVO vo : uploadList) {
+			vo.setBoardNum(nextBoardNum);
+		}
+		
+		//boardVO가 첨부파일에 대한 정보를 세터로 다 가지게 됨
+		boardVO.setImgList(uploadList);
 		
 		boardService.insertNotice(boardVO);
 		
