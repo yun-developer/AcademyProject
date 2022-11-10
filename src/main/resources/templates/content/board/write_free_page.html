@@ -10,6 +10,7 @@
 	<div class="col-6 ">
 		<div style="text-align: center;"><h2>자 유 게 시 판</h2></div>	
 		
+	<form th:action="@{/board/writeFree}" method="post" enctype="multipart/form-data">	
 		<div class="mb-3" style="margin-top: 40px;">
 		  <label for="exampleFormControlInput1" class="form-label">제목</label>
 		  <input type="text" class="form-control" id="exampleFormControlInput1" name="boardTitle" placeholder="제목을 입력하세요">
@@ -24,14 +25,15 @@
 	
 		<div class="mb-3">
 		  <label for="exampleFormControlTextarea1" class="form-label" ></label>
-			<input type="file" class="form-control" id="exampleFormControlInput1">
+			<input type="file" class="form-control" id="exampleFormControlInput1" name="imgs">
 		</div>
 		
 		<div style="text-align: center;">
-			<button type="button" class="btn btn-outline-dark"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+			<button type="submit" class="btn btn-outline-dark"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
   <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
 </svg></button>
 		</div>
+		</form>
 		
 	</div>
 </div>
