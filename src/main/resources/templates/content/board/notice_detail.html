@@ -23,9 +23,6 @@
 							</div>
 					</div>
 					<div class="subheader pb-6 border-bottom" style="margin-bottom: 10px;"></div>
-					<div th:each="notice : ${notice}">
-						<div id="preview" class="fr-view" style="font-size: 20px;">[[${notice.boardContent}]]</div>
-					</div>
 						<div th:each="notice : ${notice}">
 							<div  id="preview" class="fr-view" style="margin-bottom: 20px;">[[${notice.boardContent}]]</div>
 						</div>
