@@ -214,7 +214,8 @@
 	<!-- 회원탈퇴 :TeacherStatus ->N으로 변경 -->
 	<update id="leaveAcademy">
 		UPDATE TEACHER
-		SET TEACHER_STATUS = 'Y'
+		SET TEACHER_STATUS = 'N'
+		AND TEACHER_ROLE ='DELETED'
 		WHERE TEACHER_ID = #{teacherId}
 	</update>
 	

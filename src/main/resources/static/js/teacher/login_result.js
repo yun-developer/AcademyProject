@@ -10,7 +10,7 @@ document.getElementById("alertButton").click();
 function loginResult(){
 	
 	
-	if(role=="[ROLE_ANONYMOUS]"){
+	if(role=="[ROLE_ANONYMOUS]" || role=="[ROLE_DELETED]"){
 		
 		Swal.fire({
 		   title:'로그인 실패',

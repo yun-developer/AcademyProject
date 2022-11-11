@@ -186,12 +186,8 @@
       
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          '승인이 완료되었습니다.',
-          '화끈하시네요~!',
-          'success'
-        )
-     	  /*location.href=`/teacher/leave`;*/
+        
+     	  location.href=`/teacher/leave`;
       }
     })
   });

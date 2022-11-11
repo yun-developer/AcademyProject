@@ -265,7 +265,7 @@ public class TeacherController {
 	}
 	
 	
-	//탈퇴(TeacherStatus ->N으로 변경)
+	//탈퇴(TeacherStatus ->N, TEACHER_ROLE ='DELETED'으로 변경)
 	@GetMapping("/leave")
 	public String leaveAcademy(Authentication authentication, TeacherVO teacherVO) {
 		
@@ -294,6 +294,7 @@ public class TeacherController {
 		
 		return "redirect:/teacher/selectInfo";
 	}
+	
 	
 	
 	
