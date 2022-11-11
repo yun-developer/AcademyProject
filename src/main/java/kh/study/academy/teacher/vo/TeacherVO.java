@@ -27,7 +27,7 @@ public class TeacherVO {
 	private String subjectCode;
 	
 	@NotBlank(message = "* ID은 필수 입력입니다.")
-	@Size(max=8, message = "* 입력 길이를 초과했습니다.")
+	@Size(max=15, message = "* 입력 길이를 초과했습니다.")
 	private String teacherId;
 	
 	@NotBlank(message = "* 비밀번호는 필수 입력입니다.")

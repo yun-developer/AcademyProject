@@ -19,16 +19,20 @@
 			        
 				        <h5>개인 정보</h5>
 						<form th:action="@{/teacher/insertProfileImg}" method="post" enctype="multipart/form-data">
-							<div class="row">
-						        <div class="col-9">
+							<div class="row mb-5">
+						        <div class="col-8">
 									  <input type="file" class="form-control" id="profileImg" name="profileImg" aria-describedby="basic-addon3">
 									  <input type="hidden" class="form-control" id="teacherCode" name="teacherCode"  th:value="${teacher.teacherCode}" aria-describedby="basic-addon3">
 									  
 							    </div>
 							    <div class="col-3">
-								  <button type="submit" class="btn btn-success">파일 업로드</button>
+								  <button type="submit" class="btn btn-success">변경하기</button>
 								</div>  
 							</div>
+							
+							
+							
+							
 						</form>  
 			        </p>
 			      </div>

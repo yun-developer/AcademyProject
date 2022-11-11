@@ -3,6 +3,8 @@ package kh.study.academy.certified.controller;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,10 +30,14 @@ public class SmsController {
 	//비밀번호 찾기에서 연락처로 문자전송을 눌렀을 때 
 	@ResponseBody
 	@GetMapping("/sendSMS")
-	public String sendSMS(TeacherVO teacherVO) {
+	public String sendSMS( TeacherVO teacherVO ) {
+		
+		
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!" + teacherVO);
+		
 		
 		//전화번호 인증번호 전송 전 입력한 데이터에 일치하는 회원이 있는지 조회
-		//teacherService.findInfoForSendSms(teacherVO);
+		teacherService.findInfoForSendSms(teacherVO);
 		
         Random rand  = new Random();
         String numStr = "";

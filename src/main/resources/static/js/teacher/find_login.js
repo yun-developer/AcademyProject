@@ -236,11 +236,11 @@ $(document).on("click", "#sendPhoneNumber", function() {
 	//teacherTell 값
 	const teacherId = document.querySelector('#teacherId').value;
 	//teacherTell
-	//const teacherTell = document.querySelector('#teacherTell').value;
+	//const teacherTells = document.querySelector('#teacherTell').value;
 	
 	console.log(teacherName);
 	console.log(teacherId);
-	//console.log(teacherTell);
+	//console.log(teacherTells);
 	
 	//셀렉트 쿼리
 	
@@ -261,7 +261,7 @@ $(document).on("click", "#sendPhoneNumber", function() {
         type: "GET",
         url: "/sms/sendSMS",
         data: {
-            "teacherTell" : teacherTell
+            "teacherTell" : teacherTell, "teacherName":teacherName , "teacherId":teacherId
         },
         success: function(res){
             $('#checkBtn').click(function(){
