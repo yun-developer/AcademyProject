@@ -32,6 +32,7 @@ public class TeacherVO {
 	
 	@NotBlank(message = "* 비밀번호는 필수 입력입니다.")
 	private String teacherPw;
+	
 	private int wrongPwCnt;
 	private String teacherStatus;
 	private String lessonsCode;
