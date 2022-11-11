@@ -173,7 +173,16 @@ public class BoardController {
 	}
 		
 		
+	
+	//자유게시판 상세 읽기
+	@GetMapping("/freeDetail")
+	public String freeDetail(Model model, int boardNum) {
+		model.addAttribute("free", boardService.selectBoardDetail(boardNum));
 		
+		return "content/board/free_detail";
+	}
+	
+	
 	
 	// 자유게시판 수정
 	public String updateBoard() {
@@ -202,12 +211,7 @@ public class BoardController {
 		
 		
 		
-	//자유게시판 상세 읽기
-	@GetMapping("/freeDetail")
-	public String freeDetail() {
-		
-		return "content/board/free_detail";
-	}
+
 		
 	
 	

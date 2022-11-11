@@ -39,7 +39,7 @@
 					<th:block th:unless="${#lists.size(freeList) == 0}">
 						<tr th:each="free, status : ${freeList}">
 							<td scope="row" th:text=${status.count}></td>
-							<td><a th:href="@{/board/freeDetail(teacherId=${free.teacherId})}">[[${free.boardTitle}]]</a>
+							<td><a th:href="@{/board/freeDetail(boardNum=${free.boardNum})}">[[${free.boardTitle}]]</a>
 								<i class="fal fa-comment text-primary"></i> <span class="text-primary">(1)</span>
 							</td>
 							<td th:text="${free.teacherId}"></td>

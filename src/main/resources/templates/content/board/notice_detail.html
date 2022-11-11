@@ -7,33 +7,23 @@
 
 <div layout:fragment="content">
 <div class="panel">
-			<div class="panel-hdr" style="margin-bottom: 20px;">
-				<h5>공지사항<span class="fw-300"></span></h5>
+			<div class="panel-hdr" style="margin-bottom: 20px; font-size: 16px;">
+				공지사항<span class="fw-300"></span>
 			</div>
 			<div class="panel-container show">
 				<div class="panel-content">
-					<!-- <form class="form-horizontal needs-validation" id="frmBoardContentsDetail" onsubmit="return false;" novalidate="novalidate">
-						<input type="hidden" id="mode" name="mode">
-						<input type="hidden" id="cmpCd" name="cmpCd" value="ABA">
-						<input type="hidden" id="boardId" name="boardId" value="B0005">
-						<input type="hidden" id="contSq" name="contSq" value="1200928221118726751">
-						<input type="hidden" id="contRootSq" name="contRootSq" value="1200928221118726751">
-						<input type="hidden" id="contDepth" name="contDepth" value="1">
-						<input type="hidden" id="contSort" name="contSort" value="0">
-						<input type="hidden" id="title" name="title" value="교사라운지 초대 부탁드립니다! ">
-						<input type="hidden" id="contents" name="contents" value="<p>e-mail: ss88m2@naver.com</p><p><br></p><p>ID: ss88m2</p>">
-					</form> -->
-
 					<div class="subheader pb-6" style="margin-bottom: 20px;">
 						<h3 class="subheader-title">
-							교사라운지 초대 부탁드립니다! <i class="subheader-icon"></i>
-							<small>등록일 : 2022-11-08 14:13:50 조회수 : 10 작성자 : 
-							<a href="javascript:" onclick="showEmployPopup('/common/popup/employ/detail/CE221000035', '교직원정보');">서성민</a>
-							</small>
+							[[${notice.boardTitle}]] <i class="subheader-icon"></i>
 						</h3>
+							<div style="font-size: 18px;">
+								등록일 : [[${notice.createDate}]] 조회수 : [[${notice.viewCount}]] 작성자 : 
+								<a href="javascript:" onclick="showEmployPopup('/common/popup/employ/detail/CE221000035', '교직원정보');">[[${notice.teacherId}]]</a>
+								
+							</div>
 					</div>
 					<div class="subheader pb-6 border-bottom" style="margin-bottom: 10px;"></div>
-					<div id="preview" class="fr-view"><p>e-mail: ss88m2@naver.com</p><p><br></p><p>ID: ss88m2</p></div>
+					<div id="preview" class="fr-view" style="font-size: 20px;">[[${notice.boardContent}]]</div>
 				</div>
 
 				<div class="panel-content rounded-bottom border-faded border-0 text-right pr-0 pt-2 " style="margin-bottom: 100px;">
