@@ -17,8 +17,7 @@
 		<result column="TEACHER_BIRTHDAY" 					property="teacherBirthday" />
 		
 		<!--아래 수정 필요 -->
-		<!--LESSONS,SUBJECT 매퍼 만들면 하기...? -->
-		<result column="LESSONS_CODE" 						property="lessonsCode" />
+		<!--SUBJECT 매퍼 만들면 하기...? -->
 		<result column="SUBJECT_CODE" 						property="subjectCode" />
 		
 		<association property="subjectVO" resultMap="adminMapper.subject"/>

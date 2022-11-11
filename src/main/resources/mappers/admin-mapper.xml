@@ -34,8 +34,7 @@
 	
 	
 	<!-- 교사리스트 조회 -->
-	<!--LESSONS,SUBJECT CODE 수정 필요... -->
-	<!-- SUBJECT_NAME 저렇게 할 필요가 없었던 건가...??일단-->
+	<!--,SUBJECT CODE 수정 필요... -->
 	<select id="selectTeacherList" resultMap="teacherMapper.teacher">
 	
 		SELECT TEACHER_CODE
@@ -45,14 +44,13 @@
 			, TEACHER_ID
 			, DECODE(TEACHER_STATUS, 'Y','재직중','퇴사') AS TEACHER_STATUS
 			, DECODE(TEACHER_ROLE, 'UNAPPROVED','미승인','교사') AS TEACHER_ROLE
-			, LESSONS_CODE
 			, SUBJECT_CODE
 			, (SELECT SUBJECT_NAME FROM SUBJECT WHERE SUBJECT_CODE = T.SUBJECT_CODE) AS SUBJECT_NAME
 		FROM TEACHER T
 	</select>
 	
 	<!--교사리스트 페이지에서 교사 조회 -->
-	<!--LESSONS_CODE, SUBJECT_CODE 및 WHERE 절 수정중-->
+	<!-- SUBJECT_CODE 및 WHERE 절 수정중-->
 	<select id="searchTeacher" resultMap="teacherMapper.teacher" parameterType="hashMap">
 		SELECT TEACHER_CODE
 			, TEACHER_NAME
@@ -254,7 +252,6 @@
 		
 		INSERT INTO LESSON_INFO(
 			LESSON_INFO_CODE
-			, LESSONS_CODE 
 			, STEP_CODE
 			, LESSON_DAY_CODE
 			, LESSON_ROOM_CODE
@@ -265,7 +262,6 @@
 			, MONEY
 		) VALUES (
 			#{lessonInfoCode}
-			, #{lessonsCode}
 			, #{stepCode}
 			, #{lessonDayCode}
 			, #{lessonRoomCode}
