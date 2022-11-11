@@ -191,25 +191,44 @@
 										</div>
 									
 								</div>
+								
+								
+								
 								<div class="form-group input-group mb-1">
 									<div class="col-6 col-lg-2 px-0"><span class="input-group-text h-100 rounded-0">교실명</span></div>
-									<div class="col-6 col-lg-10 px-1 rounded-0">
-										<select class="form-select rounded-0 h-100"   aria-label="학급명" id="lessonRoomCode" name="lessonRoomCode" value="" kor="학급명">
-											<th:block th:each="LessonRoom, status : ${LessonRoomList}">	
-												<option th:text="${LessonRoom.roomName}"></option>
-						
+									<div class="col-6 col-lg-3 px-1 rounded-0">
+										 <select class="form-select rounded-0 h-100"   aria-label="학급명" id="lessonRoomCode" name="lessonRoomCode" value="" kor="학급명">
+										    <th:block th:each="LessonRoom, status : ${LessonRoomList}">	
+										      <option th:text="${LessonRoom.roomName}"></option>
+												
 											</th:block>
 
-													</select>
+										</select>
 									</div>
+									
+									<div class="col-6 col-lg-2 px-1"><span class="input-group-text h-100 rounded-0">교사명</span></div>
+										<div class="col-6 col-lg-5 px-">
+											<select class="form-select"   aria-label="Default select example" id="lessonTime " name="lessonTime" kor="과정구분">
+												 <th:block th:each="teacher, status : ${teacherList}">	
+										      		<option th:text="${teacher.teacherName}"></option>
+												
+												</th:block>
+
+											</select>
+										</div>
+									
 								</div>
+								
+								
+
+
 								<div class="form-group input-group mb-1">
 									<div class="col-6 col-lg-2 px-0"><span class="input-group-text h-100 rounded-0">메모</span></div>
 									<div class="col-6 col-lg-10 px-1">
 										<textarea id="memo" name="memo" class="form-control rounded-0" placeholder="메모" aria-label="메모" aria-describedby="memo"></textarea>
 									</div>
 								</div>
-
+						
 						
 
 

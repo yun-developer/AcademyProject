@@ -207,7 +207,9 @@ public class AdminController {
 			List<LessonVO> lessonRoomList = adminService.selectLessonRoom(roomName);
 			model.addAttribute("LessonRoomList", lessonRoomList);
 			
-
+			// 교사 리스트를 가져오는 쿼리 실행 문
+		//	model.addAttribute("teacherList", adminService.selectTeacherList());
+			
 			 return "content/admin/reg_lessonInfo";
 			}
 		
