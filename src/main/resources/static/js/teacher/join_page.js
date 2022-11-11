@@ -101,6 +101,19 @@ function isDoubleChkChange(event){
 
 
 
+//온키업 밑에 글자 들어갈 스판태그 하고 아이디 주기 
+//비밀번호 확인
+function passChk(){
+   
+      if($("#pwDoubleCheck").val() == $("#inputTeacherPw").val()){
+         $(".successPwChk").text("비밀번호가 일치합니다.");
+         $(".successPwChk").css("color", "green");
+      }else{
+         $(".successPwChk").text("비밀번호가 일치하지 않습니다.");
+         $(".successPwChk").css("color", "red");
+      }
+
+}
 
 ////////////////////////////이벤트///////////////
 //중복 모달이 닫히면 실행되는 이벤트
@@ -108,6 +121,7 @@ idDouble_Yes_modal.addEventListener('hidden.bs.modal', resetInput);
 
 
 inputTeacherId.addEventListener('keydown', isDoubleChkChange)
+
 
 
 

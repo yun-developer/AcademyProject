@@ -10,32 +10,55 @@
 	<div class="row justify-content-center">
 		<div class="col-8 align-self-center">
 		
-		<div class="text-center my-5 bg-light ">
-			<h2 style="color: #9F8772;">Potato Academy</h2>
-			<div>계정만들기</div>
+		<div class=" my-5 bg-light py-4">
+			<h1 class="text-center" style="color: #9F8772;">Potato Academy</h1>
 		</div>
-		
+		<div class="mt-3 row justify-content-center">
+		  	<div class="col-sm-7 ">
+		     <h4 class="pt-3"> 필수항목</h4>
+		    </div>
+		 </div>
 		<form action="/teacher/join"  method="post" th:object="${teacherVO}" id="joinForm" >
-		  <div class="my-3 row justify-content-center text-center">
+		  <div class="my-3 row justify-content-center ">
 		    <label for="inputTeacherId" class="col-sm-2 col-form-label">아이디</label>
-		    <div class="col-sm-3">
+		    <div class="col-sm-4 me-0">
 		      <input type="text" class="form-control" id="inputTeacherId" name="teacherId">
 		      <span class="hasError" th:if="${#fields.hasErrors('teacherId')}" th:errors="*{teacherId}"></span>
 		    </div>
-		    <div class="col-sm-2">
-		    	<button type="button" id="idDoubleCheckBtn" th:onclick="idDoubleCheck();" class="btn btn-danger">ID중복확인</button>
+		    <div class="col-sm-1 d-grid gap-2 d-md-block">
+		    
+		    	<button type="button" id="idDoubleCheckBtn" th:onclick="idDoubleCheck();" class="btn btn-danger ms-0 mx-auto">중복확인</button>
 		    	<!-- 아이디 중복 체크 여부 -->
 		    	<input type="hidden" id="isDoubleChk" name="idDoubleChk" value="">
 		    </div>
 		  </div>
-		  <div class="mb-3 row justify-content-center text-center">
+		  <div class="mt-3 row justify-content-center">
 		    <label for="inputTeacherPw" class="col-sm-2 col-form-label">비밀번호</label>
 		    <div class="col-sm-5">
 		      <input type="password" class="form-control" id="inputTeacherPw" name="teacherPw">
 		      <span class="hasError" th:if="${#fields.hasErrors('teacherPw')}" th:errors="*{teacherPw}"></span>
 		    </div>
 		  </div>
-		  <div class="mb-3 row justify-content-center text-center form-group">
+		  
+		  
+		  <div class=" row mt-3 justify-content-center ">
+		    <label for="pwDoubleCheck" class="col-sm-2 col-form-label">비밀번호 확인</label>
+		    <div class="col-sm-5">
+		      <input type="password" class="form-control" id="pwDoubleCheck" onkeyup="passChk();" >
+		      <!-- <span class="hasError" th:if="${#fields.hasErrors('teacherPw')}" th:errors="*{teacherPw}"></span> -->
+		      
+		      
+		    </div>
+		  </div>
+		  <div class="row mt-1 ps-2 justify-content-center">
+		    <div class="col-2"> </div>
+		    <div class="col-5">
+		      <span class="successPwChk"></span>
+		     </div>
+		  </div> 
+		  
+		  
+		  <div class="mt-3 row justify-content-center  form-group">
 		  	
 		    <label for="inputTeacherName" class="col-sm-2 col-form-label">이름</label>
 			    <div class="col-sm-5 ">
@@ -46,7 +69,7 @@
 		    
 		  </div>
 		  
-		   <div class="mb-3 row justify-content-center text-center">
+		   <div class="mt-3 row justify-content-center ">
 		  	<label for="inlineRadio1" class="col-sm-2 col-form-label">성별</label>
 		  	<div class="col-sm-5">
 				<div class="form-check form-check-inline">
@@ -60,7 +83,7 @@
 			</div>
 		  </div>
 		  
-		  <div class="mb-3 row justify-content-center text-center">
+		  <div class="mt-3 row justify-content-center ">
 		    <label for="inputCareer" class="col-sm-2 col-form-label">강의과목</label>
 		    <div class="col-sm-5">
 		      <!-- <input type="text" class="form-control" id="inputCareer" name="lessonsCode" value="SUBJECT_001" placeholder="셀렉트박스로 수정 예정"> -->
@@ -74,7 +97,7 @@
 			  </select>
 		    </div>
 		  </div>
-		  <div class="mb-3 row justify-content-center text-center">
+		  <div class="mt-3 row justify-content-center ">
 		    <label for="inputTeacherTell" class="col-sm-2 col-form-label">연락처</label>
 		    <div class="col-sm-5">
 		      <input type="text" class="form-control" id="inputTeacherTell"  name="teacherTell" placeholder="-없이 숫자만 입력하세요.">
@@ -82,7 +105,7 @@
 		    	
 		    </div>
 		  </div>
-		  <div class="mb-3 row justify-content-center text-center">
+		  <div class="mt-3 row justify-content-center ">
 		    <label for="inputTeacherEmail" class="col-sm-2 col-form-label">이메일</label>
 		    <div class="col-sm-5">
 		      <input type="email" class="form-control" id="inputTeacherEmail"  name="teacherEmail" placeholder="수정중..똑같은 이메일 넣으면 오류남!">
@@ -90,13 +113,13 @@
 		    	
 		    </div>
 		  </div>
-		  <div class="mb-3 row justify-content-center">
+		  <div class="mt-3 row justify-content-center">
 		  	<div class="col-sm-7 border-top">
-		     <h5 class="pt-3" style="padding-left: 50px;"> 선택항목</h5>
+		     <h4 class="pt-3"> 선택항목</h4>
 		    </div>
 		  </div>
 		  
-		  <div class="mb-3 row justify-content-center text-center">
+		  <div class="mt-3 row justify-content-center ">
 		    <label for="inputCareer" class="col-sm-2 col-form-label">경력사항</label>
 		    <div class="col-sm-5">
 		      <input type="text" class="form-control" id="inputCareer" name="career" placeholder="예) 입시학원 3년 강의, 과외 2년">
@@ -105,7 +128,7 @@
 		  
 		 
 		 
-		  <div class="mb-3 row justify-content-center text-center">
+		  <div class="mb-3 mt-3 row justify-content-center ">
 		    <label for="inputTeacherBirthday" class="col-sm-2 col-form-label">생년월일</label>
 		    <div class="col-sm-5">
 		      <input type="date" class="form-control" id="inputTeacherBirthday" name="teacherBirthday" >
@@ -113,8 +136,8 @@
 		  </div>
 		</form>
 		  
-		  <div class="d-grid gap-2 col-6 mx-auto my-5">
-			 <button class="btn btn-primary ms-5" type="button" id="btnRegister" th:onclick="isDoubleChk();">회원가입</button>
+		  <div class="d-grid gap-2 col-7 mx-auto my-5">
+			 <button class="btn btn-primary ms-0" type="button" id="btnRegister" th:onclick="isDoubleChk();">회원가입</button>
 		</div>
 		
 	
