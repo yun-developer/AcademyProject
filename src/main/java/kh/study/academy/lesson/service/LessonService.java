@@ -24,5 +24,11 @@ public interface LessonService {
 	// 학급 편성 등록
 	void regLessonInfo(LessonInfoVO lessonInfoVO);	
 	
+	// 학급 편성 리스트 조회
+	List<LessonInfoVO> selectLessonInfoList();
+	
+	
+	
+	
 	
 }

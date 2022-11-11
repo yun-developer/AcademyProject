@@ -13,6 +13,7 @@ public class LessonInfoVO {
 	
 	private String lessonInfoCode;
 	private String subjectCode;
+	private String lessonRoomCode;	
 	private String stepCode;
 	private String lessonDayCode;
 	private String teacherCode;
@@ -25,8 +26,7 @@ public class LessonInfoVO {
 	private String lessonInfoStatus;
 	private String lessonInfoRegdate;
 	
-	private SubjectVO subjectVO;
-	private LessonRoomVO lessonRoomVO;
+	private String LessonRoomVO;
 	//collection 연결
 	private List<StudentLessonInfoVO> studentLessonInfoList;
 

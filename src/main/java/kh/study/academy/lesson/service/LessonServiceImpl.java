@@ -49,6 +49,12 @@ public class LessonServiceImpl implements LessonService{
 	}
 
 
+	@Override
+	public List<LessonInfoVO> selectLessonInfoList() {
+		return sqlSession.selectList("lessonMapper.selectLessonInfoList");
+	}
+
+
 
 
 

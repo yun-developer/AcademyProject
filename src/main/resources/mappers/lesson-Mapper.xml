@@ -4,7 +4,6 @@
 <mapper namespace="lessonMapper">
 	<resultMap type="kh.study.academy.lesson.vo.LessonInfoVO" 	id="lessonInfo">
 		<id column="LESSON_INFO_CODE" 										property="lessonInfoCode" />
-		<result column="LESSONS_CODE" 										property="lessonsCode" />
 		<result column="LESSON_TIME" 										property="lessonTime" />
 		<result column="STEP_CODE" 											property="stepCode" />
 		<result column="LESSON_DAY_CODE" 									property="lessonDayCode" />
@@ -100,7 +99,7 @@
 			, #{subjectCode}
 			, #{stepCode}
 			, #{lessonDayCode}
-			, #{lessonRoomVO.lessonRoomCode}
+			, #{lessonRoomCode}
 			, #{teacherCode}
 			, #{lessonTime}
 			, #{year}
@@ -112,8 +111,26 @@
 		)
 	</insert>
 
-	
-	
+
+	<!--  학급 편성 리스트 조회 -->
+	<select id="selectLessonInfoList" resultMap="lessonInfo">
+		SELECT LESSON_INFO_CODE
+			, LESSON_INFO_REGDATE
+			, SUBJECT_CODE
+			, STEP_CODE
+			, YEAR
+			, MAX_STUDENT
+			, MONEY
+			, LESSON_DAY_CODE
+			, LESSON_TIME 
+			, LESSON_ROOM_CODE
+			, TEACHER_CODE
+			, MEMO
+			, LESSON_INFO_STATUS
+		FROM LESSON_INFO
+		
+		
+	</select>
 	
 	
 	

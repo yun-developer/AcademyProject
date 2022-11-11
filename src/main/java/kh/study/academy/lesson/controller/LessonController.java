@@ -78,22 +78,29 @@ public class LessonController {
 		
 		//강의 요일 리스트를 가져오는 쿼리 실행 문
 		model.addAttribute("lessonDayList", lessonService.selectLessonDayList());
-		 return "content/admin/reg_lessonInfo";
+		
+		
+		
+		model.addAttribute("lessonInfoList",lessonService.selectLessonInfoList());
+		
+		
+		return "content/admin/reg_lessonInfo";
+		
 		}
 		
 		
 		// 학급 등록 버튼 모달창에서 데이터들을 저장
 		@PostMapping("/saveLessonInfo")
-			public String saveLessonInfo(LessonInfoVO lessonInfoVO) {
+			public String saveLessonInfo(LessonInfoVO lessonInfoVO, Model model) {
 			System.out.println(lessonInfoVO);
 			lessonService.regLessonInfo(lessonInfoVO);
 			
-			return "";
+		
+			
+			return "redirect:/lesson/regLessonInfoPage";
 		}
 	
 	
-	
-	
-	
+		
 	
 }
