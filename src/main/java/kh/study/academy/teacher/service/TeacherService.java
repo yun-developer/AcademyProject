@@ -41,6 +41,8 @@ public interface TeacherService {
 	
 	//개인정보 수정
 	void updateInfo(TeacherVO teacherVO);
+	//비밀번호 변경
+	void updatePw(TeacherVO teacherVO);
 	
 	//회원탈퇴(TeacherStatus ->N으로 변경)
 	void leaveAcademy(TeacherVO teacherVO);

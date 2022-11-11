@@ -107,8 +107,8 @@
             
             
             Swal.fire({
-			   title: '입력한 정보로 수정하시겠습니까?',
-			   text: '',
+			   title: '입력한 정보로 비밀번호를 변경합니다',
+			   text: '다시 되돌릴 수 없습니다. 신중하세요.',
 			   icon: 'warning',
 			   
 			   showCancelButton: true, // cancel버튼 보이기. 기본은 원래 없음
@@ -124,7 +124,42 @@
 			   if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
 			   	  	
 			   	  	
-					location.href=`/teacher/updateInfo?teacherEmail=${getInfo}`;
+                     $.ajax({
+                        type: "post",
+                        url: "/teacher/updatePwAjax",
+                        data: {
+                            "teacherPw" : `${getInfo}`
+                        },
+			        	success: function(res1){
+							
+							 Swal.fire({
+						      title: '변경되었습니다.',
+						      text: "",
+						      icon: 'success',
+						      showCancelButton: false,
+						      confirmButtonColor: '#3085d6',
+						      cancelButtonColor: '#d33',
+						      confirmButtonText: '승인',
+						      cancelButtonText: '취소',
+						      reverseButtons: true, // 버튼 순서 거꾸로
+						      
+						    }).then((result) => {
+						      if (result.isConfirmed) {
+	                    		 
+	                    		 location.href="/teacher/selectInfo"; 
+						        
+						      }
+						    })
+							
+								
+						},
+						error: function() {
+							alert('실패');
+						}
+	                      
+	                        
+	                    })
+					
 					
 			     
 			   }

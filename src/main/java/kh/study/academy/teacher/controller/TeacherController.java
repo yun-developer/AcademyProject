@@ -279,6 +279,22 @@ public class TeacherController {
 		return "redirect:/lesson/main";
 	}
 	
+	//비밀번호 변경
+	@ResponseBody
+	@PostMapping("/updatePwAjax")
+	public String updatePwAjax(Authentication authentication, TeacherVO teacherVO) {
+		
+		//security에 저장한 정보 사용
+		//로그인한 유저의 정보를 가져 옴
+		User user = (User)authentication.getPrincipal();
+		teacherVO.setTeacherId(user.getUsername());
+		teacherVO.setTeacherPw(encoder.encode(teacherVO.getTeacherPw()));
+		
+		teacherService.updatePw(teacherVO);
+		
+		return "redirect:/teacher/selectInfo";
+	}
+	
 	
 	
 	
