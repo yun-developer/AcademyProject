@@ -19,16 +19,101 @@
 		<collection property="studentLessonInfoList" 						resultMap="studentLessonInfo"/>
 	</resultMap>
 	
+
+	<!-- 강의등급 -->
 	<resultMap type="kh.study.academy.lesson.vo.StepVO" 	id="step">
 		<id column="STEP_CODE" 		property="stepCode" />
 		<result column="STEP_NAME" 		property="stepName" />
 	</resultMap>
 	
+	
+	<!-- 강의 요일 -->
+	<resultMap type="kh.study.academy.lesson.vo.LessonDayVO" 	id="lessonDay">
+		<id column="LESSON_DAY_CODE" 		property="lessonDayCode" />
+		<result column="LESSON_DAY_NAME" 		property="lessonDayName" />
+	</resultMap>
+	
+	
+	
+	
+	
+
+
+
+	
+	
+	<!-- /////<학급 편성 관련>//////////////////////////////////////////////////////////// -->	
+	
+
+
+	<!-- 과목 목록 조회 -->
+	<select id="subjectName" resultMap="adminMapper.subject">
+		SELECT SUBJECT_CODE
+		FROM LESSONS
+		ORDER BY SUBJECT_CODE
+	</select>
+
+
+
+	
+	<!-- 강의등급 목록 조회 -->
 	<select id="selectStepList" resultMap="step">
 		SELECT STEP_CODE
 			, STEP_NAME
 		FROM STEP
 	</select>
+	
+	
+	
+	<!--  강의 요일 목록 조회  -->
+	<select id="selectLessonDayList" resultMap="lessonDay">
+		SELECT LESSON_DAY_CODE
+			, LESSON_DAY_NAME
+		FROM LESSON_DAY
+	</select>
+
+
+
+
+	 <!-- 학급 편성 등록 -->
+	<insert id="regLessonInfo">
+		<selectKey resultType="String" keyProperty="lessonInfoCode" order="BEFORE">
+			SELECT 'LESSON_INFO_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(LESSON_INFO_CODE, 13))), 0) + 1, 3, 0) 
+			FROM LESSON_INFO
+		</selectKey>
+		
+		INSERT INTO LESSON_INFO(
+			LESSON_INFO_CODE
+			, SUBJECT_CODE
+			, STEP_CODE
+			, LESSON_DAY_CODE
+			, LESSON_ROOM_CODE
+			, TEACHER_CODE 
+			, LESSON_TIME 
+			, YEAR
+			, MAX_STUDENT
+			, NOW_STUDENT_CNT
+			, MONEY
+			, MEMO
+		) VALUES (
+			#{lessonInfoCode}
+			, #{subjectCode}
+			, #{stepCode}
+			, #{lessonDayCode}
+			, #{lessonRoomCode}
+			, #{teacherCode}
+			, #{lessonTime}
+			, #{year}
+			, #{maxStudent}
+			, 0
+			, #{money}
+			, #{memo}
+			
+		)
+	</insert>
+
+	
+	
 	
 	
 	

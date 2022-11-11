@@ -6,7 +6,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.apache.ibatis.jdbc.SQL;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -196,37 +196,7 @@ public class AdminController {
 		}
 
 
-/////<학급 편성 등록 관련>//////////////////////////////////////////////////////////// 
-
-		// 학급편성 등록 페이지 
-		@GetMapping("/regLessonInfoPage")
-		public String regLessonInfoPage(Model model, LessonRoomVO lessonRoomVO, String roomName, LessonInfoVO lessonInfoVO) { 
 		
-		// 과목 리스트를 가져오는 쿼리 실행 문
-		model.addAttribute("subjectList", adminService.selectSubject());
-		
-		// 교실명 리스트를 가져오는 쿼리 실행 문
-		List<LessonRoomVO> lessonRoomList = adminService.selectLessonRoom(roomName);
-		model.addAttribute("LessonRoomList", lessonRoomList);
-		
-		// 교사 리스트를 가져오는 쿼리 실행 문
-		model.addAttribute("teacherList", adminService.selectTeacherList());
-
-		//강의 등급 리스트를 가져오는 쿼리 실행 문
-		model.addAttribute("stepList", lessonService.selectStepList());
-		
-		 return "content/admin/reg_lessonInfo";
-		}
-		
-		
-		// 학급 등록 버튼 모달창에서 데이터들을 저장
-		@PostMapping("/saveLessonInfo")
-			public String saveLessonInfo(LessonInfoVO lessonInfoVO) {
-			System.out.println(lessonInfoVO);
-			adminService.regLessonInfo(lessonInfoVO);
-			
-			return "";
-		}
 }
 
 

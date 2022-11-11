@@ -166,12 +166,8 @@
 									<div class="col-6 col-lg-2 px-0"><span class="input-group-text h-100 rounded-0">요일</span></div>
 									<div class="col-6 col-lg-3 px-1 rounded-0">
 										<select class="form-select" id="lessonDayCode" name="lessonDayCode">
-										
-												<option value="월">월</option>
-												<option value="화">화</option>
-												<option value="수">수</option>
-												<option value="목">목</option>
-												<option value="금">금</option>
+								
+												<option th:value="${lessonDay.lessonDayCode}" th:each="lessonDay : ${lessonDayList}"  th:text="${lessonDay.lessonDayName}"  ></option>
 												
 										</select>
 									</div>

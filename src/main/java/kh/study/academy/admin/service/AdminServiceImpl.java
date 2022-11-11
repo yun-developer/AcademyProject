@@ -112,13 +112,6 @@ public class AdminServiceImpl implements AdminService{
 
 	
 
-/////<학급 편성 등록 관련>//////////////////////////////////////////////////////////// 	
-	
-	// 학급 편성 등록
-	@Override
-	public void regLessonInfo(LessonInfoVO lessonInfoVO) {
-		sqlSession.insert("adminMapper.regLessonInfo", lessonInfoVO);
-	}
 
 	
 

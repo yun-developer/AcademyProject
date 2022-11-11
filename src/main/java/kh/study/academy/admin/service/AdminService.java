@@ -62,10 +62,7 @@ public interface AdminService {
 
 
 
-/////<학급 편성 등록 관련>//////////////////////////////////////////////////////////// 
 
-	// 학급 편성 등록
-	void regLessonInfo(LessonInfoVO lessonInfoVO);
 
 	
 	
