@@ -34,7 +34,7 @@ public class BoardController {
 	//공지사항 리스트
 	@GetMapping("/noticeList")
 	public String noticeList(Model model) {
-		model.addAttribute("noticeList", boardService.selectNoticeBoard(0));
+		model.addAttribute("noticeList", boardService.selectNoticeBoard());
 		return "content/board/board_notice_list";
 	}
 	

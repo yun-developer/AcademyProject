@@ -44,8 +44,8 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public List<BoardVO> selectNoticeBoard(int boardKindCode) {
-		return sqlSession.selectList("boardMapper.selectNoticeBoard", boardKindCode);
+	public List<BoardVO> selectNoticeBoard() {
+		return sqlSession.selectList("boardMapper.selectNoticeBoard");
 	}
 	
 	@Override

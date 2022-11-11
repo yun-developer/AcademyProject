@@ -13,6 +13,7 @@ public class BoardVO {
 	private int viewCount;
 	private String createDate;
 	private String teacherId;
+	private String replyNumCnt;
 	
 	private List<BoardImgVO> imgList;
 	

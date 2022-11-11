@@ -11,6 +11,7 @@
 	<result column="VIEW_COUNT" property="viewCount"/> 
 	<result column="CREATE_DATE" property="createDate"/> 
 	<result column="TEACHER_ID" property="teacherId"/> 
+	<result column="REPLY_NUM_CNT" property="replyNumCnt"/> 
 	<collection property="imgList" resultMap="boardImg"/>
 </resultMap>
 
@@ -82,6 +83,8 @@
 		, B.TEACHER_ID
 		, TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS CREATE_DATE
 		, VIEW_COUNT
+		, (SELECT COUNT(REPLY_NUM) FROM REPLY
+            WHERE BOARD_NUM = B.BOARD_NUM) AS REPLY_NUM_CNT
 	FROM BOARD B, TEACHER T
 	WHERE B.TEACHER_ID = T.TEACHER_ID
 	AND BOARD_KIND_CODE = '0'
@@ -170,6 +173,8 @@
 		, B.TEACHER_ID
 		, TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS CREATE_DATE
 		, VIEW_COUNT
+		, (SELECT COUNT(REPLY_NUM) FROM REPLY
+            WHERE BOARD_NUM = B.BOARD_NUM) AS REPLY_NUM_CNT
 	FROM BOARD B, TEACHER T
 	WHERE B.TEACHER_ID = T.TEACHER_ID
 	AND BOARD_KIND_CODE = '1'
