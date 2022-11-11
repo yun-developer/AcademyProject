@@ -134,23 +134,15 @@ public class TeacherController {
 	@PostMapping("/findLoginIdAjax")
 	public TeacherVO findLoginIdAjax(TeacherVO teacherVO) {
 		
-		
 		TeacherVO teacher =  teacherService.findId(teacherVO);
 		
-		System.out.println("@@@@@"+ teacher);
-		
-		
-		
 		if(teacher == null) {
-			
 			teacherVO = new TeacherVO();
 			teacherVO.setCheck(0);
 			return teacherVO;
 		}else {
 			teacher.setCheck(1);
-			
 			return teacher;
-		
 		}
 	}
 	
@@ -169,6 +161,30 @@ public class TeacherController {
 	public void findByTellAjax() {
 		
 	}
+	
+	//........Ing......
+	//연락처 인증성공 시 그 인증번호로 임시비밀번호 업데이트
+	@ResponseBody
+	@PostMapping("/updateTemporaryPw")
+	public String updateTemporaryPw(TeacherVO teacherVO) {
+		
+		System.out.println("!!@@@!!!!!"+ teacherVO);
+
+		
+		teacherVO.setTeacherPw(encoder.encode(teacherVO.getTeacherPw()));
+		
+		teacherService.updateTemporaryPw(teacherVO);
+		
+		
+		
+		//pw암호화
+
+		
+		
+		
+		return "성공";
+	}
+	
 	
 	
 	//비밀번호 정보 찾기 에이작스

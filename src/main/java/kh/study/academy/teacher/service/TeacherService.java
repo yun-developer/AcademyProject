@@ -22,8 +22,10 @@ public interface TeacherService {
 	TeacherVO idDoubleCheck(TeacherVO teacherVO);
 	
 	//전화번호 인증번호 전송 전 입력한 데이터에 일치하는 회원이 있는지 조회
-	//구현 중
 	TeacherVO findInfoForSendSms (TeacherVO teacherVO);
+	
+	//연락처 인증성공 시 그 인증번호로 임시비밀번호 업데이트
+	void updateTemporaryPw(TeacherVO teacherVO);
 	
 	//회원 정보 조회
 	TeacherVO selectTeacherInfo(TeacherVO teacherVO);

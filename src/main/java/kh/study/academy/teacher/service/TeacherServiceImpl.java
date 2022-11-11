@@ -48,14 +48,18 @@ public class TeacherServiceImpl implements TeacherService {
 	}
 	
 	//전화번호 인증번호 전송 전 입력한 데이터에 일치하는 회원이 있는지 조회
-	//구현 중
 	@Override
 	public TeacherVO findInfoForSendSms(TeacherVO teacherVO) {
 		
 		return sqlSession.selectOne("teacherMapper.findInfoForSendSms", teacherVO);
 	}
 
-	
+	//연락처 인증성공 시 그 인증번호로 임시비밀번호 업데이트
+	@Override
+	public void updateTemporaryPw(TeacherVO teacherVO) {
+		
+		sqlSession.update("teacherMapper.updateTemporaryPw", teacherVO);
+	}
 	
 	
 	//회원 정보 조회
@@ -99,6 +103,7 @@ public class TeacherServiceImpl implements TeacherService {
 		
 		sqlSession.update("teacherMapper.leaveAcademy", teacherVO);
 	}
+
 
 	
 

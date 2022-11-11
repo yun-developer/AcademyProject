@@ -111,15 +111,21 @@
 	</update>
 	
 	<!-- 전화번호 인증번호 전송 전 입력한 데이터에 일치하는 회원이 있는지 조회 -->
-	<!-- 부적합한 열유형 1... -->
 	<select id="findInfoForSendSms" resultMap="teacher">
 		SELECT TEACHER_CODE
+			, TEACHER_TELL
 		FROM TEACHER
 		WHERE TEACHER_ID = #{teacherId}
 		AND TEACHER_NAME = #{teacherName}
 		AND TEACHER_TELL = #{teacherTell}
 	</select>
 	
+	<!-- 연락처 인증성공 시 그 인증번호로 임시비밀번호 업데이트 -->
+	<update id="updateTemporaryPw">
+		UPDATE TEACHER
+		SET TEACHER_PW = #{teacherPw}
+		WHERE TEACHER_TELL = #{teacherTell}
+	</update>
 	
 	<!-- 아이디 중복 검사 -->
 	<select id="idDoubleCheck" resultMap="teacher">

@@ -264,6 +264,9 @@ $(document).on("click", "#sendPhoneNumber", function() {
             "teacherTell" : teacherTell, "teacherName":teacherName , "teacherId":teacherId
         },
         success: function(res){
+			
+			alert(res);
+	
             $('#checkBtn').click(function(){
                 if($.trim(res) ==$('#inputCertifiedNumber').val()){
                     Swal.fire(
@@ -271,20 +274,31 @@ $(document).on("click", "#sendPhoneNumber", function() {
                         '휴대폰 인증이 정상적으로 완료되었습니다.',
                         'success'
                     )
-                  /*   $.ajax({
-                        type: "GET",
-                        url: "/update/phone",
+                    
+                     $.ajax({
+                        type: "post",
+                        url: "/teacher/updateTemporaryPw",
                         data: {
-                            "teacherTell" : $('#teacherTell').val()
-                        }
-                    })
-                    document.location.href="/home"; */
+                            "teacherPw" : $('#inputCertifiedNumber').val(),"teacherTell" : teacherTell
+                        },
+			        	success: function(res1){
+							
+							
+								
+	                    	document.location.href="/teacher/loginPage"; 
+						},
+						error: function() {
+							alert('실패');
+						}
+	                      
+	                        
+	                    })
                 }else{
                     Swal.fire({
                         icon: 'error',
                         title: '인증오류',
                         text: '인증번호가 올바르지 않습니다!',
-                        footer: '<a href="/teacher/findLoginPage">다시 인증하기</a>'
+                       // footer: '<a href="/teacher/findLoginPage">다시 인증하기</a>'
                     })
                 }
             })
