@@ -49,7 +49,7 @@ public class TeacherController {
 	public String join(@Valid TeacherVO teacherVO
 						, BindingResult bindingResult
 						, Model model) {
-		
+		//zz
 		//validation 체크
 		if(bindingResult.hasErrors()) {
 			System.out.println("~~~error~~~");
