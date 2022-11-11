@@ -252,24 +252,30 @@
 		
 		INSERT INTO LESSON_INFO(
 			LESSON_INFO_CODE
+			, SUBJECT_CODE
 			, STEP_CODE
 			, LESSON_DAY_CODE
 			, LESSON_ROOM_CODE
 			, TEACHER_CODE 
 			, LESSON_TIME 
 			, YEAR
+			, MAX_STUDENT
 			, NOW_STUDENT_CNT
 			, MONEY
+			, MEMO
 		) VALUES (
 			#{lessonInfoCode}
+			, #{subjectCode}
 			, #{stepCode}
 			, #{lessonDayCode}
 			, #{lessonRoomCode}
 			, #{teacherCode}
 			, #{lessonTime}
 			, #{year}
-			, #{nowStudent_cnt}
+			, #{maxStudent}
+			, 0
 			, #{money}
+			, #{memo}
 			
 		)
 	</insert>

@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import kh.study.academy.admin.service.AdminService;
 import kh.study.academy.admin.vo.LessonRoomVO;
 import kh.study.academy.admin.vo.SubjectVO;
+import kh.study.academy.lesson.service.LessonService;
 import kh.study.academy.lesson.vo.LessonInfoVO;
-import kh.study.academy.lesson.vo.LessonVO;
 import kh.study.academy.teacher.vo.TeacherVO;
 
 
@@ -30,7 +30,8 @@ public class AdminController {
 	@Resource(name = "adminService")
 	private AdminService adminService;
 	
-	
+	@Resource(name = "lessonService")
+	private LessonService lessonService;
 	
 	
 	//교사리스트 페이지로 이동
@@ -172,7 +173,8 @@ public class AdminController {
 	// 내가 등록한 교실 정보를 조회 (과목등록페이지로 이동)
 		@RequestMapping("/selectLessonRoom")
 			public String selectLessonRoom(Model model, String roomName){
-			List<LessonVO> lessonRoomList =  adminService.selectLessonRoom(roomName);
+		
+			List<LessonRoomVO> lessonRoomList =  adminService.selectLessonRoom(roomName);
 			model.addAttribute("LessonRoomList", lessonRoomList);
 			
 			return "content/admin/reg_lessonroom";
@@ -198,28 +200,36 @@ public class AdminController {
 
 		// 학급편성 등록 페이지 
 		@GetMapping("/regLessonInfoPage")
-			public String regLessonInfoPage(Model model, LessonRoomVO lessonRoomVO, String roomName, LessonInfoVO lessonInfoVO) { 
-			
-			// 과목 리스트를 가져오는 쿼리 실행 문
-			model.addAttribute("subjectList", adminService.selectSubject());
-			
-			// 교실명 리스트를 가져오는 쿼리 실행 문
-			List<LessonVO> lessonRoomList = adminService.selectLessonRoom(roomName);
-			model.addAttribute("LessonRoomList", lessonRoomList);
-			
-			// 교사 리스트를 가져오는 쿼리 실행 문
-		//	model.addAttribute("teacherList", adminService.selectTeacherList());
-			
-			 return "content/admin/reg_lessonInfo";
-			}
+		public String regLessonInfoPage(Model model, LessonRoomVO lessonRoomVO, String roomName, LessonInfoVO lessonInfoVO) { 
+		
+		// 과목 리스트를 가져오는 쿼리 실행 문
+		model.addAttribute("subjectList", adminService.selectSubject());
+		
+		// 교실명 리스트를 가져오는 쿼리 실행 문
+		List<LessonRoomVO> lessonRoomList = adminService.selectLessonRoom(roomName);
+		model.addAttribute("LessonRoomList", lessonRoomList);
+		
+		// 교사 리스트를 가져오는 쿼리 실행 문
+		model.addAttribute("teacherList", adminService.selectTeacherList());
+
+		//강의 등급 리스트를 가져오는 쿼리 실행 문
+		model.addAttribute("stepList", lessonService.selectStepList());
+		
+		 return "content/admin/reg_lessonInfo";
+		}
 		
 		
 		// 학급 등록 버튼 모달창에서 데이터들을 저장
 		@PostMapping("/saveLessonInfo")
 			public String saveLessonInfo(LessonInfoVO lessonInfoVO) {
-			
+			System.out.println(lessonInfoVO);
 			adminService.regLessonInfo(lessonInfoVO);
 			
 			return "";
 		}
 }
+
+
+
+
+

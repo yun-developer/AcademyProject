@@ -135,10 +135,7 @@
 												<div class="col-6 col-lg-5 px-">
 										      	
 													<select class="form-select"   aria-label="Default select example" id="stepCode" name="stepCode" kor="과정구분">
-														<option value="">선택</option>
-
-															<option value="심화">심화</option>
-															<option value="기초">기초</option>
+														<option th:each="step : ${stepList}" th:text="${step.stepName}" th:value="${step.stepCode}"></option>	
 														
 													</select>
 												</div>
@@ -147,14 +144,15 @@
 											<div class="form-group input-group mb-1">
 												<div class="col-6 col-lg-2 px-0"><span class="input-group-text h-100 rounded-0">정원</span></div>
 												  <div class="col-6 col-lg-3 px-1 rounded-1">
-													<input type="text" id="lessonRoomMaxStudent" name="lessonRoomMaxStudent" class="form-control rounded-0 h-100" placeholder="정원" aria-label="8" aria-describedby="cpaCn" value="10">
+													<input type="text" id="maxStudent" name="maxStudent" class="form-control rounded-0 h-100" placeholder="정원" aria-label="8" aria-describedby="cpaCn" value="10">
 												</div>
 												
 												
-											<div class="col-6 col-lg-2 px-1"><span class="input-group-text h-100 rounded-0" >현 정원</span></div>
+											<div class="col-6 col-lg-2 px-1"><span class="input-group-text h-100 rounded-0" >수강료</span></div>
 												 <div class="col-6 col-lg-5 px-">
 										      	
-													<input type="text" id="nowStudentCnt " name="nowStudentCnt" class="form-control rounded-0 h-100" placeholder="정원" aria-label="8" aria-describedby="cpaCn" value="">
+<!-- 													<input type="text" id="money" name="money" class="form-control rounded-0 h-100" placeholder="수강료" aria-label="8" aria-describedby="cpaCn" th:value="${#numbers.formatCurrency(300000)}" onkeyup="setformatCurrency();"> -->
+													<input type="text" id="money" name="money" class="form-control rounded-0 h-100" placeholder="수강료" aria-label="8" aria-describedby="cpaCn" value="10000" onkeyup="setformatCurrency();">
 												</div>
 											
 												<div class="col-6 col-lg-5 px-">
@@ -169,11 +167,11 @@
 									<div class="col-6 col-lg-3 px-1 rounded-0">
 										<select class="form-select" id="lessonDayCode" name="lessonDayCode">
 										
-												<option value="">월</option>
-												<option value="">화</option>
-												<option value="">수</option>
-												<option value="">목</option>
-												<option value="">금</option>
+												<option value="월">월</option>
+												<option value="화">화</option>
+												<option value="수">수</option>
+												<option value="목">목</option>
+												<option value="금">금</option>
 												
 										</select>
 									</div>
@@ -258,6 +256,7 @@
 <!------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
           <script src="https://code.jquery.com/jquery-latest.min.js"></script>   
+		<script type="text/javascript" th:src="@{/js/admin/reg_lessonInfo.js}"></script>
 		<script type="text/javascript" th:src="@{/js/admin/lesson_room.js}"></script>
             
 	</div>

@@ -6,7 +6,7 @@ import java.util.Map;
 import kh.study.academy.admin.vo.LessonRoomVO;
 import kh.study.academy.admin.vo.SubjectVO;
 import kh.study.academy.lesson.vo.LessonInfoVO;
-import kh.study.academy.lesson.vo.LessonVO;
+import kh.study.academy.lesson.vo.StepVO;
 import kh.study.academy.teacher.vo.TeacherVO;
 
 
@@ -55,7 +55,7 @@ public interface AdminService {
 	void regLessonRoom(LessonRoomVO lessonRoomVO);
 	
 	// 등록된 과목리스트 조회
-	List<LessonVO> selectLessonRoom(String roomName);
+	List<LessonRoomVO> selectLessonRoom(String roomName);
 	
 	// 교실 삭제(체크박스)
 	void deleteLessonRoom(LessonRoomVO lessonRoomVO);
@@ -66,6 +66,8 @@ public interface AdminService {
 
 	// 학급 편성 등록
 	void regLessonInfo(LessonInfoVO lessonInfoVO);
+
+	
 	
 	
 	

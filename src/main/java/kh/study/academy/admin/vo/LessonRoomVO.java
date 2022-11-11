@@ -10,7 +10,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @ToString
-
 public class LessonRoomVO {
 	private String lessonRoomCode;
 	private String roomName;

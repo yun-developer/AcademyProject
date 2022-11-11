@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import kh.study.academy.admin.vo.LessonRoomVO;
 import kh.study.academy.admin.vo.SubjectVO;
 import kh.study.academy.lesson.vo.LessonInfoVO;
-import kh.study.academy.lesson.vo.LessonVO;
 import kh.study.academy.teacher.vo.TeacherVO;
 
 
@@ -101,7 +100,7 @@ public class AdminServiceImpl implements AdminService{
 	}
 	// 등록된 교실리스트 조회
 	@Override
-	public List<LessonVO> selectLessonRoom(String roomName) {
+	public List<LessonRoomVO> selectLessonRoom(String roomName) {
 		return sqlSession.selectList("adminMapper.selectLessonRoom", roomName);
 	}
 
