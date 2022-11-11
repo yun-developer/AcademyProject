@@ -81,7 +81,7 @@
 				     </div>
 					
 					<!-- 모달 내용글 body -->
-				<form th:action="@{/admin/saveLessonInfo}" method="post">
+				<form th:action="@{/lesson/saveLessonInfo}" method="post">
 				      <div class="modal-body">
 				      	<div class="row mb-3">
 				      		<div class="col-10">
@@ -191,9 +191,9 @@
 								<div class="form-group input-group mb-1">
 									<div class="col-6 col-lg-2 px-0"><span class="input-group-text h-100 rounded-0">교실명</span></div>
 									<div class="col-6 col-lg-3 px-1 rounded-0">
-										 <select class="form-select rounded-0 h-100"   aria-label="학급명" id="lessonRoomCode" name="lessonRoomCode" value="" kor="학급명">
+										 <select class="form-select rounded-0 h-100"   aria-label="학급명" id="lessonRoomCode" name="lessonRoomVO.lessonRoomCode" value="" kor="학급명">
 										    <th:block th:each="LessonRoom, status : ${LessonRoomList}">	
-										      <option th:text="${LessonRoom.roomName}"></option>
+										      <option th:text="${LessonRoom.roomName}" th:value="${LessonRoom.lessonRoomCode}"></option>
 												
 											</th:block>
 
@@ -202,9 +202,9 @@
 									
 									<div class="col-6 col-lg-2 px-1"><span class="input-group-text h-100 rounded-0">교사명</span></div>
 										<div class="col-6 col-lg-5 px-">
-											<select class="form-select"   aria-label="Default select example" id="lessonTime " name="lessonTime" kor="과정구분">
+											<select class="form-select"   aria-label="Default select example" id="lessonTime " name="teacherCode" kor="과정구분">
 												 <th:block th:each="teacher, status : ${teacherList}">	
-										      		<option th:text="${teacher.teacherName}"></option>
+										      		<option th:text="${teacher.teacherName}" th:value="${teacher.teacherCode}"></option>
 												
 												</th:block>
 

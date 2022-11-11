@@ -45,7 +45,7 @@ public class LessonServiceImpl implements LessonService{
 	// 학급 편성 등록
 	@Override
 	public void regLessonInfo(LessonInfoVO lessonInfoVO) {
-		sqlSession.insert("adminMapper.regLessonInfo", lessonInfoVO);
+		sqlSession.insert("lessonMapper.regLessonInfo", lessonInfoVO);
 	}
 
 

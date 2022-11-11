@@ -100,7 +100,7 @@
 			, #{subjectCode}
 			, #{stepCode}
 			, #{lessonDayCode}
-			, #{lessonRoomCode}
+			, #{lessonRoomVO.lessonRoomCode}
 			, #{teacherCode}
 			, #{lessonTime}
 			, #{year}
