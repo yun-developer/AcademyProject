@@ -61,19 +61,43 @@ function goDelete() {
 	const checkedChks = document.querySelectorAll('.chk:checked');
 	
 	if(checkedChks.length == 0) {
-		alert('삭제할 학생을 선택하세요');
+		Swal.fire({
+		  title: '삭제할 학생을 선택하세요!',
+		  icon: 'error',
+		  confirmButtonText: '확인'
+		})
 		return ;
 	}
 	
-	//문자열로 만들어서 던져 줌
-	let studentCodes = '';
-	for(const checkedChk of checkedChks) {
-		studentCodes = studentCodes + checkedChk.value + ',';  
+	else{
+		Swal.fire({
+		   title: '정말 삭제하시겠습니까?',
+		   icon: 'warning',
+		   
+		   showCancelButton: true, // cancel버튼 보이기. 기본은 원래 없음
+		   confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+		   cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
+		   confirmButtonText: '승인', // confirm 버튼 텍스트 지정
+		   cancelButtonText: '취소', // cancel 버튼 텍스트 지정
+		   
+		   
+		}).then(result => {
+		   // 만약 Promise리턴을 받으면,
+		   if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
+				//문자열로 만들어서 던져 줌
+				let studentCodes = '';
+				for(const checkedChk of checkedChks) {
+					studentCodes = studentCodes + checkedChk.value + ',';  
+				}
+				
+				deleteForm.querySelector('input').value = studentCodes;  // 넘어오는 name과 컨트롤러의 매개변수 이름 같으면 알아서 받아줌
+				
+				deleteForm.submit();
+		   
+		   }
+		});
+		
 	}
-	
-	deleteForm.querySelector('input').value = studentCodes;  // 넘어오는 name과 컨트롤러의 매개변수 이름 같으면 알아서 받아줌
-	
-	deleteForm.submit();
 }
 
 

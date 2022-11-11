@@ -83,7 +83,7 @@ public class StudentController {
 	
 	
 	//상세페이지에서 학생 삭제
-	@GetMapping("/deleteStu")
+	@PostMapping("/deleteStu")
 	public String deleteStu(String studentCode) {
 		studentService.deleteStu(studentCode);
 		
