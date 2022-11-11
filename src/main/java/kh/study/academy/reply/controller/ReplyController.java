@@ -20,8 +20,8 @@ public class ReplyController {
 	
 	
 	//공지사항 댓글 작성
-	@RequestMapping("/write")
-	public String writeReply(ReplyVO replyVO, Authentication authentication, int boardNum, RedirectAttributes redirect) {
+	@RequestMapping("/writeNoticeReply")
+	public String writeNoticeReply(ReplyVO replyVO, Authentication authentication, int boardNum, RedirectAttributes redirect) {
 		User user = (User)authentication.getPrincipal();
 		replyVO.setTeacherId(user.getUsername());
 		
@@ -32,6 +32,22 @@ public class ReplyController {
 		//redirect로 갈 때 파라미터 넘기기
 		redirect.addAttribute("boardNum", boardNum);
 		return "redirect:/board/noticeDetail";
+	}
+	
+	
+	//자유게시판 댓글 작성
+	@RequestMapping("/writeFreeReply")
+	public String writeFreeReply(ReplyVO replyVO, Authentication authentication, int boardNum, RedirectAttributes redirect) {
+		User user = (User)authentication.getPrincipal();
+		replyVO.setTeacherId(user.getUsername());
+		
+		replyVO.setBoardNum(boardNum);
+		
+		replyService.insertReply(replyVO);
+		
+		//redirect로 갈 때 파라미터 넘기기
+		redirect.addAttribute("boardNum", boardNum);
+		return "redirect:/board/freeDetail";
 	}
 	
 	

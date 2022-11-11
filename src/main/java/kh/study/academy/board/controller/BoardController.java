@@ -18,6 +18,7 @@ import kh.study.academy.board.service.BoardService;
 import kh.study.academy.board.vo.BoardImgVO;
 import kh.study.academy.board.vo.BoardVO;
 import kh.study.academy.config.UploadFileUtil2;
+import kh.study.academy.reply.service.ReplyService;
 
 
 @Controller
@@ -26,6 +27,9 @@ public class BoardController {
 	
 	@Resource(name = "boardService")
 	private BoardService boardService;
+	
+	@Resource(name="replyService")
+	private ReplyService replyService;
 	
 	//공지사항 리스트
 	@GetMapping("/noticeList")
@@ -117,7 +121,7 @@ public class BoardController {
 	@GetMapping("/noticeDetail")
 	public String noticeDetail(Model model, int boardNum) {
 		model.addAttribute("notice", boardService.selectBoardDetail(boardNum));
-		
+		model.addAttribute("replyList", replyService.selectReply(boardNum));
 		
 		return "content/board/notice_detail";
 	}
@@ -178,6 +182,8 @@ public class BoardController {
 	@GetMapping("/freeDetail")
 	public String freeDetail(Model model, int boardNum) {
 		model.addAttribute("free", boardService.selectBoardDetail(boardNum));
+		model.addAttribute("replyList", replyService.selectReply(boardNum));
+		
 		return "content/board/free_detail";
 	}
 	

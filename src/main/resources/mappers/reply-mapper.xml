@@ -41,6 +41,7 @@
 		, REPLY_CREATE_DATE
 	FROM REPLY
 	WHERE BOARD_NUM = #{boardNum}
+	ORDER BY REPLY_NUM DESC
 </select>
 
 
