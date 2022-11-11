@@ -3,9 +3,14 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 	layout:decorate="~{layout/base_layout}"> 
-	
+
 
 <div layout:fragment="content">
+<style>
+	.right{
+		float: right;
+	}
+</style>	
 
 <main id="js-page-content" role="main" class="page-content" style="padding-bottom:0px;">
 
@@ -116,10 +121,15 @@
 													<div>
 														<h5>
 															[[${reply.replyContent}]]
+															<span class="right" >
+																<button th:onclick="subjectDeleteAjax();" type="button" class="btn btn-warning flex-end" >삭제</button>
+															</span>
+															
 														</h5>
 														<h5></h5>
 													</div>
-												</div></td>
+												</div>
+												</td>
 										</tr>
 									</tbody>
 								</table>
@@ -132,7 +142,8 @@
 	</div>
 </div>
 
-
+</div>
 				</main>
 			</div>	
+			
 </html>
