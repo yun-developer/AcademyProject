@@ -6,6 +6,11 @@
 	
 
 <div layout:fragment="content">
+<style>
+   .right{
+      float: right;
+   }
+</style> 
 <div class="panel">
 			<div class="panel-hdr" style="margin-bottom: 20px; font-size: 16px;">
 				공지사항<span class="fw-300"></span>
@@ -100,12 +105,20 @@
 												class="ml-2 text-muted">[[${reply.replyCreateDate}]]</span>
 										</div>
 										<div>
-											<h5>[[${reply.replyContent}]]</h5>
+											<h5>[[${reply.replyContent}]]
+												
+													<span class="right" >
+	                                                	<button th:onclick="subjectDeleteAjax();" type="button" class="btn btn-warning flex-end" >삭제</button>
+	                                             	</span>
+	                                           
+											</h5>
 											<h5></h5>
 										</div>
 									</div>
+									
 								</td>
 							</tr>
+							
 						</tbody>
 					</table>
 					
