@@ -57,169 +57,6 @@ function findLoginIdAjax(){
 }
 
 
-
-
-//비밀번호 찾기 버튼을 누르면 진행되는 함수
-
-function findLoginPwAjax(){
-	
-	
-}
-
-
-
-//이메일 or 전화번호로 찾기 누를 때 진행/////////////////////////////////
-
-
-
-//이메일로 찾기 눌렀을 때 
-$('#findByEmail').click(function(){
-	
-	
-	let str = '';
-	
-	//ajax start
-	$.ajax({
-		url: '/teacher/findByEmailAjax', //요청경로
-		type: 'post',
-		data: {}, //필요한 데이터
-		success: function(result) {
-			str += `			<div class="row mb-3">
-				<div class="col-sm-12">
-					<input type="text" class="form-control" name="teacherId"
-						id="teacherId" placeholder="아이디">
-				</div>
-			</div>
-			<div class="row mb-3">
-				<div class="col-sm-12">
-					<input type="text" class="form-control" name="teacherName"
-						id="teacherName" placeholder="이름">
-				</div>
-			</div>
-			<form action="/mail/send" method="post">
-				<div class="row mb-3">
-					<div class="col-sm-9">
-						<input type="email" class="form-control" name="teacherEmail"
-							id="teacherEmail" placeholder="이메일">
-					</div>
-				<div class="col-sm-3">
-					<button class="btn btn-primary"
-						type="button" data-bs-toggle="modal"
-                                            data-bs-target="#sendEmailModal">인증번호전송</button>
-				</div>
-				</div>
-			</form>
-			
-			  `;
-			  
-			  
-			 const changeFindPwDiv = document.querySelector('#changeFindPwDiv');
-
-			 changeFindPwDiv.innerHTML = ''; /*내용을 지우는것*/
-
-
-			 changeFindPwDiv.insertAdjacentHTML('beforeend', str);
-			  
-			  
-		},
-		error: function() {
-			alert('실패');
-		}
-	});
-//ajax end
-
-
-	
-	
-});
-
-
-//전화번호로 찾기 눌렀을 때 
-$('#findByTell').click(function(){
-	
-	
-	let str = '';
-	
-	//ajax start
-	$.ajax({
-		url: '/teacher/findByTellAjax', //요청경로
-		type: 'post',
-		data: {}, //필요한 데이터
-		success: function(result) {
-			
-			str += `			<div class="row mb-3">
-				<div class="col-sm-12">
-					<input type="text" class="form-control" name="teacherId"
-						id="teacherId" placeholder="아이디">
-				</div>
-			</div>
-			<div class="row mb-3">
-				<div class="col-sm-12">
-					<input type="text" class="form-control" name="teacherName"
-						id="teacherName" placeholder="이름">
-				</div>
-			</div>
-			<div class="row mb-3">
-				<div class="col-sm-12">
-					<input type="text" class="form-control" name="teacherTell"
-						id="teacherTell" placeholder="전화번호">
-				</div>
-			</div>
-			<div class="row mb-3">
-				<div class="d-grid gap-2 mb-3">
-					<button th:onclick="" id="sendPhoneNumber" class="btn btn-primary"
-						type="button">문자 전송</button>
-				</div>
-			</div>
-			<!-- 아래 div도 ajax...?로? 해야 할듯?ㅠㅠ  -->
-			<div class="row mb-3">
-				<div class="col-sm-12">
-					<input type="text" class="form-control" name="inputCertifiedNumber"
-						id="inputCertifiedNumber" placeholder="인증번호">
-				</div>
-			</div>
-			<div class="row mb-3">	
-				<div class="d-grid gap-2 mb-3">
-					<button id="checkBtn" class="btn btn-primary" type="button">확인</button>
-				</div>
-			</div>
-			
-			  `;
-			  
-			  
-			 const changeFindPwDiv = document.querySelector('#changeFindPwDiv');
-
-			 changeFindPwDiv.innerHTML = ''; /*내용을 지우는것*/
-
-
-			 changeFindPwDiv.insertAdjacentHTML('beforeend', str);
-		},
-		error: function() {
-			alert('실패');
-		}
-	});
-//ajax end
-
-	
-	
-	
-	
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ////////////////////////////////////////////////////////////
 ///////////////////////이벤트///////////////////////////////
 ////////////////////////////////////////////////////////////
@@ -227,83 +64,113 @@ $('#findByTell').click(function(){
 //비밀번호 찾기에서 연락처로 문자전송을 눌렀을 때 
 
 
- //$('#sendPhoneNumber').click(function(){
-	
-	
+//$('#sendPhoneNumber').click(function(){
+
 $(document).on("click", "#sendPhoneNumber", function() {
 	//teacherName 값 
 	const teacherName = document.querySelector('#teacherName').value;
 	//teacherTell 값
 	const teacherId = document.querySelector('#teacherId').value;
-	//teacherTell
-	//const teacherTells = document.querySelector('#teacherTell').value;
-	
-	console.log(teacherName);
-	console.log(teacherId);
-	//console.log(teacherTells);
-	
-	//셀렉트 쿼리
-	
-	//아이디 + 이름 + 전화번호가 동시에 맞아야 문자 보내야지..번호만 넣으면 보내지잖아..
-	/*if(){
-		
-	}
-	else{
-		
-	}*/
-	
-	
-    let teacherTell = $('#teacherTell').val();
-    Swal.fire('인증번호 발송 완료!')
+
+	let str = '';
+	let teacherTell = $('#teacherTell').val();
 
 
-    $.ajax({
-        type: "GET",
-        url: "/sms/sendSMS",
-        data: {
-            "teacherTell" : teacherTell, "teacherName":teacherName , "teacherId":teacherId
-        },
-        success: function(res){
+	$.ajax({
+		type: "GET",
+		url: "/sms/sendSMS",
+		data: {
+			"teacherTell": teacherTell, "teacherName": teacherName, "teacherId": teacherId
+		},
+		success: function(res) {
 			
-			alert(res);
-	
-            $('#checkBtn').click(function(){
-                if($.trim(res) ==$('#inputCertifiedNumber').val()){
-                    Swal.fire(
-                        '인증성공!',
-                        '휴대폰 인증이 정상적으로 완료되었습니다.',
-                        'success'
-                    )
-                    
-                     $.ajax({
-                        type: "post",
-                        url: "/teacher/updateTemporaryPw",
-                        data: {
-                            "teacherPw" : $('#inputCertifiedNumber').val(),"teacherTell" : teacherTell
-                        },
-			        	success: function(res1){
-							
-							
+			//입력한 정보(이름 아이디 전화번호)에 맞는 회원이 있다면 인증번호 보내고 인증번호 입력창 생성 
+			if (res != "") {
+
+				Swal.fire('인증번호 발송 완료!')
+
+				str += `<div class="row mb-3">
+							<div class="col-sm-12">
+								<input type="password" class="form-control" name="inputCertifiedNumber"
+									id="inputCertifiedNumber" placeholder="인증번호">
+							</div>
+						</div>
+						<div class="row mb-3">	
+							<div class="d-grid gap-2 mb-3">
+								<button id="checkBtn" class="btn btn-primary" type="button">확인</button>
+							</div>
+						</div>`;
+
+				const changeFindPwDiv = document.querySelector('#changeFindPwDiv');
+
+				changeFindPwDiv.innerHTML = ''; /*내용을 지우는것*/
+
+				changeFindPwDiv.insertAdjacentHTML('beforeend', str);
+			}
+			//입력한 정보(이름 아이디 전화번호)에 맞는 회원이 없다면 error 모달
+			else {
+				Swal.fire('인증번호 발송 실패!', '입력하신 데이터와 일치하는 회원이 없습니다', 'error')
+			}
+
+			//인증번호 확인 버튼을 눌렀을 때 
+			$('#checkBtn').click(function() {
+				
+				let check = $('#inputCertifiedNumber').val();
+				//인증번호 input 데이터 값이 빈문자열이 아니라면	
+				if (check != '') {
+					//인증번호 일치한다면 인증번호로 비밀번호 업데이트
+					if ($.trim(res) == $('#inputCertifiedNumber').val()) {
+
+						$.ajax({
+							type: "post",
+							url: "/teacher/updateTemporaryPw",
+							data: {
+								"teacherPw": $('#inputCertifiedNumber').val(), "teacherTell": teacherTell
+							},
+							success: function(res1) {
 								
-	                    	document.location.href="/teacher/loginPage"; 
-						},
-						error: function() {
-							alert('실패');
-						}
-	                      
-	                        
-	                    })
-                }else{
-                    Swal.fire({
-                        icon: 'error',
-                        title: '인증오류',
-                        text: '인증번호가 올바르지 않습니다!',
-                       // footer: '<a href="/teacher/findLoginPage">다시 인증하기</a>'
-                    })
-                }
-            })
+								Swal.fire({
+									title: '인증성공',
+									text: "임시비밀번호로 변경되었습니다",
+									icon: 'success',
+									showCancelButton: false,
+									confirmButtonColor: '#3085d6',
+									cancelButtonColor: '#d33',
+									confirmButtonText: '승인',
+									cancelButtonText: '취소',
+									reverseButtons: true, // 버튼 순서 거꾸로
 
-
-        }
-    })
+								}).then((result) => {
+									if (result.isConfirmed) {
+										//로그인 페이지로 이동
+										location.href=`/teacher/loginPage`;
+									}
+								})
+							},
+							error: function() {
+								alert('실패');
+							}
+						})
+					//인증번호 불일치한다면 error 모달
+					} else {
+						Swal.fire({
+							icon: 'error',
+							title: '인증오류',
+							text: '인증번호가 올바르지 않습니다!',
+							// footer: '<a href="/teacher/findLoginPage">다시 인증하기</a>'
+						})
+					}
+				}
+				//인증번호 input 데이터 값이 빈문자열이라면
+				else {
+					Swal.fire({
+						icon: 'error',
+						title: '인증오류',
+						text: '인증번호를 입력하세요!',
+						// footer: '<a href="/teacher/findLoginPage">다시 인증하기</a>'
+					})
+				}
+			})
+		}
+	})
 });

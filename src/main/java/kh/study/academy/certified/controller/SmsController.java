@@ -34,16 +34,10 @@ public class SmsController {
 	public String sendSMS( TeacherVO teacherVO ) {
 		
 		
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!" + teacherVO);
-		
-		
 		//전화번호 인증번호 전송 전 입력한 데이터에 일치하는 회원이 있는지 조회
 		TeacherVO teacher =  teacherService.findInfoForSendSms(teacherVO);
 		
-		System.out.println("!!!!!!!!!!!@@@@@!!!!!!!!!!" + teacher);
-		
 		//일치하는 회원이 있으면 문자전송
-		//여기서 하는거 맞을까
 		if(teacher != null) {
 			 Random rand  = new Random();
 		        String numStr = "";
@@ -59,13 +53,6 @@ public class SmsController {
 			return null;
 		}
 		
-		
-       
-        
-        
-        
-//        System.out.println("수신자 번호 : " + teacherVO.getTeacherTell());
-//        System.out.println("인증번호 : " + numStr);
     }
 	
 	
