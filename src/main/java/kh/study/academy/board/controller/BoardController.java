@@ -178,7 +178,6 @@ public class BoardController {
 	@GetMapping("/freeDetail")
 	public String freeDetail(Model model, int boardNum) {
 		model.addAttribute("free", boardService.selectBoardDetail(boardNum));
-		
 		return "content/board/free_detail";
 	}
 	

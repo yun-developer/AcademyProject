@@ -12,8 +12,8 @@
 			</div>
 			<div class="panel-container show">
 				<div class="panel-content">
-					<div class="subheader pb-6" style="margin-bottom: 20px;">
-						<h3 class="subheader-title">
+					<div class="subheader pb-6" style="margin-bottom: 20px;" th:each="notice : ${notice}">
+						<h3 class="subheader-title"  >
 							[[${notice.boardTitle}]] <i class="subheader-icon"></i>
 						</h3>
 							<div style="font-size: 18px;">
@@ -23,7 +23,23 @@
 							</div>
 					</div>
 					<div class="subheader pb-6 border-bottom" style="margin-bottom: 10px;"></div>
-					<div id="preview" class="fr-view" style="font-size: 20px;">[[${notice.boardContent}]]</div>
+					<div th:each="notice : ${notice}">
+						<div id="preview" class="fr-view" style="font-size: 20px;">[[${notice.boardContent}]]</div>
+					</div>
+						<div th:each="notice : ${notice}">
+							<div  id="preview" class="fr-view" style="margin-bottom: 20px;">[[${notice.boardContent}]]</div>
+						</div>
+						<div th:if="${notice.imgList[0].storedFileName == null}">
+						</div>
+						<div th:unless="${notice.imgList[0].storedFileName == null}">
+							<div class="col-3" th:each="notice : ${notice.imgList}">
+								<div class="card" >
+								  <img style="width: 18rem; height: 25rem;" th:src="|@{/images/board/}${notice.storedFileName}|" class="card-img-top" alt="...">
+								  <div class="card-body">
+								  </div>
+								</div>
+							</div> 
+						</div>
 				</div>
 
 				<div class="panel-content rounded-bottom border-faded border-0 text-right pr-0 pt-2 " style="margin-bottom: 100px;">

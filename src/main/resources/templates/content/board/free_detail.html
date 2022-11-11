@@ -23,34 +23,38 @@
 				<div class="panel-content">
 					
 
-					<div class="subheader pb-6"  style="margin-bottom: 20px;">
-						<h3 class="subheader-title">
-							[[${free.boardTitle}]] <i class="subheader-icon"></i>
-						</h3>
-							<div style="font-size: 18px;">
-								등록일 : [[${free.createDate}]] 조회수 : [[${free.viewCount}]] 작성자 : 
-								<a href="javascript:" onclick="showEmployPopup('/common/popup/employ/detail/CE221000035', '교직원정보');">[[${free.teacherId}]]</a>
-								
+					<!-- <div th:if="${#lists.size(free) == 0}"> -->
+						<div class="subheader pb-6"  style="margin-bottom: 20px;" th:each="free : ${free}">
+							<h3 class="subheader-title">
+								[[${free.boardTitle}]] <i class="subheader-icon"></i>
+							</h3>
+								<div style="font-size: 18px;">
+									등록일 : [[${free.createDate}]] 조회수 : [[${free.viewCount}]] 작성자 : 
+									<a href="javascript:" onclick="showEmployPopup('/common/popup/employ/detail/CE221000035', '교직원정보');">[[${free.teacherId}]]</a>
+									
+								</div>
+						</div>
+						<div class="subheader pb-6 border-bottom" style="margin-bottom: 20px;"></div>
+							<div th:each="free : ${free}">
+								<div  id="preview" class="fr-view" style="margin-bottom: 20px;">[[${free.boardContent}]]</div>
 							</div>
-					</div>
-					<div class="subheader pb-6 border-bottom" style="margin-bottom: 20px;"></div>
-					<div id="preview" class="fr-view" style="margin-bottom: 20px;">[[${free.boardContent}]]</div>
-				</div>
-
-				<div class="form-group input-group mb-1 text-center">
-					<div class="col-12 col-lg-1 px-2"><span class="input-group-text h-100 rounded-0">첨부 파일</span></div>
-				</div>
-			
-				<div>
-					<div class="px-3 py-2"><a href="downloadFile?fileSq=199081">2022 겨울학기 마산중앙센터 무진계획서.xlsx</a></div>
-				</div>
-			
+							<div th:if="${free.imgList[0].storedFileName == null}">
+							</div>
+							<div th:unless="${free.imgList[0].storedFileName == null}">
+								<div class="col-3" th:each="free : ${free.imgList}">
+									<div class="card" >
+									  <img style="width: 18rem; height: 25rem;" th:src="|@{/images/board/}${free.storedFileName}|" class="card-img-top" alt="...">
+									  <div class="card-body">
+									  </div>
+									</div>
+								</div> 
+							</div>
 				
-			
+
 
 				<div class="panel-content rounded-bottom border-faded border-0 text-right pr-0 pt-2 " style="margin-bottom: 100px;">
 					<div class="col-lg-12 text-center pb-6" style="margin-bottom: 30px;">
-						<button th:onclick="|location.href='@{/board/noticeList}'|" type="button" id="btnHistoryBack" class="btn btn-success waves-effect waves-themed"><span class="fal fa-repeat mr-1"></span>
+						<button th:onclick="|location.href='@{/board/freeList}'|" type="button" id="btnHistoryBack" class="btn btn-success waves-effect waves-themed"><span class="fal fa-repeat mr-1"></span>
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
   <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
   <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
