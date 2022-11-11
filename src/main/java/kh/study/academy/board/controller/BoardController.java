@@ -122,7 +122,7 @@ public class BoardController {
 	public String noticeDetail(Model model, int boardNum) {
 		model.addAttribute("notice", boardService.selectBoardDetail(boardNum));
 		model.addAttribute("replyList", replyService.selectReply(boardNum));
-		
+		boardService.updateViewCount(boardNum);
 		return "content/board/notice_detail";
 	}
 	
@@ -183,7 +183,7 @@ public class BoardController {
 	public String freeDetail(Model model, int boardNum) {
 		model.addAttribute("free", boardService.selectBoardDetail(boardNum));
 		model.addAttribute("replyList", replyService.selectReply(boardNum));
-		
+		boardService.updateViewCount(boardNum);
 		return "content/board/free_detail";
 	}
 	

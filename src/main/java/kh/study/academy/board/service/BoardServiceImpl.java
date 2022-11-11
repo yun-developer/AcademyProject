@@ -73,6 +73,12 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 
+	@Override
+	public void updateViewCount(int boardNum) {
+		sqlSession.update("boardMapper.updateViewCount", boardNum);
+	}
+
+
 
 
 	

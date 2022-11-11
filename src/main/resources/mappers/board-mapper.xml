@@ -132,8 +132,12 @@
 	</delete>
 
 
-
-
+<!-- 조회수 -->
+<update id="updateViewCount">
+	UPDATE BOARD
+	SET VIEW_COUNT = VIEW_COUNT + 1
+	WHERE BOARD_NUM = #{boardNum}
+</update>
 
 
 

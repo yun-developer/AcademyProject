@@ -62,7 +62,11 @@ function goDelete() {
 	const checkedChks = document.querySelectorAll('.chk:checked');  // 내가 체크한 것들
 	
 	if(checkedChks.length == 0) {
-		alert('삭제할 게시글을 선택하세요');
+		Swal.fire({
+		  title: '삭제할 게시글을 선택하세요!',
+		  icon: 'error',
+		  confirmButtonText: '확인'
+		})
 		return ;
 	}
 	

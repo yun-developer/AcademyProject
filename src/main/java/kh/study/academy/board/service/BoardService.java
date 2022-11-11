@@ -19,7 +19,7 @@ public interface BoardService {
 	
 	BoardVO selectBoardDetail(int boardNum);
 	
-	
+	void updateViewCount(int boardNum);
 	
 	// 공지사항 게시글 삭제
 	void deleteBoardNotice(BoardVO boardVO);
