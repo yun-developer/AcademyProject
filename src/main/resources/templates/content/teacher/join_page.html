@@ -78,8 +78,8 @@
 		    	<div class="col-sm-1 d-grid gap-2 d-md-block">
 		    
 			    	<button type="button" id="tellDoubleCheckBtn" th:onclick="tellDoubleCheck();" class="btn btn-danger ms-0 mx-auto">중복확인</button>
-			    	<!-- 아이디 중복 체크 여부 -->
-			    	<input type="hidden" id="tellDoubleChk" name="tellDoubleChk" value="">
+			    	<!-- 연락처 중복 체크 여부 -->
+			    	<input type="hidden" id="isTellDoubleChk" name="tellDoubleChk" value="">
 			    </div>
 		    
 		  </div>
@@ -186,10 +186,8 @@
 	       		사용 불가능한 아이디입니다.
 			</div>
 	      </div>
-	      
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-	        
 	      </div>
      	 </form>
 	    </div>
@@ -200,7 +198,6 @@
 	<div class="modal fade" id="idDouble_No" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
-	      
 	      <div class="modal-header">
 	        <h5 class="modal-title" id="exampleModalLabel"> ID 중복 검사</h5>
 	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -210,19 +207,16 @@
 	       		사용가능한 아이디입니다.
 			</div>
 	      </div>
-	      
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
 	        <!-- <button type="submit" th:onclick="loginResult()" class="btn btn-primary">ajax Login</button>  --> 
 	        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">사용하기</button>
 	      </div>
-     	 
 	    </div>
 	  </div>
 	</div>
 	
 	<!-- ID중복검사를 하지 않았을 때 Modal -->
-	
 	<div class="modal fade" id="isDoubleCheck" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
@@ -242,7 +236,28 @@
 	  </div>
 	</div>
 
-
+	<!-- 연락처 중복검사 버튼 클릭 시 실행되는 Modal -->
+	<!-- 중복 연락처가 있을 경우Modal -->
+	<div class="modal fade" id="tellDouble_Yes" tabindex="-1" aria-labelledby="exampleModalLabel11" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <form class="row g-3" action="/" method="post">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel11"> 연락처 중복 검사</h5>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body">
+	       	<div class="mb-1">
+	       		이 연락처로 가입된 회원 정보 입니다.
+			</div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+	      </div>
+     	 </form>
+	    </div>
+	  </div>
+	</div>
 
 <!-- javascript 경로 확인  -->
 <script type="text/javascript" th:src="@{/js/teacher/join_page.js}"></script>

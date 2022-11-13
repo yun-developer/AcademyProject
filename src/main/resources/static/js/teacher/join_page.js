@@ -1,6 +1,6 @@
 
 //////////////////////////변수///////////////////////////
-
+//Id 중복체크
 const inputTeacherId = document.querySelector('#inputTeacherId');
 const doubleYesModal = new bootstrap.Modal('#idDouble_Yes');
 const doubleNoModal = new bootstrap.Modal('#idDouble_No');
@@ -10,17 +10,25 @@ const idDouble_Yes_modal = document.querySelector('#idDouble_Yes');
 const idDouble_No_modal = document.querySelector('#idDouble_No');
 const isDoubleCheck_modal = document.querySelector('#isDoubleCheck');
 
+//연락처 중복체크
+const inputTeacherTell = document.querySelector('#inputTeacherTell');
 
+
+
+
+
+
+//이메일 입력
 const inputTeacherEmail = document.querySelector('#inputTeacherEmail');
 const middleEmail = document.querySelector('#middleEmail');
 const endEmail = document.querySelector('#endEmail');
 const totalEmail = document.querySelector('#totalEmail');
 
-let totalEmailText ='';
 
-//중복확인 수행 여부 TAG
+//아이디 중복확인 수행 여부 TAG
 const isDoubleChkTag =  document.querySelector('#isDoubleChk');
-
+//연락처 중복확인 수행 여부 TAG
+const isTellDoubleChkTag = document.querySelector('#isTellDoubleChk')
 
 //////////////////////////함수////////////////////////////
 
@@ -40,8 +48,6 @@ function isDoubleChk (){
 	joinForm.submit();
 }
 
-
-
 //아이디 중복 검사 결과
 function idDoubleCheck (){
 	
@@ -54,7 +60,6 @@ function idDoubleCheck (){
 	    inputTeacherId.focus();
 	    return;
 	}	
-	
 	
 	//ajax start
 	$.ajax({
@@ -72,7 +77,6 @@ function idDoubleCheck (){
 				//모달창 띄우는 소스
 				doubleNoModal.show();
 			}
-			
 	    },
 	    error: function(){
 	       alert('실패');
@@ -82,7 +86,6 @@ function idDoubleCheck (){
 		
 	//중복검사 수행 확인
 	isDoubleChkTag.setAttribute("value", "Chk");
-	
 }
 
 function resetInput(event){
@@ -91,9 +94,14 @@ function resetInput(event){
 }
 
 function isDoubleChkChange(event){
-	
+
 	isDoubleChkTag.setAttribute("value", "unChk");
 }
+function tellDoubleChkChange(event){
+
+	isTellDoubleChkTag.setAttribute("value", "unChk");
+}
+
 
 
 //온키업 밑에 글자 들어갈 스판태그 하고 아이디 주기 
@@ -114,17 +122,17 @@ function passChk(){
 //중복 모달이 닫히면 실행되는 이벤트
 idDouble_Yes_modal.addEventListener('hidden.bs.modal', resetInput);
 
-
+//ID 입력시 중복체크 할수 있도록 변경
 inputTeacherId.addEventListener('keydown', isDoubleChkChange)
+//연락처 입력시 중복체크 할 수 있도록 변경
+inputTeacherTell.addEventListener('keydown', tellDoubleChkChange)
 
 //이메일 입력시
 endEmail.addEventListener('change', function getTotalEmail() {
 	
 	const emailSelectDiv = document.querySelector('#emailSelect');
 	
-	
 	totalEmail.value = inputTeacherEmail.value + middleEmail.innerText + endEmail.value;
-
 	
 	//직접 선택을 선택하면
 	if(endEmail.value == 'selfEmail'){
@@ -135,29 +143,16 @@ endEmail.addEventListener('change', function getTotalEmail() {
 		str = '<input type="text" class="form-control" id="newEndEmail" value="" >';
 		
 		emailSelectDiv.insertAdjacentHTML('afterbegin', str);
-		
-	
-	
-	
-	
 	}
-	//
-
 	
 });
 
-
 $(document).on("click", "#newEndEmail", function() {
-	
 	
 	$(document).on("keyup", "#newEndEmail", function() {
 	
-	const newEndEmaildiv = document.querySelector('#newEndEmail');
-	
-	totalEmail.value = inputTeacherEmail.value + middleEmail.innerText + newEndEmaildiv.value;
-	
-	
+		const newEndEmaildiv = document.querySelector('#newEndEmail');
+		totalEmail.value = inputTeacherEmail.value + middleEmail.innerText + newEndEmaildiv.value;
 	});
-	
 	
 });
