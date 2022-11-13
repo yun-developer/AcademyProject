@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="lessonMapper">
-	<resultMap type="kh.study.academy.lesson.vo.LessonInfoVO" 	id="lessonInfo">
+	<resultMap type="kh.study.academy.lesson.vo.LessonInfoVO" 	   			id="lessonInfo">
 		<id column="LESSON_INFO_CODE" 										property="lessonInfoCode" />
 		<result column="LESSON_TIME" 										property="lessonTime" />
 		<result column="STEP_CODE" 											property="stepCode" />
@@ -15,7 +15,8 @@
 		<result column="MONEY" 												property="money" />
 		<result column="LESSON_INFO_REGDATE" 								property="lessonInfoRegdate" />
 		<result column="LESSON_INFO_STATUS" 								property="lessonInfoStatus" />
-		<collection property="studentLessonInfoList" 						resultMap="studentLessonInfo"/>
+		
+		<collection property="studentLessonInfoList" 						resultMap="studentMapper.studentLessonInfo"/>
 	</resultMap>
 	
 
