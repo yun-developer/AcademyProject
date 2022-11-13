@@ -43,7 +43,7 @@
 	                     <th scope="col">편성년월</th>
 	                     <th scope="col">학급명</th> <!-- 과학-심화 -->
 	                     <th scope="col">학년</th>
-	                     <th scope="col">정원</th>
+	                     <th scope="col"></th>
 	                     <th scope="col">수강료</th>
 	                     <th scope="col">요일</th>
 	                     <th scope="col">수업시간</th>
@@ -54,6 +54,36 @@
  
                    </tr>
                  </thead>
+                 <tbody>
+                  <th:block th:if="${#lists.size(lessonInfoList) == 0}">
+                 	<tr> 
+                 		<td colspan="5">등록된 학급이 없습니다.</td>
+                 	</tr>
+                </th:block>
+                 
+
+                    <th:block th:unless="${#lists.size(lessonInfoList) == 0}">
+                  
+                    <tr th:each="lessonInfo, status : ${lessonInfoList}">
+                   		<td>
+                     <input th:value="${lessonInfo.lessonInfoCode}"  type="checkbox" class="form-check-input chk" >
+                  		</td>
+                   		<td th:text="${status.count}"></td> 
+                   		 <td th:text="${lessonInfo.lessonInfoRegdate}" ></td> 
+                		<td th:text="${lessonInfo.subjectVO.subjectName}"></td> 
+                		<td th:text="${lessonInfo.stepVO.stepName}"></td> 
+                        <td th:text="${lessonInfo.year}"></td> 
+                 		<td th:text="${lessonInfo.money}"></td> 
+                   		<td th:text="${lessonInfo.lessonDayCode}"></td> 
+                    	<td th:text="${lessonInfo.lessonTime}"></td> 
+                  		<td th:text="${lessonInfo.lessonRoomVO.roomName}"></td> 
+                     	<td th:text="${lessonInfo.teacherVO.teacherName}"></td> 
+                  		<td th:text="${lessonInfo.memo}"></td> 
+                   		<td th:text="${lessonInfo.lessonInfoStatus}"></td>  
+                   </tr>
+             
+                 </th:block>     
+                 </tbody>
                </table>
 			 </div>
 			</div>

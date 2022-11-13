@@ -5,9 +5,16 @@ import java.util.List;
 import kh.study.academy.admin.vo.LessonRoomVO;
 import kh.study.academy.admin.vo.SubjectVO;
 import kh.study.academy.student.vo.StudentLessonInfoVO;
+import kh.study.academy.teacher.vo.TeacherVO;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 @Data
+@Getter
+@Setter
+@ToString
 public class LessonInfoVO {
 	
 	
@@ -26,7 +33,10 @@ public class LessonInfoVO {
 	private String lessonInfoStatus;
 	private String lessonInfoRegdate;
 	
-	private String LessonRoomVO;
+	private SubjectVO subjectVO;
+	private StepVO stepVO;
+	private LessonRoomVO lessonRoomVO;
+	private TeacherVO teacherVO;
 	//collection 연결
 	private List<StudentLessonInfoVO> studentLessonInfoList;
 

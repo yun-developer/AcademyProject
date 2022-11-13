@@ -5,7 +5,6 @@
 	<resultMap type="kh.study.academy.lesson.vo.LessonInfoVO" 	   			id="lessonInfo">
 		<id column="LESSON_INFO_CODE" 										property="lessonInfoCode" />
 		<result column="LESSON_TIME" 										property="lessonTime" />
-		<result column="STEP_CODE" 											property="stepCode" />
 		<result column="LESSON_DAY_CODE" 									property="lessonDayCode" />
 		<result column="LESSON_ROOM_CODE" 									property="lessonRoomCode" />
 		<result column="YEAR" 												property="year" />
@@ -15,6 +14,12 @@
 		<result column="MONEY" 												property="money" />
 		<result column="LESSON_INFO_REGDATE" 								property="lessonInfoRegdate" />
 		<result column="LESSON_INFO_STATUS" 								property="lessonInfoStatus" />
+		<result column="MEMO" 								property="memo" />
+	
+		<association property="subjectVO" resultMap="adminMapper.subject"/>
+		<association property="stepVO" resultMap="lessonMapper.step"/>
+		<association property="lessonRoomVO" resultMap="adminMapper.lessonRoom"/>
+		<association property="teacherVO" resultMap="teacherMapper.teacher"/>
 		
 		<collection property="studentLessonInfoList" 						resultMap="studentMapper.studentLessonInfo"/>
 	</resultMap>
@@ -117,18 +122,26 @@
 	<select id="selectLessonInfoList" resultMap="lessonInfo">
 		SELECT LESSON_INFO_CODE
 			, LESSON_INFO_REGDATE
-			, SUBJECT_CODE
-			, STEP_CODE
+			, (SELECT SUBJECT_NAME
+				FROM SUBJECT
+				WHERE SUBJECT_CODE = L.SUBJECT_CODE) AS SUBJECT_NAME
+			, (SELECT STEP_NAME
+				FROM STEP
+				WHERE STEP_CODE = L.STEP_CODE) AS STEP_NAME
 			, YEAR
 			, MAX_STUDENT
 			, MONEY
 			, LESSON_DAY_CODE
 			, LESSON_TIME 
-			, LESSON_ROOM_CODE
-			, TEACHER_CODE
+			, (SELECT ROOM_NAME
+				FROM LESSON_ROOM
+				WHERE LESSON_ROOM_CODE = L.LESSON_ROOM_CODE) AS ROOM_NAME
+			, (SELECT TEACHER_NAME
+				FROM TEACHER
+				WHERE TEACHER_CODE = L.TEACHER_CODE) AS TEACHER_NAME
 			, MEMO
 			, LESSON_INFO_STATUS
-		FROM LESSON_INFO
+		FROM LESSON_INFO L 
 		
 		
 	</select>

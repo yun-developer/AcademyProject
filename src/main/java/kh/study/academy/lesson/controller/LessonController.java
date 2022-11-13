@@ -84,7 +84,7 @@ public class LessonController {
 		model.addAttribute("lessonInfoList",lessonService.selectLessonInfoList());
 		
 		
-		return "content/admin/reg_lessonInfo";
+		return "content/lesson/reg_lessonInfo";
 		
 		}
 		
