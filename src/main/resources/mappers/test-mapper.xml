@@ -11,7 +11,7 @@
 		
 		
 		<!-- 아래 칼럼 수정 필요 -->
-		<result column="LESSON_INFO_CODE" 						property="lessonInfoCode" />
+		<result column="SUBJECT_CODE" 						property="subjectCode" />
 		<result column="STUDENT_CODE" 							property="studentCode" />
 		
 		
@@ -43,28 +43,43 @@
 	
 	
 	<!-- 평가 관리 페이지에서 검색 조회 -->
-	<!--LESSON_INFO_CODE 수정필요  -->
+	<!--수정필요  -->
   	<select id="searchTest" resultMap="studentMapper.student" parameterType="hashMap">
 		SELECT S.STUDENT_CODE 
 			, STUDENT_NAME
 			, (SELECT TEACHER_CODE FROM TEACHER) AS TEACHER_CODE
-			, (SELECT TEACHER_NAME FROM TEACHER) TEACHER_NAME
+			, (SELECT TEACHER_NAME FROM TEACHER) AS TEACHER_NAME
 			, TEST_CODE
 			, STUDENT_LESSON_CODE
 			, LESSON_INFO_CODE
 			, SCORE
-		FROM STUDENT S, STUDENT_LESSON_INFO L
+		FROM STUDENT S, STUDENT_LESSON_INFO L, TEST T
 		WHERE S.STUDENT_CODE = L.STUDENT_CODE
-		<if test="teacherName != null and !teacherName.equals('')">
-		AND TEACHER_NAME LIKE ('%'||#{teacherName}||'%')
-		</if>
+		AND S.STUDENT_CODE = T.STUDENT_CODE
 		<if test="studentName != null and !studentName.equals('')">
 		AND STUDENT_NAME LIKE ('%'||#{studentName}||'%')
+		</if>
+		<if test="teacherName != null and !teacherName.equals('')">
+		AND TEACHER_NAME LIKE ('%'||#{teacherName}||'%')
 		</if>
 		<if test="lessonInfoCode != null and !lessonInfoCode.equals('')">
 		AND LESSON_INFO_CODE LIKE ('%'||#{lessonInfoCode}||'%')
 		</if>
 	</select>
+	
+	
+	<!--평가 관리 페이지에서 전체 학생 조회   -->
+	<select id="selectAllstudent" resultMap="studentMapper.student">
+		SELECT STUDENT_CODE
+			, STUDENT_NAME
+			<!-- 담당 교사 -->
+			<!-- 반  -->
+		FROM STUDENT
+		ORDER BY STUDENT_CODE ASC
+	
+	</select>
+	
+	
 	
 	
 	

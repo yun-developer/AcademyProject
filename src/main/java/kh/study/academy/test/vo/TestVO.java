@@ -9,12 +9,12 @@ import lombok.ToString;
 @ToString
 public class TestVO {
 	private String testCode; 
+	private String subjectCode; 
+	private String studentCode; 
 	private String testDate; 
 	private int score; 
 
 	
 	
-	private String lessonInfoCode; 
 	
-	private String studentCode; 
 }
