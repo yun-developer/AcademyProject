@@ -11,10 +11,15 @@ const idDouble_No_modal = document.querySelector('#idDouble_No');
 const isDoubleCheck_modal = document.querySelector('#isDoubleCheck');
 
 
+const inputTeacherEmail = document.querySelector('#inputTeacherEmail');
+const middleEmail = document.querySelector('#middleEmail');
+const endEmail = document.querySelector('#endEmail');
+const totalEmail = document.querySelector('#totalEmail');
+
+
 
 //중복확인 수행 여부 TAG
 const isDoubleChkTag =  document.querySelector('#isDoubleChk');
-
 
 
 //////////////////////////함수////////////////////////////
@@ -24,7 +29,6 @@ function isDoubleChk (){
 	
 	//회원가입 진행 폼태그
 	const joinForm = document.querySelector('#joinForm');
-	
 	
 	//중복검사를 하지 않았다면
 	if(isDoubleChkTag.value=="unChk"){
@@ -61,17 +65,12 @@ function idDoubleCheck (){
 		 
 			//중복아이디가 있을 경우
 			if(result.teacherId != null){
-				
-				
 				doubleYesModal.show();
-				
 			}
 			//중복 아이디가 없을 경우
 			else{
-				
 				//모달창 띄우는 소스
 				doubleNoModal.show();
-				
 			}
 			
 	    },
@@ -87,18 +86,14 @@ function idDoubleCheck (){
 }
 
 function resetInput(event){
-	
 	inputTeacherId.value='';
 	inputTeacherId.focus();
-	
 }
 
 function isDoubleChkChange(event){
 	
 	isDoubleChkTag.setAttribute("value", "unChk");
-	
 }
-
 
 
 //온키업 밑에 글자 들어갈 스판태그 하고 아이디 주기 
@@ -122,6 +117,42 @@ idDouble_Yes_modal.addEventListener('hidden.bs.modal', resetInput);
 
 inputTeacherId.addEventListener('keydown', isDoubleChkChange)
 
+//이메일 입력시
+endEmail.addEventListener('change', function getTotalEmail() {
+	
+	const emailSelectDiv = document.querySelector('#emailSelect');
+	
+	totalEmail.value = inputTeacherEmail.value + middleEmail.innerText + endEmail.value;
+
+	let totalEmailAddr = '';
+	//직접 선택을 선택하면
+	if(endEmail.value == 'selfEmail'){
+		
+		emailSelectDiv.innerHTML='';
+		
+		let str = '';
+		str = '<input type="text" class="form-control" id="newEndEmail" value="" >';
+		
+		emailSelectDiv.insertAdjacentHTML('afterbegin', str);
+		
+		
+	}
+	
+		getNewEmail();
+	
+	
+	
+});
 
 
+function getNewEmail (){
+	
+	const newInputEmail = document.querySelector('#newEndEmail');
+		
+	alert(newInputEmail.value);
+	
+	
+	totalEmail.value = inputTeacherEmail.value + middleEmail.innerText + newEndEmail.value;
+	
+}
 
