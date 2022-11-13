@@ -16,7 +16,7 @@ const middleEmail = document.querySelector('#middleEmail');
 const endEmail = document.querySelector('#endEmail');
 const totalEmail = document.querySelector('#totalEmail');
 
-
+let totalEmailText ='';
 
 //중복확인 수행 여부 TAG
 const isDoubleChkTag =  document.querySelector('#isDoubleChk');
@@ -122,9 +122,10 @@ endEmail.addEventListener('change', function getTotalEmail() {
 	
 	const emailSelectDiv = document.querySelector('#emailSelect');
 	
+	
 	totalEmail.value = inputTeacherEmail.value + middleEmail.innerText + endEmail.value;
 
-	let totalEmailAddr = '';
+	
 	//직접 선택을 선택하면
 	if(endEmail.value == 'selfEmail'){
 		
@@ -135,24 +136,28 @@ endEmail.addEventListener('change', function getTotalEmail() {
 		
 		emailSelectDiv.insertAdjacentHTML('afterbegin', str);
 		
-		
+	
+	
+	
+	
 	}
-	
-		getNewEmail();
-	
-	
+	//
+
 	
 });
 
 
-function getNewEmail (){
-	
-	const newInputEmail = document.querySelector('#newEndEmail');
-		
-	alert(newInputEmail.value);
+$(document).on("click", "#newEndEmail", function() {
 	
 	
-	totalEmail.value = inputTeacherEmail.value + middleEmail.innerText + newEndEmail.value;
+	$(document).on("keyup", "#newEndEmail", function() {
 	
-}
-
+	const newEndEmaildiv = document.querySelector('#newEndEmail');
+	
+	totalEmail.value = inputTeacherEmail.value + middleEmail.innerText + newEndEmaildiv.value;
+	
+	
+	});
+	
+	
+});
