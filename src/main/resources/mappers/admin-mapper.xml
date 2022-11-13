@@ -224,14 +224,14 @@
 	<!-- 등록한 교실을 체크해서 삭제 -->
 		
 		<delete id="deleteLessonRoom">
-		DELETE LESSON_ROOM
-		WHERE LESSON_ROOM_CODE IN
-		
-		<foreach collection="lessonRoomCodeList" item="lessonRoomCode" separator="," open="(" close=")">
-				#{lessonRoomCode}
-		</foreach>
+			DELETE LESSON_ROOM
+			WHERE LESSON_ROOM_CODE IN
+			
+			<foreach collection="lessonRoomCodeList" item="lessonRoomCode" separator="," open="(" close=")">
+					#{lessonRoomCode}
+			</foreach>
 	
-	</delete>
+		</delete>
 		
 	
 

@@ -147,7 +147,15 @@
 	</select>
 	
 	
+		<delete id="deleteLessonInfo">
+			DELETE LESSON_INFO
+			WHERE LESSON_INFO_CODE IN
+			
+			<foreach collection="lessonInfoCodeList" item="lessonInfoCode" separator="," open="(" close=")">
+					#{lessonInfoCode}
+			</foreach>
 	
+		</delete>
 	 
 
 </mapper>

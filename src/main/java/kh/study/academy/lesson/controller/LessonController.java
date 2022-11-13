@@ -1,6 +1,9 @@
 package kh.study.academy.lesson.controller;
 
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -89,18 +92,34 @@ public class LessonController {
 		}
 		
 		
-		// 학급 등록 버튼 모달창에서 데이터들을 저장
-		@PostMapping("/saveLessonInfo")
-			public String saveLessonInfo(LessonInfoVO lessonInfoVO, Model model) {
-			System.out.println(lessonInfoVO);
-			lessonService.regLessonInfo(lessonInfoVO);
-			
 		
+		
+		// 학급 등록 버튼 모달창에서 데이터들을 저장
+		
+		@PostMapping("/saveLessonInfo")
+		
+		public String saveLessonInfo(LessonInfoVO lessonInfoVO, Model model) {
+		System.out.println(lessonInfoVO);
+		lessonService.regLessonInfo(lessonInfoVO);
+		
+		return "redirect:/lesson/regLessonInfoPage";
+		}
+		
+		
+		
+		// 학급 편성한 리스트들 삭제
+		@GetMapping("/deleteLessonInfo")
+		public String deleteLessonInfo(String lessonInfoCodes) {
+			String[] lessonCodeArr = lessonInfoCodes.split(",");
+			List<String> lessonCodeList = Arrays.asList(lessonCodeArr);
+			
+			LessonInfoVO lessonInfoVO = new LessonInfoVO();
+			lessonInfoVO.setLessonInfoCodeList(lessonCodeList);
+			
+			lessonService.deleteLessonInfo(lessonInfoVO);
 			
 			return "redirect:/lesson/regLessonInfoPage";
 		}
-	
-	
 		
 	
 }

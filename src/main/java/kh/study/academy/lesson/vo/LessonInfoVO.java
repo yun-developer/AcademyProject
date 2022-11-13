@@ -33,11 +33,15 @@ public class LessonInfoVO {
 	private String lessonInfoStatus;
 	private String lessonInfoRegdate;
 	
+	private List<String> lessonInfoCodeList;
+	
+	// association 연결
 	private SubjectVO subjectVO;
 	private StepVO stepVO;
 	private LessonRoomVO lessonRoomVO;
 	private TeacherVO teacherVO;
+	
 	//collection 연결
 	private List<StudentLessonInfoVO> studentLessonInfoList;
-
+	
 }
