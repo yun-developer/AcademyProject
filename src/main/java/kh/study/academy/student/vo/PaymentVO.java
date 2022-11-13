@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class PaymentVO {
 	private String paymentCode;
-	private String lessonsCode;
+	private String lessonInfoCode;
 	private String isPay;
 	private String studentCode;
 }

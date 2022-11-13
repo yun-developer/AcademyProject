@@ -24,16 +24,13 @@
 		<result column="STUDENT_CODE" 									property="studentCode"/>
 	</resultMap>
 	
-	<resultMap type="kh.study.academy.student.vo.StudentStepVO" id="studentStep">
-		<id column="STUDENT_STEP_CODE" property="studentStepCode" />
-		<result column="STEP_NAME" property="stepName"/>
-	</resultMap>
 	
-	<resultMap type="kh.study.academy.student.vo.PaymentVO" id="payment">
-		<id column="PAYMENT_CODE" property="paymentCode" />
-		<result column="LESSONS_CODE" property="lessonsCode"/>
-		<result column="IS_PAY" property="isPay"/>
-		<result column="STUDENT_CODE" property="studentCode"/>
+	
+	<resultMap type="kh.study.academy.student.vo.PaymentVO" 		id="payment">
+		<id column="PAYMENT_CODE" 									property="paymentCode" />
+		<result column="LESSON_INFO_CODE" 							property="lessonInfoCode"/>
+		<result column="IS_PAY"										property="isPay"/>
+		<result column="STUDENT_CODE" 								property="studentCode"/>
 	</resultMap>
 	
 
@@ -78,11 +75,11 @@
 	
 	INSERT INTO PAYMENT (
 		PAYMENT_CODE
-		, LESSONS_CODE
+		, LESSON_INFO_CODE
 		, STUDENT_CODE
 	) VALUES (
 		#{paymentCode}
-		, 'LESSONS_001'
+		, 'LESSON_INFO_001'
 		, #{studentCode}
 	)
 </insert>

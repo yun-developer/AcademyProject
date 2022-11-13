@@ -27,21 +27,20 @@ public class TestController {
 	
 	//점수 관리 페이지로
 	@RequestMapping("/testManage")
-	public String regScorePage( Model model) {
+	public String regScorePage( @RequestParam Map<String, String> paramMap, Model model) {
 		
-		//@RequestParam Map<String, String> paramMap,
 		
 		//데이터 나오는지 확인
 		//System.out.println("@@@!!!!!@@"+testService.searchTest(paramMap));
 		
 		//검색
-		//model.addAttribute("search", testService.searchTest(paramMap));
+		model.addAttribute("search", testService.searchTest(paramMap));
 		
 		//학급명 목록 조회 
 	//	model.addAttribute(null, model);
 		
 		
-		//model.addAttribute("paramMap", paramMap);
+		model.addAttribute("paramMap", paramMap);
 		
 		return "content/test/testManage";
 	
