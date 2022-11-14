@@ -100,16 +100,7 @@ public class AdminController {
 	
 	
 	
-	//통계 페이지로 이동 
-	@GetMapping("/statistics")
-	public String statistics(Model model) {
 
-		
-
-
-		return "content/admin/statistics";
-
-	}
 	
 	
 	
