@@ -14,7 +14,7 @@ public class BoardVO {
 	private String createDate;
 	private String teacherId;
 	private int likeHit;
-	private String replyNumCnt;
+	private int replyNumCnt;
 	private int likeCodeCnt;
 	
 	private List<BoardImgVO> imgList;

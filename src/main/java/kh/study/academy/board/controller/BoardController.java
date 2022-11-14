@@ -19,6 +19,8 @@ import kh.study.academy.board.service.BoardService;
 import kh.study.academy.board.vo.BoardImgVO;
 import kh.study.academy.board.vo.BoardVO;
 import kh.study.academy.config.UploadFileUtil2;
+import kh.study.academy.likeTable.service.LikeTableService;
+import kh.study.academy.likeTable.vo.LikeTableVO;
 import kh.study.academy.reply.service.ReplyService;
 
 
@@ -31,6 +33,9 @@ public class BoardController {
 	
 	@Resource(name="replyService")
 	private ReplyService replyService;
+	
+	@Resource(name="likeTableService")
+	private LikeTableService likeTableService;
 	
 	//공지사항 리스트
 	@GetMapping("/noticeList")
@@ -127,11 +132,30 @@ public class BoardController {
 		return "content/board/notice_detail";
 	}
 	
+	//좋아요
 	@ResponseBody
 	@PostMapping("/noticeDetailLike")
-	public String noticeDetailLike() {
+	public int noticeDetailLike(int likeCheck, int boardNum, LikeTableVO likeTableVO, Authentication authentication) {
+		User user = (User)authentication.getPrincipal();
+		likeTableVO.setTeacherId(user.getUsername());
 		
-		return "";
+		//좋아요 한 번도 안 눌렀을 때
+		if(likeCheck == 0) {
+			boardService.updateLike(boardNum);
+			
+			likeTableService.insertLike(likeTableVO);
+			likeTableService.updateLikeCheck(likeTableVO);
+		}
+		
+		//좋아요 눌렀을 때
+		else {
+			boardService.updateLikeCancle(boardNum);
+
+			likeTableService.deleteLike(likeTableVO);
+			likeTableService.updateLikeCheckCancle(likeTableVO);
+		}
+
+		return likeCheck;
 	}
 
 	

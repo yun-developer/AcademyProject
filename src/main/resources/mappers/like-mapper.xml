@@ -13,7 +13,7 @@
 
 <!-- 게시글 추천 시 Like 테이블에 insert -->
 <insert id="insertLike">
-	<selectKey resultType="String" keyProperty="paymentCode" order="BEFORE">
+	<selectKey resultType="String" keyProperty="likeCode" order="BEFORE">
 	   SELECT 'LIKE_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(LIKE_CODE, 6))),0) +1, 3, 0) 
 	   FROM LIKE_TABLE
 	</selectKey>
@@ -33,10 +33,26 @@
 <delete id="deleteLike">
 	DELETE FROM LIKE_TABLE
 	WHERE BOARD_NUM = #{boardNum}
-	AND MEMBER_ID = #{memberId}
+	AND TEACHER_ID = #{teacherId}
 </delete>
 
 
+<!-- 게시글 추천 시 Check를 1로 만들어서 중복방지-->
+<update id="updateLikeCheck">
+	UPDATE LIKE_TABLE 
+	SET LIKE_CHECK = 1
+	WHERE BOARD_NUM = #{boardNum}
+	AND TEACHER_ID = #{teacherId}
+</update>
+
+
+<!-- 게시글 추천취소 시 다시 0  -->
+<update id="updateLikeCheckCancle">
+	UPDATE LIKE_TABLE
+	SET LIKE_CHECK = 0
+	WHERE BOARD_NUM = #{boardNum}
+	AND TEACHER_ID = #{teacherId}
+</update>
 
 
 

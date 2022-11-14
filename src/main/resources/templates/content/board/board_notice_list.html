@@ -14,9 +14,10 @@
 				<colgroup>
 					<col width="10%">
 					<col width="30%">
-					<col width="25%">
+					<col width="20%">
 					<col width="20%">
 					<col width="10%">
+					<col width="5%">
 					<col width="5%">
 				</colgroup>
 				<thead>
@@ -26,13 +27,14 @@
 						<th scope="col">작성자</th>
 						<th scope="col">작성일</th>
 						<th scope="col">조회수</th>
+						<th scope="col">추천수</th>
 						<th scope="col"><input type="checkbox" id="checkAll" ></th>
 					</tr>
 				</thead>
 				<tbody>
 					<th:block th:if="${#lists.size(noticeList) == 0}">
 						<tr>
-							<td colspan="6">데이터가 없습니다.</td>
+							<td colspan="7">데이터가 없습니다.</td>
 						</tr>
 					</th:block>
 					<th:block th:unless="${#lists.size(noticeList) == 0}">
@@ -44,6 +46,7 @@
 							<td th:text="${notice.teacherId}"></td>
 							<td th:text="${notice.createDate}"></td>
 							<td th:text="${notice.viewCount}"></td>
+							<td th:text="${notice.likeCodeCnt}"></td>
 							<td><input type="checkbox" class="form-check-input chk"  th:value="${notice.boardNum}" ></td>
 						</tr>
 					</th:block>
