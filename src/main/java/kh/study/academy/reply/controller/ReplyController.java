@@ -51,18 +51,10 @@ public class ReplyController {
 		User user = (User)authentication.getPrincipal();
 		replyVO.setTeacherId(user.getUsername());
 		replyVO.setBoardNum(boardNum);
-		
-		
-		if(replyVO.getReplyContent().equals("") ) {
-			return "redirect:/board/freeDetail";
-		}
-		else {
-			replyService.insertReply(replyVO);
-			//redirect로 갈 때 파라미터 넘기기
-			redirect.addAttribute("boardNum", boardNum);
-			
-		}
-		
+
+		replyService.insertReply(replyVO);
+		//redirect로 갈 때 파라미터 넘기기
+		redirect.addAttribute("boardNum", boardNum);
 		return "redirect:/board/freeDetail";
 	}
 	
