@@ -92,8 +92,10 @@ public class AdminController {
 	 //팝업 페이지에서 교사 권한 승인
 	  @ResponseBody
 	  @PostMapping("/changeTeacherRoleAjax")
-	  public void changeTeacherRoleAjax(TeacherVO teacherVO) {
+	  public String changeTeacherRoleAjax(TeacherVO teacherVO) {
 		  adminService.changeTeacherRole(teacherVO);
+		  
+		  return "교사";
 	  }
 	
 	

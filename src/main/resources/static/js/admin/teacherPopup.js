@@ -8,14 +8,8 @@
 $(document).on("click", "#changeTeacherRoleBtn", function() {
 
 	const teacherCode = document.querySelector('#childTeacherCode').innerText;
-	alert(teacherCode);
 	
 	
-	//const teacherRole = document.querySelector('#changeTeacherRole').value;
-	const teacherRole = document.querySelector('#changeTeacherRole').innerText;
-	
-
-	//alert(teacherRole);
 
 
 
@@ -36,7 +30,7 @@ $(document).on("click", "#changeTeacherRoleBtn", function() {
 		// 만약 Promise리턴을 받으면,
 		if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
 			
-			
+			let str = '';
 			
 			//ajax start
 			$.ajax({
@@ -44,7 +38,19 @@ $(document).on("click", "#changeTeacherRoleBtn", function() {
 				type: 'post',
 				data: {"teacherCode": teacherCode}, //필요한 데이터
 				success: function(result) {
-					alert('aaa');
+					
+					
+					str += `<div class="col-2 text-secondary">권한</div>
+								<div class="col">${result}</div>
+							`;
+					
+					
+					const changeTeacherRoleDiv = document.querySelector('#changeTeacherRoleDiv');
+
+					changeTeacherRoleDiv.innerHTML = ''; /*내용을 지우는것*/
+
+					changeTeacherRoleDiv.insertAdjacentHTML('beforeend', str);
+					
 				},
 				error: function() {
 					alert('실패');

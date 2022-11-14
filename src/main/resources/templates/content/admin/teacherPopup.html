@@ -32,16 +32,19 @@
 				</div>
 				<div class="col">
 					<h5>승인상태</h5>
-					<div class="row mb-2">
+					<div id="changeTeacherRoleDiv" class="row mb-2">
 						<div class="col-2 text-secondary">권한</div>
-						<div class="col" id="changeTeacherRole"
-							th:text="${teacherDetail.teacherRole}"
-							th:value="${teacherDetail.teacherRole}"></div>
-
-						<div>
-							<button id="changeTeacherRoleBtn" 
-								class="btn btn-outline-dark me-md-2">교사승인</button>
-						</div>
+						<div class="col" id="changeTeacherRole" th:text="${teacherDetail.teacherRole}"></div>
+						
+						<!--해당교사가 미승인 상태인 경우에만 교사 승인 버튼이 보이기  -->
+						<th:block th:if="${teacherDetail.teacherRole == '미승인'}">
+						
+							<div>
+								<button id="changeTeacherRoleBtn" 
+									class="btn btn-outline-dark me-md-2">교사승인</button>
+							</div>
+					
+						</th:block>
 					</div>
 				</div>
 			</div>
@@ -51,8 +54,7 @@
 				<div class="row mb-2 align-items-center">
 					<div class="col-2 text-secondary">교사코드</div>
 					<div class="col" id="childTeacherCode"
-						th:text="${teacherDetail.teacherCode}"
-						th:value="${teacherDetail.teacherCode}"></div>
+						th:text="${teacherDetail.teacherCode}"></div>
 				</div>
 
 				<div class="row mb-2 align-items-center">
