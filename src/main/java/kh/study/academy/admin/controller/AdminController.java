@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.sym.Name;
+
 import kh.study.academy.admin.service.AdminService;
 import kh.study.academy.admin.vo.LessonRoomVO;
 import kh.study.academy.admin.vo.SubjectVO;
@@ -64,15 +66,13 @@ public class AdminController {
 	}
 	
 	
-	//교사 팝업으로 이동 ..
+	//교사 상세페이지 팝업으로 이동
 	@RequestMapping("/popup")
-	public String pop( String teacherCode, Model model) {
+	public String pop(String teacherCode, Model model) {
 	
 		
-		System.out.println("@@@@@@@@@@"+teacherCode);
 		model.addAttribute("teacherDetail", adminService.selectTeacherDetail(teacherCode));
 		
-
 		
 		return "content/admin/teacherPopup";
 	}

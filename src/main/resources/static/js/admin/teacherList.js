@@ -72,22 +72,21 @@ for(const chk of chks){
 ///////////////////////////////////////////////////////////////////
 
 //교사 이름 클릭시 팝업 창 띄우는 함수 
-function teacherPopup(){
+function teacherPopup(teacherCode){
 	
+	alert(teacherCode);
 	
-	
+
+
 	//window.open("[팝업을 띄울 파일명 path]", "[별칭]", "[팝업 옵션]")
 	//별칭 지정 -> 1. 팝업 파일을 열고 웹브라우저 새로고침을 눌렀을 때 똑같은 팝업창이 계속해서 열리는 문제를 해결할 수 있다!
-	var pop = window.open("/admin/popup","teacherPopup","width=1100,height=900, scrollbars=yes, resizable=yes");
+	var pop = window.open(`/admin/popup?teacherCode=${teacherCode}`,"teacherPopup","width=1100,height=900, scrollbars=yes, resizable=yes");
 	
 	//팝업이 차단되어 있으면 알림 창 표시
 	if(pop ==null){
 		alert("팝업이 차단되어 있습니다. 팝업 차단을 해제해 주세요")
 	}
 	
-	// 팝업 창으로 이동시 전달할 데이터(교사 아이디)
-	openWin.document.getElementById("teacherCodeForChange").value = document.getElementById("parentTeacherCode").value;
 }
-
 
 

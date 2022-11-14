@@ -41,7 +41,7 @@
 				</div>
 				<div class="col-xs-12 col-lg-6">
 					<div class="input-group mb-2">
-						<span class="input-group-addon col-2">권한[[${paramMap['teacherRole']}]]</span> 
+						<span class="input-group-addon col-2">권한</span> 
 							<div class="in-search-detail NewDataSelect mb-2">
 							<label class="radio-inline lg-mr-10 md-mr-15 rating-form">
 								<input type="radio" class="rating-chk focus" id="search_type1"
@@ -162,7 +162,7 @@
 						<td th:text="${teacher.teacherName}">
 							<input id=parentTeacherCode type="hidden" th:value="${teacher.teacherCode}">
 						</td>
-						<td th:text="${teacher.teacherId}" th:onclick="teacherPopup()"></td>
+						<td th:text="${teacher.teacherId}" th:onclick="teacherPopup([[${teacher.teacherCode}]]);"></td>
 						<td th:text="${teacher.SubjectVO.subjectName}"  th:value="${teacher.subjectCode}"></td>
 						<td th:text="${teacher.teacherTell}"></td>
 						<td th:text="${teacher.teacherStatus}"></td>

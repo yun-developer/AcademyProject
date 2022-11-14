@@ -126,7 +126,7 @@
  	<update id="changeTeacherRole">
 		UPDATE TEACHER
 		SET
-		TEACHER_STATUS = 'Y'
+		TEACHER_ROLE = 'TEACHER'
 		WHERE TEACHER_CODE = #{teacherCode}
 	</update>
 	

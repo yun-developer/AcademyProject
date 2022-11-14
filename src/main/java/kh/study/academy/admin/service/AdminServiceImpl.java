@@ -41,7 +41,6 @@ public class AdminServiceImpl implements AdminService{
 	}
 	
 	// 교사 리스트에서 아이디 클릭 시 해당 교사 상세정보 조회 
-	//수정중
 	@Override
 	public TeacherVO selectTeacherDetail(String teacherCode) {
 		

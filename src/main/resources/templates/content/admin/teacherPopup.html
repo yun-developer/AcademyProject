@@ -17,6 +17,7 @@
 </head>
 <body>
 	<div>
+
 		<!-- 교사 정보  div 여기부터 -->
 		<div class="card mb-5 mx-auto mt-5" style="max-width: 1000px;">
 			<div class="card-body">
@@ -38,7 +39,7 @@
 							th:value="${teacherDetail.teacherRole}"></div>
 
 						<div>
-							<button id="changeTeacherRoleBtn"
+							<button id="changeTeacherRoleBtn" 
 								class="btn btn-outline-dark me-md-2">교사승인</button>
 						</div>
 					</div>
@@ -49,7 +50,7 @@
 				<h5>상세 정보</h5>
 				<div class="row mb-2 align-items-center">
 					<div class="col-2 text-secondary">교사코드</div>
-					<div class="col" id="teacherCodeForChange"
+					<div class="col" id="childTeacherCode"
 						th:text="${teacherDetail.teacherCode}"
 						th:value="${teacherDetail.teacherCode}"></div>
 				</div>

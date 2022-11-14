@@ -1,18 +1,21 @@
 
+
+
+
+
 //교사 승인 버튼을 눌렀을 때 
 
 $(document).on("click", "#changeTeacherRoleBtn", function() {
 
-
-
-
-	//const changeTeacherRole = document.querySelector('#changeTeacherRole').value;
-	const changeTeacherRole = document.querySelector('#changeTeacherRole').innerText;
-	
-	const teacherCode = document.querySelector('#teacherCodeForChange').innerText;
-
-	alert(changeTeacherRole);
+	const teacherCode = document.querySelector('#childTeacherCode').innerText;
 	alert(teacherCode);
+	
+	
+	//const teacherRole = document.querySelector('#changeTeacherRole').value;
+	const teacherRole = document.querySelector('#changeTeacherRole').innerText;
+	
+
+	//alert(teacherRole);
 
 
 
@@ -55,11 +58,7 @@ $(document).on("click", "#changeTeacherRoleBtn", function() {
 		}
 	})
 
-
-
-
-
-
-
-
 });
+
+
+
