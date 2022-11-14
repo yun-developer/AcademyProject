@@ -135,13 +135,15 @@ public class BoardController {
 	//좋아요
 	@ResponseBody
 	@PostMapping("/noticeDetailLike")
-	public int noticeDetailLike(int likeCheck, int boardNum, LikeTableVO likeTableVO, Authentication authentication) {
+	public int noticeDetailLike(int boardNum, LikeTableVO likeTableVO, Authentication authentication) {
 		User user = (User)authentication.getPrincipal();
 		likeTableVO.setTeacherId(user.getUsername());
 		
+		int likeCheck = likeTableService.likeCheck(likeTableVO);
+		
 		//좋아요 한 번도 안 눌렀을 때
 		if(likeCheck == 0) {
-			boardService.updateLike(boardNum);
+			//boardService.updateLike(boardNum);
 			
 			likeTableService.insertLike(likeTableVO);
 			likeTableService.updateLikeCheck(likeTableVO);
@@ -149,7 +151,7 @@ public class BoardController {
 		
 		//좋아요 눌렀을 때
 		else {
-			boardService.updateLikeCancle(boardNum);
+			//boardService.updateLikeCancle(boardNum);
 
 			likeTableService.deleteLike(likeTableVO);
 			likeTableService.updateLikeCheckCancle(likeTableVO);

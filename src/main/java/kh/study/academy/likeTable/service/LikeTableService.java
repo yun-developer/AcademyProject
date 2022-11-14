@@ -12,4 +12,6 @@ public interface LikeTableService {
 	
 	void updateLikeCheck(LikeTableVO likeTableVO);
 	void updateLikeCheckCancle(LikeTableVO likeTableVO);
+	
+	int likeCheck(LikeTableVO likeTableVO);
 }

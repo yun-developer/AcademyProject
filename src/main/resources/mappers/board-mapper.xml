@@ -210,19 +210,19 @@
 
 
 <!-- 게시글 추천수 -->
-<update id="updateLike">
+<!-- <update id="updateLike">
 	UPDATE BOARD
 	SET LIKE_HIT = LIKE_HIT + 1
 	WHERE BOARD_NUM = ${boardNum}
-</update>
+</update> -->
 
 
 <!-- 게시글 추천수 취소 -->
-<delete id="updateLikeCancle">
+<!-- <delete id="updateLikeCancle">
 	UPDATE BOARD
 	SET LIKE_HIT = LIKE_HIT - 1
 	WHERE BOARD_NUM = ${boardNum}
-</delete>
+</delete> -->
 
 
 
