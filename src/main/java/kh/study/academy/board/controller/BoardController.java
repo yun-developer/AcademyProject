@@ -126,6 +126,9 @@ public class BoardController {
 		return "content/board/notice_detail";
 	}
 	
+
+	
+	
 	
 	
 	//자유게시판 리스트

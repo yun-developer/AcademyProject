@@ -50,13 +50,19 @@ public class ReplyController {
 	public String writeFreeReply(ReplyVO replyVO, Authentication authentication, int boardNum, RedirectAttributes redirect) {
 		User user = (User)authentication.getPrincipal();
 		replyVO.setTeacherId(user.getUsername());
-		
 		replyVO.setBoardNum(boardNum);
 		
-		replyService.insertReply(replyVO);
 		
-		//redirect로 갈 때 파라미터 넘기기
-		redirect.addAttribute("boardNum", boardNum);
+		if(replyVO.getReplyContent().equals("") ) {
+			return "redirect:/board/freeDetail";
+		}
+		else {
+			replyService.insertReply(replyVO);
+			//redirect로 갈 때 파라미터 넘기기
+			redirect.addAttribute("boardNum", boardNum);
+			
+		}
+		
 		return "redirect:/board/freeDetail";
 	}
 	

@@ -112,12 +112,14 @@
 
 <!-- 글 수정 -->
 	
-<!-- <update id="updateBoard">
- 		UPDATE BOARD
- 		SET
- 		 = #{}  내가 바꿔야 하는 값
- 		WHERE BOARD_NUM = #{boardNum}
- 	 </update>	 -->
+<update id="updateBoard">
+		UPDATE SPRING_BOARD
+		SET
+		TITLE = #{title}
+		, WRITER = #{writer}
+		, CONTENT = #{content}
+		WHERE BOARD_NUM = #{boardNum}
+	</update>			
 
 
 
