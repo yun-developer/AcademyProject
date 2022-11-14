@@ -11,7 +11,8 @@
 	<result column="VIEW_COUNT" property="viewCount"/> 
 	<result column="CREATE_DATE" property="createDate"/> 
 	<result column="TEACHER_ID" property="teacherId"/> 
-	<result column="REPLY_NUM_CNT" property="replyNumCnt"/> 
+	<result column="TEACHER_ID" property="teacherId"/> 
+	<result column="LIKE_HIT" property="likeHit"/> 
 	<collection property="imgList" resultMap="boardImg"/>
 </resultMap>
 
@@ -177,6 +178,8 @@
 		, VIEW_COUNT
 		, (SELECT COUNT(REPLY_NUM) FROM REPLY
             WHERE BOARD_NUM = B.BOARD_NUM) AS REPLY_NUM_CNT
+        , (SELECT COUNT(LIKE_CODE) FROM LIKE_TABLE
+        	WHERE BOARD_NUM = B.BOARD_NUM) AS LIKE_CODE_CNT
 	FROM BOARD B, TEACHER T
 	WHERE B.TEACHER_ID = T.TEACHER_ID
 	AND BOARD_KIND_CODE = '1'
@@ -199,6 +202,26 @@
 	
 	
 	</delete>
+
+
+
+
+<!-- 게시글 추천수 -->
+<update id="updateLike">
+	UPDATE BOARD
+	SET LIKE_HIT = LIKE_HIT + 1
+	WHERE BOARD_NUM = ${boardNum}
+</update>
+
+
+<!-- 게시글 추천수 취소 -->
+<delete id="updateLikeCancle">
+	UPDATE BOARD
+	SET LIKE_HIT = LIKE_HIT - 1
+	WHERE BOARD_NUM = ${boardNum}
+</delete>
+
+
 
 
 </mapper>

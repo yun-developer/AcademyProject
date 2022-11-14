@@ -79,6 +79,18 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 
+	@Override
+	public void updateLike(int boardNum) {
+		sqlSession.update("boardMapper.updateLike", boardNum);
+	}
+
+
+	@Override
+	public void updateLikeCancle(int boardNum) {
+		sqlSession.update("boardMapper.updateLikeCancle", boardNum);
+	}
+
+
 
 
 	

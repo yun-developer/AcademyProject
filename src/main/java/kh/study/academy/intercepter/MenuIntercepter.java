@@ -20,7 +20,6 @@ public class MenuIntercepter implements HandlerInterceptor {
 		//값을 받은 이후에는 그 값을 전달
 		String menu = request.getParameter("menu");
 		
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+menu);
 		
 		if(menu == null) {
 			
