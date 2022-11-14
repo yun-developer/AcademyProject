@@ -57,7 +57,7 @@
                  <tbody>
                   <th:block th:if="${#lists.size(lessonInfoList) == 0}">
                  	<tr> 
-                 		<td colspan="5">등록된 학급이 없습니다.</td>
+                 		<td colspan="13">등록된 학급이 없습니다.</td>
                  	</tr>
                 </th:block>
                  
@@ -89,7 +89,7 @@
 			</div>
 		  </div>
 		  
-		   	<form th:action="@{/admin/deleteLessonInfo}" method="post" id="deleteLessonInfoForm">  <!-- 폼태그 안에 input가 있어야 데이터를 가져간다.  -->
+		   	<form th:action="@{/lesson/deleteLessonInfo}" method="post" id="deleteLessonInfoForm">  <!-- 폼태그 안에 input가 있어야 데이터를 가져간다.  -->
              <input type="hidden" name="lessonInfoCodes"  value="">  <!-- submit누르면 데이터 안보이게 데이터 가져갈꺼다.  내가 체크한 체크박스들을 이 input태그의 value값을   -->
                <div class="row justify-content-end">
                   <div class="col-2"  style="margin-right:4.4rem;">
@@ -286,7 +286,7 @@
 <!------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
           <script src="https://code.jquery.com/jquery-latest.min.js"></script>   
-		<script type="text/javascript" th:src="@{/js/admin/reg_lessonInfo.js}"></script>
+		<script type="text/javascript" th:src="@{/js/lesson/reg_lessonInfo.js}"></script>
 		<script type="text/javascript" th:src="@{/js/admin/lesson_room.js}"></script>
             
 	</div>

@@ -108,11 +108,11 @@ public class LessonController {
 		
 		
 		// 학급 편성한 리스트들 삭제
-		@GetMapping("/deleteLessonInfo")
+		@PostMapping("/deleteLessonInfo")
 		public String deleteLessonInfo(String lessonInfoCodes) {
 			String[] lessonCodeArr = lessonInfoCodes.split(",");
 			List<String> lessonCodeList = Arrays.asList(lessonCodeArr);
-			
+			System.out.println("~~~~~~~~~~~"+lessonCodeList);
 			LessonInfoVO lessonInfoVO = new LessonInfoVO();
 			lessonInfoVO.setLessonInfoCodeList(lessonCodeList);
 			

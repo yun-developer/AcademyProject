@@ -31,9 +31,9 @@ function lessonInfoDeleteAjax(){
    
 	//체크한 Code 다 들고 온다. Code는 체크박스안에 들어있다. 전체 체크박스에서 체크된 것을 들고 오면 됨
 	const checkedChks = document.querySelectorAll('.chk:checked'); // -> 내가 선택한 체크박스들(여러개) // 나는 클래스가 .chk인 애를 선택할 꺼야 클래스호출은 .을 써주기
-	alert(checkedChks);
+	
 	if(checkedChks.length == 0){
-		 const modal = new bootstrap.Modal('#deleteModal');  // #myModal -> 모달창의 id를 가지고 오는 것이다.
+		 const modal = new bootstrap.Modal('#bb'); 
 	     modal.show();
 		return ;
 	}
@@ -44,8 +44,8 @@ function lessonInfoDeleteAjax(){
 	}	
 
 	LessonInfoForm.querySelector('input').value = lessonInfoCodes;  // cartCode셋팅
-	
-	
+
+
 	LessonInfoForm.submit();
 	
 }
