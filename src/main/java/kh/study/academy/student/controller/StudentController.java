@@ -110,6 +110,16 @@ public class StudentController {
 		return "content/student/assignment_student_page";
 	}
 	
+	//학생을 학급에 배정 팝업창
+	@GetMapping("/popup")
+	public String popuptest(Model model, StudentVO studentVO) {
+		
+		
+		model.addAttribute("student", studentService.selectStuDetail(studentVO.getStudentCode()));
+		
+		return "content/student/assignment_student_popup";
+	}
+	
 	
 	
 	

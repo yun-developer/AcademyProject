@@ -114,6 +114,7 @@
 		, ADDR||' ' ||ADDR_DETAIL AS ADDR
 		, STUDENT_TELL
 		, TO_CHAR(REG_DATE, 'YYYY-MM-DD') AS REG_DATE 
+		, DECODE(STUDENT_GENDER, 'W', '여', '남') AS STUDENT_GENDER
 	<!-- 수강과목, 수강 반, 담당강사 -->
 	FROM STUDENT
 	WHERE STUDENT_CODE = #{studentCode}

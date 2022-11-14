@@ -23,6 +23,11 @@ a{
 	cursor: pointer;
 }
 
+.sName:hover{
+	cursor: pointer;
+	
+}
+
 .hasError{
 	color: red;
 	
