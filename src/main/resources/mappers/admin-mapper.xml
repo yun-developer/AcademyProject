@@ -12,19 +12,18 @@
 	
 	</resultMap> -->
 	
-	 <resultMap type="kh.study.academy.admin.vo.SubjectVO" id="subject">
-		<id column="SUBJECT_CODE" 						property="subjectCode" />
-		<result column="SUBJECT_NAME" 					property="subjectName" />
+	 <resultMap type="kh.study.academy.admin.vo.SubjectVO" 		id="subject">
+		<id column="SUBJECT_CODE" 								property="subjectCode" />
+		<result column="SUBJECT_NAME" 							property="subjectName" />
 		
 	</resultMap> 
 	
 	
-	<resultMap type="kh.study.academy.admin.vo.LessonRoomVO" id="lessonRoom">
-		<id column="LESSON_ROOM_CODE" 					property="lessonRoomCode" />
-		<result column="ROOM_NAME" 						property="roomName" />
-		<result column="LESSON_ROOM_MAX_STUDENT" 		property="lessonRoomMaxStudent" />
-		<result column="IS_USE" 						property="isUse" />
-		
+	<resultMap type="kh.study.academy.admin.vo.LessonRoomVO" 	id="lessonRoom">
+		<id column="LESSON_ROOM_CODE" 							property="lessonRoomCode" />
+		<result column="ROOM_NAME" 								property="roomName" />
+		<result column="LESSON_ROOM_MAX_STUDENT" 				property="lessonRoomMaxStudent" />
+		<result column="IS_USE" 								property="isUse" />
 	</resultMap> 
 
 
@@ -82,6 +81,9 @@
 		</if>
 		<if test="teacherRole !=null and !teacherRole.equals('')">
 		AND TEACHER_ROLE = #{teacherRole}
+			<if test="teacherRole.equals('TEACHER')">
+			OR TEACHER_ROLE = 'ADMIN'
+			</if>
 		</if>
 		<if test="subjectCode !=null and !subjectCode.equals('')">
 		AND T.SUBJECT_CODE = #{subjectCode}
@@ -100,14 +102,13 @@
 			, TEACHER_ID
 			, DECODE(TEACHER_STATUS, 'Y','재직중','퇴사') AS TEACHER_STATUS
 			, DECODE(TEACHER_ROLE, 'UNAPPROVED','미승인','교사') AS TEACHER_ROLE
-			, LESSONS_CODE
 			, T.SUBJECT_CODE
 			, (SELECT SUBJECT_NAME FROM SUBJECT WHERE SUBJECT_CODE = T.SUBJECT_CODE) AS SUBJECT_NAME
 			, DECODE(TEACHER_GENDER,'W','여자','남자') AS TEACHER_GENDER
 			, TO_CHAR(TEACHER_BIRTHDAY, 'YYYY-MM-DD') AS TEACHER_BIRTHDAY
 			, TEACHER_EMAIL
 		FROM TEACHER T
-		WHERE TEACHER_CODE = #{teacherCode]
+		WHERE TEACHER_CODE = #{teacherCode}
 	</select>
 	
 	
