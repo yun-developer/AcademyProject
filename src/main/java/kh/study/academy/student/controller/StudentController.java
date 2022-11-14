@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kh.study.academy.admin.service.AdminService;
+import kh.study.academy.lesson.service.LessonService;
 import kh.study.academy.student.service.StudentService;
 import kh.study.academy.student.vo.PaymentVO;
 import kh.study.academy.student.vo.StudentVO;
@@ -26,6 +27,8 @@ public class StudentController {
 	@Resource(name="adminService")
 	private AdminService adminService;
 	
+	@Resource(name = "lessonService")
+	private LessonService lessonService;
 	
 	
 	//학생 등록 페이지 이동
@@ -114,8 +117,13 @@ public class StudentController {
 	@GetMapping("/popup")
 	public String popuptest(Model model, StudentVO studentVO) {
 		
-		
+		//선택한 학생 정보
 		model.addAttribute("student", studentService.selectStuDetail(studentVO.getStudentCode()));
+		//강의등급 조회
+		model.addAttribute("step", lessonService.selectStepList());
+		//강의목록 조회
+		model.addAttribute("lessonList", lessonService.selectLessonInfoList());
+		
 		
 		return "content/student/assignment_student_popup";
 	}

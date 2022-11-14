@@ -15,7 +15,7 @@ const chkBoxes = document.querySelectorAll('.chk');
 /////////////////함수/////////////////////////////////////////////////////
 function openPopup(popUrl){
 	
-	let popOption = "width = 1100px, height=650px, top=300px, left=300px, scrollbars=yes";
+	let popOption = "width = 1100px, height=800px, top=300px, left=300px, scrollbars=yes";
 	
 	window.open(popUrl,"popupTest",popOption);
 }
