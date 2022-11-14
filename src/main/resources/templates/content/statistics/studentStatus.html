@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz.thymeleaf/layout"
+	layout:decorate="~{layout/base_layout}">
+	
+<div layout:fragment="content">
+
+
+<div class="row">
+	<div class="col-6" >
+		<div>
+			<!--차트 1가 그려질 부분-->
+			<!-- <canvas id="myChart"></canvas> -->
+			<div id="chart">
+			</div>
+			
+		</div>
+
+	</div>
+	<div class="col-6" >
+		<div>
+			<!--차트 2가 그려질 부분-->
+			<!-- <canvas id="myChart"></canvas> -->
+			<div id="chart2">
+			</div>
+			
+		</div>
+	
+	</div>
+</div>
+<div class="row">
+	<div class="col-12" >
+		<div>
+			<!--차트 3가 그려질 부분-->
+			<!-- <canvas id="myChart"></canvas> -->
+			<div id="chart3">
+			
+			차트 뭐넣을까
+			</div>
+			
+		</div>
+	
+	</div>
+	
+</div>
+
+
+
+
+	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	
+	<!-- jquery 문법 로딩 -->
+	<!--순서 잘 맞춰서 적어야 함  -->
+	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript" th:src="@{/js/statistics/studentStatus.js}"></script>
+	
+	
+	
+</div>
+
+</html>
