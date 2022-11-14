@@ -69,3 +69,21 @@ for(const chk of chks){
 		}
 	})
 }
+
+//모달창에서 저장 버튼을 클릭하면 실행되는 함수
+//수강료를 숫자 형태로 바꾼 후 submit 시킴.
+function regLessonInfo(){
+	//---수강료를 숫자로 바꾼다.---
+	//천단위 구분기호를 적용할 인풋태그의 값(value)을 가져온다.
+	let money = document.querySelector('#money').value;//￦1,000
+	// /,/gi는 쉼표를 다 지워준다. replace의 문제는 ₩, ￦의 구별이 달라서 두개 다 빈문자로 해줘야한다.
+	let imsiMoney =  money.replace(/,/gi, '').replace('₩', '').replace('￦', ''); //1000
+
+	document.querySelector('#money').value = imsiMoney;
+	
+	//submit 시킨다.
+	document.querySelector('#regLessonForm').submit();
+	
+	
+}
+

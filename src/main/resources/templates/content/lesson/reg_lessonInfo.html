@@ -43,7 +43,6 @@
 	                     <th scope="col">편성년월</th>
 	                     <th scope="col">학급명</th> <!-- 과학-심화 -->
 	                     <th scope="col">학년</th>
-	                     <th scope="col"></th>
 	                     <th scope="col">수강료</th>
 	                     <th scope="col">요일</th>
 	                     <th scope="col">수업시간</th>
@@ -70,10 +69,9 @@
                   		</td>
                    		<td th:text="${status.count}"></td> 
                    		 <td th:text="${lessonInfo.lessonInfoRegdate}" ></td> 
-                		<td th:text="${lessonInfo.subjectVO.subjectName}"></td> 
-                		<td th:text="${lessonInfo.stepVO.stepName}"></td> 
+                		<td th:text="${lessonInfo.subjectVO.subjectName} + '-' + ${lessonInfo.stepVO.stepName}"></td> 
                         <td th:text="${lessonInfo.year}"></td> 
-                 		<td th:text="${lessonInfo.money}"></td> 
+                 		<td th:text="${#numbers.formatCurrency(lessonInfo.money)}"></td> 
                    		<td th:text="${lessonInfo.lessonDayCode}"></td> 
                     	<td th:text="${lessonInfo.lessonTime}"></td> 
                   		<td th:text="${lessonInfo.lessonRoomVO.roomName}"></td> 
@@ -115,7 +113,7 @@
 				     </div>
 					
 					<!-- 모달 내용글 body -->
-				<form th:action="@{/lesson/saveLessonInfo}" method="post">
+				<form th:action="@{/lesson/saveLessonInfo}" method="post" id="regLessonForm">
 				      <div class="modal-body">
 				      	<div class="row mb-3">
 				      		<div class="col-10">
@@ -185,8 +183,8 @@
 											<div class="col-6 col-lg-2 px-1"><span class="input-group-text h-100 rounded-0" >수강료</span></div>
 												 <div class="col-6 col-lg-5 px-">
 										      	
-<!-- 													<input type="text" id="money" name="money" class="form-control rounded-0 h-100" placeholder="수강료" aria-label="8" aria-describedby="cpaCn" th:value="${#numbers.formatCurrency(300000)}" onkeyup="setformatCurrency();"> -->
-													<input type="text" id="money" name="money" class="form-control rounded-0 h-100" placeholder="수강료" aria-label="8" aria-describedby="cpaCn" value="10000" onkeyup="setformatCurrency();">
+												<input type="text" id="money" name="money" class="form-control rounded-0 h-100" placeholder="수강료" aria-label="8" aria-describedby="cpaCn" th:value="${#numbers.formatCurrency(300000)}" onkeyup="setformatCurrency();">
+													<!-- <input type="text" id="money" name="money" class="form-control rounded-0 h-100" placeholder="수강료" aria-label="8" aria-describedby="cpaCn" value="10000" onkeyup="setformatCurrency();"> -->
 												</div>
 											
 												<div class="col-6 col-lg-5 px-">
@@ -270,7 +268,7 @@
 							<div class="row">
 		      					<div class="col text-end">
 		      		
-					      			<button type="submit" id="updateAmountBtn" class="btn btn-primary btn-sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3rem; --bs-btn-font-size: 1rem;">저장</button>
+					      			<button onclick="regLessonInfo();" type="button" id="updateAmountBtn" class="btn btn-primary btn-sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3rem; --bs-btn-font-size: 1rem;">저장</button>
 					      			<button type="button" id="cancelBtn" data-origin-amount=""  th:onclick="rollbackAmount();"  class="btn btn-secondary btn-sm" data-bs-dismiss="modal" aria-label="Close" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3rem; --bs-btn-font-size: 1rem;">닫기</button>
 					      		</div>
 					      	</div>
