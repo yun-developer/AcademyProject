@@ -77,15 +77,15 @@ public class AdminController {
 		return "content/admin/teacherPopup";
 	}
 	
-	/*
-	 * //교사 상태 변경 클릭시 //수정 중 아직 Ajax 안 만들었음
-	 * 
-	 * @ResponseBody
-	 * 
-	 * @PostMapping("/changeTeacherStatusAjax") public void
-	 * changeTeacherStatus(TeacherVO teacherVO) {
-	 * adminService.changeTeacherStatus(teacherVO); }
-	 */
+	
+	  //팝업 페이지에서 교사 상태 변경
+	  @ResponseBody
+	  @PostMapping("/changeTeacherStatusAjax") 
+	  public void changeTeacherStatus(TeacherVO teacherVO) {
+		  
+		  adminService.changeTeacherStatus(teacherVO); 
+	  }
+	 
 	
 	
 	
