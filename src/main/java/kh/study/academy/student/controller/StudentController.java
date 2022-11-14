@@ -102,7 +102,10 @@ public class StudentController {
 	
 	//학생을 학급에 배정
 	@GetMapping("/assignment")
-	public String assignmentStu() {
+	public String assignmentStu(Model model, String studentName, StudentVO studentVO) {
+		
+		model.addAttribute("stuList", studentService.selectStuList(studentName));
+		
 		
 		return "content/student/assignment_student_page";
 	}
