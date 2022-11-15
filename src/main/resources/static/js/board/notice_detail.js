@@ -25,15 +25,12 @@ function likeAjax(boardNum) {
 				likeDiv.insertAdjacentHTML('beforeend', str);
 				
 	         }
-			
 						
 		},
 		error: function() {
 			alert('실패');
 		}
 	});
-	
-	
 }
 
 

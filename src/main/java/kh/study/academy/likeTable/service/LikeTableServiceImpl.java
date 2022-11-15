@@ -22,16 +22,7 @@ public class LikeTableServiceImpl implements LikeTableService{
 		sqlSession.insert("likeMapper.deleteLike", likeTableVO);
 	}
 
-	@Override
-	public void updateLikeCheck(LikeTableVO likeTableVO) {
-		sqlSession.update("likeMapper.updateLikeCheck", likeTableVO);
-	}
-
-	@Override
-	public void updateLikeCheckCancle(LikeTableVO likeTableVO) {
-		sqlSession.update("likeMapper.updateLikeCheckCancle", likeTableVO);
-	}
-
+	
 	@Override
 	public int likeCheck(LikeTableVO likeTableVO) {
 		return sqlSession.selectOne("likeMapper.likeCheck", likeTableVO);

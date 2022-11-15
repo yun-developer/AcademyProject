@@ -36,33 +36,13 @@
 	AND TEACHER_ID = #{teacherId}
 </delete>
 
-
-<!-- 게시글 추천 시 Check를 1로 만들어서 중복방지-->
-<update id="updateLikeCheck">
-	UPDATE LIKE_TABLE 
-	SET LIKE_CHECK = 1
-	WHERE BOARD_NUM = #{boardNum}
-	AND TEACHER_ID = #{teacherId}
-</update>
-
-
-<!-- 게시글 추천취소 시 다시 0  -->
-<update id="updateLikeCheckCancle">
-	UPDATE LIKE_TABLE
-	SET LIKE_CHECK = 0
-	WHERE BOARD_NUM = #{boardNum}
-	AND TEACHER_ID = #{teacherId}
-</update>
-
-
 <!-- 게시글 추천 중복방지 select문 -->
 <select id="likeCheck" resultType="int">
-	SELECT COUNT(*) FROM LIKE_TABLE 
+	SELECT COUNT(*) AS LIKE_CHECK
+	FROM LIKE_TABLE 
 	WHERE BOARD_NUM = #{boardNum}
 	AND TEACHER_ID = #{teacherId}
 </select>
-
-
 
 
 

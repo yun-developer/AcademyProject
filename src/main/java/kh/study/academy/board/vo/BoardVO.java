@@ -13,7 +13,6 @@ public class BoardVO {
 	private int viewCount;
 	private String createDate;
 	private String teacherId;
-	private int likeHit;
 	private int replyNumCnt;
 	private int likeCodeCnt;
 	
