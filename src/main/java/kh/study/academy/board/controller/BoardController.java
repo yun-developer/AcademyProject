@@ -139,7 +139,7 @@ public class BoardController {
       return "content/board/notice_detail";
    }
    
-   //좋아요
+   //공지사항 좋아요
    @ResponseBody
    @PostMapping("/noticeDetailLike")
    public Map<String, Integer> noticeDetailLike(int boardNum, LikeTableVO likeTableVO, Authentication authentication) {
@@ -222,13 +222,44 @@ public class BoardController {
    
    //자유게시판 상세 읽기
    @GetMapping("/freeDetail")
-   public String freeDetail(Model model, int boardNum) {
+   public String freeDetail(Model model, int boardNum, Authentication authentication, LikeTableVO likeTableVO) {
       model.addAttribute("free", boardService.selectBoardDetail(boardNum));
       model.addAttribute("replyList", replyService.selectReply(boardNum));
       boardService.updateViewCount(boardNum);
+      
+      User user = (User)authentication.getPrincipal();
+      likeTableVO.setTeacherId(user.getUsername());
+      model.addAttribute("likeCheck", likeTableService.likeCheck(likeTableVO));
       return "content/board/free_detail";
    }
    
+   
+ //자유게시판 좋아요
+   @ResponseBody
+   @PostMapping("/freeDetailLike")
+   public Map<String, Integer> freeDetailLike(int boardNum, LikeTableVO likeTableVO, Authentication authentication) {
+      User user = (User)authentication.getPrincipal();
+      likeTableVO.setTeacherId(user.getUsername());
+      
+      int likeCheck = likeTableService.likeCheck(likeTableVO);
+      
+      //좋아요 한 번도 안 눌렀을 때
+      if(likeCheck == 0) {
+         likeTableService.insertLike(likeTableVO);
+      }
+      
+      //좋아요 눌렀을 때
+      else {
+         likeTableService.deleteLike(likeTableVO);
+      }
+
+      
+      Map<String, Integer> map = new HashMap<>();
+      map.put("likeCheck", likeCheck);   // 1 or 0
+      map.put("boardNum", boardNum);   // 글번호
+      
+      return map;
+   }
    
    
    // 자유게시판 수정
