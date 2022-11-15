@@ -97,19 +97,9 @@ public class BoardController {
 
 	}
 	
-	// 자유게시판 수정
-	public String updateBoardNotice() {
-		
-		return "";
-	}
 	
 	
-	
-	
-	
-	
-	
-	// 공지사항 게시글 삭제
+	// 공지사항 목록에서 게시글 삭제
 	@PostMapping("/deleteBoardNotice")
 	public String deleteBoardNotice(String boardNums) {
 		String[] boardNumNotice = boardNums.split(","); // 배열을 리스트로 변환작업 2줄
@@ -238,18 +228,8 @@ public class BoardController {
 	
 	
 	
-	// 자유게시판 수정
-	public String updateBoard() {
-		
-		return "";
-	}
-	
-	
-	
-
-	
-	// 자유게시판 게시글 삭제
-	@PostMapping("/deleteBoard")
+	// 자유게시판 목록에서 게시글 삭제
+	@PostMapping("/deleteBoardFree")
 	public String deleteBoard(String boardNums) {
 		String[] boardNumArr = boardNums.split(","); // 배열을 리스트로 변환작업 2줄
 		List<String> boardNumList = Arrays.asList(boardNumArr);
@@ -262,9 +242,15 @@ public class BoardController {
 		return "redirect:/board/freeList";
 	}
 		
+	
 		
+	// 자유게시판 상세페이지에서 등록한 글 삭제하기	
+	@PostMapping("/deleteFreeDetail")
+	public String deleteFreeDetail(int boardNum) {
+		boardService.deleteFreeDetail(boardNum);
 		
-		
+		return"redirect:/board/freeList";
+	}
 
 		
 	

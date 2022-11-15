@@ -72,7 +72,13 @@ public class BoardServiceImpl implements BoardService{
 		
 	}
 
-
+	// 자유게시판 상세페이지에서 게시글 삭제
+	@Override
+	public void deleteFreeDetail(int boardNum) {
+		sqlSession.delete("boardMapper.deleteFreeDetail",boardNum);
+	}
+	
+	
 	@Override
 	public void updateViewCount(int boardNum) {
 		sqlSession.update("boardMapper.updateViewCount", boardNum);
@@ -89,6 +95,9 @@ public class BoardServiceImpl implements BoardService{
 	public void updateLikeCancle(int boardNum) {
 		sqlSession.update("boardMapper.updateLikeCancle", boardNum);
 	}
+
+
+	
 
 
 

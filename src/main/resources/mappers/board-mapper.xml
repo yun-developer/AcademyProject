@@ -195,36 +195,22 @@
 
 
 <!-- 글 삭제 -->
-	<delete id="deleteBoardFree">
-	<!-- 등록한 과목을 체크해서 삭제 -->
-		DELETE BOARD
-		WHERE BOARD_NUM IN
-		<foreach collection="boardNumList" item="boardNum" separator="," open="(" close=")">
-			#{boardNum}
-		</foreach>
-	
-	
-	</delete>
+<delete id="deleteBoardFree">
+	DELETE BOARD
+	WHERE BOARD_NUM IN
+	<foreach collection="boardNumList" item="boardNum" separator="," open="(" close=")">
+		#{boardNum}
+</foreach>
 
 
+</delete>
 
+<!-- 상세페이지에서 등록한 글 삭제하기 -->
 
-<!-- 게시글 추천수 -->
-<!-- <update id="updateLike">
-	UPDATE BOARD
-	SET LIKE_HIT = LIKE_HIT + 1
-	WHERE BOARD_NUM = ${boardNum}
-</update> -->
-
-
-<!-- 게시글 추천수 취소 -->
-<!-- <delete id="updateLikeCancle">
-	UPDATE BOARD
-	SET LIKE_HIT = LIKE_HIT - 1
-	WHERE BOARD_NUM = ${boardNum}
-</delete> -->
-
-
+<delete id="deleteFreeDetail">
+	DELETE BOARD
+	WHERE BOARD_NUM = #{boardNum}
+</delete>
 
 
 </mapper>

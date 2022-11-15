@@ -69,7 +69,7 @@
 				</button>
 					</div>
 					<div class="col-6">
-						<form th:action="@{/board/deleteBoard}" method="post"  id="deleteStuForm" >
+						<form th:action="@{/board/deleteBoardFree}" method="post"  id="deleteStuForm" >
 							<span class="col-1" sec:authorize="hasRole('ADMIN')">
 				 				<input type="hidden" name="boardNums"  value="">
 								<button type="button" onclick="goDelete();" class="btn btn-outline-danger btn-sm form-control"  >

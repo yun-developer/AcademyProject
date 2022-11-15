@@ -27,6 +27,14 @@ public interface BoardService {
 	// 자유게시판 게시글 삭제
 	void deleteBoardFree(BoardVO boardVO);
 	
+	// 자유게시판 상세페이지에게시글 삭제
+	void deleteFreeDetail(int boardNum);
+	
+	
 	void updateLike(int boardNum);
 	void updateLikeCancle(int boardNum);
+	
+	
+	
+	
 }
