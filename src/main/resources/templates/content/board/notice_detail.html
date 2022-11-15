@@ -55,12 +55,22 @@
 						</button>
 						&nbsp;&nbsp;
 						<span sec:authorize="isAuthenticated()" class="col-12">
-							<span class="text-center" id="likeDiv" th:each="notice : ${notice}">
-								<button th:onclick="likeAjax([[${notice.boardNum}]]);" id="likeButton" style="height: 45px; width: 80px;" class="btn btn-outline-light">
-									<img class="rounded" id="likeimg" th:src="|@{/images/like/suit-heart.svg}|" width="60px" height="60px" style="width: 50px; height: 40px;">
-								</button>
-							</span>
-						</span>
+							<th:block th:if="likeCheck == 0"> 
+								<span class="text-center" id="likeDiv" th:each="notice : ${notice}">
+									<button th:onclick="likeAjax([[${notice.boardNum}]]);" id="likeButton" style="height: 45px; width: 80px;" class="btn btn-outline-light">
+										<img class="rounded" id="likeimg" th:src="|@{/images/like/suit-heart.svg}|" width="60px" height="60px" style="width: 50px; height: 40px;">
+									</button>
+								</span>
+							</th:block>
+							
+							<th:block th:unless="likeCheck == 0">
+								<span class="text-center" id="likeDiv" th:each="notice : ${notice}">
+									<button th:onclick="likeAjax([[${notice.boardNum}]]);" id="likeButton" style="height: 45px; width: 80px;" class="btn btn-outline-light">
+										<img class="rounded" id="likeimg" th:src="|@{/images/like/suit-heart-fill.svg}|" width="60px" height="60px" style="width: 50px; height: 40px;">
+									</button>
+								</span>
+							</th:block>
+ 						</span>
 						
 						
 					</div>

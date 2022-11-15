@@ -1,7 +1,9 @@
 package kh.study.academy.board.controller;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -125,17 +127,21 @@ public class BoardController {
 	
 	//공지사항 상세 읽기
 	@GetMapping("/noticeDetail")
-	public String noticeDetail(Model model, int boardNum) {
+	public String noticeDetail(Model model, int boardNum, LikeTableVO likeTableVO, Authentication authentication) {
 		model.addAttribute("notice", boardService.selectBoardDetail(boardNum));
 		model.addAttribute("replyList", replyService.selectReply(boardNum));
 		boardService.updateViewCount(boardNum);
+		
+		User user = (User)authentication.getPrincipal();
+		likeTableVO.setTeacherId(user.getUsername());
+		model.addAttribute("likeCheck", likeTableService.likeCheck(likeTableVO));
 		return "content/board/notice_detail";
 	}
 	
 	//좋아요
 	@ResponseBody
 	@PostMapping("/noticeDetailLike")
-	public int noticeDetailLike(int boardNum, LikeTableVO likeTableVO, Authentication authentication) {
+	public Map<String, Integer> noticeDetailLike(int boardNum, LikeTableVO likeTableVO, Authentication authentication) {
 		User user = (User)authentication.getPrincipal();
 		likeTableVO.setTeacherId(user.getUsername());
 		
@@ -157,7 +163,13 @@ public class BoardController {
 			likeTableService.updateLikeCheckCancle(likeTableVO);
 		}
 
-		return likeCheck;
+		
+		//글번호, 1 or 0
+		Map<String, Integer> map = new HashMap<>();
+		map.put("likeCheck", likeCheck);
+		map.put("boardNum", boardNum);
+		
+		return map;
 	}
 
 	
