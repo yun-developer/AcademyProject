@@ -10,9 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kh.study.academy.admin.service.AdminService;
 import kh.study.academy.lesson.service.LessonService;
+import kh.study.academy.lesson.vo.LessonInfoVO;
 import kh.study.academy.student.service.StudentService;
 import kh.study.academy.student.vo.PaymentVO;
 import kh.study.academy.student.vo.StudentVO;
@@ -115,17 +117,37 @@ public class StudentController {
 	
 	//학생을 학급에 배정 팝업창
 	@GetMapping("/popup")
-	public String popuptest(Model model, StudentVO studentVO) {
+	public String popuptest(Model model, StudentVO studentVO, LessonInfoVO lessonInfoVO) {
 		
 		//선택한 학생 정보
 		model.addAttribute("student", studentService.selectStuDetail(studentVO.getStudentCode()));
 		//강의등급 조회
 		model.addAttribute("step", lessonService.selectStepList());
 		//강의목록 조회
-		model.addAttribute("lessonList", lessonService.selectLessonInfoList());
+		model.addAttribute("lessonList", lessonService.selectLessonInfoList(lessonInfoVO));
 		
 		
 		return "content/student/assignment_student_popup";
+	}
+	
+	//셀렉트박스 변경에 따른 LessonInfoList
+	@ResponseBody
+	@PostMapping("/selectLessonListAjax")
+	public List<LessonInfoVO> selectLessonList(LessonInfoVO lessonInfoVO, String selectYear){
+		
+		if (!selectYear.equals("")) {
+			
+			int yearValue = Integer.parseInt(selectYear);
+			lessonInfoVO.setYear(yearValue);
+		}
+		else {
+			
+		}
+		System.out.println("QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ"+lessonInfoVO);
+		
+		
+		
+		return  lessonService.selectLessonInfoList(lessonInfoVO);
 	}
 	
 	

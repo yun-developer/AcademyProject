@@ -143,6 +143,18 @@
 			, LESSON_INFO_STATUS
 		FROM LESSON_INFO L 
 		
+ 			WHERE 1 = 1 
+			<if test="subjectCode != null and !subjectCode.equals('')">
+				AND L.SUBJECT_CODE = #{subjectCode}
+			</if>
+			
+			<if test="year != null and year != 0">
+				AND L.YEAR = #{year}
+			</if>
+			<if test="stepCode != null and !stepCode.equals('')">
+				AND L.STEP_CODE = #{stepCode}
+			</if>
+		
 		
 	</select>
 	

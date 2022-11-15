@@ -83,8 +83,8 @@ public class LessonController {
 		model.addAttribute("lessonDayList", lessonService.selectLessonDayList());
 		
 		
-		
-		model.addAttribute("lessonInfoList",lessonService.selectLessonInfoList());
+		//검색 밑에 목록조회
+		model.addAttribute("lessonInfoList",lessonService.selectLessonInfoList(lessonInfoVO));
 		
 		
 		return "content/lesson/reg_lessonInfo";

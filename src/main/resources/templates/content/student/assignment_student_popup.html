@@ -79,7 +79,7 @@
 			    		</div>
 			    		<div class="col" >
 			    			
-			    			<select class="form-select"   aria-label="Default select example" id="searchSub">
+			    			<select class="form-select selectChange"   aria-label="Default select example" id="searchSub">
 								<option value="">선택</option>
 								 <th:block th:each ="sub:${subjectList}" >
 							      <option th:value="${sub.subjectCode}" th:text="${sub.subjectName}" >
@@ -94,7 +94,7 @@
 			    		</div>
 			    		<div class="col" >
 			    		
-			    			<select class="form-select"   aria-label="Default select example" id="searchStep">
+			    			<select class="form-select selectChange"   aria-label="Default select example" id="searchStep">
 								<option value="">선택</option>
 								 <th:block th:each ="step:${step}" >
 							      <option th:value="${step.stepCode}" th:text="${step.stepName}" >
@@ -107,8 +107,8 @@
 				    		학년
 			    		</div>
 			    		<div class="col" >
-			    			<select class="form-select"   aria-label="Default select example" id="searchYear">
-								<option value="">선택</option>
+			    			<select class="form-select selectChange"   aria-label="Default select example" id="searchYear">
+									<option value="">선택</option>
 									<option value="1">고등1</option>
 									<option value="2">고등2</option>
 									<option value="3">고등3</option>
@@ -121,7 +121,7 @@
 				    		편성학급
 			    		</div>
 			    		<div class="col" id="lessonList">
-			    			<select class="form-select"   aria-label="Default select example" id="searchYear">
+			    			<select class="form-select"   aria-label="Default select example" id="selectLesson" name="lessonInfoCode">
 								<option value="">선택</option>
 								 <th:block th:each ="lesson:${lessonList}" >
 							      <option th:value="${lesson.lessonInfoCode}" th:text="${lesson.subjectVO.subjectName + '-' +lesson.stepVO.stepName +'-'+lesson.year +'학년' }" >
@@ -130,14 +130,13 @@
 									
 							</select>
 			    		
-			    		
 			    		</div>
 	    			</div>
 	    			<div class="row mb-2 mt-3 align-items-center " >
 			    		<div class="col-4 ms-3 bg-secondary p-2 bg-opacity-10">
 				    		현재정원 / 최대정원 (잔여)
 			    		</div>
-			    		<div class="col-2" id="Capacity" >2/8 (6)</div>
+			    		<div class="col-2" id="Capacity" >2/8(6)</div>
 			    		
 			    		<div class="col-2 bg-secondary p-2 bg-opacity-10">
 				    		수강료

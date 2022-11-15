@@ -25,7 +25,7 @@ public interface LessonService {
 	void regLessonInfo(LessonInfoVO lessonInfoVO);	
 	
 	// 학급 편성 리스트 조회
-	List<LessonInfoVO> selectLessonInfoList();
+	List<LessonInfoVO> selectLessonInfoList(LessonInfoVO lessonInfoVO);
 	
 	// 학급편성 등록한 것 삭제(체크박스)
 	void deleteLessonInfo(LessonInfoVO lessonInfoVO);

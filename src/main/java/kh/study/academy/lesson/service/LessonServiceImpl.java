@@ -50,8 +50,8 @@ public class LessonServiceImpl implements LessonService{
 
 	// 학급 편성 리스트 조회
 	@Override
-	public List<LessonInfoVO> selectLessonInfoList() {
-		return sqlSession.selectList("lessonMapper.selectLessonInfoList");
+	public List<LessonInfoVO> selectLessonInfoList(LessonInfoVO lessonInfoVO) {
+		return sqlSession.selectList("lessonMapper.selectLessonInfoList", lessonInfoVO);
 	}
 
 	// 학급편성 등록한 것 삭제(체크박스)
