@@ -16,8 +16,8 @@ $(document).on("click", "#changeTeacherRoleBtn", function() {
 	
 	
 	Swal.fire({
-		title: '미승인 회원을 승인하시겠습니까?',
-		text: '다시 되돌릴 수 없습니다. 신중하세요.',
+		title: '교사 승인하시겠습니까?',
+		text: '미승인 회원를 교사로 승인합니다',
 		icon: 'warning',
 
 		showCancelButton: true, // cancel버튼 보이기. 기본은 원래 없음
@@ -42,8 +42,9 @@ $(document).on("click", "#changeTeacherRoleBtn", function() {
 				success: function(result) {
 					
 					
-					str += `<div class="col-2 text-secondary">권한</div>
-								<div class="col">${result}</div>
+					str += `<a href="#" class="btnView" id="">${result}</a>
+					
+					
 							`;
 					
 					
@@ -74,48 +75,98 @@ $(document).on("click", "#teacherStatusSwitch", function() {
 	
 	
 	
-	const teacherStatus = document.querySelector('#teacherStatusSwitch').checked;
-	alert(teacherStatus); // true false 로 뜨네
+	const isteacherStatus = document.querySelector('#teacherStatusSwitch').checked;
+	alert(isteacherStatus); // true false 로 뜨네
 	
-		Swal.fire({
-		title: '교사 상태를 변경하시겠습니까?',
-		text: '선택하신 상태로 교사 재직상태를 변경합니다',
-		icon: 'warning',
-
-		showCancelButton: true, // cancel버튼 보이기. 기본은 원래 없음
-		confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
-		cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
-		confirmButtonText: '승인', // confirm 버튼 텍스트 지정
-		cancelButtonText: '취소', // cancel 버튼 텍스트 지정
-
-		reverseButtons: true, // 버튼 순서 거꾸로
-
-	}).then(result => {
-		// 만약 Promise리턴을 받으면,
-		if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
-			
-		
-			
-			//ajax start
-			$.ajax({
-				url: '/admin/changeTeacherStatusAjax', //요청경로
-				type: 'post',
-				data: {"teacherCode": teacherCode}, //필요한 데이터
-				success: function(result) {
-					
-					alert('aaa');
-					
-					
-				},
-				error: function() {
-					alert('실패');
-				}
-			});
-			//ajax end
-			
-			Swal.fire('상태가 변경되었습니다.', '교사 재직 상태가 변경되었습니다', 'success');
-		}
-	})
+	if(isteacherStatus == false){
+		const teacherStatus = 'N';
 	
+			Swal.fire({
+			title: '재직상태를 변경하시겠습니까?',
+			text: '퇴사 상태로 교사 재직상태를 변경합니다',
+			icon: 'warning',
 	
+			showCancelButton: true, // cancel버튼 보이기. 기본은 원래 없음
+			confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+			cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
+			confirmButtonText: '승인', // confirm 버튼 텍스트 지정
+			cancelButtonText: '취소', // cancel 버튼 텍스트 지정
+	
+			reverseButtons: true, // 버튼 순서 거꾸로
+	
+		}).then(result => {
+			// 만약 Promise리턴을 받으면,
+			if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
+				
+				alert(isteacherStatus);
+				alert(teacherStatus);
+				
+			
+				//ajax start
+				$.ajax({
+					url: '/admin/changeTeacherStatusAjax', //요청경로
+					type: 'post',
+					data: {"teacherCode": teacherCode,"teacherStatus":teacherStatus}, //필요한 데이터
+					success: function(result) {
+						
+						alert('성공');
+						
+						
+					},
+					error: function() {
+						alert('실패');
+					}
+				});
+				//ajax end
+				
+				Swal.fire('상태가 변경되었습니다.', '교사 재직 상태가 변경되었습니다', 'success');
+			}
+		})
+	}
+	if(isteacherStatus == true){
+		const teacherStatus = 'Y';
+	
+			Swal.fire({
+			title: '재직상태를 변경하시겠습니까?',
+			text: '재직중 상태로 교사 재직상태를 변경합니다',
+			icon: 'warning',
+	
+			showCancelButton: true, // cancel버튼 보이기. 기본은 원래 없음
+			confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+			cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
+			confirmButtonText: '승인', // confirm 버튼 텍스트 지정
+			cancelButtonText: '취소', // cancel 버튼 텍스트 지정
+	
+			reverseButtons: true, // 버튼 순서 거꾸로
+	
+		}).then(result => {
+			// 만약 Promise리턴을 받으면,
+			if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
+				
+				alert(isteacherStatus);
+				alert(teacherStatus);
+				
+			
+				
+				//ajax start
+				$.ajax({
+					url: '/admin/changeTeacherStatusAjax', //요청경로
+					type: 'post',
+					data: {"teacherCode": teacherCode,"teacherStatus":teacherStatus}, //필요한 데이터
+					success: function(result) {
+						
+						alert('성공');
+						
+						
+					},
+					error: function() {
+						alert('실패');
+					}
+				});
+				//ajax end
+				
+				Swal.fire('상태가 변경되었습니다.', '교사 재직 상태가 변경되었습니다', 'success');
+			}
+		})
+	}
 });

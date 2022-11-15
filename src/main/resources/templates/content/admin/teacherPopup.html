@@ -6,128 +6,101 @@
 	xmlns:layout="http://www.ultraq.net.nz.thymeleaf/layout"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
+
+
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<script src="https://kit.fontawesome.com/4a1b2cc96b.js" crossorigin="anonymous"></script>
+
+
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
 	crossorigin="anonymous">
-<link href="/css/common.css" rel="stylesheet">
+<link href="/css/teacherPopup.css" rel="stylesheet">
 <!--위치 중요함 -->
 
 </head>
 <body>
-	<div>
-
-		<!-- 교사 정보  div 여기부터 -->
-		<div class="card mb-5 mx-auto mt-5" style="max-width: 1000px;">
-			<div class="card-body">
-				<h3 class="card-title">교사정보</h3>
-				<p class="card-text ">
-					<small class="text-muted">미승인 교사의 상태를 변경할 수 있습니다</small>
-				</p>
-				<div class="row">
-					<div class="col-2">
-						<img th:src=@{/images/선생님.png} class="img-thumbnail" width="100%">
-					</div>
-				</div>
-				<div class="col">
-					<h5>승인상태</h5>
-					<div id="changeTeacherRoleDiv" class="row mb-2">
-						<div class="col-2 text-secondary">권한</div>
-						<div class="col" id="changeTeacherRole" th:text="${teacherDetail.teacherRole}"></div>
-						
-						<!--해당교사가 미승인 상태인 경우에만 교사 승인 버튼이 보이기  -->
-						<th:block th:if="${teacherDetail.teacherRole == '미승인'}">
-						
-							<div>
-								<button id="changeTeacherRoleBtn" 
-									class="btn btn-outline-dark me-md-2">교사승인</button>
-							</div>
-					
-						</th:block>
-					</div>
-				</div>
-			</div>
-
-			<div class="card-text">
-				<h5>상세 정보</h5>
-				<div class="row mb-2 align-items-center">
-					<div class="col-2 text-secondary">교사코드</div>
-					<div class="col" id="childTeacherCode"
-						th:text="${teacherDetail.teacherCode}"></div>
-				</div>
-
-				<div class="row mb-2 align-items-center">
-					<div class="col-2 text-secondary">이름</div>
-					<div class="col" th:text="${teacherDetail.teacherName}"></div>
-				</div>
-				<div class="row mb-2 align-items-center">
-					<div class="col-2 text-secondary">아이디</div>
-					<div class="col" th:text="${teacherDetail.teacherId}"></div>
-				</div>
-				<div class="row mb-2 align-items-center">
-					<div class="col-2 text-secondary">성별</div>
-					<div class="col" th:text="${teacherDetail.teacherGender}"></div>
-				</div>
-				<div class="row mb-2 align-items-center">
-					<div class="col-2 text-secondary">이메일</div>
-					<div class="col" th:text="${teacherDetail.teacherEmail}"></div>
-				</div>
-
-				<div class="row mb-2 align-items-center">
-					<div class="col-2 text-secondary">연락처</div>
-					<div class="col" th:text="${teacherDetail.teacherTell}"></div>
-				</div>
-
-				<div class="row mb-2">
-					<div class="col-2 text-secondary">담당과목</div>
-					<div class="col" th:text="${teacherDetail.SubjectVO.subjectName}"></div>
-
-				</div>
-
-				<div class="row mb-2">
-					<div class="col-2 text-secondary">경력사항</div>
-					<div class="col" th:text="${teacherDetail.career}"></div>
-				</div>
-				<div class="row mb-2">
-					<div class="col-2 text-secondary">생년월일</div>
-					<div class="col" th:text="${teacherDetail.teacherBirthday}"></div>
-				</div>
-
-				<div class="row mb-4">
-					<div class="col-2 text-secondary">재직상태</div>
-					<div class="col" th:text="${teacherDetail.teacherStatus}">
-					
-					</div>
-					<div class="form-check form-switch">
-						<input class="form-check-input" type="checkbox" role="switch"
-							id="teacherStatusSwitch" checked> <label
-							class="form-check-label" for="teacherStatusSwitch"></label>
-					</div>
 
 
 
-
-				</div>
-
-
-
-			</div>
+<section>
+	<nav class="menu">
+		<!-- <a href="#"><i class="fas fa-bars"></i></a>
+		<a href="#"><i class="far fa-sticky-note"></i></a> -->
+	</nav>
+	<article class="profile">
+		<img th:src="|@{/images/profile/}${teacherDetail.profileImgVO.storedFileName}|">
+	
+		<h1>[[${teacherDetail.teacherName}]]</h1>
+		<h2 id="childTeacherCode">[[${teacherDetail.teacherCode}]]</h2>
+		
+		
+		<div id="changeTeacherRoleDiv">
+		<!-- 해당교사가 미승인 상태인 경우에만 교사 승인 버튼이 보이기 -->
+		<th:block th:if="${teacherDetail.teacherRole == '미승인'}">
+			<a href="#" class="btnView1" id="changeTeacherRoleBtn" >교사 승인</a>
+			<!-- <div>
+				<button id="changeTeacherRoleBtn" 
+					class="btn btn-outline-dark me-md-2">교사승인</button>
+			</div> -->
+	
+		</th:block>
+		<th:block th:if="${teacherDetail.teacherRole == '교사'}">
+			<a href="#" class="btnView" id="" th:text="${teacherDetail.teacherRole}">교사 승인</a>
+		</th:block>
 		</div>
-	</div>
+
+		
+		<!-- <a href="#" class="btnView" id="changeTeacherRoleBtn" th:text="${teacherDetail.teacherRole}">교사 승인</a> -->
+		<ul class="contact">
+			<li>
+				<i class="fa-solid fa-pen"></i>
+				<span>[[${teacherDetail.SubjectVO.subjectName}]] 선생님</span>
+			</li>
+			<li>
+				<i class="fa-solid fa-id-card-clip"></i>
+				<span>[[${teacherDetail.teacherId}]]</span>
+			</li>
+			<li>
+				<i class="fa-solid fa-venus-mars"></i>
+				<span>[[${teacherDetail.teacherGender}]]</span>
+			</li>
+			<li>
+				<i class="fa-solid fa-phone"></i>
+				<span>[[${teacherDetail.teacherTell}]]</span>
+			</li>
+			<li>
+				<i class="fas fa-envelope"></i>
+				<span>[[${teacherDetail.teacherEmail}]]</span>
+			</li>
+			<li>
+				<i class="fa-solid fa-map-pin"></i>
+				<span>[[${teacherDetail.career}]]</span>
+			</li>
+			<li>
+				<i class="fa-solid fa-cake-candles"></i>
+				<span>[[${teacherDetail.teacherBirthday}]]</span>
+			</li>
+			<li>
+				<i class="fa-solid fa-bolt"></i>
+				<span>[[${teacherDetail.teacherStatus}]]</span>
+				<span class="form-check form-switch">
+					<input class="form-check-input" type="checkbox" role="switch"
+					id="teacherStatusSwitch" checked> 
+					<label class="form-check-label" for="teacherStatusSwitch"></label>
+				</span>
+			</li>
+		</ul>
+
+
+	
+	</article>
+</section>
 
 
 
-
-	<!-- 임시 -->
-	<div>
-		<div th:text="${teacherDetail}"></div>
-		<button th:onclick="closePopup();"
-			class="btn btn-outline-dark me-md-2" onclick="window.close()">닫기</button>
-	</div>
-	<!-- 임시 여기까지-->
-
-	</div>
 
 
 
