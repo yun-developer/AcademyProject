@@ -1,13 +1,17 @@
-alert(1111);
+//alert(1111);
 
 function replyNoRegAjax(){
 
-	const replyTag = document.querySelector('#counter')
-   
+	const content = document.querySelector('#replyContent')
 
-	if(replyTag.length == 0){
-		 const modal = new bootstrap.Modal('#deleteModal');  // #myModal -> 모달창의 id를 가지고 오는 것이다.
-	     modal.show();
-		return ;
+	if(content.value == "" ){
+		alert("내용을 입력해주세요");
+		return;
 	}
+	else{
+		alert("입력함");
+	document.querySelector('#frmBoardContentsComment').submit();
+		
+	}
+	
 }
