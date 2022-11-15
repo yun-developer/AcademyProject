@@ -132,6 +132,7 @@ public class BoardController {
 		model.addAttribute("replyList", replyService.selectReply(boardNum));
 		boardService.updateViewCount(boardNum);
 		
+		
 		User user = (User)authentication.getPrincipal();
 		likeTableVO.setTeacherId(user.getUsername());
 		model.addAttribute("likeCheck", likeTableService.likeCheck(likeTableVO));
