@@ -55,7 +55,7 @@ public class BoardController {
    // 이미지 파일 없이 컨트롤러에 올 수 있도록 메소드 따로 생성
    
    
-   
+
    
    
    //공지사항 글쓰기
@@ -97,17 +97,6 @@ public class BoardController {
 
    }
    
-   // 자유게시판 수정
-   public String updateBoardNotice() {
-      
-      return "";
-   }
-   
-   
-   
-   
-   
-   
    
    // 공지사항 게시글 삭제
    @PostMapping("/deleteBoardNotice")
@@ -139,6 +128,36 @@ public class BoardController {
       return "content/board/notice_detail";
    }
    
+   
+   // 공지사항 상세페이지에서 등록한 글 삭제하기	
+
+	@PostMapping("/deleteNoticeDetail")
+	public String deleteNoticeDetail(int boardNum) {
+		boardService.deleteFreeDetail(boardNum);
+		
+		return"redirect:/board/freeList";
+	}
+
+	
+      
+   // 자유게시판 상세페이지에서 글 수정 페이지로 이동
+   @RequestMapping("/updateNoticeDetailFrom")
+   public String updateNoticeDetailFrom(int boardNum, Model model) {
+	   
+	   model.addAttribute("free", boardService.selectBoardDetail(boardNum));
+	   
+      return "content/board/update_free_detail";
+   }
+
+   // 글 수정 페이지에서 글 수정하기
+   @RequestMapping("/updateNoticeDetail")
+   public String updateNoticeDetail(BoardVO boardVO,Model model) {
+
+	   boardService.updateFreeDetail(boardVO);
+
+	   return "redirect:/board/freeDetail?boardNum=" + boardVO.getBoardNum();
+   }
+   
    //공지사항 좋아요
    @ResponseBody
    @PostMapping("/noticeDetailLike")
@@ -167,7 +186,7 @@ public class BoardController {
    }
 
    
-   
+ //-----------------------------------------------------------------------------------------------------------------------  
    
    
    //자유게시판 리스트
@@ -234,6 +253,57 @@ public class BoardController {
    }
    
    
+   
+   // 자유게시판 게시글 삭제
+   @PostMapping("/deleteBoard")
+   public String deleteBoard(String boardNums) {
+      String[] boardNumArr = boardNums.split(","); // 배열을 리스트로 변환작업 2줄
+      List<String> boardNumList = Arrays.asList(boardNumArr);
+      
+      BoardVO boardVO = new BoardVO();
+      boardVO.setBoardNumList(boardNumList);
+      
+      boardService.deleteBoardFree(boardVO);
+      
+      return "redirect:/board/freeList";
+   }
+      
+      
+      
+   // 자유게시판 상세페이지에서 등록한 글 삭제하기	
+	@PostMapping("/deleteFreeDetail")
+	public String deleteFreeDetail(int boardNum) {
+		boardService.deleteFreeDetail(boardNum);
+		
+		return"redirect:/board/freeList";
+	}
+
+	
+      
+   // 자유게시판 상세페이지에서 글 수정 페이지로 이동
+   @RequestMapping("/updateFreeDetailFrom")
+   public String updateFreeDetailFrom(int boardNum, Model model) {
+	   
+	   model.addAttribute("free", boardService.selectBoardDetail(boardNum));
+	   
+      return "content/board/update_free_detail";
+   }
+   
+   
+   
+   // 글 수정 페이지에서 글 수정하기
+   @RequestMapping("/updateFreeDetail")
+   public String updateFreeDetail(BoardVO boardVO,Model model) {
+
+	   boardService.updateFreeDetail(boardVO);
+
+	   return "redirect:/board/freeDetail?boardNum=" + boardVO.getBoardNum();
+   }
+   
+   
+   
+   
+   
  //자유게시판 좋아요
    @ResponseBody
    @PostMapping("/freeDetailLike")
@@ -261,43 +331,8 @@ public class BoardController {
       return map;
    }
    
-   
-   // 자유게시판 수정
-   public String updateBoard() {
-      
-      return "";
-   }
-   
-   
-   
 
-   
-   // 자유게시판 게시글 삭제
-   @PostMapping("/deleteBoard")
-   public String deleteBoard(String boardNums) {
-      String[] boardNumArr = boardNums.split(","); // 배열을 리스트로 변환작업 2줄
-      List<String> boardNumList = Arrays.asList(boardNumArr);
-      
-      BoardVO boardVO = new BoardVO();
-      boardVO.setBoardNumList(boardNumList);
-      
-      boardService.deleteBoardFree(boardVO);
-      
-      return "redirect:/board/freeList";
-   }
-      
-      
-      
-// 자유게시판 상세페이지에서 등록한 글 삭제하기	
-	@PostMapping("/deleteFreeDetail")
-	public String deleteFreeDetail(int boardNum) {
-		boardService.deleteFreeDetail(boardNum);
-		
-		return"redirect:/board/freeList";
-	}
-
-      
-   
+	      
    
    
 }

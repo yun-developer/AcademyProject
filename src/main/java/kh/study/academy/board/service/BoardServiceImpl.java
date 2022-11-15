@@ -71,11 +71,33 @@ public class BoardServiceImpl implements BoardService{
 		sqlSession.delete("boardMapper.deleteBoardFree", boardVO);
 		
 	}
+	
+	// 공지사항 상세페이지에서 게시글 삭제
+	@Override
+	public void deleteNoticeDetail(int boardNum) {
+		// TODO Auto-generated method stub
+		
+	}
 
+	
 	// 자유게시판 상세페이지에서 게시글 삭제
 	@Override
 	public void deleteFreeDetail(int boardNum) {
 		sqlSession.delete("boardMapper.deleteFreeDetail",boardNum);
+	}
+	
+	
+	// 공지사항 상세 페이지에서 게시글 수정
+	@Override
+	public void updateNoticeDetail(BoardVO boardVO) {
+		sqlSession.update("boardMapper.updateNoticeDetail",boardVO);
+		
+	}
+	
+	// 자유게시판 상세 페이지에서 게시글 수정
+	@Override
+	public void updateFreeDetail(BoardVO boardVO) {
+		sqlSession.update("boardMapper.updateFreeDetail",boardVO);
 	}
 	
 	
@@ -95,6 +117,14 @@ public class BoardServiceImpl implements BoardService{
 	public void updateLikeCancle(int boardNum) {
 		sqlSession.update("boardMapper.updateLikeCancle", boardNum);
 	}
+
+
+
+
+
+
+
+
 
 
 	

@@ -38,7 +38,7 @@
 </select>
 
 
-<!-- 공지사항 게시판 -->
+<!-- /////////////////공지사항 게시판////////////////// -->
 <!-- 글 등록 -->
 <insert id="insertNotice">
 	INSERT INTO BOARD (
@@ -114,31 +114,44 @@
 
 
 
-<!-- 글 수정 -->
-	
-<update id="updateBoard">
-		UPDATE SPRING_BOARD
-		SET
-		TITLE = #{title}
-		, WRITER = #{writer}
-		, CONTENT = #{content}
-		WHERE BOARD_NUM = #{boardNum}
-	</update>			
 
+<!-- 공지사항 글 상세페이지에서 글 수정 -->
+
+<update id="updateNoticeDetail">
+
+	UPDATE BOARD
+	SET
+		BOARD_TITLE = #{boardTitle}
+		, BOARD_CONTENT = #{boardContent}
+	WHERE BOARD_NUM = #{boardNum}
+
+
+</update>		
+
+
+
+<!-- 자유게시판 상세페이지에서 등록한 글 삭제 -->
+
+<delete id="deleteFreeDetail">
+	DELETE BOARD
+	WHERE BOARD_NUM = #{boardNum}
+</delete>
+
+
+</mapper>
 
 
 
 <!-- 글 삭제 -->
-	<delete id="deleteBoardNotice">
-	<!-- 등록한 과목을 체크해서 삭제 -->
+
+<delete id="deleteBoardNotice">
+<!-- 등록한 과목을 체크해서 삭제 -->
 		DELETE BOARD
 		WHERE BOARD_NUM IN
 		<foreach collection="boardNumList" item="boardNum" separator="," open="(" close=")">
 			#{boardNum}
 		</foreach>
-	
-	
-	</delete>
+</delete>
 
 
 <!-- 조회수 -->
@@ -190,11 +203,23 @@
 </select>
 
 
-<!-- 글 수정 -->
+<!-- 자유게시판 글 상세페이지에서 글 수정 -->
+
+<update id="updateFreeDetail">
+
+	UPDATE BOARD
+	SET
+		BOARD_TITLE = #{boardTitle}
+		, BOARD_CONTENT = #{boardContent}
+	WHERE BOARD_NUM = #{boardNum}
+
+
+</update>
 
 
 
-<!-- 글 삭제 -->
+
+<!-- 자유게시판 글 리스트에서 체크박스해서 글 삭제 -->
 <delete id="deleteBoardFree">
 	DELETE BOARD
 	WHERE BOARD_NUM IN
@@ -205,7 +230,7 @@
 
 </delete>
 
-<!-- 상세페이지에서 등록한 글 삭제하기 -->
+<!-- 자유게시판 상세페이지에서 등록한 글 삭제 -->
 
 <delete id="deleteFreeDetail">
 	DELETE BOARD

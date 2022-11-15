@@ -49,6 +49,17 @@
 					                  </div>
 					               </div>
 					             </form>
+					             <form th:action="@{/board/updateFreeDetailFrom}" method="post" id="updateStuForm">  <!-- 폼태그 안에 input가 있어야 데이터를 가져간다.  -->
+					             <th:block th:each="free : ${free}">
+					             <input type="hidden" name="boardNum"  th:value="${free.boardNum}"> <!--  submit누르면 데이터 안보이게 데이터 가져갈꺼다.  내가 체크한 체크박스들을 이 input태그의 value값을   -->
+					             </th:block>
+					               <div class="row justify-content-end">
+					                  <div class="col-2"  style="margin-right:4.8rem; ">
+					                        <button type="submit" class="btn btn-warning flex-end" >수정</button>
+					                  </div>
+					               </div>
+					             </form>
+					             
 						</div>
 						<div class="subheader pb-6 border-bottom" style="margin-bottom: 20px;"></div>
 							<div th:each="free : ${free}">
