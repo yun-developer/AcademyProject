@@ -70,14 +70,13 @@ $(document).on("click", "#changeTeacherRoleBtn", function() {
 
 
 //교사 상태 변경  
-//구현 중임
 $(document).on("click", "#teacherStatusSwitch", function() {
 	
-	
-	
 	const isteacherStatus = document.querySelector('#teacherStatusSwitch').checked;
-	alert(isteacherStatus); // true false 로 뜨네
 	
+	
+	
+	//스위치를 off(퇴사)로 변경시 
 	if(isteacherStatus == false){
 		const teacherStatus = 'N';
 	
@@ -97,10 +96,6 @@ $(document).on("click", "#teacherStatusSwitch", function() {
 		}).then(result => {
 			// 만약 Promise리턴을 받으면,
 			if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
-				
-				alert(isteacherStatus);
-				alert(teacherStatus);
-				
 			
 				//ajax start
 				$.ajax({
@@ -109,8 +104,13 @@ $(document).on("click", "#teacherStatusSwitch", function() {
 					data: {"teacherCode": teacherCode,"teacherStatus":teacherStatus}, //필요한 데이터
 					success: function(result) {
 						
-						alert('성공');
 						
+						str += `퇴사`;
+						
+						
+						const changeStatusText = document.querySelector('#changeStatusText');
+						changeStatusText.innerHTML = ''; /*내용을 지우는것*/
+						changeStatusText.insertAdjacentHTML('beforeend', str);
 						
 					},
 					error: function() {
@@ -119,10 +119,12 @@ $(document).on("click", "#teacherStatusSwitch", function() {
 				});
 				//ajax end
 				
-				Swal.fire('상태가 변경되었습니다.', '교사 재직 상태가 변경되었습니다', 'success');
+				Swal.fire('재직상태 변경.', '재직상태가 퇴사로 변경되었습니다', 'success');
 			}
 		})
 	}
+	
+	//스위치를 on(재직중)으로 변경시 
 	if(isteacherStatus == true){
 		const teacherStatus = 'Y';
 	
@@ -142,11 +144,7 @@ $(document).on("click", "#teacherStatusSwitch", function() {
 		}).then(result => {
 			// 만약 Promise리턴을 받으면,
 			if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
-				
-				alert(isteacherStatus);
-				alert(teacherStatus);
-				
-			
+						
 				
 				//ajax start
 				$.ajax({
@@ -155,8 +153,13 @@ $(document).on("click", "#teacherStatusSwitch", function() {
 					data: {"teacherCode": teacherCode,"teacherStatus":teacherStatus}, //필요한 데이터
 					success: function(result) {
 						
-						alert('성공');
 						
+						str += `재직중`;
+						
+						const changeStatusText = document.querySelector('#changeStatusText');
+						changeStatusText.innerHTML = ''; /*내용을 지우는것*/
+						changeStatusText.insertAdjacentHTML('beforeend', str);
+					
 						
 					},
 					error: function() {
@@ -165,7 +168,7 @@ $(document).on("click", "#teacherStatusSwitch", function() {
 				});
 				//ajax end
 				
-				Swal.fire('상태가 변경되었습니다.', '교사 재직 상태가 변경되었습니다', 'success');
+				Swal.fire('재직상태 변경.', '재직상태가 재직중으로 변경되었습니다', 'success');
 			}
 		})
 	}

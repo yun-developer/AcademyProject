@@ -5,4 +5,12 @@
 
 
 
-//
+//평가수정 모달 내 저장 버튼을 눌렀을 때 실행되는 함수
+function updateTest()  {
+ 	alert(11);
+}
+
+//평가수정 모달 내 삭제 버튼을 눌렀을 때 실행되는 함수 
+function deleteTest()  {
+ 	alert(33);
+}

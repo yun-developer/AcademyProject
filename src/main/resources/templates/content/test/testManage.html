@@ -79,11 +79,20 @@
 					<th scope="col">학생이름</th>
 					<th scope="col">교사이름</th>
 					<th scope="col">학급명</th>
-					<th scope="col" class="bi bi-arrow-through-heart-fill">평가결과 입력</th>
+					<th scope="col" class="bi bi-arrow-through-heart-fill">평가결과 수정</th>
 				</tr>
 			</thead>
 			<tbody class="table-group-divider">
-				<th:block th:if="${#lists.size(search)==0}">
+				
+					<tr>
+						<td><input type="checkbox" class="chk"></td>
+						<td>학생이름</td>
+						<td>교사이름</td>
+						<td>학급명</td>
+						<td><input type="button" class="btn btn-outline-dark me-md-2"
+							value="수정" data-bs-toggle="modal" data-bs-target="#testInfoChange"></td>
+					</tr>
+				<!-- <th:block th:if="${#lists.size(search)==0}">
 					<tr>
 						<td colspan="5">학생없음</td>
 					</tr>
@@ -95,9 +104,9 @@
 						<td th:text="${student.teacherName}"></td>
 						<td th:text="${student}"></td>
 						<td><input type="button" class="btn btn-outline-dark me-md-2"
-							value="수정"></td>
+							value="수정" data-bs-toggle="modal" data-bs-target="#exampleModal"></td>
 					</tr>
-				</th:block>
+				</th:block> -->
 			</tbody>
 
 
@@ -106,6 +115,48 @@
 
 	<!--학생 리스트 div 끝-->
 
+    <!-- 평가 수정 모달 시작-------------------------------------------------------------------------------------------------------------------------------->            
+    <!-- Modal -->
+	<div class="modal fade" id="testInfoChange" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="exampleModalLabel">평가결과 수정</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<!-- Modal body 시작 -->
+				<form th:action="@{/test/updateScore}" method="post" id="UpdateOrDeleteForm">
+					<div class="modal-body">
+						<div class="row">
+							<div class="form-group input-group mb-1">
+								<div class="col-6 col-lg-2 px-0">
+									<span class="input-group-text h-100 rounded-0">점수</span>
+								</div>
+								<div class="col-6 col-lg-10 px-1 rounded-1">
+									<input type="text" id="" name=""
+										class="form-control rounded-0 h-100" placeholder="점수"
+										aria-label="8" aria-describedby="cpaCn" value="10">
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Modal body 끝 -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-bs-dismiss="modal">취소</button>
+						<button onclick="deleteTest();" type="button" class="btn btn-danger">삭제</button>
+						<button onclick="updateTest();" type="button" class="btn btn-primary">저장</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+    
+    
+    
+    
+    <!--모달 끝---------------------------------------------------------------------------------------------------------------------------------------------------->            
 
 
 
