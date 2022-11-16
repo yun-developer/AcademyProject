@@ -28,12 +28,7 @@ public class TestServiceImpl implements TestService{
 		return sqlSession.selectList("testMapper.searchTest", map);
 	}
 	
-	//평가 관리 페이지에서 전체 학생 조회
-	//하는 중
-	@Override
-	public List<StudentVO> selectAllstudent(TestVO testVO) {
-		return sqlSession.selectList("testMapper.selectAllstudent",testVO);
-	}
+
 	
 	//점수 수정
 	@Override

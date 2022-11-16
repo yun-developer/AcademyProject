@@ -18,9 +18,8 @@
 			<div class="info mb-2">
 				<b>
 				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-</svg>
-				
+				  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+				</svg>
 				 검색</b>
 			</div>
 			<div class="row search-detail-form">
@@ -49,7 +48,7 @@
 							<button type="submit" name="btn-detail-search"
 								class="btn btn-outline-dark me-md-2">
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-  								<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+  									<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
 								</svg>
 								검색</button>
 						</div>
@@ -59,7 +58,7 @@
 		</section>
 	</form>
 	<!--조회 div 끝  -->
- <!-- 엑셀 시작-->
+ 	<!-- 엑셀 시작-->
 	<div class="dt-buttons mt-5" style="text-align: right;">
 		<button
 			class="btn btn-outline-dark me-md-2"
@@ -74,7 +73,8 @@
 		<table class="table table-hover text-center align-middle ">
 			<thead>
 				<tr>
-					<th scope="col"><input type="checkbox" id="checkAll">
+					<th scope="col">
+						<input type="checkbox" id="checkAll">
 					</th>
 					<th scope="col">학생이름</th>
 					<th scope="col">교사이름</th>
@@ -84,10 +84,10 @@
 			</thead>
 			<tbody class="table-group-divider">
 				<th:block th:if="${#lists.size(search)==0}">
-			<tr><td>학생없음</td></tr>
+					<tr>
+						<td colspan="5">학생없음</td>
+					</tr>
 				</th:block>
-				
-				
 				<th:block th:unless="${#lists.size(search)==0}">
 					<tr th:each="student:${search}">
 						<td><input type="checkbox" class="chk"></td>
@@ -95,9 +95,7 @@
 						<td th:text="${student.teacherName}"></td>
 						<td th:text="${student}"></td>
 						<td><input type="button" class="btn btn-outline-dark me-md-2"
-							value="수정">
-						</td>
-
+							value="수정"></td>
 					</tr>
 				</th:block>
 			</tbody>
@@ -108,6 +106,17 @@
 
 	<!--학생 리스트 div 끝-->
 
+
+
+
+
+
+
+
+	<!-- jquery 문법 로딩 -->
+	<!--순서 잘 맞춰서 적어야 함  -->
+	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript" th:src="@{/js/test/testManage.js}"></script>
 
 </div>
 
