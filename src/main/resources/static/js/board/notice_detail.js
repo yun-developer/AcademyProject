@@ -50,3 +50,80 @@ $("#replyLength").keyup(function(e) {
 			$('#replyLengthCheck').text("(500 / 최대 500자)");
 		}
 	});
+	
+	
+//공지사항 상세페이지에서 삭제 버튼 클릭
+function DetailNoticeDelete() {
+
+	const deleteForm = document.querySelector('#deleteStuForm');	// from태그의 id가 deleteStuForm 인 것
+	
+	
+		Swal.fire({
+		   title: '정말 삭제하시겠습니까?',
+		   icon: 'warning',
+		   
+		   showCancelButton: true, // cancel버튼 보이기. 기본은 원래 없음
+		   confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+		   cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
+		   confirmButtonText: '확인', // confirm 버튼 텍스트 지정
+		   cancelButtonText: '취소', // cancel 버튼 텍스트 지정
+		   
+		   
+		}).then(result => {
+		   // 만약 Promise리턴을 받으면,
+		   if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
+			//문자열로 만들어서 던져 줌
+
+			let boardNum = deleteForm.querySelector('input[type="hidden"]').value
+					
+				    
+			deleteForm.submit();
+			
+			   /*-> 1,2,  boardNums가져오기 위해서는 반복하고 있는 목록 데이터에서 체크박스 input태그 안에 value값에 baordNum을 넣어줘야 한다.*/
+			
+			//type이 히든인 input태그를 찾아서 value안에 boardNum을 넣어준다. 목록이라서 boardNums로 변수만듦.
+			  
+			// 그리고 submit을 시켜준다. submit을 하면 form태그 액션이 실행된다.
+			
+			}
+		});
+	}	
+	
+
+//공지사항 수정 상세페이지에서 수정완료 버튼 클릭
+function updateNoticeDelete() {
+alert(1111);
+	const deleteForm = document.querySelector('#deleteStuForm');	// from태그의 id가 deleteStuForm 인 것
+	
+	
+		Swal.fire({
+		   title: '정말 삭제하시겠습니까?',
+		   icon: 'warning',
+		   
+		   showCancelButton: true, // cancel버튼 보이기. 기본은 원래 없음
+		   confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+		   cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
+		   confirmButtonText: '확인', // confirm 버튼 텍스트 지정
+		   cancelButtonText: '취소', // cancel 버튼 텍스트 지정
+		   
+		   
+		}).then(result => {
+		   // 만약 Promise리턴을 받으면,
+		   if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
+			//문자열로 만들어서 던져 줌
+
+			let boardNum = deleteForm.querySelector('input[type="hidden"]').value
+					
+				    
+			deleteForm.submit();
+			
+			   /*-> 1,2,  boardNums가져오기 위해서는 반복하고 있는 목록 데이터에서 체크박스 input태그 안에 value값에 baordNum을 넣어줘야 한다.*/
+			
+			//type이 히든인 input태그를 찾아서 value안에 boardNum을 넣어준다. 목록이라서 boardNums로 변수만듦.
+			  
+			// 그리고 submit을 시켜준다. submit을 하면 form태그 액션이 실행된다.
+			
+			}
+		});
+	}	
+	
