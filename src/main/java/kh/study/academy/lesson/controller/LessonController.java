@@ -41,7 +41,7 @@ public class LessonController {
 	@GetMapping("/main")
 	public String mainPage( Model model) {
 		model.addAttribute("noticeList", boardService.selectNoticeMain());
-		model.addAttribute("freeList", boardService.selectFreeBoard());
+		model.addAttribute("freeList", boardService.selectFreeMain());
 		System.out.println("mainPage컨트롤러 실행");
 		
 		return "content/lesson/lesson_main";
