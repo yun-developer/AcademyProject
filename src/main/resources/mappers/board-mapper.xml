@@ -13,7 +13,6 @@
 	<result column="TEACHER_ID" property="teacherId"/> 
 	<result column="REPLY_NUM_CNT" property="replyNumCnt"/> 
 	<result column="LIKE_CODE_CNT" property="likeCodeCnt"/> 
-	<result column="LIKE_HIT" property="likeHit"/> 
 	<collection property="imgList" resultMap="boardImg"/>
 </resultMap>
 
@@ -117,7 +116,7 @@
 
 <!-- 공지사항 글 상세페이지에서 글 수정 -->
 
-<update id="updateNoticeDetail">
+<!-- <update id="updateNoticeDetail">
 
 	UPDATE BOARD
 	SET
@@ -126,16 +125,16 @@
 	WHERE BOARD_NUM = #{boardNum}
 
 
-</update>		
+</update>		 -->
 
 
 
 <!-- 자유게시판 상세페이지에서 등록한 글 삭제 -->
 
-<delete id="deleteFreeDetail">
+<!-- <delete id="deleteNoticeDetail">
 	DELETE BOARD
 	WHERE BOARD_NUM = #{boardNum}
-</delete>
+</delete> -->
 
 
 
