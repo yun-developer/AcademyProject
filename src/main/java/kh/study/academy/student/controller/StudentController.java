@@ -105,7 +105,7 @@ public class StudentController {
 		return "content/student/update_student_page";
 	}
 	
-	//학생을 학급에 배정
+	//학생을 학급에 배정하는페이지로 이동
 	@GetMapping("/assignment")
 	public String assignmentStu(Model model, String studentName, StudentVO studentVO) {
 		
@@ -143,13 +143,20 @@ public class StudentController {
 		else {
 			
 		}
-		System.out.println("QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ"+lessonInfoVO);
-		
-		
 		
 		return  lessonService.selectLessonInfoList(lessonInfoVO);
 	}
 	
+	//학생편성
+	@PostMapping("/assingnStuProcess")
+	public String assingnStuProcess() {
+		
+		//학생편성시 nowStudent +1, attendeCode, PayCode 코드가 같이 등록.
+		
+		
+		
+		return "redirect:/stu/assignment";
+	}
 	
 	
 	

@@ -18,6 +18,7 @@ public interface BoardService {
 	List<BoardVO> selectNoticeMain();
 	
 	List<BoardVO> selectFreeBoard();
+	List<BoardVO> selectFreeMain();
 	
 	BoardVO selectBoardDetail(int boardNum);
 	

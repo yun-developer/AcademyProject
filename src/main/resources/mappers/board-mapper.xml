@@ -97,10 +97,12 @@
 
 <!-- 메인페이지 공지사항 조회 -->
 <select id="selectNoticeMain" resultMap="board">
-	SELECT BOARD_TITLE
+	SELECT BOARD_NUM 
+		, BOARD_TITLE
 	FROM BOARD
 	WHERE BOARD_KIND_CODE = 0 
-    AND ROWNUM &gt; 1 AND ROWNUM &lt; 10
+    AND ROWNUM &gt;= 1 AND ROWNUM &lt;= 5
+    ORDER BY BOARD_NUM DESC
 </select>
 
 
@@ -210,6 +212,19 @@
 	AND BOARD_KIND_CODE = '1'
 	ORDER BY BOARD_NUM DESC
 </select>
+
+
+<!-- 메인페이지 자유게시판 조회 -->
+<select id="selectFreeMain" resultMap="board">
+	SELECT BOARD_TITLE
+    , (SELECT COUNT(LIKE_CODE) FROM LIKE_TABLE
+        	WHERE BOARD_NUM = B.BOARD_NUM) AS LIKE_CODE_CNT
+	FROM BOARD B
+	WHERE BOARD_KIND_CODE = 1 
+    AND ROWNUM &gt;= 1 AND ROWNUM &lt;= 5
+    ORDER BY LIKE_CODE_CNT DESC
+</select>
+
 
 
 <!-- 자유게시판 글 상세페이지에서 글 수정 -->

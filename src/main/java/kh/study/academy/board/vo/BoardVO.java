@@ -16,6 +16,7 @@ public class BoardVO {
 	private int replyNumCnt;
 	private int likeCodeCnt;
 	
+	
 	private List<BoardImgVO> imgList;
 	
 	private List<String> boardNumList;
