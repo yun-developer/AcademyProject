@@ -140,7 +140,7 @@ public class BoardController {
 
 	
       
-   // 자유게시판 상세페이지에서 글 수정 페이지로 이동
+   // 공지사항 상세페이지에서 글 수정 페이지로 이동
    @RequestMapping("/updateNoticeDetailFrom")
    public String updateNoticeDetailFrom(int boardNum, Model model) {
 	   
@@ -149,7 +149,7 @@ public class BoardController {
       return "content/board/update_free_detail";
    }
 
-   // 글 수정 페이지에서 글 수정하기
+   // 공지사항 글 수정 페이지에서 글 수정하기
    @RequestMapping("/updateNoticeDetail")
    public String updateNoticeDetail(BoardVO boardVO,Model model) {
 
