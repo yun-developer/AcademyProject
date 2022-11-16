@@ -8,7 +8,7 @@
 <div layout:fragment="content">
 
 
- <main id="js-page-content" role="main" class="page-content" style="padding-bottom:0px;">
+<main id="js-page-content" role="main" class="page-content" style="padding-bottom:0px;">
 
 
 <div class="row">
@@ -23,13 +23,13 @@
 			<div class="panel-container show">
 				<div class="panel-content">
 							
-				  <form th:action="@{/board/updateFreeDetail}" method="post" id="updateStuForm"> 
-					<div class="form-group input-group mb-1">
+				  <form th:action="@{/board/updateNoticeDetail}" method="post" id="updateStuForm"> 
+ 					<div class="form-group input-group mb-1">
 						<div class="col-6 col-lg-2 px-0"><span class="input-group-text h-100 rounded-0">제목</span></div>
-						<div class="subheader pb-6"   th:each="notice : ${Notice}">
+						<div class="subheader pb-6"   th:each="notice : ${notice}">
 					     <input type="text" id="boardTitle" name="boardTitle" th:value="${notice.boardTitle}" class="form-control rounded-0"  >
 						</div>
-					</div>
+					</div> 
 		
 					<div>
 						<div style="font-size: 18px;">
@@ -39,18 +39,18 @@
 						</div>
 					</div>
 					<div class="subheader pb-6 border-bottom" style="margin-bottom: 20px;"></div>
-					<div class="form-group input-group mb-1">
+					 <div class="form-group input-group mb-1">
 						<div class="col-6 col-lg-2 px-0"><span class="input-group-text h-100 rounded-0">내용</span></div>
-						<div class="subheader pb-6"   th:each="notice : ${Notice}">
+						<div class="subheader pb-6"   th:each="notice : ${notice}">
 					     <input type="text" id="boardContent" name="boardContent" th:value="${notice.boardContent}" class="form-control rounded-0"  >
 						</div>
-					</div>	
+					</div>	 
 
 
-			           
-			            <th:block th:each="notice : ${Notice}">
-			             <input type="hidden" name="boardNum"  th:value="${notice.boardNum}"> 
-			              </th:block>
+			           <!-- 폼태그 안에 input가 있어야 데이터를 가져간다.  -->
+			             <th:block th:each="notice : ${notice}">
+			             <input type="hidden" name="boardNum"  th:value="${notice.boardNum}">  
+			              </th:block> 
 			               <div class="row justify-content-end">
 			                  <div class="col-2"  style="margin-right:4.8rem; ">
 			                        <button type="submit" class="btn btn-warning flex-end" >수정완료</button>
@@ -70,7 +70,6 @@
 </div>
 </main>
 </div>
-	
 				
 				
 				

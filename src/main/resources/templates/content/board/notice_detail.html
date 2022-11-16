@@ -12,8 +12,7 @@
    }
 </style> 
 <div class="panel">
-			<div class="panel-hdr" style="margin-bottom: 20px; font-size: 16px;">
-				공지사항<span class="fw-300"></span>
+		<h2>공지사항<span class="fw-300"></span></h2>
 			</div>
 			<div class="panel-container show">
 				<div class="panel-content">
@@ -28,8 +27,8 @@
 							</div>
 							
 							<form th:action="@{/board/deleteNoticeDetail}" method="post" id="deleteStuForm">  
-					             <th:block th:each="free : ${free}">
-					             <input type="hidden" name="boardNum"  th:value="${free.boardNum}">  
+					             <th:block th:each="notice: ${notice}">
+					             <input type="hidden" name="boardNum"  th:value="${notice.boardNum}">  
 					             </th:block>
 					               <div class="row justify-content-end">
 					                  <div class="col-2"  style="margin-right:4.8rem; ">

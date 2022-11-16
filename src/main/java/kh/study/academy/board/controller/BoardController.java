@@ -129,13 +129,13 @@ public class BoardController {
    }
    
    
-   // 공지사항 상세페이지에서 등록한 글 삭제하기	
+   // 공지사항 상세페이지에서 글 삭제하기	
 
 	@PostMapping("/deleteNoticeDetail")
 	public String deleteNoticeDetail(int boardNum) {
 		boardService.deleteFreeDetail(boardNum);
 		
-		return"redirect:/board/freeList";
+		return"redirect:/board/noticeList";
 	}
 
 	
@@ -144,12 +144,12 @@ public class BoardController {
    @RequestMapping("/updateNoticeDetailFrom")
    public String updateNoticeDetailFrom(int boardNum, Model model) {
 	   
-	   model.addAttribute("Notice", boardService.selectBoardDetail(boardNum));
+	   model.addAttribute("notice", boardService.selectBoardDetail(boardNum));
 	   
       return "content/board/update_notice_detail";
    }
 
-   // 글 수정 페이지에서 글 수정하기
+   // 공지사항 글 수정 페이지에서 글 수정하기
    @RequestMapping("/updateNoticeDetail")
    public String updateNoticeDetail(BoardVO boardVO,Model model) {
 
@@ -291,7 +291,7 @@ public class BoardController {
    
    
    
-   // 글 수정 페이지에서 글 수정하기
+   // 자유게시판 글 수정 페이지에서 글 수정하기
    @RequestMapping("/updateFreeDetail")
    public String updateFreeDetail(BoardVO boardVO,Model model) {
 

@@ -89,7 +89,7 @@ public class BoardServiceImpl implements BoardService{
 	// 공지사항 상세페이지에서 게시글 삭제
 	@Override
 	public void deleteNoticeDetail(int boardNum) {
-		// TODO Auto-generated method stub
+		sqlSession.delete("boardMapper.deleteNoticeDetail", boardNum);
 		
 	}
 

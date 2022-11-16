@@ -136,7 +136,7 @@ WHERE ROWNUM &gt;= 1 AND ROWNUM &lt;= 5
 
 <!-- 공지사항 글 상세페이지에서 글 수정 -->
 
-<!-- <update id="updateNoticeDetail">
+ <update id="updateNoticeDetail">
 
 	UPDATE BOARD
 	SET
@@ -145,16 +145,16 @@ WHERE ROWNUM &gt;= 1 AND ROWNUM &lt;= 5
 	WHERE BOARD_NUM = #{boardNum}
 
 
-</update>		 -->
+</update>		
 
 
 
-<!-- 자유게시판 상세페이지에서 등록한 글 삭제 -->
+<!-- 공지사항 상세페이지에서 글 삭제 -->
 
-<!-- <delete id="deleteNoticeDetail">
+<delete id="deleteNoticeDetail">
 	DELETE BOARD
 	WHERE BOARD_NUM = #{boardNum}
-</delete> -->
+</delete> 
 
 
 
