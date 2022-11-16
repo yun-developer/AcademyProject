@@ -2,7 +2,7 @@
 
 function replyNoRegAjax(){
 
-	const content = document.querySelector('#replyContent')
+	const content = document.querySelector('#replyLength')
 
 	if(content.value == "" ){
 		alert("내용을 입력해주세요");
