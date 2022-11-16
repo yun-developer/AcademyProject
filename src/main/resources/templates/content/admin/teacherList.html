@@ -130,8 +130,8 @@
 
 <!--여기부터 리스트  -->
 
-<div class="row mt-5">
-여기서부터 리스트
+<div class="row mt-5" id="table_box_bootstrap">
+
 		<table class="table table-hover text-center align-middle ">
 			<!-- 세로로 가운데로 -->
 			<thead>
@@ -162,7 +162,7 @@
 						<td th:text="${teacher.teacherName}">
 							<input id=parentTeacherCode type="hidden" th:value="${teacher.teacherCode}">
 						</td>
-						<td th:text="${teacher.teacherId}" th:onclick="teacherPopup([[${teacher.teacherCode}]]);"></td>
+						<td><span class="sName" th:text="${teacher.teacherId}" th:onclick="teacherPopup([[${teacher.teacherCode}]]);"></span> </td>
 						<td th:text="${teacher.SubjectVO.subjectName}"  th:value="${teacher.subjectCode}"></td>
 						<td th:text="${teacher.teacherTell}"></td>
 						<td th:text="${teacher.teacherStatus}"></td>
@@ -181,8 +181,7 @@
 
 
 
-	<!-- jquery 문법 로딩 -->
-	<!--순서 잘 맞춰서 적어야 함  -->
+	<script th:src="@{/js/paginator.js}"></script>	
 	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 	<script type="text/javascript" th:src="@{/js/admin/teacherList.js}"></script>
 

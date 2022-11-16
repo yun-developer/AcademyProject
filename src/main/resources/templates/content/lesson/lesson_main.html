@@ -52,7 +52,7 @@
 			<ul>
 				<li>
 					<div class="mini-title-box" >
-						<a href="/ewha/news/notice.do?mode=view&amp;articleNo=337403"
+						<a th:href="@{/board/noticeDetail(boardNum=${notice.boardNum})}"
 							title="자세히 보기"> 
 							<span class="mini-title"> [[${notice.boardTitle}]]</span>
 						</a>
@@ -75,7 +75,7 @@
 			<ul>
 				<li>
 					<div class="mini-title-box" >
-						<a href="/ewha/news/notice.do?mode=view&amp;articleNo=337403"
+						<a th:href="@{/board/freeDetail(boardNum=${free.boardNum})}"
 							title="자세히 보기"> 
 							<span class="mini-title"> [[${free.boardTitle}]]</span>
 						</a>

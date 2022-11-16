@@ -11,7 +11,7 @@
 		
 		
 		<!-- 아래 칼럼 수정 필요 -->
-		<result column="SUBJECT_CODE" 						property="subjectCode" />
+		<result column="SUBJECT_CODE" 							property="subjectCode" />
 		<result column="STUDENT_CODE" 							property="studentCode" />
 		
 		
@@ -67,17 +67,6 @@
 		</if>
 	</select>
 	
-	
-	<!--평가 관리 페이지에서 전체 학생 조회   -->
-	<select id="selectAllstudent" resultMap="studentMapper.student">
-		SELECT STUDENT_CODE
-			, STUDENT_NAME
-			<!-- 담당 교사 -->
-			<!-- 반  -->
-		FROM STUDENT
-		ORDER BY STUDENT_CODE ASC
-	
-	</select>
 	
 	
 	
