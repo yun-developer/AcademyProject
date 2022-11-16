@@ -105,11 +105,11 @@ $(document).on("click", "#teacherStatusSwitch", function() {
 					success: function(result) {
 						
 						
-						str += `퇴사`;
 						
 						
 						const changeStatusText = document.querySelector('#changeStatusText');
 						changeStatusText.innerHTML = ''; /*내용을 지우는것*/
+						str += `퇴사`;
 						changeStatusText.insertAdjacentHTML('beforeend', str);
 						
 					},
@@ -154,10 +154,10 @@ $(document).on("click", "#teacherStatusSwitch", function() {
 					success: function(result) {
 						
 						
-						str += `재직중`;
 						
 						const changeStatusText = document.querySelector('#changeStatusText');
 						changeStatusText.innerHTML = ''; /*내용을 지우는것*/
+						str += `재직중`;
 						changeStatusText.insertAdjacentHTML('beforeend', str);
 					
 						

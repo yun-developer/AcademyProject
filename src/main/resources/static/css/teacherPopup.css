@@ -142,7 +142,7 @@ section ul.contact li:last-child{
 }
 
 section ul.contact li i{
-	width: 20%;
+	width: 100%;
 	text-align: center;
 	color:#555;
 	font-size: 15px;
