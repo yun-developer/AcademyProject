@@ -112,8 +112,8 @@
 							<fieldset class="w-100">
 								<div class="form-group input-group mb-1">
 									<div id="froala-editor" class="col-12 col-lg-11 px-1 rounded-0">
-										<textarea name="replyContent" class="form-control" rows="5"></textarea>
-										<span id="counter" class="text-muted">(0 / 최대 500자)</span>
+										<textarea name="replyLength" id="replyLength" class="form-control" rows="5"></textarea>
+										<span id="replyLengthCheck" class="text-muted">(0 / 최대 500자)</span>
 									</div>
 									<div class="col-12 col-lg-1">
 										<div>&nbsp;</div>
@@ -173,11 +173,11 @@
 
 
 		</div>
-		</div>
 
 
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="sweetalert2.all.min.js"></script>
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>   
 <script type="text/javascript" th:src="@{/js/board/notice_detail.js}"></script>	
 
