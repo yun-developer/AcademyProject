@@ -49,8 +49,15 @@ public class BoardServiceImpl implements BoardService{
 	}
 	
 	@Override
-	public List<BoardVO> selectFreeBoard(int boardKindCode) {
-		return sqlSession.selectList("boardMapper.selectFreeBoard", boardKindCode);
+	public List<BoardVO> selectNoticeMain() {
+		return sqlSession.selectList("boardMapper.selectNoticeMain");
+	}
+	
+	
+	
+	@Override
+	public List<BoardVO> selectFreeBoard() {
+		return sqlSession.selectList("boardMapper.selectFreeBoard");
 	}
 
 	@Override
@@ -75,7 +82,8 @@ public class BoardServiceImpl implements BoardService{
 	// 공지사항 상세페이지에서 게시글 삭제
 	@Override
 	public void deleteNoticeDetail(int boardNum) {
-		sqlSession.delete("boardMapper.updateNoticeDetail",boardNum);
+		// TODO Auto-generated method stub
+		
 	}
 
 	
@@ -116,6 +124,9 @@ public class BoardServiceImpl implements BoardService{
 	public void updateLikeCancle(int boardNum) {
 		sqlSession.update("boardMapper.updateLikeCancle", boardNum);
 	}
+
+
+	
 
 
 

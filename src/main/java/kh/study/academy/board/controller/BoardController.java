@@ -140,7 +140,7 @@ public class BoardController {
 
 	
       
-   // 공지사항 상세페이지에서 글 수정 페이지로 이동
+   // 자유게시판 상세페이지에서 글 수정 페이지로 이동
    @RequestMapping("/updateNoticeDetailFrom")
    public String updateNoticeDetailFrom(int boardNum, Model model) {
 	   
@@ -149,7 +149,7 @@ public class BoardController {
       return "content/board/update_free_detail";
    }
 
-   // 공지사항 글 수정 페이지에서 글 수정하기
+   // 글 수정 페이지에서 글 수정하기
    @RequestMapping("/updateNoticeDetail")
    public String updateNoticeDetail(BoardVO boardVO,Model model) {
 
@@ -192,7 +192,7 @@ public class BoardController {
    //자유게시판 리스트
    @GetMapping("/freeList")
    public String freeList(Model model) {
-      model.addAttribute("freeList", boardService.selectFreeBoard(1));
+      model.addAttribute("freeList", boardService.selectFreeBoard());
       return "content/board/board_free_list";
    }
    
