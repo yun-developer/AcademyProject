@@ -17,7 +17,7 @@ const capacityDiv = document.querySelector('#capacity');
 const moneyDiv = document.querySelector('#money');
 
 //버틍
-const assingnStuBtn = document.querySelector('#assingnStu');
+const assingnStuForm = document.querySelector('#assingnStuForm');
 
 //inputLessonCode
 const inputLessonCode = document.querySelector('#inputLessonCode');
@@ -47,6 +47,10 @@ function newCapacityandMoney(getCode){
 			moneyDiv.insertAdjacentHTML('beforeend', moneyStr);
 			
 			inputLessonCode.value = getCode;
+			
+			if(resultLesson[0].nowStudentCnt == resultLesson[0].maxStudent){
+				alert('정원이 모두 찼음.')
+			}
 		},
 		error: function() {
 			alert('실패');
@@ -60,7 +64,32 @@ function newCapacityandMoney(getCode){
 //저장 버튼 클릭시 등록
 function assingnStudent (){
 	
-	assingnStuBtn.submut();
+	
+	      Swal.fire({
+			   title: '학생이 편성되었습니다.',
+			   text: '',
+			   icon: 'success',
+			   
+			   showCancelButton: false, // cancel버튼 보이기. 기본은 원래 없음
+			   confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+			   cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
+			   confirmButtonText: '승인', // confirm 버튼 텍스트 지정
+			   cancelButtonText: '취소', // cancel 버튼 텍스트 지정
+			   
+			   reverseButtons: true, // 버튼 순서 거꾸로
+			   
+			}).then(result => {
+			   // 만약 Promise리턴을 받으면,
+			   if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
+
+					assingnStuForm.submit();
+			   	  	
+					/*window.open('','_self').close();*/ 
+			
+			   }
+			});
+	
+	
 }
 
 

@@ -1,6 +1,7 @@
 package kh.study.academy.student.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -19,4 +20,7 @@ public interface StudentService {
 	void deleteStu(String studentCode);
 	
 	StudentVO selectStuDetail(String studentCode);
+	
+	//학생편성
+	void assignStu(Map<String, String> map);
 }

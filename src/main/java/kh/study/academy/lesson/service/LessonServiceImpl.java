@@ -60,6 +60,13 @@ public class LessonServiceImpl implements LessonService{
 		sqlSession.delete("lessonMapper.deleteLessonInfo", lessonInfoVO);
 	}
 
+	//학생등록시 nowStudent +1증가
+	@Override
+	public void updateNowStudent(String lessonInfoCode) {
+		sqlSession.update("lessonMapper.updateNowStudent", lessonInfoCode);
+		
+	}
+
 
 
 

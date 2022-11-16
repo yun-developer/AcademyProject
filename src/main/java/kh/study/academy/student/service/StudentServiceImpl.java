@@ -1,6 +1,7 @@
 package kh.study.academy.student.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,6 +56,13 @@ public class StudentServiceImpl implements StudentService{
 	@Override
 	public StudentVO selectStuDetail(String studentCode) {
 		return sqlSession.selectOne("studentMapper.selectStuDetail", studentCode);
+	}
+	
+	//학생 편성
+	@Override
+	public void assignStu(Map<String, String> map) {
+		sqlSession.insert("studentMapper.assignStu", map);
+		
 	}
 
 	

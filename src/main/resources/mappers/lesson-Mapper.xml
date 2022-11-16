@@ -175,8 +175,11 @@
 		</delete>
 	 
 	 
-	 <!--  -->
-	 
-	 
+	 <!-- 학생등록시 nowStudent +1증가  -->
+	 <update id="updateNowStudent">
+		 UPDATE LESSON_INFO
+		SET NOW_STUDENT_CNT = (SELECT MAX(NOW_STUDENT_CNT)+1 FROM LESSON_INFO WHERE LESSON_INFO_CODE = #{lessonInfoCode})
+		WHERE LESSON_INFO_CODE = #{lessonInfoCode}
+	 </update>	 
 
 </mapper>

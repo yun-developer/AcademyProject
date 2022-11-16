@@ -2,6 +2,7 @@ package kh.study.academy.student.controller;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -10,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kh.study.academy.admin.service.AdminService;
@@ -149,13 +151,15 @@ public class StudentController {
 	
 	//학생편성
 	@PostMapping("/assingnStuProcess")
-	public String assingnStuProcess() {
+	public void assingnStuProcess(@RequestParam Map<String, String> paramMap) {
 		
 		//학생편성시 nowStudent +1, attendeCode, PayCode 코드가 같이 등록.
+		//학생편성
+		studentService.assignStu(paramMap);
+		//nowStudent +1
+		lessonService.updateNowStudent(paramMap.get("lessonInfoCode"));
 		
-		
-		
-		return "redirect:/stu/assignment";
+		/* return "redirect:/stu/assignment"; */
 	}
 	
 	
