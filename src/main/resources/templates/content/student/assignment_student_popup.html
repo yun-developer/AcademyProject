@@ -134,24 +134,27 @@
 	    			</div>
 	    			<div class="row mb-2 mt-3 align-items-center " >
 			    		<div class="col-4 ms-3 bg-secondary p-2 bg-opacity-10">
-				    		현재정원 / 최대정원 (잔여)
+				    		현재정원 / 최대정원
 			    		</div>
-			    		<div class="col-2" id="Capacity" >2/8(6)</div>
+			    		<div class="col-2" id="capacity"></div>
 			    		
 			    		<div class="col-2 bg-secondary p-2 bg-opacity-10">
 				    		수강료
 			    		</div>
-			    		<div class="col" id="money"> 100,000</div>
+			    		<div class="col" id="money"> </div>
 	    			</div>
 			    	
 		    	</div>
 			    
 			 </div>
 		  </div>
-		  
+		  			<form th:action="@{/stu/assingnStuProcess}" method="post">
 	    			<div class="d-grid gap-2 col-6 mx-auto">
-					  <button class="btn btn-primary" type="button"> 저 장 </button>
+	    				<input type="hidden" name="studentCode" id="inputStuCode" th:value="${student.studentCode}">
+	    				<input type="hidden" name="lessonInfoCode" id="inputLessonCode" value="">
+					  <button class="btn btn-primary" type="button" id="assingnStu"> 저 장 </button>
 					</div>
+		  			</form>
 
 
 		</div>

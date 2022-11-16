@@ -10,6 +10,7 @@
 		<result column="YEAR" 												property="year" />
 		<result column="TEACHER_CODE" 										property="teacherCode" />
 		<result column="SUBJECT_CODE" 										property="subjectCode" />
+		<result column="MAX_STUDENT" 										property="maxStudent" />
 		<result column="NOW_STUDENT_CNT" 									property="nowStudentCnt" />
 		<result column="MONEY" 												property="money" />
 		<result column="LESSON_INFO_REGDATE" 								property="lessonInfoRegdate" />
@@ -129,6 +130,7 @@
 				FROM STEP
 				WHERE STEP_CODE = L.STEP_CODE) AS STEP_NAME
 			, YEAR
+			, NOW_STUDENT_CNT
 			, MAX_STUDENT
 			, MONEY
 			, LESSON_DAY_CODE
@@ -154,6 +156,9 @@
 			<if test="stepCode != null and !stepCode.equals('')">
 				AND L.STEP_CODE = #{stepCode}
 			</if>
+			<if test="lessonInfoCode != null and !lessonInfoCode.equals('')">
+				AND LESSON_INFO_CODE = #{lessonInfoCode}
+			</if>
 		
 		
 	</select>
@@ -168,6 +173,10 @@
 			</foreach>
 	
 		</delete>
+	 
+	 
+	 <!--  -->
+	 
 	 
 
 </mapper>
