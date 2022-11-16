@@ -49,6 +49,13 @@ public class BoardServiceImpl implements BoardService{
 	}
 	
 	@Override
+	public List<BoardVO> selectNoticeMain() {
+		return sqlSession.selectList("boardMapper.selectNoticeMain");
+	}
+	
+	
+	
+	@Override
 	public List<BoardVO> selectFreeBoard() {
 		return sqlSession.selectList("boardMapper.selectFreeBoard");
 	}
@@ -117,6 +124,9 @@ public class BoardServiceImpl implements BoardService{
 	public void updateLikeCancle(int boardNum) {
 		sqlSession.update("boardMapper.updateLikeCancle", boardNum);
 	}
+
+
+	
 
 
 

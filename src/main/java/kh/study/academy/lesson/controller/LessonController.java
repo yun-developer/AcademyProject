@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import kh.study.academy.admin.service.AdminService;
 import kh.study.academy.admin.vo.LessonRoomVO;
+import kh.study.academy.board.service.BoardService;
 import kh.study.academy.lesson.service.LessonService;
 import kh.study.academy.lesson.vo.LessonInfoVO;
 
@@ -32,11 +33,15 @@ public class LessonController {
 	@Resource(name = "lessonService")
 	private LessonService lessonService;
 	
+	@Resource(name = "boardService")
+	private BoardService boardService;
+	
 	
 	//메인
 	@GetMapping("/main")
 	public String mainPage( Model model) {
-		
+		model.addAttribute("noticeList", boardService.selectNoticeMain());
+		model.addAttribute("freeList", boardService.selectFreeBoard());
 		System.out.println("mainPage컨트롤러 실행");
 		
 		return "content/lesson/lesson_main";

@@ -48,61 +48,17 @@
 <div class ="col-xl-6">
 	<div class="type01">
 		<h4 class="main-inner-title">공지사항</h4>
-		<div>
+		<div th:each="notice :${noticeList}">
 			<ul>
 				<li>
-					<div class="mini-title-box">
+					<div class="mini-title-box" >
 						<a href="/ewha/news/notice.do?mode=view&amp;articleNo=337403"
-							title="자세히 보기"> <span class="mini-status type01">메인공지</span>
-
-							<span class="mini-title">[학생지원팀] 2022학년도 재학생 만족도 조사 실시 안내
-								(11.7(월) - 11.25(금)) </span>
+							title="자세히 보기"> 
+							<span class="mini-title"> [[${notice.boardTitle}]]</span>
 						</a>
 					</div>
 				</li>
 
-				<li>
-					<div class="mini-title-box">
-						<a href="/ewha/news/notice.do?mode=view&amp;articleNo=337348"
-							title="자세히 보기"> <span class="mini-status type01">메인공지</span>
-
-							<span class="mini-title">[국제교류팀]
-								2023학년도 2학기 파견 교환학생 선발공고(정기모집)</span>
-						</a>
-					</div>
-				</li>
-
-				<li>
-					<div class="mini-title-box">
-						<a href="/ewha/news/notice.do?mode=view&amp;articleNo=337330"
-							title="자세히 보기"> <span class="mini-status type01">메인공지</span>
-
-							<span class="mini-title">2022학년도
-								전기(2023년 2월) 졸업예정여부 조회 및 졸업의사 신청 관련 안내</span>
-						</a>
-					</div>
-				</li>
-
-				<li>
-					<div class="mini-title-box">
-						<a href="/ewha/news/notice.do?mode=view&amp;articleNo=337146"
-							title="자세히 보기"> <span class="mini-status type01">메인공지</span>
-
-							<span class="mini-title">[학부]
-								2022학년도 겨울 계절학기 수강안내 </span>
-						</a>
-					</div>
-				</li>
-
-				<li>
-					<div class="mini-title-box">
-						<a href="/ewha/news/notice.do?mode=view&amp;articleNo=337527"
-							title="자세히 보기"> <span class="mini-status type02">N</span> 
-							<span class="mini-title">[입학처]
-								2023학년도 수시모집 논술고사 관련 고사건물 및 캠퍼스 통제 안내</span>
-						</a>
-					</div>
-				</li>
 			</ul>
 
 
@@ -115,7 +71,21 @@
 <div class ="col-xl-6">
 	<div class="type01">
 		<h4 class="main-inner-title">자유게시판 BEST</h4>
-		
+		<div th:each="free :${freeList}">
+			<ul>
+				<li>
+					<div class="mini-title-box" >
+						<a href="/ewha/news/notice.do?mode=view&amp;articleNo=337403"
+							title="자세히 보기"> 
+							<span class="mini-title"> [[${free.boardTitle}]]</span>
+						</a>
+					</div>
+				</li>
+
+			</ul>
+
+
+		</div>
 		<a href="/board/freeList" title="자세히 보기" class="mini-more">MORE</a>
 	</div>
 </div>

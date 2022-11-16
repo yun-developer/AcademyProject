@@ -15,6 +15,8 @@ public interface BoardService {
 	void insertFree(BoardVO boardVO);
 	
 	List<BoardVO> selectNoticeBoard();
+	List<BoardVO> selectNoticeMain();
+	
 	List<BoardVO> selectFreeBoard();
 	
 	BoardVO selectBoardDetail(int boardNum);
