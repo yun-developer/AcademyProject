@@ -255,8 +255,8 @@ public class BoardController {
    
    
    // 자유게시판 게시글 삭제
-   @PostMapping("/deleteBoard")
-   public String deleteBoard(String boardNums) {
+   @PostMapping("/deleteBoardFree")
+   public String deleteBoardFree(String boardNums) {
       String[] boardNumArr = boardNums.split(","); // 배열을 리스트로 변환작업 2줄
       List<String> boardNumList = Arrays.asList(boardNumArr);
       
