@@ -192,7 +192,7 @@ public class BoardController {
    //자유게시판 리스트
    @GetMapping("/freeList")
    public String freeList(Model model) {
-      model.addAttribute("freeList", boardService.selectFreeBoard(1));
+      model.addAttribute("freeList", boardService.selectFreeBoard());
       return "content/board/board_free_list";
    }
    

@@ -49,8 +49,8 @@ public class BoardServiceImpl implements BoardService{
 	}
 	
 	@Override
-	public List<BoardVO> selectFreeBoard(int boardKindCode) {
-		return sqlSession.selectList("boardMapper.selectFreeBoard", boardKindCode);
+	public List<BoardVO> selectFreeBoard() {
+		return sqlSession.selectList("boardMapper.selectFreeBoard");
 	}
 
 	@Override
