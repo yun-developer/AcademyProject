@@ -43,6 +43,57 @@
 		                        
 		                    </div> -->
 		                </main>
+
+<div class="row col-12">
+<div class ="col-xl-6">
+	<div class="type01">
+		<h4 class="main-inner-title">공지사항</h4>
+		<div th:each="notice :${noticeList}">
+			<ul>
+				<li>
+					<div class="mini-title-box" >
+						<a href="/ewha/news/notice.do?mode=view&amp;articleNo=337403"
+							title="자세히 보기"> 
+							<span class="mini-title"> [[${notice.boardTitle}]]</span>
+						</a>
+					</div>
+				</li>
+
+			</ul>
+
+
+		</div>
+		<a href="/board/noticeList" title="자세히 보기" class="mini-more">MORE</a>
+	</div>
+</div>
+
+
+<div class ="col-xl-6">
+	<div class="type01">
+		<h4 class="main-inner-title">자유게시판 BEST</h4>
+		<div th:each="free :${freeList}">
+			<ul>
+				<li>
+					<div class="mini-title-box" >
+						<a href="/ewha/news/notice.do?mode=view&amp;articleNo=337403"
+							title="자세히 보기"> 
+							<span class="mini-title"> [[${free.boardTitle}]]</span>
+						</a>
+					</div>
+				</li>
+
+			</ul>
+
+
+		</div>
+		<a href="/board/freeList" title="자세히 보기" class="mini-more">MORE</a>
+	</div>
+</div>
+	
+</div>
+	<br><br>
+		                
+		                
 		                
 		                <div class="row mb-4">
 		                	<div class ="col-xl-6">

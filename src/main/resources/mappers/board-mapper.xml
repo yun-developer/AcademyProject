@@ -95,6 +95,16 @@
 </select>
 
 
+<!-- 메인페이지 공지사항 조회 -->
+<select id="selectNoticeMain" resultMap="board">
+	SELECT BOARD_TITLE
+	FROM BOARD
+	WHERE BOARD_KIND_CODE = 0 
+    AND ROWNUM &gt; 1 AND ROWNUM &lt; 10
+</select>
+
+
+
 <!-- 글 내용 조회 -->
 <select id="selectBoardDetail" resultMap="board">
 	SELECT B.BOARD_NUM
