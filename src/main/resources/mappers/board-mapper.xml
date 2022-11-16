@@ -107,7 +107,8 @@ SELECT ROWNUM
             , (SELECT COUNT(LIKE_CODE) FROM LIKE_TABLE
                     WHERE BOARD_NUM = B.BOARD_NUM) AS LIKE_CODE_CNT
             FROM BOARD B
-            WHERE BOARD_KIND_CODE = 0 
+            WHERE BOARD_KIND_CODE = 0
+            ORDER BY BOARD_NUM DESC 
         )
 WHERE ROWNUM &gt;= 1 AND ROWNUM &lt;= 5
 </select>
@@ -234,7 +235,7 @@ SELECT ROWNUM
                     WHERE BOARD_NUM = B.BOARD_NUM) AS LIKE_CODE_CNT
             FROM BOARD B
             WHERE BOARD_KIND_CODE = 1 
-            ORDER BY LIKE_CODE_CNT DESC
+            ORDER BY LIKE_CODE_CNT DESC, BOARD_NUM DESC
         )
 WHERE ROWNUM &gt;= 1 AND ROWNUM &lt;= 5
 </select>
