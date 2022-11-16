@@ -26,30 +26,30 @@
 				  <form th:action="@{/board/updateFreeDetail}" method="post" id="updateStuForm"> 
 					<div class="form-group input-group mb-1">
 						<div class="col-6 col-lg-2 px-0"><span class="input-group-text h-100 rounded-0">제목</span></div>
-						<div class="subheader pb-6"   th:each="free : ${free}">
-					     <input type="text" id="boardTitle" name="boardTitle" th:value="${free.boardTitle}" class="form-control rounded-0"  >
+						<div class="subheader pb-6"   th:each="notice : ${Notice}">
+					     <input type="text" id="boardTitle" name="boardTitle" th:value="${notice.boardTitle}" class="form-control rounded-0"  >
 						</div>
 					</div>
 		
 					<div>
 						<div style="font-size: 18px;">
-							등록일 : [[${free.createDate}]] 조회수 : [[${free.viewCount}]] 작성자 : 
-							<a href="javascript:" onclick="showEmployPopup('/common/popup/employ/detail/CE221000035', '교직원정보');">[[${free.teacherId}]]</a>
+							등록일 : [[${notice.createDate}]] 조회수 : [[${notice.viewCount}]] 작성자 : 
+							<a href="javascript:" onclick="showEmployPopup('/common/popup/employ/detail/CE221000035', '교직원정보');">[[${notice.teacherId}]]</a>
 							
 						</div>
 					</div>
 					<div class="subheader pb-6 border-bottom" style="margin-bottom: 20px;"></div>
 					<div class="form-group input-group mb-1">
 						<div class="col-6 col-lg-2 px-0"><span class="input-group-text h-100 rounded-0">내용</span></div>
-						<div class="subheader pb-6"   th:each="free : ${free}">
-					     <input type="text" id="boardContent" name="boardContent" th:value="${free.boardContent}" class="form-control rounded-0"  >
+						<div class="subheader pb-6"   th:each="notice : ${Notice}">
+					     <input type="text" id="boardContent" name="boardContent" th:value="${notice.boardContent}" class="form-control rounded-0"  >
 						</div>
 					</div>	
 
 
-			           폼태그 안에 input가 있어야 데이터를 가져간다. 
-			            <th:block th:each="free : ${free}">
-			             <input type="hidden" name="boardNum"  th:value="${free.boardNum}">  submit누르면 데이터 안보이게 데이터 가져갈꺼다.  내가 체크한 체크박스들을 이 input태그의 value값을  
+			           
+			            <th:block th:each="notice : ${Notice}">
+			             <input type="hidden" name="boardNum"  th:value="${notice.boardNum}"> 
 			              </th:block>
 			               <div class="row justify-content-end">
 			                  <div class="col-2"  style="margin-right:4.8rem; ">

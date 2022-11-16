@@ -140,22 +140,22 @@ public class BoardController {
 
 	
       
-   // 자유게시판 상세페이지에서 글 수정 페이지로 이동
+   // 공지사항 상세페이지에서 글 수정 페이지로 이동
    @RequestMapping("/updateNoticeDetailFrom")
    public String updateNoticeDetailFrom(int boardNum, Model model) {
 	   
-	   model.addAttribute("free", boardService.selectBoardDetail(boardNum));
+	   model.addAttribute("Notice", boardService.selectBoardDetail(boardNum));
 	   
-      return "content/board/update_free_detail";
+      return "content/board/update_notice_detail";
    }
 
    // 글 수정 페이지에서 글 수정하기
    @RequestMapping("/updateNoticeDetail")
    public String updateNoticeDetail(BoardVO boardVO,Model model) {
 
-	   boardService.updateFreeDetail(boardVO);
+	   boardService.updateNoticeDetail(boardVO);
 
-	   return "redirect:/board/freeDetail?boardNum=" + boardVO.getBoardNum();
+	   return "redirect:/board/noticeDetail?boardNum=" + boardVO.getBoardNum();
    }
    
    //공지사항 좋아요

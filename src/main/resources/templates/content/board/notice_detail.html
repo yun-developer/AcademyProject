@@ -27,9 +27,9 @@
 								
 							</div>
 							
-							<form th:action="@{/board/deleteNoticeDetail}" method="post" id="deleteStuForm">  폼태그 안에 input가 있어야 데이터를 가져간다. 
+							<form th:action="@{/board/deleteNoticeDetail}" method="post" id="deleteStuForm">  
 					             <th:block th:each="free : ${free}">
-					             <input type="hidden" name="boardNum"  th:value="${free.boardNum}">  submit누르면 데이터 안보이게 데이터 가져갈꺼다.  내가 체크한 체크박스들을 이 input태그의 value값을  
+					             <input type="hidden" name="boardNum"  th:value="${free.boardNum}">  
 					             </th:block>
 					               <div class="row justify-content-end">
 					                  <div class="col-2"  style="margin-right:4.8rem; ">
