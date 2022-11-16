@@ -14,6 +14,7 @@
 		<result column="REG_DATE" 									property="regDate"/>
 		<collection property="subjectVO" 							resultMap="adminMapper.subject" />
 		<collection property="studentLessonInfoList" 				resultMap="studentLessonInfo" />
+		<collection property="testList" 							resultMap="testMapper.test" />
 		
 	</resultMap>
 	

@@ -28,6 +28,7 @@ public class StudentVO {
 	//collection 연결 해놓은 것들 
 	private List<StudentLessonInfoVO> studentLessonInfoList; 
 	
+	private List<TestVO> testList;
 
 	
 	
