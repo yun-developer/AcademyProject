@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kh.study.academy.student.vo.PaymentVO;
+import kh.study.academy.student.vo.StudentLessonInfoVO;
 import kh.study.academy.student.vo.StudentVO;
 
 @Service("studentService")
@@ -59,11 +60,18 @@ public class StudentServiceImpl implements StudentService{
 	}
 	
 	//학생 편성
+	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public void assignStu(Map<String, String> map) {
-		sqlSession.insert("studentMapper.assignStu", map);
+	public void assignStu(StudentLessonInfoVO studentLessonInfoVO) {
+		//학생편성
+		sqlSession.insert("studentMapper.assignStu", studentLessonInfoVO);
+		//nowStudent +1증가
+		sqlSession.update("lessonMapper.updateNowStudent", studentLessonInfoVO.getLessonInfoCode());
+		//수납코드 생성
+		sqlSession.insert("studentMapper.createPayment", studentLessonInfoVO);
 		
 	}
+	
 
 	
 

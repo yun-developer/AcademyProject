@@ -21,6 +21,7 @@ const assingnStuForm = document.querySelector('#assingnStuForm');
 
 //inputLessonCode
 const inputLessonCode = document.querySelector('#inputLessonCode');
+const inputStuCode = document.querySelector('#inputStuCode');
 
 ///////////////////////////////////함수///////////////////////////////////////////
 
@@ -49,7 +50,13 @@ function newCapacityandMoney(getCode){
 			inputLessonCode.value = getCode;
 			
 			if(resultLesson[0].nowStudentCnt == resultLesson[0].maxStudent){
-				alert('정원이 모두 찼음.')
+				
+				const assingnBtn = document.querySelector('#assingnBtn');
+				assingnBtn.disabled = true;
+
+				Swal.fire('정원 초과', '학급의 정원이 찬 학급입니다.', 'warning');
+				
+				
 			}
 		},
 		error: function() {
@@ -64,30 +71,51 @@ function newCapacityandMoney(getCode){
 //저장 버튼 클릭시 등록
 function assingnStudent (){
 	
+	alert(inputLessonCode.value);
 	
-	      Swal.fire({
-			   title: '학생이 편성되었습니다.',
-			   text: '',
-			   icon: 'success',
-			   
-			   showCancelButton: false, // cancel버튼 보이기. 기본은 원래 없음
-			   confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
-			   cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
-			   confirmButtonText: '승인', // confirm 버튼 텍스트 지정
-			   cancelButtonText: '취소', // cancel 버튼 텍스트 지정
-			   
-			   reverseButtons: true, // 버튼 순서 거꾸로
-			   
-			}).then(result => {
-			   // 만약 Promise리턴을 받으면,
-			   if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
-
-					assingnStuForm.submit();
-			   	  	
-					/*window.open('','_self').close();*/ 
+		//ajax start
+			$.ajax({
+				url: '/stu/assingnStuProcessAjax', //요청경로
+				type: 'post',
+				data: {"lessonInfoCode": inputLessonCode.value, "studentCode": inputStuCode.value}, //필요한 데이터
+				success: function(result) {
 			
-			   }
+					
+						
+				      Swal.fire({
+						   title: '학생이 편성되었습니다.',
+						   text: '',
+						   icon: 'success',
+						   
+						   showCancelButton: false, // cancel버튼 보이기. 기본은 원래 없음
+						   confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+						   cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
+						   confirmButtonText: '승인', // confirm 버튼 텍스트 지정
+						   cancelButtonText: '취소', // cancel 버튼 텍스트 지정
+						   
+						   reverseButtons: true, // 버튼 순서 거꾸로
+						   
+						}).then(result => {
+						   // 만약 Promise리턴을 받으면,
+						   if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
+							
+								window.open('','_self').close();
+						
+						   }
+						});
+						
+				},
+				error: function() {
+					alert('실패');
+				}
 			});
+			//ajax end
+	
+		
+	
+	
+		
+	
 	
 	
 }

@@ -8,4 +8,7 @@ public class StudentLessonInfoVO {
 	private String lessonInfoCode;
 	private String attendanceCode;
 	private String studentCode;
+	
+	
+	private String paymentCode;
 }

@@ -148,13 +148,13 @@
 			    
 			 </div>
 		  </div>
-		  			<form th:action="@{/stu/assingnStuProcess}" method="post" id="assingnStuForm">
+		  			<!-- <form th:action="@{/stu/assingnStuProcess}" method="post" id="assingnStuForm"> -->
 	    			<div class="d-grid gap-2 col-6 mx-auto">
 	    				<input type="hidden" name="studentCode" id="inputStuCode" th:value="${student.studentCode}">
 	    				<input type="hidden" name="lessonInfoCode" id="inputLessonCode" value="">
-					  <button class="btn btn-primary" type="button" th:onclick="assingnStudent();"> 저 장 </button>
+					  <button class="btn btn-primary" type="button" id="assingnBtn" th:onclick="assingnStudent();"> 저 장 </button>
 					</div>
-		  			</form>
+		  		<!-- 	</form> -->
 
 
 		</div>

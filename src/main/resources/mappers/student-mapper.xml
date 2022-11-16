@@ -29,9 +29,8 @@
 	
 	<resultMap type="kh.study.academy.student.vo.PaymentVO" 		id="payment">
 		<id column="PAYMENT_CODE" 									property="paymentCode" />
-		<result column="LESSON_INFO_CODE" 							property="lessonInfoCode"/>
+		<result column="STUDENT_LESSON_CODE" 						property="studentLessonCode"/>
 		<result column="IS_PAY"										property="isPay"/>
-		<result column="STUDENT_CODE" 								property="studentCode"/>
 	</resultMap>
 	
 
@@ -64,15 +63,15 @@
 	)
 </insert>
 
-<insert id="insertPayment">
+<!-- <insert id="insertPayment">
 	<selectKey resultType="String" keyProperty="paymentCode" order="BEFORE">
 	   SELECT 'PAYMENT_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(PAYMENT_CODE, 9))),0) +1, 3, 0) 
 	   FROM PAYMENT
 	</selectKey>
-<!-- 	<selectKey resultType="String" keyProperty="lessonsCode" order="BEFORE">
+	<selectKey resultType="String" keyProperty="lessonsCode" order="BEFORE">
 	   SELECT 'LESSONS_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(PAYMENT_CODE, 5))),0) +1, 3, 0) 
 	   FROM PAYMENT
-	</selectKey> -->
+	</selectKey>
 	
 	INSERT INTO PAYMENT (
 		PAYMENT_CODE
@@ -83,7 +82,7 @@
 		, 'LESSON_INFO_001'
 		, #{studentCode}
 	)
-</insert>
+</insert> -->
 
 
 <!-- 학생 리스트 조회 -->
@@ -153,7 +152,7 @@
 	
 	
 <!-- 학급에 학생 등록 -->
-<insert id="assignStu" parameterType="hashMap">
+<insert id="assignStu" >
 	<selectKey resultType="String" keyProperty="studentLessonCode" order="BEFORE">
 	   SELECT 'STU_LESSON_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(STUDENT_LESSON_CODE, 12))),0) +1, 3, 0) 
 	   FROM STUDENT_LESSON_INFO
@@ -169,6 +168,28 @@
 		, #{lessonInfoCode}
 	)
 	 
+</insert>
+
+
+
+<!-- 수납코드 생성 -->
+<insert id="createPayment">
+	
+	<selectKey resultType="String" keyProperty="paymentCode" order="BEFORE">
+	   SELECT 'PAYMENT_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(PAYMENT_CODE, 9))),0) +1, 3, 0) 
+	   FROM PAYMENT
+	</selectKey>
+	
+	INSERT INTO PAYMENT(
+		PAYMENT_CODE
+		, STUDENT_LESSON_CODE
+	) VALUES (
+		#{paymentCode}
+		, (SELECT STUDENT_LESSON_CODE 
+			FROM STUDENT_LESSON_INFO 
+			WHERE STUDENT_CODE = #{studentCode}
+			AND LESSON_INFO_CODE = #{lessonInfoCode})
+	)
 </insert>
 	
 	

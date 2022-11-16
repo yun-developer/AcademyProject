@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import kh.study.academy.student.vo.PaymentVO;
+import kh.study.academy.student.vo.StudentLessonInfoVO;
 import kh.study.academy.student.vo.StudentVO;
 
 @Service
@@ -22,5 +23,6 @@ public interface StudentService {
 	StudentVO selectStuDetail(String studentCode);
 	
 	//학생편성
-	void assignStu(Map<String, String> map);
+	void assignStu(StudentLessonInfoVO studentLessonInfoVO);
+
 }

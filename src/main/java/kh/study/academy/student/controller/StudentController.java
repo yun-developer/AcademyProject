@@ -19,6 +19,7 @@ import kh.study.academy.lesson.service.LessonService;
 import kh.study.academy.lesson.vo.LessonInfoVO;
 import kh.study.academy.student.service.StudentService;
 import kh.study.academy.student.vo.PaymentVO;
+import kh.study.academy.student.vo.StudentLessonInfoVO;
 import kh.study.academy.student.vo.StudentVO;
 
 @Controller
@@ -150,16 +151,15 @@ public class StudentController {
 	}
 	
 	//학생편성
-	@PostMapping("/assingnStuProcess")
-	public void assingnStuProcess(@RequestParam Map<String, String> paramMap) {
+	@ResponseBody
+	@PostMapping("/assingnStuProcessAjax")
+	public void assingnStuProcess(StudentLessonInfoVO studentLessonInfoVO) {
 		
-		//학생편성시 nowStudent +1, attendeCode, PayCode 코드가 같이 등록.
-		//학생편성
-		studentService.assignStu(paramMap);
-		//nowStudent +1
-		lessonService.updateNowStudent(paramMap.get("lessonInfoCode"));
+		//학생편성시 nowStudent +1,  PayCode 코드가 같이 등록. (attendeCode 추가 예정)
+		studentService.assignStu(studentLessonInfoVO);
 		
-		/* return "redirect:/stu/assignment"; */
+		
+		
 	}
 	
 	
