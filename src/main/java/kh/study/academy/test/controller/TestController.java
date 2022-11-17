@@ -32,7 +32,7 @@ public class TestController {
 		
 		
 		//데이터 나오는지 확인
-		System.out.println("@@@!!!!!@@"+testService.searchTest(paramMap));
+	System.out.println("@@@!!!!!@@"+testService.searchTest(paramMap));
 		
 		//검색
 		model.addAttribute("search", testService.searchTest(paramMap));
@@ -44,6 +44,7 @@ public class TestController {
 		
 		model.addAttribute("paramMap", paramMap);
 		
+		
 		return "content/test/testManage";
 	
 	}
@@ -54,8 +55,9 @@ public class TestController {
 	public String regScore(TestVO testVO) {
 		
 		testService.regScore(testVO);
-	
-		return null;
+		
+		//return null;
+		return "redirect:/test/testManage";
 	}
 
 	
@@ -78,7 +80,7 @@ public class TestController {
 		//수정하기 전에 상세정보 가져오기
 
 		
-		return null;
+		return "redirect:/test/testManage";
 	}
 	
 	
@@ -88,7 +90,7 @@ public class TestController {
 		
 		testService.deleteScore(testCode);
 		
-		return null;
-		//"redirect:/board/list";// 경로 미설정
+		
+		return "redirect:/test/testManage";
 	}
 }

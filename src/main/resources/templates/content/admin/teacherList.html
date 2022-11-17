@@ -12,12 +12,10 @@
 
 <div layout:fragment="content">
 
-	여기서부터 검색
-
 	<!--여기부터 검색 div  -->
 	<form th:action="@{/admin/teacherList}" method="post">
-		<section>
-			<div class="info mb-2">
+		<section >
+			<div class="info mt-3 mb-2">
 				<i class="fas fa-exclamation-circle color-blue2"></i> <b> 검색조건</b>
 			</div>
 			<div class="row search-detail-form">
@@ -129,8 +127,10 @@
 
 
 <!--여기부터 리스트  -->
-
 <div class="row mt-5" id="table_box_bootstrap">
+<p class="card-text"><small class="text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
+  <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/>
+</svg> 아이디를 클릭하여 교사의 승인 및 재직상태 변경을 할 수 있습니다.</small></p>
 
 		<table class="table table-hover text-center align-middle ">
 			<!-- 세로로 가운데로 -->

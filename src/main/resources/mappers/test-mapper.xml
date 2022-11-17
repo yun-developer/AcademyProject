@@ -44,26 +44,27 @@
 	
 	<!-- 평가 관리 페이지에서 검색 조회 -->
 	<!--수정필요  -->
-  	<select id="searchTest" resultMap="studentMapper.student" parameterType="hashMap">
-		SELECT S.STUDENT_CODE 
+	<select id="searchTest" resultMap="studentMapper.student"
+		parameterType="hashMap">
+		SELECT S.STUDENT_CODE
 			, STUDENT_NAME
-			, (SELECT TEACHER_CODE FROM TEACHER) AS TEACHER_CODE
-			, (SELECT TEACHER_NAME FROM TEACHER) AS TEACHER_NAME
-			, TEST_CODE
+			, TEACHER_CODE
+			, (SELECT TEACHER_NAME
+					FROM TEACHER
+					WHERE TEACHER_CODE = LE.TEACHER_CODE) AS TEACHER_NAME
 			, STUDENT_LESSON_CODE
-			, LESSON_INFO_CODE
-			, SCORE
-		FROM STUDENT S, STUDENT_LESSON_INFO L, TEST T
+			, L.LESSON_INFO_CODE
+		FROM STUDENT S, STUDENT_LESSON_INFO L, LESSON_INFO LE
 		WHERE S.STUDENT_CODE = L.STUDENT_CODE
-		AND S.STUDENT_CODE = T.STUDENT_CODE
+		AND L.LESSON_INFO_CODE = LE.LESSON_INFO_CODE
 		<if test="studentName != null and !studentName.equals('')">
-		AND STUDENT_NAME LIKE ('%'||#{studentName}||'%')
+			AND STUDENT_NAME LIKE ('%'||#{studentName}||'%')
 		</if>
 		<if test="teacherName != null and !teacherName.equals('')">
-		AND TEACHER_NAME LIKE ('%'||#{teacherName}||'%')
+			AND TEACHER_NAME LIKE ('%'||#{teacherName}||'%')
 		</if>
 		<if test="lessonInfoCode != null and !lessonInfoCode.equals('')">
-		AND LESSON_INFO_CODE LIKE ('%'||#{lessonInfoCode}||'%')
+			AND LESSON_INFO_CODE LIKE ('%'||#{lessonInfoCode}||'%')
 		</if>
 	</select>
 	
