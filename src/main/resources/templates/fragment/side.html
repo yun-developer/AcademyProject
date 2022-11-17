@@ -77,8 +77,8 @@
                                     </a>
                                     <div class="collapse" th:classappend="${menu} eq '4'? 'show'" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" th:href="@{/stu/assignment(menu=4)}">(학생)학급배정</a>
-                                            <a class="nav-link" href="register.html">학급이동</a>
+                                            <a class="nav-link" th:href="@{/stu/assignment(menu=4)}">학생 편성</a>
+                                            <a class="nav-link" href="register.html">학급 이동</a>
                                         </nav>
                                     </div>
                                     <a class="nav-link"  th:classappend="${menu} ne '5'? 'collapsed'"href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="true" aria-controls="pagesCollapseError">
@@ -107,7 +107,7 @@
                                 평가관리
                             </a>
                             <div class="sb-sidenav-menu-heading">통계</div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts5" aria-expanded="false" aria-controls="collapseLayouts">
+                            <a class="nav-link " th:classappend="${menu} ne '6'? 'collapsed'"  href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts5" aria-expanded="true" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon">
                                 
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart-line" viewBox="0 0 16 16">
@@ -118,11 +118,11 @@
                                 통계자료
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <div class="collapse" id="collapseLayouts5" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <div class="collapse" id="collapseLayouts5" th:classappend="${menu} eq '6'? 'show'"  aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" th:href="@{/statistics/studentStatus}">학생 현황</a>
-                                    <a class="nav-link" th:href="@{/statistics/testAnalysis}">평가관리 분석</a>
-                                    <a class="nav-link" th:href="@{/statistics/classByTeacher}">교사별 수업현황</a>
+                                    <a class="nav-link" th:href="@{/statistics/studentStatus(menu=6)}">학생 현황</a>
+                                    <a class="nav-link" th:href="@{/statistics/testAnalysis(menu=6)}">평가관리 분석</a>
+                                    <a class="nav-link" th:href="@{/statistics/classByTeacher(menu=6)}">교사별 수업현황</a>
                                 </nav>
                             </div>
                             
@@ -139,7 +139,7 @@
                             
                             
                             
-                            <div class="sb-sidenav-menu-heading">추가예정</div>
+                         <!--    <div class="sb-sidenav-menu-heading">추가예정</div>
                            
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts2" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -151,7 +151,7 @@
                                     <a class="nav-link" href="layout-static.html">학급리스트</a>
                                     <a class="nav-link" href="layout-sidenav-light.html">학급배정</a>
                                 </nav>
-                            </div>
+                            </div> -->
                             
                             <div class="sb-sidenav-menu-heading">Addons</div>
                             <a class="nav-link" href="charts.html">
