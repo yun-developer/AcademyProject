@@ -40,7 +40,7 @@
 						</div>
 					</div>
 					
-					<div class="subheader pb-6 border-bottom" style="margin-bottom: 20px;"></div>
+					<div class="subheader pb-6 border-bottom" style="margin: 30px;"></div>
 					<div class="form-group input-group mb-1">
 						<div class="col-1 px-0" style="text-align: center; font-size: 26px; ">내용</div>
 						<div class="subheader pb-6"   th:each="free : ${free}">
@@ -48,7 +48,31 @@
 						</div>
 					</div>	
 
-
+					<div class="subheader pb-6 border-bottom" style="margin: 40px;"></div>
+					
+					<div th:unless="${free.imgList[0].storedFileName == null}">
+								<div class="col-3" th:each="free : ${free.imgList}">
+									<div class="card" >
+									  <img style="width: 18rem; height: 25rem;" th:src="|@{/images/board/}${free.storedFileName}|" class="card-img-top" alt="...">
+									  <div class="card-body">
+									  </div>
+									</div>
+								</div> 
+							</div>
+					
+					
+					<dl class="table_name" style="margin: 30px;">
+						<dt>파&nbsp;&nbsp;&nbsp;일</dt>
+						<dd><span class="j-file-list"><em><a href="../_module/include/ej_download.php?uf=Vmtaa2QxRnRWbFpOV0VaU1YwZG9UMVpyWkRCT1JsSnpWV3hLYkZaVVJuaFpWV1JoVkd4YVIyRXpaRlZXTTBKWFZGUkJNVkpXV2xWUmJFSlRZVzFuZWxaRlkzaGlNREI1Vkd0S1VWWkVRVGs9K00=&amp;rf=VkdwQ2MxWkhWa1ZYVkVwcVZsWndUMVZyVmtkTk1XUkVaRVJXVGswd1dsRmFWbHB2WWpGd1dXSklWbUZOUkdzeFYxY3hNRkpHU2tsVWJrSlBZVEZLTmxsNlRrWmxiVTE1WVVWMGEwMHhXbTlWTUdSVFRYYzlQUT09K00=&amp;fd=VmtWa2NrMUhVbk5qUldoVFlXdEtZVlpZY0hOalJteHhVMnRrYkZadVFrVlVNV014WVVkS1ZXSklRbGhTUlRWRVdWUktUMDB4UWxWTlJEQTkrTQ==&amp;is_bbs=Vm1wR1JrOVdRbEpRVkRBOStN&amp;bbs_uid=VmtaYVUySnJNSGRPV0VaVVZrUkJPUT09K00=" title="성명000_취업지원 신청서.hwp 다운로드">성명000_취업지원 신청서.hwp</a></em></span></dd>
+					</dl>
+					
+					<div class="col-3" >
+					  <label  for="exampleFormControlTextarea1" class="form-label" ></label>
+						<input multiple type="file" class="form-control" id="exampleFormControlInput1" name="imgs">
+					</div>
+					
+					
+					
 			           <!-- 폼태그 안에 input가 있어야 데이터를 가져간다.  -->
 			            <th:block th:each="free : ${free}">
 			            	 <input type="hidden" name="boardNum"  th:value="${free.boardNum}"> <!--  submit누르면 데이터 안보이게 데이터 가져갈꺼다.  내가 체크한 체크박스들을 이 input태그의 value값을   -->
