@@ -10,5 +10,4 @@ public class StudentLessonInfoVO {
 	private String studentCode;
 	
 	
-	private String paymentCode;
 }

@@ -22,7 +22,7 @@ public class LessonServiceImpl implements LessonService{
 	
 	
 
-/////<학급 편성 등록 관련>//////////////////////////////////////////////////////////// 	
+	/////<학급 편성 등록 관련>//////////////////////////////////////////////////////////// 	
 	
 	
 	
@@ -60,11 +60,20 @@ public class LessonServiceImpl implements LessonService{
 		sqlSession.delete("lessonMapper.deleteLessonInfo", lessonInfoVO);
 	}
 
-	//학생등록시 nowStudent +1증가
+	
+	/////////////<학생 편성>////////////////////////////////////////////////////
+	//학생편성시 해당 LessonInfo에 nowStudent +1증가
 	@Override
 	public void updateNowStudent(String lessonInfoCode) {
 		sqlSession.update("lessonMapper.updateNowStudent", lessonInfoCode);
 		
+	}
+
+	//수납여부와 편성학급 같이 조회
+	@Override
+	public List<LessonInfoVO> selectLessonAndPay(String studentCode) {
+		
+		return sqlSession.selectList("lessonMapper.selectLessonAndPay", studentCode);
 	}
 
 

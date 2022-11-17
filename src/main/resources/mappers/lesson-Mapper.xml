@@ -21,6 +21,7 @@
 		<association property="stepVO" resultMap="lessonMapper.step"/>
 		<association property="lessonRoomVO" resultMap="adminMapper.lessonRoom"/>
 		<association property="teacherVO" resultMap="teacherMapper.teacher"/>
+		<association property="paymentVO" resultMap="studentMapper.payment"/>
 		
 		<collection property="studentLessonInfoList" 						resultMap="studentMapper.studentLessonInfo"/>
 	</resultMap>
@@ -181,5 +182,28 @@
 		SET NOW_STUDENT_CNT = (SELECT MAX(NOW_STUDENT_CNT)+1 FROM LESSON_INFO WHERE LESSON_INFO_CODE = #{lessonInfoCode})
 		WHERE LESSON_INFO_CODE = #{lessonInfoCode}
 	 </update>	 
+	 
+	 <!-- 수납여부와 편성학급 같이 조회 -->
+	 <select id="selectLessonAndPay" resultMap="lessonInfo">
+	 	SELECT L.LESSON_INFO_CODE
+		    , (SELECT SUBJECT_NAME
+						FROM SUBJECT
+						WHERE SUBJECT_CODE = L.SUBJECT_CODE) AS SUBJECT_NAME
+		    , (SELECT STEP_NAME
+						FROM STEP
+						WHERE STEP_CODE = L.STEP_CODE) AS STEP_NAM
+		    , YEAR
+		    , PAYMENT_CODE
+		    , DECODE(IS_PAY, 'N', '미납', '완납') AS IS_PAY
+		FROM LESSON_INFO L, PAYMENT P, STUDENT_LESSON_INFO SL
+		WHERE L.LESSON_INFO_CODE = SL.LESSON_INFO_CODE
+		AND P.STUDENT_LESSON_CODE = SL.STUDENT_LESSON_CODE
+		AND P.STUDENT_LESSON_CODE IN (SELECT STUDENT_LESSON_CODE 
+		                            FROM STUDENT_LESSON_INFO 
+		                            WHERE STUDENT_CODE = #{studentCode})
+	 
+	 </select>
+	 
+	 
 
 </mapper>

@@ -1,5 +1,6 @@
 package kh.study.academy.student.controller;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -112,7 +113,11 @@ public class StudentController {
 	@GetMapping("/assignment")
 	public String assignmentStu(Model model, String studentName, StudentVO studentVO) {
 		
+		
 		model.addAttribute("stuList", studentService.selectStuList(studentName));
+		
+	
+		
 		
 		
 		return "content/student/assignment_student_page";

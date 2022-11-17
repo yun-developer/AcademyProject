@@ -12,6 +12,7 @@
 		<result column="ADDR_DETAIL"								property="addrDetail"/>
 		<result column="STUDENT_TELL"								property="studentTell"/>
 		<result column="REG_DATE" 									property="regDate"/>
+		
 		<collection property="subjectVO" 							resultMap="adminMapper.subject" />
 		<collection property="studentLessonInfoList" 				resultMap="studentLessonInfo" />
 		<collection property="testList" 							resultMap="testMapper.test" />
@@ -200,6 +201,11 @@
 			AND LESSON_INFO_CODE = #{lessonInfoCode})
 	)
 </insert>
+
+
+
+
+
 	
 	
 </mapper>

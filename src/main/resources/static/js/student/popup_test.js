@@ -10,16 +10,24 @@ const checkAll = document.querySelector('#checkAll');
 //장바구니 목록의 모든 체크박스 (제목줄 제외)
 const chkBoxes = document.querySelectorAll('.chk');
 
+//
+
+
+
+
+
+
+
 
 
 /////////////////함수/////////////////////////////////////////////////////
+//팝업창 열기
 function openPopup(popUrl){
 	
 	let popOption = "width = 1100px, height=800px, top=100px, left=300px, scrollbars=yes";
 	
 	window.open(popUrl,"popupTest",popOption);
 }
-
 function goPopup(studentCode){
 	
 	popUrl = `/stu/popup?studentCode=${studentCode}`;
@@ -28,6 +36,18 @@ function goPopup(studentCode){
 	
 }
 
+//체크박스 하나만 선택가능
+function checkOnlyOne(element) {
+  
+  const checkboxes 
+      = document.querySelectorAll(".chk");
+  
+  checkboxes.forEach((cb) => {
+    cb.checked = false;
+  })
+  
+  element.checked = true;
+}
 
 
 ///////////////////////////////////////이벤트///////////////////////////////
@@ -62,20 +82,6 @@ $('.popup').on("click",function(e){
 		openPopup(popUrl);
 		
 });
-
-function checkOnlyOne(element) {
-  
-  const checkboxes 
-      = document.querySelectorAll(".chk");
-  
-  checkboxes.forEach((cb) => {
-    cb.checked = false;
-  })
-  
-  element.checked = true;
-}
-
-
 
 
 

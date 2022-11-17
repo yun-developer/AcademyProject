@@ -4,6 +4,7 @@ import java.util.List;
 
 import kh.study.academy.admin.vo.LessonRoomVO;
 import kh.study.academy.admin.vo.SubjectVO;
+import kh.study.academy.student.vo.PaymentVO;
 import kh.study.academy.student.vo.StudentLessonInfoVO;
 import kh.study.academy.teacher.vo.TeacherVO;
 import lombok.Data;
@@ -40,6 +41,7 @@ public class LessonInfoVO {
 	private StepVO stepVO;
 	private LessonRoomVO lessonRoomVO;
 	private TeacherVO teacherVO;
+	private PaymentVO paymentVO;
 	
 	//collection 연결
 	private List<StudentLessonInfoVO> studentLessonInfoList;
