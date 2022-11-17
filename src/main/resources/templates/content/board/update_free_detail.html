@@ -14,7 +14,7 @@
 <div class="row">
 	<div class="col-lg-12">
 		<div class="panel">
-			<div class="panel-hdr" style="margin-bottom: 20px; font-size: 16px;">
+			<div class="panel-hdr" style="margin-bottom: 20px; font-size: 30px;">
 				<h2>자유게시판<span class="fw-300"></span></h2>
 				<div class="panel-toolbar">
 					<button class="btn btn-panel waves-effect waves-themed" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Fullscreen"></button>
@@ -24,32 +24,34 @@
 				<div class="panel-content">
 							
 				  <form th:action="@{/board/updateFreeDetail}" method="post" id="updateStuForm"> 
-					<div class="form-group input-group mb-1">
-						<div class="col-6 col-lg-2 px-0"><span class="input-group-text h-100 rounded-0">제목</span></div>
-						<div class="subheader pb-6"   th:each="free : ${free}">
-					     <input type="text" id="boardTitle" name="boardTitle" th:value="${free.boardTitle}" class="form-control rounded-0"  >
-						</div>
+					<div class="form-group input-group mb-3 px-0">
+						<div class="col-1 px-0" style="text-align: center; font-size: 26px; ">제목</div>
+							<div class="subheader pb-6"   th:each="free : ${free}">
+							     <input type="text" id="boardTitle" name="boardTitle" th:value="${free.boardTitle}" class="form-control rounded-0" style="width:1000px; height:50px; font-size: 20px;" >
+								 
+							</div>
 					</div>
 		
 					<div>
-						<div style="font-size: 18px;">
+						<div style="font-size: 18px; margin: 1.5em; " >
 							등록일 : [[${free.createDate}]] 조회수 : [[${free.viewCount}]] 작성자 : 
 							<a href="javascript:" onclick="showEmployPopup('/common/popup/employ/detail/CE221000035', '교직원정보');">[[${free.teacherId}]]</a>
 							
 						</div>
 					</div>
+					
 					<div class="subheader pb-6 border-bottom" style="margin-bottom: 20px;"></div>
 					<div class="form-group input-group mb-1">
-						<div class="col-6 col-lg-2 px-0"><span class="input-group-text h-100 rounded-0">내용</span></div>
+						<div class="col-1 px-0" style="text-align: center; font-size: 26px; ">내용</div>
 						<div class="subheader pb-6"   th:each="free : ${free}">
-					     <input type="text" id="boardContent" name="boardContent" th:value="${free.boardContent}" class="form-control rounded-0"  >
+						 <textarea class="form-control rounded-0" id="boardContent"  style="width:1000px; height:500px; font-size: 18px;"  name="boardContent" >[[${free.boardContent}]]</textarea>
 						</div>
 					</div>	
 
 
 			           <!-- 폼태그 안에 input가 있어야 데이터를 가져간다.  -->
 			            <th:block th:each="free : ${free}">
-			             <input type="hidden" name="boardNum"  th:value="${free.boardNum}"> <!--  submit누르면 데이터 안보이게 데이터 가져갈꺼다.  내가 체크한 체크박스들을 이 input태그의 value값을   -->
+			            	 <input type="hidden" name="boardNum"  th:value="${free.boardNum}"> <!--  submit누르면 데이터 안보이게 데이터 가져갈꺼다.  내가 체크한 체크박스들을 이 input태그의 value값을   -->
 			              </th:block>
 			               <div class="row justify-content-end">
 			                  <div class="col-2"  style="margin-right:4.8rem; ">
@@ -60,14 +62,11 @@
 
 
 						</div>
-					
 
-
-				
-		 </div>
-	  </div>
-   </div>
-</div>
+					 </div>
+				  </div>
+			   </div>
+		</div>
 </main>
 </div>
 	

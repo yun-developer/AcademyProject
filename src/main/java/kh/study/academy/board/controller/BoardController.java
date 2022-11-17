@@ -141,7 +141,7 @@ public class BoardController {
 	
       
    // 공지사항 상세페이지에서 글 수정 페이지로 이동
-   @RequestMapping("/updateNoticeDetailFrom")
+   @PostMapping("/updateNoticeDetailFrom")
    public String updateNoticeDetailFrom(int boardNum, Model model) {
 	   
 	   model.addAttribute("notice", boardService.selectBoardDetail(boardNum));

@@ -9,7 +9,7 @@ function replyNoRegAjax(){
 		return;
 	}
 	else{
-		alert("입력함");
+		//alert("입력함");
 	document.querySelector('#frmBoardContentsComment').submit();
 		
 	}
