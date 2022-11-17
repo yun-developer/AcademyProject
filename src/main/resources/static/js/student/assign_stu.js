@@ -39,12 +39,17 @@ function newCapacityandMoney(getCode){
 		data: {"lessonInfoCode": getCode, "selectYear":null}, //필요한 데이터
 		success: function(resultLesson) {
 			
+			//정원
 			let capacityStr ='';
 			capacityStr+=`<span>${resultLesson[0].nowStudentCnt + "/" + resultLesson[0].maxStudent}</span>`;
 			capacityDiv.insertAdjacentHTML('beforeend', capacityStr);
 			
+			let money='';
+			money = parseInt(resultLesson[0].money);
+			money = '￦' + money.toLocaleString();
+			
 			let moneyStr ='';
-			moneyStr+=`<span>${resultLesson[0].money}</span>`;
+			moneyStr+=`<span>${money}</span>`;
 			moneyDiv.insertAdjacentHTML('beforeend', moneyStr);
 			
 			inputLessonCode.value = getCode;
@@ -55,7 +60,6 @@ function newCapacityandMoney(getCode){
 				assingnBtn.disabled = true;
 
 				Swal.fire('정원 초과', '학급의 정원이 찬 학급입니다.', 'warning');
-				
 				
 			}
 		},
@@ -71,52 +75,65 @@ function newCapacityandMoney(getCode){
 //저장 버튼 클릭시 등록
 function assingnStudent (){
 	
-	alert(inputLessonCode.value);
-	
 		//ajax start
 			$.ajax({
-				url: '/stu/assingnStuProcessAjax', //요청경로
+				url: '/stu/isStuAssignAjax', //요청경로
 				type: 'post',
-				data: {"lessonInfoCode": inputLessonCode.value, "studentCode": inputStuCode.value}, //필요한 데이터
-				success: function(result) {
-			
+				data: {"studentCode": inputStuCode.value}, //필요한 데이터
+				success: function(resultInfo) {
 					
-						
-				      Swal.fire({
-						   title: '학생이 편성되었습니다.',
-						   text: '',
-						   icon: 'success',
-						   
-						   showCancelButton: false, // cancel버튼 보이기. 기본은 원래 없음
-						   confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
-						   cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
-						   confirmButtonText: '승인', // confirm 버튼 텍스트 지정
-						   cancelButtonText: '취소', // cancel 버튼 텍스트 지정
-						   
-						   reverseButtons: true, // 버튼 순서 거꾸로
-						   
-						}).then(result => {
-						   // 만약 Promise리턴을 받으면,
-						   if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
+										
+					for(let assingedCode of resultInfo){
+						if(assingedCode.lessonInfoCode == inputLessonCode.value){
 							
-								window.open('','_self').close();
-						
-						   }
-						});
-						
+							Swal.fire('중복 편성', '학생이 이미 수강중인 학급입니다.', 'warning');
+							return;
+						}
+					}
+					
+				//ajax start
+					$.ajax({
+						url: '/stu/assingnStuProcessAjax', //요청경로
+						type: 'post',
+						data: {"lessonInfoCode": inputLessonCode.value, "studentCode": inputStuCode.value}, //필요한 데이터
+						success: function(res) {
+								
+						      Swal.fire({
+								   title: '학생이 편성되었습니다.',
+								   text: '',
+								   icon: 'success',
+								   
+								   showCancelButton: false, // cancel버튼 보이기. 기본은 원래 없음
+								   confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+								   cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
+								   confirmButtonText: '승인', // confirm 버튼 텍스트 지정
+								   cancelButtonText: '취소', // cancel 버튼 텍스트 지정
+								   
+								   reverseButtons: true, // 버튼 순서 거꾸로
+								   
+								}).then(result => {
+								   // 만약 Promise리턴을 받으면,
+								   if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
+									
+										window.open('','_self').close();
+										
+								   }
+								});
+								
+						},
+						error: function() {
+							alert('실패');
+						}
+					});
+					//ajax end
+				     
 				},
 				error: function() {
 					alert('실패');
 				}
 			});
 			//ajax end
-	
 		
-	
-	
-		
-	
-	
 	
 }
 

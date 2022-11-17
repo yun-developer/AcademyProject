@@ -151,7 +151,7 @@
 </update>
 	
 	
-<!-- 학급에 학생 등록 -->
+<!-- 학급에 학생 편성 -->
 <insert id="assignStu" >
 	<selectKey resultType="String" keyProperty="studentLessonCode" order="BEFORE">
 	   SELECT 'STU_LESSON_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(STUDENT_LESSON_CODE, 12))),0) +1, 3, 0) 
@@ -169,6 +169,15 @@
 	)
 	 
 </insert>
+
+
+<!-- 중복 학생 편성 조회 -->
+
+<select id="isStuAssign" resultMap="studentLessonInfo">
+	SELECT LESSON_INFO_CODE 
+	FROM STUDENT_LESSON_INFO
+	WHERE STUDENT_CODE = #{studentCode}
+</select>
 
 
 

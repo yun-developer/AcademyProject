@@ -58,14 +58,19 @@ $('.popup').on("click",function(e){
 		}
 		
 		
-		
-		
 		popUrl = `/stu/popup?studentCode=${stuCode}`;
 		openPopup(popUrl);
 		
 });
 
-
-
-
-
+function checkOnlyOne(element) {
+  
+  const checkboxes 
+      = document.querySelectorAll(".chk");
+  
+  checkboxes.forEach((cb) => {
+    cb.checked = false;
+  })
+  
+  element.checked = true;
+}

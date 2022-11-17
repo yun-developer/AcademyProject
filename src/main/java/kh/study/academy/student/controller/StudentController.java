@@ -153,16 +153,20 @@ public class StudentController {
 	//학생편성
 	@ResponseBody
 	@PostMapping("/assingnStuProcessAjax")
-	public void assingnStuProcess(StudentLessonInfoVO studentLessonInfoVO) {
+	public void assingnStuProcessAjax(StudentLessonInfoVO studentLessonInfoVO) {
 		
 		//학생편성시 nowStudent +1,  PayCode 코드가 같이 등록. (attendeCode 추가 예정)
 		studentService.assignStu(studentLessonInfoVO);
 		
-		
-		
 	}
 	
-	
+	//학생 중복 편성 확인
+	@ResponseBody
+	@PostMapping("/isStuAssignAjax")
+	public List<StudentLessonInfoVO> isStuAssignAjax(StudentLessonInfoVO studentLessonInfoVO) {
+		
+		return studentService.isStuAssign(studentLessonInfoVO.getStudentCode());		
+	}
 	
 	
 	

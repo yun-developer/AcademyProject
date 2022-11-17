@@ -24,5 +24,8 @@ public interface StudentService {
 	
 	//학생편성
 	void assignStu(StudentLessonInfoVO studentLessonInfoVO);
-
+	//학생 중복 편성 확인
+	List<StudentLessonInfoVO> isStuAssign(String studentCode);
+	
+	
 }
