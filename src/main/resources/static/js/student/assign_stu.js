@@ -114,12 +114,11 @@ function assingnStudent (){
 								}).then(result => {
 								   // 만약 Promise리턴을 받으면,
 								   if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
-									
+										opener.parent.location.reload();
 										window.open('','_self').close();
 										
 								   }
 								});
-								
 						},
 						error: function() {
 							alert('실패');
