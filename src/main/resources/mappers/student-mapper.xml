@@ -7,7 +7,7 @@
 		<result column="STUDENT_NAME" 								property="studentName"/>
 		<result column="STUDENT_GENDER" 							property="studentGender"/>
 		<result column="BIRTHDAY" 									property="birthday"/>
-		<result column="YEAR" 										property="year"/>
+		<result column="STUDENT_YEAR" 								property="studentYear"/>
 		<result column="ADDR" 										property="addr"/>
 		<result column="ADDR_DETAIL"								property="addrDetail"/>
 		<result column="STUDENT_TELL"								property="studentTell"/>
@@ -24,6 +24,8 @@
 		<result column="LESSON_INFO_CODE"								property="lessonInfoCode"/>
 		<result column="ATTENDANCE_CODE" 								property="attendanceCode"/>
 		<result column="STUDENT_CODE" 									property="studentCode"/>
+		
+		<association property="lessonInfoVO" resultMap="lessonMapper.lessonInfo"/>
 	</resultMap>
 	
 	
@@ -48,7 +50,7 @@
 		, STUDENT_NAME
 		, STUDENT_GENDER
 		, BIRTHDAY
-		, YEAR
+		, STUDENT_YEAR
 		, ADDR
 		, ADDR_DETAIL
 		, STUDENT_TELL		
@@ -57,7 +59,7 @@
 		, #{studentName}
 		, #{studentGender}
 		, #{birthday}
-		, #{year}
+		, #{studentYear}
 		, #{addr}
 		, #{addrDetail}
 		, #{studentTell}
@@ -90,7 +92,7 @@
 <select id="selectStuList" resultMap="student">
 	SELECT STUDENT_CODE 
 		, STUDENT_NAME
-		, YEAR
+		, STUDENT_YEAR
 		, DECODE(STUDENT_GENDER, 'W', '여', '남') AS STUDENT_GENDER
 		<!-- 수강 과목, 반 -->
 		<!-- , SUBJECT_NAME -->
@@ -111,7 +113,7 @@
 	SELECT STUDENT_CODE
 		, STUDENT_NAME
 		, TO_CHAR(BIRTHDAY, 'YYYY-MM-DD') AS BIRTHDAY
-		, YEAR
+		, STUDENT_YEAR
 		, ADDR||' ' ||ADDR_DETAIL AS ADDR
 		, STUDENT_TELL
 		, TO_CHAR(REG_DATE, 'YYYY-MM-DD') AS REG_DATE 
@@ -203,7 +205,21 @@
 </insert>
 
 
-
+<!-- 모든학생이 듣고 있는 수업 조회 -->
+<select id="selectStuLessonList" resultMap="studentLessonInfo">
+	SELECT STUDENT_CODE
+    , STUDENT_LESSON_CODE
+    , L.LESSON_INFO_CODE
+    , (SELECT SUBJECT_NAME
+				FROM SUBJECT
+				WHERE SUBJECT_CODE = L.SUBJECT_CODE) AS SUBJECT_NAME
+    , (SELECT STEP_NAME
+				FROM STEP
+				WHERE STEP_CODE = L.STEP_CODE) AS STEP_NAME
+    , YEAR
+	FROM LESSON_INFO L, STUDENT_LESSON_INFO SL
+	WHERE L.LESSON_INFO_CODE = SL.LESSON_INFO_CODE
+</select>
 
 
 	

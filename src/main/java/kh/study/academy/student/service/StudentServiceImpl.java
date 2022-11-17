@@ -80,6 +80,13 @@ public class StudentServiceImpl implements StudentService{
 		return sqlSession.selectList("studentMapper.isStuAssign", studentCode);
 	}
 	
+	//모든학생이 듣고 있는 수업 조회
+	@Override
+	public List<StudentLessonInfoVO> selectStuLessonList() {
+		
+		return sqlSession.selectList("studentMapper.selectStuLessonList");
+	}
+	
 
 	
 

@@ -116,8 +116,8 @@ public class StudentController {
 		
 		model.addAttribute("stuList", studentService.selectStuList(studentName));
 		
-	
-		
+		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@"+studentService.selectStuLessonList());
+		model.addAttribute("stuLessonList", studentService.selectStuLessonList());
 		
 		
 		return "content/student/assignment_student_page";
@@ -151,6 +151,8 @@ public class StudentController {
 		else {
 			
 		}
+		
+		
 		
 		return  lessonService.selectLessonInfoList(lessonInfoVO);
 	}

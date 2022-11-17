@@ -27,5 +27,8 @@ public interface StudentService {
 	//학생 중복 편성 확인
 	List<StudentLessonInfoVO> isStuAssign(String studentCode);
 	
+	//모든학생이 듣고 있는 수업 조회
+	List<StudentLessonInfoVO> selectStuLessonList();
+	
 	
 }

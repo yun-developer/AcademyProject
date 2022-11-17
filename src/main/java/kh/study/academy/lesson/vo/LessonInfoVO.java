@@ -44,7 +44,6 @@ public class LessonInfoVO {
 	private PaymentVO paymentVO;
 	
 	//collection 연결
-	private List<StudentLessonInfoVO> studentLessonInfoList;
 	
 	private List<String> subjectCodeList;
 }

@@ -23,7 +23,6 @@
 		<association property="teacherVO" resultMap="teacherMapper.teacher"/>
 		<association property="paymentVO" resultMap="studentMapper.payment"/>
 		
-		<collection property="studentLessonInfoList" 						resultMap="studentMapper.studentLessonInfo"/>
 	</resultMap>
 	
 
