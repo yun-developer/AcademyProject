@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import kh.study.academy.admin.service.AdminService;
+import kh.study.academy.lesson.service.LessonService;
 import kh.study.academy.student.service.StudentService;
 import kh.study.academy.student.vo.StudentVO;
 import kh.study.academy.test.service.TestService;
@@ -24,6 +26,16 @@ public class TestController {
 	@Resource(name = "testService")
 	private TestService testService;
 	
+	@Resource(name = "adminService")
+	private AdminService adminService;
+
+	@Resource(name = "lessonService")
+	private LessonService lessonService;
+
+	
+	@Resource(name = "studentService")
+	private StudentService studentService;
+	
 
 	
 	//점수 관리 페이지로
@@ -32,15 +44,25 @@ public class TestController {
 		
 		
 		//데이터 나오는지 확인
-	System.out.println("@@@!!!!!@@"+testService.searchTest(paramMap));
+		System.out.println("@@@!!!!!@@"+testService.searchTest(paramMap));
 		
 		//검색
-		model.addAttribute("search", testService.searchTest(paramMap));
+		//model.addAttribute("search", testService.searchTest(paramMap));
 		
-		//학급명 목록 조회 
-	//	model.addAttribute(null, model);
+		// 과목 리스트 조회
+		model.addAttribute("subjectList", adminService.selectSubject());
 		
-	
+		// 교사 리스트 조회
+		model.addAttribute("teacherList", adminService.selectTeacherList());
+
+		//강의 등급 조회
+		model.addAttribute("step", lessonService.selectStepList());
+
+		
+		//이거를 참고 엄청해서 매퍼 바꿔
+		model.addAttribute("search", studentService.selectStuLessonList());
+		
+		
 		
 		model.addAttribute("paramMap", paramMap);
 		
