@@ -55,7 +55,7 @@
 								</th:block>
 								<th:block th:unless="${#lists.size(stuList) == 0}">
 									<tr th:each="stu, status : ${stuList}">
-										<td><input type="checkbox" class="form-check-input chk" th:value=${stu.studentCode} th:name="selectCount"></td>
+										<td><input type="checkbox" class="form-check-input chk" th:value=${stu.studentCode} th:name="selectCount"  onclick='checkOnlyOne(this)'></td>
 										<td th:name="stu" class="text-primary sName"  th:onclick="goPopup([[${stu.studentCode}]]);">[[${stu.studentName}]]</td>
 										<td th:name="stu" th:text="${stu.year} + 학년"></td>
 										<td th:name="stu" th:text=${stu.studentGender} ></td>

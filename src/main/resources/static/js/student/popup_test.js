@@ -15,7 +15,7 @@ const chkBoxes = document.querySelectorAll('.chk');
 /////////////////함수/////////////////////////////////////////////////////
 function openPopup(popUrl){
 	
-	let popOption = "width = 1100px, height=800px, top=300px, left=300px, scrollbars=yes";
+	let popOption = "width = 1100px, height=800px, top=100px, left=300px, scrollbars=yes";
 	
 	window.open(popUrl,"popupTest",popOption);
 }
@@ -58,12 +58,28 @@ $('.popup').on("click",function(e){
 		}
 		
 		
-		
-		
 		popUrl = `/stu/popup?studentCode=${stuCode}`;
 		openPopup(popUrl);
 		
 });
+
+function checkOnlyOne(element) {
+  
+  const checkboxes 
+      = document.querySelectorAll(".chk");
+  
+  checkboxes.forEach((cb) => {
+    cb.checked = false;
+  })
+  
+  element.checked = true;
+}
+
+
+
+
+
+
 
 
 

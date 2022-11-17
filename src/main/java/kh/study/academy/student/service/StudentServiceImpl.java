@@ -63,6 +63,7 @@ public class StudentServiceImpl implements StudentService{
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public void assignStu(StudentLessonInfoVO studentLessonInfoVO) {
+		
 		//학생편성
 		sqlSession.insert("studentMapper.assignStu", studentLessonInfoVO);
 		//nowStudent +1증가
@@ -70,6 +71,13 @@ public class StudentServiceImpl implements StudentService{
 		//수납코드 생성
 		sqlSession.insert("studentMapper.createPayment", studentLessonInfoVO);
 		
+	}
+	
+	//학생 중복 편성 확인
+	@Override
+	public List<StudentLessonInfoVO> isStuAssign(String studentCode) {
+		
+		return sqlSession.selectList("studentMapper.isStuAssign", studentCode);
 	}
 	
 
