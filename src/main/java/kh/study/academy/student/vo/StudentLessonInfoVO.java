@@ -11,4 +11,7 @@ public class StudentLessonInfoVO {
 	private String studentCode;
 	
 	private LessonInfoVO lessonInfoVO;
+	private StudentVO studentVO;
+	
+	private String paymentCode;
 }

@@ -14,7 +14,6 @@
 		<result column="REG_DATE" 									property="regDate"/>
 		
 		<collection property="subjectVO" 							resultMap="adminMapper.subject" />
-		<collection property="studentLessonInfoList" 				resultMap="studentLessonInfo" />
 		<collection property="testList" 							resultMap="testMapper.test" />
 		
 	</resultMap>
@@ -26,6 +25,7 @@
 		<result column="STUDENT_CODE" 									property="studentCode"/>
 		
 		<association property="lessonInfoVO" resultMap="lessonMapper.lessonInfo"/>
+		<association property="studentVO" resultMap="student"/>
 	</resultMap>
 	
 	
@@ -207,18 +207,23 @@
 
 <!-- 모든학생이 듣고 있는 수업 조회 -->
 <select id="selectStuLessonList" resultMap="studentLessonInfo">
-	SELECT STUDENT_CODE
-    , STUDENT_LESSON_CODE
-    , L.LESSON_INFO_CODE
-    , (SELECT SUBJECT_NAME
-				FROM SUBJECT
-				WHERE SUBJECT_CODE = L.SUBJECT_CODE) AS SUBJECT_NAME
-    , (SELECT STEP_NAME
-				FROM STEP
-				WHERE STEP_CODE = L.STEP_CODE) AS STEP_NAME
-    , YEAR
-	FROM LESSON_INFO L, STUDENT_LESSON_INFO SL
+
+	SELECT S.STUDENT_CODE
+	    , STUDENT_NAME
+	    , STUDENT_YEAR
+	    , STUDENT_GENDER
+	    , STUDENT_LESSON_CODE
+	    , L.LESSON_INFO_CODE
+	    , (SELECT SUBJECT_NAME
+					FROM SUBJECT
+					WHERE SUBJECT_CODE = L.SUBJECT_CODE) AS SUBJECT_NAME
+	    , (SELECT STEP_NAME
+					FROM STEP
+					WHERE STEP_CODE = L.STEP_CODE) AS STEP_NAME
+	    , YEAR
+	FROM LESSON_INFO L, STUDENT_LESSON_INFO SL , STUDENT S
 	WHERE L.LESSON_INFO_CODE = SL.LESSON_INFO_CODE
+	AND S.STUDENT_CODE = SL.STUDENT_CODE
 </select>
 
 

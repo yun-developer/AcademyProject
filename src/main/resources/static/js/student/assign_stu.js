@@ -57,6 +57,9 @@ function newCapacityandMoney(getCode){
 			if(resultLesson[0].nowStudentCnt == resultLesson[0].maxStudent){
 				
 				const assingnBtn = document.querySelector('#assingnBtn');
+				//태그 속성 추가 변경
+				assingnBtn.setAttribute("class", "btn btn-secondary");
+				assingnBtn.innerText = "배 정 불 가";
 				assingnBtn.disabled = true;
 
 				Swal.fire('정원 초과', '학급의 정원이 찬 학급입니다.', 'warning');
