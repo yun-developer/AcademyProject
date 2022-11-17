@@ -80,6 +80,9 @@ $(document).on("click", "#teacherStatusSwitch", function() {
 	if(isteacherStatus == false){
 		const teacherStatus = 'N';
 	
+			alert(teacherStatus);
+			
+			
 			Swal.fire({
 			title: '재직상태를 변경하시겠습니까?',
 			text: '퇴사 상태로 교사 재직상태를 변경합니다',
@@ -109,7 +112,7 @@ $(document).on("click", "#teacherStatusSwitch", function() {
 						
 						const changeStatusText = document.querySelector('#changeStatusText');
 						changeStatusText.innerHTML = ''; /*내용을 지우는것*/
-						str += `퇴사`;
+						str = `퇴사`;
 						changeStatusText.insertAdjacentHTML('beforeend', str);
 						
 					},
@@ -122,12 +125,18 @@ $(document).on("click", "#teacherStatusSwitch", function() {
 				Swal.fire('재직상태 변경.', '재직상태가 퇴사로 변경되었습니다', 'success');
 			}
 		})
+		
+		
 	}
+	
+	
+	
 	
 	//스위치를 on(재직중)으로 변경시 
 	if(isteacherStatus == true){
 		const teacherStatus = 'Y';
-	
+			alert(teacherStatus);
+			
 			Swal.fire({
 			title: '재직상태를 변경하시겠습니까?',
 			text: '재직중 상태로 교사 재직상태를 변경합니다',
@@ -157,7 +166,7 @@ $(document).on("click", "#teacherStatusSwitch", function() {
 						
 						const changeStatusText = document.querySelector('#changeStatusText');
 						changeStatusText.innerHTML = ''; /*내용을 지우는것*/
-						str += `재직중`;
+						str = `재직중`;
 						changeStatusText.insertAdjacentHTML('beforeend', str);
 					
 						
@@ -172,4 +181,13 @@ $(document).on("click", "#teacherStatusSwitch", function() {
 			}
 		})
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 });
