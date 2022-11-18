@@ -28,6 +28,8 @@ function openPopup(popUrl){
 	
 	window.open(popUrl,"popupTest",popOption);
 }
+
+//학생이름 선택시
 function goPopup(studentCode){
 	
 	popUrl = `/stu/popup?studentCode=${studentCode}`;
@@ -48,7 +50,6 @@ function checkOnlyOne(element) {
   
   element.checked = true;
 }
-
 
 ///////////////////////////////////////이벤트///////////////////////////////
 
@@ -76,7 +77,6 @@ $('.popup').on("click",function(e){
 			stuCode = checkBox.value;
 			
 		}
-		
 		
 		popUrl = `/stu/popup?studentCode=${stuCode}`;
 		openPopup(popUrl);
