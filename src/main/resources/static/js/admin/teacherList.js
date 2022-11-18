@@ -48,7 +48,7 @@ checkAll.addEventListener('click',function(){
 
 //리스트 체크박스 선택 시 제목줄 체크박스 이벤트
 for(const chk of chks){
-	chk.addEventListener('click', chk=>{ //밑줄 와이...?
+	chk.addEventListener('click', chk=>{ 
 		//아래에 있는 전체 체크박스의 수 
 		const cnt = chks.length;
 		//아래에 있는 전체 체크박스 중 체크된 수

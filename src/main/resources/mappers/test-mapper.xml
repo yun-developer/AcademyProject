@@ -48,20 +48,28 @@
 	
 	
 	<!-- 평가 관리 페이지에서 검색 조회 -->
-	<!--수정필요  -->
-	<select id="searchTest" resultMap="lessonMapper.lessonInfo"
+	<!--수정필요// studentMapper 모든학생이 듣고 있는 수업 조회 참고 -->
+	<select id="searchTest" resultMap="studentMapper.student"
 		parameterType="hashMap">
 		SELECT S.STUDENT_CODE
-			, STUDENT_NAME
-			, TEACHER_CODE
-			, (SELECT TEACHER_NAME
-					FROM TEACHER
-					WHERE TEACHER_CODE = LE.TEACHER_CODE) AS TEACHER_NAME
-			, STUDENT_LESSON_CODE
-			, L.LESSON_INFO_CODE
-		FROM STUDENT S, STUDENT_LESSON_INFO L, LESSON_INFO LE
-		WHERE S.STUDENT_CODE = L.STUDENT_CODE
-		AND L.LESSON_INFO_CODE = LE.LESSON_INFO_CODE
+		    , STUDENT_NAME
+		    , STUDENT_YEAR
+		    , STUDENT_GENDER
+		    , STUDENT_LESSON_CODE
+		    , L.LESSON_INFO_CODE
+		    , (SELECT SUBJECT_NAME
+						FROM SUBJECT
+						WHERE SUBJECT_CODE = L.SUBJECT_CODE) AS SUBJECT_NAME
+		    , (SELECT STEP_NAME
+						FROM STEP
+						WHERE STEP_CODE = L.STEP_CODE) AS STEP_NAME
+		    , YEAR
+		    , L.TEACHER_CODE 
+	        , TEACHER_NAME
+		FROM LESSON_INFO L, STUDENT_LESSON_INFO SL , STUDENT S, TEACHER T
+		WHERE L.LESSON_INFO_CODE = SL.LESSON_INFO_CODE
+		AND S.STUDENT_CODE = SL.STUDENT_CODE
+	    AND L.TEACHER_CODE = T.TEACHER_CODE
 		<if test="studentName != null and !studentName.equals('')">
 			AND STUDENT_NAME LIKE ('%'||#{studentName}||'%')
 		</if>

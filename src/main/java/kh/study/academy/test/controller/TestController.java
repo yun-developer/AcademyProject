@@ -47,7 +47,7 @@ public class TestController {
 		System.out.println("@@@!!!!!@@"+testService.searchTest(paramMap));
 		
 		//검색
-		//model.addAttribute("search", testService.searchTest(paramMap));
+		model.addAttribute("search", testService.searchTest(paramMap));
 		
 		// 과목 리스트 조회
 		model.addAttribute("subjectList", adminService.selectSubject());
@@ -59,8 +59,7 @@ public class TestController {
 		model.addAttribute("step", lessonService.selectStepList());
 
 		
-		//이거를 참고 엄청해서 매퍼 바꿔
-		model.addAttribute("search", studentService.selectStuLessonList());
+		
 		
 		
 		
