@@ -48,18 +48,18 @@
 								</tr>
 							</thead>
 							<tbody>
-								<th:block th:if="${#lists.size(stuList) == 0}">
+								<th:block th:if="${#lists.size(stuLessonList) == 0}">
 									<tr>
 										<td colspan="6">등록된 학생이 없습니다.</td>
 									</tr>
 								</th:block>
-								<th:block th:unless="${#lists.size(stuList) == 0}">
-									<tr th:each="stu, status : ${stuList}">
-										<td><input type="checkbox" class="form-check-input chk" th:value=${stu.studentCode} th:name="selectCount"  onclick='checkOnlyOne(this)'></td>
-										<td th:name="stu" class="text-primary sName"  th:onclick="goPopup([[${stu.studentCode}]]);">[[${stu.studentName}]]</td>
-										<td th:name="stu" th:text="${stu.studentYear} + 학년"></td>
-										<td th:name="stu" th:text=${stu.studentGender} ></td>
-										<td th:name="stu" th:id="${stu.studentCode}" th:text="${stuLessonList[0].lessonInfoVO.subjectVO.subjectName}"></td>
+								<th:block th:unless="${#lists.size(stuLessonList) == 0}">
+									<tr th:each="stuLesson : ${stuLessonList}">
+										<td><input type="checkbox" class="form-check-input chk" th:value=${stuLesson.studentCode} th:name="selectCount"  onclick='checkOnlyOne(this)'></td>
+										<td th:name="stu" class="text-primary sName"  th:onclick="goPopup([[${stuLesson.studentCode}]]);">[[${stuLesson.studentVO.studentName}]]</td>
+										<td th:name="stu" th:text="${stuLesson.studentVO.studentYear} + 학년"></td>
+										<td th:name="stu" th:text=${stuLesson.studentVO.studentGender} ></td>
+										<td th:name="stu" th:id="${stuLesson.studentCode}" th:text="${stuLesson.lessonInfoVO.subjectVO.subjectName + '-' + stuLesson.lessonInfoVO.stepVO.stepName}"></td>
 									</tr>
 								</th:block>
 							</tbody>
