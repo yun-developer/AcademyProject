@@ -13,9 +13,10 @@
 		<result column="STUDENT_TELL"								property="studentTell"/>
 		<result column="REG_DATE" 									property="regDate"/>
 		
+		<collection property="studentLessonInfoList" 				resultMap="studentLessonInfo"/>
+		
 		<collection property="subjectVO" 							resultMap="adminMapper.subject" />
 		<collection property="testList" 							resultMap="testMapper.test" />
-		
 	</resultMap>
 	
 	<resultMap type="kh.study.academy.student.vo.StudentLessonInfoVO"   id="studentLessonInfo">
@@ -25,7 +26,7 @@
 		<result column="STUDENT_CODE" 									property="studentCode"/>
 		
 		<association property="lessonInfoVO" resultMap="lessonMapper.lessonInfo"/>
-		<association property="studentVO" resultMap="student"/>
+	<!-- 	<association property="studentVO" resultMap="student"/> -->
 	</resultMap>
 	
 	
@@ -206,12 +207,12 @@
 
 
 <!-- 모든학생이 듣고 있는 수업 조회 -->
-<select id="selectStuLessonList" resultMap="studentLessonInfo">
+<select id="selectStuLessonList" resultMap="student">
 
 	SELECT S.STUDENT_CODE
 	    , STUDENT_NAME
 	    , STUDENT_YEAR
-	    , STUDENT_GENDER
+	    , DECODE(STUDENT_GENDER, 'W', '여', '남') AS STUDENT_GENDER
 	    , STUDENT_LESSON_CODE
 	    , L.LESSON_INFO_CODE
 	    , (SELECT SUBJECT_NAME
