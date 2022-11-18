@@ -18,6 +18,7 @@ const moneyDiv = document.querySelector('#money');
 
 //버틍
 const assingnStuForm = document.querySelector('#assingnStuForm');
+const assingnBtn = document.querySelector('#assingnBtn');
 
 //inputLessonCode
 const inputLessonCode = document.querySelector('#inputLessonCode');
@@ -56,9 +57,10 @@ function newCapacityandMoney(getCode){
 			
 			if(resultLesson[0].nowStudentCnt == resultLesson[0].maxStudent){
 				
-				const assingnBtn = document.querySelector('#assingnBtn');
+				
 				//태그 속성 추가 변경
 				assingnBtn.setAttribute("class", "btn btn-secondary");
+			
 				assingnBtn.innerText = "배 정 불 가";
 				assingnBtn.disabled = true;
 
@@ -154,7 +156,10 @@ for(const selectBox of selects) {
 	let selectStepCode = searchStep.options[searchStep.selectedIndex].value;
 	let selectYear = searchYear.options[searchYear.selectedIndex].value;
 	
-	
+		assingnBtn.setAttribute("class", "btn btn btn-primary");
+		assingnBtn.innerText = "저 장";
+		assingnBtn.disabled = false;
+		
 		//ajax start
 			$.ajax({
 				url: '/stu/selectLessonListAjax', //요청경로
