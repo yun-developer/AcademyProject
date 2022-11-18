@@ -32,7 +32,11 @@ function newCapacityandMoney(getCode){
 	//내용지우기
 	capacityDiv.innerHTML = ''; 
 	moneyDiv.innerHTML = '';
-
+	
+	assingnBtn.setAttribute("class", "btn btn btn-primary");
+		assingnBtn.innerText = "저 장";
+		assingnBtn.disabled = false;
+	
 	//ajax start
 	$.ajax({
 		url: '/stu/selectLessonListAjax', //요청경로
@@ -203,6 +207,8 @@ for(const selectBox of selects) {
 selectLesson.addEventListener('change', function abc(){
 	let selectLessonValue = selectLesson.options[selectLesson.selectedIndex].value;
 	newCapacityandMoney(selectLessonValue);
+	
+
 	
 });
 
