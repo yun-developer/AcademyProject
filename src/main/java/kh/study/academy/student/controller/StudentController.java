@@ -60,8 +60,8 @@ public class StudentController {
 	
 	//학생 리스트 조회 페이지
 	@RequestMapping("/list")
-	public String stuList(Model model, String studentName, StudentVO studentVO) {
-		model.addAttribute("stuList", studentService.selectStuList(studentName));
+	public String stuList(Model model, StudentVO studentVO) {
+		model.addAttribute("stuList", studentService.selectStuList(studentVO));
 		
 		return "content/student/student_list";
 	}
@@ -114,7 +114,7 @@ public class StudentController {
 	public String assignmentStu(Model model, String studentName, StudentVO studentVO) {
 		
 		
-		model.addAttribute("stuList", studentService.selectStuList(studentName));
+		model.addAttribute("stuList", studentService.selectStuList(studentVO));
 		
 		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@"+studentService.selectStuLessonList());
 		model.addAttribute("stuLessonList", studentService.selectStuLessonList());

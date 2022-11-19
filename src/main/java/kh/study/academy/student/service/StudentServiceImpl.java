@@ -34,8 +34,8 @@ public class StudentServiceImpl implements StudentService{
 	
 	// 학생 리스트 조회
 	@Override
-	public List<StudentVO> selectStuList(String studentName) {
-		return sqlSession.selectList("studentMapper.selectStuList", studentName);
+	public List<StudentVO> selectStuList(StudentVO studentVO) {
+		return sqlSession.selectList("studentMapper.selectStuList", studentVO);
 		
 	}
 
