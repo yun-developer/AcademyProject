@@ -15,7 +15,7 @@ public interface StudentService {
 	
 	void insertStudent(StudentVO studentVO);
 	
-	List<StudentVO> selectStuList(StudentVO studentVO);
+	List<StudentVO> selectStuList(String studentName);
 	
 	void deleteCheckedStu(StudentVO studentVO);
 	void deleteStu(String studentCode);
