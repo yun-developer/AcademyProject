@@ -99,9 +99,7 @@
 		AND TEACHER_TELL = #{teacherTell}
 	</select>
 	
-	<!--수정중 -->
-	<!--임시 비밀번호로 변경 -->
-	<!--근데 시큐리티에서...비번이 값으로 들어가도 되나..? -->
+	<!--비밀 번호 찾기에서 임시 비밀번호로 변경 -->
 	<update id="updatePw">
 		UPDATE TEACHER
 		SET
@@ -126,11 +124,18 @@
 		WHERE TEACHER_TELL = #{teacherTell}
 	</update>
 	
-	<!-- 아이디 중복 검사 -->
+	<!-- 회원가입시 아이디 중복 검사 -->
 	<select id="idDoubleCheck" resultMap="teacher">
 		SELECT TEACHER_ID
 		FROM TEACHER
 		WHERE TEACHER_ID = #{teacherId}
+	</select>
+
+	<!-- 회원가입시 전화번호 중복 검사 -->
+	<select id="tellDoubleCheck" resultMap="teacher">
+		SELECT TEACHER_TELL
+		FROM TEACHER
+		WHERE TEACHER_TELL = #{teacherTell}
 	</select>
 	
 	

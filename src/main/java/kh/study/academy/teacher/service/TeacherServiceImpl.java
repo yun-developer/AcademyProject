@@ -41,10 +41,17 @@ public class TeacherServiceImpl implements TeacherService {
 		return sqlSession.selectOne("teacherMapper.findId", teacherVO);
 	}
 	
-	//아이디 중복 검사
+	//회원가입시 아이디 중복 검사
 	@Override
 	public TeacherVO idDoubleCheck(TeacherVO teacherVO) {
 		return sqlSession.selectOne("teacherMapper.idDoubleCheck", teacherVO);
+	}
+	
+	//회원가입시 전화번호 중복 검사
+	@Override
+	public TeacherVO tellDoubleCheck(TeacherVO teacherVO) {
+		
+		return sqlSession.selectOne("teacherMapper.tellDoubleCheck", teacherVO);
 	}
 	
 	//전화번호 인증번호 전송 전 입력한 데이터에 일치하는 회원이 있는지 조회
@@ -111,6 +118,8 @@ public class TeacherServiceImpl implements TeacherService {
 		
 		sqlSession.update("teacherMapper.leaveAcademy", teacherVO);
 	}
+
+
 
 
 

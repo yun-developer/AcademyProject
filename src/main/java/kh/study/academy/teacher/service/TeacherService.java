@@ -18,8 +18,11 @@ public interface TeacherService {
 	//로그인 정보 찾기
 	TeacherVO findId(TeacherVO teacherVO);
 	
-	//아이디 중복 검사
+	//회원가입시 아이디 중복 검사
 	TeacherVO idDoubleCheck(TeacherVO teacherVO);
+	
+	//회원가입시 전화번호 중복 검사
+	TeacherVO tellDoubleCheck(TeacherVO teacherVO);
 	
 	//전화번호 인증번호 전송 전 입력한 데이터에 일치하는 회원이 있는지 조회
 	TeacherVO findInfoForSendSms (TeacherVO teacherVO);

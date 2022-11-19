@@ -70,15 +70,15 @@
 		  </div>
 		  
 		  <div class="mt-3 row justify-content-center ">
-		    <label for="inputTeacherTell" class="col-sm-2 col-form-label">연락처</label>
+		    <label for="inputTeacherTell" class="col-sm-2 col-form-label">전화번호</label>
 		    <div class="col-sm-5">
 		      <input type="text" class="form-control" id="inputTeacherTell"  name="teacherTell" placeholder="-없이 숫자만 입력하세요.">
 		      <span class="hasError" th:if="${#fields.hasErrors('teacherTell')}" th:errors="*{teacherTell}"></span>
 	    	</div>
 		    	<div class="col-sm-1 d-grid gap-2 d-md-block">
 		    
-			    	<button type="button" id="tellDoubleCheckBtn" th:onclick="tellDoubleCheck();" class="btn btn-danger ms-0 mx-auto">중복확인</button>
-			    	<!-- 연락처 중복 체크 여부 -->
+			    	<button type="button" id="tellDoubleCheckBtn" th:onclick="isTellDoubleCheck();" class="btn btn-danger ms-0 mx-auto">중복확인</button>
+			    	<!-- 전화번호 중복 체크 여부 -->
 			    	<input type="hidden" id="isTellDoubleChk" name="tellDoubleChk" value="">
 			    </div>
 		    
@@ -260,6 +260,7 @@
 	</div>
 
 <!-- javascript 경로 확인  -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script type="text/javascript" th:src="@{/js/teacher/join_page.js}"></script>
 
 

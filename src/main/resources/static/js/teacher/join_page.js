@@ -10,7 +10,7 @@ const idDouble_Yes_modal = document.querySelector('#idDouble_Yes');
 const idDouble_No_modal = document.querySelector('#idDouble_No');
 const isDoubleCheck_modal = document.querySelector('#isDoubleCheck');
 
-//연락처 중복체크
+//전화번호 중복체크
 const inputTeacherTell = document.querySelector('#inputTeacherTell');
 
 
@@ -48,6 +48,14 @@ function isDoubleChk (){
 	joinForm.submit();
 }
 
+
+
+//전화번호 중복 검사 여부 확인 후 회원가입 진행
+//위에 함수에 넣어야 함...잠시..!
+
+
+
+
 //아이디 중복 검사 결과
 function idDoubleCheck (){
 	
@@ -70,12 +78,21 @@ function idDoubleCheck (){
 		 
 			//중복아이디가 있을 경우
 			if(result.teacherId != null){
-				doubleYesModal.show();
+				Swal.fire({
+                    icon: 'error',
+                    title: '가입 불가',
+                    text: '사용 불가능한 아이디입니다',
+                });
+                	inputTeacherId.value='';
+					inputTeacherId.focus();
 			}
 			//중복 아이디가 없을 경우
 			else{
-				//모달창 띄우는 소스
-				doubleNoModal.show();
+			 	 Swal.fire({
+                    icon: 'success',
+                    title: '가입 가능',
+                    text: '사용 가능한 아이디입니다',
+                });
 			}
 	    },
 	    error: function(){
@@ -87,6 +104,63 @@ function idDoubleCheck (){
 	//중복검사 수행 확인
 	isDoubleChkTag.setAttribute("value", "Chk");
 }
+
+
+//전화번호 중복 검사 결과 
+function isTellDoubleCheck(){
+	
+	const inputTeacherTellValue = inputTeacherTell.value;
+	
+	if (inputTeacherTellValue ==''){
+		// 요소의 placeholder 속성에 특정값을 설정한다.
+    	inputTeacherTell.setAttribute("placeholder", "*전화번호를 입력하세요.");
+		// 커서를 전화번호 인풋태그로 이동한다.
+	    inputTeacherTell.focus();
+	    return;
+	}
+	
+	//ajax start
+	$.ajax({
+	   url: '/teacher/tellDoubleCheckAjax', //요청경로
+	    type: 'post',
+	    data:{'teacherTell':inputTeacherTellValue}, //필요한 데이터
+	    success: function(result) {
+		 
+			//중복아이디가 있을 경우
+			if(result.teacherTell != null){
+				Swal.fire({
+                    icon: 'error',
+                    title: '가입 불가',
+                    text: '이 전화번호로 가입된 회원이 있습니다',
+                });
+                	inputTeacherTell.value='';
+					inputTeacherTell.focus();
+                
+                
+			}
+			//중복 아이디가 없을 경우
+			else{
+			
+				  Swal.fire({
+                    icon: 'success',
+                    title: '가입 가능',
+                    text: '이 전화번호로 가입된 회원이 없습니다',
+                });
+			}
+	    },
+	    error: function(){
+	       alert('실패');
+	    }
+	});
+	//ajax end
+	
+	//중복검사 수행 확인
+	isTellDoubleChkTag.setAttribute("value", "Chk");
+	
+}
+
+
+
 
 function resetInput(event){
 	inputTeacherId.value='';
@@ -105,7 +179,7 @@ function tellDoubleChkChange(event){
 
 
 //온키업 밑에 글자 들어갈 스판태그 하고 아이디 주기 
-//비밀번호 확인
+//입력한 비밀번호가 맞는지 재확인
 function passChk(){
    
       if($("#pwDoubleCheck").val() == $("#inputTeacherPw").val()){
@@ -119,8 +193,6 @@ function passChk(){
 }
 
 ////////////////////////////이벤트///////////////
-//중복 모달이 닫히면 실행되는 이벤트
-idDouble_Yes_modal.addEventListener('hidden.bs.modal', resetInput);
 
 //ID 입력시 중복체크 할수 있도록 변경
 inputTeacherId.addEventListener('keydown', isDoubleChkChange)

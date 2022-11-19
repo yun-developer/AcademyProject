@@ -90,6 +90,15 @@ public class TeacherController {
 		return teacherService.idDoubleCheck(teacherVO);
 	}
 	
+	//전화번호 중복 체크 결과 Ajax
+	@ResponseBody
+	@PostMapping("/tellDoubleCheckAjax")
+	public TeacherVO tellDoubleCheckAjax(TeacherVO teacherVO) {
+		
+		
+		return teacherService.tellDoubleCheck(teacherVO);
+	}
+	
 	
 	
 	//로그인 페이지로 이동
@@ -147,40 +156,18 @@ public class TeacherController {
 	}
 	
 	
-	//이메일로 찾기 눌렀을 때 
-	@ResponseBody
-	@PostMapping("/findByEmailAjax")
-	public void findByEmailAjax() {
-		
-	}
+
 	
-	
-	//전화번호로 찾기 눌렀을 때 
-	@ResponseBody
-	@PostMapping("/findByTellAjax")
-	public void findByTellAjax() {
-		
-	}
-	
-	//........Ing......
 	//연락처 인증성공 시 그 인증번호로 임시비밀번호 업데이트
 	@ResponseBody
 	@PostMapping("/updateTemporaryPw")
 	public String updateTemporaryPw(TeacherVO teacherVO) {
 		
-		System.out.println("!!@@@!!!!!"+ teacherVO);
 
-		
+		//pw암호화
 		teacherVO.setTeacherPw(encoder.encode(teacherVO.getTeacherPw()));
 		
 		teacherService.updateTemporaryPw(teacherVO);
-		
-		
-		
-		//pw암호화
-
-		
-		
 		
 		return "성공";
 	}

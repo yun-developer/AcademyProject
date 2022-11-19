@@ -22,8 +22,11 @@ const searchYear = document.querySelector('#searchYear');
 function openRegTestModal(code){
 	//학생코드
 	//const studentCode = document.querySelectorAll('.stuCode');
+	
+	
+	
 	//학생 이름 
-	const studentName = document.querySelector('.stuName').innerText;
+	const studentName = document.querySelectorAll('.stuName')[0].innerText;
 	const lessonName = document.querySelector('.stuLesson').innerText;
 	
 	alert(studentName);
