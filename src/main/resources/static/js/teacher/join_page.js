@@ -2,13 +2,13 @@
 //////////////////////////변수///////////////////////////
 //Id 중복체크
 const inputTeacherId = document.querySelector('#inputTeacherId');
-const doubleYesModal = new bootstrap.Modal('#idDouble_Yes');
+/*const doubleYesModal = new bootstrap.Modal('#idDouble_Yes');
 const doubleNoModal = new bootstrap.Modal('#idDouble_No');
-const isDoubleCheckModal = new bootstrap.Modal('#isDoubleCheck');
+const isDoubleCheckModal = new bootstrap.Modal('#isDoubleCheck');*/
 
-const idDouble_Yes_modal = document.querySelector('#idDouble_Yes');
+/*const idDouble_Yes_modal = document.querySelector('#idDouble_Yes');
 const idDouble_No_modal = document.querySelector('#idDouble_No');
-const isDoubleCheck_modal = document.querySelector('#isDoubleCheck');
+const isDoubleCheck_modal = document.querySelector('#isDoubleCheck');*/
 
 //전화번호 중복체크
 const inputTeacherTell = document.querySelector('#inputTeacherTell');
@@ -38,21 +38,32 @@ function isDoubleChk (){
 	//회원가입 진행 폼태그
 	const joinForm = document.querySelector('#joinForm');
 	
-	//중복검사를 하지 않았다면
+	//id 중복검사를 하지 않았다면
 	if(isDoubleChkTag.value=="unChk"){
 		
-		isDoubleCheckModal.show();
+		 Swal.fire({
+                    icon: 'warning',
+                    title: '가입 불가',
+                    text: 'ID 중복 검사를 실행해주세요!',
+                });
 		return;
 	}
 	
+	//전화번호 중복검사를 하지 않았다면
+	if(isTellDoubleChkTag.value=="unChk"){
+		
+		 Swal.fire({
+                    icon: 'warning',
+                    title: '가입 불가',
+                    text: '전화번호 중복 검사를 실행해주세요!',
+                });
+		return;
+	}
+	
+	
+	
 	joinForm.submit();
 }
-
-
-
-//전화번호 중복 검사 여부 확인 후 회원가입 진행
-//위에 함수에 넣어야 함...잠시..!
-
 
 
 
