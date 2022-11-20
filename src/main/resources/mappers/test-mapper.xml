@@ -79,6 +79,12 @@
 		<if test="lessonInfoCode != null and !lessonInfoCode.equals('')">
 			AND LESSON_INFO_CODE LIKE ('%'||#{lessonInfoCode}||'%')
 		</if>
+	<!-- 	<if test="stepCode != null and !stepCode.equals('')">
+			AND STEP_CODE LIKE ('%'||#{stepCode}||'%')
+		</if>
+		<if test="year != null and !year.equals('')">
+			AND YEAR LIKE ('%'||#{year}||'%')
+		</if> -->
 	</select>
 	
 	

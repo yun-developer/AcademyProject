@@ -159,7 +159,7 @@
 						<td><input type="button" class="btn btn-outline-dark me-md-2"
 						value="등록" th:onclick="openRegTestModal([[${student.studentCode}]],[[${student.studentName}]]);" data-bs-toggle="modal" data-bs-target="#testInfoReg"></td>
 						<td><input type="button" class="btn btn-outline-dark me-md-2"
-							value="수정" th:onclick="openChangeTestModal();" data-bs-toggle="modal" data-bs-target="#testInfoChange"></td>
+							value="수정" th:onclick="openChangeTestModal([[${student.studentName}]]);" data-bs-toggle="modal" data-bs-target="#testInfoChange"></td>
 					</tr>
 				</th:block>
 			</tbody>
@@ -173,7 +173,7 @@
 	<!--평가 등록 모달 시작-------------------------------------------------------------------------------------------------------------------------------->
 
 	<!-- Modal -->
-	<form th:action="@{/test/regScore}" method="post" id="regTestForm">
+	<form th:action="@{/test/regScore}" method="post" id="regTestForm" >
 		<div class="modal fade" id="testInfoReg" tabindex="-1"
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
@@ -302,7 +302,7 @@
 									<span class="input-group-text h-100 rounded-0">학생이름</span>
 								</div>
 								<div class="col-6 col-lg-10 px-1 rounded-1">
-									<input class="form-control" type="text" value="" aria-label="readonly input example" readonly>
+									<input id="stuNameForChange" class="form-control" type="text" value="" aria-label="readonly input example" readonly>
 								</div>
 							</div>
 						</div>

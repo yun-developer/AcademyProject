@@ -3,278 +3,278 @@
 
 <mapper namespace="boardMapper">
 
-<resultMap type="kh.study.academy.board.vo.BoardVO" id="board">
-	<id column="BOARD_NUM" property="boardNum"/>
-	<result column="BOARD_KIND_CODE" property="boardKindCode"/> 
-	<result column="BOARD_TITLE" property="boardTitle"/> 
-	<result column="BOARD_CONTENT" property="boardContent"/> 
-	<result column="VIEW_COUNT" property="viewCount"/> 
-	<result column="CREATE_DATE" property="createDate"/> 
-	<result column="TEACHER_ID" property="teacherId"/> 
-	<result column="REPLY_NUM_CNT" property="replyNumCnt"/> 
-	<result column="LIKE_CODE_CNT" property="likeCodeCnt"/> 
-	<collection property="imgList" resultMap="boardImg"/>
-</resultMap>
-
-<resultMap type="kh.study.academy.board.vo.BoardKindVO" id="boardKind">
-	<id column="BOARD_KIND_CODE" property="boardKindCode"/>
-	<result column="KIND_NAME" property="kindName"/> 
-</resultMap>
-
-<resultMap type="kh.study.academy.board.vo.BoardImgVO" id="boardImg">
-	<id column="BOARD_IMG_NUM" property="boardImgNum"/>
-	<result column="BOARD_NUM" property="boardNum"/> 
-	<result column="ORIGIN_FILE_NAME" property="originFileName"/> 
-	<result column="STORED_FILE_NAME" property="storedFileName"/> 
-</resultMap>
-
-
-
-
-<select id="getNextBoardNum" resultType="int">
-	SELECT NVL(MAX(BOARD_NUM), 0) + 1 
-	FROM BOARD
-</select>
-
-
-<!-- /////////////////공지사항 게시판////////////////// -->
-<!-- 글 등록 -->
-<insert id="insertNotice">
-	INSERT INTO BOARD (
-		BOARD_NUM
-		, BOARD_KIND_CODE
-		, BOARD_TITLE
-		, BOARD_CONTENT
-		, TEACHER_ID
-	) VALUES (
-		#{boardNum}
-		, '0'
-		, #{boardTitle}
-		, #{boardContent}
-		, #{teacherId}
-	)
-</insert>
-
-
-<!-- 이미지 등록 -->
-<insert id="insertImgs">
-	INSERT INTO BOARD_IMG (
-		BOARD_IMG_NUM
-		, ORIGIN_FILE_NAME
-		, STORED_FILE_NAME
+	<resultMap type="kh.study.academy.board.vo.BoardVO" 		id="board">
+		<id column="BOARD_NUM" 									property="boardNum"/>
+		<result column="BOARD_KIND_CODE" 						property="boardKindCode"/> 
+		<result column="BOARD_TITLE" 							property="boardTitle"/> 
+		<result column="BOARD_CONTENT" 							property="boardContent"/> 
+		<result column="VIEW_COUNT"								property="viewCount"/> 
+		<result column="CREATE_DATE"							property="createDate"/> 
+		<result column="TEACHER_ID" 							property="teacherId"/> 
+		<result column="REPLY_NUM_CNT" 							property="replyNumCnt"/> 
+		<result column="LIKE_CODE_CNT" 							property="likeCodeCnt"/> 
+		<collection property="imgList"							resultMap="boardImg"/>
+	</resultMap>
+	
+	<resultMap type="kh.study.academy.board.vo.BoardKindVO" 	id="boardKind">
+		<id column="BOARD_KIND_CODE" 							property="boardKindCode"/>
+		<result column="KIND_NAME"								property="kindName"/> 
+	</resultMap>
+	
+	<resultMap type="kh.study.academy.board.vo.BoardImgVO" 		id="boardImg">
+		<id column="BOARD_IMG_NUM" 								property="boardImgNum"/>
+		<result column="BOARD_NUM" 								property="boardNum"/> 
+		<result column="ORIGIN_FILE_NAME" 						property="originFileName"/> 
+		<result column="STORED_FILE_NAME"						property="storedFileName"/> 
+	</resultMap>
+	
+	
+	
+	
+	<select id="getNextBoardNum" resultType="int">
+		SELECT NVL(MAX(BOARD_NUM), 0) + 1 
+		FROM BOARD
+	</select>
+	
+	
+	<!-- /////////////////공지사항 게시판////////////////// -->
+	<!-- 글 등록 -->
+	<insert id="insertNotice">
+		INSERT INTO BOARD (
+			BOARD_NUM
+			, BOARD_KIND_CODE
+			, BOARD_TITLE
+			, BOARD_CONTENT
+			, TEACHER_ID
+		) VALUES (
+			#{boardNum}
+			, '0'
+			, #{boardTitle}
+			, #{boardContent}
+			, #{teacherId}
+		)
+	</insert>
+	
+	
+	<!-- 이미지 등록 -->
+	<insert id="insertImgs">
+		INSERT INTO BOARD_IMG (
+			BOARD_IMG_NUM
+			, ORIGIN_FILE_NAME
+			, STORED_FILE_NAME
+			, BOARD_NUM
+		)
+		<foreach collection="imgList" item="img" separator="UNION ALL" index="i">
+			SELECT (SELECT 'IMG_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(BOARD_IMG_NUM, 5))),0) + 1 + #{i}, 3, 0)
+					 FROM BOARD_IMG)
+				, #{img.originFileName}
+				, #{img.storedFileName}
+				, #{img.boardNum}
+			FROM DUAL
+		</foreach>
+	</insert>
+	
+	
+	
+	
+	<!-- 글 목록 조회 -->
+	<select id="selectNoticeBoard" resultMap="board">
+		SELECT BOARD_NUM    <!-- 화면에는 INDEX로 글번호 보게,, -->
+			, BOARD_TITLE
+			, B.TEACHER_ID
+			, TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS CREATE_DATE
+			, VIEW_COUNT
+			, (SELECT COUNT(REPLY_NUM) FROM REPLY
+	            WHERE BOARD_NUM = B.BOARD_NUM) AS REPLY_NUM_CNT
+	        , (SELECT COUNT(LIKE_CODE) FROM LIKE_TABLE
+	        	WHERE BOARD_NUM = B.BOARD_NUM) AS LIKE_CODE_CNT
+		FROM BOARD B, TEACHER T
+		WHERE B.TEACHER_ID = T.TEACHER_ID
+		AND BOARD_KIND_CODE = '0'
+		ORDER BY BOARD_NUM DESC
+	</select>
+	
+	
+	<!-- 메인페이지 공지사항 조회 -->
+	<select id="selectNoticeMain" resultMap="board">
+	SELECT ROWNUM
 		, BOARD_NUM
-	)
-	<foreach collection="imgList" item="img" separator="UNION ALL" index="i">
-		SELECT (SELECT 'IMG_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(BOARD_IMG_NUM, 5))),0) + 1 + #{i}, 3, 0)
-				 FROM BOARD_IMG)
-			, #{img.originFileName}
-			, #{img.storedFileName}
-			, #{img.boardNum}
-		FROM DUAL
-	</foreach>
-</insert>
-
-
-
-
-<!-- 글 목록 조회 -->
-<select id="selectNoticeBoard" resultMap="board">
-	SELECT BOARD_NUM    <!-- 화면에는 INDEX로 글번호 보게,, -->
-		, BOARD_TITLE
-		, B.TEACHER_ID
-		, TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS CREATE_DATE
-		, VIEW_COUNT
-		, (SELECT COUNT(REPLY_NUM) FROM REPLY
-            WHERE BOARD_NUM = B.BOARD_NUM) AS REPLY_NUM_CNT
-        , (SELECT COUNT(LIKE_CODE) FROM LIKE_TABLE
-        	WHERE BOARD_NUM = B.BOARD_NUM) AS LIKE_CODE_CNT
-	FROM BOARD B, TEACHER T
-	WHERE B.TEACHER_ID = T.TEACHER_ID
-	AND BOARD_KIND_CODE = '0'
-	ORDER BY BOARD_NUM DESC
-</select>
-
-
-<!-- 메인페이지 공지사항 조회 -->
-<select id="selectNoticeMain" resultMap="board">
-SELECT ROWNUM
-	, BOARD_NUM
-    , BOARD_TITLE
-    , LIKE_CODE_CNT
-	FROM (
-            SELECT BOARD_NUM 
-            , BOARD_TITLE
-            , (SELECT COUNT(LIKE_CODE) FROM LIKE_TABLE
-                    WHERE BOARD_NUM = B.BOARD_NUM) AS LIKE_CODE_CNT
-            FROM BOARD B
-            WHERE BOARD_KIND_CODE = 0
-            ORDER BY BOARD_NUM DESC 
-        )
-WHERE ROWNUM &gt;= 1 AND ROWNUM &lt;= 5
-</select>
-
-
-
-<!-- 글 내용 조회 -->
-<select id="selectBoardDetail" resultMap="board">
-	SELECT B.BOARD_NUM
-		, BOARD_TITLE
-		, BOARD_CONTENT
-		, B.TEACHER_ID
-		, TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS CREATE_DATE
-		, VIEW_COUNT
-		, STORED_FILE_NAME
-	FROM BOARD B, TEACHER T, BOARD_IMG I
-	WHERE B.TEACHER_ID = T.TEACHER_ID
-	AND B.BOARD_NUM = I.BOARD_NUM(+)
-	AND B.BOARD_NUM = #{boardNum}
-	<!-- AND T.TEACHER_CODE = #{teacherCode} -->
-</select>
-
-
-
-
-<!-- 공지사항 글 상세페이지에서 글 수정 -->
-
- <update id="updateNoticeDetail">
-
-	UPDATE BOARD
-	SET
-		BOARD_TITLE = #{boardTitle}
-		, BOARD_CONTENT = #{boardContent}
-	WHERE BOARD_NUM = #{boardNum}
-
-
-</update>		
-
-
-
-<!-- 공지사항 상세페이지에서 글 삭제 -->
-
-<delete id="deleteNoticeDetail">
-	DELETE BOARD
-	WHERE BOARD_NUM = #{boardNum}
-</delete> 
-
-
-
-
-
-
-<!-- 글 삭제 -->
-
-<delete id="deleteBoardNotice">
-<!-- 등록한 과목을 체크해서 삭제 -->
+	    , BOARD_TITLE
+	    , LIKE_CODE_CNT
+		FROM (
+	            SELECT BOARD_NUM 
+	            , BOARD_TITLE
+	            , (SELECT COUNT(LIKE_CODE) FROM LIKE_TABLE
+	                    WHERE BOARD_NUM = B.BOARD_NUM) AS LIKE_CODE_CNT
+	            FROM BOARD B
+	            WHERE BOARD_KIND_CODE = 0
+	            ORDER BY BOARD_NUM DESC 
+	        )
+	WHERE ROWNUM &gt;= 1 AND ROWNUM &lt;= 5
+	</select>
+	
+	
+	
+	<!-- 글 내용 조회 -->
+	<select id="selectBoardDetail" resultMap="board">
+		SELECT B.BOARD_NUM
+			, BOARD_TITLE
+			, BOARD_CONTENT
+			, B.TEACHER_ID
+			, TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS CREATE_DATE
+			, VIEW_COUNT
+			, STORED_FILE_NAME
+		FROM BOARD B, TEACHER T, BOARD_IMG I
+		WHERE B.TEACHER_ID = T.TEACHER_ID
+		AND B.BOARD_NUM = I.BOARD_NUM(+)
+		AND B.BOARD_NUM = #{boardNum}
+		<!-- AND T.TEACHER_CODE = #{teacherCode} -->
+	</select>
+	
+	
+	
+	
+	<!-- 공지사항 글 상세페이지에서 글 수정 -->
+	
+	 <update id="updateNoticeDetail">
+	
+		UPDATE BOARD
+		SET
+			BOARD_TITLE = #{boardTitle}
+			, BOARD_CONTENT = #{boardContent}
+		WHERE BOARD_NUM = #{boardNum}
+	
+	
+	</update>		
+	
+	
+	
+	<!-- 공지사항 상세페이지에서 글 삭제 -->
+	
+	<delete id="deleteNoticeDetail">
+		DELETE BOARD
+		WHERE BOARD_NUM = #{boardNum}
+	</delete> 
+	
+	
+	
+	
+	
+	
+	<!-- 글 삭제 -->
+	
+	<delete id="deleteBoardNotice">
+	<!-- 등록한 과목을 체크해서 삭제 -->
+			DELETE BOARD
+			WHERE BOARD_NUM IN
+			<foreach collection="boardNumList" item="boardNum" separator="," open="(" close=")">
+				#{boardNum}
+			</foreach>
+	</delete>
+	
+	
+	<!-- 조회수 -->
+	<update id="updateViewCount">
+		UPDATE BOARD
+		SET VIEW_COUNT = VIEW_COUNT + 1
+		WHERE BOARD_NUM = #{boardNum}
+	</update>
+	
+	
+	
+	
+	
+	<!-- 자유게시판  -->
+	
+	<!-- 글 등록 -->
+	<insert id="insertFree">
+		INSERT INTO BOARD (
+			BOARD_NUM
+			, BOARD_KIND_CODE
+			, BOARD_TITLE
+			, BOARD_CONTENT
+			, TEACHER_ID
+		) VALUES (
+			#{boardNum}
+			, '1'
+			, #{boardTitle}
+			, #{boardContent}
+			, #{teacherId}
+		)
+	</insert>
+	
+	
+	<!-- 글 목록 조회 -->
+	<select id="selectFreeBoard" resultMap="board">
+		SELECT BOARD_NUM    <!-- 화면에는 INDEX로 글번호 보게,, -->
+			, BOARD_TITLE
+			, B.TEACHER_ID
+			, TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS CREATE_DATE
+			, VIEW_COUNT
+			, (SELECT COUNT(REPLY_NUM) FROM REPLY
+	            WHERE BOARD_NUM = B.BOARD_NUM) AS REPLY_NUM_CNT
+	        , (SELECT COUNT(LIKE_CODE) FROM LIKE_TABLE
+	        	WHERE BOARD_NUM = B.BOARD_NUM) AS LIKE_CODE_CNT
+		FROM BOARD B, TEACHER T
+		WHERE B.TEACHER_ID = T.TEACHER_ID
+		AND BOARD_KIND_CODE = '1'
+		ORDER BY BOARD_NUM DESC
+	</select>
+	
+	
+	<!-- 메인페이지 자유게시판 조회 -->
+	<select id="selectFreeMain" resultMap="board">
+	SELECT ROWNUM
+		, BOARD_NUM
+	    , BOARD_TITLE
+	    , LIKE_CODE_CNT
+		FROM (
+	            SELECT BOARD_NUM 
+	            , BOARD_TITLE
+	            , (SELECT COUNT(LIKE_CODE) FROM LIKE_TABLE
+	                    WHERE BOARD_NUM = B.BOARD_NUM) AS LIKE_CODE_CNT
+	            FROM BOARD B
+	            WHERE BOARD_KIND_CODE = 1 
+	            ORDER BY LIKE_CODE_CNT DESC, BOARD_NUM DESC
+	        )
+	WHERE ROWNUM &gt;= 1 AND ROWNUM &lt;= 5
+	</select>
+	
+	
+	
+	<!-- 자유게시판 글 상세페이지에서 글 수정 -->
+	
+	<update id="updateFreeDetail">
+	
+		UPDATE BOARD
+		SET
+			BOARD_TITLE = #{boardTitle}
+			, BOARD_CONTENT = #{boardContent}
+		WHERE BOARD_NUM = #{boardNum}
+	
+	
+	</update>
+	
+	
+	
+	
+	<!-- 자유게시판 글 리스트에서 체크박스해서 글 삭제 -->
+	<delete id="deleteBoardFree">
 		DELETE BOARD
 		WHERE BOARD_NUM IN
 		<foreach collection="boardNumList" item="boardNum" separator="," open="(" close=")">
 			#{boardNum}
-		</foreach>
-</delete>
-
-
-<!-- 조회수 -->
-<update id="updateViewCount">
-	UPDATE BOARD
-	SET VIEW_COUNT = VIEW_COUNT + 1
-	WHERE BOARD_NUM = #{boardNum}
-</update>
-
-
-
-
-
-<!-- 자유게시판  -->
-
-<!-- 글 등록 -->
-<insert id="insertFree">
-	INSERT INTO BOARD (
-		BOARD_NUM
-		, BOARD_KIND_CODE
-		, BOARD_TITLE
-		, BOARD_CONTENT
-		, TEACHER_ID
-	) VALUES (
-		#{boardNum}
-		, '1'
-		, #{boardTitle}
-		, #{boardContent}
-		, #{teacherId}
-	)
-</insert>
-
-
-<!-- 글 목록 조회 -->
-<select id="selectFreeBoard" resultMap="board">
-	SELECT BOARD_NUM    <!-- 화면에는 INDEX로 글번호 보게,, -->
-		, BOARD_TITLE
-		, B.TEACHER_ID
-		, TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS CREATE_DATE
-		, VIEW_COUNT
-		, (SELECT COUNT(REPLY_NUM) FROM REPLY
-            WHERE BOARD_NUM = B.BOARD_NUM) AS REPLY_NUM_CNT
-        , (SELECT COUNT(LIKE_CODE) FROM LIKE_TABLE
-        	WHERE BOARD_NUM = B.BOARD_NUM) AS LIKE_CODE_CNT
-	FROM BOARD B, TEACHER T
-	WHERE B.TEACHER_ID = T.TEACHER_ID
-	AND BOARD_KIND_CODE = '1'
-	ORDER BY BOARD_NUM DESC
-</select>
-
-
-<!-- 메인페이지 자유게시판 조회 -->
-<select id="selectFreeMain" resultMap="board">
-SELECT ROWNUM
-	, BOARD_NUM
-    , BOARD_TITLE
-    , LIKE_CODE_CNT
-	FROM (
-            SELECT BOARD_NUM 
-            , BOARD_TITLE
-            , (SELECT COUNT(LIKE_CODE) FROM LIKE_TABLE
-                    WHERE BOARD_NUM = B.BOARD_NUM) AS LIKE_CODE_CNT
-            FROM BOARD B
-            WHERE BOARD_KIND_CODE = 1 
-            ORDER BY LIKE_CODE_CNT DESC, BOARD_NUM DESC
-        )
-WHERE ROWNUM &gt;= 1 AND ROWNUM &lt;= 5
-</select>
-
-
-
-<!-- 자유게시판 글 상세페이지에서 글 수정 -->
-
-<update id="updateFreeDetail">
-
-	UPDATE BOARD
-	SET
-		BOARD_TITLE = #{boardTitle}
-		, BOARD_CONTENT = #{boardContent}
-	WHERE BOARD_NUM = #{boardNum}
-
-
-</update>
-
-
-
-
-<!-- 자유게시판 글 리스트에서 체크박스해서 글 삭제 -->
-<delete id="deleteBoardFree">
-	DELETE BOARD
-	WHERE BOARD_NUM IN
-	<foreach collection="boardNumList" item="boardNum" separator="," open="(" close=")">
-		#{boardNum}
-</foreach>
-
-
-</delete>
-
-<!-- 자유게시판 상세페이지에서 등록한 글 삭제 -->
-
-<delete id="deleteFreeDetail">
-	DELETE BOARD
-	WHERE BOARD_NUM = #{boardNum}
-</delete>
+	</foreach>
+	
+	
+	</delete>
+	
+	<!-- 자유게시판 상세페이지에서 등록한 글 삭제 -->
+	
+	<delete id="deleteFreeDetail">
+		DELETE BOARD
+		WHERE BOARD_NUM = #{boardNum}
+	</delete>
 
 
 </mapper>

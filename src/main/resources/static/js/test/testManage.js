@@ -25,14 +25,10 @@ function openRegTestModal(code, name){
 	document.querySelector('#stuCodeForReg').value = code;
 	const stuentCode = document.querySelector('#stuCodeForReg').value;
 	
-	alert(stuentCode);
 	
 	//학생 이름 모달 input value에 넣기
 	document.querySelector('#stuNameForReg').value = name;
 	const stuentName = document.querySelector('#stuNameForReg').value;
-	
-	
-	alert(stuentName);
 	
 	
 	//const lessonName = document.querySelector('.stuLesson').innerText;
@@ -40,8 +36,6 @@ function openRegTestModal(code, name){
 	//alert(studentName);
 	//alert(lessonName);
 	
-	//학생이름을 모달창에 보여주게 하기
-	//document.querySelector('#stuCodeForReg').value = studentName;
 }
 
 
@@ -50,9 +44,13 @@ function openRegTestModal(code, name){
 //평가수정 모달을 눌렀을 때 실행되는 함수
 
 
-function openChangeTestModal(text){
+function openChangeTestModal(name){
 
-
+	//학생 이름 모달 input value에 넣기
+	document.querySelector('#stuNameForChange').value = name;
+	const stuentName = document.querySelector('#stuNameForChange').value;
+	
+	
 
 
 }
@@ -61,7 +59,7 @@ function openChangeTestModal(text){
 
 
 
-
+//score 값 100이상이여도 저장되네..validation 넣어야...??
 
 //평가수정 모달 내 저장 버튼을 눌렀을 때 실행되는 함수
 function regTest()  {
@@ -147,7 +145,7 @@ checkAll.addEventListener('click',function(){
 	//제목줄의 체크박스 체크여부
 	const isChecked = checkAll.checked; //true,false
 	
-	//교사 리스트 목록의 모든 체크박스
+	//리스트 목록의 모든 체크박스
 	const checkboxes = document.querySelectorAll('.chk');
 	
 	//제목줄 체크박스가 체크되었다면,
