@@ -157,7 +157,7 @@
 						</th:block></td>
 						<!-- <td th:text="${student.studentLessonInfoList[0].lessonInfoVO.subjectVO.subjectName+'-'+student.studentLessonInfoList[0].lessonInfoVO.stepVO.stepName+'-'+student.studentLessonInfoList[0].lessonInfoVO.year}"></td> -->
 						<td><input type="button" class="btn btn-outline-dark me-md-2"
-						value="등록" th:onclick="openRegTestModal([[${student.studentCode}]]);" data-bs-toggle="modal" data-bs-target="#testInfoReg"></td>
+						value="등록" th:onclick="openRegTestModal([[${student.studentCode}]],[[${student.studentName}]]);" data-bs-toggle="modal" data-bs-target="#testInfoReg"></td>
 						<td><input type="button" class="btn btn-outline-dark me-md-2"
 							value="수정" th:onclick="openChangeTestModal();" data-bs-toggle="modal" data-bs-target="#testInfoChange"></td>
 					</tr>
@@ -185,7 +185,8 @@
 					</div>
 					<div class="modal-body">
 						
-						<input id="selectStuCode" type="hidden" name="studentCode" value="" > 
+						<!-- 학생코드  -->
+						<input id="stuCodeForReg" type="hidden" name="studentCode" value="" > 
 
 						<div class="row mb-1">
 							<div class="form-group input-group mb-1">
@@ -193,7 +194,7 @@
 									<span class="input-group-text h-100 rounded-0">학생이름</span>
 								</div>
 								<div class="col-6 col-lg-10 px-1 rounded-1">
-									<input id="stuCodeForReg" class="form-control" type="text" value="" aria-label="readonly input example" readonly>
+									<input id="stuNameForReg" class="form-control" type="text" value="" aria-label="readonly input example" readonly>
 								</div>
 							</div>
 						</div>
@@ -205,25 +206,14 @@
 									<span class="input-group-text h-100 rounded-0">학급명</span>
 								</div>
 								<div class="col-6 col-lg-10 px-1 rounded-1">
-									<input class="form-control" type="text" value="Readonly input here..." aria-label="readonly input example" readonly>
+									<input class="form-control" type="text" value="여기 학급명 필요가..?어차피 밑에 과목 있는데?언니랑 상의해보기" aria-label="readonly input example" readonly>
 									
 								</div>
 							</div>
 						</div>
 
 
-						<div class="row mb-1">
-							<div class="form-group input-group mb-1">
-								<div class="col-6 col-lg-2 px-0">
-									<span class="input-group-text h-100 rounded-0">평가일</span>
-								</div>
-								<div class="col-6 col-lg-10 px-1 rounded-1">
-									<input type="date" id="" name="testDate"
-										class="form-control rounded-0 h-100" 
-										aria-label="8" aria-describedby="cpaCn" >
-								</div>
-							</div>
-						</div>
+						
 						
 						<div class="row mb-1">
 							<div class="form-group input-group mb-1">
@@ -242,6 +232,19 @@
 									</select>
 									
 									
+								</div>
+							</div>
+						</div>
+						
+						<div class="row mb-1">
+							<div class="form-group input-group mb-1">
+								<div class="col-6 col-lg-2 px-0">
+									<span class="input-group-text h-100 rounded-0">평가일</span>
+								</div>
+								<div class="col-6 col-lg-10 px-1 rounded-1">
+									<input type="date" id="" name="testDate"
+										class="form-control rounded-0 h-100" 
+										aria-label="8" aria-describedby="cpaCn" >
 								</div>
 							</div>
 						</div>
@@ -391,6 +394,7 @@
 
 	<!-- jquery 문법 로딩 -->
 	<!--순서 잘 맞춰서 적어야 함 -->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 	<script th:src="@{/js/paginator.js}"></script>	
 	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 	<script type="text/javascript" th:src="@{/js/test/testManage.js}"></script>
