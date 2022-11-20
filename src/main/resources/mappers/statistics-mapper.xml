@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="statisticsMapper">
+
+
+	
+	<!-- 학년별 학생 수 조회 -->
+	
+	<select id="selectNumByStuYear" resultMap="studentMapper.student">
+		SELECT COUNT(STUDENT_CODE) AS STUDENT_CODE
+		FROM STUDENT
+        GROUP BY STUDENT_YEAR
+	
+	</select>
+	
+	<!-- 과목별 학생 수 조회 -->
+	
+	<!-- 전체 학생 수 조회  -->
+
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

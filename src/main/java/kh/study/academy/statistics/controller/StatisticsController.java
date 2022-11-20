@@ -21,8 +21,13 @@ public class StatisticsController {
 	
 	//학생현황 페이지로 이동 
 	@GetMapping("/studentStatus")
-	public String studentStatus() {
-
+	public String studentStatus(Model model) {
+		
+		//학년별 학생 수 조회
+		model.addAttribute("numByStuYear", statisticsService.selectNumByStuYear());
+		
+		System.out.println("@@@@@!!!!!학년별 학생 수 조회@@@@@@!!"+statisticsService.selectNumByStuYear());
+		
 		
 		return "content/statistics/studentStatus";
 	}
