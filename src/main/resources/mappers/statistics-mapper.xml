@@ -3,13 +3,22 @@
 
 <mapper namespace="statisticsMapper">
 	<resultMap type="kh.study.academy.statistics.vo.StudentCntPerGrade" 		id="studentCntPerGrade">
-		<id column="STUDENT_YEAR"					property="studentYear"/>
-		<result column="STUDENT_CNT" 				property="studentCnt"/>
+		<id column="STUDENT_YEAR"												property="studentYear"/>
+		<result column="STUDENT_CNT" 											property="studentCnt"/>
 	</resultMap>
+	
+	<resultMap type="kh.study.academy.statistics.vo.StudentCntPerSubject" 		id="studentCntPerSubject">
+		<id column="STUDENT_YEAR"												property="studentYear"/>
+		<result column="STUDENT_CNT" 											property="studentCnt"/>
+		<result column="SUBJECT_NAME" 											property="subjectName"/>
+	</resultMap>
+	
+	
+	
+	
 
 	
 	<!-- 학년별 학생 수 조회 -->
-	
 	<select id="selectNumByStuYear" resultMap="studentCntPerGrade">
 		SELECT STUDENT_YEAR||'학년' AS STUDENT_YEAR
 			,COUNT(STUDENT_CODE) AS STUDENT_CNT
@@ -18,24 +27,21 @@
 	
 	</select>
 	
+	
 	<!-- 과목별 학생 수 조회 -->
+	<select id="selectNumByStuSubject" resultMap="studentCntPerSubject">
+		SELECT STUDENT_YEAR
+	    ,(SELECT SUBJECT_NAME
+	               FROM SUBJECT
+	               WHERE SUBJECT_CODE = L.SUBJECT_CODE) AS SUBJECT_NAME
+	        
+	        , COUNT(*) AS STUDENT_CNT
+	        FROM LESSON_INFO L, STUDENT_LESSON_INFO SL, STUDENT S
+	        WHERE S.STUDENT_CODE = SL.STUDENT_CODE 
+	    AND L.LESSON_INFO_CODE = SL.LESSON_INFO_CODE
+	    GROUP BY L.SUBJECT_CODE, STUDENT_YEAR
 	
-	<!-- <select id="selectNumByStuSubject" resultMap="studentCntPerSubject">
-		SELECT S.STUDENT_CODE
-	    , STUDENT_YEAR
-	    , STUDENT_LESSON_CODE
-	    , L.LESSON_INFO_CODE
-	    , (SELECT SUBJECT_NAME
-					FROM SUBJECT
-					WHERE SUBJECT_CODE = L.SUBJECT_CODE) AS SUBJECT_NAME
-	FROM LESSON_INFO L, STUDENT_LESSON_INFO SL , STUDENT S
-	WHERE S.STUDENT_CODE = SL.STUDENT_CODE
-    AND L.LESSON_INFO_CODE = SL.LESSON_INFO_CODE
-    GROUP BY SUBJECT_NAME;
-	
-    
-	
-	</select> -->
+	</select>
 	
 	
 	
