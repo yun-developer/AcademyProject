@@ -176,6 +176,17 @@ public class StudentController {
 		return studentService.isStuAssign(studentLessonInfoVO.getStudentCode());		
 	}
 	
+	//학생 학급 이동 팝업창
+	@GetMapping("/updatePopup")
+	public String updatePopup(Model model, StudentVO studentVO) {
+		
+		//선택한 학생 정보
+		model.addAttribute("student", studentService.selectStuDetail(studentVO.getStudentCode()));
+	
+		
+		
+		return "content/student/update_stu_lesson_popup";
+	}
 	
 	
 	

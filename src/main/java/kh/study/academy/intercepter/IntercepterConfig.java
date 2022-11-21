@@ -13,7 +13,7 @@ public class IntercepterConfig implements WebMvcConfigurer{
 		
 		registry.addInterceptor(getSubjectIntercepter())
 		//언제 인터셉트를 실행할건지
-				.addPathPatterns("/**/**")	//전체
+				.addPathPatterns("/teacher/**")	//전체
 				.excludePathPatterns("/teacher/findLoginIdAjax");
 				//Ajax와 충돌하므로 제외)
 			//	.excludePathPatterns("/**/**Ajax"); //하나하나 다 걸러내면 너무 많아서 Ajax기능일때는 요청에 Ajax를 넣어주기
