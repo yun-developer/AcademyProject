@@ -13,23 +13,23 @@
 		<div class="col-12" style="margin-top: 40px;" id="table_box_bootstrap">
 			<table class="table table-striped text-center" style="margin-top: 20px;">
 				<colgroup>
+					<col width="5%">
 					<col width="10%">
 					<col width="30%">
 					<col width="20%">
 					<col width="20%">
 					<col width="10%">
 					<col width="5%">
-					<col width="5%">
 				</colgroup>
 				<thead>
 					<tr>
+						<th scope="col"><input type="checkbox" id="checkAll" ></th>
 						<th scope="col">NO</th>
 						<th scope="col">제목</th>
 						<th scope="col">작성자</th>
 						<th scope="col">작성일</th>
 						<th scope="col">조회수</th>
 						<th scope="col">추천수</th>
-						<th scope="col"><input type="checkbox" id="checkAll" ></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -40,6 +40,7 @@
 					</th:block>
 					<th:block th:unless="${#lists.size(freeList) == 0}">
 						<tr th:each="free, status : ${freeList}">
+							<td><input type="checkbox" class="form-check-input chk" th:value="${free.boardNum}" ></td>
 							<td scope="row" th:text=${status.count}></td>
 							<td><a th:href="@{/board/freeDetail(boardNum=${free.boardNum})}">[[${free.boardTitle}]]</a>
 								<i class="fal fa-comment text-primary"></i> <span class="text-primary" th:text="'(' + ${free.replyNumCnt} + ')'"></span>
@@ -48,7 +49,6 @@
 							<td th:text="${free.createDate}"></td>
 							<td th:text="${free.viewCount}"></td>
 							<td th:text="${free.likeCodeCnt}"></td>
-							<td><input type="checkbox" class="form-check-input chk" th:value="${free.boardNum}" ></td>
 						</tr>
 					</th:block>
 				</tbody>

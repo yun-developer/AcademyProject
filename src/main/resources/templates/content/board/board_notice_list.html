@@ -12,23 +12,23 @@
 		<div class="col-12" style="margin-top: 40px;" id="table_box_bootstrap">
 			<table class="table table-striped text-center" style="margin-top: 20px;">
 				<colgroup>
+					<col width="5%">
 					<col width="10%">
 					<col width="30%">
 					<col width="20%">
 					<col width="20%">
 					<col width="10%">
 					<col width="5%">
-					<col width="5%">
 				</colgroup>
 				<thead>
 					<tr>
+						<th scope="col"><input type="checkbox" id="checkAll" ></th>
 						<th scope="col">NO</th>
 						<th scope="col">제목</th>
 						<th scope="col">작성자</th>
 						<th scope="col">작성일</th>
 						<th scope="col">조회수</th>
 						<th scope="col">추천수</th>
-						<th scope="col"><input type="checkbox" id="checkAll" ></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -39,6 +39,7 @@
 					</th:block>
 					<th:block th:unless="${#lists.size(noticeList) == 0}">
 						<tr th:each="notice, status : ${noticeList}">
+							<td><input type="checkbox" class="form-check-input chk"  th:value="${notice.boardNum}" ></td>
 							<td scope="row" th:text="${status.count}"></td>
 							<td><a th:href="@{/board/noticeDetail(boardNum=${notice.boardNum})}">[[${notice.boardTitle}]]</a>
 								<i class="fal fa-comment text-primary"></i> <span class="text-primary" th:text="'(' + ${notice.replyNumCnt} + ')'"></span>
@@ -47,7 +48,6 @@
 							<td th:text="${notice.createDate}"></td>
 							<td th:text="${notice.viewCount}"></td>
 							<td th:text="${notice.likeCodeCnt}"></td>
-							<td><input type="checkbox" class="form-check-input chk"  th:value="${notice.boardNum}" ></td>
 						</tr>
 					</th:block>
 				</tbody>
