@@ -1,7 +1,10 @@
+
+drawChart();
+
 //차트 1
       
       
-        var options = {
+       /* var options = {
           series: [{
           name: 'Income',
           type: 'column',
@@ -115,10 +118,9 @@
           horizontalAlign: 'left',
           offsetX: 40
         }
-        };
-
-        var chart = new ApexCharts(document.querySelector("#chart"), options);
-        chart.render();
+        };*/
+        
+        
       
       
 
@@ -298,4 +300,77 @@
         var chart3 = new ApexCharts(document.querySelector("#chart3"), options);
         chart3.render();
       
+
+
+function drawChart(){
+	//ajax start
+	$.ajax({
+		url: '/statistics/studentStatusAjax', //요청경로
+		type: 'post',
+		data: {}, //필요한 데이터
+		success: function(result) {
+			//학년별 학생 수 차트를 그림
+			drawChart1(result);
+			
+		},
+		error: function() {
+			alert('실패');
+		}
+	});
+	//ajax end
+	
+}
+
+//학년별 학생 수 차트를 그림
+function drawChart1(data){
+	
+	//data가 배열로 넘어오니까 빈 배열 만들고 
+	chart_data_arr = [];
+	
+	//클래스를 만들고 변수를 정해줌
+	//하나씩 반복문으로 돌려서 위에서 만들어준 빈배열에 넣기 
+	for(const grade of data){
+		chart_data = new Object();
+		chart_data.x = grade.studentYear;
+		chart_data.y = grade.studentCnt;
+		chart_data_arr.push(chart_data);
+		
+	}
+	
+
+	console.log(chart_data_arr);
+
+	
+	options = {
+	  chart: {
+	    type: 'bar'
+	  },
+	  plotOptions: {
+	    bar: {
+	      horizontal: false
+	    }
+	  },
+	  series: [{
+		data:chart_data_arr
+	   /* data: [{
+	      x: 'category A',
+	      y: 10
+	    }, {
+	      x: 'category B',
+	      y: 18
+	    }, {
+	      x: 'category C',
+	      y: 13
+	    }]*/
+	  }]
+	}
+
+    var chart = new ApexCharts(document.querySelector("#chart"), options);
+    chart.render();
+}
+
+
+
+
+
  

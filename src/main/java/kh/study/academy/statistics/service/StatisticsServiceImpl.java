@@ -7,6 +7,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kh.study.academy.statistics.vo.StudentCntPerGrade;
+
 
 @Service("statisticsService")
 public class StatisticsServiceImpl implements StatisticsService {
@@ -19,7 +21,7 @@ public class StatisticsServiceImpl implements StatisticsService {
 	
 	//학년별 학생 수 조회
 	@Override
-	public List<Integer> selectNumByStuYear() {
+	public List<StudentCntPerGrade> selectNumByStuYear() {
 		
 		return sqlSession.selectList("statisticsMapper.selectNumByStuYear");
 	}

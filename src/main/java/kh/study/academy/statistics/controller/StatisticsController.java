@@ -1,13 +1,18 @@
 package kh.study.academy.statistics.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kh.study.academy.statistics.service.StatisticsService;
+import kh.study.academy.statistics.vo.StudentCntPerGrade;
 
 
 @Controller
@@ -23,13 +28,17 @@ public class StatisticsController {
 	@GetMapping("/studentStatus")
 	public String studentStatus(Model model) {
 		
-		//학년별 학생 수 조회
-		model.addAttribute("numByStuYear", statisticsService.selectNumByStuYear());
-		
-		System.out.println("@@@@@!!!!!학년별 학생 수 조회@@@@@@!!"+statisticsService.selectNumByStuYear());
-		
-		
 		return "content/statistics/studentStatus";
+	}
+	
+	//차트를 그릴 테이터를 조회하는 메소드
+	@ResponseBody
+	@PostMapping("/studentStatusAjax")
+	public List<StudentCntPerGrade> studentStatusAjax(Model model) {
+		//학년별 학생 수 조회
+		List<StudentCntPerGrade> studentCntPerGrade = statisticsService.selectNumByStuYear();
+		
+		return studentCntPerGrade;
 	}
 	
 	
