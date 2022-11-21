@@ -61,7 +61,9 @@ public class StudentController {
 	//학생 리스트 조회 페이지
 	@RequestMapping("/list")
 	public String stuList(Model model, String studentName) {
-		model.addAttribute("stuList", studentService.selectStuList(studentName));
+		
+		model.addAttribute("stuLessonList", studentService.selectStuLessonList());
+		
 		return "content/student/student_list";
 	}
 	

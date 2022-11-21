@@ -9,7 +9,7 @@
 	<div class="row">
 		<div class="col-12" style="margin-top: 40px;" id="table_box_bootstrap">
 			<div>
-				총 <span th:text="${#lists.size(stuList)}" style="color:red"></span>명 입니다.
+				총 <span th:text="${#lists.size(stuLessonList)}" style="color:red"></span>명 입니다.
 			</div>
 			<table class="table table-striped text-center" style="margin-top: 20px;">
 				<thead>
@@ -23,19 +23,31 @@
 					</tr>
 				</thead>
 				<tbody>
-					<th:block th:if="${#lists.size(stuList) == 0}">
+					<th:block th:if="${#lists.size(stuLessonList) == 0}">
 						<tr>
 							<td colspan="6">데이터가 없습니다.</td>
 						</tr>
 					</th:block>
-					<th:block th:unless="${#lists.size(stuList) == 0}">
-						<tr th:each="stu, status : ${stuList}">
+					<th:block th:unless="${#lists.size(stuLessonList) == 0}">
+						<tr th:each="stu, status : ${stuLessonList}">
 							<td><input type="checkbox" class="form-check-input chk" th:value=${stu.studentCode} th:name="selectCount"></td>
 							<td scope="row" th:text="${status.count}" th:name="stu"></td>
 							<td><a th:name="stu" th:href="@{/stu/detail(studentCode=${stu.studentCode})}">[[${stu.studentName}]]</a></td>
 							<td th:name="stu" th:text="${stu.studentYear} + 학년"></td>
 							<td th:name="stu" th:text=${stu.studentGender} ></td>
-							<td th:name="stu"></td>
+							<td th:name="stu" >
+								<th:block th:each="lesson:${stu.studentLessonInfoList}">
+									
+									<th:block th:if="${lesson.lessonInfoVO==null}">
+										<span style="color: red;">-</span>
+									</th:block>
+									<th:block th:unless="${lesson.lessonInfoVO==null}">
+										[	[[${lesson.lessonInfoVO.subjectVO.subjectName}]]-[[${lesson.lessonInfoVO.stepVO.stepName}]]-[[${lesson.lessonInfoVO.year}]] ]
+									</th:block>
+							
+								</th:block>
+							
+							</td>
 						</tr>
 					</th:block>
 				</tbody>
