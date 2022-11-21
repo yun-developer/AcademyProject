@@ -2,11 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="statisticsMapper">
+	
+	<!-- 학년별 학생 수 조회 -->
 	<resultMap type="kh.study.academy.statistics.vo.StudentCntPerGrade" 		id="studentCntPerGrade">
 		<id column="STUDENT_YEAR"												property="studentYear"/>
 		<result column="STUDENT_CNT" 											property="studentCnt"/>
 	</resultMap>
 	
+	<!-- 과목별 학생 수 조회 -->
 	<resultMap type="kh.study.academy.statistics.vo.StudentCntPerSubject" 		id="studentCntPerSubject">
 		<id column="STUDENT_YEAR"												property="studentYear"/>
 		<result column="STUDENT_CNT" 											property="studentCnt"/>
@@ -14,6 +17,12 @@
 	</resultMap>
 	
 	
+	<!-- 전체 학생 수 조회  -->
+	<resultMap type="kh.study.academy.statistics.vo.StudentTotalCntByMonth" 	id="studentTotalCntByMonth">
+		<id column="STUDENT_YEAR"												property="studentYear"/>
+		<result column="STUDENT_CNT" 											property="studentCnt"/>
+		<result column="MONTH" 													property="month"/>
+	</resultMap>
 	
 	
 
@@ -29,8 +38,9 @@
 	
 	
 	<!-- 과목별 학생 수 조회 -->
-	<select id="selectNumByStuSubject" resultMap="studentCntPerSubject">
-		SELECT STUDENT_YEAR
+	<!-- 나오는 값이 숫자라서  resultType 이 int -->
+	<select id="selectNumByStuSubject" resultType="int">
+<!-- 		SELECT STUDENT_YEAR
 	    ,(SELECT SUBJECT_NAME
 	               FROM SUBJECT
 	               WHERE SUBJECT_CODE = L.SUBJECT_CODE) AS SUBJECT_NAME
@@ -39,7 +49,28 @@
 	        FROM LESSON_INFO L, STUDENT_LESSON_INFO SL, STUDENT S
 	        WHERE S.STUDENT_CODE = SL.STUDENT_CODE 
 	    AND L.LESSON_INFO_CODE = SL.LESSON_INFO_CODE
-	    GROUP BY L.SUBJECT_CODE, STUDENT_YEAR
+	    GROUP BY L.SUBJECT_CODE, STUDENT_YEAR -->
+	
+		 SELECT COUNT(STU.STUDENT_CODE)
+	        FROM STUDENT_LESSON_INFO SLI, LESSON_INFO LI, STUDENT STU
+	        WHERE SLI.LESSON_INFO_CODE = LI.LESSON_INFO_CODE
+	        AND STU.STUDENT_CODE = SLI.STUDENT_CODE
+	        AND SUBJECT_CODE = #{subjectCode}
+	        AND STUDENT_YEAR = 1
+	    UNION ALL
+	     SELECT COUNT(STU.STUDENT_CODE)
+	        FROM STUDENT_LESSON_INFO SLI, LESSON_INFO LI, STUDENT STU
+	        WHERE SLI.LESSON_INFO_CODE = LI.LESSON_INFO_CODE
+	        AND STU.STUDENT_CODE = SLI.STUDENT_CODE
+	        AND SUBJECT_CODE = #{subjectCode}
+	        AND STUDENT_YEAR = 2
+	    UNION ALL
+	     SELECT COUNT(STU.STUDENT_CODE)
+	        FROM STUDENT_LESSON_INFO SLI, LESSON_INFO LI, STUDENT STU
+	        WHERE SLI.LESSON_INFO_CODE = LI.LESSON_INFO_CODE
+	        AND STU.STUDENT_CODE = SLI.STUDENT_CODE
+	        AND SUBJECT_CODE = #{subjectCode}
+	        AND STUDENT_YEAR = 3
 	
 	</select>
 	
@@ -48,7 +79,15 @@
 	
 	
 	<!-- 전체 학생 수 조회  -->
-
+	<select id="selectStuTotalCntByMonth" resultMap="studentTotalCntByMonth">
+	
+	
+	
+	
+	</select>
+	
+	
+	
 	
 </mapper>
 

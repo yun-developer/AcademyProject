@@ -18,7 +18,7 @@ public interface StatisticsService {
 	
 	//과목별 학생 수 조회 
 	
-	List<StudentCntPerSubject> selectNumByStuSubject();
+	List<Integer> selectNumByStuSubject(String subjectCode);
 	
 	
 	
