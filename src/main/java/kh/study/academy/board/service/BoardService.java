@@ -50,5 +50,5 @@ public interface BoardService {
 	void updateLike(int boardNum);
 	void updateLikeCancle(int boardNum);
 	
-	
+	List<BoardVO> selectMyPage(BoardVO boardVO);
 }

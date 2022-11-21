@@ -113,6 +113,7 @@ public class BoardController {
    //공지사항 상세 읽기
    @GetMapping("/noticeDetail")
    public String noticeDetail(Model model, int boardNum, LikeTableVO likeTableVO, Authentication authentication) {
+	
       model.addAttribute("notice", boardService.selectBoardDetail(boardNum));
       model.addAttribute("replyList", replyService.selectReply(boardNum));
       boardService.updateViewCount(boardNum);
@@ -238,6 +239,7 @@ public class BoardController {
    //자유게시판 상세 읽기
    @GetMapping("/freeDetail")
    public String freeDetail(Model model, int boardNum, Authentication authentication, LikeTableVO likeTableVO) {
+	   System.out.println("!!!!!!!!!!!!!!!!!!!!!!!");
       model.addAttribute("free", boardService.selectBoardDetail(boardNum));
       model.addAttribute("replyList", replyService.selectReply(boardNum));
       
@@ -341,7 +343,19 @@ public class BoardController {
       return map;
    }
    
-
+   
+   
+   //마이페이지에서 내가 쓴 글 확인
+   @GetMapping("/myPage")
+   public String selectMyPage(BoardVO boardVO, Authentication authentication, Model model) {
+	   User user = (User)authentication.getPrincipal();
+	   
+	   boardVO.setTeacherId(user.getUsername());
+	   
+	   model.addAttribute("myList", boardService.selectMyPage(boardVO));
+	   
+	   return "content/board/myPage";
+   }
 	     
 
 }
