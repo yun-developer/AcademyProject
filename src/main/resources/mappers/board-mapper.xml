@@ -277,4 +277,10 @@
 	</delete>
 
 
+	<!--  자유게시판 상세 수정페이지에서 첨부파일 삭제 기능 -->
+	<delete id="deleteBoardImgUpdateFree">
+		DELETE BOARD_IMG
+		WHERE BOARD_IMG_NUM = #{boardImgNum}
+	</delete>
+
 </mapper>

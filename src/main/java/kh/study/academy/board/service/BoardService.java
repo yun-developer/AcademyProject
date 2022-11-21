@@ -51,6 +51,4 @@ public interface BoardService {
 	void updateLikeCancle(int boardNum);
 	
 	
-	
-	
 }
