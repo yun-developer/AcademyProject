@@ -50,26 +50,32 @@
 
 					<div class="subheader pb-6 border-bottom" style="margin: 40px;"></div>
 					
-					<div th:unless="${free.imgList[0].storedFileName == null}">
-								<div class="col-3" th:each="free : ${free.imgList}">
-									<div class="card" >
-									  <div th:text="xxxxx" ></div>
-									  <div class="card-body">
-									  </div>
-									</div>
-								</div> 
-							</div>
-					
-					
-					<dl class="table_name" style="margin: 30px;">
-						<dt>파&nbsp;&nbsp;&nbsp;일</dt>
-						<dd><span class="j-file-list"><em><a href="../_module/include/ej_download.php?uf=Vmtaa2QxRnRWbFpOV0VaU1YwZG9UMVpyWkRCT1JsSnpWV3hLYkZaVVJuaFpWV1JoVkd4YVIyRXpaRlZXTTBKWFZGUkJNVkpXV2xWUmJFSlRZVzFuZWxaRlkzaGlNREI1Vkd0S1VWWkVRVGs9K00=&amp;rf=VkdwQ2MxWkhWa1ZYVkVwcVZsWndUMVZyVmtkTk1XUkVaRVJXVGswd1dsRmFWbHB2WWpGd1dXSklWbUZOUkdzeFYxY3hNRkpHU2tsVWJrSlBZVEZLTmxsNlRrWmxiVTE1WVVWMGEwMHhXbTlWTUdSVFRYYzlQUT09K00=&amp;fd=VmtWa2NrMUhVbk5qUldoVFlXdEtZVlpZY0hOalJteHhVMnRrYkZadVFrVlVNV014WVVkS1ZXSklRbGhTUlRWRVdWUktUMDB4UWxWTlJEQTkrTQ==&amp;is_bbs=Vm1wR1JrOVdRbEpRVkRBOStN&amp;bbs_uid=VmtaYVUySnJNSGRPV0VaVVZrUkJPUT09K00=" title="성명000_취업지원 신청서.hwp 다운로드">성명000_취업지원 신청서.hwp</a></em></span></dd>
-					</dl>
-					
-					<div class="col-3" >
+					<div class="col-3" style="margin: 1em;" >
 					  <label  for="exampleFormControlTextarea1" class="form-label" ></label>
 						<input multiple type="file" class="form-control" id="exampleFormControlInput1" name="imgs">
 					</div>
+					
+					<dl class="table_name" style="margin: 30px; font-size: 20px;">
+					
+						<dt>파&nbsp;&nbsp;&nbsp;일</dt>
+						<dd  th:each="free : ${free.imgList}"><span class="col-3 mb-2"><em><a href="" title="" th:text="${free.storedFileName}">성명000_취업지원 신청서.hwp</a>
+						</em></span>
+							<button th:onclik="|location.href='@{/board/deleteBoardImgUpdateFree}'|"  type="button" class=" btn-sm flex-end" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+								<path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+							</svg>
+							</button>
+						</dd>
+					</dl>
+						
+							
+							<!-- <span class="right" th:if= "${reply.teacherId == #authentication.name or #strings.contains(#authentication.authorities, 'ROLE_ADMIN')}">
+								
+							</span> -->
+					
+					
+					
+					
+					
 					
 					
 					

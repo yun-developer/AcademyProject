@@ -52,10 +52,6 @@ public class BoardController {
       return "content/board/write_notice_page";
    }
    
-   // 이미지 파일 없이 컨트롤러에 올 수 있도록 메소드 따로 생성
-   
-   
-
    
    
    //공지사항 글쓰기
@@ -82,7 +78,7 @@ public class BoardController {
       // 제목, 내용란에 글이 없다면 insert가 안되게 해야해야하고 다시 글작성 페이지로 와야한다.
       //첨부파일을 넣지 않고도 insert가 되게 해야한다.
       
-      if(boardVO.getBoardContent().equals("") ) {  // 만약에 등록시 빈문자라면 다시 과목등록 페이지 이동
+      if(boardVO.getBoardContent().equals("") ) {  // 만약에 등록시 빈문자라면 다시 게시글등록 페이지 이동
          return "redirect:/board/writeNotice";
       }
       else if(boardVO.getBoardTitle().equals("")){
@@ -90,7 +86,7 @@ public class BoardController {
       }
       
       else {
-         boardService.insertNotice(boardVO);  // 빈문자가 아니라면 등록 쿼리 실행하고 과목등록 페이지로 이동
+         boardService.insertNotice(boardVO);  // 빈문자가 아니라면 등록 쿼리 실행하고 게시글등록 페이지로 이동
       }   
       
          return "redirect:/board/noticeList";
@@ -244,6 +240,7 @@ public class BoardController {
    public String freeDetail(Model model, int boardNum, Authentication authentication, LikeTableVO likeTableVO) {
       model.addAttribute("free", boardService.selectBoardDetail(boardNum));
       model.addAttribute("replyList", replyService.selectReply(boardNum));
+      
       boardService.updateViewCount(boardNum);
       
       User user = (User)authentication.getPrincipal();
@@ -268,7 +265,7 @@ public class BoardController {
       return "redirect:/board/freeList";
    }
       
-      
+   
       
    // 자유게시판 상세페이지에서 등록한 글 삭제하기	
 	@PostMapping("/deleteFreeDetail")
@@ -299,6 +296,19 @@ public class BoardController {
 
 	   return "redirect:/board/freeDetail?boardNum=" + boardVO.getBoardNum();
    }
+   
+   
+   // 자유게시판 상세 수정페이지에서 첨부파일 삭제 기능
+  	@PostMapping("deleteBoardImgUpdateFree")
+  	public String deleteBoardImgUpdateFree(BoardImgVO boardImgVO) {
+  		
+  		boardService.deleteBoardImgUpdateFree(boardImgVO);
+  		System.out.println(boardImgVO);
+  		return "updateFreeDetail";
+  	}
+   
+   
+   
    
    
    
@@ -332,7 +342,6 @@ public class BoardController {
    }
    
 
-	      
-   
-   
+	     
+
 }

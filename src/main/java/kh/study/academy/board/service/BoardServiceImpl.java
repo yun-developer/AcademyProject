@@ -115,6 +115,17 @@ public class BoardServiceImpl implements BoardService{
 	}
 	
 	
+	// 자유게시판 상세 수정페이지에서 첨부파일 삭제 기능
+	@Override
+	public void deleteBoardImgUpdateFree(BoardImgVO boardImgVO) {
+		sqlSession.delete("boardMapper.deleteBoardImgUpdateFree", boardImgVO);
+	}
+	
+	
+	
+	
+	
+	
 	@Override
 	public void updateViewCount(int boardNum) {
 		sqlSession.update("boardMapper.updateViewCount", boardNum);
@@ -131,6 +142,9 @@ public class BoardServiceImpl implements BoardService{
 	public void updateLikeCancle(int boardNum) {
 		sqlSession.update("boardMapper.updateLikeCancle", boardNum);
 	}
+
+
+
 
 
 	

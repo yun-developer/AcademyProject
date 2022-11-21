@@ -44,7 +44,8 @@ public interface BoardService {
 	// 자유게시판 상세 페이지에서 게시글 수정
 	void updateFreeDetail(BoardVO boardVO);
 	
-
+	// 자유게시판 상세 수정페이지에서 첨부파일 삭제 기능
+	void deleteBoardImgUpdateFree(BoardImgVO boardImgVO);
 	
 	void updateLike(int boardNum);
 	void updateLikeCancle(int boardNum);
