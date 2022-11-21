@@ -20,7 +20,7 @@ public class StudentVO {
 	
 	
 	
-	private SubjectVO subjectVO;
+	/* private SubjectVO subjectVO; */
 	private List<String> studentCodeList;
 
 	

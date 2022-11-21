@@ -66,17 +66,17 @@
 										<td th:name="stu" th:text="${SL.studentYear} + 학년"></td>
 										<td th:name="stu" th:text=${SL.studentGender} ></td>
 										<td th:name="stu" th:id="${SL.studentCode}">
-											<th:block th:if="${#lists.size(SL.studentLessonInfoList) == 0 }">
+											<th:block th:each="lesson:${SL.studentLessonInfoList}">
 												
-												-
-												
-											</th:block>
-											<th:block th:unless="${#lists.size(SL.studentLessonInfoList) == 0 }">
-												<th:block th:each="lesson:${SL.studentLessonInfoList}">
-												[	<!-- [[${lesson.lessonInfoVO.subjectVO.subjectName}]]-[[${lesson.lessonInfoVO.stepVO.stepName}]]-[[${lesson.lessonInfoVO.year}]] --> ]
+												<th:block th:if="${lesson.lessonInfoVO==null}">
+													<span style="color: red;">-</span>
 												</th:block>
+												<th:block th:unless="${lesson.lessonInfoVO==null}">
+													[	[[${lesson.lessonInfoVO.subjectVO.subjectName}]]-[[${lesson.lessonInfoVO.stepVO.stepName}]]-[[${lesson.lessonInfoVO.year}]] ]
+												</th:block>
+										
 											</th:block>
-											
+										
 										</td>
 									</tr>
 								</th:block>

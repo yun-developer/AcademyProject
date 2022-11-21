@@ -15,7 +15,7 @@
 		
 		<collection property="studentLessonInfoList" 				resultMap="studentLessonInfo"/>
 		
-		<collection property="subjectVO" 							resultMap="adminMapper.subject" />
+		<!-- <collection property="subjectVO" 							resultMap="adminMapper.subject" /> -->
 		<collection property="testList" 							resultMap="testMapper.test" />
 	</resultMap>
 	
@@ -104,7 +104,7 @@
 	WHERE STU.STUDENT_CODE = PAY.STUDENT_CODE
 	AND LES.SUBJECT_CODE = SUB.SUBJECT_CODE 
 	AND PAY.LESSONS_CODE = LES.LESSONS_CODE -->
-	ORDER BY STUDENT_CODE ASC
+	ORDER BY STUDENT_CODE DESC
 </select>
 
 	
@@ -225,7 +225,7 @@
 	FROM LESSON_INFO L, STUDENT_LESSON_INFO SL , STUDENT S
 	WHERE S.STUDENT_CODE = SL.STUDENT_CODE (+)
     AND L.LESSON_INFO_CODE (+) = SL.LESSON_INFO_CODE
-	
+	ORDER BY STUDENT_CODE DESC
 </select>
 
 

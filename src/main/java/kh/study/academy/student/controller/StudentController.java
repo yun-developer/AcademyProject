@@ -116,10 +116,10 @@ public class StudentController {
 		model.addAttribute("stuList", studentService.selectStuList(studentName));
 		
 		List<StudentVO> testList = studentService.selectStuLessonList();		
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@"+testList.get(2));
 		
-		model.addAttribute("stuLessonList", studentService.selectStuLessonList());
+		model.addAttribute("stuLessonList", testList);
 		
+
 		
 		return "content/student/assignment_student_page";
 	}
