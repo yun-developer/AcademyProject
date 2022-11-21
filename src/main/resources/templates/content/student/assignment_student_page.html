@@ -67,13 +67,13 @@
 										<td th:name="stu" th:text=${SL.studentGender} ></td>
 										<td th:name="stu" th:id="${SL.studentCode}">
 											<th:block th:if="${#lists.size(SL.studentLessonInfoList) == 0 }">
-												<th:block th:each="lesson:${SL.studentLessonInfoList}">
-												[	[[${lesson.lessonInfoVO.subjectVO.subjectName}]]-[[${lesson.lessonInfoVO.stepVO.stepName}]]-[[${lesson.lessonInfoVO.year}]] ]
-												</th:block>
+												
+												-
+												
 											</th:block>
 											<th:block th:unless="${#lists.size(SL.studentLessonInfoList) == 0 }">
 												<th:block th:each="lesson:${SL.studentLessonInfoList}">
-												-
+												[	<!-- [[${lesson.lessonInfoVO.subjectVO.subjectName}]]-[[${lesson.lessonInfoVO.stepVO.stepName}]]-[[${lesson.lessonInfoVO.year}]] --> ]
 												</th:block>
 											</th:block>
 											

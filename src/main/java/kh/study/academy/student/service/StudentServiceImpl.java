@@ -82,7 +82,7 @@ public class StudentServiceImpl implements StudentService{
 	
 	//모든학생이 듣고 있는 수업 조회
 	@Override
-	public List<StudentLessonInfoVO> selectStuLessonList() {
+	public List<StudentVO> selectStuLessonList() {
 		
 		return sqlSession.selectList("studentMapper.selectStuLessonList");
 	}

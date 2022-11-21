@@ -28,7 +28,7 @@ public interface StudentService {
 	List<StudentLessonInfoVO> isStuAssign(String studentCode);
 	
 	//모든학생이 듣고 있는 수업 조회
-	List<StudentLessonInfoVO> selectStuLessonList();
+	List<StudentVO> selectStuLessonList();
 	
 	
 }

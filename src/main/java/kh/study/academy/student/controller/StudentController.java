@@ -115,7 +115,9 @@ public class StudentController {
 		
 		model.addAttribute("stuList", studentService.selectStuList(studentName));
 		
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@"+studentService.selectStuLessonList());
+		List<StudentVO> testList = studentService.selectStuLessonList();		
+		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@"+testList.get(2));
+		
 		model.addAttribute("stuLessonList", studentService.selectStuLessonList());
 		
 		
