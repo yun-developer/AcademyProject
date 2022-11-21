@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	layout:decorate="~{layout/base_layout}"> 
+	
+
+<div layout:fragment="content">
+<div class="row">
+		<div style="text-align: center;"><h2>나의 작성글</h2></div>		
+		
+		
+		<div class="col-12" style="margin-top: 40px;" id="table_box_bootstrap">
+			<table class="table table-striped text-center" style="margin-top: 20px;">
+				<colgroup>
+					<col width="10%">
+					<col width="30%">
+					<col width="20%">
+					<col width="20%">
+					<col width="10%">
+					<col width="5%">
+					<col width="5%">
+				</colgroup>
+				<thead>
+					<tr>
+						<th scope="col">NO</th>
+						<th scope="col">제목</th>
+						<th scope="col">작성자</th>
+						<th scope="col">작성일</th>
+						<th scope="col">조회수</th>
+						<th scope="col">추천수</th>
+						<th scope="col"><input type="checkbox" id="checkAll" ></th>
+					</tr>
+				</thead>
+				<tbody>
+					<th:block th:if="${#lists.size(myList) == 0}">
+						<tr>
+							<td colspan="7">데이터가 없습니다.</td>
+						</tr>
+					</th:block>
+					<th:block th:unless="${#lists.size(myList) == 0}">
+						<tr th:each="my, status : ${myList}">
+							<td scope="row" th:text=${status.count}></td>
+							<td th:if="${my.boardKindCode == 0}"><a th:href="@{/board/noticeDetail(boardNum=${my.boardNum})}">[[${my.boardTitle}]]</a>
+								<i class="fal fa-comment text-primary"></i> <span class="text-primary" th:text="'(' + ${my.replyNumCnt} + ')'"></span>
+							</td>
+							<td th:unless="${my.boardKindCode == 0}"><a th:href="@{/board/freeDetail(boardNum=${my.boardNum})}">[[${my.boardTitle}]]</a>
+								<i class="fal fa-comment text-primary"></i> <span class="text-primary" th:text="'(' + ${my.replyNumCnt} + ')'"></span>
+							</td>
+							<td th:text="${my.teacherId}"></td>
+							<td th:text="${my.createDate}"></td>
+							<td th:text="${my.viewCount}"></td>
+							<td th:text="${my.likeCodeCnt}"></td>
+							<td><input type="checkbox" class="form-check-input chk" th:value="${my.boardNum}" ></td>
+						</tr>
+					</th:block>
+				</tbody>
+			</table>
+</div>
+</div>
+</div>
+</html>

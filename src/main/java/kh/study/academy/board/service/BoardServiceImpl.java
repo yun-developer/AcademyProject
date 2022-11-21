@@ -144,6 +144,12 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 
+	@Override
+	public List<BoardVO> selectMyPage(BoardVO boardVO) {
+		return sqlSession.selectList("boardMapper.selectMyPage", boardVO);
+	}
+
+
 
 
 

@@ -283,4 +283,27 @@
 		WHERE BOARD_IMG_NUM = #{boardImgNum}
 	</delete>
 
+
+
+	<!-- 회원정보에서 본인 글 조회 -->
+	<select id="selectMyPage" resultMap="board">
+		SELECT BOARD_NUM    <!-- 화면에는 INDEX로 글번호 보게,, -->
+			, BOARD_TITLE
+			, BOARD_KIND_CODE
+			, B.TEACHER_ID
+			, TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS CREATE_DATE
+			, VIEW_COUNT
+			, (SELECT COUNT(REPLY_NUM) FROM REPLY
+	            WHERE BOARD_NUM = B.BOARD_NUM) AS REPLY_NUM_CNT
+	        , (SELECT COUNT(LIKE_CODE) FROM LIKE_TABLE
+	        	WHERE BOARD_NUM = B.BOARD_NUM) AS LIKE_CODE_CNT
+		FROM BOARD B, TEACHER T
+		WHERE B.TEACHER_ID = T.TEACHER_ID
+		AND B.TEACHER_ID = #{teacherId}
+		ORDER BY BOARD_NUM DESC
+	</select>
+
+
+
+
 </mapper>
