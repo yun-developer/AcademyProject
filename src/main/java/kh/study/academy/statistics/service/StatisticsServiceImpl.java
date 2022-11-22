@@ -33,6 +33,12 @@ public class StatisticsServiceImpl implements StatisticsService {
 	public List<Integer> selectNumByStuSubject(String subjectCode) {
 		return sqlSession.selectList("statisticsMapper.selectNumByStuSubject", subjectCode);
 	}
+
+	//교사별 담당 학생 수 조회
+	@Override
+	public List<Integer> selectStudentCntByTeacher(String teacherCode) {
+		return sqlSession.selectList("statisticsMapper.selectStudentCntByTeacher", teacherCode);
+	}
 	
 	
 	

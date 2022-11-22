@@ -24,7 +24,11 @@
 		<result column="MONTH" 													property="month"/>
 	</resultMap>
 	
-	
+	<!-- 교사별 담당 학생 수 -->
+	<resultMap type="kh.study.academy.statistics.vo.StudentCntByTeacher" 	id="studentCntByTeacher">
+		<id column="teacherName"												property="teacherName"/>
+		<result column="STUDENT_CNT" 											property="studentCnt"/>
+	</resultMap>
 
 	
 	<!-- 학년별 학생 수 조회 -->
@@ -87,6 +91,17 @@
 	</select>
 	
 	
+	
+	
+	<!-- 교사별 담당 학생 수 -->
+	<select id="selectStudentCntByTeacher" resultType="int">
+		SELECT COUNT(STU.STUDENT_CODE)
+        FROM STUDENT_LESSON_INFO SLI, LESSON_INFO LI, STUDENT STU
+        WHERE SLI.LESSON_INFO_CODE = LI.LESSON_INFO_CODE
+        AND STU.STUDENT_CODE = SLI.STUDENT_CODE
+        AND TEACHER_CODE = #{teacherCode}
+	
+	</select>
 	
 	
 </mapper>
