@@ -1,5 +1,6 @@
 package kh.study.academy.board.controller;
 
+import java.lang.ProcessBuilder.Redirect;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -140,7 +141,7 @@ public class BoardController {
    // 공지사항 상세페이지에서 글 수정 페이지로 이동
    @PostMapping("/updateNoticeDetailFrom")
    public String updateNoticeDetailFrom(int boardNum, Model model) {
-	   
+	   model.addAttribute("Imgs",boardService.selectImgs(boardNum)); 
 	   model.addAttribute("notice", boardService.selectBoardDetail(boardNum));
 	   
       return "content/board/update_notice_detail";
@@ -282,7 +283,7 @@ public class BoardController {
    // 자유게시판 상세페이지에서 글 수정 페이지로 이동
    @RequestMapping("/updateFreeDetailFrom")
    public String updateFreeDetailFrom(int boardNum, Model model) {
-	   
+	   model.addAttribute("Imgs",boardService.selectImgs(boardNum)); 
 	   model.addAttribute("free", boardService.selectBoardDetail(boardNum));
 	   
       return "content/board/update_free_detail";
@@ -292,8 +293,8 @@ public class BoardController {
    
    // 자유게시판 글 수정 페이지에서 글 수정하기
    @RequestMapping("/updateFreeDetail")
-   public String updateFreeDetail(BoardVO boardVO,Model model) {
-
+   public String updateFreeDetail(BoardVO boardVO,Model model, BoardImgVO boardImgVO) {
+	  
 	   boardService.updateFreeDetail(boardVO);
 
 	   return "redirect:/board/freeDetail?boardNum=" + boardVO.getBoardNum();
@@ -301,20 +302,16 @@ public class BoardController {
    
    
    // 자유게시판 상세 수정페이지에서 첨부파일 삭제 기능
-  	@PostMapping("deleteBoardImgUpdateFree")
+  	@PostMapping("/deleteBoardImgUpdateFree")
   	public String deleteBoardImgUpdateFree(BoardImgVO boardImgVO) {
   		
   		boardService.deleteBoardImgUpdateFree(boardImgVO);
-  		System.out.println(boardImgVO);
-  		return "updateFreeDetail";
+  		System.out.println("!!!!!!!!!" + boardImgVO);
+  		
+  		return "redirect:/board/updateFreeDetail?boardNum="+boardImgVO.getBoardNum();
   	}
    
-   
-   
-   
-   
-   
-   
+  	
    
  //자유게시판 좋아요
    @ResponseBody

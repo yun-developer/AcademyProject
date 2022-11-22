@@ -24,6 +24,10 @@ public interface BoardService {
 	
 	void updateViewCount(int boardNum);
 	
+	// 첨부파일 이미지 조회
+	List<BoardImgVO> selectImgs(int boardNum); 
+	
+	
 	// 공지사항 게시글 삭제
 	void deleteBoardNotice(BoardVO boardVO);
 
@@ -46,6 +50,8 @@ public interface BoardService {
 	
 	// 자유게시판 상세 수정페이지에서 첨부파일 삭제 기능
 	void deleteBoardImgUpdateFree(BoardImgVO boardImgVO);
+	
+
 	
 	void updateLike(int boardNum);
 	void updateLikeCancle(int boardNum);

@@ -76,6 +76,19 @@
 	
 	
 	
+	<!-- 이미지 조회 -->
+ 	<select id="selectImgs" resultMap="boardImg">
+		SELECT (SELECT BOARD_NUM
+				FROM BOARD
+				WHERE BOARD_NUM = A.BOARD_NUM) AS BOARD_NUM
+			, BOARD_IMG_NUM
+			, ORIGIN_FILE_NAME
+			, STORED_FILE_NAME
+		FROM BOARD_IMG A
+		WHERE BOARD_NUM = #{boardNum}  
+	</select> 
+	
+	
 	
 	<!-- 글 목록 조회 -->
 	<select id="selectNoticeBoard" resultMap="board">
@@ -275,6 +288,7 @@
 		DELETE BOARD
 		WHERE BOARD_NUM = #{boardNum}
 	</delete>
+
 
 
 	<!--  자유게시판 상세 수정페이지에서 첨부파일 삭제 기능 -->

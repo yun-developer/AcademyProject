@@ -58,6 +58,25 @@
 			                        <button type="submit" class="btn btn-warning flex-end" >수정완료</button>
 			                  </div>
 			               </div>
+			               
+			              <dl class="table_name" style="margin: 30px; font-size: 20px;">
+							
+							<dt>파&nbsp;&nbsp;&nbsp;일</dt>
+							
+								<dd  th:each="img : ${Imgs}">
+									<span class="col-3 mb-2"><em>
+										<a href="" title="" th:text="${img.originFileName}"></a>
+									</em></span>
+									
+									<button th:onclik="|location.href='@{/board/deleteBoardImgUpdateFree}'|"  type="button" class=" btn-sm flex-end" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+										<path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+									</svg>
+									</button>
+								</dd>
+							
+						</dl>
+			               
+			               
 			            </form>
 					</div>
 

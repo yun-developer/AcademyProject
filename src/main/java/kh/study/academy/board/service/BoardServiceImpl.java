@@ -72,6 +72,14 @@ public class BoardServiceImpl implements BoardService{
 		return sqlSession.selectOne("boardMapper.selectBoardDetail", boardNum);
 	}
 
+	// 첨부파일 이미지 조회
+	@Override
+	public List<BoardImgVO> selectImgs(int boardNum) {
+		return sqlSession.selectList("boardMapper.selectImgs", boardNum);
+	}
+	
+	
+	
 	// 공지사항 게시글 삭제
 	@Override
 	public void deleteBoardNotice(BoardVO boardVO) {
@@ -123,9 +131,6 @@ public class BoardServiceImpl implements BoardService{
 	
 	
 	
-	
-	
-	
 	@Override
 	public void updateViewCount(int boardNum) {
 		sqlSession.update("boardMapper.updateViewCount", boardNum);
@@ -153,21 +158,9 @@ public class BoardServiceImpl implements BoardService{
 
 
 
-	
-
-
-	
 
 
 
-
-
-
-
-
-
-
-	
 
 
 
