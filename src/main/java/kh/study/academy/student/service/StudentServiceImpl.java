@@ -25,7 +25,6 @@ public class StudentServiceImpl implements StudentService{
 	 
 	 //학생 등록
 	@Override
-	@Transactional(rollbackFor = Exception.class)
 	public void insertStudent(StudentVO studentVO) {
 		
 		sqlSession.insert("studentMapper.insertStudent", studentVO);

@@ -12,6 +12,7 @@
 		<result column="ADDR_DETAIL"								property="addrDetail"/>
 		<result column="STUDENT_TELL"								property="studentTell"/>
 		<result column="REG_DATE" 									property="regDate"/>
+		<result column="IS_PAY" 									property="isPay"/>
 		
 		<collection property="studentLessonInfoList" 				resultMap="studentLessonInfo"/>
 		
@@ -67,42 +68,36 @@
 	)
 </insert>
 
-<!-- <insert id="insertPayment">
-	<selectKey resultType="String" keyProperty="paymentCode" order="BEFORE">
-	   SELECT 'PAYMENT_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(PAYMENT_CODE, 9))),0) +1, 3, 0) 
-	   FROM PAYMENT
-	</selectKey>
-	<selectKey resultType="String" keyProperty="lessonsCode" order="BEFORE">
-	   SELECT 'LESSONS_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(PAYMENT_CODE, 5))),0) +1, 3, 0) 
-	   FROM PAYMENT
-	</selectKey>
-	
-	INSERT INTO PAYMENT (
-		PAYMENT_CODE
-		, LESSON_INFO_CODE
-		, STUDENT_CODE
-	) VALUES (
-		#{paymentCode}
-		, 'LESSON_INFO_001'
-		, #{studentCode}
-	)
-</insert> -->
 
 
 <!-- 학생 리스트 조회 -->
 <select id="selectStuList" resultMap="student">
-	SELECT STUDENT_CODE 
-		, STUDENT_NAME
-		, STUDENT_YEAR
-		, DECODE(STUDENT_GENDER, 'W', '여', '남') AS STUDENT_GENDER
-	FROM STUDENT STU 
-	<if test="_parameter != null and !_parameter.equals('')">
-		WHERE STUDENT_NAME LIKE '%' || #{studentName} || '%'
-	</if>
-	ORDER BY STUDENT_CODE DESC
+	SELECT S.STUDENT_CODE
+       , STUDENT_NAME
+       , STUDENT_YEAR
+       , DECODE(STUDENT_GENDER, 'W', '여', '남') AS STUDENT_GENDER
+       , SL.STUDENT_LESSON_CODE
+       , L.LESSON_INFO_CODE
+       , (SELECT SUBJECT_NAME
+               FROM SUBJECT
+               WHERE SUBJECT_CODE = L.SUBJECT_CODE) AS SUBJECT_NAME
+       , (SELECT STEP_NAME
+               FROM STEP
+               WHERE STEP_CODE = L.STEP_CODE) AS STEP_NAME
+       , YEAR
+       , PAYMENT_CODE
+       , IS_PAY
+   FROM LESSON_INFO L, STUDENT_LESSON_INFO SL , STUDENT S, PAYMENT P
+   WHERE S.STUDENT_CODE = SL.STUDENT_CODE (+)
+    AND L.LESSON_INFO_CODE (+) = SL.LESSON_INFO_CODE
+    AND SL.STUDENT_LESSON_CODE = P.STUDENT_LESSON_CODE(+)
+    <if test="_parameter != null and !_parameter.equals('')">
+      AND STUDENT_NAME LIKE '%' || #{studentName} || '%'
+   </if>
+   ORDER BY S.STUDENT_CODE DESC
 </select>
 
-	
+
 	
 <!-- 학생 상세 조회 -->	
 <select id="selectStuDetail" resultMap="student">

@@ -18,7 +18,7 @@ public class StudentVO {
 	private String regDate;
 	private String studentGender;
 	
-	
+	private String isPay;
 	
 	/* private SubjectVO subjectVO; */
 	private List<String> studentCodeList;
