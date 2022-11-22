@@ -104,11 +104,22 @@ public class StudentController {
 	//학생 정보 수정페이지로 이동
 	@GetMapping("/updateStu")
 	public String updateStu(String studentCode, Model model) {
-		model.addAttribute("stu", studentService.selectStuDetail(studentCode));
-		model.addAttribute("subjectList", adminService.selectSubject());
-		
+		model.addAttribute("stu", studentService.selectStuDetailForUpdate(studentCode));
+
 		return "content/student/update_student_page";
 	}
+	
+	
+	//학생 정보 수정
+	@PostMapping("/updateStu2")
+	public String updateStu2(StudentVO studentVO, Model model, String studentCode) {
+		studentService.updateStu(studentVO);
+		model.addAttribute("stu", studentService.selectStuDetail(studentCode));
+		
+		return "content/student/detail_student";
+	}
+	
+	
 	
 	//학생을 학급에 배정하는페이지로 이동
 	@GetMapping("/assignment")

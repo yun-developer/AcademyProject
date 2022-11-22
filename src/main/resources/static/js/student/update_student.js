@@ -1,20 +1,50 @@
+function searchAddr() {
+	new daum.Postcode({
+        oncomplete: function(data) {
+			const roadAddr = data.roadAddress;
+			document.querySelector('#addr').value = roadAddr;  // 도로명 주소 변수
+			// 커서를 상세주소 필드로 이동한다.
+			document.querySelector("#addrDetail").focus();
+        }
+    }).open();
+}
+
+
+
 function updateStu(selectedTag) {
+	/*const studentCode = selectedTag.previousElementSibling.value;
 	
-	const studentCode = selectedTag.previousElementSibling.value;
+	alert(studentCode);
 	
 	$.ajax({
-		url: '/stu/update', //요청경로
+		url: '/stu/updateStu2', //요청경로
 		type: 'post',
-		data: {'studentCode' : studentCode}, //필요한 데이터를 컨트롤러로 전달
-		success: function(result) { //컨트롤러에서 리턴된 데이터 result로 받음
-			alert('aaa');
-		},
+		data: {}, //필요한 데이터를 컨트롤러로 전달
+		success: function(result) { //컨트롤러에서 리턴된 데이터 result로 받음*/
+			Swal.fire({
+		         title:'학생정보가 수정 되었습니다',
+		         icon: 'success',
+		         
+		         showCancelButton: false, // cancel버튼 보이기. 기본은 원래 없음
+		         confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+		         cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
+		         confirmButtonText: '확인', // confirm 버튼 텍스트 지정
+		         cancelButtonText: '취소', // cancel 버튼 텍스트 지정
+		         
+		         reverseButtons: true, // 버튼 순서 거꾸로
+		         
+		      }).then(result => {
+		         if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
+		            
+		              const updateForm = document.querySelector('#updateStuForm');
+					  updateForm.submit();
+		         }
+		      });
+		/*},
 		error: function() {
 			alert('실패');
 		}
-	});
-	
-	
-	
-	
+	});*/
+
 }
+

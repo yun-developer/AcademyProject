@@ -128,6 +128,33 @@
     AND L.LESSON_INFO_CODE (+) = SL.LESSON_INFO_CODE
     AND S.STUDENT_CODE = #{studentCode}
 </select>
+
+
+<!-- 학생 수정페이지 상세조회 -->
+<select id="selectStuDetailForUpdate" resultMap="student">
+	SELECT S.STUDENT_CODE
+	    , STUDENT_NAME
+	    , STUDENT_YEAR
+	    , DECODE(STUDENT_GENDER, 'W', '여', '남') AS STUDENT_GENDER
+	    , TO_CHAR(BIRTHDAY, 'YYYY-MM-DD') AS BIRTHDAY
+		, ADDR
+		, ADDR_DETAIL
+		, STUDENT_TELL
+		, TO_CHAR(REG_DATE, 'YYYY-MM-DD') AS REG_DATE 
+	    , STUDENT_LESSON_CODE
+	    , L.LESSON_INFO_CODE
+	    , (SELECT SUBJECT_NAME
+					FROM SUBJECT
+					WHERE SUBJECT_CODE = L.SUBJECT_CODE) AS SUBJECT_NAME
+	    , (SELECT STEP_NAME
+					FROM STEP
+					WHERE STEP_CODE = L.STEP_CODE) AS STEP_NAME
+	    , YEAR
+	FROM LESSON_INFO L, STUDENT_LESSON_INFO SL , STUDENT S
+	WHERE S.STUDENT_CODE = SL.STUDENT_CODE (+)
+    AND L.LESSON_INFO_CODE (+) = SL.LESSON_INFO_CODE
+    AND S.STUDENT_CODE = #{studentCode}
+</select>
 	
 	
 
@@ -149,13 +176,11 @@
 	
 
 <!-- 학생 수정 -->
-<!-- 년도 지나면 학년도 자동으로 업뎃되게,, 바꾸고 싶은데 -->
 <update id="updateStu">
 	UPDATE STUDENT
 	SET STUDENT_TELL = #{studentTell}
 		, ADDR = #{addr}
 		, ADDR_DETAIL = #{addrDetail}
-		<!-- 반, 과목 -->
 	WHERE STUDENT_CODE = #{studentCode}
 </update>
 	

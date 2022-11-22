@@ -10,8 +10,8 @@ function searchAddr() {
     }).open();
 }
 
-function regStudent() {
-
+function regStudent(selectedTag) {
+	
 	Swal.fire({
          title:'학생이 등록되었습니다',
          icon: 'success',
@@ -26,10 +26,8 @@ function regStudent() {
          
       }).then(result => {
          if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
-            
-              const regForm = document.querySelector('#regStuForm');
-			  regForm.submit();
-            
+			const regForm = document.querySelector('#regStuForm');
+			regForm.submit();
          }
       });
 }

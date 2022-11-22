@@ -59,6 +59,12 @@ public class StudentServiceImpl implements StudentService{
 		return sqlSession.selectOne("studentMapper.selectStuDetail", studentCode);
 	}
 	
+	//학생 상세조회 수정페이지
+	@Override
+	public StudentVO selectStuDetailForUpdate(String studentCode) {
+		return sqlSession.selectOne("studentMapper.selectStuDetailForUpdate", studentCode);
+	}
+	
 	//학생 편성
 	@Transactional(rollbackFor = Exception.class)
 	@Override
@@ -85,6 +91,12 @@ public class StudentServiceImpl implements StudentService{
 	public List<StudentVO> selectStuLessonList() {
 		
 		return sqlSession.selectList("studentMapper.selectStuLessonList");
+	}
+	
+	//학생 정보 수정
+	@Override
+	public void updateStu(StudentVO studentVO) {
+		sqlSession.update("studentMapper.updateStu", studentVO);
 	}
 	
 

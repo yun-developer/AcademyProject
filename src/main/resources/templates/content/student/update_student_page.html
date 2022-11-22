@@ -25,53 +25,51 @@
 			<div class="row">
 				<div class="form-floating mb-3 col-6">
 					<div>  <!-- 포문 돌리기 -->
-						<label for="subject" class="form-label">현재 수강과목</label> 
-						<input type="text" class="form-control" id="subject" >
+						<th:block th:each="lesson:${stu.studentLessonInfoList}">
+							<label for="subject" class="form-label">현재 수강과목</label> 
+							<input type="text" class="form-control" id="subject" th:value="${lesson.lessonInfoVO.subjectVO.subjectName}" readonly>
+						</th:block>
 					</div>
 				</div>
 				<div class="form-floating mb-3 col-6">
 					<div>
-						<label for="lessonInfo" class="form-label">반</label> 
-						<input type="text" class="form-control" id="lessonInfo" >
-					</div>
-				</div>
-			</div>
-			
-			<div class="row" >
-				<div class="form-floating mb-3 col-6" >
-					<div >
-						<label for="subject" class="form-label">추가 수강과목</label> 
-						<select class="form-select" aria-label=".form-select example">
-							<option selected>해당 없음</option>
-						  	<option th:each="sub : ${subjectList}" th:value="subjectCode">[[${sub.subjectName}]]</option>
-						</select>
-					</div>
-				</div>
-				<div class="form-floating mb-3 col-6">
-					<div >
-						<label for="subject" class="form-label">추가 반</label> 
-						<select class="form-select" aria-label=".form-select example">
-							<option selected>해당 없음</option>
-						  	<option  th:each="sub : ${subjectList}">반</option>
-						</select>
+						<th:block th:each="lesson:${stu.studentLessonInfoList}">
+							<label for="lessonInfo" class="form-label">반</label> 
+							<input type="text" class="form-control" id="lessonInfo" th:value="${lesson.lessonInfoVO.stepVO.stepName}" readonly>
+						</th:block>
 					</div>
 				</div>
 			</div>
 			
 			
+			<form th:action="@{/stu/updateStu2(studentCode = ${stu.studentCode})}" method="post" id="updateStuForm">
 			<div class="form-floating mb-3">
 				<div>
 					<label for="tell" class="form-label">연락처</label> 
-					<input type="text" class="form-control" id="tell" th:value="${stu.studentTell}">
+					<input type="text" class="form-control" id="tell" th:value="${stu.studentTell}" name="studentTell">
 				</div>
 			</div>
+			
 			<div class="form-floating mb-3">
-				
 				<div>
-					<label for="addr" class="form-label">주소</label> 
-					<input type="text" class="form-control" id="addr" th:value="${stu.addr}" readonly>
+					<label for="inputAddr" class="form-label">주소</label>
+				</div>
+					<div class="row">
+						 <div class="col-sm-9">
+					    	<input onclick="searchAddr();" type="text" class="form-control" id="addr" name="addr" readOnly th:value="${stu.addr}">
+					    </div>
+						  <div class="col-sm-3">
+						  	 <input onclick="searchAddr();" type="button" class="btn btn-outline-warning form-control" value="Search" >
+						 </div>
+					</div>
+			 </div>
+			 <div class="form-floating mb-3">
+			 	<label for="inputAddr" class="form-label"></label>
+			 	<div>
+				 	<input type="text" class="form-control" name="addrDetail" id="addrDetail" th:value="${stu.addrDetail}">
 				</div>
 			</div>
+			</form>
 			<div class="form-floating mb-3">
 				<div>
 					<label for="regDate" class="form-label">등록일</label> 
@@ -81,20 +79,21 @@
 		</div>
 
 
-<!-- ..에이젝스,,,,? 추가 과목이랑 반 넣으면 -->
 	</div>
 
 	<div class="row justify-content-center">
 		<div class="col-1 mt-3" >
 			<input type="hidden" th:value="${stu.studentCode}">
-			<button th:onclick="updateStu(this);" type="button" class="btn btn-warning form-control">수정</button>
+			<button onclick="updateStu(this);" type="button" class="btn btn-warning form-control">수정</button>
 		</div>
 	</div>
 
 
 
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>   
-
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="sweetalert2.all.min.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <!-- js 파일 연결 -->
 <script type="text/javascript" th:src="@{/js/student/update_student.js}"></script>
 

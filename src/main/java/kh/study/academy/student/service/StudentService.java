@@ -21,6 +21,9 @@ public interface StudentService {
 	void deleteStu(String studentCode);
 	
 	StudentVO selectStuDetail(String studentCode);
+	StudentVO selectStuDetailForUpdate(String studentCode);
+	
+	void updateStu(StudentVO studentVO);
 	
 	//학생편성
 	void assignStu(StudentLessonInfoVO studentLessonInfoVO);
