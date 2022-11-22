@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import kh.study.academy.admin.service.AdminService;
 import kh.study.academy.admin.vo.LessonRoomVO;
 import kh.study.academy.board.service.BoardService;
+import kh.study.academy.config.DateUtil;
 import kh.study.academy.lesson.service.LessonService;
 import kh.study.academy.lesson.vo.LessonInfoVO;
 
@@ -49,7 +50,12 @@ public class LessonController {
 	
 	//주별 학급목록
 	@GetMapping("/listByWeek")
-	public String listByWeek() {
+	public String listByWeek(Model model) {
+		
+		List<LessonInfoVO> lessonList = lessonService.selectLessonInfoList(null);
+		
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+lessonList.get(0).getLessonTime() + lessonList.get(0).getLessonDayCode());
+		System.out.println("!@#!@#!@#!@#" + DateUtil.getStartTimeforfullcalendar(lessonList.get(0).getLessonTime()));
 		
 		return "content/lesson/lessonlist_byweek";
 	}
