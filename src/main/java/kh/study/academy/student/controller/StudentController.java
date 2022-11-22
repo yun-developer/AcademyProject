@@ -195,7 +195,10 @@ public class StudentController {
 		
 		//선택한 학생 정보
 		model.addAttribute("student", studentService.selectStuDetail(studentVO.getStudentCode()));
-	
+		
+		List<StudentVO> testList = studentService.selectStuLessonList();		
+		
+		model.addAttribute("stuLessonList", testList);
 		
 		
 		return "content/student/update_stu_lesson_popup";
