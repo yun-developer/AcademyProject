@@ -15,6 +15,7 @@
 						<th scope="col">생일</th>
 						<th scope="col">학년</th>
 						<th scope="col">반</th>
+						<th scope="col">담당T</th>
 						<th scope="col">주소</th>
 						<th scope="col">전화번호</th>
 						<th scope="col">등록일</th>
@@ -33,7 +34,16 @@
 								<th:block th:unless="${lesson.lessonInfoVO==null}">
 									[	[[${lesson.lessonInfoVO.subjectVO.subjectName}]]-[[${lesson.lessonInfoVO.stepVO.stepName}]]-[[${lesson.lessonInfoVO.year}]] ]
 								</th:block>
-						
+							</th:block>
+						</td>
+						<td>
+							<th:block th:each="lesson:${stu.studentLessonInfoList}">
+								<th:block th:if="${lesson.lessonInfoVO==null}">
+									<span style="color: red;">-</span>
+								</th:block>
+								<th:block th:unless="${lesson.lessonInfoVO==null}">
+									[[${lesson.lessonInfoVO.teacherVO.teacherName}]]
+								</th:block>
 							</th:block>
 						</td>
 						<td>[[${stu.addr}]]</td>

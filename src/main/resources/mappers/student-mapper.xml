@@ -13,6 +13,7 @@
 		<result column="STUDENT_TELL"								property="studentTell"/>
 		<result column="REG_DATE" 									property="regDate"/>
 		<result column="IS_PAY" 									property="isPay"/>
+		<result column="TEACHER_NAME" 								property="teacherName"/>
 		
 		<collection property="studentLessonInfoList" 				resultMap="studentLessonInfo"/>
 		
@@ -84,6 +85,9 @@
        , (SELECT STEP_NAME
                FROM STEP
                WHERE STEP_CODE = L.STEP_CODE) AS STEP_NAME
+       , (SELECT TEACHER_NAME
+				FROM TEACHER
+				WHERE TEACHER_CODE = L.TEACHER_CODE) AS TEACHER_NAME
        , YEAR
        , PAYMENT_CODE
        , IS_PAY
@@ -117,6 +121,9 @@
 	    , (SELECT STEP_NAME
 					FROM STEP
 					WHERE STEP_CODE = L.STEP_CODE) AS STEP_NAME
+		, (SELECT TEACHER_NAME
+				FROM TEACHER
+				WHERE TEACHER_CODE = L.TEACHER_CODE) AS TEACHER_NAME
 	    , YEAR
 	FROM LESSON_INFO L, STUDENT_LESSON_INFO SL , STUDENT S
 	WHERE S.STUDENT_CODE = SL.STUDENT_CODE (+)
