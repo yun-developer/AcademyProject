@@ -27,4 +27,12 @@ public interface TestService {
 	
 	//점수 삭제 
 	void deleteScore(String testCode);
+	
+	//조회 
+	List<TestVO> selectAllTest(TestVO testVO);
+	
+	
+	//이미 등록된 테스트가 있는지 조회
+	TestVO checkDubleTest(TestVO testVO);
+	
 }

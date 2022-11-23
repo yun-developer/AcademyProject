@@ -51,6 +51,20 @@ public class TestServiceImpl implements TestService{
 		
 		return sqlSession.selectList("testMapper.selectLessonScore", testVO);
 	}
+	
+	//조회
+	@Override
+	public List<TestVO> selectAllTest(TestVO testVO) {
+		return sqlSession.selectList("testMapper.selectAllTest", testVO);
+	}
 
+	//이미 등록된 테스트가 있는지 조회
+	@Override
+	public TestVO checkDubleTest(TestVO testVO) {
+		return sqlSession.selectOne("testMapper.checkDubleTest", testVO);
+	}
+
+	
+	
 	
 }

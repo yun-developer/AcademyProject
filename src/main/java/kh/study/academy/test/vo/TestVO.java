@@ -13,8 +13,10 @@ public class TestVO {
 	private String studentCode; 
 	private String testDate; 
 	private int score; 
-
+	private String originDate; 
 	
+	
+	private int check; 
 	
 	
 }

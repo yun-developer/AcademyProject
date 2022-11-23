@@ -87,4 +87,53 @@ public class DateUtil {
 	}
 	
 	
+	
+	
+	
+	
+	
+	////////////////////
+	
+	
+	
+	
+	public static String getTestYearDate(String testDate) {
+		
+		//내가 지정한 형식으로 날짜 데이터 변형 
+		SimpleDateFormat df = new SimpleDateFormat("yyyy");
+		
+		//캘린더 객체를 만든다. 컴퓨터 날짜 불러올 수 있음
+		Calendar cal = Calendar.getInstance();
+		
+		//년도 설정
+		cal.isSet(Calendar.YEAR);
+		
+		String thisYear ="";
+		thisYear = df.format(cal.getTime());
+		
+		System.out.println(thisYear);
+		
+		String result = thisYear+testDate;
+		
+		return result ;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

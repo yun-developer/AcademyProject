@@ -37,7 +37,7 @@
 		, STUDENT_CODE
 	) VALUES(
 		#{testCode}
-		, #{testDate}
+		, TO_DATE(#{originDate} , 'yyyy/mm/dd') 
 		, #{score}
 		, #{subjectCode}
 		, #{studentCode}
@@ -125,7 +125,44 @@
 		WHERE TEST_CODE = #{testCode}
 	</delete>
 
-
+	<!-- 조회 -->
+	<select id="selectAllTest" resultMap="test">
+		 SELECT TEST_CODE
+			, SUBJECT_CODE
+			, STUDENT_CODE
+			, TEST_DATE
+			, SCORE
+		 FROM TEST
+		 WHERE 1=1
+		 <if test="subjectCode != null and !subjectCode.equals('')">
+				AND SUBJECT_CODE = #{subjectCode}
+		</if>
+		<if test="studentCode != null and studentCode != 0">
+			AND STUDENT_CODE = #{studentCode}
+		</if>
+		<if test="testDate != null and testDate != 0">
+			AND TEST_DATE = #{testDate}
+		</if>
+		 
+	</select>
+	
+	
+	
+	
+	<!-- 이미 등록된 테스트가 있는지 조회 --> 
+	<select id="checkDubleTest" resultMap="test">
+		SELECT TEST_CODE
+			, SUBJECT_CODE
+			, STUDENT_CODE
+			, TEST_DATE
+			, SCORE
+		FROM TEST
+		WHERE SUBJECT_CODE = #{subjectCode}
+		AND STUDENT_CODE = #{studentCode}
+		AND TEST_DATE = #{testDate}
+		
+	</select>
+	
 	
 </mapper>
 

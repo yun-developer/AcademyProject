@@ -6,12 +6,15 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.unit.DataUnit;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kh.study.academy.admin.service.AdminService;
+import kh.study.academy.config.DateUtil;
 import kh.study.academy.lesson.service.LessonService;
 import kh.study.academy.student.service.StudentService;
 import kh.study.academy.student.vo.StudentVO;
@@ -61,8 +64,6 @@ public class TestController {
 		
 		
 		
-		
-		
 		model.addAttribute("paramMap", paramMap);
 		
 		
@@ -72,13 +73,33 @@ public class TestController {
 	
 	
 	//점수 입력
-	@PostMapping("/regScore")
-	public String regScore(TestVO testVO) {
+	@ResponseBody
+	@PostMapping("/regScoreAjax")
+	public TestVO regScoreAjax(TestVO testVO) {
 		
-		testService.regScore(testVO);
 		
-		//return null;
-		return "redirect:/test/testManage";
+		
+		//해당 날짜의 년도 불러와서 세팅해주기
+		testVO.setOriginDate(DateUtil.getTestYearDate(testVO.getOriginDate()));
+		
+		//이미 등록된 테스트가 있는지 조회
+		TestVO dubleTest = testService.checkDubleTest(testVO);
+		
+		if (dubleTest == null) {
+			testVO = new TestVO();
+			testVO.setCheck(0);
+			return testVO;
+		}else {
+			dubleTest.setCheck(1);
+			
+			//??
+			testService.regScore(testVO);
+			
+			return dubleTest;
+		}
+		
+		
+	
 	}
 
 	

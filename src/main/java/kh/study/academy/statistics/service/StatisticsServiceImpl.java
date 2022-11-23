@@ -39,6 +39,9 @@ public class StatisticsServiceImpl implements StatisticsService {
 	public List<Integer> selectStudentCntByTeacher(String teacherCode) {
 		return sqlSession.selectList("statisticsMapper.selectStudentCntByTeacher", teacherCode);
 	}
+
+
+
 	
 	
 	

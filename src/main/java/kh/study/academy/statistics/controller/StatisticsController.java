@@ -1,5 +1,7 @@
 package kh.study.academy.statistics.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -90,31 +92,31 @@ public class StatisticsController {
 	@ResponseBody
 	@PostMapping("/classByTeacherAjax")
 	public Map<String, Object> classByTeacherAjax(Model model) {
-		
+
 		Map<String, Object> paramMap = new HashMap<>();
-		
-		/////////////
+
+		/////
+
 		Map<String, List<Integer>> chart2_data = new HashMap<>();
-		
-		//전체 교사 조회(현재 교사 상태가 Y인 교사만)
+
+		// 전체 교사 조회(현재 교사 상태가 Y인 교사만)
 		List<TeacherVO> teacherList = adminService.selectTeacherList();
-		
-		for (TeacherVO teacher : teacherList) {
-			//교사코드 조회
-			String teacherCode= teacher.getTeacherCode();
-			
-			//교사별 학생 수 조회
+
+		for (TeacherVO teacher : teacherList) { // 교사코드 조회
+
+			String teacherCode = teacher.getTeacherCode();
+
+			// 교사별 학생 수 조회
 			List<Integer> stuCntList = statisticsService.selectStudentCntByTeacher(teacherCode);
-			
+
 			chart2_data.put(teacher.getTeacherName(), stuCntList);
 		}
-		
+
 		// ② map 교사별 학생 수 조회
 		paramMap.put("studentCntByTeacher", chart2_data);
-		
+
 		return paramMap;
 	}
-
 	
 	
 

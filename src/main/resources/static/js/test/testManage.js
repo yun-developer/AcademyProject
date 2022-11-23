@@ -25,7 +25,6 @@ function openRegTestModal(code, name){
 	document.querySelector('#stuCodeForReg').value = code;
 	const stuentCode = document.querySelector('#stuCodeForReg').value;
 	
-	
 	//학생 이름 모달 input value에 넣기
 	document.querySelector('#stuNameForReg').value = name;
 	const stuentName = document.querySelector('#stuNameForReg').value;
@@ -36,7 +35,11 @@ function openRegTestModal(code, name){
 	//alert(studentName);
 	//alert(lessonName);
 	
+	
 }
+
+
+
 
 
 
@@ -55,14 +58,56 @@ function openChangeTestModal(name){
 
 }
 
+$(document).on("change", "#searchYear", function() {
+	
+	
+	
+	alert(11);
 
-
+});
 
 
 //score 값 100이상이여도 저장되네..validation 넣어야...??
 
 //평가수정 모달 내 저장 버튼을 눌렀을 때 실행되는 함수
 function regTest()  {
+	
+	
+	
+	//테스트 날짜
+	//let testDate=document.querySelector('#searchYear').selected;
+	//과목코드
+	//let subjectCode= document.querySelector('#searchSub').value;;
+	//학생코드
+	let stuentCode = document.querySelector('#stuCodeForReg').value;
+	//let s = testDate.value;
+	//alert(testDate);
+
+
+	//ajax start
+	$.ajax({
+		url: '/test/regScoreAjax', //요청경로
+		type: 'post',
+		data: {'stuentCode':stuentCode,'subjectCode':subjectCode,'testDate':testDate}, //필요한 데이터
+		success: function(result) {
+			alert('aaa');
+		},
+		error: function() {
+			alert('실패');
+		}
+	});
+	//ajax end
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	 Swal.fire({
 	   title: '평가 등록 완료',
