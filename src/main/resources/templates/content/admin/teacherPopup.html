@@ -89,13 +89,18 @@
 
 				<span id="changeStatusText">[[${teacherDetail.teacherStatus}]]</span>
 				
-				<span class="form-check form-switch" >
-					<input class="form-check-input" type="checkbox" role="switch"
-					id="teacherStatusSwitch" th:checked="${teacherDetail.teacherStatus eq '재직중'}"> 
-					<label class="form-check-label" for="teacherStatusSwitch"></label>
-				</span>
-			
-			</li>
+				<div class="row justify-content-center">
+						<div class="col align-items-center offset-md-6">
+							<div class="form-check form-switch " >
+								<input class="form-check-input bg-primary " type="checkbox"
+									role="switch" id="teacherStatusSwitch"
+									th:checked="${teacherDetail.teacherStatus eq '재직중'}"> <label
+									class="form-check-label" for="teacherStatusSwitch"></label>
+							</div>
+						</div>
+					</div>
+
+				</li>
 			
 			
 			

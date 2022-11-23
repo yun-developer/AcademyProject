@@ -54,6 +54,8 @@ $(document).on("click", "#changeTeacherRoleBtn", function() {
 
 					changeTeacherRoleDiv.insertAdjacentHTML('beforeend', str);
 					
+					//부모창 새로고침
+					opener.location.reload();
 				},
 				error: function() {
 					alert('실패');
@@ -72,15 +74,16 @@ $(document).on("click", "#changeTeacherRoleBtn", function() {
 //교사 상태 변경  
 $(document).on("click", "#teacherStatusSwitch", function() {
 	
+	const isteacherStatusTag = document.querySelector('#teacherStatusSwitch');
+	
 	const isteacherStatus = document.querySelector('#teacherStatusSwitch').checked;
 	
-	
+	alert(isteacherStatus);
 	
 	//스위치를 off(퇴사)로 변경시 
 	if(isteacherStatus == false){
 		const teacherStatus = 'N';
 	
-			alert(teacherStatus);
 			
 			
 			Swal.fire({
@@ -115,6 +118,9 @@ $(document).on("click", "#teacherStatusSwitch", function() {
 						str = `퇴사`;
 						changeStatusText.insertAdjacentHTML('beforeend', str);
 						
+						//부모창 새로고침
+						opener.location.reload();
+						
 					},
 					error: function() {
 						alert('실패');
@@ -123,6 +129,15 @@ $(document).on("click", "#teacherStatusSwitch", function() {
 				//ajax end
 				
 				Swal.fire('재직상태 변경.', '재직상태가 퇴사로 변경되었습니다', 'success');
+			}
+			else{
+				//재직 중인 교사를 퇴사 버튼 눌러서 변경하려고 하다가 취소를 누르면 
+				//스위치 버튼이 원래대로 on되어있게 하고 싶어
+				//근데 상태는 안바뀌면서 스ㅊ위치만 꺼져....
+					
+				//태그 속성 추가 변경
+				isteacherStatusTag.setAttribute("checked", "checked");
+
 			}
 		})
 		
@@ -135,7 +150,6 @@ $(document).on("click", "#teacherStatusSwitch", function() {
 	//스위치를 on(재직중)으로 변경시 
 	if(isteacherStatus == true){
 		const teacherStatus = 'Y';
-			alert(teacherStatus);
 			
 			Swal.fire({
 			title: '재직상태를 변경하시겠습니까?',
@@ -169,7 +183,8 @@ $(document).on("click", "#teacherStatusSwitch", function() {
 						str = `재직중`;
 						changeStatusText.insertAdjacentHTML('beforeend', str);
 					
-						
+						//부모창 새로고침
+						opener.location.reload();
 					},
 					error: function() {
 						alert('실패');
