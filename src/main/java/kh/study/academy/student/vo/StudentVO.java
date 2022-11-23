@@ -20,6 +20,7 @@ public class StudentVO {
 	
 	private String isPay;
 	private String teacherName;
+	private String paymentCode;
 	
 	/* private SubjectVO subjectVO; */
 	private List<String> studentCodeList;

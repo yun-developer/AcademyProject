@@ -98,6 +98,12 @@ public class StudentServiceImpl implements StudentService{
 		sqlSession.update("studentMapper.updateStu", studentVO);
 	}
 	
+	//학생 수납 상태 변경
+	@Override
+	public void stuUpdateIsPay(PaymentVO paymentVO) {
+		sqlSession.update("studentMapper.stuUpdateIsPay", paymentVO);
+	}
+	
 
 	
 

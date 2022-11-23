@@ -63,15 +63,9 @@
 									<span style="color: red;">-</span>
 								</th:block>
 								<th:block th:unless="${stu.isPay == null}">
-									<th:block th:if="${stu.isPay eq 'Y'}">
-										<input type="radio" th:name="${status.count}" th:value="Y" checked>Y
-										<input type="radio"  th:name="${status.count}" th:value="N">N
-									</th:block>
-									<th:block th:unless="${stu.isPay eq 'Y'}">
-										<input type="radio" th:name="${status.count}" th:value="Y" >Y
-										<input type="radio" th:name="${status.count}" th:value="N" checked>N
-									</th:block>
-								</th:block> 
+									<input type="radio" th:name="${status.count}" th:checked="${stu.isPay eq 'Y'}" th:onclick="changeIsPay([[${stu.paymentCode}]], 'Y');">Y
+									<input type="radio" th:name="${status.count}" th:checked="${stu.isPay eq 'N'}" th:onclick="changeIsPay([[${stu.paymentCode}]], 'N');">N
+								</th:block>
 							</td>
 						</tr>
 					</th:block>

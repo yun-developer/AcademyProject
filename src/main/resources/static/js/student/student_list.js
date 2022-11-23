@@ -101,6 +101,27 @@ function goDelete() {
 }
 
 
+//수납 상태 변경
+function changeIsPay() {
+	
+	$.ajax({
+		url: '/test/ajax1', //요청경로
+		type: 'post',
+		data: {}, //필요한 데이터를 컨트롤러로 전달
+		success: function(result) { //컨트롤러에서 리턴된 데이터 result로 받음
+			alert('aaa');
+		},
+		error: function() {
+			alert('실패');
+		}
+	});
+	
+	
+	
+}
+
+
+
 
 //페이징 라이브러리
 var box = paginator({
