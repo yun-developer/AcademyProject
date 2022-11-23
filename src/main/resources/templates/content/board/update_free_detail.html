@@ -2,28 +2,116 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-	layout:decorate="~{layout/base_layout}"> 
+	layout:decorate="~{layout/base_layout}">
 
 
 <div layout:fragment="content">
+	<!-- 전체 내용이 들어가는 영역 -->
+	<div class="row">
+		<div class="col-6">
+			<!-- 제목 영역 -->
+			<div class="row mb-3">
+				<div class="col-12">
+					<h2>자유게시판</h2>
+				</div>
+				<div class="col-12" style="font-size: 18px;">
+					등록일 : [[${free.createDate}]] 조회수 : [[${free.viewCount}]] 작성자 : <a
+						href="javascript:"
+						onclick="showEmployPopup('/common/popup/employ/detail/CE221000035', '교직원정보');">[[${free.teacherId}]]</a>
+					<div class="subheader pb-6 border-bottom"></div>
+				</div>
+			</div>
+
+			<!-- 수정내용(표) 영역 -->
+			<form th:action="@{/board/updateFreeDetail}" method="post"
+				id="updateStuForm">
+				<div class="row">
+					<div class="col">
+
+						<div class="mb-3 row">
+							<label for="staticEmail" class="col-1 col-form-label">제목</label>
+							<div class="col-11">
+								<input type="text" class="form-control" id="boardTitle"
+									name="boardTitle" th:value="${free.boardTitle}">
+							</div>
+						</div>
+						<div class="mb-3 row">
+							<label for="inputPassword" class="col-1 col-form-label">내용</label>
+							<div class="col-11">
+								<textarea class="form-control" rows="15"
+									style="font-size: 18px; resize: none;" id="boardContent"
+									name="boardContent">[[${free.boardContent}]]</textarea>
+							</div>
+						</div>
+						<div class="mb-3 row">
+							<label for="exampleFormControlInput1"
+								class="col-1 col-form-label">첨부</label>
+							<div class="col-11">
+								<div>
+									<input multiple type="file" class="form-control"
+										id="exampleFormControlInput1" name="imgs">
+								</div>
+								<div th:each="img : ${Imgs}">
+									<span class="myModal" th:text="${img.originFileName}"
+										th:data-file-name="|@{/images/board/}${img.storedFileName}|"></span>
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+										fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
+  <path
+											d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+  <path
+											d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+</svg>
+								</div>
+							</div>
+						</div>
+						<!-- 한줄 선 -->
+						<div class="subheader pb-6 border-bottom mb-3"></div>
 
 
-<main id="js-page-content" role="main" class="page-content" style="padding-bottom:0px;">
+					</div>
+				</div>
 
 
-<div class="row">
+				<!-- 버튼영역 -->
+				<div class="row">
+					<div class="col">
+
+						<th:block th:each="free : ${free}">
+							<input type="hidden" name="boardNum" th:value="${free.boardNum}">
+						</th:block>
+						<div class="row justify-content-end">
+							<div class="col-2" style="margin-right: 4.8rem;">
+								<button type="submit" class="btn btn-warning flex-end">수정완료
+								</button>
+							</div>
+						</div>
+		</div>
+	</div>
+			</form>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+<!-- <div class="row">
 	<div class="col-lg-12">
 		<div class="panel">
 			<div class="panel-hdr" style="margin-bottom: 20px; font-size: 30px;">
-				<h2>자유게시판<span class="fw-300"></span></h2>
+				
 				<div class="panel-toolbar">
 					<button class="btn btn-panel waves-effect waves-themed" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Fullscreen"></button>
 				</div>
 			</div>
 			<div class="panel-container show">
-				<div class="panel-content">
-							
-				  <form th:action="@{/board/updateFreeDetail}" method="post" id="updateStuForm"> 
+				<div class="panel-content"> -->
+
+<!-- <form th:action="@{/board/updateFreeDetail}" method="post" id="updateStuForm"> 
 					<div class="form-group input-group mb-3 px-0">
 						<div class="col-1 px-0" style="text-align: center; font-size: 26px; ">제목</div>
 							<div class="subheader pb-6"   th:each="free : ${free}">
@@ -47,52 +135,60 @@
 						 <textarea class="form-control rounded-0" id="boardContent"  style="width:1000px; height:500px; font-size: 18px;"  name="boardContent" >[[${free.boardContent}]]</textarea>
 						</div>
 					</div>	
-					     <!-- 폼태그 안에 input가 있어야 데이터를 가져간다.  -->
+					     폼태그 안에 input가 있어야 데이터를 가져간다. 
 		            <th:block th:each="free : ${free}">
-		            	 <input type="hidden" name="boardNum"  th:value="${free.boardNum}"> <!--  submit누르면 데이터 안보이게 데이터 가져갈꺼다.  내가 체크한 체크박스들을 이 input태그의 value값을   -->
+		            	 <input type="hidden" name="boardNum"  th:value="${free.boardNum}">  submit누르면 데이터 안보이게 데이터 가져갈꺼다.  내가 체크한 체크박스들을 이 input태그의 value값을  
 		              </th:block>
 		               <div class="row justify-content-end">
 		                  <div class="col-2"  style="margin-right:4.8rem; ">
 		                        <button type="submit"  class="btn btn-warning flex-end" >수정완료</button>
 		                  </div>
 		               </div>
-		             </form>
-			             
-					<div class="subheader pb-6 border-bottom" style="margin: 40px;"></div>
+		             </form> -->
+
+<!-- <div class="subheader pb-6 border-bottom" style="margin: 40px;"></div>
 					
 					<div class="col-3" style="margin: 1em;" >
 					  <label  for="exampleFormControlTextarea1" class="form-label" ></label>
 						<input multiple type="file" class="form-control" id="exampleFormControlInput1" name="imgs">
+					</div> -->
+
+<!-- 첨부 이미지 영역 -->
+<!-- <div class="row" style="font-size: 20px;">
+						<div class="col-12">
+							파일
+						</div>
+						<div class="col-12" th:each="img : ${Imgs}">
+							<span class="myModal" th:text="${img.originFileName}" th:data-file-name="|@{/images/board/}${img.storedFileName}|"></span>
+							<button th:onclik="|location.href='@{/board/deleteBoardImgUpdateFree}'|"  type="button" class=" btn-sm flex-end" >
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+									<path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+								</svg>
+							</button>
+						</div>
 					</div>
 					
-
+					
 			             
 			             <div class='gray_layer' id='background'></div>
 							<div class='over_layer' id='front'></div>
 						
-			             
-					
-						<dl class="table_name" style="margin: 30px; font-size: 20px;">
+			              -->
+
+<!-- 		<dl class="table_name" style="margin: 30px; font-size: 20px;">
 							<dt>파&nbsp;&nbsp;&nbsp;일</dt>
 								<dd th:each="img : ${Imgs}">
 									<span class="col-3 mb-2">
 										<em>
-											<!-- <a th:href="|@{/images/board/}${img.storedFileName}|" title="" th:text="${img.originFileName}" class="myModal"></a> -->
-											<div class="myModal" th:text="${img.originFileName}" th:data-file-name="|@{/images/board/}${img.storedFileName}|"></div>
-											<!-- <img th:src="|@{/images/board/}${img.storedFileName}|"> -->
+											<a th:href="|@{/images/board/}${img.storedFileName}|" title="" th:text="${img.originFileName}" class="myModal"></a>
+											
+											<img th:src="|@{/images/board/}${img.storedFileName}|">
+									
 										</em>
 									</span>
-									<button th:onclik="|location.href='@{/board/deleteBoardImgUpdateFree}'|"  type="button" class=" btn-sm flex-end" >
-										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-											<path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-										</svg>
-									</button>
+									
 								</dd>
-						</dl>
-				
-					
-			      
-
+						</dl> 
 
 						</div>
 
@@ -100,19 +196,20 @@
 				  </div>
 			   </div>
 		</div>
-</main>
+	-->
+
+
+
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<!-- <script type="text/javascript" th:src="@{/js/board/free_detail.js}"></script>		 -->
+<script type="text/javascript"
+	th:src="@{/js/board/update_free_detail.js}"></script>
+<!-- <script type="text/javascript" th:src="@{/js/reply/reply.js}"></script>		 -->
 </div>
-	
-				
-				
-				
-
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://code.jquery.com/jquery-latest.min.js"></script>   
-<script type="text/javascript" th:src="@{/js/board/free_detail.js}"></script>					
-<script type="text/javascript" th:src="@{/js/reply/reply.js}"></script>				
 
 
 
-			
+
 </html>
