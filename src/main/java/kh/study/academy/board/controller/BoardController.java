@@ -296,7 +296,7 @@ public class BoardController {
    public String updateFreeDetail(BoardVO boardVO,Model model, BoardImgVO boardImgVO) {
 	  
 	   boardService.updateFreeDetail(boardVO);
-
+	   
 	   return "redirect:/board/freeDetail?boardNum=" + boardVO.getBoardNum();
    }
    
