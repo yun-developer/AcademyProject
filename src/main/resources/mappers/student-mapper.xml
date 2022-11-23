@@ -14,6 +14,7 @@
 		<result column="REG_DATE" 									property="regDate"/>
 		<result column="IS_PAY" 									property="isPay"/>
 		<result column="TEACHER_NAME" 								property="teacherName"/>
+		<result column="PAYMENT_CODE" 								property="paymentCode"/>
 		
 		<collection property="studentLessonInfoList" 				resultMap="studentLessonInfo"/>
 		
@@ -89,7 +90,9 @@
 				FROM TEACHER
 				WHERE TEACHER_CODE = L.TEACHER_CODE) AS TEACHER_NAME
        , YEAR
-       , PAYMENT_CODE
+       , (SELECT PAYMENT_CODE
+					FROM PAYMENT
+					WHERE STUDENT_LESSON_CODE = P.STUDENT_LESSON_CODE) AS PAYMENT_CODE
        , IS_PAY
    FROM LESSON_INFO L, STUDENT_LESSON_INFO SL , STUDENT S, PAYMENT P
    WHERE S.STUDENT_CODE = SL.STUDENT_CODE (+)
@@ -122,14 +125,24 @@
 					FROM STEP
 					WHERE STEP_CODE = L.STEP_CODE) AS STEP_NAME
 		, (SELECT TEACHER_NAME
-				FROM TEACHER
-				WHERE TEACHER_CODE = L.TEACHER_CODE) AS TEACHER_NAME
+					FROM TEACHER
+					WHERE TEACHER_CODE = L.TEACHER_CODE) AS TEACHER_NAME
 	    , YEAR
-	FROM LESSON_INFO L, STUDENT_LESSON_INFO SL , STUDENT S
+	FROM LESSON_INFO L, STUDENT_LESSON_INFO SL , STUDENT S 
 	WHERE S.STUDENT_CODE = SL.STUDENT_CODE (+)
     AND L.LESSON_INFO_CODE (+) = SL.LESSON_INFO_CODE
     AND S.STUDENT_CODE = #{studentCode}
 </select>
+
+
+
+<!-- 학생 수납상태 변경 -->
+<update id="stuUpdateIsPay">
+	UPDATE PAYMENT
+	SET IS_PAY = #{isPay}
+	WHERE PAYMENT_CODE = #{paymentCode}
+</update>
+
 
 
 <!-- 학생 수정페이지 상세조회 -->

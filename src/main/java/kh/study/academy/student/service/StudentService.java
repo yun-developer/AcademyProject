@@ -17,6 +17,8 @@ public interface StudentService {
 	
 	List<StudentVO> selectStuList(String studentName);
 	
+	void stuUpdateIsPay(PaymentVO paymentVO);
+	
 	void deleteCheckedStu(StudentVO studentVO);
 	void deleteStu(String studentCode);
 	

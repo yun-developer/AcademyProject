@@ -51,7 +51,6 @@ public class StudentController {
 		String nextStudentCode = studentService.getNextStudentCode();
 		//조회한 studentCode를 insert
 		studentVO.setStudentCode(nextStudentCode);
-		paymentVO.setStudentCode(nextStudentCode);
 		
 		studentService.insertStudent(studentVO);
 		return "redirect:/stu/regPage";
