@@ -24,18 +24,30 @@
 			</div>
 			<div class="row">
 				<div class="form-floating mb-3 col-6">
-					<div>  <!-- 포문 돌리기 -->
+					<div>
 						<th:block th:each="lesson:${stu.studentLessonInfoList}">
-							<label for="subject" class="form-label">현재 수강과목</label> 
-							<input type="text" class="form-control" id="subject" th:value="${lesson.lessonInfoVO.subjectVO.subjectName}" readonly>
+							<th:block th:if="${lesson.lessonInfoVO==null}">
+								<label for="subject" class="form-label">현재 수강과목</label> 
+								<input class="form-control" type="text" style="color: red;" th:value="ㅡ" aria-label="readonly input example" readonly>
+							</th:block>
+							<th:block th:unless="${lesson.lessonInfoVO==null}">
+								<label for="subject" class="form-label">현재 수강과목</label> 
+								<input type="text" class="form-control" id="subject" th:value="${lesson.lessonInfoVO.subjectVO.subjectName}" readonly>
+							</th:block>
 						</th:block>
 					</div>
 				</div>
 				<div class="form-floating mb-3 col-6">
 					<div>
 						<th:block th:each="lesson:${stu.studentLessonInfoList}">
-							<label for="lessonInfo" class="form-label">반</label> 
-							<input type="text" class="form-control" id="lessonInfo" th:value="${lesson.lessonInfoVO.stepVO.stepName}" readonly>
+							<th:block th:if="${lesson.lessonInfoVO==null}">
+								<label for="subject" class="form-label">반</label> 
+								<input class="form-control" type="text" style="color: red;" th:value="ㅡ" aria-label="readonly input example" readonly>
+							</th:block>
+							<th:block th:unless="${lesson.lessonInfoVO==null}">
+								<label for="subject" class="form-label">반</label> 
+								<input type="text" class="form-control" id="subject" th:value="${lesson.lessonInfoVO.stepVO.stepName}" readonly>
+							</th:block>
 						</th:block>
 					</div>
 				</div>
