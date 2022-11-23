@@ -55,7 +55,15 @@ public class LessonController {
 		List<LessonInfoVO> lessonList = lessonService.selectLessonInfoList(null);
 		
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+lessonList.get(0).getLessonTime() + lessonList.get(0).getLessonDayCode());
-		System.out.println("!@#!@#!@#!@#" + DateUtil.getStartTimeforfullcalendar(lessonList.get(0).getLessonTime()));
+		//System.out.println(DateUtil.getStartTimeforfullcalendar(lessonList.get(0).getLessonTime()));
+		// 필요한 양식
+		//		title: 'Meeting',
+//      start: '2022-07-12T10:30:00',
+//      end: '2022-07-12T12:30:00'
+		System.out.println("!리턴값!"+DateUtil.getLessonDatebyDay(lessonList.get(0).getLessonDayCode(),lessonList.get(0).getLessonTime()));
+		
+		
+		System.out.println("끝");
 		
 		return "content/lesson/lessonlist_byweek";
 	}
