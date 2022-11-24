@@ -9,8 +9,6 @@
 		<result column="TEST_DATE" 								property="testDate" />
 		<result column="SCORE" 									property="score" />
 		
-		
-		<!-- 아래 칼럼 수정 필요 -->
 		<result column="SUBJECT_CODE" 							property="subjectCode" />
 		<result column="STUDENT_CODE" 							property="studentCode" />
 		
@@ -159,7 +157,7 @@
 		FROM TEST
 		WHERE SUBJECT_CODE = #{subjectCode}
 		AND STUDENT_CODE = #{studentCode}
-		AND TEST_DATE = #{testDate}
+		AND TEST_DATE = TO_DATE(#{testDate} , 'yyyy/mm/dd') 
 		
 	</select>
 	

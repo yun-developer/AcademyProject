@@ -122,24 +122,12 @@ public class DateUtil {
 		String thisYear ="";
 		thisYear = df.format(cal.getTime());
 		
-		System.out.println(thisYear);
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+thisYear);
 		
 		String result = thisYear+testDate;
 		
 		return result ;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
