@@ -26,7 +26,7 @@ public class LessonInfoVO {
 	private String lessonDayCode;
 	private String teacherCode;
 	private String lessonTime;
-	private int year;
+	private int studentYear;
 	private int maxStudent;
 	private int nowStudentCnt;
 	private int money;

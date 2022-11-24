@@ -167,7 +167,7 @@ public class StudentController {
 		if (!selectYear.equals("")) {
 			
 			int yearValue = Integer.parseInt(selectYear);
-			lessonInfoVO.setYear(yearValue);
+			lessonInfoVO.setStudentYear(yearValue);
 		}
 		else {
 			

@@ -70,7 +70,7 @@
                    		<td th:text="${status.count}"></td> 
                    		 <td th:text="${lessonInfo.lessonInfoRegdate}" ></td> 
                 		<td th:text="${lessonInfo.subjectVO.subjectName} + '-' + ${lessonInfo.stepVO.stepName}"></td> 
-                        <td th:text="${lessonInfo.year}"></td> 
+                        <td th:text="${lessonInfo.studentYear}"></td> 
                  		<td th:text="${#numbers.formatCurrency(lessonInfo.money)}"></td> 
                    		<td th:text="${lessonInfo.lessonDayCode}"></td> 
                     	<td th:text="${lessonInfo.lessonTime}"></td> 
@@ -102,7 +102,7 @@
             
         <!-- 교실 신규 버튼 누르면 실행되는 Modal -->
 		<!-- Modal -->	   
-		<div class="modal fade" id="aa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal fade" id="aa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"  >
 			 <div class="modal-dialog modal-xl">
 				<div class="modal-content">
 				  	  <!-- 모달 제목글 header -->
@@ -113,7 +113,7 @@
 				     </div>
 					
 					<!-- 모달 내용글 body -->
-				<form th:action="@{/lesson/saveLessonInfo}" method="post" id="regLessonForm">
+				<form th:action="@{/lesson/saveLessonInfo}" method="post" id="regLessonForm" class="needs-validation" novalidate >
 				      <div class="modal-body">
 				      	<div class="row mb-3">
 				      		<div class="col-10">
@@ -139,14 +139,18 @@
 											<div class="col-6 col-lg-2 px-1"><span class="input-group-text h-100 rounded-0">학년</span></div>
 									
 												<div class="col-6 col-lg-5 px-">
-													<select class="form-select"   aria-label="Default select example" id="year" name="year" kor="과정구분">
-														<option value="">선택</option>
+													<select class="form-select"   aria-label="Default select example" id="studentYear" name="studentYear" kor="과정구분" required>
+														<option value="" >선택</option>
 
 															<option value="1">고등1</option>
 															<option value="2">고등2</option>
 															<option value="3">고등3</option>
 
 													</select>
+													 <div class="invalid-feedback">
+												        Please choose a username.
+												      </div>
+													
 												</div>
 											</div>	
 												<div class="form-group input-group mb-1">
@@ -251,7 +255,10 @@
 								<div class="form-group input-group mb-1">
 									<div class="col-6 col-lg-2 px-0"><span class="input-group-text h-100 rounded-0">메모</span></div>
 									<div class="col-6 col-lg-10 px-1">
-										<textarea id="memo" name="memo" class="form-control rounded-0" placeholder="메모" aria-label="메모" aria-describedby="memo"></textarea>
+										<textarea id="memo" name="memo" class="form-control rounded-0" placeholder="메모" aria-label="메모" aria-describedby="memo" required></textarea>
+											 <div class="invalid-feedback">
+												Please choose a username.
+											</div>
 									</div>
 								</div>
 						
