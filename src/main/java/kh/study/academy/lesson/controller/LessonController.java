@@ -84,7 +84,7 @@ public class LessonController {
 			//fullcalendar에 맞게끔 날짜 양식 수정
 			lesson.put("end",DateUtil.getLessonDatebyDay(lessonInfo.getLessonDayCode(),lessonInfo.getLessonTime())[1] );
 			lesson.put("start",DateUtil.getLessonDatebyDay(lessonInfo.getLessonDayCode(),lessonInfo.getLessonTime())[0] );
-			lesson.put("title", lessonInfo.getSubjectVO().getSubjectName() + lessonInfo.getStepVO().getStepName() + lessonInfo.getYear());
+			lesson.put("title", lessonInfo.getSubjectVO().getSubjectName() + lessonInfo.getStepVO().getStepName() + lessonInfo.getStudentYear());
 			
 			//각  map 객체를 Ajax로 보내줄 리스트 데이터에 담기
 			lessonListForCalender.add(lesson);
