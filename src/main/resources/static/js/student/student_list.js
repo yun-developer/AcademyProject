@@ -102,22 +102,22 @@ function goDelete() {
 
 
 //수납 상태 변경
-function changeIsPay() {
-	
+function changeIsPay(paymentCode, status) {
 	$.ajax({
-		url: '/test/ajax1', //요청경로
+		url: '/stu/updateIsPay', //요청경로
 		type: 'post',
-		data: {}, //필요한 데이터를 컨트롤러로 전달
+		data: {'paymentCode' : paymentCode, 'isPay' : status}, //필요한 데이터를 컨트롤러로 전달
 		success: function(result) { //컨트롤러에서 리턴된 데이터 result로 받음
-			alert('aaa');
+			Swal.fire({
+			  title: '수납 상태가 변경되었습니다',
+			  icon: 'success',
+			  confirmButtonText: '확인'
+			})
 		},
 		error: function() {
 			alert('실패');
 		}
 	});
-	
-	
-	
 }
 
 

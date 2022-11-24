@@ -66,6 +66,15 @@ public class StudentController {
 	}
 	
 	
+	//학생 수납 상태 변경
+	@ResponseBody
+	@PostMapping("/updateIsPay")
+	public void updateIsPay(PaymentVO paymentVO) {
+		studentService.stuUpdateIsPay(paymentVO);
+	}
+	
+	
+	
 	//학생 선택 삭제
 	@PostMapping("/deleteCheckedStu")
 	public String deleteCheckedStu(String studentCodes) {  
