@@ -11,6 +11,7 @@ const chks = document.querySelectorAll('.chk');
 const selectSub = document.querySelector('#selectSub');
 const inputScore = document.querySelector('#inputScore');
 const selectDate = document.querySelector('#selectDate');
+
 //수정 모달 셀렉스박스
 
 
@@ -77,6 +78,40 @@ function regTest()  {
 	let selectSubValue = selectSub.options[selectSub.selectedIndex].value;
 	//학생코드
 	let stuentCodeValue = document.querySelector('#stuCodeForReg').value;
+	
+	(() => {
+	  'use strict'
+	
+	  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+	  const forms = document.querySelectorAll('.needs-validation')
+	
+	  // Loop over them and prevent submission
+	  Array.from(forms).forEach(form => {
+	    form.addEventListener('click', event => {
+			if (!form.checkValidity()) {
+				event.preventDefault()
+				event.stopPropagation()
+				form.classList.add('was-validated')
+			}
+
+			else {
+
+			}
+
+	      
+	      
+	      
+	      
+	    }, false)
+	  })
+	})()
+
+
+	
+	
+	
+	
+	
 	
 	//중복데이터가 있으면 얼럿 
 	//ajax start
@@ -273,3 +308,31 @@ var box = paginator({
 });
 box.className = "box";
 document.getElementById("table_box_bootstrap").appendChild(box);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
