@@ -18,7 +18,7 @@ public class DateUtil {
 	}
 	
 	//요일에 해당하는 날짜 가져오기
-	public static String getLessonDatebyDay(String dayCode, String lessonTime) {
+	public static String[] getLessonDatebyDay(String dayCode, String lessonTime) {
 		
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		
@@ -42,22 +42,18 @@ public class DateUtil {
 			}
 		}
 		
-		
 		/** 오늘날짜에 해당하는 월, 주,월요일 날짜를 가져오기 **/
 		Calendar startDate = Calendar.getInstance();
-		startDate.isSet(Calendar.MONTH); /** 오늘 날짜의 월 셋팅**/
-		startDate.isSet(Calendar.WEEK_OF_MONTH); /** 오늘 날짜의 주 셋팅 **/
+		//startDate.isSet(Calendar.MONTH); /** 오늘 날짜의 월 셋팅**/
+		//startDate.isSet(Calendar.WEEK_OF_MONTH); /** 오늘 날짜의 주 셋팅 **/
 		startDate.set(Calendar.DAY_OF_WEEK, 2); /** 월요일 셋팅 **/
-		//System.out.println(startDate.getTime());
+		//System.out.println("날짜 바로" + startDate.getTime());
 		
 		/** 오늘날짜에 해당하는 월, 주, 금요일 날짜를 가져오기 **/
 		Calendar endDate = Calendar.getInstance();
-		endDate.isSet(Calendar.MONTH); /** 오늘 날짜의 월 셋팅**/
-		endDate.isSet(Calendar.WEEK_OF_MONTH); /** 오늘 날짜의 주 셋팅 **/
 		endDate.set(Calendar.DAY_OF_WEEK, 6); /** 금요일 셋팅 **/
-		//System.out.println(endDate.getTime());
 		
-//		title: 'Meeting',
+//		필요한 데이터 형식
 //        start: '2022-07-12T10:30:00',
 //        end: '2022-07-12T12:30:00'
 		
@@ -66,23 +62,38 @@ public class DateUtil {
 		String edate ="";
 		edate = df.format(endDate.getTime());
 		
-		System.out.println(sdate.compareTo(edate));
 		System.out.println("해당 주의 월요일:"+ sdate);
-		startDate.add(startDate.DAY_OF_WEEK, 1);
+		System.out.println("해당주의 금요일:"+edate);
 		
-		sdate = df.format(startDate.getTime());
-		System.out.println("1일 더한 날짜"+startDate.getTime());
-		System.out.println("해당주의 월요일 + 1:"+sdate);
+		//하루 더하기
+		//startDate.add(Calendar.DAY_OF_WEEK, 1);
+		while(startDate.compareTo(endDate) != 0) {
+			startDate.add(Calendar.DAY_OF_WEEK, 1);
+			
+		}
 		
+		
+		
+		//해당 주의 수업 날짜
+		Calendar lessonDate = Calendar.getInstance();
+		lessonDate.set(Calendar.DAY_OF_WEEK, dayNum);
+		String lessonDateStr ="";
+		lessonDateStr = df.format(lessonDate.getTime());
 		
 		
 		
 		//fullcal에 맞춘 양식
 		int lessonT = Integer.parseInt(lessonTime);
-		String startTime = sdate +"T" + lessonT + ":00:00";
-		String endTime = edate +"T" + (lessonT+1) + ":00:00";
+		String startTime = lessonDateStr +"T" + lessonT + ":00:00";
+		String endTime = lessonDateStr +"T" + (lessonT+1) + ":00:00";
+		//System.out.println("수업 시작 시간" + startTime);
+		//System.out.println("수업 종료 시간" + endTime);
 		
-		return sdate;
+		String[] lessonTimes = new String[2];
+		lessonTimes[0] = startTime;
+		lessonTimes[1] = endTime;
+		
+		return lessonTimes;
 		
 	}
 	
