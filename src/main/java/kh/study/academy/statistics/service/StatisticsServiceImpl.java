@@ -36,8 +36,8 @@ public class StatisticsServiceImpl implements StatisticsService {
 
 	//교사별 담당 학생 수 조회
 	@Override
-	public List<Integer> selectStudentCntByTeacher(String teacherCode) {
-		return sqlSession.selectList("statisticsMapper.selectStudentCntByTeacher", teacherCode);
+	public int selectStudentCntByTeacher(String teacherCode) {
+		return sqlSession.selectOne("statisticsMapper.selectStudentCntByTeacher", teacherCode);
 	}
 
 

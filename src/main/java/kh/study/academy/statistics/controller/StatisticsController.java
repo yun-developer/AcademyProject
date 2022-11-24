@@ -97,7 +97,7 @@ public class StatisticsController {
 
 		/////
 
-		Map<String, List<Integer>> chart2_data = new HashMap<>();
+		Map<String, Integer> chart2_data = new HashMap<>();
 
 		// 전체 교사 조회(현재 교사 상태가 Y인 교사만)
 		List<TeacherVO> teacherList = adminService.selectTeacherList();
@@ -107,11 +107,12 @@ public class StatisticsController {
 			String teacherCode = teacher.getTeacherCode();
 
 			// 교사별 학생 수 조회
-			List<Integer> stuCntList = statisticsService.selectStudentCntByTeacher(teacherCode);
+			int stuCnt = statisticsService.selectStudentCntByTeacher(teacherCode);
 
-			chart2_data.put(teacher.getTeacherName(), stuCntList);
+			chart2_data.put(teacher.getTeacherName(), stuCnt);
 		}
 
+		
 		// ② map 교사별 학생 수 조회
 		paramMap.put("studentCntByTeacher", chart2_data);
 

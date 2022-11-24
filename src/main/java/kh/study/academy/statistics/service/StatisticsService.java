@@ -20,7 +20,7 @@ public interface StatisticsService {
 	
 	
 	//교사별 담당 학생 수 조회
-	List<Integer> selectStudentCntByTeacher(String teacherCode);
+	int selectStudentCntByTeacher(String teacherCode);
 	
 	
 	
