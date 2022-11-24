@@ -24,8 +24,14 @@
 		<result column="MONTH" 													property="month"/>
 	</resultMap>
 	
+	<!-- 교사별 프로그램 수 -->
+	<resultMap type="kh.study.academy.statistics.vo.LessonCntByTeacher" 		id="lessonCntByTeacher">
+		<id column="teacherName"												property="teacherName"/>
+		<result column="LESSON_CNT" 											property="lessonCnt"/>
+	</resultMap>
+	
 	<!-- 교사별 담당 학생 수 -->
-	<resultMap type="kh.study.academy.statistics.vo.StudentCntByTeacher" 	id="studentCntByTeacher">
+	<resultMap type="kh.study.academy.statistics.vo.StudentCntByTeacher" 		id="studentCntByTeacher">
 		<id column="teacherName"												property="teacherName"/>
 		<result column="STUDENT_CNT" 											property="studentCnt"/>
 	</resultMap>
@@ -90,6 +96,13 @@
 	
 	</select>
 	
+	
+	<!-- 교사별 프로그램 수 -->
+	<select id="selectLessonCntByTeacher">
+	
+	
+	
+	</select>
 	
 	
 	

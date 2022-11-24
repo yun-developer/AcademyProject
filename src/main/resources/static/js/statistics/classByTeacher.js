@@ -48,11 +48,6 @@ function drawChart2(data){
 	console.log(chart_category_arr);
 	
 
-	//console.log("슬라이스...."+chart_data_arr.slice());
-	
-	//console.log("chart_data_arr="+chart_data_arr);
-   
-	//console.log("chart_data="+chart_data);
 	
 	   var options = {
 	          series:
