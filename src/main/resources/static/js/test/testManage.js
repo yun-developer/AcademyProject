@@ -11,6 +11,7 @@ const chks = document.querySelectorAll('.chk');
 const selectSub = document.querySelector('#selectSub');
 const inputScore = document.querySelector('#inputScore');
 const selectDate = document.querySelector('#selectDate');
+const regBtn = document.querySelector('#regBtn');
 
 //수정 모달 셀렉스박스
 
@@ -61,6 +62,37 @@ function openChangeTestModal(name){
 }
 
 
+(() => {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    regBtn.addEventListener('click', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+        
+      	form.classList.add('was-validated')
+      }
+		else {
+      regTest();
+			
+		}     
+
+      
+      
+      
+      
+      
+    }, false)
+  })
+})()
+
+
+
 
 
 
@@ -79,32 +111,7 @@ function regTest()  {
 	//학생코드
 	let stuentCodeValue = document.querySelector('#stuCodeForReg').value;
 	
-	(() => {
-	  'use strict'
-	
-	  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-	  const forms = document.querySelectorAll('.needs-validation')
-	
-	  // Loop over them and prevent submission
-	  Array.from(forms).forEach(form => {
-	    form.addEventListener('click', event => {
-			if (!form.checkValidity()) {
-				event.preventDefault()
-				event.stopPropagation()
-				form.classList.add('was-validated')
-			}
 
-			else {
-
-			}
-
-	      
-	      
-	      
-	      
-	    }, false)
-	  })
-	})()
 
 
 	

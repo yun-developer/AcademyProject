@@ -85,7 +85,6 @@ public class TestController {
 		TestVO dubleTest = testService.checkDubleTest(testVO);
 		//중복 없을때
 		if (dubleTest == null) {
-			testVO = new TestVO();
 			testVO.setCheck(0);
 			return testVO;
 		}else {
@@ -100,6 +99,7 @@ public class TestController {
 	//점수 등록
 	@PostMapping("/regScore")
 	public String regScore(TestVO testVO) {
+		
 		
 		//해당 날짜의 년도 불러와서 세팅해주기
 		testVO.setTestDate(DateUtil.getTestYearDate(testVO.getTestDate()));

@@ -35,7 +35,7 @@
 		, STUDENT_CODE
 	) VALUES(
 		#{testCode}
-		, TO_DATE(#{originDate} , 'yyyy/mm/dd') 
+		, TO_DATE(#{testDate} , 'yyyy/mm/dd') 
 		, #{score}
 		, #{subjectCode}
 		, #{studentCode}
