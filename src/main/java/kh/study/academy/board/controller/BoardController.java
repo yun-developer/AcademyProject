@@ -139,7 +139,7 @@ public class BoardController {
 	
       
    // 공지사항 상세페이지에서 글 수정 페이지로 이동
-   @PostMapping("/updateNoticeDetailFrom")
+   @RequestMapping("/updateNoticeDetailFrom")
    public String updateNoticeDetailFrom(int boardNum, Model model) {
 	   model.addAttribute("Imgs",boardService.selectImgs(boardNum)); 
 	   model.addAttribute("notice", boardService.selectBoardDetail(boardNum));
@@ -147,6 +147,7 @@ public class BoardController {
       return "content/board/update_notice_detail";
    }
 
+   
    // 공지사항 글 수정 페이지에서 글 수정하기
    @RequestMapping("/updateNoticeDetail")
    public String updateNoticeDetail(BoardVO boardVO,Model model) {
@@ -155,6 +156,20 @@ public class BoardController {
 
 	   return "redirect:/board/noticeDetail?boardNum=" + boardVO.getBoardNum();
    }
+   
+   
+   
+   // 공지사항 상세 수정페이지에서 첨부파일 삭제 기능
+  	@GetMapping("/deleteBoardImgUpdateNotice")
+  	public String deleteBoardImgUpdateNotice(BoardImgVO boardImgVO) {
+  		
+  		boardService.deleteBoardImgUpdateFree(boardImgVO);
+  		
+  		return "redirect:/board/updateNoticeDetailFrom?boardNum="+boardImgVO.getBoardNum();
+  	}
+   
+   
+   
    
    //공지사항 좋아요
    @ResponseBody
@@ -221,7 +236,7 @@ public class BoardController {
       //boardVO가 첨부파일에 대한 정보를 세터로 다 가지게 됨
       boardVO.setImgList(uploadList);
       
-      if(boardVO.getBoardContent().equals("") ) {  // 만약에 등록시 빈문자라면 다시 과목등록 페이지 이동
+      if(boardVO.getBoardContent().equals("") ) {  // 만약에 등록시 빈문자라면 다시 등록 페이지 이동
          return "redirect:/board/writeFree";
       }
       else if(boardVO.getBoardTitle().equals("")){
@@ -229,7 +244,7 @@ public class BoardController {
       }
       
       else {
-         boardService.insertFree(boardVO);  // 빈문자가 아니라면 등록 쿼리 실행하고 과목등록 페이지로 이동
+         boardService.insertFree(boardVO);  // 빈문자가 아니라면 등록 쿼리 실행하고 등록 페이지로 이동
       }   
          return "redirect:/board/freeList";
 
@@ -293,22 +308,37 @@ public class BoardController {
    
    // 자유게시판 글 수정 페이지에서 글 수정하기
    @RequestMapping("/updateFreeDetail")
-   public String updateFreeDetail(BoardVO boardVO,Model model, BoardImgVO boardImgVO) {
+   public String updateFreeDetail(BoardVO boardVO,Model model, BoardImgVO boardImgVO, List<MultipartFile> imgs) {
 	  
-	   boardService.updateFreeDetail(boardVO);
-	   
+		/*
+		 * // 수정완료 누르면 첨부파일 새로 올라가는 것 int BoardNum = boardService.getNextBoardNum();
+		 * boardVO.setBoardNum(BoardNum);
+		 * 
+		 * 
+		 * //다중 이미지 파일 첨부 List<BoardImgVO> updateLoad =
+		 * UploadFileUtil2.multiUploadFile(imgs);
+		 * 
+		 * //이미지 정보를 insert 하기 위한 데이터를 가진 updateLoad에 조회한 boardNum 값도 넣어줌 for(BoardImgVO
+		 * vo : updateLoad) { vo.setBoardNum(BoardNum); }
+		 * 
+		 * //boardVO가 첨부파일에 대한 정보를 세터로 다 가지게 됨 boardVO.setImgList(updateLoad);
+		 * 
+		 * System.out.println("!!!!!!!!!!!!!!!"+boardVO);
+		 */
+		 boardService.updateFreeDetail(boardVO);
+		
+	      
 	   return "redirect:/board/freeDetail?boardNum=" + boardVO.getBoardNum();
    }
    
    
    // 자유게시판 상세 수정페이지에서 첨부파일 삭제 기능
-  	@PostMapping("/deleteBoardImgUpdateFree")
+  	@GetMapping("/deleteBoardImgUpdateFree")
   	public String deleteBoardImgUpdateFree(BoardImgVO boardImgVO) {
   		
   		boardService.deleteBoardImgUpdateFree(boardImgVO);
-  		System.out.println("!!!!!!!!!" + boardImgVO);
   		
-  		return "redirect:/board/updateFreeDetail?boardNum="+boardImgVO.getBoardNum();
+  		return "redirect:/board/updateFreeDetailFrom?boardNum="+boardImgVO.getBoardNum();
   	}
    
   	

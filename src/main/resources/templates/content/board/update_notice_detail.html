@@ -5,100 +5,101 @@
 	layout:decorate="~{layout/base_layout}"> 
 
 
+
 <div layout:fragment="content">
-
-
-<main id="js-page-content" role="main" class="page-content" style="padding-bottom:0px;">
-
-
-<div class="row">
-	<div class="col-lg-12">
-		<div class="panel">
-			<div class="panel-hdr" style="margin-bottom: 20px; font-size: 30px;">
-				<h2>공지사항<span class="fw-300"></span></h2>
-				<div class="panel-toolbar">
-					<button class="btn btn-panel waves-effect waves-themed" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Fullscreen"></button>
+	<!-- 전체 내용이 들어가는 영역 -->
+	<div class="row">
+		<div class="col-6">
+			<!-- 제목 영역 -->
+			<div class="row mb-3">
+				<div class="col-12">
+					<h2>공지사항</h2>
+				</div>
+				<div class="col-12" style="font-size: 18px;">
+					등록일 : [[${notice.createDate}]] 조회수 : [[${notice.viewCount}]] 작성자 : <a
+						href="javascript:"
+						onclick="showEmployPopup('/common/popup/employ/detail/CE221000035', '교직원정보');">[[${notice.teacherId}]]</a>
+					<div class="subheader pb-6 border-bottom"></div>
 				</div>
 			</div>
-			<div class="panel-container show">
-				<div class="panel-content">
-							
-					  <form th:action="@{/board/updateNoticeDetail}" method="post" id="updateStuForm">
-	 					<div class="form-group input-group mb-3 px-0">
-							<div class="col-1 px-0" style="text-align: center; font-size: 26px; ">제목</div>
-								<div class="subheader pb-6"   th:each="notice : ${notice}">
-							    	 <input type="text" id="boardTitle" name="boardTitle" th:value="${notice.boardTitle}" class="form-control rounded-0" style="width:1000px; height:50px; font-size: 20px;" >
-								 
+
+			<!-- 수정내용(표) 영역 -->
+			<form th:action="@{/board/updateNoticeDetail}" method="post"
+				id="updateStuForm">
+				<div class="row">
+					<div class="col">
+						<div class="mb-3 row">
+							<label for="staticEmail" class="col-1 col-form-label">제목</label>
+							<div class="col-11">
+								<input type="text" class="form-control" id="boardTitle" name="boardTitle" th:value="${notice.boardTitle}">
+							</div>
+						</div>
+						<div class="mb-3 row">
+							<label for="inputPassword" class="col-1 col-form-label">내용</label>
+							<div class="col-11">
+								<textarea class="form-control" rows="15" style="font-size: 18px; resize: none;" id="boardContent" name="boardContent">[[${notice.boardContent}]]</textarea>
+							</div>
+						</div>
+						<div class="mb-3 row">
+							<label for="exampleFormControlInput1"
+								class="col-1 col-form-label">첨부</label>
+							<div class="col-11">
+								<div style="margin-bottom: 6px;">
+									<input multiple type="file" class="form-control" id="exampleFormControlInput1" name="imgs">
 								</div>
-						</div> 
-				
-					
-					<div>
-						<div style="font-size: 18px; margin: 1.5em;">
-							등록일 : [[${notice.createDate}]] 조회수 : [[${notice.viewCount}]] 작성자 : 
-							<a href="javascript:" onclick="showEmployPopup('/common/popup/employ/detail/CE221000035', '교직원정보');">[[${notice.teacherId}]]</a>
+								<div th:each="img : ${Imgs}">
+									<span class="myModal" th:text="${img.originFileName}" th:data-origin-file-name="${img.originFileName}"
+										th:data-file-name="|@{/images/board/}${img.storedFileName}|" data-bs-toggle="modal" data-bs-target="#imageModal"></span>
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" th:onclick="deleteImgNotice([[${img.boardImgNum}]], [[${img.boardNum}]]);"
+										fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
+  										<path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+  										<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+									</svg>
+								</div>
+							</div>
+						</div>
+						<!-- 한줄 선 -->
+						<div class="subheader pb-6 border-bottom mb-3"></div>
+					</div>
+				</div>
+
+				<!-- 버튼영역 -->
+				<div class="row">
+					<div class="col">
+						<th:block th:each="notice : ${notice}">
+							<input type="hidden" name="boardNum" th:value="${notice.boardNum}">
+						</th:block>
+						<div class="row justify-content-end">
+							<div class="col-2" style="margin-right: 4.8rem;">
+								<button type="submit" class="btn btn-warning flex-end">수정완료
+								</button>
+							</div>
 						</div>
 					</div>
-					
-					<div class="subheader pb-6 border-bottom" style="margin-bottom: 20px;"></div>
-						 <div class="form-group input-group mb-1">
-							<div class="col-1 px-0" style="text-align: center; font-size: 26px; ">내용</div>
-							<div class="subheader pb-6"   th:each="notice : ${notice}">
-						     <textarea class="form-control rounded-0" id="boardContent"  style="width:1000px; height:500px; font-size: 18px;"  name="boardContent" >[[${notice.boardContent}]]</textarea>
-							</div>
-						 </div>	 
-
-
-			           <!-- 폼태그 안에 input가 있어야 데이터를 가져간다.  -->
-			             <th:block th:each="notice : ${notice}">
-			            	 <input type="hidden" name="boardNum"  th:value="${notice.boardNum}">  
-			              </th:block> 
-			               <div class="row justify-content-end">
-			                  <div class="col-2"  style="margin-right:4.8rem; ">
-			                        <button type="submit" class="btn btn-warning flex-end" >수정완료</button>
-			                  </div>
-			               </div>
-			               
-			              <dl class="table_name" style="margin: 30px; font-size: 20px;">
-							
-							<dt>파&nbsp;&nbsp;&nbsp;일</dt>
-							
-								<dd  th:each="img : ${Imgs}">
-									<span class="col-3 mb-2"><em>
-										<a href="" title="" th:text="${img.originFileName}"></a>
-									</em></span>
-									
-									<button th:onclik="|location.href='@{/board/deleteBoardImgUpdateFree}'|"  type="button" class=" btn-sm flex-end" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-										<path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-									</svg>
-									</button>
-								</dd>
-							
-						</dl>
-			               
-			               
-			            </form>
-					</div>
-
 				</div>
-				
-			 </div>
-		  </div>
-  	 </div>
-   </main>
+			</form>
+		</div>
+	</div>
+
+	<!-- 이미지명 클릭 했을 때 나오는 이미지 모달 -->
+	<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h1 class="modal-title fs-5" id="imageModalTitle"></h1>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body" style="padding: 0px;">
+	        <img src="" width="100%;">
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript" th:src="@{/js/board/update_notice_detail.js}"></script>
 </div>
-
-
-				
-				
-				
-
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://code.jquery.com/jquery-latest.min.js"></script>   
-<script type="text/javascript" th:src="@{/js/board/free_detail.js}"></script>					
-<script type="text/javascript" th:src="@{/js/reply/reply.js}"></script>				
-
-
 
 			
 </html>
