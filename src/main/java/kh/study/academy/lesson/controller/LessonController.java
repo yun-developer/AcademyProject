@@ -4,7 +4,10 @@ package kh.study.academy.lesson.controller;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -13,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kh.study.academy.admin.service.AdminService;
 import kh.study.academy.admin.vo.LessonRoomVO;
@@ -52,20 +56,34 @@ public class LessonController {
 	@GetMapping("/listByWeek")
 	public String listByWeek(Model model) {
 		
-		List<LessonInfoVO> lessonList = lessonService.selectLessonInfoList(null);
-		
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+lessonList.get(0).getLessonTime() + lessonList.get(0).getLessonDayCode());
-		//System.out.println(DateUtil.getStartTimeforfullcalendar(lessonList.get(0).getLessonTime()));
-		// 필요한 양식
-		//		title: 'Meeting',
-//      start: '2022-07-12T10:30:00',
-//      end: '2022-07-12T12:30:00'
-		System.out.println("!리턴값!"+DateUtil.getLessonDatebyDay(lessonList.get(0).getLessonDayCode(),lessonList.get(0).getLessonTime()));
-		
-		
-		System.out.println("끝");
 		
 		return "content/lesson/lessonlist_byweek";
+	}
+	
+	// 학급목록 페이지 달력을 그릴 데이터를 조회하는 메소드
+	@ResponseBody
+	@PostMapping("/lessonListAjax")
+	public List<Map<String, String>>lessonListAjax(Model model) {
+		
+		//DB학급 목록 불러오기
+		List<LessonInfoVO> lessonList = lessonService.selectLessonInfoList(null);
+		
+		// 필요한 양식
+		//		title: 'Meeting',
+		//      start: '2022-07-12T10:30:00',
+		//      end: '2022-07-12T12:30:00'
+
+		List<Map<String, String>> lessonListForCalender = new ArrayList<>();
+		
+		for (LessonInfoVO lessonInfo : lessonList) {
+			Map<String, String> lesson = new HashMap<>();;
+			lesson.put("end",DateUtil.getLessonDatebyDay(lessonInfo.getLessonDayCode(),lessonInfo.getLessonTime())[1] );
+			lesson.put("start",DateUtil.getLessonDatebyDay(lessonInfo.getLessonDayCode(),lessonInfo.getLessonTime())[0] );
+			lesson.put("title", lessonInfo.getSubjectVO().getSubjectName() + lessonInfo.getStepVO().getStepName() + lessonInfo.getYear());
+			lessonListForCalender.add(lesson);
+		}
+		
+		return lessonListForCalender;
 	}
 	
 	
