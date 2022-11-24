@@ -223,7 +223,7 @@
 								<div class="col-6 col-lg-10 px-1 rounded-1">
 									
 									
-									<select class="form-select selectChange" name="subjectCode"  aria-label="Default select example" id="searchSub">
+									<select class="form-select selectChange" name="subjectCode"  aria-label="Default select example" id="selectSub">
 										<option value="">선택</option>
 										 <th:block th:each ="sub:${subjectList}" >
 									      <option th:value="${sub.subjectCode}" th:text="${sub.subjectName}" >
@@ -247,7 +247,7 @@
 										aria-label="8" aria-describedby="cpaCn" > -->
 										
 									<select
-										class="form-select" aria-label="Default select example" id="searchYear" name="originDate">
+										class="form-select" aria-label="Default select example" id="selectDate" name="originDate">
 										<option value="" selected>전체</option>
 										<option value="0101">[1차] 1월 1일</option>
 										<option value="0401">[2차] 4월 1일</option>
@@ -266,13 +266,13 @@
 									<span class="input-group-text h-100 rounded-0">점수</span>
 								</div>
 								<div class="col-6 col-lg-10 px-1 rounded-1">
-									<input type="number" id="" name="score"
+									<input type="number" id="inputScore" name="score"
 										class="form-control rounded-0 h-100" placeholder="점수를 입력하세요"
 										aria-label="8" aria-describedby="cpaCn" min="0" max="100" >
 								</div>
+								
 							</div>
 						</div>
-						
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary"

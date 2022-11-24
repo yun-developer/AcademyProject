@@ -5,12 +5,13 @@ const checkAll = document.querySelector('#checkAll');
 //제목 줄을 제외한 모든 체크박스 
 const chks = document.querySelectorAll('.chk');
 
+//검색용 셀렉트박스
 
-//각 셀렉트박스
-const searchSub = document.querySelector('#searchSub');
-const searchStep = document.querySelector('#searchStep');
-const searchYear = document.querySelector('#searchYear');
-
+//등록 모달 셀렉트박스
+const selectSub = document.querySelector('#selectSub');
+const inputScore = document.querySelector('#inputScore');
+const selectDate = document.querySelector('#selectDate');
+//수정 모달 셀렉스박스
 
 
 
@@ -58,39 +59,81 @@ function openChangeTestModal(name){
 
 }
 
-$(document).on("change", "#searchYear", function() {
-	
-	
-	
-	alert(11);
 
-});
+
+
+
+
 
 
 //score 값 100이상이여도 저장되네..validation 넣어야...??
 
-//평가수정 모달 내 저장 버튼을 눌렀을 때 실행되는 함수
+//평가등록 모달 내 저장 버튼을 눌렀을 때 실행되는 함수
 function regTest()  {
 	
-	
-	
 	//테스트 날짜
-	//let testDate=document.querySelector('#searchYear').selected;
+	let selectDateValue = selectDate.options[selectDate.selectedIndex].value;
 	//과목코드
-	//let subjectCode= document.querySelector('#searchSub').value;;
+	let selectSubValue = selectSub.options[selectSub.selectedIndex].value;
 	//학생코드
-	let stuentCode = document.querySelector('#stuCodeForReg').value;
-	//let s = testDate.value;
-	//alert(testDate);
-
-
+	let stuentCodeValue = document.querySelector('#stuCodeForReg').value;
+	
+	//중복데이터가 있으면 얼럿 
 	//ajax start
 	$.ajax({
 		url: '/test/regScoreAjax', //요청경로
 		type: 'post',
-		data: {'stuentCode':stuentCode,'subjectCode':subjectCode,'testDate':testDate}, //필요한 데이터
+		data: {'studentCode':stuentCodeValue,'subjectCode':selectSubValue,'testDate':selectDateValue}, //필요한 데이터
 		success: function(result) {
-			alert('aaa');
+			
+			if(result.check ==1){
+				
+				 Swal.fire({
+		 		  title: '평가 등록 실패',
+				   text: '해당 학생의 평가 점수가 이미 존재합니다',
+				   icon: 'error',
+				   
+				   showCancelButton: false, // cancel버튼 보이기. 기본은 원래 없음
+				   confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+				   cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
+				   confirmButtonText: '확인', // confirm 버튼 텍스트 지정
+				   
+				   
+				}).then(result => {
+				   // 만약 Promise리턴을 받으면,
+				   if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
+				   
+				   //d
+				   
+				   }
+				});
+		
+				
+				
+			}
+			else {
+				
+				 Swal.fire({
+				   title: '평가 등록 완료',
+				   text: '해당 학생의 평가 등록이 완료되었습니다',
+				   icon: 'success',
+				   
+				   showCancelButton: false, // cancel버튼 보이기. 기본은 원래 없음
+				   confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+				   cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
+				   confirmButtonText: '확인', // confirm 버튼 텍스트 지정
+				   
+				   
+				}).then(result => {
+				   // 만약 Promise리턴을 받으면,
+				   if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
+				   
+				     document.querySelector('#regTestForm').submit();
+				   }
+				});
+				
+			}
+			
 		},
 		error: function() {
 			alert('실패');
@@ -109,24 +152,7 @@ function regTest()  {
 	
 	
 	
-	 Swal.fire({
-	   title: '평가 등록 완료',
-	   text: '해당 학생의 평가 등록이 완료되었습니다',
-	   icon: 'success',
-	   
-	   showCancelButton: false, // cancel버튼 보이기. 기본은 원래 없음
-	   confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
-	   cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
-	   confirmButtonText: '확인', // confirm 버튼 텍스트 지정
-	   
-	   
-	}).then(result => {
-	   // 만약 Promise리턴을 받으면,
-	   if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
-	   
-	     document.querySelector('#regTestForm').submit();
-	   }
-	});
+	
 		
 	
 	//document.querySelector('#regTestForm').submit();
@@ -183,6 +209,14 @@ function deleteTest()  {
 ////////////////////////////////////////////////////////////////////
 //-------------------------이벤트 정의 영역----------------------//
 ///////////////////////////////////////////////////////////////////
+
+
+//평가일 셀렉트 박스를 변경했을 때 event
+/*$(document).on("change", "#selectDate", function() {
+	
+	let selectDateValue = selectDate.options[selectDate.selectedIndex].value;
+});
+*/
 
 
 //전체선택, 전체해제 이벤트

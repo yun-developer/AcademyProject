@@ -78,13 +78,12 @@ public class TestController {
 	public TestVO regScoreAjax(TestVO testVO) {
 		
 		
-		
 		//해당 날짜의 년도 불러와서 세팅해주기
-		testVO.setOriginDate(DateUtil.getTestYearDate(testVO.getOriginDate()));
+		testVO.setTestDate(DateUtil.getTestYearDate(testVO.getTestDate()));
 		
 		//이미 등록된 테스트가 있는지 조회
 		TestVO dubleTest = testService.checkDubleTest(testVO);
-		
+		//중복 없을때
 		if (dubleTest == null) {
 			testVO = new TestVO();
 			testVO.setCheck(0);
@@ -92,16 +91,23 @@ public class TestController {
 		}else {
 			dubleTest.setCheck(1);
 			
-			//??
-			testService.regScore(testVO);
 			
 			return dubleTest;
 		}
-		
-		
 	
 	}
 
+	//점수 등록
+	@PostMapping("/regScore")
+	public String regScore(TestVO testVO) {
+		
+		//해당 날짜의 년도 불러와서 세팅해주기
+		testVO.setTestDate(DateUtil.getTestYearDate(testVO.getTestDate()));
+		
+		testService.regScore(testVO);
+		
+		return "redirect:/test/testManage";
+	}
 	
 	
 	//반별 테스트 평균 점수 조회
