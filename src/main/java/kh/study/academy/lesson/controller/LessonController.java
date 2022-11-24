@@ -68,18 +68,25 @@ public class LessonController {
 		//DB학급 목록 불러오기
 		List<LessonInfoVO> lessonList = lessonService.selectLessonInfoList(null);
 		
-		// 필요한 양식
+		// fullcalendar에 필요한 양식
 		//		title: 'Meeting',
 		//      start: '2022-07-12T10:30:00',
 		//      end: '2022-07-12T12:30:00'
-
+		
+		//Ajax로 보내줄 리스트 데이터
 		List<Map<String, String>> lessonListForCalender = new ArrayList<>();
 		
+		//fullcalendar에 필요한 양식에 맞춰 각 수업 정보를 map 자료에 넣기
 		for (LessonInfoVO lessonInfo : lessonList) {
+			//반복문을 돌 때마다 새로 map 객체생성
 			Map<String, String> lesson = new HashMap<>();;
+			
+			//fullcalendar에 맞게끔 날짜 양식 수정
 			lesson.put("end",DateUtil.getLessonDatebyDay(lessonInfo.getLessonDayCode(),lessonInfo.getLessonTime())[1] );
 			lesson.put("start",DateUtil.getLessonDatebyDay(lessonInfo.getLessonDayCode(),lessonInfo.getLessonTime())[0] );
 			lesson.put("title", lessonInfo.getSubjectVO().getSubjectName() + lessonInfo.getStepVO().getStepName() + lessonInfo.getYear());
+			
+			//각  map 객체를 Ajax로 보내줄 리스트 데이터에 담기
 			lessonListForCalender.add(lesson);
 		}
 		
