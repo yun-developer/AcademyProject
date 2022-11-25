@@ -149,13 +149,13 @@
 						    	<div class="row  align-items-center pt-5">
 						    		<div class="col" >
 
-							  			<!-- <form th:action="@{/stu/assingnStuProcess}" method="post" id="assingnStuForm"> -->
-						    			<div class="d-grid gap-2 col-6 mx-auto">
-						    				<input type="hidden" name="studentLessonCode" id="inputStuCode" value="">
-						    				<input type="hidden" name="lessonInfoCode" id="inputLessonCode" value="">
-										  <button class="btn btn-primary" type="button" id="updateBtn" th:onclick="updateStudentLesson();"> 학급이동</button>
-										</div>
-							  		<!-- 	</form> -->
+								  		<!-- <form th:action="@{/stu/assingnStuProcess}" method="post" id="updateStuForm"> -->
+							    			<div class="d-grid gap-2 col-6 mx-auto">
+							    				<input type="hidden" name="studentLessonCode" id="inputStuCode" th:value="${student.studentCode}">
+							    				<input type="hidden" name="lessonInfoCode" id="inputLessonCode" value="">
+											  <button class="btn btn-primary" type="button" id="updateBtn" th:onclick="updateStudentLesson();"> 학급이동</button>
+											</div>
+								  		<!-- </form --> 
 					    		
 									</div>
 						    	</div>

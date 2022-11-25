@@ -2,11 +2,12 @@
 const selectLesson = document.querySelector('#selectBeforeLesson');
 const updateBtn = document.querySelector('#updateBtn');
 const lessonInfoCodes = document.querySelectorAll('.lessonInfoCodes');
+const inputLessonCode = document.querySelector('#inputLessonCode');
 
 
+///////////////////////////*아벤트*//////////////////////////
 
 selectLesson.addEventListener('change', function (){
-	
 	
 	updateBtn.setAttribute("class", "btn btn btn-primary");
 	updateBtn.innerText = "저 장";
@@ -14,6 +15,8 @@ selectLesson.addEventListener('change', function (){
 	
 	//셀렉트 박스에서 선택한 값
 	let selectlessonInfoCode = selectLesson.options[selectLesson.selectedIndex].value;
+	
+	inputLessonCode.value = selectlessonInfoCode;
 	
 	for(const code of lessonInfoCodes){
 		
@@ -32,6 +35,15 @@ selectLesson.addEventListener('change', function (){
 		}
 		
 	}
-	
 
 });
+
+
+
+////////////////////////////////*함수*/////////////////////////////////
+function updateStudentLesson(){
+	
+	
+	
+}
+

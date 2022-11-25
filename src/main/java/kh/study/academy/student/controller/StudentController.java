@@ -218,6 +218,16 @@ public class StudentController {
 		return "content/student/update_stu_lesson_popup";
 	}
 	
+	//학생 학급 이동
+	@ResponseBody
+	@PostMapping("/updateStuProcessAjax")
+	public void updateStuProcessAjax(StudentLessonInfoVO studentLessonInfoVO) {
+		
+		//학생이동시 이전수업 nowStudent -1,
+		//			이동할 수업 nowStudent +1,
+		//			PayCode 코드가 같이 등록. (attendeCode 추가 예정)
+		
+	}
 	
 	
 }
