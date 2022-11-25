@@ -23,7 +23,7 @@ public interface TestService {
 	List<TestVO> selectLessonScore(TestVO testVO);
 	
 	//점수 수정
-	void updateScore(String testCode);
+	void updateScore(TestVO testVO);
 	
 	//점수 삭제 
 	void deleteScore(String testCode);
@@ -35,4 +35,6 @@ public interface TestService {
 	//이미 등록된 테스트가 있는지 조회
 	TestVO checkDubleTest(TestVO testVO);
 	
+	//수정을 위해 특정 학생, 과목으로 등록된 테스트 정보 모두 조회
+	List<TestVO> testListForUpdate(TestVO testVO);
 }

@@ -32,8 +32,8 @@ public class TestServiceImpl implements TestService{
 	
 	//점수 수정
 	@Override
-	public void updateScore(String testCode) {
-		sqlSession.update("testMapper.updateScore", testCode);
+	public void updateScore(TestVO testVO) {
+		sqlSession.update("testMapper.updateScore", testVO);
 		
 	}
 	
@@ -62,6 +62,12 @@ public class TestServiceImpl implements TestService{
 	@Override
 	public TestVO checkDubleTest(TestVO testVO) {
 		return sqlSession.selectOne("testMapper.checkDubleTest", testVO);
+	}
+	
+	////수정을 위해 특정 학생, 과목으로 등록된 테스트 정보 모두 조회
+	@Override
+	public List<TestVO> testListForUpdate(TestVO testVO) {
+		return sqlSession.selectList("testMapper.testListForUpdate", testVO);
 	}
 
 	
