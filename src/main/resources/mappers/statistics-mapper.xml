@@ -98,10 +98,10 @@
 	
 	
 	<!-- 교사별 프로그램 수 -->
-	<select id="selectLessonCntByTeacher">
-	
-	
-	
+	<select id="selectLessonCntByTeacher" resultType="int">
+		SELECT COUNT(TEACHER_CODE)
+		FROM LESSON_INFO
+		WHERE TEACHER_CODE= #{teacherCode}
 	</select>
 	
 	

@@ -94,14 +94,31 @@ public class StatisticsController {
 	public Map<String, Object> classByTeacherAjax(Model model) {
 
 		Map<String, Object> paramMap = new HashMap<>();
+		
+		Map<String, Integer> chart1_data = new HashMap<>();
+		
+		// 전체 교사 조회(현재 교사 상태가 Y인 교사만)
+		List<TeacherVO> teacherList = adminService.selectTeacherList();
+		
+		for (TeacherVO teacher : teacherList) { // 교사코드 조회
 
+			String teacherCode = teacher.getTeacherCode();
+
+			// 교사별 프로그램 수 
+			int lessonCnt = statisticsService.selectLessonCntByTeacher(teacherCode);
+
+			chart1_data.put(teacher.getTeacherName(), lessonCnt);
+		}
+		
+		// ① map 교사별 프로그램 수 
+		paramMap.put("lessonCntByTeacher", chart1_data);
+		
+		
 		/////
 
 		Map<String, Integer> chart2_data = new HashMap<>();
 
-		// 전체 교사 조회(현재 교사 상태가 Y인 교사만)
-		List<TeacherVO> teacherList = adminService.selectTeacherList();
-
+		
 		for (TeacherVO teacher : teacherList) { // 교사코드 조회
 
 			String teacherCode = teacher.getTeacherCode();

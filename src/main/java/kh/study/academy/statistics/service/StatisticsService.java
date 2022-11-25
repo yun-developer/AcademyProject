@@ -13,11 +13,11 @@ public interface StatisticsService {
 	//학년별 학생 수 조회
 	List<StudentCntPerGrade> selectNumByStuYear();
 	
-	
-	
 	//과목별 학생 수 조회 
 	List<Integer> selectNumByStuSubject(String subjectCode);
 	
+	//교사별 프로그램 수
+	int selectLessonCntByTeacher(String teacherCode);
 	
 	//교사별 담당 학생 수 조회
 	int selectStudentCntByTeacher(String teacherCode);
