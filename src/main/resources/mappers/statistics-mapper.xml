@@ -3,38 +3,51 @@
 
 <mapper namespace="statisticsMapper">
 	
-	<!-- 학년별 학생 수 조회 -->
-	<resultMap type="kh.study.academy.statistics.vo.StudentCntPerGrade" 		id="studentCntPerGrade">
-		<id column="STUDENT_YEAR"												property="studentYear"/>
-		<result column="STUDENT_CNT" 											property="studentCnt"/>
-	</resultMap>
+	<!-- ① 학생현황 통계ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ-->
+		
+		<!-- ⓐ 학년별 학생 수 -->
+		<resultMap type="kh.study.academy.statistics.vo.StudentCntPerGrade" 		id="studentCntPerGrade">
+			<id column="STUDENT_YEAR"												property="studentYear"/>
+			<result column="STUDENT_CNT" 											property="studentCnt"/>
+		</resultMap>
+		
+		<!-- ⓑ 과목별 학생 수 -->
+		<resultMap type="kh.study.academy.statistics.vo.StudentCntPerSubject" 		id="studentCntPerSubject">
+			<id column="STUDENT_YEAR"												property="studentYear"/>
+			<result column="STUDENT_CNT" 											property="studentCnt"/>
+			<result column="SUBJECT_NAME" 											property="subjectName"/>
+		</resultMap>
+		
+		<!-- ⓒ 전체 학생 수  -->
+		<resultMap type="kh.study.academy.statistics.vo.StudentTotalCntByMonth" 	id="studentTotalCntByMonth">
+			<id column="STUDENT_YEAR"												property="studentYear"/>
+			<result column="STUDENT_CNT" 											property="studentCnt"/>
+			<result column="MONTH" 													property="month"/>
+		</resultMap>
+		
+	<!-- ② 평가관리 분석 통계ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ-->
+		
+		<!-- ⓐ 분기별 과목 테스트 평균 -->
+		<resultMap type="kh.study.academy.statistics.vo.QuarterlySubTestAvg" 		id="quarterlySubTestAvg">
+			<id column="TEST_DATE"													property="testDate"/>
+			<result column="SUBJECT_CODE" 											property="subjectCode"/>
+			<result column="SCORE_AVG" 												property="scoreAvg"/>
+			<result column="STUDENT_YEAR" 											property="studentYear"/>
+		</resultMap>
 	
-	<!-- 과목별 학생 수 조회 -->
-	<resultMap type="kh.study.academy.statistics.vo.StudentCntPerSubject" 		id="studentCntPerSubject">
-		<id column="STUDENT_YEAR"												property="studentYear"/>
-		<result column="STUDENT_CNT" 											property="studentCnt"/>
-		<result column="SUBJECT_NAME" 											property="subjectName"/>
-	</resultMap>
-	
-	
-	<!-- 전체 학생 수 조회  -->
-	<resultMap type="kh.study.academy.statistics.vo.StudentTotalCntByMonth" 	id="studentTotalCntByMonth">
-		<id column="STUDENT_YEAR"												property="studentYear"/>
-		<result column="STUDENT_CNT" 											property="studentCnt"/>
-		<result column="MONTH" 													property="month"/>
-	</resultMap>
-	
-	<!-- 교사별 프로그램 수 -->
-	<resultMap type="kh.study.academy.statistics.vo.LessonCntByTeacher" 		id="lessonCntByTeacher">
-		<id column="teacherName"												property="teacherName"/>
-		<result column="LESSON_CNT" 											property="lessonCnt"/>
-	</resultMap>
-	
-	<!-- 교사별 담당 학생 수 -->
-	<resultMap type="kh.study.academy.statistics.vo.StudentCntByTeacher" 		id="studentCntByTeacher">
-		<id column="teacherName"												property="teacherName"/>
-		<result column="STUDENT_CNT" 											property="studentCnt"/>
-	</resultMap>
+	<!-- ③ 교사별 수업현황 통계ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ-->
+		
+		<!-- ⓐ 교사별 프로그램 수 -->
+		<resultMap type="kh.study.academy.statistics.vo.LessonCntByTeacher" 		id="lessonCntByTeacher">
+			<id column="teacherName"												property="teacherName"/>
+			<result column="LESSON_CNT" 											property="lessonCnt"/>
+		</resultMap>
+		
+		<!-- ⓑ 교사별 담당 학생 수  -->
+		<resultMap type="kh.study.academy.statistics.vo.StudentCntByTeacher" 		id="studentCntByTeacher">
+			<id column="teacherName"												property="teacherName"/>
+			<result column="STUDENT_CNT" 											property="studentCnt"/>
+		</resultMap>
 
 	
 	<!-- 학년별 학생 수 조회 -->
@@ -95,6 +108,51 @@
 	
 	
 	</select>
+	
+	<!-- 분기별 과목 테스트 평균 -->
+	<!-- (분기별(4개...) + 과목별(2개...) + 학년별(3개...) 점수)_의 평균 -->
+ 	<select id="selectQuarterlySubTestAvg" resultMap="quarterlySubTestAvg">
+		SELECT STUDENT_YEAR||'학년' AS STUDENT_YEAR
+				, (SELECT ROUND(AVG(SCORE),2)
+			FROM TEST T, STUDENT S
+			WHERE TEST_DATE = #{testDate}
+			AND T.STUDENT_CODE = S.STUDENT_CODE
+			AND SUBJECT_CODE =#{subjectCode}
+			AND STUDENT_YEAR = 1) AS SCORE_AVG
+			FROM TEST T, STUDENT S
+			WHERE TEST_DATE = #{testDate}
+			AND SUBJECT_CODE = #{subjectCode}
+			AND T.STUDENT_CODE = S.STUDENT_CODE
+			AND STUDENT_YEAR = 1
+		UNION ALL
+		SELECT STUDENT_YEAR||'학년' AS STUDENT_YEAR
+				, (SELECT ROUND(AVG(SCORE),2)
+			FROM TEST T, STUDENT S
+			WHERE TEST_DATE = #{testDate}
+			AND T.STUDENT_CODE = S.STUDENT_CODE
+			AND SUBJECT_CODE =#{subjectCode}
+			AND STUDENT_YEAR = 2) AS SCORE_AVG
+			FROM TEST T, STUDENT S
+			WHERE TEST_DATE = #{testDate}
+			AND SUBJECT_CODE =#{subjectCode}
+			AND T.STUDENT_CODE = S.STUDENT_CODE
+			AND STUDENT_YEAR = 2
+		UNION ALL
+		SELECT STUDENT_YEAR||'학년' AS STUDENT_YEAR
+				, (SELECT ROUND(AVG(SCORE),2)
+			FROM TEST T, STUDENT S
+			WHERE TEST_DATE = #{testDate}
+			AND T.STUDENT_CODE = S.STUDENT_CODE
+			AND SUBJECT_CODE =#{subjectCode}
+			AND STUDENT_YEAR = 3) AS SCORE_AVG
+			FROM TEST T, STUDENT S
+			WHERE TEST_DATE = #{testDate}
+			AND SUBJECT_CODE =#{subjectCode}
+			AND T.STUDENT_CODE =S .STUDENT_CODE
+			AND STUDENT_YEAR = 3
+		GROUP BY STUDENT_YEAR
+	</select>
+	
 	
 	
 	<!-- 교사별 프로그램 수 -->

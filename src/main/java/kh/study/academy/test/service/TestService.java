@@ -16,11 +16,9 @@ public interface TestService {
 	//검토 필요
 	List<StudentVO> searchTest(Map<String, String> map);
 	
-
 	
-	//반별 테스트 평균 점수 조회
-	//검토 필요
-	List<TestVO> selectLessonScore(TestVO testVO);
+	//통계(분기별 과목 테스트 평균 차트)를 위한 조회
+	List<TestVO> selectLessonScore();
 	
 	//점수 수정
 	void updateScore(TestVO testVO);

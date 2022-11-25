@@ -91,16 +91,12 @@
 	
 	
 	
-	<!-- 통계(반별 테스트 평균점수를 차트화) -->
-	<!-- 검토필요 -->
+	<!-- 통계(분기별 과목 테스트 평균 차트)를 위한 조회 -->
 	<select id="selectLessonScore" resultMap="test">
 		SELECT TEST_CODE
 			, TEST_DATE
-			, SCORE
-			, STUDENT_CODE
-			, LESSON_INFO_CODE
+			, SUBJECT_CODE
 		FROM TEST
-		WHERE LESSON_INFO_CODE = #{lessonInfoCode}
 	</select>
 	
 	

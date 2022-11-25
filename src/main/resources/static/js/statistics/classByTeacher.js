@@ -1,3 +1,13 @@
+/* 
+1. 그릴 차트를 선택한다
+2. 차트 데이터 설정을 보고 맞춤형 쿼리를 작성한다.(*****)
+3. 페이지 들어오자마자 차트 그리는 함수 실행 (ex. drawChart();)
+4. 차트 그리는 함수 안에 에이작스 실행
+5. 에이작스에서 컨트롤러로 바로 이동
+6. 컨트롤러에서 차트를 그릴 데이터를 조회하는 메소드를 작성
+7. 메소드의 리턴타입에 따라 map의 리턴타입을 때때로 다르게 설정 
+8. 다시 에이작스로 map에 담은 데이터 보내기
+9. 차트별 데이터에 map으로 받아온 데이터를 잘 뽑아내기 (key,value)(***)*/
 
 drawChart();
 
@@ -116,7 +126,7 @@ function drawChart2(data){
 	        plotOptions: {
 	          bar: {
 	            borderRadius: 4,
-	            horizontal: false,
+	            horizontal: true,
 	          }
 	        },
 	        dataLabels: {

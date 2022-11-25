@@ -19,9 +19,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import kh.study.academy.admin.service.AdminService;
 import kh.study.academy.admin.vo.SubjectVO;
 import kh.study.academy.statistics.service.StatisticsService;
+import kh.study.academy.statistics.vo.QuarterlySubTestAvg;
 import kh.study.academy.statistics.vo.StudentCntPerGrade;
 import kh.study.academy.statistics.vo.StudentCntPerSubject;
 import kh.study.academy.teacher.vo.TeacherVO;
+import kh.study.academy.test.service.TestService;
+import kh.study.academy.test.vo.TestVO;
 
 @Controller
 @RequestMapping("/statistics")
@@ -33,6 +36,12 @@ public class StatisticsController {
 	@Resource(name = "adminService")
 	private AdminService adminService;
 
+	@Resource(name = "testService")
+	private TestService testService;
+
+
+/* ① 학생현황 통계----------------------------------------------------------------------------------------- */
+
 	// 학생현황 페이지로 이동
 	@GetMapping("/studentStatus")
 	public String studentStatus(Model model) {
@@ -43,14 +52,14 @@ public class StatisticsController {
 	// 학생현황 페이지 차트를 그릴 데이터를 조회하는 메소드
 	@ResponseBody
 	@PostMapping("/studentStatusAjax")
-	public Map<String, Object> studentStatusAjax(Model model) {
+	public Map<String, Object> studentStatusAjax() {
 
 		Map<String, Object> paramMap = new HashMap<>();
 
 		// ① map 학년별 학생 수
 		paramMap.put("studentCntPerGrade", statisticsService.selectNumByStuYear());
 
-		/////////////////////////////////////////////////////
+		/*------------------------------------*/
 
 		Map<String, List<Integer>> chart2_data = new HashMap<>();
 
@@ -74,13 +83,64 @@ public class StatisticsController {
 		return paramMap;
 	}
 
+/* ② 평가관리 분석 통계------------------------------------------------------------------------------------ */
 	// 평가관리 분석 페이지로 이동
 	@GetMapping("/testAnalysis")
 	public String testAnalysis() {
 
 		return "content/statistics/testAnalysis";
 	}
+	
+	
+	// 평가관리 분석 페이지- 분기별 과목 테스트 평균 차트를 그릴 데이터를 조회하는 메소드
+	@ResponseBody
+	@PostMapping("/testAnalysisAjax")
+	public Map<Object, Object> testAnalysisAjax(Model model) {
+		
+		Map<Object, Object> paramMap = new HashMap<>();
+		
+		Map<String, List<String>> chart_data = new HashMap<>();
+		
+		
+		List<String> subjectCodeList = new ArrayList<String>();
+		List<String> testDateList =  new ArrayList<String>();
+		TestVO testVO = new TestVO();
+		// 전체 테스트 조회
+		List<TestVO> testList = testService.selectLessonScore();
+		
+		
+		for (TestVO test : testList) {
+			
+			
+			// 과목코드 조회
+			String subjectCode = test.getSubjectCode();
+			//테스트 날짜 조회 
+			String testDate = test.getTestDate();
+			
+			subjectCodeList.add(subjectCode);
+			testDateList.add(testDate);
+			
+			testVO.setSubjectCode(subjectCode);
+			testVO.setTestDate(testDate);
+			
+			
+			System.out.println("과목코드나와라~~~~~~~```"+subjectCode);
+			System.out.println("날짜나와라~~~~~~~```"+testDate);
+			
+			//분기별 과목 테스트 평균
+			List<QuarterlySubTestAvg> quarterlySubTestAvg = statisticsService.selectQuarterlySubTestAvg(testVO);
 
+			chart_data.put("subjectCodeList",subjectCodeList);
+			chart_data.put("testDateList",testDateList);
+		}
+		
+	
+		paramMap.put("quarterlySubTestAvg",chart_data);
+		
+		return paramMap;
+	}
+
+/* ③ 교사별 수업현황 통계---------------------------------------------------------------------------------- */
 	// 교사별 수업현황 페이지로 이동
 	@GetMapping("/classByTeacher")
 	public String classByTeacher() {
@@ -91,7 +151,7 @@ public class StatisticsController {
 	// 교사별 수업현황 페이지 차트를 그릴 데이터를 조회하는 메소드
 	@ResponseBody
 	@PostMapping("/classByTeacherAjax")
-	public Map<String, Object> classByTeacherAjax(Model model) {
+	public Map<String, Object> classByTeacherAjax() {
 
 		Map<String, Object> paramMap = new HashMap<>();
 		
@@ -135,7 +195,7 @@ public class StatisticsController {
 
 		return paramMap;
 	}
-	
-	
+
+
 
 }

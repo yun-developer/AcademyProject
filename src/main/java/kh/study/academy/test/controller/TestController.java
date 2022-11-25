@@ -116,7 +116,7 @@ public class TestController {
 	@GetMapping("/selectLessonScore")
 	public String selectLessonScore(TestVO testVO) {
 		
-		testService.selectLessonScore(testVO);
+	//	testService.selectLessonScore(testVO);
 		
 		return null;
 	}
