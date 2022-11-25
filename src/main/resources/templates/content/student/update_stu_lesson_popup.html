@@ -64,7 +64,6 @@
 						    	<h5>학급 정보</h5>
 						    	<p class="card-text "><small class="text-muted">현재 수강중인 학급정보입니다.</small></p>
 						    	
-						    	
 						    	<th:block th:if="${student.studentLessonInfoList[0].lessonInfoVO==null}">
 									<tr>
 										<td colspan="6" > <p class="fs-2">수강 중인 학급이 없습니다.</p></td>
@@ -72,11 +71,11 @@
 								</th:block>
 								
 						    	<th:block th:unless="${student.studentLessonInfoList[0].lessonInfoVO==null}">
-						    	
+						    		
 										
 						    		<th:block th:each="lesson:${student.studentLessonInfoList}">
-										
-								    	<div class="row  align-items-center border-top pt-5">
+										<input type="hidden" class="lessonInfoCodes" th:value="${lesson.lessonInfoVO.lessonInfoCode}">
+								    	<div class="row  align-items-center border-top pt-5"  >
 								    		
 								    			<div class="col-2 ms-3 bg-secondary p-2 bg-opacity-10 ">
 										    		과목
@@ -97,11 +96,11 @@
 								    			<div class="col-4 ms-3 bg-secondary p-2 bg-opacity-10">
 										    		현재정원 / 최대정원
 									    		</div>
-									    		<div class="col" th:text="${student.studentName}"></div>
+									    		<div class="col" th:text="${lesson.lessonInfoVO.nowStudentCnt + '/' + lesson.lessonInfoVO.maxStudent}"></div>
 								    			<div class="col-2 bg-secondary p-2 bg-opacity-10">
 										    		수강료
 									    		</div>
-									    		<div class="col" th:text="${student.studentName}"></div>
+									    		<div class="col" th:text="${'￦'+ #numbers.formatInteger(lesson.lessonInfoVO.money,3,'COMMA')}"></div>
 								    		
 								    	</div>
 												
@@ -130,7 +129,39 @@
 						    <div class="card-text">
 						    	<h5>학급 정보</h5>
 						    	<p class="card-text "><small class="text-muted">이동할 학급을 선택하세요.</small></p>
-						    
+						    	
+						    	
+						    	
+						    	<div class="row  align-items-center border-top pt-5">
+						    		<div class="col" >
+
+							    		<select class="form-select"   aria-label="Default select example" id="selectBeforeLesson">
+											<option value="">선택</option>
+											 <th:block th:each ="lesson:${lessonList}" >
+										      <option th:value="${lesson.lessonInfoCode}" th:text="${lesson.subjectVO.subjectName + '-' +lesson.stepVO.stepName +'-'+lesson.year +'학년' }" >
+										      </option>
+										    </th:block>	
+												
+										</select>
+					    		
+									</div>
+						    	</div>
+						    	<div class="row  align-items-center pt-5">
+						    		<div class="col" >
+
+							  			<!-- <form th:action="@{/stu/assingnStuProcess}" method="post" id="assingnStuForm"> -->
+						    			<div class="d-grid gap-2 col-6 mx-auto">
+						    				<input type="hidden" name="studentLessonCode" id="inputStuCode" value="">
+						    				<input type="hidden" name="lessonInfoCode" id="inputLessonCode" value="">
+										  <button class="btn btn-primary" type="button" id="updateBtn" th:onclick="updateStudentLesson();"> 학급이동</button>
+										</div>
+							  		<!-- 	</form> -->
+					    		
+									</div>
+						    	</div>
+						    	
+						    	
+						    	
 						   	</div>
 					    
 						</div>
@@ -143,13 +174,6 @@
 		  
 		  
 		  
-		  			<!-- <form th:action="@{/stu/assingnStuProcess}" method="post" id="assingnStuForm"> -->
-	    			<div class="d-grid gap-2 col-6 mx-auto">
-	    				<input type="hidden" name="studentCode" id="inputStuCode" th:value="${student.studentCode}">
-	    				<input type="hidden" name="lessonInfoCode" id="inputLessonCode" value="">
-					  <button class="btn btn-primary" type="button" id="assingnBtn" th:onclick="assingnStudent();"> 학급이동</button>
-					</div>
-		  		<!-- 	</form> -->
 
 
 		</div>
