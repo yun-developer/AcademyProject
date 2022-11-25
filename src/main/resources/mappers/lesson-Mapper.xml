@@ -237,5 +237,15 @@
 	 
 	 
 	 
+	 
+	 <!-- 교실 사용 중복 여부 확인 조회 -->
+	 <select id="doubleCheckLesson" resultMap="lessonInfo">
+	 	SELECT LESSON_INFO_CODE
+	 	FROM LESSON_INFO
+		WHERE LESSON_TIME = #{lessonTime}
+		AND LESSON_DAY_CODE = #{lessonDayCode}
+		AND LESSON_ROOM_CODE = #{lessonRoomCode} 
+	 </select>
+	 
 
 </mapper>

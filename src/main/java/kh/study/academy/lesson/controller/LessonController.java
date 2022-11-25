@@ -149,17 +149,36 @@ public class LessonController {
 		}
 		
 		
+		//
+		@ResponseBody
+		@PostMapping("/doubleCheckLessonAjax")
+		public LessonInfoVO doubleCheckLessonAjax(LessonInfoVO lessonInfoVO) {
+			
+			System.out.println("!!!!!!!!!!!!!!!!!"+lessonInfoVO.getLessonTime());
+			
+			LessonInfoVO infoVO = lessonService.doubleCheckLesson(lessonInfoVO);
+			
+			System.out.println("~~~~~~~~~~~~~~~~~~~"+infoVO);
+			
+			return infoVO;
+		}
+		
+		
+		
 		
 		// 학급 등록 버튼 모달창에서 데이터들을 저장
 		
 		@PostMapping("/saveLessonInfo")
 		
 		public String saveLessonInfo(LessonInfoVO lessonInfoVO, Model model) {
-		System.out.println(lessonInfoVO);
+		// 교실 사용 중복 여부 확인 조회
+		lessonService.doubleCheckLesson(lessonInfoVO);
+		// 학급 편성 등록 
 		lessonService.regLessonInfo(lessonInfoVO);
 		
 		return "redirect:/lesson/regLessonInfoPage";
 		}
+		
 		
 		
 		

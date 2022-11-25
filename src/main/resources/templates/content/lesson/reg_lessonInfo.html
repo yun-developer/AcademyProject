@@ -16,7 +16,7 @@
 					<h6>학급 편성 등록</h6>
 				</div>
 				<div class="col-12 mb-3">
-					<form class="row g-3" th:action="@{/admin/selectLessonRoom}" method="post">
+					<form class="row g-3" th:action="@{/admin/selectLessonRoom}" method="post" id="saveLessonInfo">
                   <div class="col-10">
                      <input type="text" name="roomName" class="form-control" id="" placeholder="LessonRoomName">
                   </div>
@@ -202,13 +202,13 @@
 								<div class="form-group input-group mb-1">
 									<div class="col-6 col-lg-2 px-0"><span class="input-group-text h-100 rounded-0">요일</span></div>
 									<div class="col-6 col-lg-3 px-1 rounded-0">
-										<select class="form-select" id="lessonDayCode" name="lessonDayCode" onchange="selectUseCheck();">
+										<select class="form-select selectBox" id="lessonDayCode" name="lessonDayCode" onchange="selectUseCheck();">
 											<option th:value="${lessonDay.lessonDayCode}" th:each="lessonDay : ${lessonDayList}"  th:text="${lessonDay.lessonDayName}"  ></option>
 										</select>
 									</div>
 									<div class="col-6 col-lg-2 px-1"><span class="input-group-text h-100 rounded-0">수업시간</span></div>
 										<div class="col-6 col-lg-5 px-">
-											<select class="form-select"  aria-label="Default select example" id="lessonTime" name="lessonTime" kor="과정구분">
+											<select class="form-select selectBox"  aria-label="Default select example" id="searchLessonTime" name="lessonTime" kor="과정구분">
 												<option value="">선택</option>
 												<th:block th:each="useCheck : ${useCheckList}">
 													<option th:value="${#strings.substring(useCheck,0,2)} ">[[${useCheck}]]</option>
@@ -222,7 +222,7 @@
 								<div class="form-group input-group mb-1">
 									<div class="col-6 col-lg-2 px-0"><span class="input-group-text h-100 rounded-0">교실명</span></div>
 									<div class="col-6 col-lg-3 px-1 rounded-0">
-										 <select class="form-select rounded-0 h-100"   aria-label="학급명" id="lessonRoomCode" name="lessonRoomCode" value="" kor="학급명">
+										 <select class="form-select selectBox rounded-0 h-100"   aria-label="학급명" id="lessonRoomCode" name="lessonRoomCode" value="" kor="학급명">
 										    <th:block th:each="LessonRoom, status : ${LessonRoomList}">	
 										      <option th:text="${LessonRoom.roomName}" th:value="${LessonRoom.lessonRoomCode}"></option>
 												
@@ -250,10 +250,8 @@
 								<div class="form-group input-group mb-1">
 									<div class="col-6 col-lg-2 px-0"><span class="input-group-text h-100 rounded-0">메모</span></div>
 									<div class="col-6 col-lg-10 px-1">
-										<textarea id="memo" name="memo" class="form-control rounded-0" placeholder="메모" aria-label="메모" aria-describedby="memo" required></textarea>
-											 <div class="invalid-feedback">
-												Please choose a username.
-											</div>
+										<textarea id="memo" name="memo" class="form-control rounded-0" placeholder="메모" aria-label="메모" aria-describedby="memo" ></textarea>
+
 									</div>
 								</div>
 						
@@ -284,8 +282,8 @@
 			</div>
 						
 <!------------------------------------------------------------------------------------------------------------------------------------------------------------->
-
-          <script src="https://code.jquery.com/jquery-latest.min.js"></script>   
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script> 
+         <script src="https://code.jquery.com/jquery-latest.min.js"></script>   
 		<script type="text/javascript" th:src="@{/js/lesson/reg_lessonInfo.js}"></script>
 		<script type="text/javascript" th:src="@{/js/admin/lesson_room.js}"></script>
             

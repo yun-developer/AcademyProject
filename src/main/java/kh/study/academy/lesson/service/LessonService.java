@@ -38,6 +38,7 @@ public interface LessonService {
 	
 	//수납여부와 편성학급 같이 조회
 	List<LessonInfoVO> selectLessonAndPay(String studentCode);
-	
+	// 교실 사용 중복 여부 확인 조회 
+	LessonInfoVO doubleCheckLesson(LessonInfoVO lessonInfoVO);
 
 }

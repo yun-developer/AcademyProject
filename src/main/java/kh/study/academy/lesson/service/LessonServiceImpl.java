@@ -85,6 +85,13 @@ public class LessonServiceImpl implements LessonService{
 		return sqlSession.selectList("lessonMapper.selectLessonAndPay", studentCode);
 	}
 
+	//교실 사용 중복 여부 확인 조회 
+	@Override
+	public LessonInfoVO doubleCheckLesson(LessonInfoVO lessonInfoVO) {
+		
+		return sqlSession.selectOne("lessonMapper.doubleCheckLesson", lessonInfoVO);
+	}
+
 
 
 

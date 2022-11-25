@@ -10,23 +10,30 @@ function goRegLessonRoomAjax(){
 // 학급 편성 등록 시 교실장소, 수업시간 겹치지 않게 조회
 function selectUseCheck(){
 	const lessonDayCode = document.querySelector('#lessonDayCode option:checked').value;
-	//   = id가 lessonDayCode(selectBox id)인 option:checked -> Css문법처럼 그냥 써준다.
+	//  lessonDayCode(변수) = id가 lessonDayCode(selectBox id)인 option:checked -> Css문법처럼 그냥 써준다.
+	
+	
 	//ajax start
 	$.ajax({
 		url: '/lesson/selectClassUseAjax', //요청경로
-		type: 'post',
+		type: 'post', // 무조건 post, ResponseBody를 써줘야한다.
 		data: {'lessonDayCode':lessonDayCode}, //필요한 데이터
 		success: function(result) {
-			//학년별 학생 수 차트를 그림
+			
+			//option을 다 지우는 문법
 			$('#lessonTime').empty();
 			
+			// option을 다시 그려준다.
 			str = ''
-			str += '<option value="">선택</option>';
+			str += '<option value="">선택</option>'; 
+			// 요일을 바꾸면 쿼리가 실행되면서 그 결과 값은 result로 들어온다.
+			// result를 for문 돌려 하나하나 useCheck라고 하겟다.
+			// 그 값이 나올 수 있도록 그림을 그려준다. result가 있는 만큼 option을 그려준다.
 			for(const useCheck of result){
 				str += `<option value="">${useCheck}</option>`;
 					
 			}
-			
+			// 그렸던것을 str에 넣어놨으니 다시 html로 보내주는 방법
 			$('#lessonTime').append(str);
 			
 		},
@@ -136,9 +143,94 @@ for(const chk of chks){
 	})
 }
 
+
+
+//const selectBoxs = document.querySelectorAll('.selectBox');
+
+
 //모달창에서 저장 버튼을 클릭하면 실행되는 함수
 //수강료를 숫자 형태로 바꾼 후 submit 시킴.
 function regLessonInfo(){
+	
+	//교실명
+	const lessonRoomCode =document.querySelector('#lessonRoomCode'); 
+	//요일
+	const lessonDayCode =document.querySelector('#lessonDayCode'); 
+	//시간
+	const lessonTime =document.querySelector('#searchLessonTime'); 
+	
+	//각 셀렉트 박스에서 선택한 값
+	let lessonRoomCodeVal = lessonRoomCode.options[lessonRoomCode.selectedIndex].value;
+	let lessonDayCodeVal = lessonDayCode.options[lessonDayCode.selectedIndex].value;
+	let lessonTimeVal = lessonTime.options[lessonTime.selectedIndex].value;
+	
+	
+	// 모달에서 벨리데이션 처리하는 기능
+	(() => {
+	  'use strict'
+	
+	  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+	  const forms = document.querySelectorAll('.needs-validation')
+	
+	  // Loop over them and prevent submission
+	  Array.from(forms).forEach(form => {
+	    form.addEventListener('click', event => {
+	      if (!form.checkValidity()) {
+	        event.preventDefault()
+	        event.stopPropagation()
+	      }
+	
+	      form.classList.add('was-validated')
+	    }, false)
+	  })
+	})()
+	
+
+	
+	//ajax start
+	$.ajax({
+		url: '/lesson/doubleCheckLessonAjax', //요청경로
+		type: 'post', // 무조건 post, ResponseBody를 써줘야한다.
+		data: {'lessonDayCode':lessonDayCodeVal, 'lessonRoomCode': lessonRoomCodeVal, 'lessonTime':lessonTimeVal}, //필요한 데이터
+		success: function(result) {
+			
+		
+			//중복이 되는 수업이 있을때
+			if(result.lessonInfoCode != null){
+				
+				
+				Swal.fire({
+		  		title: '중복되었습니다! 다시 선택바랍니다.',
+		  		icon: 'error',
+		 		 confirmButtonText: '확인'
+				})
+				return ;
+			}	
+			else {
+				
+				alert('중복아님');
+				document.querySelector('#saveLessonInfo').submit();
+			}
+			
+		
+		}
+	//ajax end
+	
+});	
+	
+		
+		
+		
+
+
+
+	
+
+
+	
+	
+	
+	
 	//---수강료를 숫자로 바꾼다.---
 	//천단위 구분기호를 적용할 인풋태그의 값(value)을 가져온다.
 	let money = document.querySelector('#money').value;//￦1,000
@@ -147,9 +239,9 @@ function regLessonInfo(){
 
 	document.querySelector('#money').value = imsiMoney;
 	
-	let maxStudent = document.querySelector('#maxStudent')
+	let maxStudent = document.querySelector('#maxStudent');
 	
-	alert(maxStudent);
+/*	alert(maxStudent);*/
 	
 	//입력한 정원과 의자수를 비교
 	//입력한 값이 의자수보다 크면 return ;
@@ -157,25 +249,7 @@ function regLessonInfo(){
 	//	return ;
 	//}
 	
-
-
+	
+	
 }
 
-(() => {
-  'use strict'
-
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  const forms = document.querySelectorAll('.needs-validation')
-
-  // Loop over them and prevent submission
-  Array.from(forms).forEach(form => {
-    form.addEventListener('click', event => {
-      if (!form.checkValidity()) {
-        event.preventDefault()
-        event.stopPropagation()
-      }
-
-      form.classList.add('was-validated')
-    }, false)
-  })
-})()
