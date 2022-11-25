@@ -13,22 +13,16 @@ import lombok.Data;
 public class StudentVO {
 	private String studentCode;
 	
-	@NotBlank
 	private String studentName;
 	
-	@NotBlank
 	private String birthday;
 	
 	private int studentYear;
 	
-	@NotBlank
 	private String addr;
 	
-	@NotBlank
 	private String addrDetail;
 	
-	@NotBlank
-	@Size(min = 10, max =11, message= "* 전화번호는 10~11개의 숫자로 입력하세요")
 	private String studentTell;
 	
 	private String regDate;
