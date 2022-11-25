@@ -124,18 +124,6 @@ for(const chk of chks){
 }
 
 
-////////////////함수 2///////////////////
-// 교실등록 페이지에서 신규버튼 클릭 시 모달창
-function goRegLessonRoomAjax(){
-	$('#bb').modal('show');
-}
-
-
-////////////////함수 3///////////////////
-// 교실등록 페이지에서 신규버튼 클릭 시 모달창
-function goRegLessonInfoAjax(){
-	$('#aa').modal('show');
-}
 
 
 

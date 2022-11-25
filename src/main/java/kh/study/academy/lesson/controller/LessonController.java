@@ -108,7 +108,7 @@ public class LessonController {
 	
 		// 학급편성 등록 페이지 
 		@GetMapping("/regLessonInfoPage")
-		public String regLessonInfoPage(Model model, LessonRoomVO lessonRoomVO, String roomName, LessonInfoVO lessonInfoVO) { 
+		public String regLessonInfoPage(Model model, LessonRoomVO lessonRoomVO, String roomName, LessonInfoVO lessonInfoVO, String lessonDayCode) { 
 		
 		// 과목 리스트를 가져오는 쿼리 실행 문
 		model.addAttribute("subjectList", adminService.selectSubject());
@@ -126,15 +126,27 @@ public class LessonController {
 		//강의 요일 리스트를 가져오는 쿼리 실행 문
 		model.addAttribute("lessonDayList", lessonService.selectLessonDayList());
 		
-		
-		//검색 밑에 목록조회
+		// 학급 편성 등록
 		model.addAttribute("lessonInfoList",lessonService.selectLessonInfoList(lessonInfoVO));
 		
 		
+		if(lessonDayCode == null) {
+			lessonDayCode = "Mon";
+		}
+		model.addAttribute("useCheckList",lessonService.selectClassUseRepeated(lessonDayCode));
+		
 		return "content/lesson/reg_lessonInfo";
 		
+
 		}
 		
+		// 학급 편성 등록 시 교실장소, 수업시간 겹치지 않게 조회
+		@ResponseBody
+		@PostMapping("/selectClassUseAjax")
+		public List<String> selectClassUseRepeated(Model model, String lessonDayCode) {
+		
+			return lessonService.selectClassUseRepeated(lessonDayCode);
+		}
 		
 		
 		

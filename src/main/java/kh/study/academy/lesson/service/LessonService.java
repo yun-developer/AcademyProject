@@ -24,6 +24,9 @@ public interface LessonService {
 	// 학급 편성 등록
 	void regLessonInfo(LessonInfoVO lessonInfoVO);	
 	
+	// 학급 편성 등록 시 교실장소, 수업시간 겹치지 않게 조회
+	List<String> selectClassUseRepeated(String lessonDayCode);
+	
 	// 학급 편성 리스트 조회
 	List<LessonInfoVO> selectLessonInfoList(LessonInfoVO lessonInfoVO);
 	
@@ -35,4 +38,6 @@ public interface LessonService {
 	
 	//수납여부와 편성학급 같이 조회
 	List<LessonInfoVO> selectLessonAndPay(String studentCode);
+	
+
 }

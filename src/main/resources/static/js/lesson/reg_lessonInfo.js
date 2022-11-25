@@ -1,7 +1,68 @@
+////////////////함수 ///////////////////
+// 교실등록 페이지에서 신규버튼 클릭 시 모달창
+function goRegLessonRoomAjax(){
+	
+	$('#bb').modal('show');
+
+
+}	
+
+// 학급 편성 등록 시 교실장소, 수업시간 겹치지 않게 조회
+function selectUseCheck(){
+	const lessonDayCode = document.querySelector('#lessonDayCode option:checked').value;
+	//   = id가 lessonDayCode(selectBox id)인 option:checked -> Css문법처럼 그냥 써준다.
+	//ajax start
+	$.ajax({
+		url: '/lesson/selectClassUseAjax', //요청경로
+		type: 'post',
+		data: {'lessonDayCode':lessonDayCode}, //필요한 데이터
+		success: function(result) {
+			//학년별 학생 수 차트를 그림
+			$('#lessonTime').empty();
+			
+			str = ''
+			str += '<option value="">선택</option>';
+			for(const useCheck of result){
+				str += `<option value="">${useCheck}</option>`;
+					
+			}
+			
+			$('#lessonTime').append(str);
+			
+		},
+		error: function() {
+			alert('실패');
+		}
+	});
+	//ajax end
+}
+	
+
+	
+	
+
+
+
+////////////////함수 3///////////////////
+// 교실등록 페이지에서 신규버튼 클릭 시 모달창
+function goRegLessonInfoAjax(){
+	$('#aa').modal('show');
+}
+
+
+
+
+
+
+
 
 //학생등록 버튼 클릭 시 보여지는 모달에서
 //수강료를 벼경하면 화폐 단위로 바꾸어지는 함수
 function setformatCurrency(){
+	
+	
+	
+	
 	//천단위 구분기호를 적용할 인풋태그의 값(value)을 가져온다.
 	let money = document.querySelector('#money').value;//￦300,000,000
 	// /,/gi는 쉼표를 다 지워준다. replace의 문제는 ₩, ￦의 구별이 달라서 두개 다 빈문자로 해줘야한다.
@@ -16,6 +77,11 @@ function setformatCurrency(){
 	money = '￦' + money.toLocaleString();
 	
 	document.querySelector('#money').value = money;
+	
+	
+	
+	
+	
 }
 
 
@@ -81,10 +147,18 @@ function regLessonInfo(){
 
 	document.querySelector('#money').value = imsiMoney;
 	
-	//submit 시킨다.
-	document.querySelector('#regLessonForm').submit();
+	let maxStudent = document.querySelector('#maxStudent')
 	
+	alert(maxStudent);
 	
+	//입력한 정원과 의자수를 비교
+	//입력한 값이 의자수보다 크면 return ;
+	//if(){
+	//	return ;
+	//}
+	
+
+
 }
 
 (() => {

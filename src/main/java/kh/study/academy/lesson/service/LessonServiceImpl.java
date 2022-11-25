@@ -48,6 +48,15 @@ public class LessonServiceImpl implements LessonService{
 		sqlSession.insert("lessonMapper.regLessonInfo", lessonInfoVO);
 	}
 
+	// 학급 편성 등록 시 교실장소, 수업시간 겹치지 않게 조회
+	@Override
+	public List<String> selectClassUseRepeated(String lessonDayCode) {
+
+		return sqlSession.selectList("lessonMapper.selectClassUseRepeated",lessonDayCode);
+	}
+
+	
+	
 	// 학급 편성 리스트 조회
 	@Override
 	public List<LessonInfoVO> selectLessonInfoList(LessonInfoVO lessonInfoVO) {
@@ -62,19 +71,20 @@ public class LessonServiceImpl implements LessonService{
 
 	
 	/////////////<학생 편성>////////////////////////////////////////////////////
-	//학생편성시 해당 LessonInfo에 nowStudent +1증가
+	// 학생편성시 해당 LessonInfo에 nowStudent +1증가
 	@Override
 	public void updateNowStudent(String lessonInfoCode) {
 		sqlSession.update("lessonMapper.updateNowStudent", lessonInfoCode);
 		
 	}
 
-	//수납여부와 편성학급 같이 조회
+	// 수납여부와 편성학급 같이 조회
 	@Override
 	public List<LessonInfoVO> selectLessonAndPay(String studentCode) {
 		
 		return sqlSession.selectList("lessonMapper.selectLessonAndPay", studentCode);
 	}
+
 
 
 

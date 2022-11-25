@@ -26,8 +26,9 @@
                     </div>
                     	<div class="row justify-content-" style="margin: 1rem">
 						  <div class="col-2"  style="margin-right:4.4rem;">
-                       		 <button type="button" id="updateLessonRoomModal" class="btn btn-info fal fa-save"  th:onclick="goRegLessonInfoAjax();">학급등록</button>
+                       		 <button type="button" id="updateLessonRoomModal" class="btn btn-info fal fa-save"  th:onclick="goRegLessonInfoAjax([[${lessonDayCode}]]);">학급등록</button>
                   		  </div>
+                  		  
                   		</div> 
               	 </form>
 				</div>
@@ -149,7 +150,7 @@
 													</select>
 													 <div class="invalid-feedback">
 												        Please choose a username.
-												      </div>
+												    </div>
 													
 												</div>
 											</div>	
@@ -180,7 +181,7 @@
 											<div class="form-group input-group mb-1">
 												<div class="col-6 col-lg-2 px-0"><span class="input-group-text h-100 rounded-0">정원</span></div>
 												  <div class="col-6 col-lg-3 px-1 rounded-1">
-													<input type="text" id="maxStudent" name="maxStudent" class="form-control rounded-0 h-100" placeholder="정원" aria-label="8" aria-describedby="cpaCn" value="10">
+													<input type="text" id="maxStudent" name="maxStudent" class="form-control rounded-0 h-100" placeholder="정원" aria-label="8" aria-describedby="cpaCn" value="10"> -->
 												 </div>
 												
 												
@@ -201,25 +202,19 @@
 								<div class="form-group input-group mb-1">
 									<div class="col-6 col-lg-2 px-0"><span class="input-group-text h-100 rounded-0">요일</span></div>
 									<div class="col-6 col-lg-3 px-1 rounded-0">
-										<select class="form-select" id="lessonDayCode" name="lessonDayCode">
-								
-												<option th:value="${lessonDay.lessonDayCode}" th:each="lessonDay : ${lessonDayList}"  th:text="${lessonDay.lessonDayName}"  ></option>
-												
+										<select class="form-select" id="lessonDayCode" name="lessonDayCode" onchange="selectUseCheck();">
+											<option th:value="${lessonDay.lessonDayCode}" th:each="lessonDay : ${lessonDayList}"  th:text="${lessonDay.lessonDayName}"  ></option>
 										</select>
 									</div>
 									<div class="col-6 col-lg-2 px-1"><span class="input-group-text h-100 rounded-0">수업시간</span></div>
 										<div class="col-6 col-lg-5 px-">
-											<select class="form-select"   aria-label="Default select example" id="lessonTime " name="lessonTime" kor="과정구분">
+											<select class="form-select"  aria-label="Default select example" id="lessonTime" name="lessonTime" kor="과정구분">
 												<option value="">선택</option>
-
-													<option value="18">18:00~19:00</option>
-													<option value="19">19:00~20:00</option>
-													<option value="20">20:00~21:00</option>
-													<option value="21">21:00~22:00</option>
-
+												<th:block th:each="useCheck : ${useCheckList}">
+													<option th:value="${#strings.substring(useCheck,0,2)} ">[[${useCheck}]]</option>
+												</th:block>
 											</select>
 										</div>
-									
 								</div>
 								
 								
