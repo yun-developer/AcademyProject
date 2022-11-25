@@ -70,7 +70,7 @@
                    		<td th:text="${status.count}"></td> 
                    		 <td th:text="${lessonInfo.lessonInfoRegdate}" ></td> 
                 		<td th:text="${lessonInfo.subjectVO.subjectName} + '-' + ${lessonInfo.stepVO.stepName}"></td> 
-                        <td th:text="${lessonInfo.studentYear}"></td> 
+                        <td th:text="${lessonInfo.Year}"></td> 
                  		<td th:text="${#numbers.formatCurrency(lessonInfo.money)}"></td> 
                    		<td th:text="${lessonInfo.lessonDayCode}"></td> 
                     	<td th:text="${lessonInfo.lessonTime}"></td> 
@@ -139,7 +139,7 @@
 											<div class="col-6 col-lg-2 px-1"><span class="input-group-text h-100 rounded-0">학년</span></div>
 									
 												<div class="col-6 col-lg-5 px-">
-													<select class="form-select"   aria-label="Default select example" id="studentYear" name="studentYear" kor="과정구분" required>
+													<select class="form-select"   aria-label="Default select example" id="Year" name="Year" kor="과정구분" required>
 														<option value="" >선택</option>
 
 															<option value="1">고등1</option>

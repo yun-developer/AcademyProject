@@ -7,7 +7,7 @@
 		<result column="LESSON_TIME" 								property="lessonTime" />
 		<result column="LESSON_DAY_CODE" 							property="lessonDayCode" />
 		<result column="LESSON_ROOM_CODE" 							property="lessonRoomCode" />
-		<result column="STUDENT_YEAR" 								property="studentYear" />
+		<result column="YEAR" 										property="year" />
 		<result column="TEACHER_CODE" 								property="teacherCode" />
 		<result column="SUBJECT_CODE" 								property="subjectCode" />
 		<result column="MAX_STUDENT" 								property="maxStudent" />
@@ -96,7 +96,7 @@
 			, LESSON_ROOM_CODE
 			, TEACHER_CODE 
 			, LESSON_TIME 
-			, STUDENT_YEAR
+			, YEAR
 			, MAX_STUDENT
 			, NOW_STUDENT_CNT
 			, MONEY
@@ -109,7 +109,7 @@
 			, #{lessonRoomCode}
 			, #{teacherCode}
 			, #{lessonTime}
-			, #{studentYear}
+			, #{Year}
 			, #{maxStudent}
 			, 0
 			, #{money}
