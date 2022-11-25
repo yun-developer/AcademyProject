@@ -211,6 +211,8 @@ public class StudentController {
 		
 		//강의등급 조회
 		model.addAttribute("step", lessonService.selectStepList());
+		//강의목록 조회
+		model.addAttribute("lessonList", lessonService.selectLessonInfoList(null));
 		
 		
 		return "content/student/update_stu_lesson_popup";
