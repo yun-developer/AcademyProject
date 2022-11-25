@@ -14,6 +14,10 @@ const selectDate = document.querySelector('#selectDate');
 const regBtn = document.querySelector('#regBtn');
 
 //수정 모달 셀렉스박스
+const selectDateforChange = document.querySelector('#selectDateforChange');
+const forChangeDiv = document.querySelector('#forChangeDiv');
+const changeScoreInput = document.querySelector('#changeScoreInput');
+const testCodeForchange = document.querySelector('#testCodeForchange');
 
 
 
@@ -34,7 +38,7 @@ function openRegTestModal(code, name, lessonList){
 	
 	let lessonNames = '';
 	for(const lesson of lessonList){
-		let lessonInfo = '[' + lesson.lessonInfoVO.subjectVO.subjectName +'-'+ lesson.lessonInfoVO.stepVO.stepName +'-'+ lesson.lessonInfoVO.studentYear + ']';
+		let lessonInfo = '[' + lesson.lessonInfoVO.subjectVO.subjectName +'-'+ lesson.lessonInfoVO.stepVO.stepName +'-'+ lesson.lessonInfoVO.year + ']';
 		lessonNames += lessonInfo;
 	}
 	
@@ -51,46 +55,30 @@ function openRegTestModal(code, name, lessonList){
 //평가수정 모달을 눌렀을 때 실행되는 함수
 
 
-function openChangeTestModal(name){
+function openChangeTestModal(code, name, lessonList){
+
+	//학생코드 모달 hidden input value에 넣기
+	document.querySelector('#stuCodeForChange').value = code;
+	const stuentCode = document.querySelector('#stuCodeForChange').value;
+	
 
 	//학생 이름 모달 input value에 넣기
 	document.querySelector('#stuNameForChange').value = name;
 	const stuentName = document.querySelector('#stuNameForChange').value;
 	
 	
-
+	let lessonNames = '';
+	for(const lesson of lessonList){
+		let lessonInfo = '[' + lesson.lessonInfoVO.subjectVO.subjectName +'-'+ lesson.lessonInfoVO.stepVO.stepName +'-'+ lesson.lessonInfoVO.year + ']';
+		lessonNames += lessonInfo;
+	}
+	
+	//수강학급 모달 input value에 넣기
+	document.querySelector('#stuLessonsForChange').value = lessonNames;
 
 }
 
 
-(() => {
-  'use strict'
-
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  const forms = document.querySelectorAll('.needs-validation')
-
-  // Loop over them and prevent submission
-  Array.from(forms).forEach(form => {
-    regBtn.addEventListener('click', event => {
-      if (!form.checkValidity()) {
-        event.preventDefault()
-        event.stopPropagation()
-        
-      	form.classList.add('was-validated')
-      }
-		else {
-      regTest();
-			
-		}     
-
-      
-      
-      
-      
-      
-    }, false)
-  })
-})()
 
 
 
@@ -111,13 +99,6 @@ function regTest()  {
 	let selectSubValue = selectSub.options[selectSub.selectedIndex].value;
 	//학생코드
 	let stuentCodeValue = document.querySelector('#stuCodeForReg').value;
-	
-
-
-
-	
-	
-	
 	
 	
 	
@@ -209,27 +190,36 @@ function regTest()  {
 //평가수정 모달 내 저장 버튼을 눌렀을 때 실행되는 함수
 function updateTest()  {
  	
- 	//점수
- 	const score = document.querySelector('#changeScore').value;
- 	
- 	//테스트 코드
- 	const testCode = document.querySelector('#').value;
-
- 	
- 	alert(score);
- 	
- 	alert(testCode);
- 	
- 	
- 	
- 	
  	const updateForm = document.querySelector('#UpdateOrDeleteForm');
  	
- 	//updateForm.querySelector('input').value = score;
  	
  	updateForm.action = '/test/updateScore';
  	
- 	updateForm.submit();
+ 	
+ 	Swal.fire({
+	   title: '평가 수정 완료',
+	   text: '해당 학생의 평가 점수가 수정되었습니다',
+	   icon: 'success',
+	   
+	   showCancelButton: false, // cancel버튼 보이기. 기본은 원래 없음
+	   confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+	   cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
+	   confirmButtonText: '확인', // confirm 버튼 텍스트 지정
+	   
+	   
+	}).then(result => {
+	   // 만약 Promise리턴을 받으면,
+	   if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
+	   
+	 	updateForm.submit();
+	    
+	   }
+	});
+ 	
+ 	
+ 	
+ 	
+ 	
  	
 }
 
@@ -241,7 +231,7 @@ function deleteTest()  {
  	
  	const deleteForm = document.querySelector('#UpdateOrDeleteForm');
  	
- 	deleteForm.action = '/test/deleteScore';
+ 	deleteForm.action = '{/test/deleteScore}';
  	
  	
  	deleteForm.submit();
@@ -254,12 +244,112 @@ function deleteTest()  {
 ///////////////////////////////////////////////////////////////////
 
 
+//유효성(빈칸) 검사 bootstrap  validation
+(() => {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    regBtn.addEventListener('click', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+        
+      	form.classList.add('was-validated')
+      }
+		else {
+      regTest();
+			
+		}     
+
+      
+    }, false)
+  })
+})()
+
+
+
+
 //평가일 셀렉트 박스를 변경했을 때 event
-/*$(document).on("change", "#selectDate", function() {
+$(document).on("change", "#selectSubforChange", function() {
 	
-	let selectDateValue = selectDate.options[selectDate.selectedIndex].value;
+	//과목코드
+	let selectSubforChangeValue = selectSubforChange.options[selectSubforChange.selectedIndex].value;
+	//학생코드
+	let stuentCodeValue = document.querySelector('#stuCodeForChange').value;
+	
+	
+	//DB에서 이전 평가 정보 불러오기
+	//ajax start
+	$.ajax({
+		url: '/test/selectTestScoreAjax', //요청경로
+		type: 'post',
+		data: {'studentCode':stuentCodeValue,'subjectCode':selectSubforChangeValue}, //필요한 데이터
+		success: function(result) {
+		
+		
+			//내용지우기
+			forChangeDiv.innerHTML = ''; 
+		
+			//셀렉트박스 새로 작성
+			let str ='';
+			str += `<select class="form-select" aria-label="Default select example" id="newselectDateforChange" name="testDate">
+					   <option value="">선택</option>`;
+			for(const test of result){
+					str += `<option value="${test.testCode}" id="${test.testCode}" score="${test.score}">${test.testDate}</option>`;
+			}
+			str += `</select>`;
+			
+			//평가 정보가 없다면
+			if(result == ''){
+				
+				str = `<select class="form-select" aria-label="Default select example" id="selectDateforChange" name="testDate"  style="color: red;">
+					   		<option value="">평가 정보가 없습니다.</option>
+					   </select>`;
+				changeScoreInput.value = '';
+			}
+			
+			forChangeDiv.insertAdjacentHTML('beforeend', str);
+
+			
+			//평가일 셀렉트박스
+			let newselectDateforChange = document.querySelector('#newselectDateforChange'); 
+			//평가일 셀렉트박스를 선택하면
+			newselectDateforChange.addEventListener('change', function abbb(){
+					
+				//셀렉트 박스에서 선택한 값(testCode)
+				let newselectDateforChangeValue = newselectDateforChange.options[newselectDateforChange.selectedIndex].value;
+				//셀렉트 박스에서 선택한 값(score)
+				let selectBeforeScore = newselectDateforChange.options[newselectDateforChange.selectedIndex];
+				let beforeScore = selectBeforeScore.getAttribute("score");
+				
+				testCodeForchange.value = newselectDateforChangeValue;
+				changeScoreInput.value = beforeScore;
+			
+			})
+			
+				
+		
+			
+		},
+		error: function() {
+			alert('실패');
+		}
+	});
+	//ajax end
+	
+	
+	
+	
+	
+	
 });
-*/
+
+
+
 
 
 //전체선택, 전체해제 이벤트

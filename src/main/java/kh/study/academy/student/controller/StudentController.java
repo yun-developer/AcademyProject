@@ -49,15 +49,8 @@ public class StudentController {
 	
 	//학생 등록
 	@PostMapping("/reg")
-	public String regStu(@Valid StudentVO studentVO
-						, BindingResult bindingResult
-						, Model model) {
-		
-		if(bindingResult.hasErrors()) {
-			System.out.println("~~~error~~~");
-			return "content/student/reg_student";
-		}
-		
+	public String regStu(StudentVO studentVO) {
+
 		String nextStudentCode = studentService.getNextStudentCode();
 		//조회한 studentCode를 insert
 		studentVO.setStudentCode(nextStudentCode);

@@ -1,5 +1,6 @@
 package kh.study.academy.test.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -120,13 +121,25 @@ public class TestController {
 		return null;
 	}
 	
+	
+	
+	//점수 수정 전에 조회 정보 불러오기 
+	@ResponseBody
+	@PostMapping("/selectTestScoreAjax")
+	public List<TestVO> selectTestScoreAjax(TestVO testVO) {
+		
+		//등록된 테스트 조회
+		return testService.testListForUpdate(testVO);
+	
+	}
+	
 
 	//점수 수정
 	@PostMapping("/updateScore")
-	public String updateScore(StudentVO studentVO, Model model) {
+	public String updateScore(TestVO testVO, Model model) {
 		
 		//수정하기 전에 상세정보 가져오기
-
+		testService.updateScore(testVO);
 		
 		return "redirect:/test/testManage";
 	}

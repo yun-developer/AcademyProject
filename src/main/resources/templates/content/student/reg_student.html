@@ -9,14 +9,14 @@
 <div class="row justify-content-center">
 	<div class="col-10 bg-light text-center" style="margin-top: 35px;">
 	
-	<form th:action="@{/stu/reg}" method="post" th:object="${studentVO}" style="margin-top: 40px; margin-bottom: 40px;" id="regStuForm" class="needs-validation" novalidate>
+	<form th:action="@{/stu/reg}" method="post"  style="margin-top: 40px; margin-bottom: 40px;" id="regStuForm" class="needs-validation" novalidate>
 		<div class="my-3 row justify-content-center text-center">
 	      <label for="inputStudentName" class="col-sm-2 col-form-label">이름</label>
 		    <div class="col-sm-5 ">
-		      <input type="text" class="form-control" id="inputStudentName" name="studentName" th:field="*{studentName}" required="required">
+		      <input type="text" class="form-control" id="inputStudentName" name="studentName" required="required">
 		    	 <div class="invalid-feedback">
-        Please choose a username.
-      </div>
+			        이름을 입력해 주세요
+			      </div>
 		    </div>
 		 </div>
 		 <div class="mb-3 row justify-content-center text-center">
@@ -35,7 +35,10 @@
 		<div class="my-3 row justify-content-center text-center">
 	      <label for="inputBirthday" class="col-sm-2 col-form-label">생일</label>
 		    <div class="col-sm-5 ">
-		      <input type="date" class="form-control" id="inputBirthday" name="birthday" th:field="*{birthday}">
+		      <input type="date" class="form-control" id="inputBirthday" name="birthday" required="required">
+		    	<div class="invalid-feedback">
+			        생일을 입력해 주세요
+			     </div>
 		    </div>
 		 </div>
 		<div class="my-3 row justify-content-center text-center">
@@ -46,6 +49,7 @@
 			    <option value="2">2학년</option>
 			    <option value="3">3학년</option>
 			 </select>
+			 
 		    </div>
 		 </div>
 		<div class="my-3 row justify-content-center text-center">
@@ -53,10 +57,14 @@
 			<div class="col-sm-5 ">
 				<div class="row">
 					 <div class="col-sm-9">
-				    	<input onclick="searchAddr();" type="text" class="form-control" id="addr" name="addr" readOnly th:field="*{addr}">
+				    	<input onclick="searchAddr();" type="text" class="form-control" id="addr" name="addr" readOnly required="required">
+						<div class="invalid-feedback">
+			        		주소를 입력해 주세요
+			      		</div>
 				    </div>
 					  <div class="col-sm-3">
 					  	 <input onclick="searchAddr();" type="button" class="btn btn-outline-warning form-control" value="Search" >
+					 	
 					 </div>
 				</div>
 			 </div>
@@ -64,19 +72,24 @@
 		 <div class="my-3 row justify-content-center text-center">
 		 	<label for="inputAddr" class="col-sm-2 col-form-label"></label>
 		 	<div class="col-sm-5">
-			 	<input type="text" class="form-control" name="addrDetail" id="addrDetail" th:field="*{addrDetail}">
+			 	<input type="text" class="form-control" name="addrDetail" id="addrDetail" required="required">
+				<div class="invalid-feedback">
+	        		상세 주소를 입력해 주세요
+	      		</div>
 			</div>
 		 </div>
 		<div class="my-3 row justify-content-center text-center" >
 	      <label for="inputStudentTell" class="col-sm-2 col-form-label" >전화번호</label>
 		    <div class="col-sm-5 ">
-		      <input type="text" class="form-control" id="inputStudentTell" name="studentTell" th:field="*{studentTell}" placeholder="-없이 숫자만 입력하세요.">
-		      <span class="hasError" th:if="${#fields.hasErrors('studentTell')}" th:errors="*{studentTell}"></span>
+		      <input type="text" class="form-control" id="inputStudentTell" name="studentTell" placeholder="-없이 숫자만 입력하세요." required="required">
+		      <div class="invalid-feedback">
+	        		전화번호(10~11자리)를 입력해 주세요
+	      		</div>
 		    </div>
 		 </div>
 		
 		<div class="d-grid gap-2 col-6 mx-auto my-3">
-		  <button type="button" class="btn btn-primary" onclick="regStudent();">
+		  <button type="button" class="btn btn-primary" id="regBtn">
 		  학생 등록
 		  </button>
 		</div>
