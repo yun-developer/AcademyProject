@@ -50,7 +50,8 @@ a{
     color: #444;
     text-decoration: none;
     position:fixed;
-    top:75px;
+    
+    bottom: 100px;
     right:40px;
     display:none;
     background: url('arrow-up-circle.svg') no-repeat 0px 20px;

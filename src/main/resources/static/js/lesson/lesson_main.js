@@ -73,7 +73,7 @@ $(document).ready(function(){
 
     //Click event to scroll to top
     $('.scrollToTop').click(function(){
-        $('html, body').animate({scrollTop : 0},800);
+        $('html, body').animate({scrollTop : 0 , behavior:"smooth"}, 50);
         return false;
     });
 

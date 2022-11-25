@@ -60,8 +60,42 @@ function isDoubleChk (){
 		return;
 	}
 	
-	
-	
+
+/*	//ajax start
+	$.ajax({
+		url: '/test/regScoreAjax', //요청경로
+		type: 'post',
+		data: {'studentCode':stuentCodeValue,'subjectCode':selectSubValue,'testDate':selectDateValue}, //필요한 데이터
+		success: function(result) {
+			
+				
+				 Swal.fire({
+		 		  title: '평가 등록 실패',
+				   text: '해당 학생의 평가 점수가 이미 존재합니다',
+				   icon: 'error',
+				   
+				   showCancelButton: false, // cancel버튼 보이기. 기본은 원래 없음
+				   confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+				   cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
+				   confirmButtonText: '확인', // confirm 버튼 텍스트 지정
+				   
+				   
+				}).then(result => {
+				   // 만약 Promise리턴을 받으면,
+				   if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
+				   
+				   //d
+				   
+				   }
+				});
+			
+		},
+		error: function() {
+			alert('실패');
+		}
+	});
+	//ajax end
+	*/
 	joinForm.submit();
 }
 
