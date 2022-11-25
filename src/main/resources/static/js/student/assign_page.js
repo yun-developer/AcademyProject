@@ -102,9 +102,16 @@ $('.updatePopup').on("click",function(e){
 		
 		//체크한 학생의 studentCode
 		let stuCode = '';
+		let lessonInfoCode= '';
 		for (const checkBox of checkedBoxes){
 			
 			stuCode = checkBox.value;
+			lessonInfoCode = checkBox.id;
+			
+			if(lessonInfoCode == ''){
+				Swal.fire('수강 정보 없음.', '해당 학생은 수강중인 학급이 없습니다.', 'error');
+				return ;
+			}
 			
 		}
 		
