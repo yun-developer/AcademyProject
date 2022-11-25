@@ -205,10 +205,12 @@ public class StudentController {
 		
 		//선택한 학생 정보
 		model.addAttribute("student", studentService.selectStuDetail(studentVO.getStudentCode()));
+		//선택한 학생이 듣고 있는 수업 정보
+		//List<StudentVO> testList = studentService.selectStuLessonList();		
+		model.addAttribute("stuLessonList", studentService.selectStuLessonList());
 		
-		List<StudentVO> testList = studentService.selectStuLessonList();		
-		
-		model.addAttribute("stuLessonList", testList);
+		//강의등급 조회
+		model.addAttribute("step", lessonService.selectStepList());
 		
 		
 		return "content/student/update_stu_lesson_popup";
