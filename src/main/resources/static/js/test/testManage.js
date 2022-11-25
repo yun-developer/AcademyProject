@@ -22,7 +22,7 @@ const regBtn = document.querySelector('#regBtn');
 
 //평가등록 모달을 눌렀을 때 실행되는 함수
 
-function openRegTestModal(code, name){
+function openRegTestModal(code, name, lessonList){
 	
 	//학생코드 모달 hidden input value에 넣기
 	document.querySelector('#stuCodeForReg').value = code;
@@ -32,13 +32,14 @@ function openRegTestModal(code, name){
 	document.querySelector('#stuNameForReg').value = name;
 	const stuentName = document.querySelector('#stuNameForReg').value;
 	
+	let lessonNames = '';
+	for(const lesson of lessonList){
+		let lessonInfo = '[' + lesson.lessonInfoVO.subjectVO.subjectName +'-'+ lesson.lessonInfoVO.stepVO.stepName +'-'+ lesson.lessonInfoVO.studentYear + ']';
+		lessonNames += lessonInfo;
+	}
 	
-	//const lessonName = document.querySelector('.stuLesson').innerText;
-	
-	//alert(studentName);
-	//alert(lessonName);
-	
-	
+	//수강학급 모달 input value에 넣기
+	document.querySelector('#stuLessons').value = lessonNames;
 }
 
 
