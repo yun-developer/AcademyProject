@@ -10,8 +10,50 @@ function searchAddr() {
     }).open();
 }
 
-function regStudent(selectedTag) {
+
+
+
+
+(() => {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+	form.addEventListener('click', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+		
+		//밸리데이션 체크했음으로 상태바꿈]
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+
+
+
+
+
+
+
+
+
+
+
+//엥 이건 무조건 이 swal이 뜨는거잖아
+function regStudent(aa) {
+/*	if() {
+		
+	}
 	
+	else {
+		
+	}
+	*/
 	Swal.fire({
          title:'학생이 등록되었습니다',
          icon: 'success',

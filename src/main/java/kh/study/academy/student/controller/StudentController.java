@@ -6,9 +6,11 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,7 +49,15 @@ public class StudentController {
 	
 	//학생 등록
 	@PostMapping("/reg")
-	public String regStu(StudentVO studentVO, PaymentVO paymentVO) {
+	public String regStu(@Valid StudentVO studentVO
+						, BindingResult bindingResult
+						, Model model) {
+		
+		if(bindingResult.hasErrors()) {
+			System.out.println("~~~error~~~");
+			return "content/student/reg_student";
+		}
+		
 		String nextStudentCode = studentService.getNextStudentCode();
 		//조회한 studentCode를 insert
 		studentVO.setStudentCode(nextStudentCode);
