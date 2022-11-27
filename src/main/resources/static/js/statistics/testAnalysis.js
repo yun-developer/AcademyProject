@@ -33,8 +33,26 @@ function drawChart(){
 //분기별 과목 테스트 평균 차트를 그림 
 function drawChart(data) {
 
+	//console.log(data);
+	
+	
+	let keys = Object.keys(data);
+	//console.log("키값 나와라~!~!~!"+keys);
+	
+	//data가 배열로 넘어오니까 빈 배열 만들고 
+	chart_data_arr = [];
+	
+	//클래스를 만들고 변수를 정해줌
+	//하나씩 반복문으로 돌려서 위에서 만들어준 빈배열에 넣기 
+	for(const key of keys){
+		chart_data = new Object();
+		chart_data.name = grade.studentYear;
+		chart_data.data = grade.studentCnt;
+		chart_data_arr.push(chart_data);
 
-
+	}
+	
+	console.log(chart_data_arr);
 
 
 	var options = {
