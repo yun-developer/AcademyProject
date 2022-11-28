@@ -149,7 +149,7 @@ public class LessonController {
 		}
 		
 		
-		//
+		// 중복 체크 에이작스
 		@ResponseBody
 		@PostMapping("/doubleCheckLessonAjax")
 		public LessonInfoVO doubleCheckLessonAjax(LessonInfoVO lessonInfoVO) {
@@ -158,7 +158,6 @@ public class LessonController {
 			
 			LessonInfoVO infoVO = lessonService.doubleCheckLesson(lessonInfoVO);
 			
-			System.out.println("~~~~~~~~~~~~~~~~~~~"+infoVO);
 			
 			return infoVO;
 		}
