@@ -94,7 +94,7 @@
 	<!-- 통계(분기별 과목 테스트 평균 차트)를 위한 조회 -->
 	<select id="selectLessonScore" resultMap="test">
 		SELECT TEST_CODE
-			, TEST_DATE
+			, TO_CHAR(TEST_DATE,'YYYY-MM-DD') AS TEST_DATE
 			, SUBJECT_CODE
 		FROM TEST
 	</select>

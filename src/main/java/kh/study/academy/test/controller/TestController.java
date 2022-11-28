@@ -41,7 +41,7 @@ public class TestController {
 	private StudentService studentService;
 	
 
-	
+	/* ------------------------------------------------------------------------------------------------------- */
 	//점수 관리 페이지로
 	@RequestMapping("/testManage")
 	public String regScorePage( @RequestParam Map<String, String> paramMap, Model model) {
@@ -84,6 +84,7 @@ public class TestController {
 		
 		//이미 등록된 테스트가 있는지 조회
 		TestVO dubleTest = testService.checkDubleTest(testVO);
+		
 		//중복 없을때
 		if (dubleTest == null) {
 			testVO.setCheck(0);
@@ -111,18 +112,8 @@ public class TestController {
 	}
 	
 	
-	//반별 테스트 평균 점수 조회
-	//검토 필요//get도 그냥 임의로 해놓은거 
-	@GetMapping("/selectLessonScore")
-	public String selectLessonScore(TestVO testVO) {
-		
-	//	testService.selectLessonScore(testVO);
-		
-		return null;
-	}
 	
-	
-	
+	/* ------------------------------------------------------------------------------------------------------- */
 	//점수 수정 전에 조회 정보 불러오기 
 	@ResponseBody
 	@PostMapping("/selectTestScoreAjax")
@@ -144,9 +135,9 @@ public class TestController {
 		return "redirect:/test/testManage";
 	}
 	
-	
+	/* ------------------------------------------------------------------------------------------------------- */
 	//점수 삭제
-	@GetMapping("/deleteScore")
+	@PostMapping("/deleteScore")
 	public String deleteScore(String testCode) {
 		
 		testService.deleteScore(testCode);

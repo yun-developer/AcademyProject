@@ -9,9 +9,11 @@
 8. 다시 에이작스로 map에 담은 데이터 보내기
 9. 차트별 데이터에 map으로 받아온 데이터를 잘 뽑아내기 (key,value)(***)*/
 
+alert(2);
 drawChart();
 
 function drawChart(){
+	alert(2);	
 	//ajax start
 	$.ajax({
 		url: '/statistics/testAnalysisAjax', //요청경로
@@ -19,7 +21,7 @@ function drawChart(){
 		data: {}, //필요한 데이터
 		success: function(result) {
 			//분기별 과목 테스트 평균
-			drawChart(result.quarterlySubTestAvg);
+			drawChart1(result.quarterlySubTestAvg);
 			
 		},
 		error: function() {
@@ -31,28 +33,29 @@ function drawChart(){
 }
 
 //분기별 과목 테스트 평균 차트를 그림 
-function drawChart(data) {
+function drawChart1(data) {
 
 	//console.log(data);
 	
 	
-	let keys = Object.keys(data);
+	//let keys = Object.keys(data);
 	//console.log("키값 나와라~!~!~!"+keys);
 	
 	//data가 배열로 넘어오니까 빈 배열 만들고 
 	chart_data_arr = [];
+	chart_category_arr = [];
 	
 	//클래스를 만들고 변수를 정해줌
 	//하나씩 반복문으로 돌려서 위에서 만들어준 빈배열에 넣기 
-	for(const key of keys){
+	/*for(const key of keys){
 		chart_data = new Object();
-		chart_data.name = grade.studentYear;
-		chart_data.data = grade.studentCnt;
+		chart_data.name = key;
+		chart_data.data = data[key];
 		chart_data_arr.push(chart_data);
 
-	}
+	}*/
 	
-	console.log(chart_data_arr);
+	//console.log(chart_data_arr);
 
 
 	var options = {

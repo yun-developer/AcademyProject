@@ -111,11 +111,12 @@
 	
 	<!-- 분기별 과목 테스트 평균 -->
 	<!-- (분기별(4개...) + 과목별(2개...) + 학년별(3개...) 점수)_의 평균 -->
+	<!-- 과목코드 + 테스트 날짜도 조회해야 할 듯 !  -->
  	<select id="selectQuarterlySubTestAvg" resultMap="quarterlySubTestAvg">
 		SELECT STUDENT_YEAR||'학년' AS STUDENT_YEAR
 				, (SELECT ROUND(AVG(SCORE),2)
 			FROM TEST T, STUDENT S
-			WHERE TEST_DATE = #{testDate}
+			WHERE TO_CHAR(TEST_DATE) = #{testDate}
 			AND T.STUDENT_CODE = S.STUDENT_CODE
 			AND SUBJECT_CODE =#{subjectCode}
 			AND STUDENT_YEAR = 1) AS SCORE_AVG

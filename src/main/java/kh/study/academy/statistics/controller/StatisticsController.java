@@ -87,7 +87,7 @@ public class StatisticsController {
 	// 평가관리 분석 페이지로 이동
 	@GetMapping("/testAnalysis")
 	public String testAnalysis() {
-
+System.out.println("3542tygg");
 		return "content/statistics/testAnalysis";
 	}
 	
@@ -101,16 +101,16 @@ public class StatisticsController {
 		
 		Map<String, List<String>> chart_data = new HashMap<>();
 		
-		
+		//과목코드 리스트
 		List<String> subjectCodeList = new ArrayList<String>();
+		//테스트 일자 리스트 
 		List<String> testDateList =  new ArrayList<String>();
+		                       
 		TestVO testVO = new TestVO();
 		// 전체 테스트 조회
 		List<TestVO> testList = testService.selectLessonScore();
 		
-		
 		for (TestVO test : testList) {
-			
 			
 			// 과목코드 조회
 			String subjectCode = test.getSubjectCode();
@@ -130,11 +130,15 @@ public class StatisticsController {
 			//분기별 과목 테스트 평균
 			List<QuarterlySubTestAvg> quarterlySubTestAvg = statisticsService.selectQuarterlySubTestAvg(testVO);
 
-			chart_data.put("subjectCodeList",subjectCodeList);
-			chart_data.put("testDateList",testDateList);
+			
+			//chart_data.put(,quarterlySubTestAvg);
+			
 		}
 		
+		chart_data.put(testVO.getSubjectCode(),subjectCodeList);
+		chart_data.put(testVO.getTestDate(),testDateList);
 	
+		//① map 분기별 과목 테스트 평균
 		paramMap.put("quarterlySubTestAvg",chart_data);
 		
 		return paramMap;
@@ -160,8 +164,9 @@ public class StatisticsController {
 		// 전체 교사 조회(현재 교사 상태가 Y인 교사만)
 		List<TeacherVO> teacherList = adminService.selectTeacherList();
 		
-		for (TeacherVO teacher : teacherList) { // 교사코드 조회
-
+		for (TeacherVO teacher : teacherList) { 
+			
+			// 교사코드 조회
 			String teacherCode = teacher.getTeacherCode();
 
 			// 교사별 프로그램 수 

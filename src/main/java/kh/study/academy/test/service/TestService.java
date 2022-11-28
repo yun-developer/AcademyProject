@@ -13,9 +13,7 @@ public interface TestService {
 	int regScore (TestVO testVO);
 	
 	//평가 관리 페이지에서 검색
-	//검토 필요
 	List<StudentVO> searchTest(Map<String, String> map);
-	
 	
 	//통계(분기별 과목 테스트 평균 차트)를 위한 조회
 	List<TestVO> selectLessonScore();
