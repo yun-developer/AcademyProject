@@ -1,5 +1,45 @@
+//모달
+const modal = new bootstrap.Modal('#exampleModal'); 
+const modalContent = document.querySelector('#modalContent');
+
+//데이터 받아오기
 putlessonInfo();
 
+function getModal(lessonCode){
+	
+	//ajax start
+	$.ajax({
+		url: '/lesson/stuListByLessonAjax', //요청경로
+		type: 'post',
+		data: {"lessonInfoCode": lessonCode}, //필요한 데이터
+		success: function(result) {
+			let str ='';
+			
+			if(result ==''){
+				
+				Swal.fire('수강생 없음', '현재 등록된 수강생이 없는 학급입니다.', 'warning');
+				return;
+			}
+			else{
+				
+				for(const stu of result){
+					str += `<div><a href="/stu/detail?studentCode=${stu.studentCode}">${stu.studentName}</a> 학급내 석차</div>`;
+				}
+				modalContent.innerHTML = str;
+				modal.show();
+				
+			}
+						
+		},
+		error: function() {
+			alert('실패');
+		}
+	});
+	//ajax end
+	
+	
+	
+}
 
 function putlessonInfo(){
 	
@@ -32,6 +72,8 @@ function drawCalendar(result){
 			calendar_data.title = lesson.title;
 			calendar_data.start = lesson.start;
 			calendar_data.end = lesson.end;
+			calendar_data.id = lesson.id;
+			calendar_data.color = lesson.color;
 			calendar_data_arr.push(calendar_data);
 	
 		}
@@ -45,19 +87,26 @@ function drawCalendar(result){
                     center: 'title',
                     right: 'dayGridWeek'
                 },
-
+				dayMaxEvents: true, // 이벤트가 오버되면 높이 제한 (+ 몇 개식으로 표현)
                 selectable: true,
                 selectMirror: true,
-
+				
+				initialView: 'timeGridWeek', //주별로 보이게
+				slotMinTime: '18:00:00', //달력에서 보여주는 시작 시간
+				
                 navLinks: true, // can click day/week names to navigate views
                 editable: true,
-                
-             
-                dayMaxEvents: false, // allow "more" link when too many events
+                interactive : true,
+             	weekends :false, //주말은 안 보이게
+                dayMaxEvents: false, // allow "more" link when too many events 이벤트가 길어져도 보이게
                 // 이벤트 객체 필드 document : https://fullcalendar.io/docs/event-object
                 events: 
                    
-               	calendar_data_arr
+               	calendar_data_arr,
+               	eventClick: function (info) {
+			    //alert('Event: ' + info.event.id);
+			    getModal(info.event.id);
+			  }
                     
                 
             }
