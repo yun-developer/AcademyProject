@@ -24,6 +24,8 @@ import kh.study.academy.board.service.BoardService;
 import kh.study.academy.config.DateUtil;
 import kh.study.academy.lesson.service.LessonService;
 import kh.study.academy.lesson.vo.LessonInfoVO;
+import kh.study.academy.student.service.StudentService;
+import kh.study.academy.student.vo.StudentVO;
 
 
 
@@ -37,6 +39,9 @@ public class LessonController {
 	
 	@Resource(name = "lessonService")
 	private LessonService lessonService;
+	
+	@Resource(name = "studentService")
+	private StudentService studentService;
 	
 	@Resource(name = "boardService")
 	private BoardService boardService;
@@ -55,7 +60,6 @@ public class LessonController {
 	//주별 학급목록
 	@GetMapping("/listByWeek")
 	public String listByWeek(Model model) {
-		
 		
 		return "content/lesson/lessonlist_byweek";
 	}
@@ -84,7 +88,10 @@ public class LessonController {
 			//fullcalendar에 맞게끔 날짜 양식 수정
 			lesson.put("end",DateUtil.getLessonDatebyDay(lessonInfo.getLessonDayCode(),lessonInfo.getLessonTime())[1] );
 			lesson.put("start",DateUtil.getLessonDatebyDay(lessonInfo.getLessonDayCode(),lessonInfo.getLessonTime())[0] );
-			lesson.put("title", lessonInfo.getSubjectVO().getSubjectName() + lessonInfo.getStepVO().getStepName() + lessonInfo.getYear());
+			lesson.put("title", lessonInfo.getSubjectVO().getSubjectName() +"-"+ lessonInfo.getStepVO().getStepName() +"-"+ lessonInfo.getYear()+" [T : "+lessonInfo.getTeacherVO().getTeacherName()+" ]");
+			lesson.put("id", lessonInfo.getLessonInfoCode());
+			
+			lesson.put("color", "#DBA39A");
 			
 			//각  map 객체를 Ajax로 보내줄 리스트 데이터에 담기
 			lessonListForCalender.add(lesson);
@@ -93,6 +100,13 @@ public class LessonController {
 		return lessonListForCalender;
 	}
 	
+	//학급별 학생 목록 조회
+	@ResponseBody
+	@PostMapping("/stuListByLessonAjax")
+	public List<StudentVO> stuListByLessonAjax(String lessonInfoCode, Model model) {
+		
+		return studentService.stuListByLesson(lessonInfoCode);
+	}
 	
 	@GetMapping("/subject")
 	public String selectsubject() {
