@@ -51,12 +51,13 @@ public class PaymentTextsController {
 			
 				
 			if(stu.getStudentLessonInfoList().get(0).getLessonInfoVO() != null) {
-				stu.getStudentCode();
 				String studentName = stu.getStudentName();
 				String studentTell = stu.getStudentTell();
 				String subjectName = stu.getStudentLessonInfoList().get(0).getLessonInfoVO().getSubjectVO().getSubjectName();
 				String stepName = stu.getStudentLessonInfoList().get(0).getLessonInfoVO().getStepVO().getStepName();
 				int money = stu.getStudentLessonInfoList().get(0).getLessonInfoVO().getMoney();
+				
+				//String isPay = stu.getStudentLessonInfoList().get(0).getLessonInfoVO().getPaymentVO().getIsPay();
 				
 				// 4 params(to, from, type, text) are mandatory. must be filled
 				HashMap<String, String> params = new HashMap<String, String>();
@@ -64,6 +65,7 @@ public class PaymentTextsController {
 				params.put("from", "01099301637");	// 발신전화번호. 테스트시에는 발신,수신 둘다 본인 번호로 하면 됨
 				params.put("type", "SMS");
 				params.put("text", studentName + " 학생의 납부일임을 알려드립니다. " + subjectName + "-" + stepName + "반의 수강료는 "+ money + "원 입니다.\n[PotatoAcademy]");
+//				params.put("text", isPay);
 				params.put("app_version", "test app 1.2"); // application name and version
 				
 				try {
@@ -76,8 +78,44 @@ public class PaymentTextsController {
 			}
 			}
 		}
-		
-		
+	
+	
+	 //미수납인 학생에게 문자 보내기. 미수납 시 8일에!
+	 @Scheduled(cron = "0 0 18 8 * ?", zone="Asia/Seoul")
+	 public void isPayNoneSms() {
+		 
+		String api_key = "NCSOHSUJTJFE1FES";
+	    String api_secret = "ZURBUMXTPGZDDJXBZITGMV95C5MVAID2";
+	    Message coolsms = new Message(api_key, api_secret);
+	    
+	    
+	    for(StudentVO stu :  studentService.selectStuLessonList()) {
+	    	
+			if((stu.getStudentLessonInfoList().get(0).getLessonInfoVO() != null) && (stu.getIsPay().equals("N"))) {
+				String studentName = stu.getStudentName();
+				String studentTell = stu.getStudentTell();
+				String subjectName = stu.getStudentLessonInfoList().get(0).getLessonInfoVO().getSubjectVO().getSubjectName();
+				String stepName = stu.getStudentLessonInfoList().get(0).getLessonInfoVO().getStepVO().getStepName();
+				int money = stu.getStudentLessonInfoList().get(0).getLessonInfoVO().getMoney();
+				
+				// 4 params(to, from, type, text) are mandatory. must be filled
+				HashMap<String, String> params = new HashMap<String, String>();
+				params.put("to", studentTell);	// 수신전화번호
+				params.put("from", "01099301637");	// 발신전화번호. 테스트시에는 발신,수신 둘다 본인 번호로 하면 됨
+				params.put("type", "SMS");
+				params.put("text", studentName + " 학생의 수강료가 미납되었습니다. " + subjectName + "-" + stepName + "반의 수강료는 "+ money + "원 입니다.\n[PotatoAcademy]");
+				params.put("app_version", "test app 1.2"); // application name and version
+				
+				try {
+					JSONObject obj = (JSONObject) coolsms.send(params);
+					System.out.println(obj.toString());
+				} catch (CoolsmsException e) {
+					System.out.println(e.getMessage());
+					System.out.println(e.getCode());
+				}
+			}
+		}
+	}
 	    
 	    
 	    
