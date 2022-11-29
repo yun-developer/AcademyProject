@@ -10,6 +10,9 @@ public class StudentLessonInfoVO {
 	private String attendanceCode;
 	private String studentCode;
 	
+	private String beforeLessonInfoCode;
+	
+	
 	private LessonInfoVO lessonInfoVO;
 	/* private StudentVO studentVO; */
 	
