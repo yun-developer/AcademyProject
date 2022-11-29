@@ -23,8 +23,7 @@
 			</div>
 
 			<!-- 수정내용(표) 영역 -->
-			<form th:action="@{/board/updateFreeDetail}" method="post"
-				id="updateStuForm">
+			<form th:action="@{/board/updateFreeDetail}" method="post" id="updateStuForm" enctype="multipart/form-data">
 				<div class="row">
 					<div class="col">
 						<div class="mb-3 row">
@@ -39,6 +38,7 @@
 								<textarea class="form-control" rows="15" style="font-size: 18px; resize: none;" id="boardContent" name="boardContent">[[${free.boardContent}]]</textarea>
 							</div>
 						</div>
+						
 						<div class="mb-3 row">
 							<label for="exampleFormControlInput1"
 								class="col-1 col-form-label">첨부</label>
@@ -49,7 +49,7 @@
 								<div th:each="img : ${Imgs}">
 									<span class="myModal" th:text="${img.originFileName}" th:data-origin-file-name="${img.originFileName}"
 										th:data-file-name="|@{/images/board/}${img.storedFileName}|" data-bs-toggle="modal" data-bs-target="#imageModal"></span>
-									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" th:onclick="deleteImg([[${img.boardImgNum}]], [[${img.boardNum}]]);"
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" th:onclick="deleteImgFree([[${img.boardImgNum}]], [[${img.boardNum}]]);"
 										fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
   										<path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
   										<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
@@ -70,7 +70,7 @@
 						</th:block>
 						<div class="row justify-content-end">
 							<div class="col-2" style="margin-right: 4.8rem;">
-								<button type="submit" class="btn btn-warning flex-end">수정완료
+								<button type="submit" class="btn btn-warning flex-end" th:onclick="updateButton();">수정완료
 								</button>
 							</div>
 						</div>

@@ -145,8 +145,7 @@
 	</select>
 	
 	
-	
-	
+
 	<!-- 공지사항 글 상세페이지에서 글 수정 -->
 	
 	 <update id="updateNoticeDetail">
@@ -169,6 +168,35 @@
 		WHERE BOARD_NUM = #{boardNum}
 	</delete> 
 	
+	
+	
+	<!-- 공지사항 첨부파일 이미지 등록 (수정버전) -->
+	<insert id="updateNoticeInsertImgs">
+		INSERT INTO BOARD_IMG (
+			BOARD_IMG_NUM
+			, ORIGIN_FILE_NAME
+			, STORED_FILE_NAME
+			, BOARD_NUM
+		)
+		<foreach collection="imgList" item="img" separator="UNION ALL" index="i">
+			SELECT (SELECT 'IMG_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(BOARD_IMG_NUM, 5))),0) + 1 + #{i}, 3, 0)
+					 FROM BOARD_IMG)
+				, #{img.originFileName}
+				, #{img.storedFileName}
+				, #{boardNum}
+			FROM DUAL
+		</foreach>
+	</insert>
+
+
+
+	<!-- 공지사항 첨부파일 boardNum을 조회하기 위한 것 -->
+	<select id="getBoardNoticeNum" resultType="int">
+		SELECT NVL(MAX(BOARD_NUM), 0)
+		FROM BOARD
+	</select>
+	
+
 	
 	
 	
@@ -267,7 +295,7 @@
 	
 	
 	</update>
-	
+
 	
 	
 	
@@ -296,6 +324,34 @@
 		DELETE BOARD_IMG
 		WHERE BOARD_IMG_NUM = #{boardImgNum}
 	</delete>
+
+
+
+	<!-- 자유게시판 첨부파일 이미지 등록 (수정버전) -->
+	<insert id="updateFreeInsertImgs">
+		INSERT INTO BOARD_IMG (
+			BOARD_IMG_NUM
+			, ORIGIN_FILE_NAME
+			, STORED_FILE_NAME
+			, BOARD_NUM
+		)
+		<foreach collection="imgList" item="img" separator="UNION ALL" index="i">
+			SELECT (SELECT 'IMG_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(BOARD_IMG_NUM, 5))),0) + 1 + #{i}, 3, 0)
+					 FROM BOARD_IMG)
+				, #{img.originFileName}
+				, #{img.storedFileName}
+				, #{boardNum}
+			FROM DUAL
+		</foreach>
+	</insert>
+
+
+
+	<!-- 자유게시판 첨부파일 boardNum을 조회하기 위한 것 -->
+	<select id="getBoardFreeNum" resultType="int">
+		SELECT NVL(MAX(BOARD_NUM), 0)
+		FROM BOARD
+	</select>
 
 
 

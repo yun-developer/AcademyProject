@@ -150,8 +150,16 @@ public class BoardController {
    
    // 공지사항 글 수정 페이지에서 글 수정하기
    @RequestMapping("/updateNoticeDetail")
-   public String updateNoticeDetail(BoardVO boardVO,Model model) {
+   public String updateNoticeDetail(BoardVO boardVO,Model model, Authentication authentication, List<MultipartFile> imgs) {
 
+	   User user = (User)authentication.getPrincipal();
+	   boardVO.setTeacherId(user.getUsername());
+      
+	   //다중 이미지 파일 첨부
+       List<BoardImgVO> uploadList = UploadFileUtil2.multiUploadFile(imgs);
+      
+	  boardVO.setImgList(uploadList);
+	   
 	   boardService.updateNoticeDetail(boardVO);
 
 	   return "redirect:/board/noticeDetail?boardNum=" + boardVO.getBoardNum();
@@ -308,27 +316,20 @@ public class BoardController {
    
    // 자유게시판 글 수정 페이지에서 글 수정하기
    @RequestMapping("/updateFreeDetail")
-   public String updateFreeDetail(BoardVO boardVO,Model model, BoardImgVO boardImgVO, List<MultipartFile> imgs) {
+   public String updateFreeDetail(BoardVO boardVO,Model model,Authentication authentication, BoardImgVO boardImgVO, List<MultipartFile> imgs) {
 	  
-		/*
-		 * // 수정완료 누르면 첨부파일 새로 올라가는 것 int BoardNum = boardService.getNextBoardNum();
-		 * boardVO.setBoardNum(BoardNum);
-		 * 
-		 * 
-		 * //다중 이미지 파일 첨부 List<BoardImgVO> updateLoad =
-		 * UploadFileUtil2.multiUploadFile(imgs);
-		 * 
-		 * //이미지 정보를 insert 하기 위한 데이터를 가진 updateLoad에 조회한 boardNum 값도 넣어줌 for(BoardImgVO
-		 * vo : updateLoad) { vo.setBoardNum(BoardNum); }
-		 * 
-		 * //boardVO가 첨부파일에 대한 정보를 세터로 다 가지게 됨 boardVO.setImgList(updateLoad);
-		 * 
-		 * System.out.println("!!!!!!!!!!!!!!!"+boardVO);
-		 */
-		 boardService.updateFreeDetail(boardVO);
-		
+   	  User user = (User)authentication.getPrincipal();
+	  boardVO.setTeacherId(user.getUsername());
+      
+      //다중 이미지 파일 첨부
+      List<BoardImgVO> uploadList = UploadFileUtil2.multiUploadFile(imgs);
+      
+      boardVO.setImgList(uploadList);
+	 
+      boardService.updateFreeDetail(boardVO);
+
 	      
-	   return "redirect:/board/freeDetail?boardNum=" + boardVO.getBoardNum();
+      return "redirect:/board/freeDetail?boardNum=" + boardVO.getBoardNum();
    }
    
    

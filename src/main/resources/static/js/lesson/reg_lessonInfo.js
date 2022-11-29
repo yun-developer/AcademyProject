@@ -209,7 +209,7 @@ function regLessonInfo(){
 			else {
 				
 				alert('중복아님');
-				document.querySelector('#updateAmountBtn').submit();
+				document.querySelector('#regLessonForm').submit();
 			}
 			
 		

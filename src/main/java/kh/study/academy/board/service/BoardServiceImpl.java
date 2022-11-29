@@ -113,13 +113,42 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public void updateNoticeDetail(BoardVO boardVO) {
 		sqlSession.update("boardMapper.updateNoticeDetail",boardVO);
-		
+	
+	// 상세 수정 페이지에서 첨부파일 업로드
+		if(boardVO.getImgList().size() != 0) {
+			sqlSession.insert("boardMapper.updateNoticeInsertImgs", boardVO);
+			
+		}
 	}
 	
+	
+	
+	// 공지사항 수정페이지에서 첨부파일 업로드 시 boardNum을 조회하기 위한 것 
+	@Override
+	public int getBoardNoticeNum(BoardVO boardVO) {
+		return sqlSession.selectOne("boardMapper.getNoticeBoardNum", boardVO);
+	}
+	
+	
+	
+	
+	
 	// 자유게시판 상세 페이지에서 게시글 수정
+	// 상세 수정 페이지에서 첨부파일 업로드
 	@Override
 	public void updateFreeDetail(BoardVO boardVO) {
 		sqlSession.update("boardMapper.updateFreeDetail",boardVO);
+		// 이미지를 담는 list의 갯수가 0이 아닐 때 첨부파일 등록이 되는 쿼리문을 실행하겠다.
+		if(boardVO.getImgList().size() != 0) {
+			sqlSession.insert("boardMapper.updateFreeInsertImgs", boardVO);
+			
+		}
+	
+	}
+	// 수정페이지에서 첨부파일 업로드 시 boardNum을 조회하기 위한 것 
+	@Override
+	public int getBoardFreeNum(BoardVO boardVO) {
+		return sqlSession.selectOne("boardMapper.getBoardFreeNum", boardVO);
 	}
 	
 	
@@ -153,6 +182,12 @@ public class BoardServiceImpl implements BoardService{
 	public List<BoardVO> selectMyPage(BoardVO boardVO) {
 		return sqlSession.selectList("boardMapper.selectMyPage", boardVO);
 	}
+
+
+
+
+
+
 
 
 
