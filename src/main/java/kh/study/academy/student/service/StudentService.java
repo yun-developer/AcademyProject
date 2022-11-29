@@ -18,6 +18,8 @@ public interface StudentService {
 	List<StudentVO> selectStuList(String studentName);
 	
 	void stuUpdateIsPay(PaymentVO paymentVO);
+	void stuUpdateIsPayNone();
+	
 	
 	void deleteCheckedStu(StudentVO studentVO);
 	void deleteStu(String studentCode);

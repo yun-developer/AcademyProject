@@ -104,6 +104,12 @@ public class StudentServiceImpl implements StudentService{
 		sqlSession.update("studentMapper.stuUpdateIsPay", paymentVO);
 	}
 	
+	//달 바뀔 때 수납상태 N으로 변경
+	@Override
+	public void stuUpdateIsPayNone() {
+		sqlSession.update("studentMapper.stuUpdateIsPayNone");
+	}
+	
 
 	
 
