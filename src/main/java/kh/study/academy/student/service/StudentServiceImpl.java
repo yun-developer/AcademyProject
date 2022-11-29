@@ -110,6 +110,21 @@ public class StudentServiceImpl implements StudentService{
 		sqlSession.update("studentMapper.stuUpdateIsPayNone");
 	}
 	
+	
+	//학생이동
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public void updateStuLesson(StudentLessonInfoVO studentLessonInfoVO) {
+		
+		//이전 nowStudent -1 감소
+		sqlSession.update("lessonMapper.updateBeforeNowStudent", studentLessonInfoVO.getBeforeLessonInfoCode());
+		//학생편성
+		sqlSession.update("studentMapper.updateStuLesson", studentLessonInfoVO);
+		//nowStudent +1증가
+		sqlSession.update("lessonMapper.updateNowStudent", studentLessonInfoVO.getLessonInfoCode());
+		
+	}
+	
 
 	
 
