@@ -275,7 +275,17 @@ function deleteTest()  {
 
 }
 
+//평가 등록 모달 열린 후 취소버튼을 눌렀을 때 폼의 전체 값 초기화 처리
+$('#testInfoReg').on('hidden.bs.modal', function (e) {
+	
+	document.forms['regForm'].reset(); 
+});
 
+//평가 수정 삭제 모달 열린 후 취소버튼을 눌렀을 때 폼의 전체 값 초기화 처리
+$('#testInfoChange').on('hidden.bs.modal', function (e) {
+	
+	document.forms['UpdateOrDeleteForm'].reset(); 
+});
 
 ////////////////////////////////////////////////////////////////////
 //-------------------------이벤트 정의 영역----------------------//
