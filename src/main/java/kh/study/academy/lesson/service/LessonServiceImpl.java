@@ -77,6 +77,12 @@ public class LessonServiceImpl implements LessonService{
 		sqlSession.update("lessonMapper.updateNowStudent", lessonInfoCode);
 		
 	}
+	// 학생이동시 nowStudent -1감소
+	@Override
+	public void updateBeforeNowStudent(String beforeLessonInfoCode) {
+		sqlSession.update("lessonMapper.updateBeforeNowStudent", beforeLessonInfoCode);
+		
+	}
 
 	// 수납여부와 편성학급 같이 조회
 	@Override
@@ -91,6 +97,7 @@ public class LessonServiceImpl implements LessonService{
 		
 		return sqlSession.selectOne("lessonMapper.doubleCheckLesson", lessonInfoVO);
 	}
+
 
 
 

@@ -35,6 +35,8 @@ public interface LessonService {
 	
 	//학생등록시 nowStudent +1증가
 	void updateNowStudent(String lessonInfoCode);
+	//학생이동시 nowStudent -1감소
+	void updateBeforeNowStudent(String beforeLessonInfoCode);
 	
 	//수납여부와 편성학급 같이 조회
 	List<LessonInfoVO> selectLessonAndPay(String studentCode);

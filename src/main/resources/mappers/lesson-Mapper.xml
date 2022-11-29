@@ -181,6 +181,12 @@
 		SET NOW_STUDENT_CNT = (SELECT MAX(NOW_STUDENT_CNT)+1 FROM LESSON_INFO WHERE LESSON_INFO_CODE = #{lessonInfoCode})
 		WHERE LESSON_INFO_CODE = #{lessonInfoCode}
 	 </update>	 
+	 <!-- 학생이동시 nowStudent -1감소 -->
+	 <update id="updateBeforeNowStudent">
+		 UPDATE LESSON_INFO
+		SET NOW_STUDENT_CNT = (SELECT MAX(NOW_STUDENT_CNT)-1 FROM LESSON_INFO WHERE LESSON_INFO_CODE = #{beforeLessonInfoCode})
+		WHERE LESSON_INFO_CODE = #{beforeLessonInfoCode}
+	 </update>	 
 	 
 	 <!-- 수납여부와 편성학급 같이 조회 -->
 	 <select id="selectLessonAndPay" resultMap="lessonInfo">
