@@ -39,7 +39,7 @@ public class ReplyServiceImpl implements ReplyService{
 	// 댓글 수정
 	@Override
 	public void updateReply(ReplyVO replyVO) {
-		sqlSession.update("replayMapper.updateReply",replyVO);
+		sqlSession.update("replyMapper.updateReply",replyVO);
 	}
 	
 }

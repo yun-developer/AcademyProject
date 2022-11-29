@@ -141,9 +141,11 @@
 						</form>
 					</div>
 				</div>
-						<div class="panel-content">
-							<div id="tblBoardContentsComment_wrapper"
-								class="dataTables_wrapper dt-bootstrap4 no-footer" style="margin-bottom: 150px;">
+					
+					<div class="panel-content">
+						<div id="tblBoardContentsComment_wrapper"
+							class="dataTables_wrapper dt-bootstrap4 no-footer" style="margin-bottom: 150px;">
+							<form th:action="@{/reply/updateReply}" method="post" id="updateReply">
 								<table id="tblBoardContentsComment"
 									class="table w-100 dataTable no-footer dtr-inline" role="grid"
 									style="width: 665px;">
@@ -163,7 +165,8 @@
 													</div>
 													<div>
 														<h5>
-															[[${reply.replyContent}]]
+															<span class="replyContent">[[${reply.replyContent}]]</span>
+																<input type="hidden" name="replyNum" th:value="${reply.replyNum}">
 															<span class="right" th:if= "${reply.teacherId == #authentication.name or #strings.contains(#authentication.authorities, 'ROLE_ADMIN')}">
 																<button th:onclick="|location.href='@{/reply/freeDelete(replyNum=${reply.replyNum}, boardNum=${free.boardNum})}'|"  type="button" class="btn btn-danger btn-sm flex-end" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
 													  			<path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
@@ -183,6 +186,7 @@
 										</tr>
 									</tbody>
 								</table>
+							  </form>
 							</div>
 						</div>
 

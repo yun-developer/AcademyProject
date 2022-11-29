@@ -71,9 +71,8 @@ public class ReplyController {
 	
 	
 	// 자유게시판 댓글 수정
-	@PostMapping("updateReply")
+	@PostMapping("/updateReply")
 	public String updateReply(String replyNum, ReplyVO replyVO) {
-		
 		
 		
 		replyService.deleteReply(replyNum);
