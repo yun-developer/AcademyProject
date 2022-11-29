@@ -6,6 +6,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -66,6 +67,20 @@ public class ReplyController {
 		
 		redirect.addAttribute("boardNum", boardNum);
 		return "redirect:/board/freeDetail";
+	}
+	
+	
+	// 자유게시판 댓글 수정
+	@PostMapping("updateReply")
+	public String updateReply(String replyNum, ReplyVO replyVO) {
+		
+		
+		
+		replyService.deleteReply(replyNum);
+		
+		
+		replyService.updateReply(replyVO);
+		return "";
 	}
 	
 }

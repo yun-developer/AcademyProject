@@ -165,9 +165,14 @@
 														<h5>
 															[[${reply.replyContent}]]
 															<span class="right" th:if= "${reply.teacherId == #authentication.name or #strings.contains(#authentication.authorities, 'ROLE_ADMIN')}">
-																<button th:onclick="|location.href='@{/reply/freeDelete(replyNum=${reply.replyNum}, boardNum=${free.boardNum})}'|" type="button" class="btn btn-danger btn-sm flex-end" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-  <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-</svg></button>
+																<button th:onclick="|location.href='@{/reply/freeDelete(replyNum=${reply.replyNum}, boardNum=${free.boardNum})}'|"  type="button" class="btn btn-danger btn-sm flex-end" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+													  			<path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+																</svg></button>
+															</span>
+															<span class="right" th:if= "${reply.teacherId == #authentication.name or #strings.contains(#authentication.authorities, 'ROLE_ADMIN')}">
+																<button onclick="updateReply(this);" type="button" id="updateReplyBtn" value="수정" class="btn btn-danger btn-sm flex-end" >수정
+													  			<path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+																</button>
 															</span>
 															
 														</h5>
@@ -191,9 +196,7 @@
 				</main>
 				
 				
-				
-				
-
+<!------------------------------------------------------------------------------------------------------------------------------------------------------------->         
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>   
  <script type="text/javascript" th:src="@{/js/board/free_detail.js}"></script>				

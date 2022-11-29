@@ -1,11 +1,5 @@
 ////////////////함수 ///////////////////
-// 교실등록 페이지에서 신규버튼 클릭 시 모달창
-function goRegLessonRoomAjax(){
-	
-	$('#bb').modal('show');
 
-
-}	
 
 // 학급 편성 등록 시 교실장소, 수업시간 겹치지 않게 조회
 function selectUseCheck(){

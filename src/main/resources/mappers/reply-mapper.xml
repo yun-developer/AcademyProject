@@ -52,6 +52,12 @@
 </delete>
 
 
+<!-- 댓글 수정 -->
+<update id="updateReply">
+	UPDATE REPLY
+	SET REPLY_CONTENT
+	WHERE REPLY_NUM = #{replyNum}
+</update>
 
 
 
