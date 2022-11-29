@@ -15,6 +15,7 @@
 		<result column="IS_PAY" 									property="isPay"/>
 		<result column="TEACHER_NAME" 								property="teacherName"/>
 		<result column="PAYMENT_CODE" 								property="paymentCode"/>
+		<result column="STUDENT_STATUS" 								property="studentStatus"/>
 		
 		<collection property="studentLessonInfoList" 				resultMap="studentLessonInfo"/>
 		
