@@ -40,6 +40,9 @@ public interface StudentService {
 	//학생 이동
 	void updateStuLesson(StudentLessonInfoVO studentLessonInfoVO);
 	
+	//학급별 학생 목록 조회
+	List<StudentVO> stuListByLesson(String lessonInfoCode);
+	
 	
 	
 }

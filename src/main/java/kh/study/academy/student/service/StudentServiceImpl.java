@@ -125,6 +125,12 @@ public class StudentServiceImpl implements StudentService{
 		
 	}
 	
+	//학급별 학생 목록 조회
+	@Override
+	public List<StudentVO> stuListByLesson(String lessonInfoCode) {
+		return sqlSession.selectList("studentMapper.stuListByLesson", lessonInfoCode);
+	}
+	
 
 	
 

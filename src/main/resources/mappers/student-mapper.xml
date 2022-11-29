@@ -306,6 +306,22 @@
 	SET LESSON_INFO_CODE = #{lessonInfoCode}
 	WHERE STUDENT_LESSON_CODE = #{studentLessonCode}
 </update>
+
+<!-- 학급별 학생 목록 조회 -->
+<select id="stuListByLesson" resultMap="student">
+	SELECT STUDENT_NAME
+		, S.STUDENT_CODE
+	    , SL.STUDENT_LESSON_CODE
+	    , L.LESSON_INFO_CODE 
+	FROM STUDENT S, LESSON_INFO L, STUDENT_LESSON_INFO SL
+	WHERE SL.STUDENT_CODE = S.STUDENT_CODE
+	AND SL.LESSON_INFO_CODE = L.LESSON_INFO_CODE
+	AND L.LESSON_INFO_CODE= #{lessonInfoCode}
+	ORDER BY STUDENT_NAME
+</select>
+
+
+
 	
 </mapper>
 
