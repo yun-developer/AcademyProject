@@ -15,6 +15,7 @@
 		<result column="IS_PAY" 									property="isPay"/>
 		<result column="TEACHER_NAME" 								property="teacherName"/>
 		<result column="PAYMENT_CODE" 								property="paymentCode"/>
+		<result column="STUDENT_STATUS" 								property="studentStatus"/>
 		
 		<collection property="studentLessonInfoList" 				resultMap="studentLessonInfo"/>
 		
@@ -57,7 +58,8 @@
 		, STUDENT_YEAR
 		, ADDR
 		, ADDR_DETAIL
-		, STUDENT_TELL		
+		, STUDENT_TELL	
+		, STUDENT_STATUS	
 	) VALUES (
 		#{studentCode}
 		, #{studentName}
@@ -67,6 +69,7 @@
 		, #{addr}
 		, #{addrDetail}
 		, #{studentTell}
+		, 'Y'
 	)
 </insert>
 
@@ -101,6 +104,7 @@
     <if test="_parameter != null and !_parameter.equals('')">
       AND STUDENT_NAME LIKE '%' || #{studentName} || '%'
    </if>
+   AND STUDENT_STATUS = 'Y'
    ORDER BY S.STUDENT_CODE DESC
 </select>
 
@@ -145,6 +149,15 @@
 	SET IS_PAY = #{isPay}
 	WHERE PAYMENT_CODE = #{paymentCode}
 </update>
+
+
+
+<!-- 달 바뀔 때 수납상태 N으로 변경 -->
+<update id="stuUpdateIsPayNone">
+	UPDATE PAYMENT
+	SET IS_PAY = 'N'
+</update>
+
 
 
 
@@ -257,14 +270,18 @@
 </insert>
 
 
+
+
+
 <!-- 모든학생이 듣고 있는 수업 조회 -->
 <select id="selectStuLessonList" resultMap="student">
 
 	SELECT S.STUDENT_CODE
 	    , STUDENT_NAME
 	    , STUDENT_YEAR
+	    , STUDENT_TELL
 	    , DECODE(STUDENT_GENDER, 'W', '여', '남') AS STUDENT_GENDER
-	    , STUDENT_LESSON_CODE
+	    , SL.STUDENT_LESSON_CODE
 	    , L.LESSON_INFO_CODE
 	    , (SELECT SUBJECT_NAME
 					FROM SUBJECT
@@ -273,9 +290,13 @@
 					FROM STEP
 					WHERE STEP_CODE = L.STEP_CODE) AS STEP_NAME
 	    , YEAR
-	FROM LESSON_INFO L, STUDENT_LESSON_INFO SL , STUDENT S
+	    , MONEY
+	    , IS_PAY
+	FROM LESSON_INFO L, STUDENT_LESSON_INFO SL , STUDENT S, PAYMENT P
 	WHERE S.STUDENT_CODE = SL.STUDENT_CODE (+)
     AND L.LESSON_INFO_CODE (+) = SL.LESSON_INFO_CODE
+    AND SL.STUDENT_LESSON_CODE = P.STUDENT_LESSON_CODE(+)
+    AND STUDENT_STATUS = 'Y'
 	ORDER BY STUDENT_CODE DESC
 </select>
 

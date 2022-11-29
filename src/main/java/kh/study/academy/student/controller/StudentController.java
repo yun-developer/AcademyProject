@@ -220,12 +220,14 @@ public class StudentController {
 	
 	//학생 학급 이동
 	@ResponseBody
-	@PostMapping("/updateStuProcessAjax")
-	public void updateStuProcessAjax(StudentLessonInfoVO studentLessonInfoVO) {
+	@PostMapping("/updateStudentLessonAjax")
+	public void updateStudentLessonAjax(StudentLessonInfoVO studentLessonInfoVO) {
 		
-		//학생이동시 이전수업 nowStudent -1,
-		//			이동할 수업 nowStudent +1,
-		//			PayCode 코드가 같이 등록. (attendeCode 추가 예정)
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!1" + studentLessonInfoVO);
+		
+		//학생이동시 이전수업 nowStudent -1, 이동할 수업 nowStudent +1 (attendeCode 추가 예정)
+		studentService.updateStuLesson(studentLessonInfoVO);
+		
 		
 	}
 	

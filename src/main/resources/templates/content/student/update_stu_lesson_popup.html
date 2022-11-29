@@ -75,12 +75,14 @@
 										
 						    		<th:block th:each="lesson:${student.studentLessonInfoList}">
 										<input type="hidden" class="lessonInfoCodes" th:value="${lesson.lessonInfoVO.lessonInfoCode}">
+										<!-- <input type="hidden" class="studentLessonCodes" th:value="${lesson.studentLessonCode}"> -->
 								    	<div class="row  align-items-center border-top pt-5"  >
 								    		
 								    			<div class="col-2 ms-3 bg-secondary p-2 bg-opacity-10 ">
 										    		과목
 									    		</div>
-									    		<div class="col" th:text="${lesson.lessonInfoVO.subjectVO.subjectName}"></div>
+									    		<div class="col nowSubject" th:data-stuLessonCode="${lesson.studentLessonCode}"
+									    				th:id="${lesson.lessonInfoVO.lessonInfoCode}" th:text="${lesson.lessonInfoVO.subjectVO.subjectName}"></div>
 								    			<div class="col-2 ms-3 bg-secondary p-2 bg-opacity-10">
 										    		단계
 									    		</div>
@@ -138,12 +140,19 @@
 							    		<select class="form-select"   aria-label="Default select example" id="selectBeforeLesson">
 											<option value="">선택</option>
 											 <th:block th:each ="lesson:${lessonList}" >
-										      <option th:value="${lesson.lessonInfoCode}" th:text="${lesson.subjectVO.subjectName + '-' +lesson.stepVO.stepName +'-'+lesson.year +'학년' }" >
+										      <option th:value="${lesson.lessonInfoCode}" th:data-newSub="${lesson.subjectVO.subjectName}" th:text="${lesson.subjectVO.subjectName + '-' +lesson.stepVO.stepName +'-'+lesson.year +'학년' }" >
 										      </option>
 										    </th:block>	
 												
 										</select>
-					    		
+					    				<div>
+					    					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-diamond" viewBox="0 0 16 16">
+											  <path d="M6.95.435c.58-.58 1.52-.58 2.1 0l6.515 6.516c.58.58.58 1.519 0 2.098L9.05 15.565c-.58.58-1.519.58-2.098 0L.435 9.05a1.482 1.482 0 0 1 0-2.098L6.95.435zm1.4.7a.495.495 0 0 0-.7 0L1.134 7.65a.495.495 0 0 0 0 .7l6.516 6.516a.495.495 0 0 0 .7 0l6.516-6.516a.495.495 0 0 0 0-.7L8.35 1.134z"/>
+											  <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+											</svg>
+					    					<small class="text-muted"> 같은 과목끼리의 학급 이동만 가능합니다.</small>
+					    				</div>
+					    				
 									</div>
 						    	</div>
 						    	<div class="row  align-items-center pt-5">
@@ -151,8 +160,9 @@
 
 								  		<!-- <form th:action="@{/stu/assingnStuProcess}" method="post" id="updateStuForm"> -->
 							    			<div class="d-grid gap-2 col-6 mx-auto">
-							    				<input type="hidden" name="studentLessonCode" id="inputStuCode" th:value="${student.studentCode}">
+							    				<input type="hidden" name="studentLessonCode" id="studentLessonCode" value="">
 							    				<input type="hidden" name="lessonInfoCode" id="inputLessonCode" value="">
+							    				<input type="hidden" name="beforeLessonInfoCode" id="beforeLessonInfoCode" value="">
 											  <button class="btn btn-primary" type="button" id="updateBtn" th:onclick="updateStudentLesson();"> 학급이동</button>
 											</div>
 								  		<!-- </form --> 

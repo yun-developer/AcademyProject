@@ -18,6 +18,8 @@ public interface StudentService {
 	List<StudentVO> selectStuList(String studentName);
 	
 	void stuUpdateIsPay(PaymentVO paymentVO);
+	void stuUpdateIsPayNone();
+	
 	
 	void deleteCheckedStu(StudentVO studentVO);
 	void deleteStu(String studentCode);
@@ -34,6 +36,10 @@ public interface StudentService {
 	
 	//모든학생이 듣고 있는 수업 조회
 	List<StudentVO> selectStuLessonList();
+	
+	//학생 이동
+	void updateStuLesson(StudentLessonInfoVO studentLessonInfoVO);
+	
 	
 	
 }
