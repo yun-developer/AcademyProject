@@ -9,17 +9,16 @@
 8. 다시 에이작스로 map에 담은 데이터 보내기
 9. 차트별 데이터에 map으로 받아온 데이터를 잘 뽑아내기 (key,value)(***)*/
 
-alert(2);
 drawChart();
 
 function drawChart(){
-	alert(2);	
 	//ajax start
 	$.ajax({
 		url: '/statistics/testAnalysisAjax', //요청경로
 		type: 'post',
 		data: {}, //필요한 데이터
 		success: function(result) {
+			
 			//분기별 과목 테스트 평균
 			drawChart1(result.quarterlySubTestAvg);
 			
@@ -35,31 +34,66 @@ function drawChart(){
 //분기별 과목 테스트 평균 차트를 그림 
 function drawChart1(data) {
 
-	//console.log(data);
+	console.log(data);
 	
 	
-	//let keys = Object.keys(data);
-	//console.log("키값 나와라~!~!~!"+keys);
+	let keys = Object.keys(data);
+	console.log("키값 나와라~!~!~!" + keys);
+	
+	
+	
+	let values =  Object.values(data);
+	console.log("밸류값 나와라~!~!~!" + values);
 	
 	//data가 배열로 넘어오니까 빈 배열 만들고 
-	chart_data_arr = [];
+	chart_data_arr= [];
+	
+	//category_arr 에는 테스트 일자들 담을거임!
 	chart_category_arr = [];
+	
+	
+	
+	for(const key of keys){
+		chart_data = new Object();
+		chart_data.name = data[key].subjectCode;
+		chart_data.data = data[key].scoreAvg;
+		//chart_data.data = data[key].testDate;
+		console.log("key 값 : "+key);
+		//console.log("data[key]나와라~!~!~!"+data[key]);
+		console.log("chart_data.name : "+chart_data.name);
+		console.log("chart_data.date : "+chart_data.data);
+		
+		chart_data_arr.push(chart_data);
+	}
+	
 	
 	//클래스를 만들고 변수를 정해줌
 	//하나씩 반복문으로 돌려서 위에서 만들어준 빈배열에 넣기 
-	/*for(const key of keys){
+	for(const value of values){
 		chart_data = new Object();
-		chart_data.name = key;
-		chart_data.data = data[key];
-		chart_data_arr.push(chart_data);
+		chart_data.name = value.subjectCode;
+		chart_data.data = value.scoreAvg;
+		
+		
+		//console.log("testDate : "+value.testDate);
 
-	}*/
+		//chart_data_arr.push(chart_data);
+		//chart_category_arr.push(value.testDate);
 	
-	//console.log(chart_data_arr);
+		
+	}
+	
+	//console.log("chart_data_arr 데이터 나와라" + chart_data_arr);
+	
+	//console.log(chart_category_arr);
+
+	
+	
+	//console.log("chart_data_arr 나와라!!!!!!!!!"+chart_data_arr);
 
 
 	var options = {
-		series: [
+		/*series: [
 			{
 				name: "High - 2013",
 				data: [28, 29, 33, 36, 32, 32, 33]
@@ -68,7 +102,7 @@ function drawChart1(data) {
 				name: "Low - 2013",
 				data: [12, 11, 14, 18, 17, 13, 13]
 			}
-		],
+		]*/series:chart_data_arr,
 		chart: {
 			height: 350,
 			type: 'line',
@@ -106,7 +140,7 @@ function drawChart1(data) {
 			size: 1
 		},
 		xaxis: {
-			categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+			categories:chart_category_arr /*['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul']*/,
 			title: {
 				text: 'Month'
 			}

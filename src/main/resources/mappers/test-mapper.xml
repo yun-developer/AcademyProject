@@ -12,7 +12,7 @@
 		<result column="SUBJECT_CODE" 							property="subjectCode" />
 		<result column="STUDENT_CODE" 							property="studentCode" />
 		
-		
+		<association property="subjectVO" 						resultMap="adminMapper.subject"/>
 		
 	</resultMap>
 
@@ -83,20 +83,6 @@
 		<if test="year != null and !year.equals('')">
 			AND YEAR LIKE ('%'||#{year}||'%')
 		</if> -->
-	</select>
-	
-	
-	
-	
-	
-	
-	
-	<!-- 통계(분기별 과목 테스트 평균 차트)를 위한 조회 -->
-	<select id="selectLessonScore" resultMap="test">
-		SELECT TEST_CODE
-			, TO_CHAR(TEST_DATE,'YYYY-MM-DD') AS TEST_DATE
-			, SUBJECT_CODE
-		FROM TEST
 	</select>
 	
 	

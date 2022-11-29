@@ -87,7 +87,7 @@ public class StatisticsController {
 	// 평가관리 분석 페이지로 이동
 	@GetMapping("/testAnalysis")
 	public String testAnalysis() {
-System.out.println("3542tygg");
+		
 		return "content/statistics/testAnalysis";
 	}
 	
@@ -95,51 +95,13 @@ System.out.println("3542tygg");
 	// 평가관리 분석 페이지- 분기별 과목 테스트 평균 차트를 그릴 데이터를 조회하는 메소드
 	@ResponseBody
 	@PostMapping("/testAnalysisAjax")
-	public Map<Object, Object> testAnalysisAjax(Model model) {
+	public Map<String, Object> testAnalysisAjax() {
 		
-		Map<Object, Object> paramMap = new HashMap<>();
-		
-		Map<String, List<String>> chart_data = new HashMap<>();
-		
-		//과목코드 리스트
-		List<String> subjectCodeList = new ArrayList<String>();
-		//테스트 일자 리스트 
-		List<String> testDateList =  new ArrayList<String>();
-		                       
-		TestVO testVO = new TestVO();
-		// 전체 테스트 조회
-		List<TestVO> testList = testService.selectLessonScore();
-		
-		for (TestVO test : testList) {
-			
-			// 과목코드 조회
-			String subjectCode = test.getSubjectCode();
-			//테스트 날짜 조회 
-			String testDate = test.getTestDate();
-			
-			subjectCodeList.add(subjectCode);
-			testDateList.add(testDate);
-			
-			testVO.setSubjectCode(subjectCode);
-			testVO.setTestDate(testDate);
-			
-			
-			System.out.println("과목코드나와라~~~~~~~```"+subjectCode);
-			System.out.println("날짜나와라~~~~~~~```"+testDate);
-			
-			//분기별 과목 테스트 평균
-			List<QuarterlySubTestAvg> quarterlySubTestAvg = statisticsService.selectQuarterlySubTestAvg(testVO);
-
-			
-			//chart_data.put(,quarterlySubTestAvg);
-			
-		}
-		
-		chart_data.put(testVO.getSubjectCode(),subjectCodeList);
-		chart_data.put(testVO.getTestDate(),testDateList);
+		Map<String, Object> paramMap = new HashMap<>();
+		 
 	
-		//① map 분기별 과목 테스트 평균
-		paramMap.put("quarterlySubTestAvg",chart_data);
+		//① map 학년별 학생 수
+		paramMap.put("quarterlySubTestAvg", statisticsService.selectQuarterlySubTestAvg());
 		
 		return paramMap;
 	}

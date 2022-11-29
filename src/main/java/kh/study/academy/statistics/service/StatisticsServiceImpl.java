@@ -40,10 +40,17 @@ public class StatisticsServiceImpl implements StatisticsService {
 
 	/* ② 평가관리 분석 통계------------------------------------------------------------------------------------ */
 		
-		// ⓐ 분기별 과목 테스트 평균
+		// ⓐ 통계(분기별 과목 테스트 평균 차트)를 위한 조회
 		@Override
-		public List<QuarterlySubTestAvg> selectQuarterlySubTestAvg(TestVO testVO) {
-			return sqlSession.selectList("statisticsMapper.selectQuarterlySubTestAvg", testVO);
+		public List<TestVO> selectLessonScore() {
+			
+			return sqlSession.selectList("statisticsMapper.selectLessonScore");
+		}
+		
+		// ⓑ 분기별 과목 테스트 평균
+		@Override
+		public List<QuarterlySubTestAvg> selectQuarterlySubTestAvg() {
+			return sqlSession.selectList("statisticsMapper.selectQuarterlySubTestAvg");
 		}
 	
 	/* ③ 교사별 수업현황 통계---------------------------------------------------------------------------------- */

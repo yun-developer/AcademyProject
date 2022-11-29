@@ -1,5 +1,6 @@
 package kh.study.academy.test.vo;
 
+import kh.study.academy.admin.vo.SubjectVO;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -18,5 +19,6 @@ public class TestVO {
 	
 	private int check; 
 	
-	
+	//
+	private SubjectVO subjectVO;
 }

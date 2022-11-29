@@ -63,17 +63,7 @@
 	<!-- 과목별 학생 수 조회 -->
 	<!-- 나오는 값이 숫자라서  resultType 이 int -->
 	<select id="selectNumByStuSubject" resultType="int">
-<!-- 		SELECT STUDENT_YEAR
-	    ,(SELECT SUBJECT_NAME
-	               FROM SUBJECT
-	               WHERE SUBJECT_CODE = L.SUBJECT_CODE) AS SUBJECT_NAME
-	        
-	        , COUNT(*) AS STUDENT_CNT
-	        FROM LESSON_INFO L, STUDENT_LESSON_INFO SL, STUDENT S
-	        WHERE S.STUDENT_CODE = SL.STUDENT_CODE 
-	    AND L.LESSON_INFO_CODE = SL.LESSON_INFO_CODE
-	    GROUP BY L.SUBJECT_CODE, STUDENT_YEAR -->
-	
+
 		 SELECT COUNT(STU.STUDENT_CODE)
 	        FROM STUDENT_LESSON_INFO SLI, LESSON_INFO LI, STUDENT STU
 	        WHERE SLI.LESSON_INFO_CODE = LI.LESSON_INFO_CODE
@@ -98,10 +88,7 @@
 	</select>
 	
 	
-	
-	
-	
-	<!-- 전체 학생 수 조회  -->
+	<!-- 월별전체 학생 수 조회  -->
 	<select id="selectStuTotalCntByMonth" resultMap="studentTotalCntByMonth">
 	
 	
@@ -109,49 +96,33 @@
 	
 	</select>
 	
+		
+	<!-- 통계(분기별 과목 테스트 평균 차트)를 위한 조회 -->
+	<select id="selectLessonScore" resultMap="testMapper.test">
+		SELECT TEST_CODE
+			, TO_CHAR(TEST_DATE,'YYYY-MM-DD') AS TEST_DATE
+			, SUBJECT_CODE
+			, (SELECT SUBJECT_NAME FROM SUBJECT WHERE SUBJECT_CODE = T.SUBJECT_CODE) AS SUBJECT_NAME
+		FROM TEST T
+	</select>
+	
+	
+	
+	
 	<!-- 분기별 과목 테스트 평균 -->
 	<!-- (분기별(4개...) + 과목별(2개...) + 학년별(3개...) 점수)_의 평균 -->
 	<!-- 과목코드 + 테스트 날짜도 조회해야 할 듯 !  -->
  	<select id="selectQuarterlySubTestAvg" resultMap="quarterlySubTestAvg">
-		SELECT STUDENT_YEAR||'학년' AS STUDENT_YEAR
-				, (SELECT ROUND(AVG(SCORE),2)
-			FROM TEST T, STUDENT S
-			WHERE TO_CHAR(TEST_DATE) = #{testDate}
-			AND T.STUDENT_CODE = S.STUDENT_CODE
-			AND SUBJECT_CODE =#{subjectCode}
-			AND STUDENT_YEAR = 1) AS SCORE_AVG
-			FROM TEST T, STUDENT S
-			WHERE TEST_DATE = #{testDate}
-			AND SUBJECT_CODE = #{subjectCode}
-			AND T.STUDENT_CODE = S.STUDENT_CODE
-			AND STUDENT_YEAR = 1
-		UNION ALL
-		SELECT STUDENT_YEAR||'학년' AS STUDENT_YEAR
-				, (SELECT ROUND(AVG(SCORE),2)
-			FROM TEST T, STUDENT S
-			WHERE TEST_DATE = #{testDate}
-			AND T.STUDENT_CODE = S.STUDENT_CODE
-			AND SUBJECT_CODE =#{subjectCode}
-			AND STUDENT_YEAR = 2) AS SCORE_AVG
-			FROM TEST T, STUDENT S
-			WHERE TEST_DATE = #{testDate}
-			AND SUBJECT_CODE =#{subjectCode}
-			AND T.STUDENT_CODE = S.STUDENT_CODE
-			AND STUDENT_YEAR = 2
-		UNION ALL
-		SELECT STUDENT_YEAR||'학년' AS STUDENT_YEAR
-				, (SELECT ROUND(AVG(SCORE),2)
-			FROM TEST T, STUDENT S
-			WHERE TEST_DATE = #{testDate}
-			AND T.STUDENT_CODE = S.STUDENT_CODE
-			AND SUBJECT_CODE =#{subjectCode}
-			AND STUDENT_YEAR = 3) AS SCORE_AVG
-			FROM TEST T, STUDENT S
-			WHERE TEST_DATE = #{testDate}
-			AND SUBJECT_CODE =#{subjectCode}
-			AND T.STUDENT_CODE =S .STUDENT_CODE
-			AND STUDENT_YEAR = 3
-		GROUP BY STUDENT_YEAR
+		SELECT SUBJECT_CODE
+		    , (SELECT SUBJECT_NAME
+		        FROM SUBJECT
+		        WHERE SUBJECT_CODE = T.SUBJECT_CODE) AS SUBJECT_NAME
+		    , STUDENT_YEAR    
+		    , TO_CHAR(TEST_DATE,'YYYY-MM-DD') AS TEST_DATE
+		    , ROUND(AVG(SCORE),2) AS SCORE_AVG
+		FROM TEST T, STUDENT S
+		WHERE T.STUDENT_CODE = S.STUDENT_CODE
+		GROUP BY SUBJECT_CODE, STUDENT_YEAR, TEST_DATE
 	</select>
 	
 	

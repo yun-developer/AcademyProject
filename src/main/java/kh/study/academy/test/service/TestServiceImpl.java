@@ -44,12 +44,7 @@ public class TestServiceImpl implements TestService{
 	}
 
 	
-	//통계(분기별 과목 테스트 평균 차트)를 위한 조회
-	@Override
-	public List<TestVO> selectLessonScore() {
-		
-		return sqlSession.selectList("testMapper.selectLessonScore");
-	}
+	
 	
 	//조회
 	@Override
