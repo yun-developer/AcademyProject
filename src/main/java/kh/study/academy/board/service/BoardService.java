@@ -35,6 +35,7 @@ public interface BoardService {
 	void deleteBoardFree(BoardVO boardVO);
 	
 	
+	
 	// 공지사항 상세페이지에 게시글 삭제
 	void deleteNoticeDetail(int boardNum);
 	
@@ -42,19 +43,35 @@ public interface BoardService {
 	void deleteFreeDetail(int boardNum);
 	
 		
+	
 	// 공지사항 상세 페이지에서 게시글 수정
 	void updateNoticeDetail(BoardVO boardVO);
 	
 	// 자유게시판 상세 페이지에서 게시글 수정
 	void updateFreeDetail(BoardVO boardVO);
 	
+	
+	
 	// 자유게시판 상세 수정페이지에서 첨부파일 삭제 기능
 	void deleteBoardImgUpdateFree(BoardImgVO boardImgVO);
 	
-
+	
+	
+	// 공지사항 수정페이지에서 첨부파일 업로드 시 boardNum을 조회하기 위한 것 
+	int getBoardNoticeNum(BoardVO boardVO);
+	
+	// 자유게시판 수정페이지에서 첨부파일 업로드 시 boardNum을 조회하기 위한 것 
+	int getBoardFreeNum(BoardVO boardVO);
+	
+	
+	
+	
+	
 	
 	void updateLike(int boardNum);
 	void updateLikeCancle(int boardNum);
 	
 	List<BoardVO> selectMyPage(BoardVO boardVO);
+
+
 }
