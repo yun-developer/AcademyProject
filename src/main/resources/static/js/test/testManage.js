@@ -219,22 +219,60 @@ function updateTest()  {
  	
  	
  	
- 	
- 	
 }
 
 //평가수정 모달 내 삭제 버튼을 눌렀을 때 실행되는 함수 
 function deleteTest()  {
  	
  	
- 	alert(testCode);
- 	
  	const deleteForm = document.querySelector('#UpdateOrDeleteForm');
  	
- 	deleteForm.action = '{/test/deleteScore}';
- 	
- 	
- 	deleteForm.submit();
+
+	deleteForm.action = '/test/deleteScore';
+
+	Swal.fire({
+		title: '평가 점수를 삭제할까요?',
+		text: '해당 학생의 평가 점수가 삭제됩니다.',
+		icon: 'warning',
+
+		showCancelButton: true, // cancel버튼 보이기. 기본은 원래 없음
+		confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+		cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
+		confirmButtonText: '승인', // confirm 버튼 텍스트 지정
+		cancelButtonText: '취소', // cancel 버튼 텍스트 지정
+
+		reverseButtons: true, // 버튼 순서 거꾸로
+
+	}).then(result => {
+		// 만약 Promise리턴을 받으면,
+		if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
+			
+			//삭제 완료 alert 시작
+			Swal.fire({
+				title: '평가 삭제',
+				text: '해당 학생의 평가 점수가 삭제되었습니다.',
+				icon: 'success',
+
+				showCancelButton: false, // cancel버튼 보이기. 기본은 원래 없음
+				confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+				cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
+				confirmButtonText: '승인', // confirm 버튼 텍스트 지정
+				cancelButtonText: '취소', // cancel 버튼 텍스트 지정
+
+				reverseButtons: true, // 버튼 순서 거꾸로
+
+			}).then(result => {
+				// 만약 Promise리턴을 받으면,
+				if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
+
+					deleteForm.submit();
+
+				}
+			});
+			//삭제 완료 alert 끝
+		}
+	});
+
 }
 
 
