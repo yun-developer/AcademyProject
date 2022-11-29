@@ -279,8 +279,12 @@
 	ORDER BY STUDENT_CODE DESC
 </select>
 
-
-	
+<!-- 학생 학급이동 -->
+<update id="updateStuLesson">
+	UPDATE STUDENT_LESSON_INFO
+	SET LESSON_INFO_CODE = #{lessonInfoCode}
+	WHERE STUDENT_LESSON_CODE = #{studentLessonCode}
+</update>
 	
 </mapper>
 
