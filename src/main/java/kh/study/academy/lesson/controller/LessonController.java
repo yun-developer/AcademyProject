@@ -61,6 +61,9 @@ public class LessonController {
 	@GetMapping("/listByWeek")
 	public String listByWeek(Model model) {
 		
+		//테스트
+		System.out.println(":!@!@!@!@!@!@!@!@!@!@:"+DateUtil.getAttendDate("Mon"));
+		
 		return "content/lesson/lessonlist_byweek";
 	}
 	

@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kh.study.academy.admin.service.AdminService;
+import kh.study.academy.attend.service.AttendService;
+import kh.study.academy.attend.vo.AttendVO;
+import kh.study.academy.config.DateUtil;
 import kh.study.academy.lesson.service.LessonService;
 import kh.study.academy.lesson.vo.LessonInfoVO;
 import kh.study.academy.student.service.StudentService;
@@ -37,6 +40,9 @@ public class StudentController {
 	
 	@Resource(name = "lessonService")
 	private LessonService lessonService;
+
+	@Resource(name = "attendService")
+	private AttendService attendService;
 	
 	
 	//학생 등록 페이지 이동
@@ -176,8 +182,6 @@ public class StudentController {
 			
 		}
 		
-		
-		
 		return  lessonService.selectLessonInfoList(lessonInfoVO);
 	}
 	
@@ -186,8 +190,23 @@ public class StudentController {
 	@PostMapping("/assingnStuProcessAjax")
 	public void assingnStuProcessAjax(StudentLessonInfoVO studentLessonInfoVO) {
 		
-		//학생편성시 nowStudent +1,  PayCode 코드가 같이 등록. (attendeCode 추가 예정)
+		//학생편성시 nowStudent +1,  PayCode 코드가 같이 등록. 
 		studentService.assignStu(studentLessonInfoVO);
+		
+		//출결 코드 생성
+		//편성하는 해당주의 수업 날짜 가져와서 AttendVO에 넣기
+		String lessonDate;
+		AttendVO attendVO = new AttendVO();
+		StudentVO stu = studentService.selectStuDetailForUpdate(studentLessonInfoVO.getStudentCode());
+		//학생이 듣고 있는 수업 만큼
+		for(StudentLessonInfoVO vo : stu.getStudentLessonInfoList()) {
+			lessonDate = DateUtil.getAttendDate(vo.getLessonInfoVO().getLessonDayCode());
+			attendVO.setLessonDate(lessonDate);
+			//studentLessonCode를 AttendVO에 넣기
+			attendVO.setStudentLessonCode(vo.getStudentLessonCode());
+			//attendeCode 생성
+			attendService.creatAttend(attendVO);
+		}
 		
 	}
 	
