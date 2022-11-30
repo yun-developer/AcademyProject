@@ -1,10 +1,15 @@
+////////////////////////변수///////////////////////////////
 //모달
 const modal = new bootstrap.Modal('#exampleModal'); 
 const modalContent = document.querySelector('#modalContent');
+const modalTableContent = document.querySelector('#modalTableContent');
+
 
 //데이터 받아오기
 putlessonInfo();
 
+
+//모달 그리기
 function getModal(lessonCode){
 	
 	//ajax start
@@ -13,7 +18,7 @@ function getModal(lessonCode){
 		type: 'post',
 		data: {"lessonInfoCode": lessonCode}, //필요한 데이터
 		success: function(result) {
-			let str ='';
+			let str1 ='';
 			
 			if(result ==''){
 				
@@ -23,9 +28,27 @@ function getModal(lessonCode){
 			else{
 				
 				for(const stu of result){
-					str += `<div><a href="/stu/detail?studentCode=${stu.studentCode}">${stu.studentName}</a> 학급내 석차</div>`;
+					str1 += `<tr>
+					      <td scope="row"><a href="/stu/detail?studentCode=${stu.studentCode}">${stu.studentName}</a></td>
+					      
+					      <td>
+					      	<div class="form-check form-check-inline">
+							  <input class="form-check-input chk" name='${stu.studentCode}' type="radio"  id="${stu.studentCode}" value="Y">
+							  <label class="form-check-label" for="inlineCheckbox1">출석</label>
+							</div>
+							<div class="form-check form-check-inline">
+							  <input class="form-check-input chkNoAttend" name='${stu.studentCode}' type="radio" id="${stu.studentCode}" value="N">
+							  <label class="form-check-label" for="inlineCheckbox2">결석</label>
+							</div>
+					      </td>
+					    </tr>`
+					
+				
 				}
-				modalContent.innerHTML = str;
+				
+				modalTableContent.innerHTML = str1;
+				
+				
 				modal.show();
 				
 			}
@@ -40,6 +63,9 @@ function getModal(lessonCode){
 	
 	
 }
+
+
+
 
 function putlessonInfo(){
 	
@@ -187,4 +213,103 @@ function drawCalendar(result){
 
             calendar.render();
         });*/
+
+
+
+
+//출결 저장 버튼
+function changeAttend(){
+	
+	/*선택한 체트박스의 아이디값을 들고간다. studentCode라는 이름으로
+	그래서 UPDATE AJAx 실행*/
+	//체크가 된 체크박스들 가져오기
+	const checkedBoxes = document.querySelectorAll('.chk:checked');
+	const checkedNoBoxes = document.querySelectorAll('.chkNoAttend:checked');
+	
+	for(const checkedBox of checkedBoxes){
+		
+		alert(checkedBox.id);
+	}
+	for(const checkedNoBox of checkedNoBoxes){
+		
+		alert(checkedNoBox.id);
+	}
+	
+	
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//전체선택, 전체해제 이벤트
+checkAll.addEventListener('click',function(){
+	//제목줄의 체크박스 체크여부
+	const isChecked = checkAll.checked; //true,false
+	
+	//리스트 목록의 모든 체크박스
+	const checkboxes = document.querySelectorAll('.chk');
+	
+	//제목줄 체크박스가 체크되었다면,
+	if(isChecked){
+		for (const checkBox of checkboxes){
+			checkBox.checked = true;
+		}
+	}
+	else{
+		
+		for (const checkBox of checkboxes){
+			checkBox.checked = false;
+		}
+	}
+	
+	
+});
+
+
+//리스트 체크박스 선택 시 제목줄 체크박스 이벤트
+for(const chk of chks){
+	chk.addEventListener('click', chk=>{ 
+		//아래에 있는 전체 체크박스의 수 
+		const cnt = chks.length;
+		//아래에 있는 전체 체크박스 중 체크된 수
+		const checkedCnt = document.querySelectorAll('.chk:checked').length;
+		
+		//수가 같으면 제목 체크박스도 체크
+		if(cnt ==checkedCnt ){
+			document.querySelector('#checkAll').checked = true;
+		}
+		//수가 다르면 제목 체크박스도 해체
+		else{
+			document.querySelector('#checkAll').checked = false;
+		}
+		
+	});
+}
 

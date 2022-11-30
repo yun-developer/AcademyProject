@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kh.study.academy.admin.service.AdminService;
 import kh.study.academy.admin.vo.LessonRoomVO;
+import kh.study.academy.attend.service.AttendService;
 import kh.study.academy.board.service.BoardService;
 import kh.study.academy.config.DateUtil;
 import kh.study.academy.lesson.service.LessonService;
@@ -48,6 +49,9 @@ public class LessonController {
 	@Resource(name = "boardService")
 	private BoardService boardService;
 	
+	@Resource(name = "attendService")
+	private AttendService attendService;
+	
 	
 	//메인
 	@GetMapping("/main")
@@ -69,7 +73,7 @@ public class LessonController {
 	public String listByWeek(Model model) {
 		
 		//테스트
-		System.out.println(":!@!@!@!@!@!@!@!@!@!@:"+DateUtil.getAttendDate("Mon"));
+		System.out.println(":!@!@!@!@!@!@!@!@!@!@:"+attendService.selectAttendStu("STUDENT_002"));
 		
 		return "content/lesson/lessonlist_byweek";
 	}
@@ -132,8 +136,7 @@ public class LessonController {
 	
 		// 학급편성 등록 페이지 
 		@RequestMapping("/regLessonInfoPage")
-		public String regLessonInfoPage(@RequestParam Map<String, Object>paramMap ,LessonInfoVO lessonInfoVO,Model model, LessonRoomVO lessonRoomVO, String roomName,  String lessonDayCode, String searchYear) { 
-		
+		public String regLessonInfoPage(@RequestParam Map<String, Object>paramMap ,LessonInfoVO lessonInfoVO,Model model, LessonRoomVO lessonRoomVO, String roomName,  String lessonDayCode) { 
 		
 		// 과목 리스트를 가져오는 쿼리 실행 문
 		model.addAttribute("subjectList", adminService.selectSubject());
@@ -168,17 +171,14 @@ public class LessonController {
 		
 
 		}
-		/*
-		 * // 학급 편성 검색 조회
-		 * 
-		 * @RequestMapping("/searchLessonInfo") public String searchLessonInfo
-		 * (@RequestParam Map<String, Object>paramMap ,LessonInfoVO lessonInfoVO,Model
-		 * model){
-		 * 
-		 * model.addAttribute("schLesson",lessonService.searchLessonInfo(paramMap));
-		 * 
-		 * return "redirect:/lesson/regLessonInfoPage"; }
-		 */
+		// 학급 편성 검색 조회
+		@RequestMapping("/searchLessonInfo")
+		public String searchLessonInfo (@RequestParam Map<String, Object>paramMap ,LessonInfoVO lessonInfoVO,Model model){
+		
+			model.addAttribute("schLesson",lessonService.searchLessonInfo(paramMap));
+		
+			return "redirect:/lesson/regLessonInfoPage";
+		}
 		
 		// 학급 편성 등록 시 교실장소, 수업시간 겹치지 않게 조회
 		@ResponseBody
