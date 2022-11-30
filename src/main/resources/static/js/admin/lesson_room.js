@@ -98,8 +98,7 @@ function lessonRoomDeleteAjax(){
 	
 	//체크한 체크박스가 없으면 뜨는 알림창
 	if(checkedChks.length == 0){
-		/* const modal = new bootstrap.Modal('#deleteModal');  // #myModal -> 모달창의 id를 가지고 오는 것이다.
-	     modal.show();*/
+		
 	     Swal.fire({
 		  title: '삭제할 교실을 선택하세요!',
 		  icon: 'warning',
@@ -108,7 +107,7 @@ function lessonRoomDeleteAjax(){
 		return ;
 	}
 	
-	// 
+	// 체크한 체크박스가 있으면 뜨는 알림창
 	else{
 		Swal.fire({
 		   title: '정말 삭제하시겠습니까?',
