@@ -19,8 +19,10 @@ function drawChart(){
 		data: {}, //필요한 데이터
 		success: function(result) {
 			
-			//분기별 과목 테스트 평균
+			//분기별 과목1 테스트 평균
 			drawChart1(result.quarterlySubTestAvg);
+			//분기별 과목2 테스트 평균
+			drawChart2(result.quarterlySubTestAvg);
 			
 		},
 		error: function() {
@@ -31,65 +33,77 @@ function drawChart(){
 	
 }
 
-//분기별 과목 테스트 평균 차트를 그림 
+//분기별 과목1 테스트 평균 차트를 그림
 function drawChart1(data) {
 
 	console.log(data);
 	
-	
-	let keys = Object.keys(data);
-	console.log("키값 나와라~!~!~!" + keys);
-	
-	
-	
-	let values =  Object.values(data);
-	console.log("밸류값 나와라~!~!~!" + values);
-	
 	//data가 배열로 넘어오니까 빈 배열 만들고 
-	chart_data_arr= [];
+	chart_data_arr = [];
 	
-	//category_arr 에는 테스트 일자들 담을거임!
+	//category_arr 에는 테스트 일자들 담기
 	chart_category_arr = [];
 	
+	//학년 별 데이터를 담을 빈 배열 만들고
+	subject_001_1year_arr = [];
+	subject_001_2year_arr = [];
+	subject_001_3year_arr = [];
 	
+	//학년별 데이터를 넣을 객체를 학년수 만큼 생성	
+	chart_data = new Object();
+	chart_data2 = new Object();
+	chart_data3 = new Object();
 	
-	for(const key of keys){
-		chart_data = new Object();
-		chart_data.name = data[key].subjectCode;
-		chart_data.data = data[key].scoreAvg;
-		//chart_data.data = data[key].testDate;
-		console.log("key 값 : "+key);
-		//console.log("data[key]나와라~!~!~!"+data[key]);
-		console.log("chart_data.name : "+chart_data.name);
-		console.log("chart_data.date : "+chart_data.data);
-		
-		chart_data_arr.push(chart_data);
-	}
-	
+	//타이틀에 변수로 들어갈 과목 이름
+	let subjectTitle = '';
 	
 	//클래스를 만들고 변수를 정해줌
 	//하나씩 반복문으로 돌려서 위에서 만들어준 빈배열에 넣기 
-	for(const value of values){
-		chart_data = new Object();
-		chart_data.name = value.subjectCode;
-		chart_data.data = value.scoreAvg;
+	for(const info of data){
 		
+		//1학년의 SUBJECT_001 데이터
+		if(info.subjectCode == 'SUBJECT_001' & info.studentYear == '1'){
+			
+			chart_data.name = info.studentYear + '학년' ;
+			// 1학년의 SUBJECT_001의 평균 점수 데이터 값을 배열에 넣기 
+			subject_001_1year_arr.push(info.scoreAvg);
+			
+			//테스트 일자를 category_arr 배열에 push
+			chart_category_arr.push(info.testDate);
+			//SUBJECT_001 의 subjectName 을 변수 subjectTitle에 넣기
+			subjectTitle = info.subjectName;
+			
+		}
+		else if(info.subjectCode == 'SUBJECT_001' & info.studentYear == '2'){
+			
+			chart_data2.name = info.studentYear + '학년';
+			subject_001_2year_arr.push(info.scoreAvg);
+		}
+		else if(info.subjectCode == 'SUBJECT_001' & info.studentYear == '3'){
+			
+			chart_data3.name = info.studentYear + '학년';
+			subject_001_3year_arr.push(info.scoreAvg);
+		}
 		
-		//console.log("testDate : "+value.testDate);
-
-		//chart_data_arr.push(chart_data);
-		//chart_category_arr.push(value.testDate);
-	
+		chart_data.data =subject_001_1year_arr;
+		chart_data2.data =subject_001_2year_arr;
+		chart_data3.data =subject_001_3year_arr;
 		
 	}
 	
-	//console.log("chart_data_arr 데이터 나와라" + chart_data_arr);
+	chart_data_arr.push(chart_data);
+	chart_data_arr.push(chart_data2);
+	chart_data_arr.push(chart_data3);
 	
-	//console.log(chart_category_arr);
+	
+	console.log("chart_data.data    밑에");
+	console.log(chart_data.data);
+	
 
+	console.log("chart_data_arr 값 아래 ");
+	console.log(chart_data_arr);
 	
-	
-	//console.log("chart_data_arr 나와라!!!!!!!!!"+chart_data_arr);
+	console.log(chart_category_arr);
 
 
 	var options = {
@@ -116,17 +130,30 @@ function drawChart1(data) {
 			},
 			toolbar: {
 				show: false
-			}
+			},
+					    animations: {
+        enabled: true,
+        easing: 'easeinout',
+        speed: 300,
+        animateGradually: {
+            enabled: true,
+            delay: 150
+        },
+        dynamicAnimation: {
+            enabled: true,
+            speed: 150
+        }
+    },
 		},
-		colors: ['#77B6EA', '#545454'],
+		colors: ['#3AB0FF', '#FABB51', '#F87474'],
 		dataLabels: {
 			enabled: true,
 		},
 		stroke: {
-			curve: 'smooth'
+			//curve: 'smooth'
 		},
 		title: {
-			text: 'Average High & Low Temperature',
+			text: '분기별 '+subjectTitle +' 테스트 평균',
 			align: 'left'
 		},
 		grid: {
@@ -142,15 +169,15 @@ function drawChart1(data) {
 		xaxis: {
 			categories:chart_category_arr /*['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul']*/,
 			title: {
-				text: 'Month'
+				text: 'Test Date'
 			}
 		},
 		yaxis: {
 			title: {
-				text: 'Temperature'
+				text: 'Score AVG'
 			},
-			min: 5,
-			max: 40
+			min: 0,
+			max: 100
 		},
 		legend: {
 			position: 'top',
@@ -161,7 +188,166 @@ function drawChart1(data) {
 		}
 	};
 
+
 	var chart = new ApexCharts(document.querySelector("#chart"), options);
 	chart.render();
 
+
+}
+
+
+
+//분기별 과목2 테스트 평균 차트를 그림  
+function drawChart2(data) {
+
+	console.log(data);
+	
+	
+	//data가 배열로 넘어오니까 빈 배열 만들고 
+	chart_data_arr = [];
+	
+	//category_arr 에는 테스트 일자들 담을거임!
+	chart_category_arr = [];
+	
+	//학년 별 데이터를 담을 빈 배열 만들고
+	subject_002_1year_arr = [];
+	subject_002_2year_arr = [];
+	subject_002_3year_arr = [];
+
+	//학년별 데이터를 넣을 객체를 학년수 만큼 생성	
+	chart_data = new Object();
+	chart_data2 = new Object();
+	chart_data3 = new Object();
+	
+	
+	//변수로 들어갈 과목 이름
+	let subjectTitle = '';
+	
+	//클래스를 만들고 변수를 정해줌
+	//하나씩 반복문으로 돌려서 위에서 만들어준 빈배열에 넣기 
+	for(const info of data){
+		
+		//1학년의 SUBJECT_002 데이터
+		if(info.subjectCode == 'SUBJECT_002' & info.studentYear == '1'){
+			
+			chart_data.name = info.studentYear + '학년' ;
+			// 1학년 SUBJECT_002의 평균 점수 데이터 값을 배열에 넣기 
+			subject_002_1year_arr.push(info.scoreAvg);
+			
+			//테스트 일자를 category_arr 배열에 push
+			chart_category_arr.push(info.testDate);
+			
+			//SUBJECT_002 의 subjectName 을 변수 subjectTitle에 넣기
+			subjectTitle = info.subjectName;
+			
+		}
+		else if(info.subjectCode == 'SUBJECT_002' & info.studentYear == '2'){
+			
+			chart_data2.name = info.studentYear + '학년';
+			subject_002_2year_arr.push(info.scoreAvg);
+		}
+		else if(info.subjectCode == 'SUBJECT_002' & info.studentYear == '3'){
+			
+			chart_data3.name = info.studentYear + '학년';
+			subject_002_3year_arr.push(info.scoreAvg);
+		}
+		
+		chart_data.data =subject_002_1year_arr;
+		chart_data2.data =subject_002_2year_arr;
+		chart_data3.data =subject_002_3year_arr;
+		
+	}
+	
+	chart_data_arr.push(chart_data);
+	chart_data_arr.push(chart_data2);
+	chart_data_arr.push(chart_data3);
+	
+	
+
+	var options = {
+		/*series: [
+			{
+				name: "High - 2013",
+				data: [28, 29, 33, 36, 32, 32, 33]
+			},
+			{
+				name: "Low - 2013",
+				data: [12, 11, 14, 18, 17, 13, 13]
+			}
+		]*/series:chart_data_arr,
+		chart: {
+			height: 350,
+			type: 'line',
+			dropShadow: {
+				enabled: true,
+				color: '#000',
+				top: 18,
+				left: 7,
+				blur: 10,
+				opacity: 0.2
+			},
+			toolbar: {
+				show: false
+			},
+					    animations: {
+        enabled: true,
+        easing: 'easeinout',
+        speed: 300,
+        animateGradually: {
+            enabled: true,
+            delay: 150
+        },
+        dynamicAnimation: {
+            enabled: true,
+            speed: 150
+        }
+    },
+		},
+		colors: ['#3AB0FF', '#FABB51', '#F87474'],
+		dataLabels: {
+			enabled: true,
+		},
+		stroke: {
+			//curve: 'smooth'
+		},
+		title: {
+			text: '분기별 '+subjectTitle +' 테스트 평균',
+			align: 'left'
+		},
+		grid: {
+			borderColor: '#e7e7e7',
+			row: {
+				colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+				opacity: 0.5
+			},
+		},
+		markers: {
+			size: 1
+		},
+		xaxis: {
+			categories:chart_category_arr /*['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul']*/,
+			title: {
+				text: 'Test Date'
+			}
+		},
+		yaxis: {
+			title: {
+				text: 'Score AVG'
+			},
+			min: 0,
+			max: 100
+		},
+		legend: {
+			position: 'top',
+			horizontalAlign: 'right',
+			floating: true,
+			offsetY: -25,
+			offsetX: -5
+		}
+	};
+
+	var chart1 = new ApexCharts(document.querySelector("#chart1"), options);
+	chart1.render();
+	
+	
 }

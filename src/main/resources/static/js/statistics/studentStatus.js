@@ -41,7 +41,8 @@ function drawChart(){
 //학년별 학생 수 차트를 그림
 function drawChart1(data){
 	
-
+	console.log(data);
+	
 	//data가 배열로 넘어오니까 빈 배열 만들고 
 	chart_data_arr = [];
 	
@@ -52,10 +53,12 @@ function drawChart1(data){
 		chart_data.x = grade.studentYear;
 		chart_data.y = grade.studentCnt;
 		chart_data_arr.push(chart_data);
-
+		
+		console.log(grade);
 	}
 	
 
+	console.log("chart_data_arr 값 아래 ");
 	console.log(chart_data_arr);
 
 	

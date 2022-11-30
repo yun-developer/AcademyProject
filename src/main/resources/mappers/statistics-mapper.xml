@@ -31,6 +31,7 @@
 		<resultMap type="kh.study.academy.statistics.vo.QuarterlySubTestAvg" 		id="quarterlySubTestAvg">
 			<id column="TEST_DATE"													property="testDate"/>
 			<result column="SUBJECT_CODE" 											property="subjectCode"/>
+			<result column="SUBJECT_NAME" 											property="subjectName"/>
 			<result column="SCORE_AVG" 												property="scoreAvg"/>
 			<result column="STUDENT_YEAR" 											property="studentYear"/>
 		</resultMap>
@@ -97,7 +98,7 @@
 	</select>
 	
 		
-	<!-- 통계(분기별 과목 테스트 평균 차트)를 위한 조회 -->
+	<!-- 분기별 과목 테스트 평균 차트를 위한 테스트 조회 -->
 	<select id="selectLessonScore" resultMap="testMapper.test">
 		SELECT TEST_CODE
 			, TO_CHAR(TEST_DATE,'YYYY-MM-DD') AS TEST_DATE
@@ -111,7 +112,6 @@
 	
 	<!-- 분기별 과목 테스트 평균 -->
 	<!-- (분기별(4개...) + 과목별(2개...) + 학년별(3개...) 점수)_의 평균 -->
-	<!-- 과목코드 + 테스트 날짜도 조회해야 할 듯 !  -->
  	<select id="selectQuarterlySubTestAvg" resultMap="quarterlySubTestAvg">
 		SELECT SUBJECT_CODE
 		    , (SELECT SUBJECT_NAME
@@ -123,6 +123,7 @@
 		FROM TEST T, STUDENT S
 		WHERE T.STUDENT_CODE = S.STUDENT_CODE
 		GROUP BY SUBJECT_CODE, STUDENT_YEAR, TEST_DATE
+		ORDER BY TEST_DATE
 	</select>
 	
 	
