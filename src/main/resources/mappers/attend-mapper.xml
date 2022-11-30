@@ -10,7 +10,7 @@
 		<result column="IS_ATTANDENCE" 									property="isAttandence" />
 		<result column="STUDENT_LESSON_CODE" 							property="studentLessonCode" />
 		
-		<!-- <association property="subjectVO" 						resultMap="adminMapper.subject"/> -->
+		<association property="studentLessonInfoVO" 						resultMap="studentMapper.studentLessonInfo"/>
 		
 	</resultMap>
 	
@@ -32,6 +32,18 @@
 		)
 	</insert> 
 	
+	<!-- 학생들의 출결 상태 확인 -->
+	<select id="selectAttendStu" resultMap="attend">
+		SELECT  S.STUDENT_CODE
+		    , A.STUDENT_LESSON_CODE
+		    , LESSON_INFO_CODE
+		    , IS_ATTANDENCE
+		    , TO_CHAR(LESSON_DATE, 'YYYY-MM-DD') AS LESSON_DATE 
+		FROM STUDENT S, STUDENT_LESSON_INFO SL, ATTENDANCE A
+		WHERE SL.STUDENT_LESSON_CODE = A.STUDENT_LESSON_CODE
+		AND SL.STUDENT_CODE = S.STUDENT_CODE
+		AND S.STUDENT_CODE = #{studentCode}
+	</select>
 	
 </mapper>
 

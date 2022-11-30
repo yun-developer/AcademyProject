@@ -1,5 +1,6 @@
 package kh.study.academy.attend.vo;
 
+import kh.study.academy.student.vo.StudentLessonInfoVO;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -13,5 +14,8 @@ public class AttendVO {
 	private String lessonDate;
 	private String isAttandence;
 	private String studentLessonCode;
+	
+	
+	private StudentLessonInfoVO studentLessonInfoVO;
 	
 }

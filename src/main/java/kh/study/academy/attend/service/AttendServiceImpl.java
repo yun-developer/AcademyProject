@@ -18,4 +18,10 @@ public class AttendServiceImpl implements AttendService{
 		sqlSession.insert("attendMapper.creatAttend", attendVO);
 	}
 	
+	//학생들의 출결 상태 확인
+	@Override
+	public AttendVO selectAttendStu(String studentCode) {
+		return sqlSession.selectOne("attendMapper.selectAttendStu", studentCode);
+	}
+	
 }
