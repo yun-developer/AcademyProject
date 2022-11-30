@@ -76,8 +76,9 @@ public class TeacherController {
 		imgVO.setStoredFileName("defaultProfile.jpg");
 	
 		teacherService.insertProfileImg(imgVO);
+		String isNew = "new";
 		
-		return "redirect:/lesson/main";
+		return "redirect:/lesson/main?isNew="+isNew;
 		
 	}
 	

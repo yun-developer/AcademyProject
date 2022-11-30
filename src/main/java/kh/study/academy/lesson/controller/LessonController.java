@@ -51,10 +51,15 @@ public class LessonController {
 	
 	//메인
 	@GetMapping("/main")
-	public String mainPage( Model model) {
+	public String mainPage( Model model,String isNew) {
 		model.addAttribute("noticeList", boardService.selectNoticeMain());
 		model.addAttribute("freeList", boardService.selectFreeMain());
 		System.out.println("mainPage컨트롤러 실행");
+		
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1"+ isNew);
+		if(isNew != null) {
+			model.addAttribute("isNew", isNew);
+		}
 		
 		return "content/lesson/lesson_main";
 	}

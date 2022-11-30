@@ -1,3 +1,23 @@
+//////////////////////////변수///////////////////////////////////////////////
+/*회원가입 진행여부*/
+const isNew = document.querySelector('#isNew');
+const modal = new bootstrap.Modal('#idDouble_Yes');
+
+if(isNew.value=='new'){
+	alert('신규 회원 가입')
+	modal.show();
+}
+
+
+
+
+
+
+
+
+
+
+//////////////////////////메인페이지에 차트//////////////////////////////////
 const ctx = document.getElementById('myChart').getContext('2d');
 const myChart = new Chart(ctx, {
     type: 'bar',
@@ -60,6 +80,12 @@ function potatoChat()
 }
 
 
+
+
+
+/////////////////////////이벤트///////////////////////////////////////////////////////
+
+//스크롤위로
 $(document).ready(function(){
 
     //Check to see if the window is top if not then display button
