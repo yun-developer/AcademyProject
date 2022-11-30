@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="attendMapper">
+
+
+	<resultMap type="kh.study.academy.attend.vo.AttendVO"			id="attend">
+		<id column="ATTENDANCE_CODE" 									property="attendanceCode" />
+		<result column="LESSON_DATE" 								property="lessonDate" />
+		<result column="IS_ATTANDENCE" 									property="isAttandence" />
+		<result column="STUDENT_LESSON_CODE" 							property="studentLessonCode" />
+		
+		<!-- <association property="subjectVO" 						resultMap="adminMapper.subject"/> -->
+		
+	</resultMap>
+	
+	<!-- 출결 코드 등록 -->
+ 	<insert id="creatAttend">
+		<selectKey resultType="String" keyProperty="attendanceCode" order="BEFORE">
+			SELECT 'ATTEND_'||LPAD(NVL(MAX(TO_NUMBER(SUBSTR(ATTENDANCE_CODE, 8))), 0) + 1, 3, 0) 
+			FROM ATTENDANCE
+		</selectKey>
+	
+		INSERT INTO ATTENDANCE(
+			ATTENDANCE_CODE
+			, LESSON_DATE
+			, STUDENT_LESSON_CODE
+		) VALUES (
+			#{attendanceCode}
+			, #{lessonDate}
+			, #{studentLessonCode}
+		)
+	</insert> 
+	
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
