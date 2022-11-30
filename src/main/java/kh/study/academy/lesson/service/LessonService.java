@@ -1,6 +1,7 @@
 package kh.study.academy.lesson.service;
 
 import java.util.List;
+import java.util.Map;
 
 import kh.study.academy.lesson.vo.LessonDayVO;
 import kh.study.academy.lesson.vo.LessonInfoVO;
@@ -33,6 +34,8 @@ public interface LessonService {
 	// 학급편성 등록한 것 삭제(체크박스)
 	void deleteLessonInfo(LessonInfoVO lessonInfoVO);
 	
+	// 학급편성 검색 조회
+	List<LessonInfoVO> searchLessonInfo(Map<String, Object>map);
 
 	
 	//학생등록시 nowStudent +1증가

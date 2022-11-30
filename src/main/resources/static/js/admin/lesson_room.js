@@ -156,23 +156,13 @@ function lessonRoomDeleteAjax(){
 				}
 			});
 			//삭제 완료 alert 끝
-			
-			
-	
-			
 
 			}
 		});
 	
 }
 
-	
-	
-	
-	
-	
-	
-	
+
 	
 }
 //const modal = new bootstrap.Modal('#bb');

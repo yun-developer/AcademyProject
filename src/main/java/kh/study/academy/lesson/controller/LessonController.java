@@ -9,6 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.RegEx;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kh.study.academy.admin.service.AdminService;
@@ -124,8 +126,8 @@ public class LessonController {
 	
 	
 		// 학급편성 등록 페이지 
-		@GetMapping("/regLessonInfoPage")
-		public String regLessonInfoPage(Model model, LessonRoomVO lessonRoomVO, String roomName, LessonInfoVO lessonInfoVO, String lessonDayCode) { 
+		@RequestMapping("/regLessonInfoPage")
+		public String regLessonInfoPage(@RequestParam Map<String, Object>paramMap ,LessonInfoVO lessonInfoVO,Model model, LessonRoomVO lessonRoomVO, String roomName,  String lessonDayCode) { 
 		
 		// 과목 리스트를 가져오는 쿼리 실행 문
 		model.addAttribute("subjectList", adminService.selectSubject());
@@ -143,25 +145,31 @@ public class LessonController {
 		//강의 요일 리스트를 가져오는 쿼리 실행 문
 		model.addAttribute("lessonDayList", lessonService.selectLessonDayList());
 		
-		// 학급 편성 등록
-		model.addAttribute("lessonInfoList",lessonService.selectLessonInfoList(lessonInfoVO));
+		// 학급편성 리스트 조회
+		model.addAttribute("lessonInfoList",lessonService.searchLessonInfo(paramMap));
 		
 		
 		if(lessonDayCode == null) {
 			lessonDayCode = "Mon";
 		}
+		
+		
 		model.addAttribute("useCheckList",lessonService.selectClassUseRepeated(lessonDayCode));
+		
+		model.addAttribute("paramMap", paramMap);
 		
 		return "content/lesson/reg_lessonInfo";
 		
 
 		}
+		// 학급 편성 검색 조회
+		@RequestMapping("/searchLessonInfo")
+		public String searchLessonInfo (@RequestParam Map<String, Object>paramMap ,LessonInfoVO lessonInfoVO,Model model){
 		
-		// 등록 된 학급 검색 조회
+			model.addAttribute("schLesson",lessonService.searchLessonInfo(paramMap));
 		
-		
-		
-		
+			return "redirect:/lesson/regLessonInfoPage";
+		}
 		
 		// 학급 편성 등록 시 교실장소, 수업시간 겹치지 않게 조회
 		@ResponseBody
@@ -177,7 +185,6 @@ public class LessonController {
 		@PostMapping("/doubleCheckLessonAjax")
 		public LessonInfoVO doubleCheckLessonAjax(LessonInfoVO lessonInfoVO) {
 			
-			System.out.println("!!!!!!!!!!!!!!!!!"+lessonInfoVO.getLessonTime());
 			
 			LessonInfoVO infoVO = lessonService.doubleCheckLesson(lessonInfoVO);
 			

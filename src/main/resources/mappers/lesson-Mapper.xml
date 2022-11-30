@@ -181,11 +181,21 @@
 	 
 	 
 	 <!-- 학급 검색 조회  -->
-	 <select id="searchLessonInfo">
+	 <select id="searchLessonInfo" resultMap="lessonInfo" parameterType="hashMap">
 	 
 	 SELECT LESSON_INFO_CODE
+			, TO_CHAR(LESSON_INFO_REGDATE,'YYYY-MM-DD')AS LESSON_INFO_REGDATE
+			, (SELECT SUBJECT_NAME
+				FROM SUBJECT
+				WHERE SUBJECT_CODE = L.SUBJECT_CODE) AS SUBJECT_NAME
+			, (SELECT STEP_NAME
+				FROM STEP
+				WHERE STEP_CODE = L.STEP_CODE) AS STEP_NAME
 			, YEAR
-			, DECODE(LESSON_DAY_CODE, 'Mon','월','Tue','화','Wed','수','Thu','목','Fri','금') AS LESSON_DAY_CODE
+			, NOW_STUDENT_CNT
+			, MAX_STUDENT
+			, MONEY
+			, LESSON_DAY_CODE
 			, LESSON_TIME 
 			, (SELECT ROOM_NAME
 				FROM LESSON_ROOM
@@ -193,6 +203,8 @@
 			, (SELECT TEACHER_NAME
 				FROM TEACHER
 				WHERE TEACHER_CODE = L.TEACHER_CODE) AS TEACHER_NAME
+			, MEMO
+			, LESSON_INFO_STATUS
 		FROM LESSON_INFO L 
 	 
 	 	WHERE 1 = 1 

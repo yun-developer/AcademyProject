@@ -1,6 +1,7 @@
 package kh.study.academy.lesson.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,12 @@ public class LessonServiceImpl implements LessonService{
 	}
 
 	
+	// 학급편성 검색 조회
+	@Override
+	public List<LessonInfoVO> searchLessonInfo(Map<String, Object> map) {
+		return sqlSession.selectList("lessonMapper.searchLessonInfo", map);
+	}
+	
 	
 	// 학급 편성 리스트 조회
 	@Override
@@ -69,6 +76,8 @@ public class LessonServiceImpl implements LessonService{
 		sqlSession.delete("lessonMapper.deleteLessonInfo", lessonInfoVO);
 	}
 
+	
+	
 	
 	/////////////<학생 편성>////////////////////////////////////////////////////
 	// 학생편성시 해당 LessonInfo에 nowStudent +1증가
@@ -97,10 +106,6 @@ public class LessonServiceImpl implements LessonService{
 		
 		return sqlSession.selectOne("lessonMapper.doubleCheckLesson", lessonInfoVO);
 	}
-
-
-
-
 
 
 

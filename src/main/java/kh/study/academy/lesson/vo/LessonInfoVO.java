@@ -1,6 +1,7 @@
 package kh.study.academy.lesson.vo;
 
 import java.util.List;
+import java.util.Map;
 
 import kh.study.academy.admin.vo.LessonRoomVO;
 import kh.study.academy.admin.vo.SubjectVO;
@@ -35,6 +36,8 @@ public class LessonInfoVO {
 	private String lessonInfoRegdate;
 	
 	private List<String> lessonInfoCodeList;
+	
+	
 	
 	// association 연결
 	private SubjectVO subjectVO;
