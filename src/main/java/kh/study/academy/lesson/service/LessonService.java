@@ -35,7 +35,7 @@ public interface LessonService {
 	void deleteLessonInfo(LessonInfoVO lessonInfoVO);
 	
 	// 학급편성 검색 조회
-	List<LessonInfoVO> searchLessonInfo(Map<String, Object>map);
+	List<LessonInfoVO> searchLessonInfo(Map<String, Object> map);
 
 	
 	//학생등록시 nowStudent +1증가

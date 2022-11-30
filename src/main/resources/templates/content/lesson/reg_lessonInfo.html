@@ -9,7 +9,7 @@
 <!-- 학년, 요일, 수업시간, 교실명, 교사명 -->
 
 	<!--여기부터 검색 div  -->
-	<form th:action="@{/lesson/searchLessonInfo}" method="post">
+	<form th:action="@{/lesson/regLessonInfoPage}" method="post">
 		<section >
 			<div class="info mt-3 mb-2">
 				<i class="fas fa-exclamation-circle color-blue2"></i> <b> 검색조건</b>
@@ -18,7 +18,7 @@
 				<div class="col-xs-12 col-lg-4">
 					<div class="input-group mb-2">
 						<span class="input-group-addon col-2">학년</span> 
-						<input type="text" class="form-control" id="" name="year" autocomplete="off" th:value="${paramMap['year']}"  >
+ 						<input type="text" class="form-control" id="" name="searchYear" autocomplete="off" th:value="${paramMap['searchYear']}"  > 
 					</div>
 				</div>
 				<div class="col-xs-12 col-lg-4">
@@ -191,7 +191,7 @@
 											<div class="col-6 col-lg-2 px-1"><span class="input-group-text h-100 rounded-0">학년</span></div>
 									
 												<div class="col-6 col-lg-5 px-">
-													<select class="form-select"   aria-label="Default select example" id="year" name="year" kor="과정구분" required>
+													<select class="form-select"   aria-label="Default select example"   kor="과정구분" required>
 														<option value="" >선택</option>
 
 															<option value="1">고등1</option>

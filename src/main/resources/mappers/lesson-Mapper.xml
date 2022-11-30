@@ -182,46 +182,62 @@
 	 
 	 <!-- 학급 검색 조회  -->
 	 <select id="searchLessonInfo" resultMap="lessonInfo" parameterType="hashMap">
-	 
-	 SELECT LESSON_INFO_CODE
-			, TO_CHAR(LESSON_INFO_REGDATE,'YYYY-MM-DD')AS LESSON_INFO_REGDATE
-			, (SELECT SUBJECT_NAME
-				FROM SUBJECT
-				WHERE SUBJECT_CODE = L.SUBJECT_CODE) AS SUBJECT_NAME
-			, (SELECT STEP_NAME
-				FROM STEP
-				WHERE STEP_CODE = L.STEP_CODE) AS STEP_NAME
-			, YEAR
-			, NOW_STUDENT_CNT
-			, MAX_STUDENT
-			, MONEY
-			, LESSON_DAY_CODE
-			, LESSON_TIME 
-			, (SELECT ROOM_NAME
-				FROM LESSON_ROOM
-				WHERE LESSON_ROOM_CODE = L.LESSON_ROOM_CODE) AS ROOM_NAME
-			, (SELECT TEACHER_NAME
-				FROM TEACHER
-				WHERE TEACHER_CODE = L.TEACHER_CODE) AS TEACHER_NAME
-			, MEMO
-			, LESSON_INFO_STATUS
-		FROM LESSON_INFO L 
-	 
-	 	WHERE 1 = 1 
-			<if test="year != null and year != 0">
-				AND L.YEAR = #{year}
-			</if>
-			<if test="lessonDayCode != null and !lessonDayCode.equals('')">
-				AND L.LESSON_INFO_CODE = #{lessonDayCode}
+		SELECT
+		   LESSON_INFO_CODE
+		   , LESSON_INFO_REGDATE 
+		   , SUBJECT_NAME
+		   , STEP_NAME
+		   , YEAR
+		   , NOW_STUDENT_CNT
+		   , MAX_STUDENT
+		   , MONEY
+		   , LESSON_DAY_CODE
+		   , LESSON_DAY_NAME
+		   , LESSON_TIME
+		   , ROOM_NAME
+		   , TEACHER_NAME
+		   , MEMO
+		   , LESSON_INFO_STATUS
+		   FROM(
+				 SELECT LESSON_INFO_CODE
+						, TO_CHAR(LESSON_INFO_REGDATE,'YYYY-MM-DD') AS LESSON_INFO_REGDATE
+						, (SELECT SUBJECT_NAME
+							FROM SUBJECT
+							WHERE SUBJECT_CODE = L.SUBJECT_CODE) AS SUBJECT_NAME
+						, (SELECT STEP_NAME
+							FROM STEP
+							WHERE STEP_CODE = L.STEP_CODE) AS STEP_NAME
+						, YEAR
+						, NOW_STUDENT_CNT
+						, MAX_STUDENT
+						, MONEY
+						, LESSON_DAY_CODE
+						, (SELECT LESSON_DAY_NAME FROM LESSON_DAY WHERE LESSON_DAY_CODE = L.LESSON_DAY_CODE) AS LESSON_DAY_NAME
+						, LESSON_TIME 
+						, (SELECT ROOM_NAME
+							FROM LESSON_ROOM
+							WHERE LESSON_ROOM_CODE = L.LESSON_ROOM_CODE) AS ROOM_NAME
+						, (SELECT TEACHER_NAME
+							FROM TEACHER
+							WHERE TEACHER_CODE = L.TEACHER_CODE) AS TEACHER_NAME
+						, MEMO
+						, LESSON_INFO_STATUS
+					FROM LESSON_INFO L )
+			WHERE 1 = 1 
+			 <if test="searchYear != null and searchYear != 0">
+				AND YEAR = #{searchYear}
+			</if> 
+			<if test="lessonDayName != null and !lessonDayName.equals('')">
+				AND LESSON_DAY_NAME LIKE ('%'||#{lessonDayName}||'%')
 			</if>
 			<if test="lessonTime != null and !lessonTime.equals('')">
-				AND L.LESSONTIME = #{lessonTime}
+				AND LESSON_TIME = #{lessonTime}
 			</if>
 			<if test="roomName != null and !roomName.equals('')">
-				AND L.ROOMNAME = #{roomName}
+				AND ROOM_NAME LIKE ('%'||#{roomName}||'%')
 			</if>
 			<if test="teacherName != null and !teacherName.equals('')">
-				AND TEACHER_NAME = #{teacherName}
+				AND TEACHER_NAME LIKE ('%'||#{teacherName}||'%')
 			</if>
 	  </select>
 	 
