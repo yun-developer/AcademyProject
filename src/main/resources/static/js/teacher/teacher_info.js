@@ -13,6 +13,7 @@
  	updateName = buttonValue;
  
  }
+ 
  function getPw(button){
 	
 	const buttonValue1 = button.value;
