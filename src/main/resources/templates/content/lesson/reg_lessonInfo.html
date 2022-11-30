@@ -3,10 +3,68 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layout/base_layout}">
 	
-	
 
 <div layout:fragment="content">
 
+<!-- 학년, 요일, 수업시간, 교실명, 교사명 -->
+
+	<!--여기부터 검색 div  -->
+	<form th:action="@{//teacherList}" method="post">
+		<section >
+			<div class="info mt-3 mb-2">
+				<i class="fas fa-exclamation-circle color-blue2"></i> <b> 검색조건</b>
+			</div>
+			<div class="row search-detail-form">
+				<div class="col-xs-12 col-lg-4">
+					<div class="input-group mb-2">
+						<span class="input-group-addon col-2">학년</span> 
+						<input type="text" class="form-control" id="year" name="year" autocomplete="off" value="${paramMap['year']}"  >
+					</div>
+				</div>
+				<div class="col-xs-12 col-lg-4">
+					<div class="input-group mb-2">
+						<span class="input-group-addon col-2">요일</span> 
+						<input type="text" class="form-control" id="lessonDayName" name="lessonDayName" autocomplete="off" value="${paramMap['lessonDayName']}" >
+					</div>
+				</div>
+				<div class="col-xs-12 col-lg-4">
+					<div class="input-group mb-2">
+						<span class="input-group-addon col-2">수업시간</span> 
+						<input type="text" class="form-control" id="lessonTime" name="lessonTime" autocomplete="off" value="${paramMap['lessonTime']}" >
+					</div>
+				</div>
+				<div class="col-xs-12 col-lg-4">
+					<div class="input-group mb-2">
+						<span class="input-group-addon col-2">교실명</span> 
+						<input type="text" class="form-control" id="roomName" name="roomName" autocomplete="off" value="${paramMap['roomName']}" >
+					</div>
+				</div>
+				<div class="col-xs-12 col-lg-4">
+					<div class="input-group mb-2">
+						<span class="input-group-addon col-2">교사명</span> 
+						<input type="text" class="form-control" id="teacherName" name="teacherName" autocomplete="off" value="${paramMap['teacherName']}" >
+					</div>
+				</div>
+				
+				<div class="col-xs-12 col-lg-4">
+					<div class="d-grid gap-2">
+						<div class="d-grid gap-2">
+							<button type="submit" name="btn-detail-search"
+								class="btn btn-outline-dark me-md-2">검색</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</form>
+
+
+
+
+
+
+
+<!--여기까지 검색 div  -->
 
 
 
@@ -19,21 +77,11 @@
 					<h6>학급 편성 등록</h6>
 				</div>
 				<div class="col-12 mb-3">
-					<form class="row g-3" th:action="@{/admin/selectLessonRoom}" method="post" id="saveLessonInfo">
-                  <div class="col-10">
-                     <input type="text" name="roomName" class="form-control" id="" placeholder="LessonRoomName">
-                  </div>
-                    <div class="col-2">
-                    	 <button type="submit" class="btn btn-primary" name="findClass">검색</button>
-                     
-                    </div>
-                    	<div class="row justify-content-" style="margin: 1rem">
+					<form class="row justify-content-end" th:action="@{/admin/selectLessonRoom}" method="post" id="saveLessonInfo">
 						  <div class="col-2"  style="margin-right:4.4rem;">
                        		 <button type="button" id="updateLessonRoomModal" class="btn btn-info fal fa-save"  th:onclick="goRegLessonInfoAjax([[${lessonDayCode}]]);">학급등록</button>
                   		  </div>
-                  		  
-                  		</div> 
-              	 </form>
+              	   </form>
 				</div>
 				
 				<div class="col-11">
@@ -74,7 +122,7 @@
                    		<td th:text="${status.count}"></td> 
                    		 <td th:text="${lessonInfo.lessonInfoRegdate}" ></td> 
                 		<td th:text="${lessonInfo.subjectVO.subjectName} + '-' + ${lessonInfo.stepVO.stepName}"></td> 
-                        <td th:text="${lessonInfo.Year}"></td> 
+                        <td th:text="${lessonInfo.year}"></td> 
                  		<td th:text="${#numbers.formatCurrency(lessonInfo.money)}"></td> 
                    		<td th:text="${lessonInfo.lessonDayCode}"></td> 
                     	<td th:text="${lessonInfo.lessonTime}"></td> 
@@ -112,7 +160,7 @@
 				  	  <!-- 모달 제목글 header -->
 	
 		    	     <div class="modal-header"> 
-				        <h5 class="modal-title" id="exampleModalLabel"> 학급 편성 등록 </h5>
+				        <h5 class="modal-title"  id="exampleModalLabel"> 학급 편성 등록 </h5>
 				          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				     </div>
 					
@@ -143,7 +191,7 @@
 											<div class="col-6 col-lg-2 px-1"><span class="input-group-text h-100 rounded-0">학년</span></div>
 									
 												<div class="col-6 col-lg-5 px-">
-													<select class="form-select"   aria-label="Default select example" id="Year" name="Year" kor="과정구분" required>
+													<select class="form-select"   aria-label="Default select example" id="year" name="year" kor="과정구분" required>
 														<option value="" >선택</option>
 
 															<option value="1">고등1</option>
@@ -236,7 +284,7 @@
 									
 									<div class="col-6 col-lg-2 px-1"><span class="input-group-text h-100 rounded-0">교사명</span></div>
 										<div class="col-6 col-lg-5 px-">
-											<select class="form-select"   aria-label="Default select example" id="lessonTime " name="teacherCode" kor="과정구분">
+											<select class="form-select"   aria-label="Default select example" id="teacherName " name="teacherCode" kor="과정구분">
 												 <th:block th:each="teacher, status : ${teacherList}">	
 										      		<option th:text="${teacher.teacherName}" th:value="${teacher.teacherCode}"></option>
 												

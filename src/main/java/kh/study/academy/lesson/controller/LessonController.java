@@ -157,6 +157,12 @@ public class LessonController {
 
 		}
 		
+		// 등록 된 학급 검색 조회
+		
+		
+		
+		
+		
 		// 학급 편성 등록 시 교실장소, 수업시간 겹치지 않게 조회
 		@ResponseBody
 		@PostMapping("/selectClassUseAjax")
@@ -181,7 +187,6 @@ public class LessonController {
 		
 		
 		
-		
 		// 학급 등록 버튼 모달창에서 데이터들을 저장
 		
 		@PostMapping("/saveLessonInfo")
@@ -195,15 +200,14 @@ public class LessonController {
 		return "redirect:/lesson/regLessonInfoPage";
 		}
 		
-		
-		
+
 		
 		// 학급 편성한 리스트들 삭제
 		@PostMapping("/deleteLessonInfo")
 		public String deleteLessonInfo(String lessonInfoCodes) {
 			String[] lessonCodeArr = lessonInfoCodes.split(",");
 			List<String> lessonCodeList = Arrays.asList(lessonCodeArr);
-			System.out.println("~~~~~~~~~~~"+lessonCodeList);
+			
 			LessonInfoVO lessonInfoVO = new LessonInfoVO();
 			lessonInfoVO.setLessonInfoCodeList(lessonCodeList);
 			
@@ -211,6 +215,10 @@ public class LessonController {
 			
 			return "redirect:/lesson/regLessonInfoPage";
 		}
+		
+		
+		
+		
 		
 	
 }

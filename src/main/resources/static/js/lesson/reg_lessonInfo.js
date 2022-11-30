@@ -3,6 +3,7 @@
 
 // 학급 편성 등록 시 교실장소, 수업시간 겹치지 않게 조회
 function selectUseCheck(){
+	
 	const lessonDayCode = document.querySelector('#lessonDayCode option:checked').value;
 	//  lessonDayCode(변수) = id가 lessonDayCode(selectBox id)인 option:checked -> Css문법처럼 그냥 써준다.
 	
@@ -16,7 +17,7 @@ function selectUseCheck(){
 			
 			//option을 다 지우는 문법
 			$('#lessonTime').empty();
-			
+			alert(11);
 			// option을 다시 그려준다.
 			str = ''
 			str += '<option value="">선택</option>'; 
@@ -257,18 +258,7 @@ function regLessonInfo(){
 	//ajax end
 	
 });	
-	
-		
-		
-		
 
-
-
-	
-
-
-	
-	
 	
 	
 	//---수강료를 숫자로 바꾼다.---
@@ -281,14 +271,7 @@ function regLessonInfo(){
 	
 	let maxStudent = document.querySelector('#maxStudent');
 	
-/*	alert(maxStudent);*/
-	
-	//입력한 정원과 의자수를 비교
-	//입력한 값이 의자수보다 크면 return ;
-	//if(){
-	//	return ;
-	//}
-	
+	alert(maxStudent);
 	
 	
 }

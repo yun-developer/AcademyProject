@@ -33,6 +33,8 @@ public interface LessonService {
 	// 학급편성 등록한 것 삭제(체크박스)
 	void deleteLessonInfo(LessonInfoVO lessonInfoVO);
 	
+
+	
 	//학생등록시 nowStudent +1증가
 	void updateNowStudent(String lessonInfoCode);
 	//학생이동시 nowStudent -1감소
@@ -43,4 +45,5 @@ public interface LessonService {
 	// 교실 사용 중복 여부 확인 조회 
 	LessonInfoVO doubleCheckLesson(LessonInfoVO lessonInfoVO);
 
+	
 }
