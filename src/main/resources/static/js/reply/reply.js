@@ -19,7 +19,7 @@ function replyNoRegAjax(){
 
 
 
-function updateReply(btn){
+function updateReply(replyNum,btn){
 
  	if(btn.value =='수정'){
 	 	const replyContentSpan = btn.closest('div').querySelector(".replyContent");  // ???
@@ -35,8 +35,12 @@ function updateReply(btn){
 	 	btn.value = '확인';
 	
 	}
+	
 	// 버튼이 확인 일 때
 	else{
+		document.querySelector('#replyNum').value=replyNum; 
+		document.querySelector('#boardNum').value; 
+		alert(document.querySelector('#boardNum').value);
 		document.querySelector('#updateReply').submit();
 	}
 

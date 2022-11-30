@@ -60,26 +60,39 @@ public class ReplyController {
 	}
 	
 
+
 	//자유게시판 댓글 삭제
 	@GetMapping("/freeDelete")
 	public String replyFreeDelete(String replyNum, int boardNum, RedirectAttributes redirect) {
 		replyService.deleteReply(replyNum);
-		
+
 		redirect.addAttribute("boardNum", boardNum);
 		return "redirect:/board/freeDetail";
 	}
 	
 	
+	
+	// 공지사항 댓글 수정
+	@PostMapping("/updateNoticeReply")
+	public String updateNoticeReply(String replyNum, ReplyVO replyVO) {
+	
+		replyService.updateReply(replyVO);
+		System.out.println("!!!!!!!!"+ replyVO.getBoardNum());
+		
+		return "redirect:/board/noticeDetail?boardNum="+replyVO.getBoardNum();
+	}
+	
+
+	
 	// 자유게시판 댓글 수정
 	@PostMapping("/updateReply")
 	public String updateReply(String replyNum, ReplyVO replyVO) {
-		
-		
-		replyService.deleteReply(replyNum);
-		
-		
+	
 		replyService.updateReply(replyVO);
-		return "";
+		System.out.println("!!!!!!!!"+ replyVO.getBoardNum());
+		
+		return "redirect:/board/freeDetail?boardNum="+replyVO.getBoardNum();
 	}
+
 	
 }

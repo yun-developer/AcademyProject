@@ -166,14 +166,14 @@
 													<div>
 														<h5>
 															<span class="replyContent">[[${reply.replyContent}]]</span>
-																<input type="hidden" name="replyNum" th:value="${reply.replyNum}">
+																<!-- <input type="hidden" id="${reply.replyNum}" name="replyNum" th:value=""> -->
 															<span class="right" th:if= "${reply.teacherId == #authentication.name or #strings.contains(#authentication.authorities, 'ROLE_ADMIN')}">
 																<button th:onclick="|location.href='@{/reply/freeDelete(replyNum=${reply.replyNum}, boardNum=${free.boardNum})}'|"  type="button" class="btn btn-danger btn-sm flex-end" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
 													  			<path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
 																</svg></button>
 															</span>
 															<span class="right" th:if= "${reply.teacherId == #authentication.name or #strings.contains(#authentication.authorities, 'ROLE_ADMIN')}">
-																<button onclick="updateReply(this);" type="button" id="updateReplyBtn" value="수정" class="btn btn-danger btn-sm flex-end" >수정
+																<button th:onclick="updateReply([[${reply.replyNum}]],this);" type="button" id="updateReplyBtn" value="수정" class="btn btn-danger btn-sm flex-end" >수정
 													  			<path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
 																</button>
 															</span>
@@ -186,6 +186,9 @@
 										</tr>
 									</tbody>
 								</table>
+							<input type="hidden" id="replyNum" name="replyNum" value="">
+							<input type="hidden" id="boardNum" name="boardNum" th:value="${free.boardNum}">
+								
 							  </form>
 							</div>
 						</div>

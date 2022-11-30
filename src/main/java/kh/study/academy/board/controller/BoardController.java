@@ -263,7 +263,7 @@ public class BoardController {
    //자유게시판 상세 읽기
    @GetMapping("/freeDetail")
    public String freeDetail(Model model, int boardNum, Authentication authentication, LikeTableVO likeTableVO) {
-	   System.out.println("!!!!!!!!!!!!!!!!!!!!!!!");
+	  
       model.addAttribute("free", boardService.selectBoardDetail(boardNum));
       model.addAttribute("replyList", replyService.selectReply(boardNum));
       
