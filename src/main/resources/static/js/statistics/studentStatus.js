@@ -26,8 +26,8 @@ function drawChart(){
 			drawChart1(result.studentCntPerGrade);
 			// ② 과목별 학생 수 차트를 그림
 			drawChart2(result.studentCntPerSubject);
-			// ③ 전체 학생수 차트를 그림
-			drawChart3();
+			// ③ dd 학생수 차트를 그림
+			drawChart3(result.newStudentCntByMonth);
 		},
 		error: function() {
 			alert('실패');
@@ -41,7 +41,7 @@ function drawChart(){
 //학년별 학생 수 차트를 그림
 function drawChart1(data){
 	
-	console.log(data);
+	//console.log(data);
 	
 	//data가 배열로 넘어오니까 빈 배열 만들고 
 	chart_data_arr = [];
@@ -54,12 +54,12 @@ function drawChart1(data){
 		chart_data.y = grade.studentCnt;
 		chart_data_arr.push(chart_data);
 		
-		console.log(grade);
+	//	console.log(grade);
 	}
 	
 
-	console.log("chart_data_arr 값 아래 ");
-	console.log(chart_data_arr);
+	//console.log("chart_data_arr 값 아래 ");
+	//console.log(chart_data_arr);
 
 	
 	options = {
@@ -116,7 +116,7 @@ function drawChart2(data){
 	}
 	
 
-	console.log(chart_data_arr);
+	//console.log(chart_data_arr);
 	
 	
 	
@@ -170,10 +170,43 @@ function drawChart2(data){
 
 
 /*차트 ③ -------------------------------------------------------------------------------------------------*/
-//전체 학생수 차트를 그림
+// ㅇㅇ 학생수 차트를 그림
 function drawChart3(data){
+	
+	
+	
+	console.log(data);
+	
+
+	
+	//data가 배열로 넘어오니까 빈 배열 만들고 
+	chart_data_arr = [];
+	chart_category_arr = [];
+	//
+	studentCnt_arr = [];
+	//클래스를 만들고 변수를 정해줌
+	//하나씩 반복문으로 돌려서 위에서 만들어준 빈배열에 넣기 
+	
+	chart_data = new Object();
+	
+	for(const info of data){
+		chart_data.name = '수정중';
+		chart_data.data = studentCnt_arr;
+		console.log("로퍼ㅡㅠㅓ"+info.studentCnt);
+		
+		console.log(chart_data.data);
+		
+		studentCnt_arr.push(info.studentCnt);
+		chart_data_arr.push(chart_data);
+		chart_category_arr.push(info.mm+'월');
+	}
+	
+
+	
+	
 	    var options = {
-          series: [{
+		series:chart_data_arr
+          /*series: [{
           name: 'Income',
           type: 'column',
           data: [1.4, 2, 2.5, 1.5, 2.5, 2.8, 3.8, 4.6]
@@ -185,7 +218,7 @@ function drawChart3(data){
           name: 'Revenue',
           type: 'line',
           data: [20, 29, 37, 36, 44, 45, 50, 58]
-        }],
+        }]*/,
           chart: {
           height: 350,
           type: 'line',
@@ -198,12 +231,13 @@ function drawChart3(data){
           width: [1, 1, 4]
         },
         title: {
-          text: 'XYZ - Stock Analysis (2009 - 2016)',
+          text: '월별 신규 학생 수',
           align: 'left',
           offsetX: 110
         },
         xaxis: {
-          categories: [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022],
+		 categories: chart_category_arr
+         /* categories: [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022]*/,
         },
         yaxis: [
           {

@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kh.study.academy.statistics.vo.NewStudentCntByMonth;
 import kh.study.academy.statistics.vo.QuarterlySubTestAvg;
 import kh.study.academy.statistics.vo.StudentCntPerGrade;
 import kh.study.academy.statistics.vo.StudentCntPerSubject;
@@ -36,7 +37,12 @@ public class StatisticsServiceImpl implements StatisticsService {
 			return sqlSession.selectList("statisticsMapper.selectNumByStuSubject", subjectCode);
 		}
 		
-		// ⓒ 전체 학생 수
+		// ⓒ dd 학생 수
+		@Override
+		public List<NewStudentCntByMonth> selectNewStuCntByMonth() {
+			
+			return sqlSession.selectList("statisticsMapper.selectNewStuCntByMonth");
+		}
 
 	/* ② 평가관리 분석 통계------------------------------------------------------------------------------------ */
 		
@@ -66,6 +72,8 @@ public class StatisticsServiceImpl implements StatisticsService {
 		public int selectStudentCntByTeacher(String teacherCode) {
 			return sqlSession.selectOne("statisticsMapper.selectStudentCntByTeacher", teacherCode);
 		}
+
+	
 
 	
 }

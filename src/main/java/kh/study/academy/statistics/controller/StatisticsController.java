@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import kh.study.academy.admin.service.AdminService;
 import kh.study.academy.admin.vo.SubjectVO;
 import kh.study.academy.statistics.service.StatisticsService;
+import kh.study.academy.statistics.vo.NewStudentCntByMonth;
 import kh.study.academy.statistics.vo.QuarterlySubTestAvg;
 import kh.study.academy.statistics.vo.StudentCntPerGrade;
 import kh.study.academy.statistics.vo.StudentCntPerSubject;
@@ -79,7 +80,14 @@ public class StatisticsController {
 
 		// ② map 과목별 학생 수
 		paramMap.put("studentCntPerSubject", chart2_data);
+		
+		/*------------------------------------*/
 
+
+		
+		// ③ map 신규 학생 수
+		paramMap.put("newStudentCntByMonth", statisticsService.selectNewStuCntByMonth());
+		
 		return paramMap;
 	}
 

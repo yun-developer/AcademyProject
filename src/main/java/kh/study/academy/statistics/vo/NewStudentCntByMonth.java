@@ -7,8 +7,9 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class StudentTotalCntByMonth {
-	private String studentYear;
+public class NewStudentCntByMonth {
 	private int studentCnt;
-	private String month;
+	
+	//월
+	private String mm;
 }

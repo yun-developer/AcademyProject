@@ -3,6 +3,7 @@ package kh.study.academy.statistics.service;
 import java.util.List;
 import java.util.Map;
 
+import kh.study.academy.statistics.vo.NewStudentCntByMonth;
 import kh.study.academy.statistics.vo.QuarterlySubTestAvg;
 import kh.study.academy.statistics.vo.StudentCntPerGrade;
 import kh.study.academy.statistics.vo.StudentCntPerSubject;
@@ -20,8 +21,8 @@ public interface StatisticsService {
 		// ⓑ 과목별 학생 수  
 		List<Integer> selectNumByStuSubject(String subjectCode);
 		
-		// ⓒ 전체 학생 수 
-		
+		// ⓒ ㅇㅇ 학생 수 
+		List<NewStudentCntByMonth> selectNewStuCntByMonth();
 	
 	/* ② 평가관리 분석 통계------------------------------------------------------------------------------------ */
 		

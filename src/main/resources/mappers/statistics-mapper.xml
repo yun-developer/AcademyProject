@@ -18,11 +18,10 @@
 			<result column="SUBJECT_NAME" 											property="subjectName"/>
 		</resultMap>
 		
-		<!-- ⓒ 전체 학생 수  -->
-		<resultMap type="kh.study.academy.statistics.vo.StudentTotalCntByMonth" 	id="studentTotalCntByMonth">
-			<id column="STUDENT_YEAR"												property="studentYear"/>
+		<!-- ⓒ tddd 학생 수  -->
+		<resultMap type="kh.study.academy.statistics.vo.NewStudentCntByMonth" 	id="newStudentCntByMonth">
 			<result column="STUDENT_CNT" 											property="studentCnt"/>
-			<result column="MONTH" 													property="month"/>
+			<result column="MM" 													property="mm"/>
 		</resultMap>
 		
 	<!-- ② 평가관리 분석 통계ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ-->
@@ -90,10 +89,16 @@
 	
 	
 	<!-- 월별전체 학생 수 조회  -->
-	<select id="selectStuTotalCntByMonth" resultMap="studentTotalCntByMonth">
+	<!-- 월별 신규 학생 수 로 변경? -->
+	<select id="selectNewStuCntByMonth" resultMap="newStudentCntByMonth">
 	
-	
-	
+		SELECT COUNT(STU.STUDENT_CODE) AS STUDENT_CNT
+		    , TO_CHAR(REG_DATE, 'MM') AS MM
+		FROM STUDENT_LESSON_INFO SLI, LESSON_INFO LI, STUDENT STU
+		WHERE SLI.LESSON_INFO_CODE = LI.LESSON_INFO_CODE
+		AND STU.STUDENT_CODE = SLI.STUDENT_CODE
+		GROUP BY TO_CHAR(REG_DATE, 'MM')
+		ORDER BY MM
 	
 	</select>
 	
