@@ -206,11 +206,12 @@
 
 <!-- 학생 삭제 (status 'N' 변경) -->	
 <update id="deleteStu">
-	DELETE STUDENT 
+	UPDATE STUDENT 
 	SET STUDENT_STATUS = 'N'   
 	WHERE STUDENT_CODE = #{studentCode}
 </update>
-	
+
+
 
 <!-- 학생 수정 -->
 <update id="updateStu">

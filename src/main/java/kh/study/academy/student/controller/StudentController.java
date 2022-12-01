@@ -110,8 +110,8 @@ public class StudentController {
 	
 	//상세페이지에서 학생 삭제
 	@PostMapping("/deleteStu")
-	public String deleteStu(String studentCode) {
-		studentService.deleteStu(studentCode);
+	public String deleteStu(String studentCode, String beforeLessonInfoCode) {
+		studentService.deleteStu(studentCode, beforeLessonInfoCode);
 		
 		return "redirect:/stu/list";
 	}

@@ -41,14 +41,16 @@ public class StudentServiceImpl implements StudentService{
 	//학생 선택 삭제
 	@Override
 	public void deleteCheckedStu(StudentVO studentVO) {
-		sqlSession.delete("studentMapper.deleteCheckedStu", studentVO);
+		sqlSession.update("studentMapper.deleteCheckedStu", studentVO);
 	}
 
 	
 	//학생 삭제
+	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public void deleteStu(String studentCode) {
-		sqlSession.delete("studentMapper.deleteStu", studentCode);
+	public void deleteStu(String studentCode, String beforeLessonInfoCode) {
+		sqlSession.update("studentMapper.deleteStu", studentCode);
+		sqlSession.update("lessonMapper.updateBeforeNowStudent", beforeLessonInfoCode);
 	}
 
 	

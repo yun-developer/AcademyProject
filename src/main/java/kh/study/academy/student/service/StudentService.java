@@ -20,9 +20,9 @@ public interface StudentService {
 	void stuUpdateIsPay(PaymentVO paymentVO);
 	void stuUpdateIsPayNone();
 	
-	
+	//학생 삭제 시 nowStudent -1 시키기
 	void deleteCheckedStu(StudentVO studentVO);
-	void deleteStu(String studentCode);
+	void deleteStu(String studentCode, String beforeLessonInfoCode);
 	
 	StudentVO selectStuDetail(String studentCode);
 	StudentVO selectStuDetailForUpdate(String studentCode);
