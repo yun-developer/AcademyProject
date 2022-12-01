@@ -117,9 +117,10 @@ public class LessonController {
 	//학급별 출석체크
 	@ResponseBody
 	@PostMapping("/updateIsAttandenceAjax")
-	public void updateIsAttandenceAjax(@RequestParam(value="stuCodeList[]") List<String> stuCodeList, @RequestParam(value="isAttendList[]") List<String> isAttendList) {
+	public void updateIsAttandenceAjax(@RequestParam(value="stuCodeList[]") List<String> stuCodeList, @RequestParam(value="isAttendList[]") List<String> isAttendList, String lessonDate) {
 		
 		AttendVO attendVO = new AttendVO();
+		attendVO.setLessonDate(lessonDate);
 		for(int i = 0; i<stuCodeList.size(); i++) {
 			System.out.println("학생코드" + stuCodeList.get(i) +"출결상태"+ isAttendList.get(i));
 			
@@ -136,9 +137,11 @@ public class LessonController {
 	//학급별 학생 목록 조회
 	@ResponseBody
 	@PostMapping("/stuListByLessonAjax")
-	public List<StudentVO> stuListByLessonAjax(String lessonInfoCode, Model model) {
+	public List<StudentVO> stuListByLessonAjax(LessonInfoVO LessonInfoVO,String lessonInfoCode, String eachDate) {
 		
+		//System.out.println("선택한 수업 날짜 : " + LessonInfoVO);
 		return studentService.stuListByLesson(lessonInfoCode);
+		// 매개변수 LessonInfoVOfh 수정하기
 	}
 	
 	@GetMapping("/subject")

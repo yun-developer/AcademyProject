@@ -48,11 +48,12 @@
 	
 	<!-- 출석 상태 변경 -->
 	<update id="updateIsAttandence">
-	UPDATE ATTENDANCE
-	SET IS_ATTANDENCE = #{isAttandence}
-	WHERE STUDENT_LESSON_CODE = (SELECT STUDENT_LESSON_CODE 
-									FROM STUDENT_LESSON_INFO 
-									WHERE STUDENT_CODE = #{studentCode})
+		UPDATE ATTENDANCE
+		SET IS_ATTANDENCE = #{isAttandence}
+		WHERE STUDENT_LESSON_CODE = (SELECT STUDENT_LESSON_CODE 
+										FROM STUDENT_LESSON_INFO 
+										WHERE STUDENT_CODE = #{studentCode})
+		AND LESSON_DATE = #{lessonDate}
 	</update>
 	
 </mapper>

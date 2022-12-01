@@ -30,7 +30,6 @@
 		<result column="STUDENT_CODE" 									property="studentCode"/>
 		
 		<association property="lessonInfoVO" resultMap="lessonMapper.lessonInfo"/>
-	<!-- 	<association property="studentVO" resultMap="student"/> -->
 	</resultMap>
 	
 	
@@ -317,7 +316,15 @@
 	SELECT STUDENT_NAME
 		, S.STUDENT_CODE
 	    , SL.STUDENT_LESSON_CODE
-	    , L.LESSON_INFO_CODE 
+	    , L.LESSON_INFO_CODE
+	    , (SELECT TEACHER_NAME FROM TEACHER T WHERE T.TEACHER_CODE = L.TEACHER_CODE) AS TEACHER_NAME
+        , (SELECT SUBJECT_NAME
+					FROM SUBJECT
+					WHERE SUBJECT_CODE = L.SUBJECT_CODE) AS SUBJECT_NAME
+	    , (SELECT STEP_NAME
+					FROM STEP
+					WHERE STEP_CODE = L.STEP_CODE) AS STEP_NAME
+        , YEAR 
 	FROM STUDENT S, LESSON_INFO L, STUDENT_LESSON_INFO SL
 	WHERE SL.STUDENT_CODE = S.STUDENT_CODE
 	AND SL.LESSON_INFO_CODE = L.LESSON_INFO_CODE

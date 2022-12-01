@@ -1,5 +1,6 @@
 package kh.study.academy.student.vo;
 
+import kh.study.academy.attend.vo.AttendVO;
 import kh.study.academy.lesson.vo.LessonInfoVO;
 import lombok.Data;
 
@@ -14,7 +15,6 @@ public class StudentLessonInfoVO {
 	
 	
 	private LessonInfoVO lessonInfoVO;
-	/* private StudentVO studentVO; */
 	
 	private String paymentCode;
 }

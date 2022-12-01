@@ -34,6 +34,7 @@ public class LessonInfoVO {
 	private String memo;
 	private String lessonInfoStatus;
 	private String lessonInfoRegdate;
+	private String eachDate;
 	
 	private List<String> lessonInfoCodeList;
 	

@@ -4,19 +4,28 @@ const modal = new bootstrap.Modal('#exampleModal');
 const modalContent = document.querySelector('#modalContent');
 const modalTableContent = document.querySelector('#modalTableContent');
 
+//담당강사
+const teacherDiv = document.querySelector('#teacher');
+//학급명
+const lessonNameDiv = document.querySelector('#lessonName');
+const attendDateDiv = document.querySelector('#attendDate');
+
 
 //데이터 받아오기
 putlessonInfo();
 
 
 //모달 내용그리기
-function getModal(lessonCode){
+function getModal(lessonCode, lessonDate){
+	let date1 = new Date(lessonDate); 
 	
+	date1.setMonth(date1.getMonth()+1)
+	let eachDate = date1.getFullYear() +''+ date1.getMonth() +''+ date1.getDate();
 	//ajax start
 	$.ajax({
 		url: '/lesson/stuListByLessonAjax', //요청경로
 		type: 'post',
-		data: {"lessonInfoCode": lessonCode}, //필요한 데이터
+		data: {"lessonInfoCode": lessonCode, 'eachDate':eachDate}, //필요한 데이터
 		success: function(result) {
 			let str1 ='';
 			
@@ -45,10 +54,19 @@ function getModal(lessonCode){
 					
 				
 				}
+				//담당 강사
+				teacherDiv.innerText = result[0].studentLessonInfoList[0].lessonInfoVO.teacherVO.teacherName;
+				lessonNameDiv.innerText = '[ ' 
+											+ result[0].studentLessonInfoList[0].lessonInfoVO.subjectVO.subjectName
+											+ '-'
+											+ result[0].studentLessonInfoList[0].lessonInfoVO.stepVO.stepName
+											+ '-'
+											+ result[0].studentLessonInfoList[0].lessonInfoVO.year 
+											+ ' ]';
+				attendDateDiv.innerText = eachDate;
+
 				
 				modalTableContent.innerHTML = str1;
-				
-				
 				modal.show();
 				
 			}
@@ -132,7 +150,7 @@ function drawCalendar(result){
                	calendar_data_arr,
                	eventClick: function (info) {
 			    //alert('Event: ' + info.event.id);
-			    getModal(info.event.id);
+			    getModal(info.event.id, info.event.start);
 			  }
                     
                 
@@ -220,6 +238,8 @@ function drawCalendar(result){
 
 //출결 저장 버튼
 function changeAttend(){
+	
+	let lessonDate = attendDateDiv.innerText;
 	var stuCode = [];
 	var isAttend = [];
 	/*선택한 체트박스의 아이디값을 들고간다. studentCode라는 이름으로
@@ -246,7 +266,7 @@ function changeAttend(){
 		url: '/lesson/updateIsAttandenceAjax', //요청경로
 		type: 'post',
 		/*dataType:'json',*/
-		data: {stuCodeList:stuCode, isAttendList:isAttend}, //필요한 데이터
+		data: {stuCodeList:stuCode, isAttendList:isAttend, lessonDate:lessonDate}, //필요한 데이터
 		success: function() {
 			
 			Swal.fire({
