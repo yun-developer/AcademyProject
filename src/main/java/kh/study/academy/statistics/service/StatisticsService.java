@@ -21,7 +21,7 @@ public interface StatisticsService {
 		// ⓑ 과목별 학생 수  
 		List<Integer> selectNumByStuSubject(String subjectCode);
 		
-		// ⓒ ㅇㅇ 학생 수 
+		// ⓒ 월별 신규 학생 수 
 		List<NewStudentCntByMonth> selectNewStuCntByMonth();
 	
 	/* ② 평가관리 분석 통계------------------------------------------------------------------------------------ */

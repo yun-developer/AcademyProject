@@ -18,7 +18,7 @@
 			<result column="SUBJECT_NAME" 											property="subjectName"/>
 		</resultMap>
 		
-		<!-- ⓒ tddd 학생 수  -->
+		<!-- ⓒ 월별 신규 학생 수  -->
 		<resultMap type="kh.study.academy.statistics.vo.NewStudentCntByMonth" 	id="newStudentCntByMonth">
 			<result column="STUDENT_CNT" 											property="studentCnt"/>
 			<result column="MM" 													property="mm"/>
@@ -55,6 +55,7 @@
 		SELECT STUDENT_YEAR||'학년' AS STUDENT_YEAR
 			,COUNT(STUDENT_CODE) AS STUDENT_CNT
 		FROM STUDENT
+		WHERE STUDENT_STATUS = 'Y'
         GROUP BY STUDENT_YEAR
 	
 	</select>
@@ -67,6 +68,7 @@
 		 SELECT COUNT(STU.STUDENT_CODE)
 	        FROM STUDENT_LESSON_INFO SLI, LESSON_INFO LI, STUDENT STU
 	        WHERE SLI.LESSON_INFO_CODE = LI.LESSON_INFO_CODE
+	        AND STUDENT_STATUS = 'Y'
 	        AND STU.STUDENT_CODE = SLI.STUDENT_CODE
 	        AND SUBJECT_CODE = #{subjectCode}
 	        AND STUDENT_YEAR = 1
@@ -74,6 +76,7 @@
 	     SELECT COUNT(STU.STUDENT_CODE)
 	        FROM STUDENT_LESSON_INFO SLI, LESSON_INFO LI, STUDENT STU
 	        WHERE SLI.LESSON_INFO_CODE = LI.LESSON_INFO_CODE
+	        AND STUDENT_STATUS = 'Y'
 	        AND STU.STUDENT_CODE = SLI.STUDENT_CODE
 	        AND SUBJECT_CODE = #{subjectCode}
 	        AND STUDENT_YEAR = 2
@@ -81,6 +84,7 @@
 	     SELECT COUNT(STU.STUDENT_CODE)
 	        FROM STUDENT_LESSON_INFO SLI, LESSON_INFO LI, STUDENT STU
 	        WHERE SLI.LESSON_INFO_CODE = LI.LESSON_INFO_CODE
+	        AND STUDENT_STATUS = 'Y'
 	        AND STU.STUDENT_CODE = SLI.STUDENT_CODE
 	        AND SUBJECT_CODE = #{subjectCode}
 	        AND STUDENT_YEAR = 3
@@ -88,8 +92,7 @@
 	</select>
 	
 	
-	<!-- 월별전체 학생 수 조회  -->
-	<!-- 월별 신규 학생 수 로 변경? -->
+	<!-- 월별 신규 학생 수 조회-->
 	<select id="selectNewStuCntByMonth" resultMap="newStudentCntByMonth">
 	
 		SELECT COUNT(STU.STUDENT_CODE) AS STUDENT_CNT

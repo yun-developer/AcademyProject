@@ -37,7 +37,7 @@ public class StatisticsServiceImpl implements StatisticsService {
 			return sqlSession.selectList("statisticsMapper.selectNumByStuSubject", subjectCode);
 		}
 		
-		// ⓒ dd 학생 수
+		// ⓒ 월별 신규 학생 수
 		@Override
 		public List<NewStudentCntByMonth> selectNewStuCntByMonth() {
 			
