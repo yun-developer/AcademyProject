@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import kh.study.academy.admin.service.AdminService;
 import kh.study.academy.admin.vo.LessonRoomVO;
 import kh.study.academy.attend.service.AttendService;
+import kh.study.academy.attend.vo.AttendVO;
 import kh.study.academy.board.service.BoardService;
 import kh.study.academy.config.DateUtil;
 import kh.study.academy.lesson.service.LessonService;
@@ -113,6 +114,24 @@ public class LessonController {
 		
 		return lessonListForCalender;
 	}
+	//학급별 출석체크
+	@ResponseBody
+	@PostMapping("/updateIsAttandenceAjax")
+	public void updateIsAttandenceAjax(@RequestParam(value="stuCodeList[]") List<String> stuCodeList, @RequestParam(value="isAttendList[]") List<String> isAttendList) {
+		
+		AttendVO attendVO = new AttendVO();
+		for(int i = 0; i<stuCodeList.size(); i++) {
+			System.out.println("학생코드" + stuCodeList.get(i) +"출결상태"+ isAttendList.get(i));
+			
+			attendVO.setStudentCode(stuCodeList.get(i));
+			attendVO.setIsAttandence(isAttendList.get(i));
+			attendService.updateIsAttandence(attendVO);
+		}
+		
+		
+	}
+	
+	
 	
 	//학급별 학생 목록 조회
 	@ResponseBody

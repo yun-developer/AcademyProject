@@ -9,7 +9,7 @@ const modalTableContent = document.querySelector('#modalTableContent');
 putlessonInfo();
 
 
-//모달 그리기
+//모달 내용그리기
 function getModal(lessonCode){
 	
 	//ajax start
@@ -66,7 +66,7 @@ function getModal(lessonCode){
 
 
 
-
+//오자마자 실행되는 함수
 function putlessonInfo(){
 	
 	//ajax start
@@ -86,6 +86,7 @@ function putlessonInfo(){
 	
 }
 
+//캘린터 그리기
 function drawCalendar(result){ 
 	
 		//data가 배열로 넘어오니까 빈 배열 만들고 
@@ -219,7 +220,8 @@ function drawCalendar(result){
 
 //출결 저장 버튼
 function changeAttend(){
-	
+	var stuCode = [];
+	var isAttend = [];
 	/*선택한 체트박스의 아이디값을 들고간다. studentCode라는 이름으로
 	그래서 UPDATE AJAx 실행*/
 	//체크가 된 체크박스들 가져오기
@@ -228,14 +230,37 @@ function changeAttend(){
 	
 	for(const checkedBox of checkedBoxes){
 		
-		alert(checkedBox.id);
+		stuCode.push(checkedBox.id);
+		isAttend.push(checkedBox.value);
 	}
 	for(const checkedNoBox of checkedNoBoxes){
 		
-		alert(checkedNoBox.id);
+		stuCode.push(checkedNoBox.id);
+		isAttend.push(checkedNoBox.value);
 	}
+	//alert("학생코드들" +stuCode)
+	//alert("출석상태"+isAttend)
 	
-	
+	//ajax start
+	$.ajax({
+		url: '/lesson/updateIsAttandenceAjax', //요청경로
+		type: 'post',
+		/*dataType:'json',*/
+		data: {stuCodeList:stuCode, isAttendList:isAttend}, //필요한 데이터
+		success: function() {
+			
+			Swal.fire({
+		  		title: '출결상태가 등록되었습니다.',
+		  		icon: 'info',
+		 		 confirmButtonText: '확인'
+				})
+			
+		},
+		error: function() {
+			alert('실패');
+		}
+	});
+	//ajax end
 	
 }
 
@@ -302,7 +327,7 @@ for(const chk of chks){
 		const checkedCnt = document.querySelectorAll('.chk:checked').length;
 		
 		//수가 같으면 제목 체크박스도 체크
-		if(cnt ==checkedCnt ){
+		if(cnt == checkedCnt ){
 			document.querySelector('#checkAll').checked = true;
 		}
 		//수가 다르면 제목 체크박스도 해체
