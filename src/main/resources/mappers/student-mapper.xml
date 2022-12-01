@@ -193,21 +193,23 @@
 	
 	
 
-<!-- 학생 선택 삭제 -->	
-<delete id="deleteCheckedStu">
-	DELETE STUDENT    
+<!-- 학생 선택 삭제 (status 'N' 변경) -->	
+<update id="deleteCheckedStu">
+	UPDATE STUDENT    
+	SET STUDENT_STATUS = 'N'
 	WHERE STUDENT_CODE IN 
 	<foreach collection="studentCodeList" item="studentCode" separator="," open="(" close=")">
 		#{studentCode}
 	</foreach>
-</delete>
+</update>
 	
 
-<!-- 학생 삭제 -->	
-<delete id="deleteStu">
-	DELETE STUDENT    
+<!-- 학생 삭제 (status 'N' 변경) -->	
+<update id="deleteStu">
+	DELETE STUDENT 
+	SET STUDENT_STATUS = 'N'   
 	WHERE STUDENT_CODE = #{studentCode}
-</delete>
+</update>
 	
 
 <!-- 학생 수정 -->
