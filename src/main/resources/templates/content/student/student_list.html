@@ -44,7 +44,7 @@
 									</th:block>
 									<th:block th:unless="${lesson.lessonInfoVO==null}">
 										[	[[${lesson.lessonInfoVO.subjectVO.subjectName}]]-[[${lesson.lessonInfoVO.stepVO.stepName}]]-[[${lesson.lessonInfoVO.year}]] ]
-										<input type="hidden" th:value="${lesson.lessonInfoVO.lessonInfoCode}">
+										<input type="hidden" id="lessonInfoCode" th:value="${lesson.lessonInfoVO.lessonInfoCode}">
 									</th:block>
 								</th:block>
 							</td>

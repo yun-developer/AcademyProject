@@ -1,7 +1,6 @@
 function goDelete() {
 	const deleteForm = document.querySelector('#deleteStuForm');	// from태그의 id가 deleteStuForm 인 것
 	
-	
 		Swal.fire({
 		   title: '정말 삭제하시겠습니까?',
 		   icon: 'warning',
