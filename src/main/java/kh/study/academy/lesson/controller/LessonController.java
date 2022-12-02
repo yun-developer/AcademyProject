@@ -106,7 +106,13 @@ public class LessonController {
 			lesson.put("title", lessonInfo.getSubjectVO().getSubjectName() +"-"+ lessonInfo.getStepVO().getStepName() +"-"+ lessonInfo.getYear()+" [T : "+lessonInfo.getTeacherVO().getTeacherName()+" ]");
 			lesson.put("id", lessonInfo.getLessonInfoCode());
 			
-			lesson.put("color", "#DBA39A");
+			if(lessonInfo.getNowStudentCnt()==0) {
+				
+				lesson.put("color", "#B2B2B2");
+			}
+			else {
+				lesson.put("color", "#DBA39A");
+			}
 			
 			//각  map 객체를 Ajax로 보내줄 리스트 데이터에 담기
 			lessonListForCalender.add(lesson);
