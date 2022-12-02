@@ -78,14 +78,14 @@ public class StatisticsController {
 
 		}
 
-		// ② map 과목별 학생 수
+		// ② map 과목별 학생 비율
 		paramMap.put("studentCntPerSubject", chart2_data);
 		
 		/*------------------------------------*/
 
 
 		
-		// ③ map 신규 학생 수
+		// ③ map 월별 신규 학생 수 추이
 		paramMap.put("newStudentCntByMonth", statisticsService.selectNewStuCntByMonth());
 		
 		return paramMap;

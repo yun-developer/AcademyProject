@@ -18,10 +18,10 @@ public interface StatisticsService {
 		// ⓐ 학년별 학생 수 
 		List<StudentCntPerGrade> selectNumByStuYear();
 		
-		// ⓑ 과목별 학생 수  
+		// ⓑ 과목별 학생 비율 
 		List<Integer> selectNumByStuSubject(String subjectCode);
 		
-		// ⓒ 월별 신규 학생 수 
+		// ⓒ 월별 신규 학생 수 추이
 		List<NewStudentCntByMonth> selectNewStuCntByMonth();
 	
 	/* ② 평가관리 분석 통계------------------------------------------------------------------------------------ */

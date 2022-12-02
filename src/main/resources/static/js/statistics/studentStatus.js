@@ -71,6 +71,7 @@ function drawChart1(data){
 	      horizontal: false
 	    }
 	  },
+	   colors: ['#008FFB'],
 	  series: [{
 		data:chart_data_arr
 	   /* data: [{
@@ -156,6 +157,7 @@ function drawChart2(data){
 		fill: {
 			opacity: 1
 		},
+		 colors: ['#00E396', '#FEB019'],
 		legend: {
 			position: 'right',
 			offsetX: 0,
@@ -190,9 +192,9 @@ function drawChart3(data){
 	chart_data = new Object();
 	
 	for(const info of data){
-		chart_data.name = '수정중';
+	//	chart_data.name = info.mm+'월';
 		chart_data.data = studentCnt_arr;
-		console.log("로퍼ㅡㅠㅓ"+info.studentCnt);
+		console.log(info.studentCnt);
 		
 		console.log(chart_data.data);
 		
@@ -220,18 +222,18 @@ function drawChart3(data){
           data: [20, 29, 37, 36, 44, 45, 50, 58]
         }]*/,
           chart: {
-          height: 350,
+          height: 300,
           type: 'line',
           stacked: false
         },
         dataLabels: {
-          enabled: false
+          enabled: true
         },
         stroke: {
-          width: [1, 1, 4]
+          width: [5]
         },
         title: {
-          text: '월별 신규 학생 수',
+          text: '',
           align: 'left',
           offsetX: 110
         },
@@ -254,7 +256,7 @@ function drawChart3(data){
               }
             },
             title: {
-              text: "Income (thousand crores)",
+              text: "Number of new students per month",
               style: {
                 color: '#008FFB',
               }
@@ -263,7 +265,7 @@ function drawChart3(data){
               enabled: true
             }
           },
-          {
+         /* {
             seriesName: 'Income',
             opposite: true,
             axisTicks: {
@@ -306,7 +308,7 @@ function drawChart3(data){
                 color: '#FEB019',
               }
             }
-          },
+          }*/,
         ],
         tooltip: {
           fixed: {

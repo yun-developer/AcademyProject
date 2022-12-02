@@ -11,14 +11,14 @@
 			<result column="STUDENT_CNT" 											property="studentCnt"/>
 		</resultMap>
 		
-		<!-- ⓑ 과목별 학생 수 -->
+		<!-- ⓑ 과목별 학생 비율 -->
 		<resultMap type="kh.study.academy.statistics.vo.StudentCntPerSubject" 		id="studentCntPerSubject">
 			<id column="STUDENT_YEAR"												property="studentYear"/>
 			<result column="STUDENT_CNT" 											property="studentCnt"/>
 			<result column="SUBJECT_NAME" 											property="subjectName"/>
 		</resultMap>
 		
-		<!-- ⓒ 월별 신규 학생 수  -->
+		<!-- ⓒ 월별 신규 학생 수 추이  -->
 		<resultMap type="kh.study.academy.statistics.vo.NewStudentCntByMonth" 	id="newStudentCntByMonth">
 			<result column="STUDENT_CNT" 											property="studentCnt"/>
 			<result column="MM" 													property="mm"/>
@@ -61,7 +61,7 @@
 	</select>
 	
 	
-	<!-- 과목별 학생 수 조회 -->
+	<!-- 과목별 학생 비율 조회 -->
 	<!-- 나오는 값이 숫자라서  resultType 이 int -->
 	<select id="selectNumByStuSubject" resultType="int">
 
@@ -92,7 +92,7 @@
 	</select>
 	
 	
-	<!-- 월별 신규 학생 수 조회-->
+	<!-- 월별 신규 학생 수 추이 조회-->
 	<select id="selectNewStuCntByMonth" resultMap="newStudentCntByMonth">
 	
 		SELECT COUNT(STU.STUDENT_CODE) AS STUDENT_CNT
