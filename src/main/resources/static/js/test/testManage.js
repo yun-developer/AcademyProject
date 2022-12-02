@@ -19,7 +19,8 @@ const forChangeDiv = document.querySelector('#forChangeDiv');
 const changeScoreInput = document.querySelector('#changeScoreInput');
 const testCodeForchange = document.querySelector('#testCodeForchange');
 
-
+//학생이 수강중인 과목
+const stuLessonSub = document.querySelector('#stuLessonSub');
 
 
 /////////////////////////////////////////////
@@ -36,14 +37,22 @@ function openRegTestModal(code, name, lessonList){
 	document.querySelector('#stuNameForReg').value = name;
 	const stuentName = document.querySelector('#stuNameForReg').value;
 	
+	//수강중인 학급명
 	let lessonNames = '';
+	
+	//수강중인 과목들
+	let subCodes=''; 
+	
 	for(const lesson of lessonList){
 		let lessonInfo = '[' + lesson.lessonInfoVO.subjectVO.subjectName +'-'+ lesson.lessonInfoVO.stepVO.stepName +'-'+ lesson.lessonInfoVO.year + ']';
 		lessonNames += lessonInfo;
+		subCodes += lesson.lessonInfoVO.subjectVO.subjectCode;
 	}
+	
 	
 	//수강학급 모달 input value에 넣기
 	document.querySelector('#stuLessons').value = lessonNames;
+	stuLessonSub.value = subCodes;
 }
 
 
@@ -99,6 +108,22 @@ function regTest()  {
 	let selectSubValue = selectSub.options[selectSub.selectedIndex].value;
 	//학생코드
 	let stuentCodeValue = document.querySelector('#stuCodeForReg').value;
+	
+	
+/*	//셀렉트박스의 과목명
+	selectSubValue
+	
+	let Subjects = '';
+	for(const nowSubject of nowSubjects){
+		Subjects += nowSubject.innerText;	
+	}*/
+	//같은 과목이 없다면(false라면)
+	if (!stuLessonSub.value.includes(selectSubValue)){
+		//changeUnButton();
+		Swal.fire('평가 등록 불가', '학생이 수강중인 과목이 아닙니다.', 'warning');
+		return;
+	}
+	
 	
 	
 	
