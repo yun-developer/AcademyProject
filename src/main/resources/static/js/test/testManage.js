@@ -22,6 +22,11 @@ const testCodeForchange = document.querySelector('#testCodeForchange');
 //학생이 수강중인 과목
 const stuLessonSub = document.querySelector('#stuLessonSub');
 
+//수정페이지의 버튼
+const deleteBtn = document.querySelector('#deleteBtn');
+const updateBtn = document.querySelector('#updateBtn');
+
+
 
 /////////////////////////////////////////////
 
@@ -65,6 +70,22 @@ function openRegTestModal(code, name, lessonList){
 
 
 function openChangeTestModal(code, name, lessonList){
+
+	//버튼 초기화
+	updateBtn.setAttribute("class", "btn btn btn-primary");
+	updateBtn.innerText = "저장";
+	updateBtn.disabled = false;
+	deleteBtn.setAttribute("class", "btn btn-danger");
+	deleteBtn.innerText = "삭제";
+	deleteBtn.disabled = false;
+	
+	//셀렉트 박스 초기화
+	forChangeDiv.innerHTML = '';
+	let str ='';
+	str = `<select class="form-select" aria-label="Default select example" id="selectDateforChange" name="testDate"  style="color: red;">
+					   		<option value="">평가 과목을 선택하세요.</option>
+					   </select>`;
+   forChangeDiv.insertAdjacentHTML('beforeend', str);
 
 	//학생코드 모달 hidden input value에 넣기
 	document.querySelector('#stuCodeForChange').value = code;
@@ -348,6 +369,15 @@ $('#testInfoChange').on('hidden.bs.modal', function (e) {
 
 //평가일 셀렉트 박스를 변경했을 때 event
 $(document).on("change", "#selectSubforChange", function() {
+	//버튼 초기화
+	updateBtn.setAttribute("class", "btn btn btn-primary");
+	updateBtn.innerText = "저장";
+	updateBtn.disabled = false;
+	deleteBtn.setAttribute("class", "btn btn-danger");
+	deleteBtn.innerText = "삭제";
+	deleteBtn.disabled = false;
+	
+	
 	
 	//과목코드
 	let selectSubforChangeValue = selectSubforChange.options[selectSubforChange.selectedIndex].value;
@@ -369,7 +399,7 @@ $(document).on("change", "#selectSubforChange", function() {
 		
 			//셀렉트박스 새로 작성
 			let str ='';
-			str += `<select class="form-select" aria-label="Default select example" id="newselectDateforChange" name="testDate">
+			str += `<select class="form-select" aria-label="Default select example" id="selectDateforChange" name="testDate">
 					   <option value="">선택</option>`;
 			for(const test of result){
 					str += `<option value="${test.testCode}" id="${test.testCode}" score="${test.score}">${test.testDate}</option>`;
@@ -383,23 +413,41 @@ $(document).on("change", "#selectSubforChange", function() {
 					   		<option value="">평가 정보가 없습니다.</option>
 					   </select>`;
 				changeScoreInput.value = '';
+				
+				//버튼 비활성화
+				//태그 속성 추가 변경
+				updateBtn.setAttribute("class", "btn btn-secondary");
+				updateBtn.innerText = "수정불가";
+				updateBtn.disabled = true;
+				deleteBtn.setAttribute("class", "btn btn-secondary");
+				deleteBtn.innerText = "삭제불가";
+				deleteBtn.disabled = true;
 			}
 			
 			forChangeDiv.insertAdjacentHTML('beforeend', str);
 
 			
 			//평가일 셀렉트박스
-			let newselectDateforChange = document.querySelector('#newselectDateforChange'); 
+			let selectDateforChange = document.querySelector('#selectDateforChange'); 
 			//평가일 셀렉트박스를 선택하면
-			newselectDateforChange.addEventListener('change', function abbb(){
-					
+			selectDateforChange.addEventListener('change', function abbb(){
+				
+				//버튼 활성화
+				updateBtn.setAttribute("class", "btn btn btn-primary");
+				updateBtn.innerText = "저장";
+				updateBtn.disabled = false;
+				deleteBtn.setAttribute("class", "btn btn-danger");
+				deleteBtn.innerText = "삭제";
+				deleteBtn.disabled = false;
+	
+				
 				//셀렉트 박스에서 선택한 값(testCode)
-				let newselectDateforChangeValue = newselectDateforChange.options[newselectDateforChange.selectedIndex].value;
+				let selectDateforChangeValue = selectDateforChange.options[selectDateforChange.selectedIndex].value;
 				//셀렉트 박스에서 선택한 값(score)
-				let selectBeforeScore = newselectDateforChange.options[newselectDateforChange.selectedIndex];
+				let selectBeforeScore = selectDateforChange.options[selectDateforChange.selectedIndex];
 				let beforeScore = selectBeforeScore.getAttribute("score");
 				
-				testCodeForchange.value = newselectDateforChangeValue;
+				testCodeForchange.value = selectDateforChangeValue;
 				changeScoreInput.value = beforeScore;
 			
 			})
