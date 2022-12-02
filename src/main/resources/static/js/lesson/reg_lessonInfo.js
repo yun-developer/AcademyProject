@@ -16,7 +16,7 @@ function selectUseCheck(){
 		success: function(result) {
 			
 			//option을 다 지우는 문법
-			$('#lessonTime').empty();
+			$('#searchLessonTime').empty();
 			alert(11);
 			// option을 다시 그려준다.
 			str = ''
@@ -29,8 +29,8 @@ function selectUseCheck(){
 					
 			}
 			// 그렸던것을 str에 넣어놨으니 다시 html로 보내주는 방법
-			$('#lessonTime').append(str);
-			
+			$('#searchLessonTime').append(str);
+			alert(str);
 		},
 		error: function() {
 			alert('실패');
@@ -163,6 +163,14 @@ function lessonInfoDeleteAjax(){
 	}
 }	
 
+
+
+
+// 교실 목록에서 제목줄 체크박스(전체 체크박스)
+const checkAll = document.querySelector('#checkAll');
+
+// 제목 줄을 제외한 모든 체크박스
+const chks = document.querySelectorAll('.chk');
 
 
 //체크박스 하나 해제되면 제목줄 체크박스 해제

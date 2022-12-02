@@ -18,7 +18,7 @@
 				<div class="col-xs-12 col-lg-4">
 					<div class="input-group mb-2">
 						<span class="input-group-addon col-2">학년</span> 
- 						<input type="text" class="form-control" id="" name="searchYear" autocomplete="off" th:value="${paramMap['searchYear']}"  > 
+ 						<input type="text" class="form-control" id="" name="year" autocomplete="off" th:value="${paramMap['searchYear']}"  > 
 					</div>
 				</div>
 				<div class="col-xs-12 col-lg-4">
@@ -191,7 +191,7 @@
 											<div class="col-6 col-lg-2 px-1"><span class="input-group-text h-100 rounded-0">학년</span></div>
 									
 												<div class="col-6 col-lg-5 px-">
-													<select class="form-select"   aria-label="Default select example"   kor="과정구분" required>
+													<select class="form-select"   aria-label="Default select example"  name="searchYear" kor="과정구분" required>
 														<option value="" >선택</option>
 
 															<option value="1">고등1</option>
@@ -199,9 +199,6 @@
 															<option value="3">고등3</option>
 
 													</select>
-													 <div class="invalid-feedback">
-												        Please choose a username.
-												    </div>
 													
 												</div>
 											</div>	
