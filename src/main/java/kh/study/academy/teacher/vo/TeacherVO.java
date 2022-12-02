@@ -51,6 +51,9 @@ public class TeacherVO {
 	
 	private String teacherBirthday;
 	
+	//회원가입 여부
+	private String isNew;
+	
 	
   
 	

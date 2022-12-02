@@ -62,9 +62,11 @@ public class LessonController {
 		System.out.println("mainPage컨트롤러 실행");
 		
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1"+ isNew);
+		model.addAttribute("isNew", null);
 		if(isNew != null) {
 			model.addAttribute("isNew", isNew);
 		}
+		
 		
 		return "content/lesson/lesson_main";
 	}
