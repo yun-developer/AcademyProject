@@ -86,12 +86,19 @@ public class StudentController {
 	
 	//학생 선택 삭제
 	@PostMapping("/deleteCheckedStu")
-	public String deleteCheckedStu(String studentCodes) {  
+	public String deleteCheckedStu(String studentCodes, String beforeLessonInfoCodes) {  
 		String[] studentCodeArr = studentCodes.split(",");
 		List<String> studentCodeList = Arrays.asList(studentCodeArr);
 		
 		StudentVO studentVO = new StudentVO();
 		studentVO.setStudentCodeList(studentCodeList);
+		
+		String[] beforeLessonInfoCodeArr = beforeLessonInfoCodes.split(",");
+		List<String> beforeLessonInfoCodeList = Arrays.asList(beforeLessonInfoCodeArr);
+		
+		
+		studentVO.setBeforeLessonInfoCodeList(beforeLessonInfoCodeList);
+		
 		
 		studentService.deleteCheckedStu(studentVO);
 		

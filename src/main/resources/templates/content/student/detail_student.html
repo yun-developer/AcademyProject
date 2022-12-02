@@ -33,7 +33,6 @@
 								</th:block>
 								<th:block th:unless="${lesson.lessonInfoVO==null}">
 									[	[[${lesson.lessonInfoVO.subjectVO.subjectName}]]-[[${lesson.lessonInfoVO.stepVO.stepName}]]-[[${lesson.lessonInfoVO.year}]] ]
-									<input type="hidden" id="lessonInfoCode"  th:value="${lesson.lessonInfoVO.lessonInfoCode}">
 								</th:block>
 							</th:block>
 						</td>
@@ -68,7 +67,7 @@
 			
 			<th:block th:each="lesson:${stu.studentLessonInfoList}">
 				<th:block th:if="${lesson.lessonInfoVO!=null}">
-					<input type="hidden" name="lessonInfoCode" th:value="${lesson.lessonInfoVO.lessonInfoCode}">
+					<input type="hidden" name="beforeLessonInfoCode" th:value="${lesson.lessonInfoVO.lessonInfoCode}">
 				</th:block>
 			</th:block>
 			

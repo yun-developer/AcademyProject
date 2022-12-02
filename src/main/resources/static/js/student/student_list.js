@@ -110,7 +110,8 @@ function goDelete() {
 					studentCodes = studentCodes + checkedChk.value + ',';  
 				}
 				
-				deleteForm.querySelector('input').value = studentCodes;  // 넘어오는 name과 컨트롤러의 매개변수 이름 같으면 알아서 받아줌
+				deleteForm.querySelector('#studentCodes').value = studentCodes;  // 넘어오는 name과 컨트롤러의 매개변수 이름 같으면 알아서 받아줌
+				deleteForm.querySelector('#beforeLessonInfoCodes').value = beforeLessonInfoCodes;
 				
 				deleteForm.submit();
 		   

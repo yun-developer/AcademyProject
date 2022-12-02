@@ -27,7 +27,7 @@
 				<tbody>
 					<th:block th:if="${#lists.size(stuList) == 0}">
 						<tr>
-							<td colspan="7">데이터가 없습니다.</td>
+							<td colspan="8">데이터가 없습니다.</td>
 						</tr>
 					</th:block>
 					<th:block th:unless="${#lists.size(stuList) == 0}">
@@ -44,7 +44,7 @@
 									</th:block>
 									<th:block th:unless="${lesson.lessonInfoVO==null}">
 										[	[[${lesson.lessonInfoVO.subjectVO.subjectName}]]-[[${lesson.lessonInfoVO.stepVO.stepName}]]-[[${lesson.lessonInfoVO.year}]] ]
-										<input type="hidden" id="lessonInfoCode" th:value="${lesson.lessonInfoVO.lessonInfoCode}">
+									<input type="hidden" th:value="${lesson.lessonInfoVO.lessonInfoCode}"> 
 									</th:block>
 								</th:block>
 							</td>
@@ -74,7 +74,8 @@
 			</table>
 			
 			<form id="deleteStuForm" th:action="@{/stu/deleteCheckedStu}" method="post">
-				<input type="hidden" name="studentCodes" value="">
+				<input type="hidden" name="studentCodes" value="" id="studentCodes">
+				<input type="hidden" name="beforeLessonInfoCodes" value="" id="beforeLessonInfoCodes">
 				<div class="col-12">
 					<div class="row justify-content-end">
 						<div class="col-1"  style="margin-right: 2.6rem;">
