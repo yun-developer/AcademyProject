@@ -17,7 +17,7 @@ public class AttendVO {
 	
 	private String studentCode;
 	
-	
+	private String lessonInfoCode;
 	
 	private StudentLessonInfoVO studentLessonInfoVO;
 	

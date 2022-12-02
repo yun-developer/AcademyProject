@@ -9,6 +9,7 @@ const teacherDiv = document.querySelector('#teacher');
 //학급명
 const lessonNameDiv = document.querySelector('#lessonName');
 const attendDateDiv = document.querySelector('#attendDate');
+const lessonCodeInput = document.querySelector('#lessonCodeInput');
 
 
 //데이터 받아오기
@@ -17,10 +18,22 @@ putlessonInfo();
 
 //모달 내용그리기
 function getModal(lessonCode, lessonDate){
-	let date1 = new Date(lessonDate); 
 	
+	lessonCodeInput.value = lessonCode;
+	
+	let date1 = new Date(lessonDate); 
+	//alert('년도' + date1.getFullYear())
+	//alert('월 ' + date1.getMonth())
 	date1.setMonth(date1.getMonth()+1)
-	let eachDate = date1.getFullYear() +''+ date1.getMonth() +''+ date1.getDate();
+	let month = date1.getMonth();
+	if(date1.getMonth() == 0){
+		month = 12
+	}
+	//alert('월 ' + date1.getMonth())
+	
+	
+	let eachDate = date1.getFullYear() +'-'+ month +'-'+ date1.getDate();
+	//alert(eachDate);
 	//ajax start
 	$.ajax({
 		url: '/lesson/stuListByLessonAjax', //요청경로
@@ -261,12 +274,14 @@ function changeAttend(){
 	//alert("학생코드들" +stuCode)
 	//alert("출석상태"+isAttend)
 	
+	lessonCodeInput.value
+	
 	//ajax start
 	$.ajax({
 		url: '/lesson/updateIsAttandenceAjax', //요청경로
 		type: 'post',
 		/*dataType:'json',*/
-		data: {stuCodeList:stuCode, isAttendList:isAttend, lessonDate:lessonDate}, //필요한 데이터
+		data: {stuCodeList:stuCode, isAttendList:isAttend, lessonDate:lessonDate, lessonInfoCode:lessonCodeInput.value}, //필요한 데이터
 		success: function() {
 			
 			Swal.fire({

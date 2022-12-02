@@ -52,7 +52,8 @@
 		SET IS_ATTANDENCE = #{isAttandence}
 		WHERE STUDENT_LESSON_CODE = (SELECT STUDENT_LESSON_CODE 
 										FROM STUDENT_LESSON_INFO 
-										WHERE STUDENT_CODE = #{studentCode})
+										WHERE STUDENT_CODE = #{studentCode}
+										AND LESSON_INFO_CODE = #{lessonInfoCode} )
 		AND LESSON_DATE = #{lessonDate}
 	</update>
 	

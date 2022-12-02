@@ -117,10 +117,13 @@ public class LessonController {
 	//학급별 출석체크
 	@ResponseBody
 	@PostMapping("/updateIsAttandenceAjax")
-	public void updateIsAttandenceAjax(@RequestParam(value="stuCodeList[]") List<String> stuCodeList, @RequestParam(value="isAttendList[]") List<String> isAttendList, String lessonDate) {
+	public void updateIsAttandenceAjax(@RequestParam(value="stuCodeList[]") List<String> stuCodeList
+										, @RequestParam(value="isAttendList[]") List<String> isAttendList
+										, String lessonDate, String lessonInfoCode) {
 		
 		AttendVO attendVO = new AttendVO();
 		attendVO.setLessonDate(lessonDate);
+		attendVO.setLessonInfoCode(lessonInfoCode);
 		for(int i = 0; i<stuCodeList.size(); i++) {
 			System.out.println("학생코드" + stuCodeList.get(i) +"출결상태"+ isAttendList.get(i));
 			
