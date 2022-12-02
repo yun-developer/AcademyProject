@@ -98,27 +98,60 @@ public class LessonController {
 		List<Map<String, String>> lessonListForCalender = new ArrayList<>();
 		
 		//fullcalendar에 필요한 양식에 맞춰 각 수업 정보를 map 자료에 넣기
-		for (LessonInfoVO lessonInfo : lessonList) {
+		/*
+		 * for (LessonInfoVO lessonInfo : lessonList) { //반복문을 돌 때마다 새로 map 객체생성
+		 * Map<String, String> lesson = new HashMap<>();;
+		 * 
+		 * //fullcalendar에 맞게끔 날짜 양식 수정
+		 * lesson.put("end",DateUtil.getLessonDatebyDay(lessonInfo.getLessonDayCode(),
+		 * lessonInfo.getLessonTime())[1] );
+		 * lesson.put("start",DateUtil.getLessonDatebyDay(lessonInfo.getLessonDayCode(),
+		 * lessonInfo.getLessonTime())[0] ); lesson.put("title",
+		 * lessonInfo.getSubjectVO().getSubjectName() +"-"+
+		 * lessonInfo.getStepVO().getStepName() +"-"+
+		 * lessonInfo.getYear()+" [T : "+lessonInfo.getTeacherVO().getTeacherName()+" ]"
+		 * ); lesson.put("id", lessonInfo.getLessonInfoCode());
+		 * 
+		 * if(lessonInfo.getNowStudentCnt()==0) {
+		 * 
+		 * lesson.put("color", "#B2B2B2"); } else { lesson.put("color", "#DBA39A"); }
+		 * 
+		 * //각 map 객체를 Ajax로 보내줄 리스트 데이터에 담기 lessonListForCalender.add(lesson); }
+		 */
+		
+		for (int i=0; i <lessonList.size(); i++) {
+			
 			//반복문을 돌 때마다 새로 map 객체생성
 			Map<String, String> lesson = new HashMap<>();;
 			
 			//fullcalendar에 맞게끔 날짜 양식 수정
-			lesson.put("end",DateUtil.getLessonDatebyDay(lessonInfo.getLessonDayCode(),lessonInfo.getLessonTime())[1] );
-			lesson.put("start",DateUtil.getLessonDatebyDay(lessonInfo.getLessonDayCode(),lessonInfo.getLessonTime())[0] );
-			lesson.put("title", lessonInfo.getSubjectVO().getSubjectName() +"-"+ lessonInfo.getStepVO().getStepName() +"-"+ lessonInfo.getYear()+" [T : "+lessonInfo.getTeacherVO().getTeacherName()+" ]");
-			lesson.put("id", lessonInfo.getLessonInfoCode());
-			
-			if(lessonInfo.getNowStudentCnt()==0) {
+			lesson.put("end",DateUtil.getLessonDatebyDay(lessonList.get(i).getLessonDayCode(),lessonList.get(i).getLessonTime())[1] );
+			lesson.put("start",DateUtil.getLessonDatebyDay(lessonList.get(i).getLessonDayCode(),lessonList.get(i).getLessonTime())[0] );
+			lesson.put("title", lessonList.get(i).getSubjectVO().getSubjectName() +"-"
+								+ lessonList.get(i).getStepVO().getStepName() +"-"
+								+ lessonList.get(i).getYear()+" [T : "+lessonList.get(i).getTeacherVO().getTeacherName()+" ]");
+			lesson.put("id", lessonList.get(i).getLessonInfoCode());
 				
-				lesson.put("color", "#B2B2B2");
-			}
-			else {
-				lesson.put("color", "#DBA39A");
-			}
+				if(lessonList.get(i).getNowStudentCnt()==0) {
+					
+					lesson.put("color", "#B2B2B2");
+				}
+				else if(lessonList.get(i).getNowStudentCnt()!=0){
 			
+					lesson.put("color", "#6E85B7");
+				}
+				
+				if(i>0) {
+					if(!lessonList.get(i).getSubjectVO().getSubjectName().equals(lessonList.get(0).getSubjectVO().getSubjectName())) {
+						lesson.put("color", "#DBA39A");
+					}
+				}
+				
+				
 			//각  map 객체를 Ajax로 보내줄 리스트 데이터에 담기
 			lessonListForCalender.add(lesson);
 		}
+		
 		
 		return lessonListForCalender;
 	}
