@@ -4,7 +4,6 @@ const isNew = document.querySelector('#isNew');
 const modal = new bootstrap.Modal('#idDouble_Yes');
 
 if(isNew.value=='new'){
-	alert('신규 회원 가입')
 	modal.show();
 }
 
