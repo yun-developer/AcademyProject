@@ -1,5 +1,7 @@
 package kh.study.academy.student.vo;
 
+import java.util.List;
+
 import kh.study.academy.attend.vo.AttendVO;
 import kh.study.academy.lesson.vo.LessonInfoVO;
 import lombok.Data;
@@ -12,6 +14,9 @@ public class StudentLessonInfoVO {
 	private String studentCode;
 	
 	private String beforeLessonInfoCode;
+	
+	
+	private List<String> beforeLessonInfoCodeList;
 	
 	
 	private LessonInfoVO lessonInfoVO;

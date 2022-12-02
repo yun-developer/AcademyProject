@@ -96,11 +96,22 @@ public class StudentController {
 		String[] beforeLessonInfoCodeArr = beforeLessonInfoCodes.split(",");
 		List<String> beforeLessonInfoCodeList = Arrays.asList(beforeLessonInfoCodeArr);
 		
+//		StudentLessonInfoVO studentLessonInfoVO = new StudentLessonInfoVO();
+//		studentLessonInfoVO.setBeforeLessonInfoCodeList(beforeLessonInfoCodeList);
 		
 		studentVO.setBeforeLessonInfoCodeList(beforeLessonInfoCodeList);
 		
 		
-		studentService.deleteCheckedStu(studentVO);
+		//studentService.deleteCheckedStu(studentVO, studentLessonInfoVO);
+		
+		
+		studentService.deleteCheckedStu(studentVO, beforeLessonInfoCodes);
+		
+		
+		
+		//studentService.deleteCheckedStu(studentVO, studentLessonInfoVO);  //이거 수상해
+		
+		System.out.println(studentVO);
 		
 		return "redirect:/stu/list";
 	}
