@@ -71,7 +71,7 @@
                             </a>
                             <div class="collapse" th:classappend="${menu} eq '4' or ${menu} eq '5'? 'show'"id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link"  th:classappend="${menu} ne '4'? 'collapsed'" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="true" aria-controls="pagesCollapseAuth">
+                                  <!--   <a class="nav-link"  th:classappend="${menu} ne '4'? 'collapsed'" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="true" aria-controls="pagesCollapseAuth">
                                         학급배정
                                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                     </a>
@@ -90,7 +90,10 @@
                                             
                                             
                                         </nav>
-                                    </div>
+                                    </div> -->
+                                    
+                                    <a class="nav-link" th:href="@{/stu/assignment(menu=4)}">학생 편성</a>
+                                    <a class="nav-link" th:href="@{/lesson/listByWeek(menu=5)}">학급별 학생 목록</a>
                                 </nav>
                             </div>
                              <a class="nav-link" href="charts.html" th:href="@{/test/testManage}">
