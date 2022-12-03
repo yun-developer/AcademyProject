@@ -68,6 +68,15 @@ a{
 	
 }
 
+/* 메인 배너 */
+.carousel-inner > .carousel-item > img {
+      top: 0;
+      left: 0;
+      
+      max-width: 100%;
+      height: 500px;
+    } 
+
 
 .pagination{display:inline-block;padding-left:0;margin:20px 0;border-radius:4px}
 
