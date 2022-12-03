@@ -28,14 +28,11 @@
 
 
 
-
-<!-- /////<교사 등록 관련>//////////////////////////////////////////////////////////// -->
+<!-- 교사 관련 ==============================================================================================================-->
 	
 	
 	<!-- 교사리스트 조회 -->
-	<!--,SUBJECT CODE 수정 필요... -->
 	<select id="selectTeacherList" resultMap="teacherMapper.teacher">
-	
 		SELECT TEACHER_CODE
 			, TEACHER_NAME
 			, TEACHER_TELL
@@ -52,7 +49,6 @@
 	</select>
 	
 	<!--교사리스트 페이지에서 교사 조회 -->
-	<!-- SUBJECT_CODE 및 WHERE 절 수정중-->
 	<select id="searchTeacher" resultMap="teacherMapper.teacher" parameterType="hashMap">
 		SELECT TEACHER_CODE
 			, TEACHER_NAME
@@ -91,13 +87,14 @@
 		<if test="subjectCode !=null and !subjectCode.equals('')">
 		AND T.SUBJECT_CODE = #{subjectCode}
 		</if>
+		ORDER BY TEACHER_ROLE DESC
+			, (CASE WHEN TEACHER_STATUS = '재직중' THEN 1 ELSE 2 END)
+			, TEACHER_NAME ASC
 	</select>
 	
 	
 	<!--교사 리스트에서 아이디 클릭 시 해당 교사 상세정보 조회  -->
-	<!-- 수정중 -->
 	<select id="selectTeacherDetail" resultMap="teacherMapper.teacher">
-	
 		SELECT TEACHER_CODE
 			, TEACHER_NAME
 			, TEACHER_TELL
@@ -106,11 +103,15 @@
 			, DECODE(TEACHER_STATUS, 'Y','재직중','퇴사') AS TEACHER_STATUS
 			, DECODE(TEACHER_ROLE, 'UNAPPROVED','미승인','교사') AS TEACHER_ROLE
 			, T.SUBJECT_CODE
-			, (SELECT SUBJECT_NAME FROM SUBJECT WHERE SUBJECT_CODE = T.SUBJECT_CODE) AS SUBJECT_NAME
+			, (SELECT SUBJECT_NAME 
+				FROM SUBJECT 
+				WHERE SUBJECT_CODE = T.SUBJECT_CODE) AS SUBJECT_NAME
 			, DECODE(TEACHER_GENDER,'W','여자','남자') AS TEACHER_GENDER
 			, TO_CHAR(TEACHER_BIRTHDAY, 'YYYY-MM-DD') AS TEACHER_BIRTHDAY
 			, TEACHER_EMAIL
-			, (SELECT STORED_FILE_NAME FROM PROFILE_IMG WHERE TEACHER_CODE = T.TEACHER_CODE) AS STORED_FILE_NAME
+			, (SELECT STORED_FILE_NAME 
+				FROM PROFILE_IMG 
+				WHERE TEACHER_CODE = T.TEACHER_CODE) AS STORED_FILE_NAME
 		FROM TEACHER T
 		WHERE TEACHER_CODE = #{teacherCode}
 	</select>
@@ -136,7 +137,7 @@
 	
 	
 	
-<!-- /////<과목 등록 관련>//////////////////////////////////////////////////////////// -->
+<!-- 과목 등록 관련 ==============================================================================================================-->	
 	
 	
 	<!-- 과목 등록 쿼리문  -->
@@ -186,8 +187,9 @@
 	</delete>
 	
 	
-<!-- /////<교실 등록 관련>////////////////////////////////////////////////////////// -->
 	
+<!-- 교실 등록 관련 ==============================================================================================================-->	
+
 	
 	<!-- 교실 등록 쿼리문  -->
 		<insert id="regLessonRoom">
