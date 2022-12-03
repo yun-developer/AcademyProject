@@ -21,29 +21,20 @@ public class TeacherServiceImpl implements TeacherService {
 		return sqlSession.selectOne("teacherMapper.selectNextTeacherCode");
 	}
 	
+/* 회원가입 관련 =======================================================================================*/
+
 	//회원가입
 	@Override
 	public void join(TeacherVO teacherVO) {
+		
 		sqlSession.insert("teacherMapper.join", teacherVO);
 		
-	}
-	
-	//로그인
-	@Override
-	public TeacherVO login(TeacherVO teacherVO) {
-		return sqlSession.selectOne("teacherMapper.login", teacherVO);
-	}
-	
-	//로그인 정보 찾기 
-	@Override
-	public TeacherVO findId(TeacherVO teacherVO) {
-		
-		return sqlSession.selectOne("teacherMapper.findId", teacherVO);
 	}
 	
 	//회원가입시 아이디 중복 검사
 	@Override
 	public TeacherVO idDoubleCheck(TeacherVO teacherVO) {
+		
 		return sqlSession.selectOne("teacherMapper.idDoubleCheck", teacherVO);
 	}
 	
@@ -54,20 +45,43 @@ public class TeacherServiceImpl implements TeacherService {
 		return sqlSession.selectOne("teacherMapper.tellDoubleCheck", teacherVO);
 	}
 	
-	//전화번호 인증번호 전송 전 입력한 데이터에 일치하는 회원이 있는지 조회
+	
+/* 로그인 관련 =========================================================================================*/
+
+	//로그인
+	@Override
+	public TeacherVO login(TeacherVO teacherVO) {
+		
+		return sqlSession.selectOne("teacherMapper.login", teacherVO);
+	}
+	
+	//로그인 정보 찾기 
+	//아이디 정보 찾기
+	@Override
+	public TeacherVO findId(TeacherVO teacherVO) {
+		
+		return sqlSession.selectOne("teacherMapper.findId", teacherVO);
+	}
+	
+	//로그인 정보 찾기 
+	//비밀번호 찾기 전화번호 인증번호 전송 전 입력한 데이터에 일치하는 회원이 있는지 조회
 	@Override
 	public TeacherVO findInfoForSendSms(TeacherVO teacherVO) {
 		
 		return sqlSession.selectOne("teacherMapper.findInfoForSendSms", teacherVO);
 	}
 
-	//연락처 인증성공 시 그 인증번호로 임시비밀번호 업데이트
+	//로그인 정보 찾기
+	//전화번호 인증성공 시 그 인증번호로 임시비밀번호 업데이트
 	@Override
 	public void updateTemporaryPw(TeacherVO teacherVO) {
 		
 		sqlSession.update("teacherMapper.updateTemporaryPw", teacherVO);
 	}
 	
+	
+/* 회원정보 관련 =======================================================================================*/
+
 	
 	//회원 정보 조회
 	@Override
@@ -79,15 +93,15 @@ public class TeacherServiceImpl implements TeacherService {
 	//프로필 기본사진 등록
 	@Override
 	public void insertProfileImg(ProfileImgVO profileImgVO) {
-		sqlSession.insert("teacherMapper.insertProfileImg", profileImgVO);
 		
+		sqlSession.insert("teacherMapper.insertProfileImg", profileImgVO);
 	}
 	
 	//프로필 사진 변경
 	@Override
 	public void updateProfileImg(ProfileImgVO profileImgVO) {
-		sqlSession.update("teacherMapper.updateProfileImg", profileImgVO);
 		
+		sqlSession.update("teacherMapper.updateProfileImg", profileImgVO);
 	}
 	
 	//프로필 사진 조회
@@ -100,15 +114,15 @@ public class TeacherServiceImpl implements TeacherService {
 	//개인정보 수정
 	@Override
 	public void updateInfo(TeacherVO teacherVO) {
-		sqlSession.update("teacherMapper.updateInfo", teacherVO);
 		
+		sqlSession.update("teacherMapper.updateInfo", teacherVO);
 	}
 	
 	//비밀번호 변경
 	@Override
 	public void updatePw(TeacherVO teacherVO) {
-		sqlSession.update("teacherMapper.updatePw", teacherVO);
 		
+		sqlSession.update("teacherMapper.updatePw", teacherVO);
 	}
 	
 	
@@ -120,13 +134,5 @@ public class TeacherServiceImpl implements TeacherService {
 	}
 
 
-
-
-
-	
-
-	
-	
-	
 	
 }

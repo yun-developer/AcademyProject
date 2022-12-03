@@ -8,15 +8,11 @@ public interface TeacherService {
 	//다음에 들어갈 TEACHER_CODE 조회
 	String selectNextTeacherCode();
 	
+	
+	/* 회원가입 관련 =======================================================================================*/
+	
 	//회원가입
 	void join(TeacherVO teacherVO);
-	
-	
-	//로그인
-	TeacherVO login(TeacherVO teacherVO);
-	
-	//로그인 정보 찾기
-	TeacherVO findId(TeacherVO teacherVO);
 	
 	//회원가입시 아이디 중복 검사
 	TeacherVO idDoubleCheck(TeacherVO teacherVO);
@@ -24,11 +20,26 @@ public interface TeacherService {
 	//회원가입시 전화번호 중복 검사
 	TeacherVO tellDoubleCheck(TeacherVO teacherVO);
 	
-	//전화번호 인증번호 전송 전 입력한 데이터에 일치하는 회원이 있는지 조회
+	
+	/* 로그인 관련 =========================================================================================*/
+	
+	//로그인
+	TeacherVO login(TeacherVO teacherVO);
+	
+	//로그인 정보 찾기
+	//아이디 정보 찾기
+	TeacherVO findId(TeacherVO teacherVO);
+	
+	//로그인 정보 찾기 
+	//비밀번호 찾기 전화번호 인증번호 전송 전 입력한 데이터에 일치하는 회원이 있는지 조회
 	TeacherVO findInfoForSendSms (TeacherVO teacherVO);
 	
-	//연락처 인증성공 시 그 인증번호로 임시비밀번호 업데이트
+	//로그인 정보 찾기
+	//전화번호 인증성공 시 그 인증번호로 임시비밀번호 업데이트
 	void updateTemporaryPw(TeacherVO teacherVO);
+	
+	
+	/* 회원정보 관련 =======================================================================================*/
 	
 	//회원 정보 조회
 	TeacherVO selectTeacherInfo(TeacherVO teacherVO);
@@ -44,6 +55,7 @@ public interface TeacherService {
 	
 	//개인정보 수정
 	void updateInfo(TeacherVO teacherVO);
+	
 	//비밀번호 변경
 	void updatePw(TeacherVO teacherVO);
 	

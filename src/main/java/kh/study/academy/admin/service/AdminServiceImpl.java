@@ -21,8 +21,7 @@ public class AdminServiceImpl implements AdminService{
 	SqlSessionTemplate sqlSession;
 
 	
-	
-/////<교사 관련>/////////////////////////////////////////////////////////////////
+/* 교사 관련================================================================================================================= */
 	
 	
 	
@@ -49,7 +48,6 @@ public class AdminServiceImpl implements AdminService{
 	
 	
 	//팝업 페이지에서 교사 상태 변경
-	//미구현 상태
 	@Override
 	public void changeTeacherStatus(TeacherVO teacherVO) {
 		sqlSession.update("adminMapper.changeTeacherStatus",teacherVO);
@@ -64,8 +62,7 @@ public class AdminServiceImpl implements AdminService{
 	
 	
 	
- /////<과목 등록 관련>//////////////////////////////////////////////////////////// 
-	
+/* 과목 등록 관련================================================================================================================= */
 	
 	
 	// 과목 등록
@@ -88,8 +85,7 @@ public class AdminServiceImpl implements AdminService{
 	
 
 	
-/////<교실 등록 관련>//////////////////////////////////////////////////////////// 	
-	
+/* 교실 등록 관련================================================================================================================= */
 	
 	
 	// 교실 등록

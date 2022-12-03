@@ -5,12 +5,12 @@
 
 
 	<resultMap type="kh.study.academy.attend.vo.AttendVO"			id="attend">
-		<id column="ATTENDANCE_CODE" 									property="attendanceCode" />
+		<id column="ATTENDANCE_CODE" 								property="attendanceCode" />
 		<result column="LESSON_DATE" 								property="lessonDate" />
-		<result column="IS_ATTANDENCE" 									property="isAttandence" />
-		<result column="STUDENT_LESSON_CODE" 							property="studentLessonCode" />
+		<result column="IS_ATTANDENCE" 								property="isAttandence" />
+		<result column="STUDENT_LESSON_CODE" 						property="studentLessonCode" />
 		
-		<association property="studentLessonInfoVO" 						resultMap="studentMapper.studentLessonInfo"/>
+		<association property="studentLessonInfoVO" 				resultMap="studentMapper.studentLessonInfo"/>
 		
 	</resultMap>
 	

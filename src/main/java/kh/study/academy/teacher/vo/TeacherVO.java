@@ -12,8 +12,8 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-//제약조건 아직 추가 안했어요
 public class TeacherVO {
+	
 	private String teacherCode; // TEACHER_001,TEACHER_002
 	
 	@NotBlank(message = "* 이름은 필수 입력입니다.")

@@ -36,76 +36,69 @@ public class AdminController {
 	private LessonService lessonService;
 	
 	
-	//교사리스트 페이지로 이동
-	@RequestMapping("/teacherList")
-	public String teacherList(@RequestParam Map<String, String> paramMap , Model model) {
+	/* 교사 관련================================================================================================================= */
+	
+		// 교사리스트 페이지로 이동
+		@RequestMapping("/teacherList")
+		public String teacherList(@RequestParam Map<String, String> paramMap , Model model) {
+	
+			
+			// 사용 확인 체크 후 삭제하기
+			// 교사리스트
+			//model.addAttribute("teacherList", adminService.selectTeacherList());
+			
+			// 교사 검색 및 리스트
+			model.addAttribute("searchTeacher", adminService.searchTeacher(paramMap));
+	
+			// 과목 카테고리 목록 조회
+			model.addAttribute("subjectList", adminService.selectSubject());
+			
+			model.addAttribute("paramMap", paramMap);
+			
+			
+			return "content/admin/teacherList";
+	
+		}
+		
+		
+		// 교사 상세페이지 팝업으로 이동(교사 리스트에서 아이디 클릭 시)
+		@RequestMapping("/popup")
+		public String pop(String teacherCode, Model model) {
+		
+			
+			model.addAttribute("teacherDetail", adminService.selectTeacherDetail(teacherCode));
+			
+			
+			return "content/admin/teacherPopup";
+		}
+		
+		
+
+		// 교사 상세페이지 팝업에서
+		// 교사 상태 변경
+		@ResponseBody
+		@PostMapping("/changeTeacherStatusAjax")
+		public void changeTeacherStatus(TeacherVO teacherVO) {
+
+			adminService.changeTeacherStatus(teacherVO);
+		}
 
 		
-		
-		//System.out.println("이름 : " + paramMap.get("teacherName"));
-		
-		
-		
-		
-		
-		//이거 지금 안쓰고 있는데 아예 필요 없나?
-		//교사리스트
-		model.addAttribute("teacherList", adminService.selectTeacherList());
-		
-		//교사 검색
-		model.addAttribute("searchTeacher", adminService.searchTeacher(paramMap));
+		// 교사 상세페이지 팝업에서
+		// 교사 권한 승인
+		@ResponseBody
+		@PostMapping("/changeTeacherRoleAjax")
+		public String changeTeacherRoleAjax(TeacherVO teacherVO) {
+			adminService.changeTeacherRole(teacherVO);
 
-		//과목 카테고리 목록 조회
-		model.addAttribute("subjectList", adminService.selectSubject());
-		
-		model.addAttribute("paramMap", paramMap);
-		
-		
-		return "content/admin/teacherList";
-
-	}
-	
-	
-	//교사 상세페이지 팝업으로 이동
-	@RequestMapping("/popup")
-	public String pop(String teacherCode, Model model) {
+			return "교사";
+		}
 	
 		
-		model.addAttribute("teacherDetail", adminService.selectTeacherDetail(teacherCode));
 		
 		
-		return "content/admin/teacherPopup";
-	}
-	
-	
-	  //팝업 페이지에서 교사 상태 변경
-	  @ResponseBody
-	  @PostMapping("/changeTeacherStatusAjax") 
-	  public void changeTeacherStatus(TeacherVO teacherVO) {
-		  
-		  adminService.changeTeacherStatus(teacherVO); 
-	  }
-	 
-	
-	
-	
-	 //팝업 페이지에서 교사 권한 승인
-	  @ResponseBody
-	  @PostMapping("/changeTeacherRoleAjax")
-	  public String changeTeacherRoleAjax(TeacherVO teacherVO) {
-		  adminService.changeTeacherRole(teacherVO);
-		  
-		  return "교사";
-	  }
-	
-	
-	
-
-	
-	
-	
-	
-	
+		
+		
 /////<과목 등록 관련>//////////////////////////////////////////////////////////// 
 	
 	
