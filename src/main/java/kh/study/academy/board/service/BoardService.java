@@ -29,19 +29,11 @@ public interface BoardService {
 	
 	
 	// 공지사항 게시글 삭제
-	void deleteBoardNotice(BoardVO boardVO);
+	void deleteBoardChecked(BoardVO boardVO);
 
-	// 자유게시판 게시글 삭제
-	void deleteBoardFree(BoardVO boardVO);
-	
-	
 	
 	// 공지사항 상세페이지에 게시글 삭제
-	void deleteNoticeDetail(int boardNum);
-	
-	// 자유게시판 상세페이지에 게시글 삭제
-	void deleteFreeDetail(int boardNum);
-	
+	void deleteBoardDetail(int boardNum);
 		
 	
 	// 공지사항 상세 페이지에서 게시글 수정

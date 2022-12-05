@@ -145,28 +145,38 @@
 	</select>
 	
 	
+	
+	<!--  게시판 리스트에서 글 삭제 -->
+	<delete id="deleteBoardChecked">
+		DELETE BOARD
+		WHERE BOARD_NUM IN
+		<foreach collection="boardNumList" item="boardNum" separator="," open="(" close=")">
+			#{boardNum}
+		</foreach>
+	</delete>
+
+
+	
+	<!-- 상세페이지에서 글 삭제 -->
+	<delete id="deleteBoardDetail">
+		DELETE BOARD
+		WHERE BOARD_NUM = #{boardNum}
+	</delete> 
+
+
+	
 
 	<!-- 공지사항 글 상세페이지에서 글 수정 -->
-	
 	 <update id="updateNoticeDetail">
-	
 		UPDATE BOARD
 		SET
 			BOARD_TITLE = #{boardTitle}
 			, BOARD_CONTENT = #{boardContent}
 		WHERE BOARD_NUM = #{boardNum}
-	
-	
 	</update>		
 	
 	
 	
-	<!-- 공지사항 상세페이지에서 글 삭제 -->
-	
-	<delete id="deleteNoticeDetail">
-		DELETE BOARD
-		WHERE BOARD_NUM = #{boardNum}
-	</delete> 
 	
 	
 	
@@ -197,20 +207,6 @@
 	</select>
 	
 
-	
-	
-	
-	
-	
-	<!-- 글 삭제 -->
-	
-	<delete id="deleteBoardNotice">
-			DELETE BOARD
-			WHERE BOARD_NUM IN
-			<foreach collection="boardNumList" item="boardNum" separator="," open="(" close=")">
-				#{boardNum}
-			</foreach>
-	</delete>
 	
 	
 	<!-- 조회수 -->
@@ -297,25 +293,6 @@
 
 	
 	
-	
-	<!-- 자유게시판 글 리스트에서 체크박스해서 글 삭제 -->
-	<delete id="deleteBoardFree">
-		DELETE BOARD
-		WHERE BOARD_NUM IN
-		<foreach collection="boardNumList" item="boardNum" separator="," open="(" close=")">
-			#{boardNum}
-	</foreach>
-	
-	
-	</delete>
-	
-	<!-- 자유게시판 상세페이지에서 등록한 글 삭제 -->
-	
-	<delete id="deleteFreeDetail">
-		DELETE BOARD
-		WHERE BOARD_NUM = #{boardNum}
-	</delete>
-
 
 
 	<!--  자유게시판 상세 수정페이지에서 첨부파일 삭제 기능 -->

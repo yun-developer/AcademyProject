@@ -80,33 +80,22 @@ public class BoardServiceImpl implements BoardService{
 	
 	
 	
-	// 공지사항 게시글 삭제
+	//리스트에서 게시글 삭제
 	@Override
-	public void deleteBoardNotice(BoardVO boardVO) {
-		sqlSession.delete("boardMapper.deleteBoardNotice", boardVO);
+	public void deleteBoardChecked(BoardVO boardVO) {
+		sqlSession.delete("boardMapper.deleteBoardChecked", boardVO);
 		
 	}
 	
-	// 자유게시판 게시글 삭제
-	@Override
-	public void deleteBoardFree(BoardVO boardVO) {
-		sqlSession.delete("boardMapper.deleteBoardFree", boardVO);
-		
-	}
+
 	
-	// 공지사항 상세페이지에서 게시글 삭제
+	//상세페이지에서 게시글 삭제
 	@Override
-	public void deleteNoticeDetail(int boardNum) {
-		sqlSession.delete("boardMapper.deleteNoticeDetail", boardNum);
+	public void deleteBoardDetail(int boardNum) {
+		sqlSession.delete("boardMapper.deleteBoardDetail", boardNum);
 		
 	}
 
-	
-	// 자유게시판 상세페이지에서 게시글 삭제
-	@Override
-	public void deleteFreeDetail(int boardNum) {
-		sqlSession.delete("boardMapper.deleteFreeDetail",boardNum);
-	}
 	
 	
 	// 공지사항 상세 페이지에서 게시글 수정

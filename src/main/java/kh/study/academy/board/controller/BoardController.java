@@ -104,7 +104,7 @@ public class BoardController {
       BoardVO boardVO = new BoardVO();
       boardVO.setBoardNumList(boardNumNoticeList);
       
-      boardService.deleteBoardNotice(boardVO);
+      boardService.deleteBoardChecked(boardVO);
       
       return "redirect:/board/noticeList";
    }
@@ -131,7 +131,7 @@ public class BoardController {
 
 	@PostMapping("/deleteNoticeDetail")
 	public String deleteNoticeDetail(int boardNum) {
-		boardService.deleteFreeDetail(boardNum);
+		boardService.deleteBoardDetail(boardNum);
 		
 		return"redirect:/board/noticeList";
 	}
@@ -286,7 +286,7 @@ public class BoardController {
       BoardVO boardVO = new BoardVO();
       boardVO.setBoardNumList(boardNumList);
       
-      boardService.deleteBoardFree(boardVO);
+      boardService.deleteBoardChecked(boardVO);
       
       return "redirect:/board/freeList";
    }
@@ -296,7 +296,7 @@ public class BoardController {
    // 자유게시판 상세페이지에서 등록한 글 삭제하기	
 	@PostMapping("/deleteFreeDetail")
 	public String deleteFreeDetail(int boardNum) {
-		boardService.deleteFreeDetail(boardNum);
+		boardService.deleteBoardDetail(boardNum);
 		
 		return"redirect:/board/freeList";
 	}
@@ -384,6 +384,27 @@ public class BoardController {
 	   
 	   return "content/board/myPage";
    }
+   
+   
+   //마이페이지 리스트에서 글 삭제하기
+   @PostMapping("/deleteMyPage")
+   public String deleteMyPage(String boardNums) {
+      String[] boardNumArr = boardNums.split(","); // 배열을 리스트로 변환작업 2줄
+      List<String> boardNumList = Arrays.asList(boardNumArr);
+      
+      BoardVO boardVO = new BoardVO();
+      boardVO.setBoardNumList(boardNumList);
+      
+      boardService.deleteBoardChecked(boardVO);
+      
+      return "redirect:/board/myPage";
+   }
+   
+   
+   
+   
+   
+   
 	     
 
 }
