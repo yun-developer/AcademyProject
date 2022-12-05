@@ -1,4 +1,4 @@
-
+/* 차트 그리는 메소드 호출*/
 drawChart();
 
 function drawChart(){
@@ -20,8 +20,8 @@ function drawChart(){
 		}
 	});
 	//ajax end
-	
 }
+
 
 //////////////////////////변수///////////////////////////////////////////////
 /*회원가입 진행여부*/
@@ -64,7 +64,7 @@ if(isNew.value=='new'){
 
 
 
-//////////////////////////메인페이지에 차트//////////////////////////////////
+/*메인페이지 내 차트 =====================================================================================================================*/
 
 //차트1
 //교사별 프로그램 수 차트를 그림
@@ -183,7 +183,7 @@ function drawChart2(data) {
 		series:chart_data_arr,
 		chart: {
 			width: '100%',
-			height: 250,
+			height: 238,
 			type: 'line',
 			dropShadow: {
 				enabled: true,
@@ -333,7 +333,7 @@ function drawChart3(data) {
 		series:chart_data_arr,
 		chart: {
 			width: '100%',
-			height: 250,
+			height: 238,
 			type: 'line',
 			dropShadow: {
 				enabled: true,

@@ -8,60 +8,55 @@
 
 
 	<div class="container h-100" style="height: 100%;">
-		<div
-			class="row d-flex justify-content-center align-items-center h-100"
+		<div class="row d-flex justify-content-center align-items-center h-100"
 			style="margin-top: 16%; margin-bottom: 16%">
 			<div class="col-md-4" style="float: none; margin: 0 auto;">
 				<h3>회원 로그인</h3>
 				<p class="tip" style="color: #999999; font-size: 14px;">
-					가입하신 (학원사이트 명) 아이디와 비밀번호를 입력해주세요.<br>
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+						fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+					 	 <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+					</svg>
+					가입하신 PotatoAcademy 아이디와 비밀번호를 입력해주세요. <br> 
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+						fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+					 	 <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+					</svg>
 					비밀번호는 대소문자를 구분합니다.
 				</p>
-
 				<form action="/teacher/login" method="post">
 					<div class="row mb-3">
-
-						<!-- <label for="teacherId" class="col-sm-2 col-form-label">
-							아이디 </label> -->
 						<div class="col-sm-12">
 							<input type="text" class="form-control" id="teacherId"
-								name="teacherId" placeholder="아이디" >
+								name="teacherId" placeholder="아이디">
 						</div>
 					</div>
 					<div class="row mb-3">
-						<!-- <label for="teacherPw" class="col-sm-2 col-form-label">
-							비밀번호 </label> -->
 						<div class="col-sm-12">
 							<input type="password" class="form-control" id="teacherPw"
-								name="teacherPw" placeholder="비밀번호" >
+								name="teacherPw" placeholder="비밀번호">
 						</div>
 					</div>
 					<div class="d-grid gap-2 mb-3">
 						<button id="loginBtn" class="btn btn-primary" type="submit">로그인</button>
 					</div>
-
 				</form>
-		
+
 				<div class="row">
 					<div class="col-md-6">
-					<p>
-						<a th:href="@{/teacher/joinPage}">회원가입하기 &gt;</a>
-					</p>
+						<p>
+							<a th:href="@{/teacher/joinPage}">회원가입하기 &gt;</a>
+						</p>
 					</div>
 					<div class="col-md-6" style="text-align: right;">
-					<p>
-						<a th:href="@{/teacher/findLoginPage}">아이디/비밀번호 찾기 &gt;</a>
-					</p>
+						<p>
+							<a th:href="@{/teacher/findLoginPage}">아이디/비밀번호 찾기 &gt;</a>
+						</p>
 					</div>
 				</div>
-
-
-
 			</div>
 		</div>
 	</div>
 
-
 </div>
-
 </html>
