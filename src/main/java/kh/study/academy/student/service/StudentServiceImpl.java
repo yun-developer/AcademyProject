@@ -43,14 +43,13 @@ public class StudentServiceImpl implements StudentService{
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public void deleteCheckedStu(StudentVO studentVO, List<String> beforeLessonInfoCodes) {
-	//public void deleteCheckedStu(StudentVO studentVO, StudentLessonInfoVO studentLessonInfoVO) {
 		sqlSession.update("studentMapper.deleteCheckedStu", studentVO);
 		
+		// 리스트 안에 개수만큼 포문 돌면서 업데이트 쿼리 실행
 		for(String beforeLessonInfoCode : beforeLessonInfoCodes) {
 			sqlSession.update("lessonMapper.updateBeforeNowStudent", beforeLessonInfoCode);
 			
 		}
-		//sqlSession.update("lessonMapper.updateBeforeNowStudent", studentLessonInfoVO);
 	}
 
 	

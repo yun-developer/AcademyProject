@@ -101,20 +101,22 @@ function goDelete() {
 		   if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
 				//문자열로 만들어서 던져 줌
 				let studentCodes = '';
-			/*	for(const checkedChk of checkedChks) {
+				for(const checkedChk of checkedChks) {
 					studentCodes = studentCodes + checkedChk.value + ',';  
-				}*/
+				}
 				
 				let beforeLessonInfoCodes = '';
 				for(const checkedChk of checkedChks) {
 					const codes = checkedChk.closest('tr').querySelectorAll('.lessonInfoCodeClass');
+					/* 왜 클래스 이름 줘서 바로 안 가져오는지? -> 버튼을 눌렀을 때, 체크 된 인풋 박스의
+					    부모 태그를 찾아간 후 class = lessonInfoCodeClass 인 자식 태그를 찾아감. */
+				
 					
 					for(const code of codes) {
 						beforeLessonInfoCodes += code.value+',';
 					}
 						
 				}
-					alert(beforeLessonInfoCodes);
 				
 				
 				deleteForm.querySelector('#studentCodes').value = studentCodes;  // 넘어오는 name과 컨트롤러의 매개변수 이름 같으면 알아서 받아줌
