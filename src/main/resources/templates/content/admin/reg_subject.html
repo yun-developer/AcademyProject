@@ -2,80 +2,88 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layout/base_layout}">
-	
-	
+
+
 
 <div layout:fragment="content">
 	<div class="row">
-		<div class="col-12">
-			<div class="row">
-				<div class="col-12">
-					<h6>과목 등록</h6>
-				</div>
-				<div class="col-12 mb-3">
-					<form class="row g-3" th:action="@{/admin/regSubject}" method="post" >
-                  <div class="col-10">
-                     <input type="text" name="subjectName" class="form-control" id="" placeholder="Username">
-                  </div>
-                    <div class="col-2">
-                     <button type="submit" class="btn btn-primary">등록</button>
-                     
-                    </div>
-              	 </form>
-				</div>
-				<div class="col-11">
-					<table class="table table-striped table-hover text-center">
-                 <thead>
-                   <tr>
-                   <td>
-                     <input id="checkAll" type="checkbox" class="form-check-input"  th:name="selectall" >
-                  </td>
-                     <th scope="col">No</th>
-                     <th scope="col">과목 코드</th>
-                     <th scope="col">과목 이름</th>
-                   </tr>
-                 </thead>
-                 <tbody>
-                 <th:block th:if="${#lists.size(subjectList) == 0}">
-                 	<tr> 
-                 		<td colspan="4">등록된 과목이 없습니다.</td>
-                 	</tr>
-                 </th:block>
-
-                 <th:block th:unless="${#lists.size(subjectList) == 0}">
-                  
-                    <tr th:each="subject, status : ${subjectList}">
-                   		<td>
-                     <input  th:value="${subject.subjectCode}"  type="checkbox" class="form-check-input chk" >
-                  		</td>
-                   		<td th:text="${status.count}"></td> 
-                   		<td th:text="${subject.subjectCode}" ></td> 
-                   		<td th:text="${subject.subjectName}"></td> 
-                   </tr>
-             
-                 </th:block> 
-                 </tbody>
-               </table>
-				</div>
-				
+		<div class="col-12 mt-3">
+			<h5>
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter-left" viewBox="0 0 16 16">
+				  <path d="M2 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+				</svg>
+			 과목 등록</h5>
+		</div>
+		<form class="row g-2" th:action="@{/admin/regSubject}" method="post">
+			<div class="col-xs-12 col-lg-11">
+				<input type="text" name="subjectName" class="form-control" id=""
+					placeholder="신규 등록할 과목명을 입력해주세요">
 			</div>
-		  </div>
-		  	<form th:action="@{/admin/deleteSubject}" method="post" id="deleteSubjectForm">  <!-- 폼태그 안에 input가 있어야 데이터를 가져간다.  -->
-             <input type="hidden" name="subjectCodes"  value=""> <!--  submit누르면 데이터 안보이게 데이터 가져갈꺼다.  내가 체크한 체크박스들을 이 input태그의 value값을   -->
-               <div class="row justify-content-end">
-                  <div class="col-2"  style="margin-right:4.8rem; ">
-                        <button th:onclick="subjectDeleteAjax();" type="button" class="btn btn-warning flex-end" >삭제</button>
-                  </div>
-               </div>
-              </form>
-            </div>
-            
-            
-         <script src="https://code.jquery.com/jquery-latest.min.js"></script>   
+			<div class="col-xs-12 col-lg-1">
+				<div class="d-grid gap-2">
+					<button type="submit" class="btn btn-primary">등록</button>
 
-		<script type="text/javascript" th:src="@{/js/admin/subject.js}"></script>	
-  
-   </div>
+				</div>
+			</div>
+
+		</form>
+		<div class="col-12 mt-5">
+			<table class="table table-striped table-hover text-center">
+				<colgroup></colgroup>
+				<thead>
+					<tr>
+						<td><input id="checkAll" type="checkbox"
+							class="form-check-input" th:name="selectall"></td>
+						<th scope="col">No</th>
+						<th scope="col">과목 코드</th>
+						<th scope="col">과목 이름</th>
+					</tr>
+				</thead>
+				<tbody>
+					<th:block th:if="${#lists.size(subjectList) == 0}">
+						<tr>
+							<td colspan="4">등록된 과목이 없습니다.</td>
+						</tr>
+					</th:block>
+
+					<th:block th:unless="${#lists.size(subjectList) == 0}">
+
+						<tr th:each="subject, status : ${subjectList}">
+							<td><input th:value="${subject.subjectCode}" type="checkbox"
+								class="form-check-input chk"></td>
+							<td th:text="${status.count}"></td>
+							<td th:text="${subject.subjectCode}"></td>
+							<td th:text="${subject.subjectName}"></td>
+						</tr>
+
+					</th:block>
+				</tbody>
+			</table>
+		</div>
+
+
+		<form th:action="@{/admin/deleteSubject}" method="post"
+			id="deleteSubjectForm">
+			<!-- 폼태그 안에 input가 있어야 데이터를 가져간다.  -->
+			<input type="hidden" name="subjectCodes" value="">
+			<!--  submit누르면 데이터 안보이게 데이터 가져갈꺼다.  내가 체크한 체크박스들을 이 input태그의 value값을   -->
+			<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+				<div class="col-xs-12 col-lg-1 ">
+					<div class="d-grid gap-2 ">
+						<!-- <div class="d-grid gap-2 d-md-flex justify-content-md-end" > -->
+						<button th:onclick="subjectDeleteAjax();" type="button"
+							class="btn btn-danger flex-end">삭제</button>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
+
+	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript" th:src="@{/js/admin/subject.js}"></script>
+
+</div>
 </html>
 
 
