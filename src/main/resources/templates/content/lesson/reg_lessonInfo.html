@@ -7,14 +7,17 @@
 <div layout:fragment="content">
 
 <!-- 학년, 요일, 수업시간, 교실명, 교사명 -->
-
+	<div class="col-12 mt-3">
+			<h5>
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter-left" viewBox="0 0 16 16">
+				  <path d="M2 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+				</svg>
+			 학급 등록</h5>
+		</div>
 	<!--여기부터 검색 div  -->
 	<form th:action="@{/lesson/regLessonInfoPage}" method="post">
-		<section >
-			<div class="info mt-3 mb-2">
-				<i class="fas fa-exclamation-circle color-blue2"></i> <b> 검색조건</b>
-			</div>
-			<div class="row search-detail-form">
+		<section>
+			<div class="row search-detail-form mt-3">
 				<div class="col-xs-12 col-lg-4">
 					<div class="input-group mb-2">
 						<span class="input-group-addon col-2">학년</span> 
@@ -51,7 +54,7 @@
 					<div class="d-grid gap-2">
 						<div class="d-grid gap-2">
 							<button type="submit" name="btn-detail-search"
-								class="btn btn-outline-dark me-md-2">검색</button>
+								class="btn btn-dark me-md-2">검색</button>
 						</div>
 					</div>
 				</div>
@@ -74,19 +77,27 @@
 	<div class="row">
 		<div class="col-12">
 			<div class="row">
-				<div class="col-12">
-					<h6>학급 편성 등록</h6>
-				</div>
+			
 				<div class="col-12 mb-3">
 					<form class="row justify-content-end" th:action="@{/admin/selectLessonRoom}" method="post" id="saveLessonInfo">
 						  <div class="col-2"  style="margin-right:4.4rem;">
-                       		 <button type="button" id="updateLessonRoomModal" class="btn btn-info fal fa-save"  th:onclick="goRegLessonInfoAjax([[${lessonDayCode}]]);">학급등록</button>
+                       		 <button type="button" id="updateLessonRoomModal" class="btn btn-primary"  th:onclick="goRegLessonInfoAjax([[${lessonDayCode}]]);">학급등록</button>
                   		  </div>
               	   </form>
 				</div>
 				
-				<div class="col-11">
+				<div class="col-12">
+					<p class="card-text">
+						<small class="text-muted"> 
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+								fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+							  <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+							</svg> 총 <span th:text="${#lists.size(lessonInfoList)}" style="color: red"></span>개의
+							학급이 조회되었습니다.
+						</small>
+					</p>
 					<table class="table table-striped table-hover text-center">
+					<colgroup></colgroup>
                  <thead>
                    <tr>
                    	   <td>
@@ -142,11 +153,22 @@
 		  
 		   	<form th:action="@{/lesson/deleteLessonInfo}" method="post" id="deleteLessonInfoForm">  <!-- 폼태그 안에 input가 있어야 데이터를 가져간다.  -->
              <input type="hidden" name="lessonInfoCodes"  value="">  <!-- submit누르면 데이터 안보이게 데이터 가져갈꺼다.  내가 체크한 체크박스들을 이 input태그의 value값을   -->
-               <div class="row justify-content-end">
-                  <div class="col-2"  style="margin-right:4.4rem;">
-                        <button th:onclick="lessonInfoDeleteAjax();" type="button" class="btn btn-warning form-control-start" >삭제</button>
-                  </div>
+              
+              
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              
+              
+              <!--  <div class="row justify-content-end">
+                  <div class="col-2"  style="margin-right:4.4rem;"> -->
+                        <button th:onclick="lessonInfoDeleteAjax();" type="button" class="btn btn-danger form-control-start" >삭제</button>
+                 <!--  </div>
+               </div> -->
+               
                </div>
+               
+               
+               
+               
               </form> 
 
             </div>
