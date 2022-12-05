@@ -111,9 +111,9 @@
 						[	[[${lesson.lessonInfoVO.subjectVO.subjectName}]]-[[${lesson.lessonInfoVO.stepVO.stepName}]]-[[${lesson.lessonInfoVO.year}]] ]
 						</th:block></td>
 						<!-- <td th:text="${student.studentLessonInfoList[0].lessonInfoVO.subjectVO.subjectName+'-'+student.studentLessonInfoList[0].lessonInfoVO.stepVO.stepName+'-'+student.studentLessonInfoList[0].lessonInfoVO.year}"></td> -->
-						<td><input type="button" class="btn btn-primary"
+						<td><input type="button" class="btn btn-outline-primary"
 						value="등록" th:onclick="openRegTestModal([[${student.studentCode}]],[[${student.studentName}]], [[${student.studentLessonInfoList}]]);" data-bs-toggle="modal" data-bs-target="#testInfoReg"></td>
-						<td><input type="button" class="btn btn-warning"
+						<td><input type="button" class="btn btn-outline-warning"
 							value="수정" th:onclick="openChangeTestModal([[${student.studentCode}]],[[${student.studentName}]],[[${student.studentLessonInfoList}]]);" data-bs-toggle="modal" data-bs-target="#testInfoChange"></td>
 					</tr>
 				</th:block>
