@@ -15,17 +15,8 @@
 	<!--조회 div 시작  -->
 	<form th:action="@{/test/testManage}" method="post">
 		<section>
-			<div class="info mb-2">
-				<b> <svg xmlns="http://www.w3.org/2000/svg" width="16"
-						height="16" fill="currentColor" class="bi bi-search"
-						viewBox="0 0 16 16">
-				  <path
-							d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-				</svg> 검색
-				</b>
-				<p class="card-text ">
-					<small class="text-muted"> - 학생이름, 교사이름으로 평가등록 및 수정 삭제할 학생을 검색할 수 있습니다.</small>
-				</p>
+			<div class="info mt-3">
+				<!--여기 문구 필요할까요?  -->
 			</div>
 			<div class="row search-detail-form">
 				<div class="col-xs-12 col-lg-4">
@@ -65,6 +56,20 @@
 
 	<!--학생 리스트 div 시작  -->
 	<div class="row mt-5" id="table_box_bootstrap">
+		<p class="card-text">
+			<small class="text-muted">
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+						fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
+				  <path	d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z" />
+				</svg> 학생이름, 교사이름으로 평가등록 및 수정 삭제할 학생을 검색할 수 있습니다. <br> 
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+						fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+				  <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+				</svg> 총 <span th:text="${#lists.size(search)}" style="color: red"></span>명이 조회되었습니다. 
+			</small>
+		</p>
+	
+	
 		<table class="table table-hover text-center align-middle ">
 		
 			<colgroup>
