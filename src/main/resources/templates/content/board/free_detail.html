@@ -39,6 +39,7 @@
 									
 								</div>
 							
+							<div th:if= "${free.teacherId == #authentication.name or #strings.contains(#authentication.authorities, 'ADMIN')}">
 								<form th:action="@{/board/deleteFreeDetail}" method="post" id="deleteStuForm">  <!-- 폼태그 안에 input가 있어야 데이터를 가져간다.  -->
 					             <th:block th:each="free : ${free}">
 					             <input type="hidden" name="boardNum"  th:value="${free.boardNum}"> <!--  submit누르면 데이터 안보이게 데이터 가져갈꺼다.  내가 체크한 체크박스들을 이 input태그의 value값을   -->
@@ -59,6 +60,7 @@
 					                  </div>
 					               </div>
 					             </form>
+					        </div>
 					             
 						</div>
 						<div class="subheader pb-6 border-bottom" style="margin-bottom: 20px;"></div>
