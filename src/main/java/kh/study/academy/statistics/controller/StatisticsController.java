@@ -108,7 +108,7 @@ public class StatisticsController {
 		Map<String, Object> paramMap = new HashMap<>();
 		 
 	
-		//① map 학년별 학생 수
+		//① map 분기별 과목 테스트 평균
 		paramMap.put("quarterlySubTestAvg", statisticsService.selectQuarterlySubTestAvg());
 		
 		return paramMap;

@@ -28,8 +28,10 @@ import kh.study.academy.board.service.BoardService;
 import kh.study.academy.config.DateUtil;
 import kh.study.academy.lesson.service.LessonService;
 import kh.study.academy.lesson.vo.LessonInfoVO;
+import kh.study.academy.statistics.service.StatisticsService;
 import kh.study.academy.student.service.StudentService;
 import kh.study.academy.student.vo.StudentVO;
+import kh.study.academy.teacher.vo.TeacherVO;
 
 
 
@@ -39,7 +41,6 @@ public class LessonController {
 
 	@Resource(name = "adminService")
 	private AdminService adminService;
-	
 	
 	@Resource(name = "lessonService")
 	private LessonService lessonService;
@@ -53,8 +54,13 @@ public class LessonController {
 	@Resource(name = "attendService")
 	private AttendService attendService;
 	
+	@Resource(name = "statisticsService")
+	private StatisticsService statisticsService;
 	
-	//메인
+	
+/* 메인 관련================================================================================================================= */
+
+	//메인페이지로 이동
 	@GetMapping("/main")
 	public String mainPage( Model model,String isNew) {
 		model.addAttribute("noticeList", boardService.selectNoticeMain());
@@ -70,6 +76,43 @@ public class LessonController {
 		
 		return "content/lesson/lesson_main";
 	}
+	
+	// 메인 페이지 내 차트를 그릴 데이터를 조회하는 메소드
+	@ResponseBody
+	@PostMapping("/mainChartAjax")
+	public Map<String, Object> mainChartAjax() {
+
+		Map<String, Object> paramMap = new HashMap<>();
+		
+		Map<String, Integer> chart1_data = new HashMap<>();
+		
+		// 전체 교사 조회(현재 교사 상태가 Y인 교사만)
+		List<TeacherVO> teacherList = adminService.selectTeacherList();
+		
+		for (TeacherVO teacher : teacherList) { 
+			
+			// 교사코드 조회
+			String teacherCode = teacher.getTeacherCode();
+
+			// 교사별 프로그램 수 
+			int lessonCnt = statisticsService.selectLessonCntByTeacher(teacherCode);
+
+			chart1_data.put(teacher.getTeacherName(), lessonCnt);
+		}
+		
+		// ① map 교사별 프로그램 수 
+		paramMap.put("lessonCntByTeacher", chart1_data);
+		
+		//② map 분기별 과목 테스트 평균
+		paramMap.put("quarterlySubTestAvg", statisticsService.selectQuarterlySubTestAvg());
+	
+		return paramMap;
+	}
+	
+/* ========================================================================================================================= */
+
+	
+	
 	
 	//주별 학급목록
 	@GetMapping("/listByWeek")

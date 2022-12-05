@@ -189,8 +189,8 @@ function drawChart1(data) {
 	};
 
 
-	var chart = new ApexCharts(document.querySelector("#chart"), options);
-	chart.render();
+	var chart2 = new ApexCharts(document.querySelector("#chart2"), options);
+	chart2.render();
 
 
 }
@@ -346,8 +346,8 @@ function drawChart2(data) {
 		}
 	};
 
-	var chart1 = new ApexCharts(document.querySelector("#chart1"), options);
-	chart1.render();
+	var chart3 = new ApexCharts(document.querySelector("#chart3"), options);
+	chart3.render();
 	
 	
 }

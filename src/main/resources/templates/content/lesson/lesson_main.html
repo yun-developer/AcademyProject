@@ -5,14 +5,14 @@
 
 
 <div layout:fragment="content">
-  						<!-- 회원가입을 진행 한 후 올 경우 -->
-  						<input type="hidden" id="isNew" th:value="${isNew}">
-  						
-  						
-		                <main >
-		                	<div class="row col-12">
-		                		<div class="col-11"> 
-				                <!-- 	<div class="card text-bg-dark mx-auto mb-5" style="max-width: 70%; max-height: 20%;">
+	<!-- 회원가입을 진행 한 후 올 경우 -->
+	<input type="hidden" id="isNew" th:value="${isNew}">
+
+
+	<main>
+		<div class="row col-12">
+			<div class="col-11">
+				<!-- 	<div class="card text-bg-dark mx-auto mb-5" style="max-width: 70%; max-height: 20%;">
 									  <img th:src="@{/images/}+nothinghehe.jpg" class="card-img" alt="..." >
 									  <div class="card-img-overlay text-center">
 									    <h5 class="card-title">Welcome!</h5>
@@ -20,69 +20,81 @@
 									    <p class="card-text"><small></small></p>
 									  </div>
 									</div> -->
-			                		<!-- 배 너 -->
-			                		<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
-									  <div class="carousel-indicators">
-									    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-									    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-									    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-									  </div>
-									  <div class="carousel-inner">
-									    <div class="carousel-item active">
-									      <img th:src="|@{/images/logopotato.png}|" class="d-block w-100" alt="...">
-									    </div>
-									    <div class="carousel-item">
-									      <img th:src="@{/images/}+nothinghehe.jpg" class="d-block w-100" alt="...">
-									    </div>
-									    <div class="carousel-item">
-									      <img src="..." class="d-block w-100" alt="...">
-									    </div>
-									  </div>
-									  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-									    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-									    <span class="visually-hidden">Previous</span>
-									  </button>
-									  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-									    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-									    <span class="visually-hidden">Next</span>
-									  </button>
-									</div>
-		                		
-		                		
-		                		
-		                		</div>
-		                		
-		                		
-		                		
-		                		
-		                		
-		                		
-			                	<div class="col-1 text-end">
-			                		<div class="chat-e_webchat_button_wrapper right responsive">
-			                			<button onclick="potatoChat();" class="chat-e_webchat_button" title="챗봇 열기 버튼" style="background-color: rgb(47, 110, 141); border-radius: 50%;">
-				                			<img class="rounded" th:src="|@{/images/logopotato.png}|" style="width: 90px; height: 90px;">
-			                			</button>
-			                		</div>
-			                		<div class="chat-e_webchat_hidden right"></div>
-			                	</div>
-		                	</div>
-		         
-		         
-		         
-		         <div class="floating_item _floating text-end">
-				      <a href="#" class="link_item top_item _btnFloating" data-type="top">
-				      <img class="scrollToTop" th:src="|@{/images/arrow-up-circle.svg}|" style="width: 60px; height: 60px;">
-				        <!-- <span class="icon icon_top"></span><span class="text blind">top</span> -->
-				      </a>
-				  </div>
-		         
-		         
-		         
-		         
-		                
-		                
-		                
-		                 <!--    <div class="container-fluid px-4">
+				<!-- 배 너 -->
+				<div id="carouselExampleIndicators" class="carousel slide"
+					data-bs-ride="true">
+					<div class="carousel-indicators">
+						<button type="button" data-bs-target="#carouselExampleIndicators"
+							data-bs-slide-to="0" class="active" aria-current="true"
+							aria-label="Slide 1"></button>
+						<button type="button" data-bs-target="#carouselExampleIndicators"
+							data-bs-slide-to="1" aria-label="Slide 2"></button>
+						<button type="button" data-bs-target="#carouselExampleIndicators"
+							data-bs-slide-to="2" aria-label="Slide 3"></button>
+					</div>
+					<div class="carousel-inner">
+						<div class="carousel-item active">
+							<img th:src="|@{/images/logopotato.png}|" class="d-block w-100"
+								alt="...">
+						</div>
+						<div class="carousel-item">
+							<img th:src="@{/images/}+nothinghehe.jpg" class="d-block w-100"
+								alt="...">
+						</div>
+						<div class="carousel-item">
+							<img src="..." class="d-block w-100" alt="...">
+						</div>
+					</div>
+					<button class="carousel-control-prev" type="button"
+						data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Previous</span>
+					</button>
+					<button class="carousel-control-next" type="button"
+						data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Next</span>
+					</button>
+				</div>
+
+
+
+			</div>
+
+
+
+
+
+
+			<div class="col-1 text-end">
+				<div class="chat-e_webchat_button_wrapper right responsive">
+					<button onclick="potatoChat();" class="chat-e_webchat_button"
+						title="챗봇 열기 버튼"
+						style="background-color: rgb(47, 110, 141); border-radius: 50%;">
+						<img class="rounded" th:src="|@{/images/logopotato.png}|"
+							style="width: 90px; height: 90px;">
+					</button>
+				</div>
+				<div class="chat-e_webchat_hidden right"></div>
+			</div>
+		</div>
+
+
+
+		<div class="floating_item _floating text-end">
+			<a href="#" class="link_item top_item _btnFloating" data-type="top">
+				<img class="scrollToTop" th:src="|@{/images/arrow-up-circle.svg}|"
+				style="width: 60px; height: 60px;"> <!-- <span class="icon icon_top"></span><span class="text blind">top</span> -->
+			</a>
+		</div>
+
+
+
+
+
+
+
+		<!--    <div class="container-fluid px-4">
 		                        <h1 class="mt-4">Static Navigation</h1>
 		                        <ol class="breadcrumb mb-4">
 		                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
@@ -101,109 +113,128 @@
 		                        </div>
 		                        
 		                    </div> -->
-		                </main>
+	</main>
 
-<div class="row col-12">
-<div class ="col-xl-6">
-	<div class="type01">
-		<h4 class="main-inner-title">공지사항</h4>
-		<div th:each="notice :${noticeList}">
-			<ul>
-				<li>
-					<div class="mini-title-box" >
-						<a th:href="@{/board/noticeDetail(boardNum=${notice.boardNum})}"
-							title="자세히 보기"> 
-							<span class="mini-title"> [[${notice.boardTitle}]]</span>
-						</a>
-					</div>
-				</li>
+	<div class="row col-12">
+		<div class="col-xl-6">
+			<div class="type01">
+				<h4 class="main-inner-title">공지사항</h4>
+				<div th:each="notice :${noticeList}">
+					<ul>
+						<li>
+							<div class="mini-title-box">
+								<a th:href="@{/board/noticeDetail(boardNum=${notice.boardNum})}"
+									title="자세히 보기"> <span class="mini-title">
+										[[${notice.boardTitle}]]</span>
+								</a>
+							</div>
+						</li>
 
-			</ul>
+					</ul>
 
 
+				</div>
+				<a href="/board/noticeList" title="자세히 보기" class="mini-more">MORE</a>
+			</div>
 		</div>
-		<a href="/board/noticeList" title="자세히 보기" class="mini-more">MORE</a>
-	</div>
-</div>
 
 
-<div class ="col-xl-6">
-	<div class="type01">
-		<h4 class="main-inner-title">자유게시판 BEST</h4>
-		<div th:each="free :${freeList}">
-			<ul>
-				<li>
-					<div class="mini-title-box" >
-						<a th:href="@{/board/freeDetail(boardNum=${free.boardNum})}"
-							title="자세히 보기"> 
-							<span class="mini-title"> [[${free.boardTitle}]]</span>
-						</a>
-					</div>
-				</li>
+		<div class="col-xl-6">
+			<div class="type01">
+				<h4 class="main-inner-title">자유게시판 BEST</h4>
+				<div th:each="free :${freeList}">
+					<ul>
+						<li>
+							<div class="mini-title-box">
+								<a th:href="@{/board/freeDetail(boardNum=${free.boardNum})}"
+									title="자세히 보기"> <span class="mini-title">
+										[[${free.boardTitle}]]</span>
+								</a>
+							</div>
+						</li>
 
-			</ul>
+					</ul>
 
 
+				</div>
+				<a href="/board/freeList" title="자세히 보기" class="mini-more">MORE</a>
+			</div>
 		</div>
-		<a href="/board/freeList" title="자세히 보기" class="mini-more">MORE</a>
+
 	</div>
-</div>
-	
-</div>
-	<br><br>
-		                
-		                
-		                
-		                <div class="row mb-4">
-		                	<div class ="col-xl-6">
-		                	
-	                                <div class="card mb-4 border-dark">
-	                                    <div class="card-header">
-	                                        <svg class="svg-inline--fa fa-chart-area me-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chart-area" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M64 400C64 408.8 71.16 416 80 416H480C497.7 416 512 430.3 512 448C512 465.7 497.7 480 480 480H80C35.82 480 0 444.2 0 400V64C0 46.33 14.33 32 32 32C49.67 32 64 46.33 64 64V400zM128 320V236C128 228.3 130.8 220.8 135.9 214.1L215.3 124.2C228.3 109.4 251.4 109.7 263.1 124.8L303.2 171.8C312.2 182.7 328.6 183.4 338.6 173.4L359.6 152.4C372.7 139.3 394.4 140.1 406.5 154.2L472.3 231C477.3 236.8 480 244.2 480 251.8V320C480 337.7 465.7 352 448 352H159.1C142.3 352 127.1 337.7 127.1 320L128 320z"></path></svg><!-- <i class="fas fa-chart-area me-1"></i> Font Awesome fontawesome.com -->
-	                                        Area Chart Example
-	                                    </div>
-	                                    <div class="card-body">
-	                                    	<div class="chartjs-size-monitor">
-	                                    		<div class="chartjs-size-monitor-expand">
-	                                    			<div class="">
-	                                    			</div>
-	                                    		</div>
-                                    			<div class="chartjs-size-monitor-shrink">
-                                    				<div class="">
-                                    				</div>
-                                    			</div>
-                                   			</div>
-                                   		
-										  <canvas id="myChart" width="80" height="80" style="display: block; height: 50px; width: 100px;" class="chartjs-render-monitor"></canvas>
-                                   		</div>
-	                                </div>
-	                            
-		                	</div>
-		                	<div class ="col-xl-6">
-		                		 
-		                		 <div class="card mb-4 border-dark">
-	                                    <div class="card-header">
-	                                        <svg class="svg-inline--fa fa-chart-area me-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chart-area" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M64 400C64 408.8 71.16 416 80 416H480C497.7 416 512 430.3 512 448C512 465.7 497.7 480 480 480H80C35.82 480 0 444.2 0 400V64C0 46.33 14.33 32 32 32C49.67 32 64 46.33 64 64V400zM128 320V236C128 228.3 130.8 220.8 135.9 214.1L215.3 124.2C228.3 109.4 251.4 109.7 263.1 124.8L303.2 171.8C312.2 182.7 328.6 183.4 338.6 173.4L359.6 152.4C372.7 139.3 394.4 140.1 406.5 154.2L472.3 231C477.3 236.8 480 244.2 480 251.8V320C480 337.7 465.7 352 448 352H159.1C142.3 352 127.1 337.7 127.1 320L128 320z"></path></svg><!-- <i class="fas fa-chart-area me-1"></i> Font Awesome fontawesome.com -->
-	                                        두번째 차트
-	                                    </div>
-	                                    <div class="card-body">
-	                                    	<div class="chartjs-size-monitor">
-	                                    		<div class="chartjs-size-monitor-expand">
-	                                    			<div class="">
-	                                    			</div>
-	                                    		</div>
-                                    			<div class="chartjs-size-monitor-shrink">
-                                    				<div class="">
-                                    				</div>
-                                    			</div>
-                                   			</div>
-                                   		
-										  <!-- <canvas id="myChart" width="100" height="100" style="display: block; height: 288px; width: 722px;" class="chartjs-render-monitor"></canvas> -->
-                                   		</div>
-                                </div>
-		                	</div>
-						</div>
-		                
+	<br>
+	<br>
+
+
+	<!-- 차트 영역 여기서부터 ========================================================================================================= -->
+	<div class="row mt-1 mb-5">
+
+		<!-- 교사별 프로그램 수 div -->
+		<div class="col-5">
+			<div class="card">
+				<h5 class="card-header">
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+						fill="currentColor" class="bi bi-bar-chart-line-fill"
+						viewBox="0 0 16 16">
+				  <path
+							d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2z" />
+				</svg>
+					교사별 프로그램 수
+
+					<p class="card-text">
+						<small class="tip"> <svg
+								xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+								fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+							  <path
+									d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+							</svg> 학급이 배정된 교사의 학급 프로그램 수를 비교하는 차트입니다
+						</small>
+					</p>
+
+				</h5>
+				<div class="card-body">
+					<!--차트 1가 그려질 부분-->
+					<div id="chart1"></div>
+
+				</div>
+			</div>
+		</div>
+
+		<!-- 분기별 과목 테스트 평균 div-->
+		<div class="col-7">
+			<div class="card">
+				<h5 class="card-header">
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+						fill="currentColor" class="bi bi-bar-chart-line-fill"
+						viewBox="0 0 16 16">
+				  <path
+							d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2z" />
+				</svg>
+					분기별 과목 테스트 평균
+
+					<p class="card-text">
+						<small class="tip"> <svg
+								xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+								fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+							  <path
+									d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+							</svg> 분기별 과목 테스트 평균을 학년별로 비교하는 차트입니다
+						</small>
+					</p>
+
+				</h5>
+				<div class="card-body">
+					<!--차트2+3가 그려질 부분-->
+					<div id="chart2"></div>
+					<div id="chart3"></div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+	<!-- 차트 영역 여기까지 =========================================================================================================-->
 
 
 
@@ -213,7 +244,7 @@
 
 
 	<!-- 신규 회원 가입 후 메인페이지로 왔을 때 Modal -->
-<!-- 	<div class="modal fade" id="idDouble_Yes" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<!-- 	<div class="modal fade" id="idDouble_Yes" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	      <form class="row g-3" action="/" method="post">
@@ -254,11 +285,11 @@
 
 
 
-<!-- javascript 경로 확인  -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script type="text/javascript" th:src="@{/js/lesson/lesson_main.js}"></script>                
-		                
+	<!-- javascript 경로 확인  -->
+	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+	<script type="text/javascript" th:src="@{/js/lesson/lesson_main.js}"></script>
+
 </div>
 
 
