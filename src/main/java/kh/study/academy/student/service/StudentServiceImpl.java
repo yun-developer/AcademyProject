@@ -39,7 +39,6 @@ public class StudentServiceImpl implements StudentService{
 	}
 
 	//학생 선택 삭제
-	//왜 이건 now_student_cnt가 -1 안 하는 거지??
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public void deleteCheckedStu(StudentVO studentVO, List<String> beforeLessonInfoCodes) {
