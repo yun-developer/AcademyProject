@@ -13,23 +13,23 @@
 		<div class="col-12" style="margin-top: 40px;" id="table_box_bootstrap">
 			<table class="table table-striped text-center" style="margin-top: 20px;">
 				<colgroup>
-					<col width="10%">
+					<col width="5%">
+					<col width="5%">
 					<col width="30%">
 					<col width="20%">
 					<col width="20%">
 					<col width="10%">
-					<col width="5%">
-					<col width="5%">
+					<col width="10%">
 				</colgroup>
 				<thead>
 					<tr>
+						<th scope="col"><input type="checkbox" id="checkAll" ></th>
 						<th scope="col">NO</th>
 						<th scope="col">제목</th>
 						<th scope="col">작성자</th>
 						<th scope="col">작성일</th>
 						<th scope="col">조회수</th>
 						<th scope="col">추천수</th>
-						<th scope="col"><input type="checkbox" id="checkAll" ></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -40,6 +40,7 @@
 					</th:block>
 					<th:block th:unless="${#lists.size(myList) == 0}">
 						<tr th:each="my, status : ${myList}">
+							<td><input type="checkbox" class="form-check-input chk" th:value="${my.boardNum}" ></td>
 							<td scope="row" th:text=${status.count}></td>
 							<td th:if="${my.boardKindCode == 0}"><a th:href="@{/board/noticeDetail(boardNum=${my.boardNum})}">[[${my.boardTitle}]]</a>
 								<i class="fal fa-comment text-primary"></i> <span class="text-primary" th:text="'(' + ${my.replyNumCnt} + ')'"></span>
@@ -51,12 +52,35 @@
 							<td th:text="${my.createDate}"></td>
 							<td th:text="${my.viewCount}"></td>
 							<td th:text="${my.likeCodeCnt}"></td>
-							<td><input type="checkbox" class="form-check-input chk" th:value="${my.boardNum}" ></td>
 						</tr>
 					</th:block>
 				</tbody>
 			</table>
+			
+			<div class="offset-11 col-2">
+				<div class="row">
+				<div class="col-6">
+					<form th:action="@{/board/deleteMyPage}" method="post"  id="deleteMyPageForm" >
+			 				<input type="hidden" name="boardNums"  value="">
+							<button type="button" onclick="goDelete();" class="btn btn-outline-danger btn-sm form-control"  >
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+				  					<path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+								</svg>삭제
+							</button>
+					</form>			
+				</div>
+			</div>
+			</div>
+			
 </div>
 </div>
+
+
+
+<script th:src="@{/js/paginator.js}"></script>	
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>   
+<script type="text/javascript" th:src="@{/js/board/myPage.js}"></script>	
 </div>
+
 </html>
