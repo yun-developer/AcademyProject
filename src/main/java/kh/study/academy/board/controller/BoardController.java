@@ -115,6 +115,8 @@ public class BoardController {
    @GetMapping("/noticeDetail")
    public String noticeDetail(Model model, int boardNum, LikeTableVO likeTableVO, Authentication authentication) {
 	
+
+	 
       model.addAttribute("notice", boardService.selectBoardDetail(boardNum));
       model.addAttribute("replyList", replyService.selectReply(boardNum));
       boardService.updateViewCount(boardNum);
@@ -141,6 +143,8 @@ public class BoardController {
    // 공지사항 상세페이지에서 글 수정 페이지로 이동
    @RequestMapping("/updateNoticeDetailFrom")
    public String updateNoticeDetailFrom(int boardNum, Model model) {
+	   
+	   
 	   model.addAttribute("Imgs",boardService.selectImgs(boardNum)); 
 	   model.addAttribute("notice", boardService.selectBoardDetail(boardNum));
 	   
@@ -162,7 +166,18 @@ public class BoardController {
 	   
 	   boardService.updateNoticeDetail(boardVO);
 
-	   return "redirect:/board/noticeDetail?boardNum=" + boardVO.getBoardNum();
+	   return "redirect:/board/NoticeImgUpdateLoing?boardNum=" + boardVO.getBoardNum();
+   }
+   
+   // 공지사항 글 수정페이지에서 이미지 로딩페이지로 이동 후 글 상세페이지
+   @GetMapping("/NoticeImgUpdateLoing")
+   private String NoticeImgUpdateLoing(int boardNum, Model model) {
+	   
+	 
+	   model.addAttribute("boardNum",boardNum);
+	
+	 
+	   return "content/board/board_update_imgLoding";
    }
    
    
