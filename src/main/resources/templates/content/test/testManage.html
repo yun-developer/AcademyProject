@@ -46,7 +46,7 @@
 					<div class="d-grid gap-2">
 						<div class="d-grid gap-2">
 							<button type="submit" name="btn-detail-search"
-								class="btn btn-outline-dark me-md-2">
+								class="btn btn-dark">
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 									fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
   									<path
@@ -111,9 +111,9 @@
 						[	[[${lesson.lessonInfoVO.subjectVO.subjectName}]]-[[${lesson.lessonInfoVO.stepVO.stepName}]]-[[${lesson.lessonInfoVO.year}]] ]
 						</th:block></td>
 						<!-- <td th:text="${student.studentLessonInfoList[0].lessonInfoVO.subjectVO.subjectName+'-'+student.studentLessonInfoList[0].lessonInfoVO.stepVO.stepName+'-'+student.studentLessonInfoList[0].lessonInfoVO.year}"></td> -->
-						<td><input type="button" class="btn btn-outline-dark me-md-2"
+						<td><input type="button" class="btn btn-primary"
 						value="등록" th:onclick="openRegTestModal([[${student.studentCode}]],[[${student.studentName}]], [[${student.studentLessonInfoList}]]);" data-bs-toggle="modal" data-bs-target="#testInfoReg"></td>
-						<td><input type="button" class="btn btn-outline-dark me-md-2"
+						<td><input type="button" class="btn btn-warning"
 							value="수정" th:onclick="openChangeTestModal([[${student.studentCode}]],[[${student.studentName}]],[[${student.studentLessonInfoList}]]);" data-bs-toggle="modal" data-bs-target="#testInfoChange"></td>
 					</tr>
 				</th:block>

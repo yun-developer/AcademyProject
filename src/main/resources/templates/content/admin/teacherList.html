@@ -19,107 +19,111 @@
 				<i class="fas fa-exclamation-circle color-blue2"></i> <b> 검색조건</b>
 			</div>
 			<div class="row search-detail-form">
-				<div class="col-xs-12 col-lg-6">
-					<div class="input-group mb-2">
-						<span class="input-group-addon col-2">이름</span> 
-						<input type="text" class="form-control" id="" name="teacherName" autocomplete="off" th:value="${paramMap['teacherName']}"  >
+				<div class="row">
+
+					<div class="col-xs-12 col-lg-3">
+						<div class="input-group mb-2">
+							<span class="input-group-addon col-2">이름</span> <input
+								type="text" class="form-control" id="" name="teacherName"
+								autocomplete="off" th:value="${paramMap['teacherName']}">
+						</div>
 					</div>
-				</div>
-				<div class="col-xs-12 col-lg-6">
-					<div class="input-group mb-2">
-						<span class="input-group-addon col-2">아이디</span> 
-						<input type="text" class="form-control" id="" name="teacherId" autocomplete="off" th:value="${paramMap['teacherId']}" >
+					<div class="col-xs-12 col-lg-3">
+						<div class="input-group mb-2">
+							<span class="input-group-addon col-2">아이디</span> <input
+								type="text" class="form-control" id="" name="teacherId"
+								autocomplete="off" th:value="${paramMap['teacherId']}">
+						</div>
 					</div>
-				</div>
-				<div class="col-xs-12 col-lg-6">
-					<div class="input-group mb-2">
-						<span class="input-group-addon col-2">전화번호</span> 
-						<input type="text" class="form-control" id="" name="teacherTell" autocomplete="off" th:value="${paramMap['teacherTell']}" >
+					<div class="col-xs-12 col-lg-3">
+						<div class="input-group mb-2">
+							<span class="input-group-addon col-2">전화번호</span> <input
+								type="text" class="form-control" id="" name="teacherTell"
+								autocomplete="off" th:value="${paramMap['teacherTell']}">
+						</div>
 					</div>
+						<div class="col-xs-12 col-lg-3">
+							<div class="d-grid gap-2">
+								<div class="d-grid gap-2">
+									<button type="submit" name="btn-detail-search"
+										class="btn btn-dark">검색</button>
+								</div>
+							</div>
+						</div>
+
 				</div>
-				<div class="col-xs-12 col-lg-6">
-					<div class="input-group mb-2">
-						<span class="input-group-addon col-2">권한</span> 
+				<div class="row">
+
+					<div class="col-xs-12 col-lg-3">
+						<div class="input-group">
+							<span class="input-group-addon col-2"> 담당과목</span> <select
+								class="form-select" aria-label="Default select example"
+								name="subjectCode">
+								<option value=""
+									th:selected="${paramMap['subjectCode'] == null or paramMap['subjectCode'] eq ''}">전체</option>
+								<option th:each="subject:${subjectList}"
+									th:value="${subject.subjectCode}"
+									th:text="${subject.subjectName}"
+									th:selected="${paramMap['subjectCode'] eq subject.subjectCode}">과목</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="col-xs-12 col-lg-3">
+						<div class="input-group">
+							<span class="input-group-addon col-2">상태</span>
 							<div class="in-search-detail NewDataSelect mb-2">
-							<label class="radio-inline lg-mr-10 md-mr-15 rating-form">
-								<input type="radio" class="rating-chk focus" id="search_type1"
-								name="teacherRole" value="" th:checked="${paramMap['teacherRole'] ==null or paramMap['teacherRole'] eq ''}"> <span class="lg-ml-5">전체</span>
-								<!-- 전체에도 밸류값 빈문자열 넣어줘야함(빈문자열은 null이 아님)  -->
-							</label> 
-							<label class="radio-inline lg-mr-10 md-mr-15 rating-form">
-								<input type="radio" class="rating-chk focus" id="search_type2"
-								name="teacherRole" value="TEACHER" th:checked="${paramMap['teacherRole'] eq 'TEACHER'}"> 
-	 							<span class="lg-ml-5">교사</span>
-							</label> 
-							<label class="radio-inline lg-mr-10 md-mr-15 rating-form">
-								<input type="radio" class="rating-chk focus" id="search_type3"
-								name="teacherRole" value="UNAPPROVED" th:checked="${paramMap['teacherRole'] eq 'UNAPPROVED'}"> 
-								<span class="lg-ml-5">미승인</span>
-							</label>
+								<label class="radio-inline lg-mr-10 md-mr-15 rating-form">
+									<input type="radio" class="rating-chk focus" id="search_type1"
+									name="teacherStatus" value=""
+									th:checked="${paramMap['teacherStatus'] ==null or paramMap['teacherStatus'] eq ''}">
+									<span class="lg-ml-5">전체</span> <!-- 전체에도 밸류값 빈문자열 넣어줘야함(빈문자열은 null이 아님)  -->
+								</label> <label class="radio-inline lg-mr-10 md-mr-15 rating-form">
+									<input type="radio" class="rating-chk focus" id="search_type2"
+									name="teacherStatus" value="Y"
+									th:checked="${paramMap['teacherStatus'] eq 'Y'}"> <span
+									class="lg-ml-5">재직중</span>
+								</label> <label class="radio-inline lg-mr-10 md-mr-15 rating-form">
+									<input type="radio" class="rating-chk focus" id="search_type3"
+									name="teacherStatus" value="N"
+									th:checked="${paramMap['teacherStatus'] eq 'N'}"> <span
+									class="lg-ml-5">퇴직</span>
+								</label>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-xs-12 col-lg-6">
-					<div class="input-group mb-2">
-						<span class="input-group-addon col-2">수업일</span> 
-						<input type="date"
-							class="form-control" id="" name="" autocomplete="off">
-						<!--변수 인식하기 위해 value말고 th:value  -->
-						<input type="date" class="form-control" id="" name=""
-							autocomplete="off">
-						<!--notion  -->
-					</div>
-				</div>
-				<div class="col-xs-12 col-lg-6">
-					<div class="input-group">
-						<span class="input-group-addon col-2">상태</span>
-						<div class="in-search-detail NewDataSelect mb-2">
-							<label class="radio-inline lg-mr-10 md-mr-15 rating-form">
-								<input type="radio" class="rating-chk focus" id="search_type1"
-								name="teacherStatus" value="" th:checked="${paramMap['teacherStatus'] ==null or paramMap['teacherStatus'] eq ''}"> <span class="lg-ml-5">전체</span>
-								<!-- 전체에도 밸류값 빈문자열 넣어줘야함(빈문자열은 null이 아님)  -->
-							</label> 
-							<label class="radio-inline lg-mr-10 md-mr-15 rating-form">
-								<input type="radio" class="rating-chk focus" id="search_type2"
-								name="teacherStatus" value="Y" th:checked="${paramMap['teacherStatus'] eq 'Y'}"> 
-	 							<span class="lg-ml-5">재직중</span>
-							</label> 
-							<label class="radio-inline lg-mr-10 md-mr-15 rating-form">
-								<input type="radio" class="rating-chk focus" id="search_type3"
-								name="teacherStatus" value="N" th:checked="${paramMap['teacherStatus'] eq 'N'}"> 
-								<span class="lg-ml-5">퇴직</span>
-							</label>
+
+					<div class="col-xs-12 col-lg-3">
+						<div class="input-group mb-2">
+							<span class="input-group-addon col-2">권한</span>
+							<div class="in-search-detail NewDataSelect mb-2">
+								<label class="radio-inline lg-mr-10 md-mr-15 rating-form">
+									<input type="radio" class="rating-chk focus" id="search_type1"
+									name="teacherRole" value=""
+									th:checked="${paramMap['teacherRole'] ==null or paramMap['teacherRole'] eq ''}">
+									<span class="lg-ml-5">전체</span> <!-- 전체에도 밸류값 빈문자열 넣어줘야함(빈문자열은 null이 아님)  -->
+								</label> <label class="radio-inline lg-mr-10 md-mr-15 rating-form">
+									<input type="radio" class="rating-chk focus" id="search_type2"
+									name="teacherRole" value="TEACHER"
+									th:checked="${paramMap['teacherRole'] eq 'TEACHER'}"> <span
+									class="lg-ml-5">교사</span>
+								</label> <label class="radio-inline lg-mr-10 md-mr-15 rating-form">
+									<input type="radio" class="rating-chk focus" id="search_type3"
+									name="teacherRole" value="UNAPPROVED"
+									th:checked="${paramMap['teacherRole'] eq 'UNAPPROVED'}">
+									<span class="lg-ml-5">미승인</span>
+								</label>
+
+							</div>
 						</div>
 					</div>
+
 				</div>
-				<div class="col-xs-12 col-lg-6">
-					<div class="input-group">
-						<span class="input-group-addon col-2"> 담당과목</span> 
-						<select class="form-select" aria-label="Default select example"
-							name="subjectCode">
-							<option value="" th:selected="${paramMap['subjectCode'] == null or paramMap['subjectCode'] eq ''}">전체</option>
-							<option th:each="subject:${subjectList}"
-									th:value="${subject.subjectCode}" th:text="${subject.subjectName}" th:selected="${paramMap['subjectCode'] eq subject.subjectCode}">과목</option>
-						</select>
-					</div>
-				</div>
-				<div class="col-xs-12 col-lg-6">
-					<div class="d-grid gap-2">
-						<div class="d-grid gap-2">
-							<button type="submit" name="btn-detail-search"
-								class="btn btn-outline-dark me-md-2">검색</button>
-						</div>
-					</div>
-				</div>
+
+
 			</div>
 		</section>
 	</form>
-
-
-
-
-
-
 
 <!--여기까지 검색 div  -->
 
@@ -134,6 +138,9 @@
 
 		<table class="table table-hover text-center align-middle ">
 			<!-- 세로로 가운데로 -->
+			
+			
+			<colgroup></colgroup>
 			<thead>
 				<tr>
 					<th scope="col">
