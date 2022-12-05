@@ -301,7 +301,7 @@
 	WHERE S.STUDENT_CODE = SL.STUDENT_CODE (+)
     AND L.LESSON_INFO_CODE (+) = SL.LESSON_INFO_CODE
     AND SL.STUDENT_LESSON_CODE = P.STUDENT_LESSON_CODE(+)
-    AND L.TEACHER_CODE = T.TEACHER_CODE
+    AND L.TEACHER_CODE = T.TEACHER_CODE(+)
     AND STUDENT_STATUS = 'Y'
     <if test="studentName != null and !studentName.equals('')">
 		AND STUDENT_NAME LIKE ('%'||#{studentName}||'%')
