@@ -23,11 +23,19 @@ a{
 	cursor: pointer;
 }
 
-.sName:hover{
-	cursor: pointer;
+/* 교사 리스트 내 아이디 */
+.sId{
+	
+	color: gray;
 	
 }
 
+.sId:hover{
+	
+	cursor: pointer;
+	
+}
+/*==================  */
 .hasError{
 	color: red;
 	
