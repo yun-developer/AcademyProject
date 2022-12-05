@@ -121,7 +121,7 @@ function drawChart2(data){
 	        }],
 	          chart: {
 	          type: 'bar',
-	          height: 350
+	          height: 650
 	        },
 	        plotOptions: {
 	          bar: {

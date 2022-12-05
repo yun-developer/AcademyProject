@@ -68,6 +68,13 @@ a{
 	
 }
 
+/* 작은 글씨 안내 문구  */
+.tip{
+	color: #999999;
+	font-size: 14px;
+}
+
+
 /* 메인 배너 */
 .carousel-inner > .carousel-item > img {
       top: 0;
