@@ -40,12 +40,16 @@ public class StudentServiceImpl implements StudentService{
 
 	//학생 선택 삭제
 	//왜 이건 now_student_cnt가 -1 안 하는 거지??
+	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public void deleteCheckedStu(StudentVO studentVO, String beforeLessonInfoCode) {
+	public void deleteCheckedStu(StudentVO studentVO, List<String> beforeLessonInfoCodes) {
 	//public void deleteCheckedStu(StudentVO studentVO, StudentLessonInfoVO studentLessonInfoVO) {
 		sqlSession.update("studentMapper.deleteCheckedStu", studentVO);
-		System.out.println("!!!!!!!!!!!!" + beforeLessonInfoCode);
-		sqlSession.update("lessonMapper.updateBeforeNowStudent", beforeLessonInfoCode);
+		
+		for(String beforeLessonInfoCode : beforeLessonInfoCodes) {
+			sqlSession.update("lessonMapper.updateBeforeNowStudent", beforeLessonInfoCode);
+			
+		}
 		//sqlSession.update("lessonMapper.updateBeforeNowStudent", studentLessonInfoVO);
 	}
 

@@ -52,12 +52,10 @@ for(const chk of chks){
 
 
 
-
 //삭제 버튼 클릭
 function goDelete() {
 	const deleteForm = document.querySelector('#deleteStuForm');	
 	
-	//체크한 cartCode 다 들고 온다.
 	const checkedChks = document.querySelectorAll('.chk:checked');
 	
 	if(checkedChks.length == 0) {
@@ -80,8 +78,6 @@ function goDelete() {
 		   confirmButtonText: '승인', // confirm 버튼 텍스트 지정
 		   cancelButtonText: '취소', // cancel 버튼 텍스트 지정
 		   
-		   
-		   
 		}).then(result => {
 		   // 만약 Promise리턴을 받으면,
 		   if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
@@ -100,22 +96,26 @@ function goDelete() {
 
 				reverseButtons: true, // 버튼 순서 거꾸로
    
-		   
 		}).then(result => {
 		   // 만약 Promise리턴을 받으면,
 		   if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
 				//문자열로 만들어서 던져 줌
 				let studentCodes = '';
-				for(const checkedChk of checkedChks) {
+			/*	for(const checkedChk of checkedChks) {
 					studentCodes = studentCodes + checkedChk.value + ',';  
-				}
+				}*/
 				
 				let beforeLessonInfoCodes = '';
 				for(const checkedChk of checkedChks) {
-					beforeLessonInfoCodes = beforeLessonInfoCodes + checkedChk.dataset.lesson + ',';  
+					const codes = checkedChk.closest('tr').querySelectorAll('.lessonInfoCodeClass');
+					
+					for(const code of codes) {
+						beforeLessonInfoCodes += code.value+',';
+					}
+						
 				}
+					alert(beforeLessonInfoCodes);
 				
-				alert(beforeLessonInfoCodes);
 				
 				deleteForm.querySelector('#studentCodes').value = studentCodes;  // 넘어오는 name과 컨트롤러의 매개변수 이름 같으면 알아서 받아줌
 				deleteForm.querySelector('#beforeLessonInfoCodes').value = beforeLessonInfoCodes;

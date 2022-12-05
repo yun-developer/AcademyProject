@@ -105,7 +105,7 @@ public class StudentController {
 		//studentService.deleteCheckedStu(studentVO, studentLessonInfoVO);
 		
 		
-		studentService.deleteCheckedStu(studentVO, beforeLessonInfoCodes);
+		studentService.deleteCheckedStu(studentVO, beforeLessonInfoCodeList);
 		
 		
 		

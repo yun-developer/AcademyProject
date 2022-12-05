@@ -22,7 +22,7 @@ public interface StudentService {
 	
 	//학생 삭제 시 nowStudent -1 시키기
 	//void deleteCheckedStu(StudentVO studentVO, StudentLessonInfoVO studentLessonInfoVO);
-	void deleteCheckedStu(StudentVO studentVO, String beforeLessonInfoCode);
+	void deleteCheckedStu(StudentVO studentVO, List<String> beforeLessonInfoCodes);
 	void deleteStu(String studentCode, String beforeLessonInfoCode);
 	
 	StudentVO selectStuDetail(String studentCode);
