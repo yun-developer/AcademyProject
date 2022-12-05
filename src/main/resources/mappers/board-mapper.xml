@@ -92,7 +92,7 @@
 	
 	<!-- 글 목록 조회 -->
 	<select id="selectNoticeBoard" resultMap="board">
-		SELECT BOARD_NUM    <!-- 화면에는 INDEX로 글번호 보게,, -->
+		SELECT BOARD_NUM  
 			, BOARD_TITLE
 			, B.TEACHER_ID
 			, TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS CREATE_DATE
@@ -242,7 +242,7 @@
 	
 	<!-- 글 목록 조회 -->
 	<select id="selectFreeBoard" resultMap="board">
-		SELECT BOARD_NUM    <!-- 화면에는 INDEX로 글번호 보게,, -->
+		SELECT BOARD_NUM    
 			, BOARD_TITLE
 			, B.TEACHER_ID
 			, TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS CREATE_DATE
@@ -333,7 +333,7 @@
 
 	<!-- 회원정보에서 본인 글 조회 -->
 	<select id="selectMyPage" resultMap="board">
-		SELECT BOARD_NUM    <!-- 화면에는 INDEX로 글번호 보게,, -->
+		SELECT BOARD_NUM    
 			, BOARD_TITLE
 			, BOARD_KIND_CODE
 			, B.TEACHER_ID

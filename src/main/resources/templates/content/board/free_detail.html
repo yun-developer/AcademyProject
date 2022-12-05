@@ -35,7 +35,7 @@
 							</h3>
 								<div style="font-size: 18px;">
 									등록일 : [[${free.createDate}]] 조회수 : [[${free.viewCount}]] 작성자 : 
-									<a href="javascript:" onclick="showEmployPopup('/common/popup/employ/detail/CE221000035', '교직원정보');">[[${free.teacherId}]]</a>
+									<a href="javascript:">[[${free.teacherId}]]</a>
 									
 								</div>
 							
@@ -43,9 +43,9 @@
 								<div class="offset-10 col-2 d-grid gap-2" style="margin-bottom: 20px;">
 									<div class="row">
 										<div class="col-6">
-								             <form th:action="@{/board/updateFreeDetailFrom}" method="post" id="updateStuForm">  <!-- 폼태그 안에 input가 있어야 데이터를 가져간다.  -->
+								             <form th:action="@{/board/updateFreeDetailFrom}" method="post" id="updateStuForm"> 
 								             <th:block th:each="free : ${free}">
-								             <input type="hidden" name="boardNum"  th:value="${free.boardNum}"> <!--  submit누르면 데이터 안보이게 데이터 가져갈꺼다.  내가 체크한 체크박스들을 이 input태그의 value값을   -->
+								             <input type="hidden" name="boardNum"  th:value="${free.boardNum}">  
 								             </th:block>
 								               <div class="row justify-content-end">
 								                  <div style="margin-left: 4.8rem;">
@@ -61,9 +61,9 @@
 								
 								
 										<div class="col-6">
-											<form th:action="@{/board/deleteFreeDetail}" method="post" id="deleteStuForm">  <!-- 폼태그 안에 input가 있어야 데이터를 가져간다.  -->
+											<form th:action="@{/board/deleteFreeDetail}" method="post" id="deleteStuForm">  
 								             <th:block th:each="free : ${free}">
-								             <input type="hidden" name="boardNum"  th:value="${free.boardNum}"> <!--  submit누르면 데이터 안보이게 데이터 가져갈꺼다.  내가 체크한 체크박스들을 이 input태그의 value값을   -->
+								             <input type="hidden" name="boardNum"  th:value="${free.boardNum}">
 								             </th:block>
 								               <div class="row justify-content-end">
 								                  <div >
