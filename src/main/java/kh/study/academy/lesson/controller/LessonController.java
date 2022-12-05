@@ -245,7 +245,13 @@ public class LessonController {
 	
 		// 학급편성 등록 페이지 
 		@RequestMapping("/regLessonInfoPage")
-		public String regLessonInfoPage(@RequestParam Map<String, Object>paramMap ,LessonInfoVO lessonInfoVO,Model model, LessonRoomVO lessonRoomVO, String roomName,  String lessonDayCode) { 
+		public String regLessonInfoPage(@RequestParam Map<String, Object>paramMap ,LessonInfoVO lessonInfoVO,Model model
+										, LessonRoomVO lessonRoomVO, String roomName,  String lessonDayCode, String searchForYear) { 
+		int searchYear = 0;
+		if(searchForYear != null) {
+			searchYear=Integer.parseInt(searchForYear);
+		}
+		paramMap.put("searchYear", searchYear);
 		
 		// 과목 리스트를 가져오는 쿼리 실행 문
 		model.addAttribute("subjectList", adminService.selectSubject());
@@ -316,7 +322,11 @@ public class LessonController {
 		
 		@PostMapping("/saveLessonInfo")
 		
-		public String saveLessonInfo(LessonInfoVO lessonInfoVO, Model model) {
+		public String saveLessonInfo(LessonInfoVO lessonInfoVO, Model model, String selectYear) {
+		
+		int regYear = Integer.parseInt(selectYear);
+		lessonInfoVO.setYear(regYear);
+		System.out.println("!!!!!!!!!!!!!!"+lessonInfoVO.getLessonTime());
 		// 교실 사용 중복 여부 확인 조회
 		lessonService.doubleCheckLesson(lessonInfoVO);
 		// 학급 편성 등록 

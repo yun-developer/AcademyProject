@@ -1,5 +1,5 @@
 ////////////////함수 ///////////////////
-
+const updateAmountBtn = document.querySelector('#updateAmountBtn');
 
 // 학급 편성 등록 시 교실장소, 수업시간 겹치지 않게 조회
 function selectUseCheck(){
@@ -17,7 +17,7 @@ function selectUseCheck(){
 			
 			//option을 다 지우는 문법
 			$('#searchLessonTime').empty();
-			alert(11);
+			
 			// option을 다시 그려준다.
 			str = ''
 			str += '<option value="">선택</option>'; 
@@ -30,7 +30,7 @@ function selectUseCheck(){
 			}
 			// 그렸던것을 str에 넣어놨으니 다시 html로 보내주는 방법
 			$('#searchLessonTime').append(str);
-			alert(str);
+		
 		},
 		error: function() {
 			alert('실패');
@@ -214,25 +214,7 @@ function regLessonInfo(){
 	let lessonTimeVal = lessonTime.options[lessonTime.selectedIndex].value;
 	
 	
-	// 모달에서 벨리데이션 처리하는 기능
-	(() => {
-	  'use strict'
-	
-	  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-	  const forms = document.querySelectorAll('.needs-validation')
-	
-	  // Loop over them and prevent submission
-	  Array.from(forms).forEach(form => {
-	    form.addEventListener('click', event => {
-	      if (!form.checkValidity()) {
-	        event.preventDefault()
-	        event.stopPropagation()
-	      }
-	
-	      form.classList.add('was-validated')
-	    }, false)
-	  })
-	})()
+	alert(lessonTimeVal)
 	
 
 	
@@ -242,11 +224,9 @@ function regLessonInfo(){
 		type: 'post', // 무조건 post, ResponseBody를 써줘야한다.
 		data: {'lessonDayCode':lessonDayCodeVal, 'lessonRoomCode': lessonRoomCodeVal, 'lessonTime':lessonTimeVal}, //필요한 데이터
 		success: function(result) {
-			
 		
 			//중복이 되는 수업이 있을때
 			if(result.lessonInfoCode != null){
-				
 				
 				Swal.fire({
 		  		title: '중복되었습니다! 다시 선택바랍니다.',
@@ -257,15 +237,13 @@ function regLessonInfo(){
 			}	
 			else {
 				
-				alert('중복아님');
+				alert(lessonTimeVal)
 				document.querySelector('#regLessonForm').submit();
 			}
-			
 		
-		}
-	//ajax end
-	
-});	
+				}
+			//ajax end
+		});	
 
 	
 	
@@ -279,8 +257,34 @@ function regLessonInfo(){
 	
 	let maxStudent = document.querySelector('#maxStudent');
 	
-	alert(maxStudent);
+	alert("maxStudent" + maxStudent);
 	
 	
 }
+
+
+// 모달에서 벨리데이션 처리하는 기능
+(() => {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    updateAmountBtn.addEventListener('click', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      
+     	 form.classList.add('was-validated')
+      }
+	 else {
+		regLessonInfo()
+	}
+		
+    }, false)
+  })
+})()
+
 

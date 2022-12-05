@@ -18,7 +18,7 @@
 				<div class="col-xs-12 col-lg-4">
 					<div class="input-group mb-2">
 						<span class="input-group-addon col-2">학년</span> 
- 						<input type="text" class="form-control" id="" name="year" autocomplete="off" th:value="${paramMap['searchYear']}"  > 
+ 						<input type="text" class="form-control" id="" name="searchForYear" autocomplete="off" th:value="${paramMap['searchYear']}"  > 
 					</div>
 				</div>
 				<div class="col-xs-12 col-lg-4">
@@ -180,7 +180,7 @@
 												<!--notion  -->
 												<div class="col-6 col-lg-3 px-1 rounded-0">
 												<div class="input-group h-100">
-													<input type="date" class="form-control" id="lessonInfoRegdate " name="lessonInfoRegdate " autocomplete="off">
+													<input type="date" class="form-control" id="lessonInfoRegdate " name="lessonInfoRegdate " autocomplete="off" >
 														<div class="input-group-append"  data-istyle="year-month">
 														</div>
 												</div>
@@ -191,7 +191,7 @@
 											<div class="col-6 col-lg-2 px-1"><span class="input-group-text h-100 rounded-0">학년</span></div>
 									
 												<div class="col-6 col-lg-5 px-">
-													<select class="form-select"   aria-label="Default select example"  name="searchYear" kor="과정구분" required>
+													<select class="form-select"   aria-label="Default select example"  name="selectYear" kor="과정구분" required>
 														<option value="" >선택</option>
 
 															<option value="1">고등1</option>
@@ -199,13 +199,12 @@
 															<option value="3">고등3</option>
 
 													</select>
-													
 												</div>
 											</div>	
 												<div class="form-group input-group mb-1">
 													<div class="col-6 col-lg-2 px-0"><span class="input-group-text h-100 rounded-0"  >과목구분</span></div>
 													  <div class="col-6 col-lg-3 px-1 rounded-0">
-														<select class="form-select" id="subjectCode" name="subjectCode">
+														<select class="form-select" id="subjectCode" name="subjectCode" required>
 															
 															<option value="">전체</option>
 															<th:block th:each="subject, status : ${subjectList}">	
@@ -219,7 +218,7 @@
 									
 												<div class="col-6 col-lg-5 px-">
 										      	
-													<select class="form-select"   aria-label="Default select example" id="stepCode" name="stepCode" kor="과정구분">
+													<select class="form-select"   aria-label="Default select example" id="stepCode" name="stepCode" kor="과정구분" required>
 														<option th:each="step : ${stepList}" th:text="${step.stepName}" th:value="${step.stepCode}"></option>	
 														
 													</select>
@@ -229,14 +228,14 @@
 											<div class="form-group input-group mb-1">
 												<div class="col-6 col-lg-2 px-0"><span class="input-group-text h-100 rounded-0">정원</span></div>
 												  <div class="col-6 col-lg-3 px-1 rounded-1">
-													<input type="text" id="maxStudent" name="maxStudent" class="form-control rounded-0 h-100" placeholder="정원" aria-label="8" aria-describedby="cpaCn" value="10"> -->
+													<input type="text" id="maxStudent" name="maxStudent" class="form-control rounded-0 h-100" placeholder="정원" aria-label="8" aria-describedby="cpaCn" value="10" required> 
 												 </div>
 												
 												
 											<div class="col-6 col-lg-2 px-1"><span class="input-group-text h-100 rounded-0" >수강료</span></div>
 												 <div class="col-6 col-lg-5 px-">
 										      	
-												<input type="text" id="money" name="money" class="form-control rounded-0 h-100" placeholder="수강료" aria-label="8" aria-describedby="cpaCn" th:value="${#numbers.formatCurrency(300000)}" onkeyup="setformatCurrency();">
+												<input type="text" id="money" name="money" class="form-control rounded-0 h-100" placeholder="수강료" aria-label="8" aria-describedby="cpaCn" th:value="${#numbers.formatCurrency(300000)}" onkeyup="setformatCurrency();" required>
 													<!-- <input type="text" id="money" name="money" class="form-control rounded-0 h-100" placeholder="수강료" aria-label="8" aria-describedby="cpaCn" value="10000" onkeyup="setformatCurrency();"> -->
 												</div>
 											
@@ -250,13 +249,13 @@
 								<div class="form-group input-group mb-1">
 									<div class="col-6 col-lg-2 px-0"><span class="input-group-text h-100 rounded-0">요일</span></div>
 									<div class="col-6 col-lg-3 px-1 rounded-0">
-										<select class="form-select selectBox" id="lessonDayCode" name="lessonDayCode" onchange="selectUseCheck();">
+										<select class="form-select selectBox" id="lessonDayCode" name="lessonDayCode" onchange="selectUseCheck();" required>
 											<option th:value="${lessonDay.lessonDayCode}" th:each="lessonDay : ${lessonDayList}"  th:text="${lessonDay.lessonDayName}"  ></option>
 										</select>
 									</div>
 									<div class="col-6 col-lg-2 px-1"><span class="input-group-text h-100 rounded-0">수업시간</span></div>
 										<div class="col-6 col-lg-5 px-">
-											<select class="form-select selectBox"  aria-label="Default select example" id="searchLessonTime" name="lessonTime" kor="과정구분">
+											<select class="form-select selectBox"  aria-label="Default select example" id="searchLessonTime" name="lessonTime" kor="과정구분" required>
 												<option value="">선택</option>
 												<th:block th:each="useCheck : ${useCheckList}">
 													<option th:value="${#strings.substring(useCheck,0,2)} ">[[${useCheck}]]</option>
@@ -270,7 +269,7 @@
 								<div class="form-group input-group mb-1">
 									<div class="col-6 col-lg-2 px-0"><span class="input-group-text h-100 rounded-0">교실명</span></div>
 									<div class="col-6 col-lg-3 px-1 rounded-0">
-										 <select class="form-select selectBox rounded-0 h-100"   aria-label="학급명" id="lessonRoomCode" name="lessonRoomCode" value="" kor="학급명">
+										 <select class="form-select selectBox rounded-0 h-100"   aria-label="학급명" id="lessonRoomCode" name="lessonRoomCode" value="" kor="학급명" required>
 										    <th:block th:each="LessonRoom, status : ${LessonRoomList}">	
 										      <option th:text="${LessonRoom.roomName}" th:value="${LessonRoom.lessonRoomCode}"></option>
 												
@@ -281,7 +280,7 @@
 									
 									<div class="col-6 col-lg-2 px-1"><span class="input-group-text h-100 rounded-0">교사명</span></div>
 										<div class="col-6 col-lg-5 px-">
-											<select class="form-select"   aria-label="Default select example" id="teacherName " name="teacherCode" kor="과정구분">
+											<select class="form-select"   aria-label="Default select example" id="teacherName " name="teacherCode" kor="과정구분" required>
 												 <th:block th:each="teacher, status : ${teacherList}">	
 										      		<option th:text="${teacher.teacherName}" th:value="${teacher.teacherCode}"></option>
 												
@@ -316,7 +315,7 @@
 							<div class="row">
 		      					<div class="col text-end">
 		      		
-					      			<button onclick="regLessonInfo();" type="button" id="updateAmountBtn" class="btn btn-primary btn-sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3rem; --bs-btn-font-size: 1rem;">저장</button>
+					      			<button  type="button" id="updateAmountBtn" class="btn btn-primary btn-sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3rem; --bs-btn-font-size: 1rem;">저장</button>
 					      			<button type="button" id="cancelBtn" data-origin-amount=""  th:onclick="rollbackAmount();"  class="btn btn-secondary btn-sm" data-bs-dismiss="modal" aria-label="Close" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3rem; --bs-btn-font-size: 1rem;">닫기</button>
 					      		</div>
 					      	</div>
