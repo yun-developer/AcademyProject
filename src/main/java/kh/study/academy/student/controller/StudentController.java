@@ -156,13 +156,12 @@ public class StudentController {
 	
 	
 	//학생을 학급에 배정하는페이지로 이동
-	@GetMapping("/assignment")
+	@RequestMapping("/assignment")
 	public String assignmentStu(Model model, String studentName, StudentVO studentVO) {
 		
+		//model.addAttribute("stuList", studentService.selectStuList(studentName));
 		
-		model.addAttribute("stuList", studentService.selectStuList(studentName));
-		
-		List<StudentVO> testList = studentService.selectStuLessonList();		
+		List<StudentVO> testList = studentService.selectStuLessonList(studentVO);		
 		
 		model.addAttribute("stuLessonList", testList);
 		
@@ -244,7 +243,7 @@ public class StudentController {
 		model.addAttribute("student", studentService.selectStuDetail(studentVO.getStudentCode()));
 		//선택한 학생이 듣고 있는 수업 정보
 		//List<StudentVO> testList = studentService.selectStuLessonList();		
-		model.addAttribute("stuLessonList", studentService.selectStuLessonList());
+		model.addAttribute("stuLessonList", studentService.selectStuLessonList(null));
 		
 		//강의등급 조회
 		model.addAttribute("step", lessonService.selectStepList());

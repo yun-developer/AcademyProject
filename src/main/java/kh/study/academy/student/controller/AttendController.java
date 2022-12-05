@@ -36,7 +36,7 @@ public class AttendController {
 	public void addAttendCode() {
 		String lessonDate = "";
 	    AttendVO attendVO = new AttendVO();
-		for(StudentVO stu :  studentService.selectStuLessonList()) {
+		for(StudentVO stu :  studentService.selectStuLessonList(null)) {
 			
 			if(stu.getStudentLessonInfoList().get(0).getLessonInfoVO() != null) {
 				

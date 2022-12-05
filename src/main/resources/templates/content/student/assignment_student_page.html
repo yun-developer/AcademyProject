@@ -6,11 +6,63 @@
 
 <div layout:fragment="content">
 
-	<div class="row bg-secondary mb-2">
+	<div class="row mb-2">
 		<div class="col">
-			검색영역
+			<form th:action="@{/stu/assignment}" method="post">
+				<section>
+					<div class="info mb-2">
+						<b> <svg xmlns="http://www.w3.org/2000/svg" width="16"
+								height="16" fill="currentColor" class="bi bi-search"
+								viewBox="0 0 16 16">
+						  <path
+									d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+						</svg> 검색
+						</b>
+						<p class="card-text ">
+							<small class="text-muted"> - 학생이름, 교사이름으로 학급배정 및 이동 할 학생을 검색할 수 있습니다.</small>
+						</p>
+					</div>
+					<div class="row search-detail-form">
+						<div class="col-xs-12 col-lg-4">
+							<div class="input-group mb-2">
+								<span class="input-group-addon col-3">학생이름</span> 
+								<input type="text" class="form-control" id="" name="studentName"
+									autocomplete="off" value="">
+							</div>
+						</div>
+						<div class="col-xs-12 col-lg-4">
+							<div class="input-group mb-2">
+								<span class="input-group-addon col-3">교사이름</span> 
+								<input type="text" class="form-control" id="" name="teacherName"
+									autocomplete="off" value="">
+							</div>
+						</div>
+						<div class="col-xs-12 col-lg-4">
+							<div class="d-grid gap-2">
+								<div class="d-grid gap-2">
+									<button type="submit" name="btn-detail-search"
+										class="btn btn-outline-dark me-md-2">
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+											fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+		  									<path
+												d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+										</svg>
+										검색
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</form>
+		
 		</div>
 	</div>
+	
+	
+	
+	
+	
 	<div class="row mb-2">
 		<div class="col border-top">
 		
@@ -20,7 +72,7 @@
 						
 						  <div class="row justify-content-between">
 						    <div class="col-4">
-								총 <span th:text="${#lists.size(stuList)}" style="color:red"></span>명 입니다.
+								총 <span th:text="${#lists.size(stuLessonList)}" style="color:red"></span>명 입니다.
 						    </div>
 						    <div class="col-4">
 								<div class="d-grid gap-2 d-md-flex justify-content-md-end">

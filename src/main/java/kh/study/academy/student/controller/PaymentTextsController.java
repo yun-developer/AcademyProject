@@ -47,7 +47,7 @@ public class PaymentTextsController {
 	    Message coolsms = new Message(api_key, api_secret);
 		
 	    
-		for(StudentVO stu :  studentService.selectStuLessonList()) {
+		for(StudentVO stu :  studentService.selectStuLessonList(null)) {
 			
 				
 			if(stu.getStudentLessonInfoList().get(0).getLessonInfoVO() != null) {
@@ -89,7 +89,7 @@ public class PaymentTextsController {
 	    Message coolsms = new Message(api_key, api_secret);
 	    
 	    
-	    for(StudentVO stu :  studentService.selectStuLessonList()) {
+	    for(StudentVO stu :  studentService.selectStuLessonList(null)) {
 	    	
 			if((stu.getStudentLessonInfoList().get(0).getLessonInfoVO() != null) && (stu.getIsPay().equals("N"))) {
 				String studentName = stu.getStudentName();

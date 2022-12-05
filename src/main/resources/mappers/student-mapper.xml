@@ -296,11 +296,19 @@
 	    , MONEY
 	    , LESSON_DAY_CODE
 	    , IS_PAY
-	FROM LESSON_INFO L, STUDENT_LESSON_INFO SL , STUDENT S, PAYMENT P
+	    , TEACHER_NAME
+	FROM LESSON_INFO L, STUDENT_LESSON_INFO SL , STUDENT S, PAYMENT P, TEACHER T
 	WHERE S.STUDENT_CODE = SL.STUDENT_CODE (+)
     AND L.LESSON_INFO_CODE (+) = SL.LESSON_INFO_CODE
     AND SL.STUDENT_LESSON_CODE = P.STUDENT_LESSON_CODE(+)
+    AND L.TEACHER_CODE = T.TEACHER_CODE
     AND STUDENT_STATUS = 'Y'
+    <if test="studentName != null and !studentName.equals('')">
+		AND STUDENT_NAME LIKE ('%'||#{studentName}||'%')
+	</if>
+	<if test="teacherName != null and !teacherName.equals('')">
+		AND TEACHER_NAME LIKE ('%'||#{teacherName}||'%')
+	</if>
 	ORDER BY STUDENT_CODE DESC
 </select>
 
