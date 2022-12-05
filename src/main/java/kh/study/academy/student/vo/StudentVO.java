@@ -34,6 +34,7 @@ public class StudentVO {
 	private String paymentCode;
 	private String studentStatus;
 	
+	private String isAttandence;
 	
 	
 	/* private SubjectVO subjectVO; */

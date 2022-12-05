@@ -16,6 +16,7 @@
 		<result column="TEACHER_NAME" 								property="teacherName"/>
 		<result column="PAYMENT_CODE" 								property="paymentCode"/>
 		<result column="STUDENT_STATUS" 							property="studentStatus"/>
+		<result column="IS_ATTANDENCE" 							property="isAttandence"/>
 		
 		<collection property="studentLessonInfoList" 				resultMap="studentLessonInfo"/>
 		
@@ -333,10 +334,12 @@
 					FROM STEP
 					WHERE STEP_CODE = L.STEP_CODE) AS STEP_NAME
         , YEAR 
-	FROM STUDENT S, LESSON_INFO L, STUDENT_LESSON_INFO SL
+        , IS_ATTANDENCE
+	FROM STUDENT S, LESSON_INFO L, STUDENT_LESSON_INFO SL, ATTENDANCE A
 	WHERE SL.STUDENT_CODE = S.STUDENT_CODE
 	AND SL.LESSON_INFO_CODE = L.LESSON_INFO_CODE
 	AND L.LESSON_INFO_CODE= #{lessonInfoCode}
+	AND LESSON_DATE = #{eachDate}
 	ORDER BY STUDENT_NAME
 </select>
 

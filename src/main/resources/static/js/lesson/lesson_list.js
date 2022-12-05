@@ -22,14 +22,15 @@ function getModal(lessonCode, lessonDate){
 	lessonCodeInput.value = lessonCode;
 	
 	let date1 = new Date(lessonDate); 
+	//alert(date1);
 	//alert('년도' + date1.getFullYear())
 	//alert('월 ' + date1.getMonth())
-	date1.setMonth(date1.getMonth()+1)
+	
+	
+	date1.getMonth() //0~11의 값을 불러옴.
+	
 	let month = date1.getMonth();
-	if(date1.getMonth() == 0){
-		month = 12
-	}
-	//alert('월 ' + date1.getMonth())
+	month = parseInt(month) + 1;
 	
 	
 	let eachDate = date1.getFullYear() +'-'+ month +'-'+ date1.getDate();
@@ -55,7 +56,7 @@ function getModal(lessonCode, lessonDate){
 					      
 					      <td>
 					      	<div class="form-check form-check-inline">
-							  <input class="form-check-input chk" name='${stu.studentCode}' type="radio"  id="${stu.studentCode}" value="Y">
+							  <input class="form-check-input chk" name='${stu.studentCode}' type="radio" id="${stu.studentCode}" value="Y">
 							  <label class="form-check-label" for="inlineCheckbox1">출석</label>
 							</div>
 							<div class="form-check form-check-inline">

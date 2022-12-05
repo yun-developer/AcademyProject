@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import kh.study.academy.lesson.vo.LessonInfoVO;
 import kh.study.academy.student.vo.PaymentVO;
 import kh.study.academy.student.vo.StudentLessonInfoVO;
 import kh.study.academy.student.vo.StudentVO;
@@ -42,7 +43,7 @@ public interface StudentService {
 	void updateStuLesson(StudentLessonInfoVO studentLessonInfoVO);
 	
 	//학급별 학생 목록 조회
-	List<StudentVO> stuListByLesson(String lessonInfoCode);
+	List<StudentVO> stuListByLesson(LessonInfoVO lessonInfoVO);
 	
 	
 	

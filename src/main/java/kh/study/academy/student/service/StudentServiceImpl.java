@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import kh.study.academy.lesson.vo.LessonInfoVO;
 import kh.study.academy.student.vo.PaymentVO;
 import kh.study.academy.student.vo.StudentLessonInfoVO;
 import kh.study.academy.student.vo.StudentVO;
@@ -136,8 +137,8 @@ public class StudentServiceImpl implements StudentService{
 	
 	//학급별 학생 목록 조회
 	@Override
-	public List<StudentVO> stuListByLesson(String lessonInfoCode) {
-		return sqlSession.selectList("studentMapper.stuListByLesson", lessonInfoCode);
+	public List<StudentVO> stuListByLesson(LessonInfoVO lessonInfoVO) {
+		return sqlSession.selectList("studentMapper.stuListByLesson", lessonInfoVO);
 	}
 	
 

@@ -29,10 +29,10 @@ public class AttendController {
 	
 	
 	
-	@Async
 	//매주 월요일 마다 수강중인 학생들에게 출결코드 생성
 	//@Scheduled(cron = "0 36 14 * * *") 초 분 시
-	@Scheduled(cron="0 01 00 ? * MON", zone="Asia/Seoul")   //매주 월요일 00시 01분에 00초 실행
+	//@Async
+	@Scheduled(cron="0 01 10 ? * MON", zone="Asia/Seoul") //매주 월요일 오전 10시 01분에 00초 실행
 	public void addAttendCode() {
 		String lessonDate = "";
 	    AttendVO attendVO = new AttendVO();
