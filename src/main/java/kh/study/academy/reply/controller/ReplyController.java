@@ -81,7 +81,6 @@ public class ReplyController {
 	public String updateNoticeReply(String replyNum, ReplyVO replyVO) {
 	
 		replyService.updateReply(replyVO);
-		System.out.println("!!!!!!!!"+ replyVO.getBoardNum());
 		
 		return "redirect:/board/noticeDetail?boardNum="+replyVO.getBoardNum();
 	}
@@ -93,7 +92,6 @@ public class ReplyController {
 	public String updateReply(String replyNum, ReplyVO replyVO) {
 	
 		replyService.updateReply(replyVO);
-		System.out.println("!!!!!!!!"+ replyVO.getBoardNum());
 		
 		return "redirect:/board/freeDetail?boardNum="+replyVO.getBoardNum();
 	}
