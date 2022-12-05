@@ -63,7 +63,11 @@ public class ReplyController {
 
 	//자유게시판 댓글 삭제
 	@GetMapping("/freeDelete")
-	public String replyFreeDelete(String replyNum, int boardNum, RedirectAttributes redirect) {
+	public String replyFreeDelete(String replyNum, ReplyVO replyVO, Authentication authentication, int boardNum, RedirectAttributes redirect) {
+		User user = (User)authentication.getPrincipal();
+		replyVO.setTeacherId(user.getUsername());
+		
+		
 		replyService.deleteReply(replyNum);
 
 		redirect.addAttribute("boardNum", boardNum);
