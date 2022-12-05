@@ -1,9 +1,9 @@
 
-const BoardNumInput = document.querySelector("#updateButton");
+const BoardNumInput = document.querySelector("#freeButton");
 const BoardNum = parseInt(BoardNumInput.value);
 
 
-document.getElementById("updateButton").click();
+document.getElementById("freeButton").click();
 
 
  setTimeout('move_page()', 2800); //2초후에 move_page함수실행
@@ -14,7 +14,7 @@ document.getElementById("updateButton").click();
 
 
   function move_page(){
-  location.href='/board/noticeDetail?boardNum='+BoardNum;  // 페이지 이동
+  location.href='/board/freeDetail?boardNum='+BoardNum;  // 페이지 이동
   }
 	
 

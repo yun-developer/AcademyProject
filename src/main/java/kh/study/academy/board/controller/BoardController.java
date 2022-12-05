@@ -344,8 +344,22 @@ public class BoardController {
       boardService.updateFreeDetail(boardVO);
 
 	      
-      return "redirect:/board/freeDetail?boardNum=" + boardVO.getBoardNum();
+      return "redirect:/board/freeImgUpdateLoing?boardNum=" + boardVO.getBoardNum();
    }
+   
+   
+   // 자유게시판 글 수정페이지에서 이미지 로딩페이지로 이동 후 글 상세페이지
+   @GetMapping("/freeImgUpdateLoing")
+   private String freeImgUpdateLoing(int boardNum, Model model) {
+	   
+	 
+	   model.addAttribute("boardNum",boardNum);
+	
+	 
+	   return "content/board/board_free_imgLoding";
+   }
+   
+   
    
    
    // 자유게시판 상세 수정페이지에서 첨부파일 삭제 기능
