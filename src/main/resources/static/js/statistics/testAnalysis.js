@@ -118,6 +118,7 @@ function drawChart1(data) {
 			}
 		]*/series:chart_data_arr,
 		chart: {
+			width: '100%',
 			height: 350,
 			type: 'line',
 			dropShadow: {
@@ -276,6 +277,8 @@ function drawChart2(data) {
 			}
 		]*/series:chart_data_arr,
 		chart: {
+			width: '100%',
+			
 			height: 350,
 			type: 'line',
 			dropShadow: {

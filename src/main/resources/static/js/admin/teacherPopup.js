@@ -78,7 +78,6 @@ $(document).on("click", "#teacherStatusSwitch", function() {
 	
 	const isteacherStatus = document.querySelector('#teacherStatusSwitch').checked;
 	
-	alert(isteacherStatus);
 	
 	//스위치를 off(퇴사)로 변경시 
 	if(isteacherStatus == false){

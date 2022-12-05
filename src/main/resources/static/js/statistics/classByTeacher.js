@@ -61,6 +61,7 @@ function drawChart1(data){
 		 series:chart_data_arr /*[44, 55, 41, 17, 15]*/,
 		 chart: {
 			 type: 'donut',
+			 width: '90%'
 		 }, labels:chart_category_arr /*['Team A', 'Team B', 'Team C', 'Team D', 'Team E']*/,
 		 responsive: [{
 			 breakpoint: 480,
@@ -121,7 +122,7 @@ function drawChart2(data){
 	        }],
 	          chart: {
 	          type: 'bar',
-	          height: 650
+	          height: 550
 	        },
 	        plotOptions: {
 	          bar: {

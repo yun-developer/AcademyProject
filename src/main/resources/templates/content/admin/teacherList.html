@@ -169,7 +169,7 @@
 						<td th:text="${teacher.teacherName}">
 							<input id=parentTeacherCode type="hidden" th:value="${teacher.teacherCode}">
 						</td>
-						<td><span class="sName" th:text="${teacher.teacherId}" th:onclick="teacherPopup([[${teacher.teacherCode}]]);"></span> </td>
+						<td><span class="sId" th:text="${teacher.teacherId}" th:onclick="teacherPopup([[${teacher.teacherCode}]]);"></span> </td>
 						<td th:text="${teacher.SubjectVO.subjectName}"  th:value="${teacher.subjectCode}"></td>
 						<td th:text="${teacher.teacherTell}"></td>
 						<td th:text="${teacher.teacherStatus}"></td>

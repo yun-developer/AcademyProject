@@ -92,7 +92,7 @@ function drawChart1(data){
 		 series:chart_data_arr,
 		 chart: {
 			 type: 'donut',
-			 width: '80%'
+			 width: '100%'
 		 }, labels:chart_category_arr,
 		 responsive: [{
 			 breakpoint: 480,

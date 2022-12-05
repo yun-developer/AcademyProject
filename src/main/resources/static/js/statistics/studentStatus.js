@@ -64,7 +64,8 @@ function drawChart1(data){
 	
 	options = {
 	  chart: {
-	    type: 'bar'
+	    type: 'bar',
+	    height: 350
 	  },
 	  plotOptions: {
 	    bar: {
