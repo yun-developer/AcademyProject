@@ -42,7 +42,44 @@ function selectUseCheck(){
 	//ajax end
 }
 	
+	
+// 과목 구분에 해당 과목을 누르면 교사 명에 담당 과목 선생님이름 조회 
+function selectSubjectCheck(){
+	
+	const subjectCode = document.querySelector('#subjectCode option:checked').value;
 
+
+	//ajax start
+	$.ajax({
+		url: '/lesson/selectSubjectChangeAjax', //요청경로
+		type: 'post', // 무조건 post, ResponseBody를 써줘야한다.
+		data: {'subjectCode':subjectCode}, //필요한 데이터
+		success: function(result) {
+		alert(result);
+			//option을 다 지우는 문법
+			$('#teacherName').empty();
+			
+			// option을 다시 그려준다.
+			str = ''
+			str += '<option value="">전체</option>'; 
+			
+			
+			for(const teacher of result){
+				str += `<option value="">${teacher}</option>`;
+				
+					
+			}
+			// 그렸던것을 str에 넣어놨으니 다시 html로 보내주는 방법
+			$('#teacherName').append(str);
+		
+		},
+		error: function() {
+			alert('실패');
+		}
+	});
+	//ajax end
+	
+}
 	
 	
 

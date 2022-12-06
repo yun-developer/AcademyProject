@@ -235,7 +235,7 @@
 												<div class="form-group input-group mb-1">
 													<div class="col-6 col-lg-2 px-0"><span class="input-group-text h-100 rounded-0"  >과목구분</span></div>
 													  <div class="col-6 col-lg-3 px-1 rounded-0">
-														<select class="form-select" id="subjectCode" name="subjectCode" required>
+														<select class="form-select" id="subjectCode" name="subjectCode" onchange="selectSubjectCheck();" required>
 															
 															<option value="">전체</option>
 															<th:block th:each="subject, status : ${subjectList}">	
@@ -301,6 +301,7 @@
 									<div class="col-6 col-lg-2 px-0"><span class="input-group-text h-100 rounded-0">교실명</span></div>
 									<div class="col-6 col-lg-3 px-1 rounded-0">
 										 <select class="form-select selectBox rounded-0 h-100"   aria-label="학급명" id="lessonRoomCode" name="lessonRoomCode" value="" kor="학급명" required>
+										    
 										    <th:block th:each="LessonRoom, status : ${LessonRoomList}">	
 										      <option th:text="${LessonRoom.roomName}" th:value="${LessonRoom.lessonRoomCode}"></option>
 												
@@ -311,7 +312,8 @@
 									
 									<div class="col-6 col-lg-2 px-1"><span class="input-group-text h-100 rounded-0">교사명</span></div>
 										<div class="col-6 col-lg-5 px-">
-											<select class="form-select"   aria-label="Default select example" id="teacherName " name="teacherCode" kor="과정구분" required>
+											<select class="form-select"   aria-label="Default select example" id="teacherName" name="teacherCode" kor="과정구분" required>
+												
 												 <th:block th:each="teacher, status : ${teacherList}">	
 										      		<option th:text="${teacher.teacherName}" th:value="${teacher.teacherCode}"></option>
 												

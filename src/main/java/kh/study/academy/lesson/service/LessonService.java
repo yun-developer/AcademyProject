@@ -37,6 +37,8 @@ public interface LessonService {
 	// 학급편성 검색 조회
 	List<LessonInfoVO> searchLessonInfo(Map<String, Object> map);
 
+	// 해당과목과 동일한 교사 조회 
+	List<String> subjectChangeTeacher(String subjectCode);
 	
 	//학생등록시 nowStudent +1증가
 	void updateNowStudent(String lessonInfoCode);
@@ -48,5 +50,6 @@ public interface LessonService {
 	// 교실 사용 중복 여부 확인 조회 
 	LessonInfoVO doubleCheckLesson(LessonInfoVO lessonInfoVO);
 
+	
 	
 }

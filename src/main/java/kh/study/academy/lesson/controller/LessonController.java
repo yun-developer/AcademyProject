@@ -285,6 +285,15 @@ public class LessonController {
 		}
 		
 		
+		// 과목구분 클릭 시 해당하는 담당 교사들만 조회
+		@ResponseBody 
+		@PostMapping("/selectSubjectChangeAjax")
+		public List<String> subjectChangeTeacher(Model model, String subjectCode){
+			
+			return lessonService.subjectChangeTeacher(subjectCode);
+		}
+		
+		
 		// 중복 체크 에이작스
 		@ResponseBody
 		@PostMapping("/doubleCheckLessonAjax")

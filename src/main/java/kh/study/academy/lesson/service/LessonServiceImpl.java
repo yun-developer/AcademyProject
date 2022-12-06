@@ -80,6 +80,20 @@ public class LessonServiceImpl implements LessonService{
 	}
 
 	
+	//교실 사용 중복 여부 확인 조회 
+	@Override
+	public LessonInfoVO doubleCheckLesson(LessonInfoVO lessonInfoVO) {
+		
+		return sqlSession.selectOne("lessonMapper.doubleCheckLesson", lessonInfoVO);
+	}
+
+	// 해당과목과 동일한 교사 조회 
+	@Override
+	public List<String> subjectChangeTeacher(String subjectCode) {
+		return sqlSession.selectList("lessonMapper.subjectChangeTeacher",subjectCode);
+	}
+
+	
 	
 	
 	/////////////<학생 편성>////////////////////////////////////////////////////
@@ -103,12 +117,7 @@ public class LessonServiceImpl implements LessonService{
 		return sqlSession.selectList("lessonMapper.selectLessonAndPay", studentCode);
 	}
 
-	//교실 사용 중복 여부 확인 조회 
-	@Override
-	public LessonInfoVO doubleCheckLesson(LessonInfoVO lessonInfoVO) {
-		
-		return sqlSession.selectOne("lessonMapper.doubleCheckLesson", lessonInfoVO);
-	}
+
 
 
 

@@ -320,5 +320,14 @@
 		AND LESSON_ROOM_CODE = #{lessonRoomCode} 
 	 </select>
 	 
+	<!--  해당과목과 동일한 교사 조회  -->
+	<select id="subjectChangeTeacher" resultType="String">
+		SELECT TEACHER_NAME
+	    FROM TEACHER
+	    WHERE SUBJECT_CODE = #{subjectCode}
+	</select>
+
+
+
 
 </mapper>
