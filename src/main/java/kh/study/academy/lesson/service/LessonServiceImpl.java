@@ -68,7 +68,6 @@ public class LessonServiceImpl implements LessonService{
 	@Override
 	public List<LessonInfoVO> selectLessonInfoList(LessonInfoVO lessonInfoVO) {
 		
-		System.out.println("!!!!!!!!!!!"+lessonInfoVO.getLessonTime());
 		return sqlSession.selectList("lessonMapper.selectLessonInfoList", lessonInfoVO);
 	
 	}
