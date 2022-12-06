@@ -126,10 +126,8 @@ public class LessonController {
 	@ResponseBody
 	@PostMapping("/lessonListAjax")
 	public List<Map<String, String>>lessonListAjax(Model model) {
-		System.out.println("???");
 		//DB학급 목록 불러오기
 		List<LessonInfoVO> lessonList = lessonService.selectLessonInfoList(null);
-		System.out.println("???!!!");
 		
 		//Ajax로 보내줄 리스트 데이터
 		List<Map<String, String>> lessonListForCalender = new ArrayList<>();
