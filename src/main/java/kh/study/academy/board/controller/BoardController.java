@@ -164,7 +164,7 @@ public class BoardController {
       
 	  boardVO.setImgList(uploadList);
 	   
-	   boardService.updateNoticeDetail(boardVO);
+	   boardService.updateDetail(boardVO);
 
 	   return "redirect:/board/NoticeImgUpdateLoing?boardNum=" + boardVO.getBoardNum();
    }
@@ -341,7 +341,7 @@ public class BoardController {
       
       boardVO.setImgList(uploadList);
 	 
-      boardService.updateFreeDetail(boardVO);
+      boardService.updateDetail(boardVO);
 
 	      
       return "redirect:/board/freeImgUpdateLoing?boardNum=" + boardVO.getBoardNum();

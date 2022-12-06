@@ -36,11 +36,9 @@ public interface BoardService {
 	void deleteBoardDetail(int boardNum);
 		
 	
-	// 공지사항 상세 페이지에서 게시글 수정
-	void updateNoticeDetail(BoardVO boardVO);
-	
-	// 자유게시판 상세 페이지에서 게시글 수정
-	void updateFreeDetail(BoardVO boardVO);
+
+	// 공지사항/ 자유게시판 상세 페이지에서 게시글 수정
+	void updateDetail(BoardVO boardVO);
 	
 	
 	
