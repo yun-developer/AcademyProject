@@ -61,13 +61,13 @@
 		<div class="floating_item _floating text-end">
 			<a href="#" class="link_item top_item _btnFloating" data-type="top">
 				<img class="scrollToTop" th:src="|@{/images/arrow-up-circle.svg}|"
-				style="width: 60px; height: 60px;"> <!-- <span class="icon icon_top"></span><span class="text blind">top</span> -->
+				style="width: 60px; height: 60px; z-index: 100;"> <!-- <span class="icon icon_top"></span><span class="text blind">top</span> -->
 			</a>
 		</div>
 
 	</main>
 
-	<div class="row mt-5">
+	<div class="row mt-5 px-5">
 		<div class="col-xl-5">
 			<div class="type01">
 				<h4 class="main-inner-title bg-info bg-gradient">공지사항</h4>
@@ -112,7 +112,7 @@
 				<a href="/board/freeList" title="자세히 보기" class="mini-more">MORE</a>
 			</div>
 		</div>
-		<div class="col-1 text-end">
+		<div class="col-2 text-center">
 				<div class="chat-e_webchat_button_wrapper right responsive">
 					<button onclick="potatoChat();" class="chat-e_webchat_button"
 						title="챗봇 열기 버튼"
@@ -127,12 +127,9 @@
 	</div>
 	<br>
 	<br>
-	<div class="row">
-			
-	</div>
 
 	<!-- 차트 영역 여기서부터 ========================================================================================================= -->
-	<div class="row mt-1 mb-5">
+	<div class="row mt-1 mb-5 px-5">
 
 		<!-- 교사별 프로그램 수 div -->
 		<div class="col-5">
@@ -200,52 +197,6 @@
 
 
 	<!-- 차트 영역 여기까지 =========================================================================================================-->
-
-
-
-
-
-
-
-
-	<!-- 신규 회원 가입 후 메인페이지로 왔을 때 Modal -->
-	<!-- 	<div class="modal fade" id="idDouble_Yes" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <form class="row g-3" action="/" method="post">
-	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLabel"> 
-	        	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-balloon-heart fs-5" viewBox="0 0 16 16">
-				  <path fill-rule="evenodd" d="m8 2.42-.717-.737c-1.13-1.161-3.243-.777-4.01.72-.35.685-.451 1.707.236 3.062C4.16 6.753 5.52 8.32 8 10.042c2.479-1.723 3.839-3.29 4.491-4.577.687-1.355.587-2.377.236-3.061-.767-1.498-2.88-1.882-4.01-.721L8 2.42Zm-.49 8.5c-10.78-7.44-3-13.155.359-10.063.045.041.089.084.132.129.043-.045.087-.088.132-.129 3.36-3.092 11.137 2.624.357 10.063l.235.468a.25.25 0 1 1-.448.224l-.008-.017c.008.11.02.202.037.29.054.27.161.488.419 1.003.288.578.235 1.15.076 1.629-.157.469-.422.867-.588 1.115l-.004.007a.25.25 0 1 1-.416-.278c.168-.252.4-.6.533-1.003.133-.396.163-.824-.049-1.246l-.013-.028c-.24-.48-.38-.758-.448-1.102a3.177 3.177 0 0 1-.052-.45l-.04.08a.25.25 0 1 1-.447-.224l.235-.468ZM6.013 2.06c-.649-.18-1.483.083-1.85.798-.131.258-.245.689-.08 1.335.063.244.414.198.487-.043.21-.697.627-1.447 1.359-1.692.217-.073.304-.337.084-.398Z"/>
-				</svg>
-	        환영합니다.</h5>
-	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-	      </div>
-	      <div class="modal-body text-center">
-	       	<div class="mb-1">
-	       		회원가입이 성공적으로 이루어 졌습니다.
-			</div>
-	       	<div class="mb-1">
-	       		로그인 페이지로 이동하시겠습니까?
-			</div>
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-	      </div>
-     	 </form>
-	    </div>
-	  </div>
-	</div> 
- -->
-
-
-
-
-
-
-
-
-
 
 
 

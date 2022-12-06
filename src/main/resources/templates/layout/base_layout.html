@@ -46,31 +46,37 @@
 		</div>	
 	</div>
 	
-	<div id="layoutSidenav">
-		
-		<div id="layoutSidenav_nav">
-		
-			
-			<div th:replace="fragment/side::side"  ></div>
-		
+	
+	
+		<div id="layoutSidenav">
+				
+					<!--side -->
+					<div id="layoutSidenav_nav">
+					
+						<div th:replace="fragment/side::side"  ></div>
+					
+					</div>
+				
+					
+					<!--content -->
+					<div id="layoutSidenav_content">
+					
+						<div layout:fragment="content" style="margin-left: 0; margin-top: 10px; margin-bottom: 10px;"></div>
+						
+						<!--footer -->
+						<div th:replace="fragment/bottom::bottom"></div>
+					</div>
+				
 		</div>
-		
-		<div id="layoutSidenav_content">
-		
-			<div layout:fragment="content" style="margin-left: 0; margin-top: 10px; margin-bottom: 10px;"></div>
-		
-			<div th:replace="fragment/bottom::bottom"></div>
-		</div>
-	</div>
 
 	
-	<div class="row">
-		<!-- <div class="col-2">
+	<!-- <div class="row">
+		<div class="col-2">
 			
-		</div> -->
+		</div>
 		<div class="col">
 		</div>	
-	</div>
+	</div> -->
 	
 </div>
 

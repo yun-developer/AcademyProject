@@ -59,8 +59,8 @@ a{
     text-decoration: none;
     position:fixed;
     
-    bottom: 100px;
-    right:40px;
+    bottom: 38px;
+    right:30px;
     display:none;
     background: url('arrow-up-circle.svg') no-repeat 0px 20px;
 }
