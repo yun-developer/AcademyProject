@@ -1,4 +1,4 @@
-
+alert(111);
 const BoardNumInput = document.querySelector("#updateButton");
 const BoardNum = parseInt(BoardNumInput.value);
 
