@@ -12,11 +12,8 @@
 	}
 </style>	
 
-<main id="js-page-content" role="main" class="page-content" style="padding-bottom:0px;">
 
 
-<div class="row">
-	<div class="col-lg-12">
 		<div class="panel">
 			<div class="panel-hdr" style="margin-bottom: 20px; font-size: 16px;">
 				<h2>자유게시판<span class="fw-300"></span></h2>
@@ -24,11 +21,11 @@
 					<button class="btn btn-panel waves-effect waves-themed" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Fullscreen"></button>
 				</div>
 			</div>
+		</div>
 			<div class="panel-container show">
 				<div class="panel-content">
 					
 
-					<!-- <div th:if="${#lists.size(free) == 0}"> -->
 						<div class="subheader pb-6"  style="margin-bottom: 20px;" th:each="free : ${free}">
 							<h3 class="subheader-title">
 								[[${free.boardTitle}]] <i class="subheader-icon"></i>
@@ -179,13 +176,12 @@
 											<td tabindex="0"><div id="1200926170807851793">
 													<div class="mb-2">
 														<strong class="text-muted"><a href="javascript:"
-															onclick="showEmployPopup('/common/popup/employ/detail/AE020909909', '교직원정보');">[[${reply.teacherId}]]</a></strong><span
+															>[[${reply.teacherId}]]</a></strong><span
 															class="ml-2 text-muted">&nbsp;&nbsp;&nbsp;&nbsp;[[${reply.replyCreateDate}]]</span>
 													</div>
-													<div>
+													<div style="word-break:break-all;">
 														<h5>
 															<span class="replyContent">[[${reply.replyContent}]]</span>
-																<!-- <input type="hidden" id="${reply.replyNum}" name="replyNum" th:value=""> -->
 															<span class="right" th:if= "${reply.teacherId == #authentication.name or #strings.contains(#authentication.authorities, 'ROLE_ADMIN')}">
 																<button th:onclick="|location.href='@{/reply/freeDelete(replyNum=${reply.replyNum}, boardNum=${free.boardNum})}'|"  type="button" class="btn btn-danger btn-sm flex-end" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
 													  			<path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
@@ -216,10 +212,7 @@
 					</div>
 		</div>
 	</div>
-</div>
 
-</div>
-				</main>
 				
 				
 <!------------------------------------------------------------------------------------------------------------------------------------------------------------->         

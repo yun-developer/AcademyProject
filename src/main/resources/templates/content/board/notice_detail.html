@@ -12,12 +12,15 @@
    }
 </style> 
 
-<div class="layerPopup">
-	<div class="spinner">
 
 <div class="panel">
+	<div class="panel-hdr" style="margin-bottom: 20px; font-size: 16px;">
 		<h2>공지사항<span class="fw-300"></span></h2>
-			</div>
+		<div class="panel-toolbar">
+			<button class="btn btn-panel waves-effect waves-themed" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Fullscreen"></button>
+		</div>
+	</div>
+</div>
 			<div class="panel-container show">
 				<div class="panel-content">
 					<div class="subheader pb-6" style="margin-bottom: 20px;" th:each="notice : ${notice}">
@@ -132,9 +135,9 @@
 							<input type="hidden" name="boardNum" th:value="${notice.boardNum}"> 
 
 							<fieldset class="w-100">
-								<div class="form-group input-group mb-1">
-									<div id="froala-editor" class="col-12 col-lg-11 px-1 rounded-0">
-										<textarea name="replyContent" id="replyLength" class="form-control" rows="5"></textarea>
+								<div class="form-group input-group mb-1" >
+									<div id="froala-editor" class="col-12 col-lg-11 px-1 rounded-0" >
+										<textarea  name="replyContent" id="replyLength" class="form-control" rows="5"></textarea>
 										<span id="replyLengthCheck" class="text-muted">(0 / 최대 500자)</span>
 									</div>
 									<div class="col-12 col-lg-1">
@@ -169,10 +172,10 @@
 							<tr role="row" class="odd" th:each="reply : ${replyList}">
 								<td tabindex="0"><div id="1200926170807851778">
 										<div class="mb-2">
-											<strong class="text-muted"><a href="javascript:"onclick="showEmployPopup('/common/popup/employ/detail/AE170600020', '교직원정보');">[[${reply.teacherId}]]</a></strong><span
+											<strong class="text-muted"><a href="javascript:">[[${reply.teacherId}]]</a></strong><span
 												class="ml-2 text-muted">&nbsp;&nbsp;&nbsp;&nbsp;[[${reply.replyCreateDate}]]</span>
 										</div>
-										<div>
+										<div style="word-break:break-all;">
 											<h5>
 												<span class="replyContent">[[${reply.replyContent}]]</span>
 													<span class="right" th:if= "${reply.teacherId == #authentication.name or #strings.contains(#authentication.authorities, 'ROLE_ADMIN')}">
@@ -187,7 +190,6 @@
 													</button>
 												</span>
 											</h5>
-											<h5></h5>
 										</div>
 									</div>
 								</td>
@@ -200,8 +202,6 @@
 			</div>
 		</div>
 	</div>
-</div>
-</div>
 
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
