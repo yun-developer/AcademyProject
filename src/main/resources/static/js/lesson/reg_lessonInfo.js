@@ -64,7 +64,6 @@ function selectSubjectCheck(){
 			str += '<option value="">전체</option>'; 
 			
 			
-			
 			for(const teacher of result){
 				str += `<option value="">${teacher}</option>`;
 				
