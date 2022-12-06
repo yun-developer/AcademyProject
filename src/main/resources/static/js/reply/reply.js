@@ -2,10 +2,15 @@ function replyNoRegAjax(){
 
 	const content = document.querySelector('#replyLength')
 
-	if(content.value == "" ){
-		alert("내용을 입력해주세요");
+	if(content.value == ""){
+		Swal.fire({
+		  title: '내용을 입력해 주세요!',
+		  icon: 'error',
+		  confirmButtonText: '확인'
+		})
 		return;
 	}
+	
 	else{
 	document.querySelector('#frmBoardContentsComment').submit();
 		
@@ -37,7 +42,6 @@ function updateReply(replyNum,btn){
 	else{
 		document.querySelector('#replyNum').value=replyNum; 
 		document.querySelector('#boardNum').value; 
-		alert(document.querySelector('#boardNum').value);
 		document.querySelector('#updateReply').submit();
 	}
 
