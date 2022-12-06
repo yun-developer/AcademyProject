@@ -91,7 +91,7 @@ public class StudentController {
 		List<String> studentCodeList = Arrays.asList(studentCodeArr);
 		
 		StudentVO studentVO = new StudentVO();
-		studentVO.setStudentCodeList(studentCodeList);  // 학생 코드도 vo에 안 넣고 lessonCode 처럼 걍 리스트로 가져올 수 있음
+		studentVO.setStudentCodeList(studentCodeList);  
 		
 		String[] beforeLessonInfoCodeArr = beforeLessonInfoCodes.split(",");
 		List<String> beforeLessonInfoCodeList = Arrays.asList(beforeLessonInfoCodeArr);

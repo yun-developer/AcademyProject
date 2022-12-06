@@ -31,7 +31,6 @@ public class ReplyController {
 		
 		replyService.insertReply(replyVO);
 		
-		//redirect로 갈 때 파라미터 넘기기
 		redirect.addAttribute("boardNum", boardNum);
 		return "redirect:/board/noticeDetail";
 	}
@@ -55,7 +54,6 @@ public class ReplyController {
 
 		redirect.addAttribute("boardNum", boardNum);
 		replyService.insertReply(replyVO);
-		//redirect로 갈 때 파라미터 넘기기
 		return "redirect:/board/freeDetail";
 	}
 	
