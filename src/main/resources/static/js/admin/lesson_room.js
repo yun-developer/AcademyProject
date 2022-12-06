@@ -159,11 +159,11 @@ function lessonRoomDeleteAjax(){
 
 			}
 		});
-	
-}
+
+	}
 
 
-	
+
 }
 //const modal = new bootstrap.Modal('#bb');
 
