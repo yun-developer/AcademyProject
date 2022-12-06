@@ -307,7 +307,7 @@ public class LessonController {
 		
 		int regYear = Integer.parseInt(selectYear);
 		lessonInfoVO.setYear(regYear);
-		System.out.println("!!!!!!!!!!!!!!"+lessonInfoVO.getLessonTime());
+		
 		// 교실 사용 중복 여부 확인 조회
 		lessonService.doubleCheckLesson(lessonInfoVO);
 		// 학급 편성 등록 

@@ -24,8 +24,11 @@ function selectUseCheck(){
 			// 요일을 바꾸면 쿼리가 실행되면서 그 결과 값은 result로 들어온다.
 			// result를 for문 돌려 하나하나 useCheck라고 하겟다.
 			// 그 값이 나올 수 있도록 그림을 그려준다. result가 있는 만큼 option을 그려준다.
+			let startTime = 18;
+			
 			for(const useCheck of result){
-				str += `<option value="">${useCheck}</option>`;
+				str += `<option value="${startTime}">${useCheck}</option>`;
+				startTime++;
 					
 			}
 			// 그렸던것을 str에 넣어놨으니 다시 html로 보내주는 방법
@@ -242,7 +245,7 @@ function regLessonInfo(){
 	let lessonTimeVal = lessonTime.options[lessonTime.selectedIndex].value;
 	
 	
-	alert(lessonTimeVal)
+
 	
 
 	
@@ -265,7 +268,7 @@ function regLessonInfo(){
 			}	
 			else {
 				
-				alert(lessonTimeVal)
+				
 				document.querySelector('#regLessonForm').submit();
 			}
 		
@@ -285,7 +288,7 @@ function regLessonInfo(){
 	
 	let maxStudent = document.querySelector('#maxStudent');
 	
-	alert("maxStudent" + maxStudent);
+
 	
 	
 }
