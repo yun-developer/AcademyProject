@@ -1,5 +1,3 @@
-//alert(1111);
-
 function replyNoRegAjax(){
 
 	const content = document.querySelector('#replyLength')
@@ -9,7 +7,6 @@ function replyNoRegAjax(){
 		return;
 	}
 	else{
-		//alert("입력함");
 	document.querySelector('#frmBoardContentsComment').submit();
 		
 	}
@@ -22,7 +19,7 @@ function replyNoRegAjax(){
 function updateReply(replyNum,btn){
 
  	if(btn.value =='수정'){
-	 	const replyContentSpan = btn.closest('div').querySelector(".replyContent");  // ???
+	 	const replyContentSpan = btn.closest('div').querySelector(".replyContent");  
 	 	const content = replyContentSpan.innerText;
 	 	replyContentSpan.innerText = '';
 	 	

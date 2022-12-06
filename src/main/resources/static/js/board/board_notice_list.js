@@ -31,7 +31,7 @@ checkAll.addEventListener('click', function(){
 
 //리스트 체크박스 선택 시
 for(const chk of chks){
-	chk.addEventListener('click', chk=>{ //밑줄 와이...?
+	chk.addEventListener('click', chk=>{ 
 		//아래에 있는 전체 체크박스의 수 
 		const cnt = chks.length;
 		//아래에 있는 전체 체크박스 중 체크된 수
@@ -56,10 +56,10 @@ for(const chk of chks){
 //공지사항 리스트에서 삭제 버튼 클릭
 function goDelete() {
 	
-	const deleteForm = document.querySelector('#deleteStuForm');	// from태그의 id가 deleteStuForm 인 것
+	const deleteForm = document.querySelector('#deleteStuForm');	
 	
 	//체크한 cartCode 다 들고 온다.
-	const checkedChks = document.querySelectorAll('.chk:checked');  // 내가 체크한 것들
+	const checkedChks = document.querySelectorAll('.chk:checked');  
 	
 	if(checkedChks.length == 0) {
 		Swal.fire({
@@ -83,18 +83,14 @@ function goDelete() {
 		   
 		   
 		}).then(result => {
-		   // 만약 Promise리턴을 받으면,
 		   if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
-			//문자열로 만들어서 던져 줌
 			let boardNums = '';
-			for(const checkedChk of checkedChks) {				// 내가 체크한 것들을 포문 돌려서 하나씩 삭제한다.
-				boardNums = boardNums + checkedChk.value + ',';   // 
+			for(const checkedChk of checkedChks) {				
+				boardNums = boardNums + checkedChk.value + ',';   
 			}
 			
-			// alert(boardNums);  -> 1,2,  boardNums가져오기 위해서는 반복하고 있는 목록 데이터에서 체크박스 input태그 안에 value값에 baordNum을 넣어줘야 한다.
-			//type이 히든인 input태그를 찾아서 value안에 boardNum을 넣어준다. 목록이라서 boardNums로 변수만듦.
-			deleteForm.querySelector('input[type="hidden"]').value = boardNums;  // 넘어오는 name과 컨트롤러의 매개변수 이름 같으면 알아서 받아줌
-			// 그리고 submit을 시켜준다. submit을 하면 form태그 액션이 실행된다.
+			deleteForm.querySelector('input[type="hidden"]').value = boardNums;  
+			
 			deleteForm.submit();
 			
 			}

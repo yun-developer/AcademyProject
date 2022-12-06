@@ -31,7 +31,7 @@ checkAll.addEventListener('click', function(){
 
 //리스트 체크박스 선택 시
 for(const chk of chks){
-	chk.addEventListener('click', chk=>{ //밑줄 와이...?
+	chk.addEventListener('click', chk=>{
 		//아래에 있는 전체 체크박스의 수 
 		const cnt = chks.length;
 		//아래에 있는 전체 체크박스 중 체크된 수
@@ -79,10 +79,8 @@ function goDelete() {
 		   cancelButtonText: '취소', // cancel 버튼 텍스트 지정
 		   
 		}).then(result => {
-		   // 만약 Promise리턴을 받으면,
-		   if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
+		   if (result.isConfirmed) { 
 			
-			//삭제 완료 alert 시작
 			Swal.fire({
 				title: '학생 삭제 완료',
 				text: '해당 학생이 삭제되었습니다.',
@@ -97,9 +95,7 @@ function goDelete() {
 				reverseButtons: true, // 버튼 순서 거꾸로
    
 		}).then(result => {
-		   // 만약 Promise리턴을 받으면,
-		   if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
-				//문자열로 만들어서 던져 줌
+		   if (result.isConfirmed) { 
 				let studentCodes = '';
 				for(const checkedChk of checkedChks) {
 					studentCodes = studentCodes + checkedChk.value + ',';  
@@ -108,8 +104,6 @@ function goDelete() {
 				let beforeLessonInfoCodes = '';
 				for(const checkedChk of checkedChks) {
 					const codes = checkedChk.closest('tr').querySelectorAll('.lessonInfoCodeClass');
-					/* 왜 클래스 이름 줘서 바로 안 가져오는지? -> 버튼을 눌렀을 때, 체크 된 인풋 박스의
-					    부모 태그를 찾아간 후 class = lessonInfoCodeClass 인 자식 태그를 찾아감. */
 				
 					
 					for(const code of codes) {
@@ -119,7 +113,7 @@ function goDelete() {
 				}
 				
 				
-				deleteForm.querySelector('#studentCodes').value = studentCodes;  // 넘어오는 name과 컨트롤러의 매개변수 이름 같으면 알아서 받아줌
+				deleteForm.querySelector('#studentCodes').value = studentCodes; 
 				deleteForm.querySelector('#beforeLessonInfoCodes').value = beforeLessonInfoCodes;
 				
 				deleteForm.submit();

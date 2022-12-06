@@ -26,7 +26,7 @@ function searchAddr() {
       if (!form.checkValidity()) {
         event.preventDefault()
         event.stopPropagation()
-	 //밸리데이션 체크했음으로 상태바꿈]
+	 //밸리데이션 체크했음으로 상태바꿈
       form.classList.add('was-validated')
       }
       

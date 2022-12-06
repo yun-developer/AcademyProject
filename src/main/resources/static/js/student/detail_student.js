@@ -1,6 +1,5 @@
 function goDelete() {
-	const deleteForm = document.querySelector('#deleteStuForm');	// from태그의 id가 deleteStuForm 인 것
-	
+	const deleteForm = document.querySelector('#deleteStuForm');	
 		Swal.fire({
 		   title: '정말 삭제하시겠습니까?',
 		   icon: 'warning',
@@ -13,8 +12,7 @@ function goDelete() {
 		   
 		   
 		}).then(result => {
-		   // 만약 Promise리턴을 받으면,
-		   if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
+		   if (result.isConfirmed) { 
 		   	
 		   	Swal.fire({
 				title: '학생 삭제 완료',
@@ -31,8 +29,7 @@ function goDelete() {
 		   	
 		   	
 		   	}).then(result => {
-				// 만약 Promise리턴을 받으면,
-				if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
+				if (result.isConfirmed) { 
 
 		   	
 				deleteForm.submit();
