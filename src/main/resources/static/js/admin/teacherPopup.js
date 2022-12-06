@@ -1,5 +1,6 @@
 /////////////////////////////////////변수////////////////////////////////////////
 
+//교사 코드
 const teacherCode = document.querySelector('#childTeacherCode').innerText;
 let str = '';
 
@@ -17,7 +18,7 @@ $(document).on("click", "#changeTeacherRoleBtn", function() {
 	
 	Swal.fire({
 		title: '교사 승인하시겠습니까?',
-		text: '미승인 회원를 교사로 승인합니다',
+		text: '미승인 회원을 교사로 승인합니다',
 		icon: 'warning',
 
 		showCancelButton: true, // cancel버튼 보이기. 기본은 원래 없음
@@ -33,7 +34,7 @@ $(document).on("click", "#changeTeacherRoleBtn", function() {
 		if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
 			
 			
-			
+			//교사 권한 변경 ajax실행
 			//ajax start
 			$.ajax({
 				url: '/admin/changeTeacherRoleAjax', //요청경로
@@ -41,7 +42,7 @@ $(document).on("click", "#changeTeacherRoleBtn", function() {
 				data: {"teacherCode": teacherCode}, //필요한 데이터
 				success: function(result) {
 					
-					
+					//변경된 권한을 새로 그려줌
 					str += `<a href="#" class="btnView" id="">${result}</a>
 					
 					
@@ -101,7 +102,8 @@ $(document).on("click", "#teacherStatusSwitch", function() {
 		}).then(result => {
 			// 만약 Promise리턴을 받으면,
 			if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
-			
+				
+				//교사 상태 변경 ajax실행
 				//ajax start
 				$.ajax({
 					url: '/admin/changeTeacherStatusAjax', //요청경로
@@ -167,7 +169,7 @@ $(document).on("click", "#teacherStatusSwitch", function() {
 			// 만약 Promise리턴을 받으면,
 			if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
 						
-				
+				//교사 상태 변경 ajax실행
 				//ajax start
 				$.ajax({
 					url: '/admin/changeTeacherStatusAjax', //요청경로
