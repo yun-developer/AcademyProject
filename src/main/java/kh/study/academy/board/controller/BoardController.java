@@ -159,13 +159,22 @@ public class BoardController {
 	   User user = (User)authentication.getPrincipal();
 	   boardVO.setTeacherId(user.getUsername());
       
+	  
 	   //다중 이미지 파일 첨부
        List<BoardImgVO> uploadList = UploadFileUtil2.multiUploadFile(imgs);
-      
-	  boardVO.setImgList(uploadList);
-	   
-	   boardService.updateDetail(boardVO);
-
+       
+       
+	   // 사진없이 글을 수정완료 할 시 사진 로딩 없이 바로 업데이트
+       if(uploadList.size() == 0) {
+    	   boardVO.setImgList(uploadList);
+    	   boardService.updateDetail(boardVO);
+    	   
+    	   return "redirect:/board/noticeDetail?boardNum=" + boardVO.getBoardNum();
+        }
+       else {// 사진이 있다면 글을 수정완료 할 시 사진 로딩하기
+    	   boardVO.setImgList(uploadList);
+    	   boardService.updateDetail(boardVO);
+       }
 	   return "redirect:/board/NoticeImgUpdateLoing?boardNum=" + boardVO.getBoardNum();
    }
    
@@ -340,14 +349,19 @@ public class BoardController {
       //다중 이미지 파일 첨부
       List<BoardImgVO> uploadList = UploadFileUtil2.multiUploadFile(imgs);
       
-      boardVO.setImgList(uploadList);
-	 
-      boardService.updateDetail(boardVO);
-      
-
+      if(uploadList.size() == 0) {
+    	  boardVO.setImgList(uploadList);
+    	  boardService.updateDetail(boardVO);
+    	  
+    	  return "redirect:/board/freeDetail?boardNum=" + boardVO.getBoardNum();
+      }
+      else {
+    	  boardVO.setImgList(uploadList);
+    	  boardService.updateDetail(boardVO);
 	      
       return "redirect:/board/freeImgUpdateLoing?boardNum=" + boardVO.getBoardNum();
-   }
+      }
+   }     
    
    
    // 자유게시판 글 수정페이지에서 이미지 로딩페이지로 이동 후 글 상세페이지
