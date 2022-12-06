@@ -166,11 +166,38 @@ function lessonInfoDeleteAjax(){
 
 
 
-// 교실 목록에서 제목줄 체크박스(전체 체크박스)
+//제목줄 체크박스
 const checkAll = document.querySelector('#checkAll');
 
-// 제목 줄을 제외한 모든 체크박스
+//제목줄을 제외한 모든 체크박스
 const chks = document.querySelectorAll('.chk');
+
+
+//체크박스 전체선택, 전체해제 이벤트
+checkAll.addEventListener('click', function(){
+	
+	//제목줄에서 체크박스의 체크여부
+	const isChecked = checkAll.checked; // true, false
+	
+	//모든 체크박스	
+	const checkBoxes = document.querySelectorAll('.chk');	
+	
+	//제목줄 체크박스가 체크되었다면
+	if(isChecked) {
+		//모든 체크박스를 체크함. 클래스가 chk인 것 모두 가져옴
+		
+		for(const checkBox of checkBoxes) {
+			checkBox.checked = true;
+		}
+	}		
+	else {
+		for(const checkBox of checkBoxes) {
+			checkBox.checked = false;
+		}
+	}
+});
+
+
 
 
 //체크박스 하나 해제되면 제목줄 체크박스 해제
@@ -191,6 +218,7 @@ for(const chk of chks){
 		}
 	})
 }
+
 
 
 
