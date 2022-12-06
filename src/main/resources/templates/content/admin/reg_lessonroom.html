@@ -76,13 +76,13 @@
 				</table>
 			</div>
 		</div>
-		<form th:action="@{/admin/deleteLessonRoom}" method="post"
+		<form class="row g-1" th:action="@{/admin/deleteLessonRoom}" method="post"
 			id="deleteLessonRoomForm">
 			<!-- 폼태그 안에 input가 있어야 데이터를 가져간다.  -->
 			<input type="hidden" name="lessonRoomCodes" value="">
 			<!-- submit누르면 데이터 안보이게 데이터 가져갈꺼다.  내가 체크한 체크박스들을 이 input태그의 value값을   -->
 
-			<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+			<div class=" gap-2 d-md-flex justify-content-md-end" >
 				<!-- <div class="row justify-content-end">
 						<div class="col-2" style="margin-right: 4.4rem;"> -->
 
