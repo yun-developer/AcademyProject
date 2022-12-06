@@ -6,6 +6,14 @@
 
 <div layout:fragment="content">
 
+<style>
+#yearNumber::-webkit-inner-spin-button {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+</style>
+
 <!-- 학년, 요일, 수업시간, 교실명, 교사명 -->
 	<div class="col-12 mt-3">
 			<h5>
@@ -21,7 +29,7 @@
 				<div class="col-xs-12 col-lg-4">
 					<div class="input-group mb-2">
 						<span class="input-group-addon col-2">학년</span> 
- 						<input type="text" class="form-control" id="" name="searchForYear" autocomplete="off" th:value="${paramMap['searchForYear']}"  > 
+ 						<input type="number" class="form-control" id="yearNumber" name="searchForYear" autocomplete="off" th:value="${paramMap['searchForYear']}"  > 
  						
 					</div>
 				</div>

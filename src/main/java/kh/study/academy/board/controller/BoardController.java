@@ -336,12 +336,14 @@ public class BoardController {
    	  User user = (User)authentication.getPrincipal();
 	  boardVO.setTeacherId(user.getUsername());
       
+	  // imgs = null이거나 "" 리스트 사이즈가 0이거나 
       //다중 이미지 파일 첨부
       List<BoardImgVO> uploadList = UploadFileUtil2.multiUploadFile(imgs);
       
       boardVO.setImgList(uploadList);
 	 
       boardService.updateDetail(boardVO);
+      
 
 	      
       return "redirect:/board/freeImgUpdateLoing?boardNum=" + boardVO.getBoardNum();

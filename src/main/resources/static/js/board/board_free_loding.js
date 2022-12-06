@@ -24,7 +24,7 @@ document.getElementById("freeButton").click();
 function imgloding(boardNum){
 
 	
-
+// 팡
 	
 	
 	const Toast = Swal.mixin({

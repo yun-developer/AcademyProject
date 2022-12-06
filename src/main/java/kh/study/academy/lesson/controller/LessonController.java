@@ -219,10 +219,19 @@ public class LessonController {
 		@RequestMapping("/regLessonInfoPage")
 		public String regLessonInfoPage(@RequestParam Map<String, Object>paramMap ,LessonInfoVO lessonInfoVO,Model model
 										, LessonRoomVO lessonRoomVO, String roomName,  String lessonDayCode, String searchForYear) { 
+		
 		int searchYear = 0;
-		if(searchForYear != null) {
+		System.out.println("!!!!!!!!!!!!!!!!!" + searchForYear);
+		
+		 // if는 null부터 써준다. input이 null이거나 ""일대 0 
+		if(searchForYear == null || searchForYear == "") {
+			searchYear = 0;
+		}
+		else { // null도아니고 ""도 아닐 때 실행
 			searchYear=Integer.parseInt(searchForYear);
 		}
+		
+		
 		paramMap.put("searchYear", searchYear);
 		
 		// 과목 리스트를 가져오는 쿼리 실행 문
