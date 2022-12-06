@@ -79,7 +79,9 @@
 						</div>
 						<div class="subheader pb-6 border-bottom" style="margin-bottom: 20px;"></div>
 							<div th:each="free : ${free}">
+							<pre style='white-space:pre-wrap; word_wrap:break-word; word-break: break-all;'>
 								<div  id="preview" class="fr-view" style="margin-bottom: 20px; font-size: 18px;">[[${free.boardContent}]]</div>
+							</pre>
 							</div>
 							<div th:if="${free.imgList[0].storedFileName == null}">
 							</div>
