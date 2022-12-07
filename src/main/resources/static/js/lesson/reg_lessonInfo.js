@@ -13,7 +13,7 @@ function selectUseCheck(){
 		url: '/lesson/selectClassUseAjax', //요청경로
 		type: 'post', // 무조건 post, ResponseBody를 써줘야한다.
 		data: {'lessonDayCode':lessonDayCode}, //필요한 데이터
-		success: function(result) {
+		success: function( result) {
 			
 			//option을 다 지우는 문법
 			$('#searchLessonTime').empty();
