@@ -92,8 +92,8 @@ function subjectDeleteAjax(){
 			
 			//삭제 완료 alert 시작
 			Swal.fire({
-				title: '교실 삭제 완료',
-				text: '해당 교실이 삭제되었습니다.',
+				title: '과목 삭제 완료',
+				text: '해당 과목이 삭제되었습니다.',
 				icon: 'success',
 
 				showCancelButton: false, // cancel버튼 보이기. 기본은 원래 없음

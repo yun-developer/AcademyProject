@@ -55,7 +55,7 @@ function selectSubjectCheck(){
 		type: 'post', // 무조건 post, ResponseBody를 써줘야한다.
 		data: {'subjectCode':subjectCode}, //필요한 데이터
 		success: function(result) {
-		alert(result);
+		
 			//option을 다 지우는 문법
 			$('#teacherName').empty();
 			
@@ -170,7 +170,7 @@ function lessonInfoDeleteAjax(){
 			//삭제 완료 alert 시작
 			Swal.fire({
 				title: '학급 삭제 완료',
-				text: '해당 학이 삭제되었습니다.',
+				text: '해당 학급이 삭제되었습니다.',
 				icon: 'success',
 
 				showCancelButton: false, // cancel버튼 보이기. 기본은 원래 없음
