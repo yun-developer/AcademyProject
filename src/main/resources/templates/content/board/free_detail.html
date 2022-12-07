@@ -87,12 +87,8 @@
 							</div>
 							<div th:unless="${free.imgList[0].storedFileName == null}">
 								<div class="col-3" th:each="free : ${free.imgList}">
-									<div class="card" >
-									  <img style="width: 18rem; height: 25rem;" th:src="|@{/images/board/}${free.storedFileName}|" class="card-img-top" alt="...">
-									  <div class="card-body">
-									  </div>
-									</div>
-								</div> 
+									<img th:src="|@{/images/board/}${free.storedFileName}|" >
+								</div>
 							</div>
 							
 				

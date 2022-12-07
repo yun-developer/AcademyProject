@@ -85,10 +85,8 @@
 						</div>
 						<div th:unless="${notice.imgList[0].storedFileName == null}">
 							<div class="col-3" th:each="notice : ${notice.imgList}">
-								<div class="card" >
-								  <img style="width: 18rem; height: 25rem;" th:src="|@{/images/board/}${notice.storedFileName}|" class="card-img-top" alt="...">
-								  <div class="card-body">
-								  </div>
+								<div>
+									<img th:src="|@{/images/board/}${notice.storedFileName}|" >
 								</div>
 							</div> 
 						</div>
