@@ -101,6 +101,7 @@
 			, NOW_STUDENT_CNT
 			, MONEY
 			, MEMO
+			, LESSON_INFO_REGDATE
 		) VALUES (
 			#{lessonInfoCode}
 			, #{subjectCode}
@@ -114,6 +115,7 @@
 			, 0
 			, #{money}
 			, #{memo}
+			, #{lessonInfoRegdate}
 			
 		)
 	</insert>

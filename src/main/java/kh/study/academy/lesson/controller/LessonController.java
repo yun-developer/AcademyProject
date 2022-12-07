@@ -248,6 +248,7 @@ public class LessonController {
 		
 		// 학급편성 리스트 조회
 		model.addAttribute("lessonInfoList",lessonService.searchLessonInfo(paramMap));
+		System.out.println("!!!!!!!!!!!!" + lessonInfoVO.getLessonInfoRegdate());
 		
 		
 		if(lessonDayCode == null) {

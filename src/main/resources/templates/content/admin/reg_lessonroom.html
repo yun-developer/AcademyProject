@@ -53,7 +53,7 @@
 							<th scope="col">No</th>
 							<th scope="col">교실명</th>
 							<th scope="col">정 원</th>
-							<th scope="col">사용 여부</th>
+							<th scope="col">교실 사용 여부</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -72,7 +72,16 @@
 								<td th:text="${status.count}"></td>
 								<td th:text="${LessonRoom.roomName}"></td>
 								<td th:text="${LessonRoom.lessonRoomMaxStudent}"></td>
-								<td th:text="${LessonRoom.isUse}"></td>
+					
+								<td>
+								<th:block >
+								
+								</th:block>
+									<th:block >
+										<input type="radio" th:name="${status.count}" name="" th:checked="${isUse eq 'Y'}">사용중
+										<input type="radio" th:name="${status.count}" name="" th:checked="${isUse eq 'N'}">미사용중
+									</th:block>
+								</td>
 							</tr>
 
 						</th:block>
@@ -87,7 +96,7 @@
 			<!-- submit누르면 데이터 안보이게 데이터 가져갈꺼다.  내가 체크한 체크박스들을 이 input태그의 value값을   -->
 			
 			
-			<div class= "d-grid gap-2 d-md-flex justify-content-md-end">
+			<div class= "d-grid gap-2 d-md-flex  justify-content-md-end">
 				<div class="offset-10 col-2">
 					<div class="row">
 						<div class="col-6">
@@ -144,17 +153,7 @@
 				      			<input  type="text" class="form-control" id="lessonRoomMaxStudent" name="lessonRoomMaxStudent">
 				      		</div>
 			      		</div>	
-			      		<div class="form-group input-group mb-3" >
-				      		<div class="col-3">
-				      			<label for="isUse" class="form-label">교실사용여부</label>
-				      		</div>	
-				      		<div class="col-9">
-					      			<select name="isUse" class="form-select" >
-					      				<option  id="isUse" value="Y">Y</option>
-					      				<option  id="isUse" value="N">N</option>
-					      			</select>
-			      			</div>
-			      		</div>	
+			      		
 			      	</div>
 			      	
 			      	<div class= "d-grid gap-2 d-md-flex justify-content-md-end">
