@@ -18,74 +18,86 @@
 
 </head>
 
-<div layout:fragment="content" style="padding:40px;">
-
-	주별 시간표
-	<!-- 캘린더 라이브러리 사용시 추가해야하는 코드 -->
-	<div id='calendar'></div>
+<div layout:fragment="content" >
 	
+	
+			<h5>
+			 
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-table" viewBox="0 0 16 16">
+				  <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 2h-4v3h4V4zm0 4h-4v3h4V8zm0 4h-4v3h3a1 1 0 0 0 1-1v-2zm-5 3v-3H6v3h4zm-5 0v-3H1v2a1 1 0 0 0 1 1h3zm-4-4h4V8H1v3zm0-4h4V4H1v3zm5-3v3h4V4H6zm4 4H6v3h4V8z"/>
+				</svg>
+				학급 목록
+			 </h5>
+	
+	
+	
+			<!-- 캘린더 라이브러리 사용시 추가해야하는 코드 -->
+			<div id='calendar'></div>
+	
+	
+	
+	<!-- 캘린더에서 학급명을 눌렀을 때 모달창 -->
 	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog ">
-    <div class="modal-content">
-      
-      <div class="modal-body">
-        <div class="row">
-        	<div class="col">
-        			<input type="hidden" id="lessonCodeInput" value="">
-        			<div class="row mb-2 mt-3 align-items-center " >
-			    		<div class="col-2 ms-3 bg-secondary p-2 bg-opacity-10">
-				    		담당 강사  
-			    		</div>
-			    		<div class="col" id="teacher" ></div>
-			    		<div class="col-2 ms-3 bg-secondary p-2 bg-opacity-10">
-				    		학급명 
-			    		</div>
-			    		<div class="col" id="lessonName" ></div>
-	    			</div>
-        			<div class="row mb-2 mt-3 align-items-center " >
-			    		<div class="col-2 ms-3 bg-secondary p-2 bg-opacity-10">
-				    		출결일자
-			    		</div>
-			    		<div class="col" id="attendDate" ></div>
-	    			</div>
-        			
-        			<div class="row mb-2 mt-5 justify-content-center align-items-center">
-        				<div class="col-10">
-		        			<table class="table">
-							  <thead>
-							    <tr>
-									<th scope="col">학생명</th>
-									
-									<th scope="col">출결사항 ( <div class="form-check form-check-inline">
-																  <input class="form-check-input" type="checkbox" id="checkAll" value="option1">
-																  <label class="form-check-label" for="checkAll">전체출석</label>
-																</div>) 
-									</th>
-							    </tr>
-							  </thead>
-							  <tbody id ="modalTableContent">
-							    <tr>
-							      <th scope="row"></th>
-							      
-							      <td><div id="modalContent"></div></td>
-							    </tr>
-							   
-							  </tbody>
-							</table>
-        			
-        				</div>
-        			</div>
-        			
-        	</div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" th:onclick="changeAttend()"> 저장 </button>
-      </div>
-    </div>
-  </div>
-</div>
+		  <div class="modal-dialog ">
+		    <div class="modal-content">
+		      <div class="modal-body">
+		        <div class="row">
+		        	<div class="col">
+		        			<input type="hidden" id="lessonCodeInput" value="">
+		        			<div class="row mb-2 mt-3 align-items-center " >
+					    		<div class="col-2 ms-3 bg-secondary p-2 bg-opacity-10">
+						    		담당 강사  
+					    		</div>
+					    		<div class="col" id="teacher" ></div>
+					    		<div class="col-2 ms-3 bg-secondary p-2 bg-opacity-10">
+						    		학급명 
+					    		</div>
+					    		<div class="col" id="lessonName" ></div>
+			    			</div>
+		        			<div class="row mb-2 mt-3 align-items-center " >
+					    		<div class="col-2 ms-3 bg-secondary p-2 bg-opacity-10">
+						    		출결일자
+					    		</div>
+					    		<div class="col" id="attendDate" ></div>
+			    			</div>
+		        			
+		        			<div class="row mb-2 mt-5 justify-content-center align-items-center">
+		        				<div class="col-10">
+				        			<table class="table">
+									  <thead>
+									    <tr>
+											<th scope="col">학생명</th>
+											
+											<th scope="col">출결사항 ( <div class="form-check form-check-inline">
+																		  <input class="form-check-input" type="checkbox" id="checkAll" value="option1">
+																		  <label class="form-check-label" for="checkAll">전체출석</label>
+																		</div>) 
+											</th>
+									    </tr>
+									  </thead>
+									  <tbody id ="modalTableContent">
+									    <tr>
+									      <th scope="row"></th>
+									      
+									      <td><div id="modalContent"></div></td>
+									    </tr>
+									   
+									  </tbody>
+									</table>
+		        			
+		        				</div>
+		        			</div>
+		        			
+		        	</div>
+		        </div>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-primary" th:onclick="changeAttend()"> 저장 </button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
 	
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script> 
 	<script type="text/javascript" th:src="@{/js/lesson/lesson_list.js}"></script>  
