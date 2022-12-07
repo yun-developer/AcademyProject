@@ -235,7 +235,7 @@
 												<div class="form-group input-group mb-1">
 													<div class="col-6 col-lg-2 px-0"><span class="input-group-text h-100 rounded-0"  >과목구분</span></div>
 													  <div class="col-6 col-lg-3 px-1 rounded-0">
-														<select class="form-select selectBox" id="subjectCode" name="subjectCode" onchange="selectSubjectCheck(this);" required>
+														<select class="form-select selectBox" id="subjectCode" name="subjectCode" onchange="selectSubjectCheck();" required>
 															
 															<option th:value="${subject.subjectCode}" th:each="subject, status : ${subjectList}" th:text="${subject.subjectName}" >전체</option>
 

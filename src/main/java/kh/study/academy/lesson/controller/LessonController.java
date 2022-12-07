@@ -285,9 +285,9 @@ public class LessonController {
 		// 과목구분 클릭 시 해당하는 담당 교사들만 조회
 		@ResponseBody 
 		@PostMapping("/selectSubjectChangeAjax")
-		public List<String> subjectChangeTeacher(Model model, String subjectCode){
+		public List<LessonInfoVO> subjectChangeTeacher(Model model, LessonInfoVO lessonInfoVO){
 			
-			return lessonService.subjectChangeTeacher(subjectCode);
+			return lessonService.subjectChangeTeacher(lessonInfoVO);
 		}
 		
 		

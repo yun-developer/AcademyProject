@@ -156,14 +156,21 @@
 			      			</div>
 			      		</div>	
 			      	</div>
-			      	<div class="row">
-			      		<div class="col text-end">
-			      		
-			      			<button type="submit" id="updateAmountBtn" class="btn btn-primary btn-sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3px; --bs-btn-font-size: 1rem;">저장</button>
-			      			<button type="button" id="cancelBtn" data-origin-amount=""  th:onclick="rollbackAmount();"  class="btn btn-secondary btn-sm" data-bs-dismiss="modal" aria-label="Close" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3rem; --bs-btn-font-size: 1rem;">닫기</button>
-			      		
-			      		</div>
-			      	</div>
+			      	
+			      	<div class= "d-grid gap-2 d-md-flex justify-content-md-end">
+					<div class="offset-10 col-4">
+						<div class="row">
+							<div class="col-6" >
+		                         <button type="submit" id="updateAmountBtn" class="btn btn-primary form-control"  th:onclick="goRegLessonInfoAjax([[${lessonDayCode}]]);">저장</button>
+							</div>
+							<div class="col-6">
+								 <button type="button" id="cancelBtn" data-origin-amount=""  th:onclick="rollbackAmount();" 
+								 	class="btn btn-secondary form-control" data-bs-dismiss="modal" aria-label="Close">닫기
+								 </button>
+							</div>
+						</div>	
+	                 </div>
+	   				</div>
 			      </div>
 			     </form>
 			    </div>

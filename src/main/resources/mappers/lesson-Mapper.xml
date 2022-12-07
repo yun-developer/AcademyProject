@@ -321,8 +321,9 @@
 	 </select>
 	 
 	<!--  해당과목과 동일한 교사 조회  -->
-	<select id="subjectChangeTeacher" resultType="String">
+	<select id="subjectChangeTeacher" resultMap="lessonInfo">
 		SELECT TEACHER_NAME
+				,TEACHER_CODE
 	    FROM TEACHER
 	    WHERE SUBJECT_CODE = #{subjectCode}
 	</select>

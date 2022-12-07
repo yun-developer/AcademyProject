@@ -47,8 +47,6 @@ function selectUseCheck(){
 function selectSubjectCheck(){
 	const subjectCode = document.querySelector('#subjectCode option:checked').value;
 	
-	let teacherCode = $().val();
-	alert(teacherCode);
 
 	//ajax start
 	$.ajax({
@@ -66,7 +64,7 @@ function selectSubjectCheck(){
 			
 			
 			for(const teacher of result){
-				str += `<option value="">${teacher}</option>`;
+				str += `<option value="${teacher.teacherCode}">${teacher.teacherVO.teacherName}</option>`;
 				
 					
 			}

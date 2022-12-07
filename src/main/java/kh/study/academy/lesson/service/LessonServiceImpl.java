@@ -88,8 +88,8 @@ public class LessonServiceImpl implements LessonService{
 
 	// 해당과목과 동일한 교사 조회 
 	@Override
-	public List<String> subjectChangeTeacher(String subjectCode) {
-		return sqlSession.selectList("lessonMapper.subjectChangeTeacher",subjectCode);
+	public List<LessonInfoVO> subjectChangeTeacher(LessonInfoVO lessonInfoVO) {
+		return sqlSession.selectList("lessonMapper.subjectChangeTeacher",lessonInfoVO);
 	}
 
 	

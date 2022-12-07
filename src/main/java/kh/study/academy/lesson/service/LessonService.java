@@ -38,7 +38,7 @@ public interface LessonService {
 	List<LessonInfoVO> searchLessonInfo(Map<String, Object> map);
 
 	// 해당과목과 동일한 교사 조회 
-	List<String> subjectChangeTeacher(String subjectCode);
+	List<LessonInfoVO> subjectChangeTeacher(LessonInfoVO lessonInfoVO);
 	
 	//학생등록시 nowStudent +1증가
 	void updateNowStudent(String lessonInfoCode);
