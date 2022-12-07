@@ -132,12 +132,9 @@ $(document).on("click", "#teacherStatusSwitch", function() {
 				Swal.fire('재직상태 변경.', '재직상태가 퇴사로 변경되었습니다', 'success');
 			}
 			else{
-				//재직 중인 교사를 퇴사 버튼 눌러서 변경하려고 하다가 취소를 누르면 
-				//스위치 버튼이 원래대로 on되어있게 하고 싶어
-				//근데 상태는 안바뀌면서 스위치만 꺼져....
-					
-				//태그 속성 추가 변경
-				//isteacherStatusTag.setAttribute("checked", "checked");
+				
+				//재직 중인 교사를 스위치 버튼 눌러서 변경하려고 하다가 취소를 누르면 
+				//스위치 버튼이 원래대로 on되어있게
 				isteacherStatusTag.checked = true;
 			}
 		})
@@ -194,6 +191,12 @@ $(document).on("click", "#teacherStatusSwitch", function() {
 				//ajax end
 				
 				Swal.fire('재직상태 변경.', '재직상태가 재직중으로 변경되었습니다', 'success');
+			}
+			else{
+				
+				//퇴사 상태 교사를 스위치 버튼 눌러서 변경하려고 하다가 취소를 누르면 
+				//스위치 버튼이 원래대로 off되어있게
+				isteacherStatusTag.checked = false;
 			}
 		})
 	}
