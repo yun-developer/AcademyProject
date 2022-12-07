@@ -21,7 +21,7 @@
 					method="post">
 					<div class="col-xs-12 col-lg-11">
 						<input type="text" name="roomName" class="form-control" id=""
-							placeholder="신규 등록할 교실명을 입력해주세요">
+							placeholder="검색 할 교실명을 입력해주세요">
 					</div>
 					<div class="col-xs-12 col-lg-1">
 					<div class="d-grid gap-2">
@@ -29,25 +29,18 @@
 
 					</div>
 					</div>
-					<!-- <div class="row justify-content-" style="margin: 1rem">
-							<div class="col-2" style="margin-right: 4.4rem;">
-								<button type="button" id="updateLessonRoomModal"
-									class="btn btn-info fal fa-save"
-									th:onclick="goRegLessonRoomAjax();">신규</button>
-							</div>
-						</div> -->
 				</form>
 			</div>
 			<div class="col-12 mt-5">
-			<p class="card-text">
-				<small class="text-muted"> 
-					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-						fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
-					  <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
-					</svg> 총 <span th:text="${#lists.size(LessonRoomList)}" style="color: red"></span>개의
-					교실이 조회되었습니다.
-				</small>
-			</p>
+				<p class="card-text">
+					<small class="text-muted"> 
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+							fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+						  <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+						</svg> 총 <span th:text="${#lists.size(LessonRoomList)}" style="color: red"></span>개의
+						교실이 조회되었습니다.
+					</small>
+				</p>
 			</div>
 			<div class="col-12 mt-3">
 			
@@ -87,23 +80,31 @@
 				</table>
 			</div>
 		</div>
-		<form class="row g-1" th:action="@{/admin/deleteLessonRoom}" method="post"
+		<form class="row g-2" th:action="@{/admin/deleteLessonRoom}" method="post"
 			id="deleteLessonRoomForm">
 			<!-- 폼태그 안에 input가 있어야 데이터를 가져간다.  -->
 			<input type="hidden" name="lessonRoomCodes" value="">
 			<!-- submit누르면 데이터 안보이게 데이터 가져갈꺼다.  내가 체크한 체크박스들을 이 input태그의 value값을   -->
-
-			<div class=" gap-2 d-md-flex justify-content-md-end" >
-				<!-- <div class="row justify-content-end">
-						<div class="col-2" style="margin-right: 4.4rem;"> -->
-
-				<button type="button" id="updateLessonRoomModal"
-					class="btn btn-primary me-md-2" th:onclick="goRegLessonRoomAjax();">신규</button>
-				<button th:onclick="lessonRoomDeleteAjax();" type="button"
-					class="btn btn-danger form-control-start">삭제</button>
-				<!-- </div>
-				</div> -->
+			
+			
+			<div class= "d-grid gap-2 d-md-flex justify-content-md-end">
+				<div class="offset-10 col-2">
+					<div class="row">
+						<div class="col-6">
+							<button type="button" id="updateLessonRoomModal" 
+								class="btn btn-primary form-control" th:onclick="goRegLessonRoomAjax();">신규
+							</button>
+						</div>
+						
+						<div class="col-6">
+							<button th:onclick="lessonRoomDeleteAjax();" type="button"
+								class="btn btn-danger form-control">삭제
+							</button>
+						</div>
+					</div>
+				</div>
 			</div>
+			
 		</form>
 	</div>
 
@@ -118,36 +119,47 @@
 			    <div class="modal-content">
 			  	  <!-- 모달 제목글 header -->
 
-	    	      <div class="modal-header"> 
+	    	      <div class="modal-header mb-4"> 
 			        <h5 class="modal-title" id="exampleModalLabel"> 교실 정보 </h5>
 			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			      </div>
 				   <!-- 모달 내용글 body -->
 				   
-				<form action="/admin/regLessonRoom" method="post">
+				<form action="/admin/regLessonRoom" method="post" style="font-size: 18px;">
 			      <div class="modal-body">
-			      	<div class="row mb-3">
-			      		<div class="col-10">
-			      			<label for="roomName" class="form-label">교실명</label>
-			      				<input  type="text" class="form-control" id="roomName" name="roomName">
-			      			
+			      	<div class="row mb-3 ">
+			      		<div class="form-group input-group mb-3" >
+				      		<div class="col-3 ">
+				      			<label for="roomName" class="form-label">교실명</label>
+				      		</div>
+				      		<div class="col-9">
+				      			<input  type="text" class="form-control" id="roomName" name="roomName">
+				      		</div>
 			      		</div>
-			      		<div class="col-10">
-			      			<label for="lessonRoomMaxStudent" class="form-label">정 원</label>
-			      				<input  type="text" class="form-control" id="lessonRoomMaxStudent" name="lessonRoomMaxStudent">
-			      		</div>
-				      		<div class="col-8">
+						<div class="form-group input-group mb-3" >
+				      		<div class="col-3">
+				      			<label for="lessonRoomMaxStudent" class="form-label">정 원</label>
+				      		</div>
+				      		<div class="col-9">
+				      			<input  type="text" class="form-control" id="lessonRoomMaxStudent" name="lessonRoomMaxStudent">
+				      		</div>
+			      		</div>	
+			      		<div class="form-group input-group mb-3" >
+				      		<div class="col-3">
 				      			<label for="isUse" class="form-label">교실사용여부</label>
+				      		</div>	
+				      		<div class="col-9">
 					      			<select name="isUse" class="form-select" >
 					      				<option  id="isUse" value="Y">Y</option>
 					      				<option  id="isUse" value="N">N</option>
 					      			</select>
 			      			</div>
+			      		</div>	
 			      	</div>
 			      	<div class="row">
 			      		<div class="col text-end">
 			      		
-			      			<button type="submit" id="updateAmountBtn" class="btn btn-primary btn-sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3rem; --bs-btn-font-size: 1rem;">저장</button>
+			      			<button type="submit" id="updateAmountBtn" class="btn btn-primary btn-sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3px; --bs-btn-font-size: 1rem;">저장</button>
 			      			<button type="button" id="cancelBtn" data-origin-amount=""  th:onclick="rollbackAmount();"  class="btn btn-secondary btn-sm" data-bs-dismiss="modal" aria-label="Close" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3rem; --bs-btn-font-size: 1rem;">닫기</button>
 			      		
 			      		</div>

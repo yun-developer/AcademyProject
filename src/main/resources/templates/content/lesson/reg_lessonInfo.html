@@ -62,7 +62,7 @@
 					<div class="d-grid gap-2">
 						<div class="d-grid gap-2">
 							<button type="submit" name="btn-detail-search"
-								class="btn btn-dark me-md-2">검색</button>
+								class="btn btn-dark">검색</button>
 						</div>
 					</div>
 				</div>
@@ -86,15 +86,9 @@
 		<div class="col-12">
 			<div class="row">
 			
-				<div class="col-12 mb-3">
-					<form class="row justify-content-end" th:action="@{/admin/selectLessonRoom}" method="post" id="saveLessonInfo">
-						  <div class="col-2"  style="margin-right:4.4rem;">
-                       		 <button type="button" id="updateLessonRoomModal" class="btn btn-primary"  th:onclick="goRegLessonInfoAjax([[${lessonDayCode}]]);">학급등록</button>
-                  		  </div>
-              	   </form>
-				</div>
+
 				
-				<div class="col-12">
+				<div class="col-12 mt-5">
 					<p class="card-text">
 						<small class="text-muted"> 
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -161,23 +155,29 @@
 		  
 		   	<form th:action="@{/lesson/deleteLessonInfo}" method="post" id="deleteLessonInfoForm">  <!-- 폼태그 안에 input가 있어야 데이터를 가져간다.  -->
              <input type="hidden" name="lessonInfoCodes"  value="">  <!-- submit누르면 데이터 안보이게 데이터 가져갈꺼다.  내가 체크한 체크박스들을 이 input태그의 value값을   -->
+             </form> 
               
-              
-              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-              
-              
-              <!--  <div class="row justify-content-end">
-                  <div class="col-2"  style="margin-right:4.4rem;"> -->
-                        <button th:onclick="lessonInfoDeleteAjax();" type="button" class="btn btn-danger form-control-start" >삭제</button>
-                 <!--  </div>
-               </div> -->
-               
+              <div class= "d-grid gap-2 d-md-flex justify-content-md-end">
+				<div class="offset-10 col-2">
+					<div class="row">
+						<div class="col-6">
+							<form th:action="@{/admin/selectLessonRoom}" method="post" id="saveLessonInfo">
+	                       		 <button type="button" id="updateLessonRoomModal" class="btn btn-primary form-control"  th:onclick="goRegLessonInfoAjax([[${lessonDayCode}]]);">학급등록</button>
+		              	   </form>
+						</div>
+						<div class="col-6">
+							 <button th:onclick="lessonInfoDeleteAjax();" type="button" 
+							 	class="btn btn-danger form-control" >삭제
+							 </button>
+						</div>
+					</div>	
+                 </div>
                </div>
                
                
                
                
-              </form> 
+              
 
             </div>
             <!------------------------------------------------------------------------------------------------------------------------------------------------------------->            
@@ -191,20 +191,20 @@
 				  	  <!-- 모달 제목글 header -->
 	
 		    	     <div class="modal-header"> 
-				        <h5 class="modal-title"  id="exampleModalLabel"> 학급 편성 등록 </h5>
+				        <h3 class="modal-title"  id="exampleModalLabel" > 학급 편성 등록 </h3>
 				          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				     </div>
 					
 					<!-- 모달 내용글 body -->
 				<form th:action="@{/lesson/saveLessonInfo}" method="post" id="regLessonForm" class="needs-validation" novalidate >
-				      <div class="modal-body">
-				      	<div class="row mb-3">
-				      		<div class="col-10">
+				      <div class="modal-body" >
+				      	<div class="row">
+				      		<div class="col-12" style="font-size: 20px;">
 							  <fieldset class="w-100">
 								<h4>학급 정보</h4>
 								
 									
-										<div class="form-group input-group mb-1">
+										<div class="form-group input-group mb-1" >
 											<div class="col-6 col-lg-2 px-0">
 												<span class="input-group-text h-100 rounded-0">편성년월</span></div>
 												<!--변수 인식하기 위해 value말고 th:value  -->
@@ -235,13 +235,10 @@
 												<div class="form-group input-group mb-1">
 													<div class="col-6 col-lg-2 px-0"><span class="input-group-text h-100 rounded-0"  >과목구분</span></div>
 													  <div class="col-6 col-lg-3 px-1 rounded-0">
-														<select class="form-select" id="subjectCode" name="subjectCode" onchange="selectSubjectCheck();" required>
+														<select class="form-select selectBox" id="subjectCode" name="subjectCode" onchange="selectSubjectCheck(this);" required>
 															
-															<option value="">전체</option>
-															<th:block th:each="subject, status : ${subjectList}">	
-															<option th:value="${subject.subjectCode}" th:text="${subject.subjectName}"></option>
-																<!-- 옵션의 value는 레슨코드여야 되고, name도 레슨코드  -->
-															</th:block>
+															<option th:value="${subject.subjectCode}" th:each="subject, status : ${subjectList}" th:text="${subject.subjectName}" >전체</option>
+
 														</select>
 													</div>
 
@@ -340,19 +337,29 @@
 
 								<div class="form-group input-group mb-1">
 
-										<p style="color: red; ">* 복수 요일(프로그램) 학급을 편성 시, 각 프로그램별 금액이 전부 합산되어 학급의 수강료로 책정됩니다.<br> ex) 화 12만원 + 목 12만원 = 화목 24만원</p>
+										<p style="color: red; ">* 학급 편성 시, 요일, 교실명, 수업시간, 중복 주의바랍니다.</p>
 
 
 								</div>
 							</fieldset>
-							<div class="row">
-		      					<div class="col text-end">
-		      		
-					      			<button  type="button" id="updateAmountBtn" class="btn btn-primary btn-sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3rem; --bs-btn-font-size: 1rem;">저장</button>
-					      			<button type="button" id="cancelBtn" data-origin-amount=""  th:onclick="rollbackAmount();"  class="btn btn-secondary btn-sm" data-bs-dismiss="modal" aria-label="Close" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3rem; --bs-btn-font-size: 1rem;">닫기</button>
-					      		</div>
-					      	</div>
-					      	
+							
+
+				              <div class= "d-grid gap-2 d-md-flex justify-content-md-end">
+								<div class="offset-10 col-2">
+									<div class="row">
+										<div class="col-6">
+										
+					                       		 <button type="button" id="updateAmountBtn" class="btn btn-primary form-control"  th:onclick="goRegLessonInfoAjax([[${lessonDayCode}]]);">등록</button>
+						              
+										</div>
+										<div class="col-6">
+											 <button type="button" id="cancelBtn" data-origin-amount=""  th:onclick="rollbackAmount();"  
+											 	class="btn btn-secondary form-control" data-bs-dismiss="modal" aria-label="Close">닫기
+											 </button>
+										</div>
+									</div>	
+				                 </div>
+				               </div>
 						    </div>
 						  </div>
 						</div>

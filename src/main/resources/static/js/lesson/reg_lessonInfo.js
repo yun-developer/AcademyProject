@@ -45,9 +45,10 @@ function selectUseCheck(){
 	
 // 과목 구분에 해당 과목을 누르면 교사 명에 담당 과목 선생님이름 조회 
 function selectSubjectCheck(){
-	
 	const subjectCode = document.querySelector('#subjectCode option:checked').value;
-
+	
+	let teacherCode = $().val();
+	alert(teacherCode);
 
 	//ajax start
 	$.ajax({
@@ -89,6 +90,7 @@ function selectSubjectCheck(){
 // 학급등록 페이지에서 신규버튼 클릭 시 모달창
 function goRegLessonInfoAjax(){
 	$('#aa').modal('show');
+	
 }
 
 
