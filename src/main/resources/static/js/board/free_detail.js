@@ -44,6 +44,7 @@ $("#replyLength").keyup(function(e) {
 			Swal.fire({
 			  icon: 'warning',  
 			  title: '최대 500자까지 입력 가능합니다.',    
+			  confirmButtonText: '확인'
 			});
 			
 			$(this).val(content.substring(0, 500));
