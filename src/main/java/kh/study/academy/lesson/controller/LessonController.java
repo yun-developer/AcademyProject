@@ -67,7 +67,6 @@ public class LessonController {
 		model.addAttribute("freeList", boardService.selectFreeMain());
 		System.out.println("mainPage컨트롤러 실행");
 		
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1"+ isNew);
 		model.addAttribute("isNew", null);
 		if(isNew != null) {
 			model.addAttribute("isNew", isNew);
@@ -218,7 +217,7 @@ public class LessonController {
 										, LessonRoomVO lessonRoomVO, String roomName,  String lessonDayCode, String searchForYear) { 
 		
 		int searchYear = 0;
-		System.out.println("!!!!!!!!!!!!!!!!!" + searchForYear);
+
 		
 		 // if는 null부터 써준다. input이 null이거나 ""일대 0 
 		if(searchForYear == null || searchForYear == "") {
