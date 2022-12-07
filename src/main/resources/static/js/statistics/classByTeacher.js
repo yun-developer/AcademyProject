@@ -123,6 +123,7 @@ function drawChart2(data){
 	          chart: {
 	          type: 'bar',
 	          height: 550
+	          
 	        },
 	        plotOptions: {
 	          bar: {

@@ -66,13 +66,14 @@ function drawChart1(data){
 	  chart: {
 	    type: 'bar',
 	    height: 350
+	    
 	  },
 	  plotOptions: {
 	    bar: {
 	      horizontal: false
 	    }
 	  },
-	   colors: ['#008FFB'],
+	   colors: ['#008FFB' ],
 	  series: [{
 		data:chart_data_arr
 	   /* data: [{
@@ -151,6 +152,7 @@ function drawChart2(data){
 				}
 			}
 		}],
+		
 		xaxis: {
 			categories: ['1학년','2학년','3학년'
 			],

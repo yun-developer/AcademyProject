@@ -11,7 +11,7 @@
 			<result column="STUDENT_CNT" 											property="studentCnt"/>
 		</resultMap>
 		
-		<!-- ⓑ 과목별 학생 비율 -->
+		<!-- ⓑ 22년도 과목별 학생 비율 -->
 		<resultMap type="kh.study.academy.statistics.vo.StudentCntPerSubject" 		id="studentCntPerSubject">
 			<id column="STUDENT_YEAR"												property="studentYear"/>
 			<result column="STUDENT_CNT" 											property="studentCnt"/>
@@ -92,7 +92,7 @@
 	</select>
 	
 	
-	<!-- 월별 신규 학생 수 추이 조회-->
+	<!-- 22년도 월별 신규 학생 수 추이 조회-->
 	<select id="selectNewStuCntByMonth" resultMap="newStudentCntByMonth">
 	
 		SELECT COUNT(STU.STUDENT_CODE) AS STUDENT_CNT
