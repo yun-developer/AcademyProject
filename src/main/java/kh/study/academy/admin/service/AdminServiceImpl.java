@@ -104,18 +104,21 @@ public class AdminServiceImpl implements AdminService{
 	public void deleteLessonRoom(LessonRoomVO lessonRoomVO) {
 		sqlSession.delete("adminMapper.deleteLessonRoom", lessonRoomVO);
 	}
-
 	
+	// 교실 사용중에서 미사용으로 클릭 시 업데이트
+	@Override
+	public void updateStatus(LessonRoomVO lessonRoomVO) {
+		sqlSession.update("adminMapper.updateStatus",lessonRoomVO);
+		
+	}
 
-
+	@Override
+	public int selectStuCnt(LessonInfoVO lessonInfoVO) {
+				List<String> useLessonList = sqlSession.selectList("adminMapper.selectStuCnt",lessonInfoVO);
+				useLessonList.size();
+				return useLessonList.size();
 	
+	}
 
-
-
-
-
-
-
-	
 
 }

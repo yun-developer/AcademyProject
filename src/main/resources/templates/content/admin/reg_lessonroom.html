@@ -73,13 +73,13 @@
 								<td th:text="${LessonRoom.roomName}"></td>
 								<td th:text="${LessonRoom.lessonRoomMaxStudent}"></td>
 					
-								<td>
-								<th:block >
+								<td >
+								<th:block th:if="${LessonRoom.isUse == null}">
 								
-								</th:block>
+								</th:block >
 									<th:block >
-										<input type="radio" th:name="${status.count}" name="" th:checked="${isUse eq 'Y'}">사용중
-										<input type="radio" th:name="${status.count}" name="" th:checked="${isUse eq 'N'}">미사용중
+										<input type="radio" th:name="${status.count}"  th:checked="${LessonRoom.isUse eq 'Y'}" th:onclick="updateIsUseN([[${LessonRoom.lessonRoomCode}]], 'Y' );" > 사용중
+										<input type="radio" th:name="${status.count}" th:checked="${LessonRoom.isUse eq 'N'}" th:onclick="updateIsUseN([[${LessonRoom.lessonRoomCode}]], 'N' );" > 미사용
 									</th:block>
 								</td>
 							</tr>

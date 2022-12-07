@@ -59,9 +59,10 @@ public interface AdminService {
 	// 교실 삭제(체크박스)
 	void deleteLessonRoom(LessonRoomVO lessonRoomVO);
 
+	// 교실 사용중에서 미사용으로 클릭시 업데이트
+	void updateStatus(LessonRoomVO lessonRoomVO);
 
-
-
+	int selectStuCnt(LessonInfoVO lessonInfoVO);
 	
 	
 	

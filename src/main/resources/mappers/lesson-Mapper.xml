@@ -145,7 +145,7 @@
 				WHERE TEACHER_CODE = L.TEACHER_CODE) AS TEACHER_NAME
 			, MEMO
 			, LESSON_INFO_STATUS
-		FROM LESSON_INFO L 
+			FROM LESSON_INFO L 
 		
  			WHERE 1 = 1 
 			<if test="subjectCode != null and !subjectCode.equals('')">
@@ -161,7 +161,7 @@
 			<if test="lessonInfoCode != null and !lessonInfoCode.equals('')">
 				AND LESSON_INFO_CODE = #{lessonInfoCode}
 			</if>
-		
+
 		
 	</select>
 	
@@ -241,6 +241,9 @@
 			<if test="teacherName != null and !teacherName.equals('')">
 				AND TEACHER_NAME LIKE ('%'||#{teacherName}||'%')
 			</if>
+			ORDER BY LESSON_INFO_REGDATE DESC
+			, YEAR ASC
+			
 	  </select>
 	 
 	 

@@ -240,11 +240,21 @@
 	
 		</delete>
 		
-	
+
+	<!-- 교실 조회에서 라디오 사용중에서 미사용  -->
+ 	<update id="updateStatus">
+ 		UPDATE LESSON_ROOM
+ 		SET
+ 		IS_USE = #{isUse}  <!-- 내가 바꿔야 하는 값 -->
+ 		WHERE LESSON_ROOM_CODE = #{lessonRoomCode}
+ 	</update>	
 
 
-
-
+	<select id="selectStuCnt" resultMap="lessonRoom">
+		SELECT NOW_STUDENT_CNT
+    	FROM LESSON_INFO
+    	WHERE LESSON_ROOM_CODE = #{lessonRoomCode}
+	</select>
 
 </mapper>
 
