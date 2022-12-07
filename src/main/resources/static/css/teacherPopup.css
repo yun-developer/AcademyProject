@@ -20,10 +20,10 @@ a {
 }
 
 section{
-	width: 100%;
+	width: 95%;
 	padding: 30px;
 	background-color: #fff;
-	margin: 50px auto;
+	margin: 20px auto;
 	box-shadow: 10px 10px 30px rgba(0,0,0,0.1);
 	border-radius: 10px;
 
@@ -128,9 +128,15 @@ section a.btnView1{
 section ul.contact{
 
 	margin-bottom: 25px;
+	
+}
+
+ol, ul {
+    padding-left: 0rem;
 }
 
 section ul.contact li{
+	
 	width: 100%;
 	padding: 10px 0px;
 	border-bottom: 1px solid #eee;
