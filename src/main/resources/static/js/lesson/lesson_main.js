@@ -183,7 +183,7 @@ function drawChart2(data) {
 		series:chart_data_arr,
 		chart: {
 			width: '100%',
-			height: 238,
+			height: 230,
 			type: 'line',
 			dropShadow: {
 				enabled: true,
@@ -333,7 +333,7 @@ function drawChart3(data) {
 		series:chart_data_arr,
 		chart: {
 			width: '100%',
-			height: 238,
+			height: 230,
 			type: 'line',
 			dropShadow: {
 				enabled: true,
