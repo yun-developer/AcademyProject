@@ -36,7 +36,8 @@ public class PaymentTextsController {
 	
 	
 	//매달 1일에 학원비 수납 문자 보내기
-	@Scheduled(cron = "0 0 18 1 * ?", zone="Asia/Seoul")   //매월 1일 18시 00분에 00초 실행
+//	@Scheduled(cron = "0 0 13 1 * ?", zone="Asia/Seoul")   //매월 1일 13시 00분에 00초 실행
+	@Scheduled(cron = "0 0 13 08 * ?", zone="Asia/Seoul")   
 	public void paymentSms() {
 		
 		String api_key = "NCSOHSUJTJFE1FES";
@@ -47,7 +48,7 @@ public class PaymentTextsController {
 		for(StudentVO stu :  studentService.selectStuLessonList(null)) {
 			
 				
-			if(stu.getStudentLessonInfoList().get(0).getLessonInfoVO() != null) {
+			if(stu.getStudentLessonInfoList().get(0).getLessonInfoVO() != null && stu.getStudentStatus().equals("Y")) {
 				String studentName = stu.getStudentName();
 				String studentTell = stu.getStudentTell();
 				String subjectName = stu.getStudentLessonInfoList().get(0).getLessonInfoVO().getSubjectVO().getSubjectName();
@@ -59,7 +60,7 @@ public class PaymentTextsController {
 				params.put("to", studentTell);	// 수신전화번호
 				params.put("from", "01099301637");	// 발신전화번호. 테스트시에는 발신,수신 둘다 본인 번호로 하면 됨
 				params.put("type", "SMS");
-				params.put("text", studentName + " 학생의 납부일임을 알려드립니다. " + subjectName + "-" + stepName + "반의 수강료는 "+ money + "원 입니다.\n[PotatoAcademy]");
+				params.put("text", "*" + studentName + " 학생의 수강료 납부 안내*\n" + subjectName + "-" + stepName + "반 수강료는 "+ money + "원 입니다.\n[PotatoAcademy]");
 				params.put("app_version", "test app 1.2"); // application name and version
 				
 				try {
@@ -75,7 +76,8 @@ public class PaymentTextsController {
 	
 	
 	 //미수납인 학생에게 문자 보내기. 미수납 시 8일에!
-	 @Scheduled(cron = "0 0 18 8 * ?", zone="Asia/Seoul")
+//	 @Scheduled(cron = "0 0 18 8 * ?", zone="Asia/Seoul")
+	 @Scheduled(cron = "30 0 13 08 * ?", zone="Asia/Seoul")
 	 public void isPayNoneSms() {
 		 
 		String api_key = "NCSOHSUJTJFE1FES";
@@ -85,7 +87,7 @@ public class PaymentTextsController {
 	    
 	    for(StudentVO stu :  studentService.selectStuLessonList(null)) {
 	    	
-			if((stu.getStudentLessonInfoList().get(0).getLessonInfoVO() != null) && (stu.getIsPay().equals("N"))) {
+			if((stu.getStudentLessonInfoList().get(0).getLessonInfoVO() != null) && (stu.getIsPay().equals("N") && (stu.getStudentStatus().equals("Y")))) {
 				String studentName = stu.getStudentName();
 				String studentTell = stu.getStudentTell();
 				String subjectName = stu.getStudentLessonInfoList().get(0).getLessonInfoVO().getSubjectVO().getSubjectName();
@@ -96,7 +98,7 @@ public class PaymentTextsController {
 				params.put("to", studentTell);	// 수신전화번호
 				params.put("from", "01099301637");	// 발신전화번호. 테스트시에는 발신,수신 둘다 본인 번호로 하면 됨
 				params.put("type", "SMS");
-				params.put("text", studentName + " 학생의 수강료가 미납되었습니다. " + subjectName + "-" + stepName + "반의 수강료는 "+ money + "원 입니다.\n[PotatoAcademy]");
+				params.put("text", "*" + studentName + " 학생의 수강료 미납 안내*\n" + subjectName + "-" + stepName + "반 수강료는 "+ money + "원 입니다.\n[PotatoAcademy]");
 				params.put("app_version", "test app 1.2"); // application name and version
 				
 				try {
