@@ -46,6 +46,7 @@ public class LessonInfoVO {
 	private LessonRoomVO lessonRoomVO;
 	private TeacherVO teacherVO;
 	private PaymentVO paymentVO;
+	private LessonDayVO lessonDayVO;
 	
 	//collection 연결
 	

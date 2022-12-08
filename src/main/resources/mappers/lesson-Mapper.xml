@@ -23,6 +23,8 @@
 		<association property="teacherVO" 							resultMap="teacherMapper.teacher"/>
 		<association property="paymentVO"							resultMap="studentMapper.payment"/>
 		
+		<association property="lessonDayVO"							resultMap="lessonMapper.lessonDay"/>
+		
 	</resultMap>
 	
 
@@ -136,6 +138,7 @@
 			, MAX_STUDENT
 			, MONEY
 			, LESSON_DAY_CODE
+			, (SELECT LESSON_DAY_NAME FROM LESSON_DAY WHERE LESSON_DAY_CODE = L.LESSON_DAY_CODE) AS LESSON_DAY_NAME
 			, LESSON_TIME 
 			, (SELECT ROOM_NAME
 				FROM LESSON_ROOM

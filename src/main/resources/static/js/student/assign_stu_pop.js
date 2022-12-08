@@ -179,7 +179,9 @@ for(const selectBox of selects) {
 					str += `<select class="form-select" aria-label="Default select example" id="newLessonList">
 							   <option value="">선택</option>`;
 					for(const lesson of result){
-							str += `<option value="${lesson.lessonInfoCode}" id="${lesson.lessonInfoCode}">${lesson.subjectVO.subjectName + '-' +lesson.stepVO.stepName +'-'+lesson.year +'학년'}</option>`;
+							str += `<option value="${lesson.lessonInfoCode}" id="${lesson.lessonInfoCode}">
+							${lesson.subjectVO.subjectName + '-' +lesson.stepVO.stepName +'-'+lesson.year 
+							+'학년 [' +lesson.teacherVO.teacherName  +' '+ lesson.lessonDayVO.lessonDayName +' '+ lesson.lessonTime + ':00'+']'}  </option>`;
 					}
 					str += `</select>`;
 					
