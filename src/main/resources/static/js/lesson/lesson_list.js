@@ -251,7 +251,7 @@ function changeAttend(){
 			
 			Swal.fire({
 		  		title: '출결상태가 등록되었습니다.',
-		  		icon: 'info',
+		  		icon: 'success',
 		 		 confirmButtonText: '확인'
 				})
 			

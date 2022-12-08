@@ -147,7 +147,7 @@
 							    		<select class="form-select"   aria-label="Default select example" id="selectBeforeLesson">
 											<option value="">선택</option>
 											 <th:block th:each ="lesson:${lessonList}" >
-										      <option th:value="${lesson.lessonInfoCode}" th:data-newSub="${lesson.subjectVO.subjectName}" th:text="${lesson.subjectVO.subjectName + '-' +lesson.stepVO.stepName +'-'+lesson.year +'학년' }" >
+										      <option th:value="${lesson.lessonInfoCode}" th:data-newSub="${lesson.subjectVO.subjectName}" th:text="${lesson.subjectVO.subjectName + '-' +lesson.stepVO.stepName +'-'+lesson.year +'학년 [' + lesson.teacherVO.teacherName + ' '+lesson.lessonDayVO.lessonDayName +' '+ lesson.lessonTime + ':00'+']' }" >
 										      </option>
 										    </th:block>	
 												
