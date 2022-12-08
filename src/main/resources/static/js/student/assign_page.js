@@ -65,7 +65,22 @@ $('.popup').on("click",function(e){
 		//선택된 체크박스가 없을 때
 		if(checkedCnt == 0){
 			 
-			Swal.fire('선택 사항 없음.', '선택된 학생이 없습니다.', 'error');
+			//Swal.fire('선택 사항 없음.', '선택된 학생이 없습니다.', 'error');
+			
+			Swal.fire({
+				title: '선택 사항 없음',
+				text: '선택된 학생이 없습니다',
+				icon: 'warning',
+				showCancelButton: false, // cancel버튼 보이기. 기본은 원래 없음
+				confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+				cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
+				confirmButtonText: '확인', // confirm 버튼 텍스트 지정
+				cancelButtonText: '취소', // cancel 버튼 텍스트 지정
+
+				reverseButtons: false, // 버튼 순서 거꾸로
+
+				})
+			
 			return ;
 			//↑값을 가져오거나 함수 종료(밑으로 더이상 실행 안 함)
 		}	
@@ -95,7 +110,24 @@ $('.updatePopup').on("click",function(e){
 		//선택된 체크박스가 없을 때
 		if(checkedCnt == 0){
 			 
-			Swal.fire('선택 사항 없음.', '선택된 학생이 없습니다.', 'error');
+			//Swal.fire('선택 사항 없음.', '선택된 학생이 없습니다.', 'error');
+			
+			Swal.fire({
+				title: '선택 사항 없음',
+				text: '선택된 학생이 없습니다',
+				icon: 'warning',
+				showCancelButton: false, // cancel버튼 보이기. 기본은 원래 없음
+				confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+				cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
+				confirmButtonText: '확인', // confirm 버튼 텍스트 지정
+				cancelButtonText: '취소', // cancel 버튼 텍스트 지정
+
+				reverseButtons: false, // 버튼 순서 거꾸로
+
+				})
+			
+			
+			
 			return ;
 			//↑값을 가져오거나 함수 종료(밑으로 더이상 실행 안 함)
 		}	
