@@ -88,7 +88,7 @@ function teacherPopup(teacherCode){
 
 	//window.open("[팝업을 띄울 파일명 path]", "[별칭]", "[팝업 옵션]")
 	//별칭 지정 -> 1. 팝업 파일을 열고 웹브라우저 새로고침을 눌렀을 때 똑같은 팝업창이 계속해서 열리는 문제를 해결할 수 있다!
-	var pop = window.open(`/admin/popup?teacherCode=${teacherCode}`,"teacherPopup","width=850,height=900, scrollbars=yes, resizable=yes");
+	var pop = window.open(`/admin/popup?teacherCode=${teacherCode}`,"teacherPopup","width=850,height=900, top=80px, left=500px, scrollbars=yes, resizable=yes");
 	
 	//팝업이 차단되어 있으면 알림 창 표시
 	if(pop ==null){
