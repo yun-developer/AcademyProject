@@ -216,7 +216,7 @@
 	<update id="leaveAcademy">
 		UPDATE TEACHER
 		SET TEACHER_STATUS = 'N'
-		AND TEACHER_ROLE ='DELETED'
+		, TEACHER_ROLE ='DELETED'
 		WHERE TEACHER_ID = #{teacherId}
 	</update>
 	

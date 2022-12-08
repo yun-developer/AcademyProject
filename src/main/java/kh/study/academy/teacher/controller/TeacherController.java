@@ -264,7 +264,7 @@ public class TeacherController {
 		
 		teacherService.leaveAcademy(teacherVO);
 		
-		return "redirect:/lesson/main";
+		return "redirect:/logout";
 	}
 	
 	//비밀번호 변경
