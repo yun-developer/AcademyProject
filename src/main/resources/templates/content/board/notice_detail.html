@@ -185,7 +185,7 @@
 														</button>
 	                                             </span>
 	                                           	<span class="right" th:if= "${reply.teacherId == #authentication.name or #strings.contains(#authentication.authorities, 'ROLE_ADMIN')}">
-													<button th:onclick="updateReply([[${reply.replyNum}]],this);" type="button" id="updateReplyBtn" value="수정" class="btn btn-danger btn-sm flex-end" >수정
+													<button th:onclick="updateReply([[${reply.replyNum}]],this);" type="button" id="updateReplyBtn" value="수정" class="btn btn-warning btn-sm flex-end" >수정
 											  			<path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
 													</button>
 												</span>
