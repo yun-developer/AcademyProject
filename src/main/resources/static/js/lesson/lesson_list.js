@@ -59,54 +59,35 @@ function getModal(lessonCode, lessonDate){
 			else{
 				for(const stu of result){
 					
+						str1 += `<tr>
+						      <td scope="row"><a href="/stu/detail?studentCode=${stu.studentCode}">${stu.studentName}</a></td>
+						      
+						      <td>
+						      	<div class="form-check form-check-inline">`;
+						      	
 					if(stu.isAttandence =='Y'){
-						str1 += `<tr>
-						      <td scope="row"><a href="/stu/detail?studentCode=${stu.studentCode}">${stu.studentName}</a></td>
-						      
-						      <td>
-						      	<div class="form-check form-check-inline">
-								  <input class="form-check-input chk" name='${stu.studentCode}' type="radio" checked id="${stu.studentCode}" value="Y">
-								  <label class="form-check-label" for="inlineCheckbox1">출석</label>
+						 str1 += ` <input class="form-check-input chk" name='${stu.studentCode}' type="radio" checked id="${stu.studentCode}" value="Y">`;
+					}
+					else if (stu.isAttandence =='N' || stu.isAttandence ==null){
+						 str1 += ` <input class="form-check-input chk" name='${stu.studentCode}' type="radio" id="${stu.studentCode}" value="Y">`;
+					}
+						 
+						 str1 += ` <label class="form-check-label" for="inlineCheckbox1">출석</label>
 								</div>
-								<div class="form-check form-check-inline">
-								  <input class="form-check-input chkNoAttend" name='${stu.studentCode}' type="radio" id="${stu.studentCode}" value="N">
-								  <label class="form-check-label" for="inlineCheckbox2">결석</label>
+								<div class="form-check form-check-inline">`;
+								
+					if(stu.isAttandence =='N'){			
+						 str1 += ` <input class="form-check-input chkNoAttend" name='${stu.studentCode}' checked type="radio" id="${stu.studentCode}" value="N">`;
+					}
+					else if (stu.isAttandence =='Y' || stu.isAttandence ==null){
+						 str1 += ` <input class="form-check-input chkNoAttend" name='${stu.studentCode}'type="radio" id="${stu.studentCode}" value="N">`;
+					}
+						 
+						 str1 += ` <label class="form-check-label" for="inlineCheckbox2">결석</label>
 								</div>
 						      </td>
 						    </tr>`;
-					}
-					else if(stu.isAttandence =='N'){
-						str1 += `<tr>
-						      <td scope="row"><a href="/stu/detail?studentCode=${stu.studentCode}">${stu.studentName}</a></td>
-						      
-						      <td>
-						      	<div class="form-check form-check-inline">
-								  <input class="form-check-input chk" name='${stu.studentCode}' type="radio" id="${stu.studentCode}" value="Y">
-								  <label class="form-check-label" for="inlineCheckbox1">출석</label>
-								</div>
-								<div class="form-check form-check-inline">
-								  <input class="form-check-input chkNoAttend" name='${stu.studentCode}' type="radio" checked id="${stu.studentCode}" value="N">
-								  <label class="form-check-label" for="inlineCheckbox2">결석</label>
-								</div>
-						      </td>
-						    </tr>`;
-					}
-					else {
-						str1 += `<tr>
-						      <td scope="row"><a href="/stu/detail?studentCode=${stu.studentCode}">${stu.studentName}</a></td>
-						      
-						      <td>
-						      	<div class="form-check form-check-inline">
-								  <input class="form-check-input chk" name='${stu.studentCode}' type="radio" id="${stu.studentCode}" value="Y">
-								  <label class="form-check-label" for="inlineCheckbox1">출석</label>
-								</div>
-								<div class="form-check form-check-inline">
-								  <input class="form-check-input chkNoAttend" name='${stu.studentCode}' type="radio" id="${stu.studentCode}" value="N">
-								  <label class="form-check-label" for="inlineCheckbox2">결석</label>
-								</div>
-						      </td>
-						    </tr>`;
-					}
+				
 				
 				}
 				//담당 강사
