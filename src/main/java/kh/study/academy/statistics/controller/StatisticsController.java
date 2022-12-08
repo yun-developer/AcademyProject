@@ -85,7 +85,7 @@ public class StatisticsController {
 
 
 		
-		// ③ map 월별 신규 학생 수 추이
+		// ③ map 22년 월별 신규 학생 수 추이
 		paramMap.put("newStudentCntByMonth", statisticsService.selectNewStuCntByMonth());
 		
 		return paramMap;

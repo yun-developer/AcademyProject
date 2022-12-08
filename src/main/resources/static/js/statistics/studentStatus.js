@@ -26,7 +26,7 @@ function drawChart(){
 			drawChart1(result.studentCntPerGrade);
 			// ② 과목별 학생 수 차트를 그림
 			drawChart2(result.studentCntPerSubject);
-			// ③ dd 학생수 차트를 그림
+			// ③ 22년 월별 학생수 차트를 그림
 			drawChart3(result.newStudentCntByMonth);
 		},
 		error: function() {
@@ -175,7 +175,7 @@ function drawChart2(data){
 
 
 /*차트 ③ -------------------------------------------------------------------------------------------------*/
-// ㅇㅇ 학생수 차트를 그림
+// 22년 월별 학생수 차트를 그림
 function drawChart3(data){
 	
 	
@@ -193,21 +193,19 @@ function drawChart3(data){
 	//하나씩 반복문으로 돌려서 위에서 만들어준 빈배열에 넣기 
 	
 	chart_data = new Object();
+	chart_data.name = '신규 학생 수';
 	
 	for(const info of data){
-	//	chart_data.name = info.mm+'월';
-		chart_data.data = studentCnt_arr;
-		console.log(info.studentCnt);
-		
-		console.log(chart_data.data);
 		
 		studentCnt_arr.push(info.studentCnt);
-		chart_data_arr.push(chart_data);
 		chart_category_arr.push(info.mm+'월');
 	}
 	
-
+		chart_data.data = studentCnt_arr;
+		chart_data_arr.push(chart_data);
 	
+	
+	console.log(chart_data.data);
 	
 	    var options = {
 		series:chart_data_arr
@@ -247,7 +245,7 @@ function drawChart3(data){
         yaxis: [
           {
             axisTicks: {
-              show: true,
+              show: false,
             },
             axisBorder: {
               show: true,
