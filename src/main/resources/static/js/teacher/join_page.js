@@ -45,6 +45,8 @@ function isDoubleChk (){
                     icon: 'warning',
                     title: '가입 불가',
                     text: 'ID 중복 검사를 실행해주세요!',
+                    confirmButtonText: '확인'
+                    
                 });
       return;
    }
@@ -56,6 +58,7 @@ function isDoubleChk (){
                     icon: 'warning',
                     title: '가입 불가',
                     text: '전화번호 중복 검사를 실행해주세요!',
+                    confirmButtonText: '확인'
                 });
       return;
    }
@@ -127,6 +130,7 @@ function idDoubleCheck (){
                     icon: 'error',
                     title: '가입 불가',
                     text: '사용 불가능한 아이디입니다',
+                    confirmButtonText: '확인'
                 });
                    inputTeacherId.value='';
                inputTeacherId.focus();
@@ -137,6 +141,7 @@ function idDoubleCheck (){
                     icon: 'success',
                     title: '가입 가능',
                     text: '사용 가능한 아이디입니다',
+                    confirmButtonText: '확인'
                 });
          }
        },
@@ -177,6 +182,7 @@ function isTellDoubleCheck(){
                     icon: 'error',
                     title: '가입 불가',
                     text: '이 전화번호로 가입된 회원이 있습니다',
+                    confirmButtonText: '확인'
                 });
                    inputTeacherTell.value='';
                inputTeacherTell.focus();
@@ -190,6 +196,7 @@ function isTellDoubleCheck(){
                     icon: 'success',
                     title: '가입 가능',
                     text: '이 전화번호로 가입된 회원이 없습니다',
+                    confirmButtonText: '확인'
                 });
          }
        },

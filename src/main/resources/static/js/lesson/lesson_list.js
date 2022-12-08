@@ -45,7 +45,15 @@ function getModal(lessonCode, lessonDate){
 			
 			if(result ==''){
 				
-				Swal.fire('수강생 없음', '현재 등록된 수강생이 없는 학급입니다.', 'warning');
+				//Swal.fire('수강생 없음', '현재 등록된 수강생이 없는 학급입니다.', 'warning');
+				Swal.fire({
+				  title: '수강생 없음',
+				  text: '현재 등록된 수강생이 없는 학급입니다.',
+				  icon: 'warning',
+				  confirmButtonText: '확인'
+				})
+						
+				
 				return;
 			}
 			else{
