@@ -149,16 +149,16 @@ public class LessonController {
 					
 					lesson.put("color", "#B2B2B2");
 				}
-				else if(lessonList.get(i).getNowStudentCnt()!=0){
+				else {
 			
 					lesson.put("color", "#6E85B7");
-				}
-				
-				if(i>0) {
-					if(!lessonList.get(i).getSubjectVO().getSubjectName().equals(lessonList.get(0).getSubjectVO().getSubjectName())) {
-						lesson.put("color", "#DBA39A");
+					if(i>0) {
+						if(!lessonList.get(i).getSubjectVO().getSubjectName().equals(lessonList.get(0).getSubjectVO().getSubjectName())) {
+							lesson.put("color", "#DBA39A");
+						}
 					}
 				}
+				
 				
 				
 			//각  map 객체를 Ajax로 보내줄 리스트 데이터에 담기
