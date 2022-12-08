@@ -40,10 +40,24 @@ $("#replyLength").keyup(function(e) {
 		
 		if (content.length > 500) {
 			
-			Swal.fire({
+			/*Swal.fire({
 			  icon: 'warning',     
 			  title: '최대 500자까지 입력 가능합니다.',    
+			});*/
+			
+			Swal.fire({
+				title: '최대 500자까지 입력 가능합니다.',
+				icon: 'warning',
+				showCancelButton: false, // cancel버튼 보이기. 기본은 원래 없음
+				confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+				cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
+				confirmButtonText: '확인', // confirm 버튼 텍스트 지정
+				cancelButtonText: '취소', // cancel 버튼 텍스트 지정
+
+				reverseButtons: false, // 버튼 순서 거꾸로
+
 			});
+			
 			
 			$(this).val(content.substring(0, 500));
 			$('#replyLengthCheck').text("(500 / 최대 500자)");

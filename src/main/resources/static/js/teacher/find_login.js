@@ -136,7 +136,7 @@ $(document).on("click", "#sendPhoneNumber", function() {
 									showCancelButton: false,
 									confirmButtonColor: '#3085d6',
 									cancelButtonColor: '#d33',
-									confirmButtonText: '승인',
+									confirmButtonText: '확인',
 									cancelButtonText: '취소',
 									reverseButtons: true, // 버튼 순서 거꾸로
 

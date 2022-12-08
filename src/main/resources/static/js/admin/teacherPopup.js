@@ -64,7 +64,21 @@ $(document).on("click", "#changeTeacherRoleBtn", function() {
 			});
 			//ajax end
 			
-			Swal.fire('승인이 완료되었습니다.', '교사 권한이 변경되었습니다', 'success');
+			//Swal.fire('승인이 완료되었습니다.', '교사 권한이 변경되었습니다', 'success');
+			
+			Swal.fire({
+				title: '승인 완료',
+				text: '교사로 승인되었습니다',
+				icon: 'success',
+				showCancelButton: false, // cancel버튼 보이기. 기본은 원래 없음
+				confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+				cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
+				confirmButtonText: '확인', // confirm 버튼 텍스트 지정
+				cancelButtonText: '취소', // cancel 버튼 텍스트 지정
+
+				reverseButtons: false, // 버튼 순서 거꾸로
+
+				})
 		}
 	})
 
@@ -129,7 +143,23 @@ $(document).on("click", "#teacherStatusSwitch", function() {
 				});
 				//ajax end
 				
-				Swal.fire('재직상태 변경.', '재직상태가 퇴사로 변경되었습니다', 'success');
+				//Swal.fire('재직상태 변경.', '재직상태가 퇴사로 변경되었습니다', 'success');
+				
+				Swal.fire({
+				title: '재직상태 변경',
+				text: '재직상태가 퇴사로 변경되었습니다',
+				icon: 'success',
+				showCancelButton: false, // cancel버튼 보이기. 기본은 원래 없음
+				confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+				cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
+				confirmButtonText: '확인', // confirm 버튼 텍스트 지정
+				cancelButtonText: '취소', // cancel 버튼 텍스트 지정
+
+				reverseButtons: false, // 버튼 순서 거꾸로
+
+				})
+				
+				
 			}
 			else{
 				
@@ -190,7 +220,21 @@ $(document).on("click", "#teacherStatusSwitch", function() {
 				});
 				//ajax end
 				
-				Swal.fire('재직상태 변경.', '재직상태가 재직중으로 변경되었습니다', 'success');
+				//Swal.fire('재직상태 변경.', '재직상태가 재직중으로 변경되었습니다', 'success');
+				
+				Swal.fire({
+				title: '재직상태 변경',
+				text: '재직상태가 퇴사로 변경되었습니다',
+				icon: 'success',
+				showCancelButton: false, // cancel버튼 보이기. 기본은 원래 없음
+				confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+				cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
+				confirmButtonText: '확인', // confirm 버튼 텍스트 지정
+				cancelButtonText: '취소', // cancel 버튼 텍스트 지정
+
+				reverseButtons: false, // 버튼 순서 거꾸로
+
+				});
 			}
 			else{
 				
