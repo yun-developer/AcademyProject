@@ -204,12 +204,10 @@
 			LESSON_ROOM_CODE
 			, ROOM_NAME
 			, LESSON_ROOM_MAX_STUDENT 
-			, IS_USE
 		) VALUES (
 			#{lessonRoomCode}
 		    , #{roomName}
 		    , #{lessonRoomMaxStudent}
-		    , #{isUse}
 		)
 	</insert> 
 	
@@ -249,13 +247,22 @@
  		WHERE LESSON_ROOM_CODE = #{lessonRoomCode}
  	</update>	
 
-
+	<!-- 학생 수 조회 쿼리 -->
 	<select id="selectStuCnt" resultMap="lessonRoom">
 		SELECT NOW_STUDENT_CNT
     	FROM LESSON_INFO
     	WHERE LESSON_ROOM_CODE = #{lessonRoomCode}
 	</select>
 
+	<!-- 학생 수 여부에 따라 radio 값이 Y, 없으면 N으로 바뀌게 함.-->
+	<update id="updateIsUse">
+		UPDATE LESSON_ROOM 
+		SET
+		IS_USE = 'Y'
+		WHERE LESSON_ROOM_CODE = (SELECT LESSON_ROOM_CODE
+								  FROM LESSON_INFO
+								  WHERE LESSON_INFO_CODE=#{lessonInfoCode})
+	</update>
 </mapper>
 
 

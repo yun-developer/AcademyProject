@@ -155,6 +155,7 @@ public class AdminController {
 		List<LessonRoomVO> lessonRoomList = adminService.selectLessonRoom(roomName);
 		model.addAttribute("LessonRoomList", lessonRoomList);
 
+		
 		return "content/admin/reg_lessonroom";
 	}
 

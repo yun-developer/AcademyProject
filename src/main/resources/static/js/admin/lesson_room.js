@@ -187,41 +187,50 @@ for(const chk of chks){
 }
 
 
-function updateIsUseN(lessonRoomCode, isUse){
-
-	$.ajax({
+function updateIsUseY(lessonRoomCode, isUse){	
+		
+		$.ajax({	
 		url: '/admin/updateIsUseAjax', //요청경로
-		type: 'post',
-		data: {'lessonRoomCode' : lessonRoomCode, 'isUse' : isUse}, //필요한 데이터를 컨트롤러로 전달
-		success: function(nowStudnet) { //컨트롤러에서 리턴된 데이터 result로 받음
-			
-			if(nowStudnet == 0){
-			// 안내창 글 if문
-				Swal.fire({
-				  title: '변경 완료',
-				  text:'교실이 미사용으로 변경되었습니다.',
-				  icon: 'success',
-				  confirmButtonText: '확인'
-		 
-				})
-				return ;
-			}
-			
-			else{ 
-				Swal.fire({
-				  title: '변경 불가',
-				  text:'해당 교실은 사용중 입니다.',
-				  icon: 'error',
-				  confirmButtonText: '확인'
-				  })
-			}
-		},
-		error: function() {
-			alert('실패');
-		}
-	});
+			type: 'post',	data: {'lessonRoomCode' : lessonRoomCode, 'isUse' : isUse}, //필요한 데이터를 컨트롤러로 전달
+			success: function(nowStudnet) { //컨트롤러에서 리턴된 데이터 result로 받음	
+				if(nowStudnet == 0){	// 안내창 글 if문	
+					Swal.fire({ title: '변경 완료', 
+					text:'교실이 미사용으로 변경되었습니다.', 
+					icon: 'success', 
+					confirmButtonText: '확인'	
+					})	
+				}	
+				else{	
+					Swal.fire({ 
+						title: '변경 불가', 
+						text:'해당 교실은 사용중 입니다.', 
+						icon: 'error', 
+						confirmButtonText: '확인' 
+					})	
+				}	
+			},	
+				error: function() {
+						alert('실패');	
+				}	
+		}); 
+} 
 
+function updateIsUseN(lessonRoomCode, isUse){	
+	$.ajax({	
+		url: '/admin/updateIsUseAjax', //요청경로	
+		type: 'post',	data: {'lessonRoomCode' : lessonRoomCode, 'isUse' : isUse}, //필요한 데이터를 컨트롤러로 전달	
+		success: function(nowStudnet) { //컨트롤러에서 리턴된 데이터 result로 받음	
+			if(nowStudnet == 0){	// 안내창 글 if문	
+				Swal.fire({ title: '변경 완료', 
+				text:'교실이 사용중으로 변경되었습니다.', 
+				icon: 'success', 
+				confirmButtonText: '확인'	
+				})	
+			}	
+		},	
+		error: function() {	
+			alert('실패');	
+		}	
+	}); 
 }
-
-
-
+			

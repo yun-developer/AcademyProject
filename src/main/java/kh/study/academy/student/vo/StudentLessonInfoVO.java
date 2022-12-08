@@ -2,7 +2,7 @@ package kh.study.academy.student.vo;
 
 import java.util.List;
 
-import kh.study.academy.attend.vo.AttendVO;
+
 import kh.study.academy.lesson.vo.LessonInfoVO;
 import lombok.Data;
 
@@ -20,6 +20,7 @@ public class StudentLessonInfoVO {
 	
 	
 	private LessonInfoVO lessonInfoVO;
+	
 	
 	private String paymentCode;
 }

@@ -78,8 +78,8 @@
 								
 								</th:block >
 									<th:block >
-										<input type="radio" th:name="${status.count}"  th:checked="${LessonRoom.isUse eq 'Y'}" th:onclick="updateIsUseN([[${LessonRoom.lessonRoomCode}]], 'Y' );" > 사용중
-										<input type="radio" th:name="${status.count}" th:checked="${LessonRoom.isUse eq 'N'}" th:onclick="updateIsUseN([[${LessonRoom.lessonRoomCode}]], 'N' );" > 미사용
+										<input type="radio"  th:name="${status.count}"  th:checked="${LessonRoom.isUse eq 'Y'}" th:onclick="updateIsUseN([[${LessonRoom.lessonRoomCode}]], 'Y' );" > 사용중
+										<input type="radio" th:name="${status.count}" th:checked="${LessonRoom.isUse eq 'N'}" th:onclick="updateIsUseY([[${LessonRoom.lessonRoomCode}]], 'N' );" > 미사용
 									</th:block>
 								</td>
 							</tr>

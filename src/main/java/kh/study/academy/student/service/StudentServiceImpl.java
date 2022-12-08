@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import kh.study.academy.admin.vo.LessonRoomVO;
 import kh.study.academy.lesson.vo.LessonInfoVO;
 import kh.study.academy.student.vo.PaymentVO;
 import kh.study.academy.student.vo.StudentLessonInfoVO;
@@ -29,6 +30,8 @@ public class StudentServiceImpl implements StudentService{
 	public void insertStudent(StudentVO studentVO) {
 		
 		sqlSession.insert("studentMapper.insertStudent", studentVO);
+		
+		
 	}
 
 	
@@ -85,6 +88,8 @@ public class StudentServiceImpl implements StudentService{
 		sqlSession.update("lessonMapper.updateNowStudent", studentLessonInfoVO.getLessonInfoCode());
 		//수납코드 생성
 		sqlSession.insert("studentMapper.createPayment", studentLessonInfoVO);
+		
+		sqlSession.update("adminMapper.updateIsUse", studentLessonInfoVO);
 		
 	}
 	
