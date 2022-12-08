@@ -3,7 +3,9 @@
 	xmlns:layout="http://www.ultraq.net.nz.thymeleaf/layout"
 	layout:decorate="~{layout/base_layout}">
 
-<div layout:fragment="content">
+<div layout:fragment="content" >
+
+
 	<div class="info mt-3 mb-3">
 	<h5>
 		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart-line" viewBox="0 0 16 16">
@@ -12,9 +14,8 @@
 		통계 자료 
  	</h5>
  </div>
-	
-	<div class="row mt-3">
-		<div class="col-6 ">
+	<div class="row mt-3" >
+		<div class="col-6" >
 			<div class="card">
 				<h5 class="card-header">
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart-line" viewBox="0 0 16 16">
@@ -31,16 +32,16 @@
 						</p>
 					
 					</h5>
-				<div class="card-body">
+				<div class="card-body ">
 					<!--차트 1가 그려질 부분-->
-					<div id="chart"></div>
+					<div id="chart" class="p-3"></div>
 				</div>
 			</div>
 		</div>
 		
 		
 		
-		<div class="col-6">
+		<div class="col-6" >
 			<div class="card">
 				<h5 class="card-header">
 				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart-line" viewBox="0 0 16 16">
@@ -60,7 +61,7 @@
 				</h5>
 				<div class="card-body">
 					<!--차트 2가 그려질 부분-->
-					<div id="chart2"></div>
+					<div id="chart2" class="p-3"></div>
 				</div>
 			</div>
 
@@ -69,8 +70,8 @@
 	
 	
 	<div class="row mt-3">
-		<div class="col-12">
-			<div class="card">
+		<div class="col-12" style="margin: 0 auto;">
+			<div class="card w-80" >
 				<h5 class="card-header">
 				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart-line-fill" viewBox="0 0 16 16">
 				  <path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2z"/>
@@ -87,12 +88,13 @@
 				</h5>
 				<div class="card-body">
 					<!--차트 3가 그려질 부분-->
-					<div id="chart3"></div>
+					<div id="chart3" class="p-3"></div>
 				</div>
 			</div>
 		</div>
 	</div>
 
+	
 	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
 	<!-- jquery 문법 로딩 -->

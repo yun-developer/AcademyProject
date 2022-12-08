@@ -65,7 +65,7 @@ function drawChart1(data){
 	options = {
 	  chart: {
 	    type: 'bar',
-	    height: 350
+	    height: 300
 	    
 	  },
 	  plotOptions: {
@@ -138,7 +138,7 @@ function drawChart2(data){
 		,
 		chart: {
 			type: 'bar',
-			height: 350,
+			height: 300,
 			stacked: true,
 			stackType: '100%'
 		},
@@ -226,6 +226,7 @@ function drawChart3(data){
           height: 300,
           type: 'line',
           stacked: false
+         
         },
         dataLabels: {
           enabled: true
@@ -238,6 +239,7 @@ function drawChart3(data){
           align: 'left',
           offsetX: 110
         },
+         colors: [ '#FF4560'], // 선 색상 속성 추가
         xaxis: {
 		 categories: chart_category_arr
          /* categories: [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022]*/,
@@ -249,7 +251,7 @@ function drawChart3(data){
             },
             axisBorder: {
               show: true,
-              color: '#008FFB'
+              color: '#A5978B'
             },
             labels: {
               style: {
