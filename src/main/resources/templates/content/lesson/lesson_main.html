@@ -70,7 +70,7 @@
 	<div class="row mt-5 px-5">
 		<div class="col-xl-5">
 			<div class="type01">
-				<h4 class="main-inner-title bg-info bg-gradient">공지사항</h4>
+				<h4 class="main-inner-title bg-info bg-gradient ps-2">공지사항</h4>
 				<div th:each="notice :${noticeList}">
 					<ul>
 						<li>
@@ -86,14 +86,14 @@
 
 
 				</div>
-				<a href="/board/noticeList" title="자세히 보기" class="mini-more">MORE</a>
+				<a href="/board/noticeList" title="자세히 보기" class="mini-more"> + MORE</a>
 			</div>
 		</div>
 
 
 		<div class="col-xl-5">
 			<div class="type01">
-				<h4 class="main-inner-title bg-secondary bg-gradient">자유게시판 BEST</h4>
+				<h4 class="main-inner-title bg-secondary bg-gradient ps-2">자유게시판 BEST</h4>
 				<div th:each="free :${freeList}">
 					<ul>
 						<li>
@@ -109,7 +109,7 @@
 
 
 				</div>
-				<a href="/board/freeList" title="자세히 보기" class="mini-more">MORE</a>
+				<a href="/board/freeList" title="자세히 보기" class="mini-more"> + MORE</a>
 			</div>
 		</div>
 		<div class="col-2 text-center">
