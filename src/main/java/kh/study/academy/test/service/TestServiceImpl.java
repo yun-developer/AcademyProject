@@ -63,6 +63,24 @@ public class TestServiceImpl implements TestService{
 	public List<TestVO> testListForUpdate(TestVO testVO) {
 		return sqlSession.selectList("testMapper.testListForUpdate", testVO);
 	}
+	
+	
+	
+	
+	
+	
+	//db 인서트
+	@Override
+	public void regDbScore(TestVO testVO) {
+		sqlSession.insert("testMapper.regDbScore", testVO);
+		
+	}
+	//다음 testCode
+	@Override
+	public String getNextTestCode() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("testMapper.getNextTestCode");
+	}
 
 	
 	

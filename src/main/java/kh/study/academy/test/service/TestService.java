@@ -31,4 +31,17 @@ public interface TestService {
 	
 	//수정을 위해 특정 학생, 과목으로 등록된 테스트 정보 모두 조회
 	List<TestVO> testListForUpdate(TestVO testVO);
+	
+	
+	
+	
+	
+	
+	
+	//db인서트
+	void regDbScore(TestVO testVO);
+	//다음 코드
+	String getNextTestCode();
+	
+	
 }

@@ -214,19 +214,19 @@
 									<span class="input-group-text h-100 rounded-0">평가일</span>
 								</div>
 								<div class="col-6 col-lg-10 px-1 rounded-1">
-									<!-- <input type="date" id="" name="testDate"
-										class="form-control rounded-0 h-100" 
-										aria-label="8" aria-describedby="cpaCn" > -->
-										
-									<select
-										class="form-select" aria-label="Default select example" id="selectDate" name="testDate">
+									
+									<!-- insert후 원래대로 바꾸기 name 있는 태그로-->	
+									<!-- <select class="form-select" aria-label="Default select example" id="selectDate" name="testDate"> -->
+									<select class="form-select" aria-label="Default select example" id="selectDate" >
 										<option value="" selected>전체</option>
 										<option value="0101">[1차] 1월 1일</option>
 										<option value="0401">[2차] 4월 1일</option>
 										<option value="0701">[3차] 7월 1일 </option>
 										<option value="1001">[4차] 10월 1일</option>
 									</select>
-										 
+									
+									<!-- insert후 삭제 -->
+									<input type="hidden" id="selectDateValueForDB" name="testDate" value="">
 										
 								</div>
 							</div>
@@ -238,9 +238,13 @@
 									<span class="input-group-text h-100 rounded-0">점수</span>
 								</div>
 								<div class="col-6 col-lg-10 px-1 rounded-1">
-									<input type="number" id="inputScore" name="score"
+									<!-- <input type="number" id="inputScore" name="score"
 										class="form-control rounded-0 h-100" placeholder="점수를 입력하세요"
-										aria-label="8" aria-describedby="cpaCn" min="0" max="100" required>
+										aria-label="8" aria-describedby="cpaCn" min="0" max="100" required> -->
+										<!-- insert후 삭제 -->
+									<input type="number" id="randomScore" name="score"
+										class="form-control rounded-0 h-100" placeholder="점수를 입력하세요"
+										aria-label="8" aria-describedby="cpaCn" min="0" max="100" >
 									 <div class="invalid-feedback">
 								        0~100 사이의 점수 입력!
 								      </div>

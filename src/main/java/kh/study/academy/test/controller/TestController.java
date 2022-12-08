@@ -73,10 +73,26 @@ public class TestController {
 	}
 	
 	
+	//DB점수 입력
+	@ResponseBody
+	@PostMapping("/DBregScoreAjax")
+	public void DBregScoreAjax(TestVO testVO, String testScore) {
+		
+		
+		//해당 날짜의 년도 불러와서 세팅해주기
+		testVO.setTestDate(DateUtil.getTestYearDate(testVO.getTestDate()));
+		
+		int score = Integer.parseInt(testScore);
+		testVO.setScore(score);
+		testVO.setTestCode(testService.getNextTestCode());
+		//db 인서트 후 삭제
+		testService.regDbScore(testVO);
+	
+	}
 	//점수 입력
 	@ResponseBody
 	@PostMapping("/regScoreAjax")
-	public TestVO regScoreAjax(TestVO testVO) {
+	public TestVO regScoreAjax(TestVO testVO, String testScore) {
 		
 		
 		//해당 날짜의 년도 불러와서 세팅해주기
@@ -84,6 +100,8 @@ public class TestController {
 		
 		//이미 등록된 테스트가 있는지 조회
 		TestVO dubleTest = testService.checkDubleTest(testVO);
+		
+		
 		
 		//중복 없을때
 		if (dubleTest == null) {
