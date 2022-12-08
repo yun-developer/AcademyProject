@@ -148,11 +148,27 @@ function changeIsPay(paymentCode, status) {
 		type: 'post',
 		data: {'paymentCode' : paymentCode, 'isPay' : status}, //필요한 데이터를 컨트롤러로 전달
 		success: function(result) { //컨트롤러에서 리턴된 데이터 result로 받음
-			Swal.fire({
+			/*Swal.fire({
 			  title: '수납 상태가 변경되었습니다',
 			  icon: 'success',
 			  confirmButtonText: '확인'
+			})*/
+			
+			Swal.fire({
+				title: '수납 상태가 변경되었습니다',
+				icon: 'success',
+				showCancelButton: false, // cancel버튼 보이기. 기본은 원래 없음
+				confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+				cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
+				confirmButtonText: '확인', // confirm 버튼 텍스트 지정
+				cancelButtonText: '취소', // cancel 버튼 텍스트 지정
+
+				reverseButtons: false, // 버튼 순서 거꾸로
+
 			})
+			
+			
+			
 		},
 		error: function() {
 			alert('실패');
