@@ -7,18 +7,18 @@
 
 <div layout:fragment="content">
 	<!-- 전체 내용이 들어가는 영역 -->
-	<div class="row">
-		<div class="col-6">
+	<div class="row justify-content-center" >
+	<div class="col-6 ">
 			<!-- 제목 영역 -->
-			<div class="row mb-3">
-				<div class="col-12">
-					<h2>자유게시판</h2>
+			<div class="row justify-content-center">
+			<div class="col-6 mb-4">
+					<div style="text-align: center;"><h2>자유게시판</h2> </div>
 					</div>
 				<div class="col-12" style="font-size: 18px;">
 					등록일 : [[${free.createDate}]] 조회수 : [[${free.viewCount}]] 작성자 : <a
 						href="javascript:"
 						onclick="showEmployPopup('/common/popup/employ/detail/CE221000035', '교직원정보');">[[${free.teacherId}]]</a>
-					<div class="subheader pb-6 border-bottom"></div>
+					<div class="subheader pb-6 border-bottom mb-4"></div>
 				</div>
 			</div>
 
@@ -57,21 +57,21 @@
 								</div>
 							</div>
 							</div>
-						<!-- 한줄 선 -->
-						<div class="subheader pb-6 border-bottom mb-3"></div>
 						</div>
 				</div>
 
 				<!-- 버튼영역 -->
+
 				<div class="row">
 					<div class="col">
 						<th:block th:each="free : ${free}">
 							<input type="hidden" name="boardNum" th:value="${free.boardNum}">
 						</th:block>
-						<div class="row justify-content-end">
-							<div class="col-2" style="margin-right: 4.8rem;">
-								<button type="submit" class="btn btn-warning flex-end" th:onclick="updateButton();">수정완료
-								</button>
+						<div class="offset-2 col-9 my-5">
+							<div class=" d-grid gap-2 col-2 mx-auto ">
+							  <button button type="submit" class="btn btn-warning flex-end" th:onclick="updateButton();">
+							  수정완료
+							  </button>
 							</div>
 						</div>
 					</div>
