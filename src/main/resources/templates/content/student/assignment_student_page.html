@@ -125,7 +125,7 @@
 								<th:block th:unless="${#lists.size(stuLessonList) == 0}">
 									<tr th:each="SL: ${stuLessonList}">
 										<td><input type="checkbox" class="form-check-input chk" th:value=${SL.studentCode} th:name="selectCount"  th:id="${SL.studentLessonInfoList[0].lessonInfoVO}" onclick='checkOnlyOne(this)'></td>
-										<td th:name="stu" class="text-secondary sName"  th:onclick="goPopup([[${SL.studentCode}]]);">[[${SL.studentName}]]</td>
+										<td th:name="stu" class="sName"  th:onclick="goPopup([[${SL.studentCode}]]);">[[${SL.studentName}]]</td>
 										<td th:name="stu" th:text="${SL.studentYear} + 학년"></td>
 										<td th:name="stu" th:text=${SL.studentGender} ></td>
 										<td th:name="stu" th:id="${SL.studentCode}">

@@ -14,7 +14,7 @@ body{
 }
 a{
 	text-decoration: none;
-	color: gray;
+	color: #C58940;
 	
 }
 
@@ -24,14 +24,23 @@ a{
 }
 
 /* 교사 리스트 내 아이디 */
-.sId{
+/* .sId{
 	
-	color: gray;
+	color: #C58940;
 	
-}
+} */
 
 .sId:hover{
 	
+	cursor: pointer;
+	
+}
+.sId,.sName{
+	color : #C58940;
+	
+}
+
+.sName:hover{
 	cursor: pointer;
 	
 }
