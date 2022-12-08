@@ -66,7 +66,7 @@ function subjectDeleteAjax(){
 	if(checkedChks.length == 0){
 		
 	     Swal.fire({
-		  title: '삭제할 교실을 선택하세요!',
+		  title: '삭제할 과목을 선택하세요!',
 		  icon: 'warning',
 		  confirmButtonText: '확인'
 		})
@@ -82,7 +82,7 @@ function subjectDeleteAjax(){
 		   showCancelButton: true, // cancel버튼 보이기. 기본은 원래 없음
 		   confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
 		   cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
-		   confirmButtonText: '승인', // confirm 버튼 텍스트 지정
+		   confirmButtonText: '확인', // confirm 버튼 텍스트 지정
 		   cancelButtonText: '취소', // cancel 버튼 텍스트 지정
 		   
 		   
@@ -102,7 +102,7 @@ function subjectDeleteAjax(){
 				confirmButtonText: '확인', // confirm 버튼 텍스트 지정
 				cancelButtonText: '취소', // cancel 버튼 텍스트 지정
 
-				reverseButtons: true, // 버튼 순서 거꾸로
+				reverseButtons: false, // 버튼 순서 거꾸로
 
 			}).then(result => {
 				// 만약 Promise리턴을 받으면,
