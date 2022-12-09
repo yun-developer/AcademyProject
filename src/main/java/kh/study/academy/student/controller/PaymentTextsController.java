@@ -27,7 +27,7 @@ public class PaymentTextsController {
 	
 	
 	//달 바뀌면 isPay = 'n'으로 바꾸기
-	@Scheduled(cron = "0 00 12 1 * ?", zone="Asia/Seoul")  //매월 1일 12시 00분 00초에 실행 (거꾸로 초분시... 이렇게 보면 됨)
+	@Scheduled(cron = "0 00 12 1 * ?", zone="Asia/Seoul")  //매월 1일 12시 00분 00초에 실행 
 	public void stuUpdateIsPayNone() {
 		studentService.stuUpdateIsPayNone();
 	}
@@ -35,9 +35,8 @@ public class PaymentTextsController {
 	
 	
 	
-	//매달 1일에 학원비 수납 문자 보내기
-//	@Scheduled(cron = "0 0 13 1 * ?", zone="Asia/Seoul")   //매월 1일 13시 00분에 00초 실행
-	@Scheduled(cron = "0 0 13 08 * ?", zone="Asia/Seoul")   
+	//매달 1일 13시에 학원비 수납 문자 보내기
+	@Scheduled(cron = "0 0 13 1 * ?", zone="Asia/Seoul")   
 	public void paymentSms() {
 		
 		String api_key = "NCSOHSUJTJFE1FES";
@@ -75,9 +74,8 @@ public class PaymentTextsController {
 		}
 	
 	
-	 //미수납인 학생에게 문자 보내기. 미수납 시 8일에!
-//	 @Scheduled(cron = "0 0 18 8 * ?", zone="Asia/Seoul")
-	 @Scheduled(cron = "30 0 13 08 * ?", zone="Asia/Seoul")
+	 //미수납인 학생에게 8일 13시에 문자 보내기. 
+	 @Scheduled(cron = "0 0 13 8 * ?", zone="Asia/Seoul")
 	 public void isPayNoneSms() {
 		 
 		String api_key = "NCSOHSUJTJFE1FES";

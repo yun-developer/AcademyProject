@@ -205,8 +205,8 @@ public class BoardController {
    
    //공지사항 좋아요
    @ResponseBody
-   @PostMapping("/noticeDetailLike")
-   public Map<String, Integer> noticeDetailLike(int boardNum, LikeTableVO likeTableVO, Authentication authentication) {
+   @PostMapping("/noticeDetailLikeAjax")
+   public Map<String, Integer> noticeDetailLikeAjax(int boardNum, LikeTableVO likeTableVO, Authentication authentication) {
       User user = (User)authentication.getPrincipal();
       likeTableVO.setTeacherId(user.getUsername());
       
@@ -391,8 +391,8 @@ public class BoardController {
    
  //자유게시판 좋아요
    @ResponseBody
-   @PostMapping("/freeDetailLike")
-   public Map<String, Integer> freeDetailLike(int boardNum, LikeTableVO likeTableVO, Authentication authentication) {
+   @PostMapping("/freeDetailLikeAjax")
+   public Map<String, Integer> freeDetailLikeAjax(int boardNum, LikeTableVO likeTableVO, Authentication authentication) {
       User user = (User)authentication.getPrincipal();
       likeTableVO.setTeacherId(user.getUsername());
       

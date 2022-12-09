@@ -1,20 +1,15 @@
 package kh.study.academy.student.controller;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kh.study.academy.admin.service.AdminService;
@@ -77,8 +72,8 @@ public class StudentController {
 	
 	//학생 수납 상태 변경
 	@ResponseBody
-	@PostMapping("/updateIsPay")
-	public void updateIsPay(PaymentVO paymentVO) {
+	@PostMapping("/updateIsPayAjax")
+	public void updateIsPayAjax(PaymentVO paymentVO) {
 		studentService.stuUpdateIsPay(paymentVO);
 	}
 	
@@ -244,8 +239,6 @@ public class StudentController {
 	@ResponseBody
 	@PostMapping("/updateStudentLessonAjax")
 	public void updateStudentLessonAjax(StudentLessonInfoVO studentLessonInfoVO) {
-		
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!1" + studentLessonInfoVO);
 		
 		//학생이동시 이전수업 nowStudent -1, 이동할 수업 nowStudent +1 (attendeCode 추가 예정)
 		studentService.updateStuLesson(studentLessonInfoVO);

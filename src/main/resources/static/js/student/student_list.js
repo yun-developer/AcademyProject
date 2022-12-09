@@ -144,7 +144,7 @@ function goDelete() {
 //수납 상태 변경
 function changeIsPay(paymentCode, status) {
 	$.ajax({
-		url: '/stu/updateIsPay', //요청경로
+		url: '/stu/updateIsPayAjax', //요청경로
 		type: 'post',
 		data: {'paymentCode' : paymentCode, 'isPay' : status}, //필요한 데이터를 컨트롤러로 전달
 		success: function(result) { //컨트롤러에서 리턴된 데이터 result로 받음
