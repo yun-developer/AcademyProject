@@ -175,11 +175,11 @@
 											<strong class="text-muted"><a href="javascript:">[[${reply.teacherId}]]</a></strong><span
 												class="ml-2 text-muted">&nbsp;&nbsp;&nbsp;&nbsp;[[${reply.replyCreateDate}]]</span>
 										</div>
-										<div style="word-break:break-all;">
+										<div  style="word-break:break-all;">
 											<h5>
 												<span class="replyContent" style="font-size: 16px;">[[${reply.replyContent}]]</span>
 													<span class="right" th:if= "${reply.teacherId == #authentication.name or #strings.contains(#authentication.authorities, 'ROLE_ADMIN')}">
-	                                                	<button th:onclick="|location.href='@{/reply/noticeDelete(replyNum=${reply.replyNum}, boardNum=${notice.boardNum})}'|" type="button" class="btn btn-danger btn-sm flex-end" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+	                                                	<button th:onclick="|location.href='@{/reply/noticeDelete(replyNum=${reply.replyNum}, boardNum=${notice.boardNum})}'|" type="button" class="btn btn-danger btn-sm flex-end" value="삭제"> 삭제
 														  <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
 															</svg>
 														</button>

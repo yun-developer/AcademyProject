@@ -51,7 +51,8 @@ function updateReply(replyNum,btn){
 
 		// 확인 버튼으로 바꾸기
 	 	btn.value = '확인';
-	
+
+
 	}
 	
 	// 버튼이 확인 일 때
