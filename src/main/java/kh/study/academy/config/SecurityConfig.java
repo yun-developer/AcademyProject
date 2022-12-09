@@ -25,9 +25,19 @@ public class SecurityConfig {
 								, "/teacher/loginPage"
 								, "/teacher/login"
 								, "/teacher/findLoginPage"
-								,"/teacher/findLoginIdAjax"
+								, "/teacher/findLoginIdAjax"
+								, "/teacher/**Ajax"
+								, "/board/noticeList"
+								,"/lesson/mainChartAjax"
 								, "/lesson/main").permitAll() //해당 요청들은 누구나 접근 가능.
-						//.antMatchers("/teacher/**").hasAnyRole("TEACHER","ADMIN")	//"/xxxx" 요청은 TEACHER, ADMIN 권한이 필요(둘 중 하나라도 가능)
+						.antMatchers("/teacher/**"
+									, "/board/**"
+									, "/potatoChat/**"
+									, "/lesson/**"
+									, "/reply/**"
+									, "/stu/**"
+									, "/test/**"
+									, "/statistics/**").hasAnyRole("TEACHER","ADMIN", "UNAPPROVED")	//"/xxxx" 요청은 TEACHER, ADMIN 권한이 필요(둘 중 하나라도 가능)
 						.antMatchers("/admin/**").hasRole("ADMIN")			//"/admin" 요청은 ADMIN 권한이 필요
 //						.anyRequest().authenticated()						//나머지 요청은 누구나 접근 가능. .anyRequest().authenticated() -> 인증 요구
 					.and()
@@ -57,7 +67,7 @@ public class SecurityConfig {
 	//css요청에 대한 인증 무시
 	@Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-		return (web) -> web.ignoring().antMatchers("/bootstrap/**", "/js/**",  "/css/**", "/images/**");
+		return (web) -> web.ignoring().antMatchers("/bootstrap/**", "/js/**",  "/css/**", "/images/**", "/fullcalendar/**");
     }
 	
 	
