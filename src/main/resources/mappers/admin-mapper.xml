@@ -70,7 +70,7 @@
 		AND TEACHER_NAME LIKE ('%'||#{teacherName}||'%')
 		</if>
 		<if test="teacherId != null and !teacherId.equals('')">
-		AND TEACHER_ID LIKE ('%'||#{teacherId}||'%')
+		AND UPPER(TEACHER_ID) LIKE UPPER('%'||#{teacherId}||'%')
 		</if>
 		<if test="teacherTell != null and !teacherTell.equals('')">
 		AND TEACHER_TELL LIKE ('%'||#{teacherTell}||'%')
@@ -127,7 +127,8 @@
 	
 	
 	<!--교사 권한 승인 -->
-	<!--교사 권한은 되돌릴 수 없음...한번 승인된 교사는 상태변경을 통해 퇴사 등으로 변경  -->
+	<!-- 교사 권한은 되돌릴 수 없음 -->
+	<!-- 한번 승인된 교사는 상태변경을 통해 퇴사 등으로 변경 -->
  	<update id="changeTeacherRole">
 		UPDATE TEACHER
 		SET
