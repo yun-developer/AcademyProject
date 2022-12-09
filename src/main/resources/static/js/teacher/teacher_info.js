@@ -38,6 +38,7 @@
 		
         const { value: getInfo} = await Swal.fire({
 			icon: 'info',
+			confirmButtonText: '확인',
             title: updateName + ' 정보를 수정합니다.',
             text: '',
             input: 'text',
@@ -60,7 +61,7 @@
 			   confirmButtonText: '확인', // confirm 버튼 텍스트 지정
 			   cancelButtonText: '취소', // cancel 버튼 텍스트 지정
 			   
-			   reverseButtons: true, // 버튼 순서 거꾸로
+			   reverseButtons: false, // 버튼 순서 거꾸로
 			   
 			}).then(result => {
 			   // 만약 Promise리턴을 받으면,
@@ -96,6 +97,7 @@
 		
         const { value: getInfo} = await Swal.fire({
 			icon: 'warning',
+			confirmButtonText: '확인',
             title: updateName + '를 변경합니다.',
             text: '',
             input: 'text',
@@ -118,7 +120,7 @@
 			   confirmButtonText: '확인', // confirm 버튼 텍스트 지정
 			   cancelButtonText: '취소', // cancel 버튼 텍스트 지정
 			   
-			   reverseButtons: true, // 버튼 순서 거꾸로
+			   reverseButtons: false, // 버튼 순서 거꾸로
 			   
 			}).then(result => {
 			   // 만약 Promise리턴을 받으면,
@@ -142,7 +144,7 @@
 						      cancelButtonColor: '#d33',
 						      confirmButtonText: '확인',
 						      cancelButtonText: '취소',
-						      reverseButtons: true, // 버튼 순서 거꾸로
+						      reverseButtons: false, // 버튼 순서 거꾸로
 						      
 						    }).then((result) => {
 						      if (result.isConfirmed) {
@@ -183,7 +185,7 @@
       cancelButtonColor: '#d33',
       confirmButtonText: '확인',
       cancelButtonText: '취소',
-      reverseButtons: true, // 버튼 순서 거꾸로
+      reverseButtons: false, // 버튼 순서 거꾸로
       
     }).then((result) => {
       if (result.isConfirmed) {

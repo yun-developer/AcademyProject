@@ -28,11 +28,15 @@ function drawChart(){
 const isNew = document.querySelector('#isNew');
 //const modal = new bootstrap.Modal('#idDouble_Yes');
 
+
+
+
 if(isNew.value=='new'){
 	isNew.value='';
 	Swal.fire({
          title:'회원가입 완료',
-         text: '로그인 화면으로 이동하시겠습니까?',
+         /*text: 'Potato Academy의 회원이 되신것을 환영합니다. \n'+' 로그인 화면으로 이동하시겠습니까?',*/
+         html: 'Potato Academy의 회원이 되신것을 환영합니다. <br> 로그인 화면으로 이동하시겠습니까?',
          icon: 'success',
          
          showCancelButton: true, // cancel버튼 보이기. 기본은 원래 없음

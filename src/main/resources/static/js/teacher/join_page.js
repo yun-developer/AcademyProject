@@ -35,6 +35,9 @@ const isTellDoubleChkTag = document.querySelector('#isTellDoubleChk')
 //아이디 중복 검사 여부 확인 후 회원가입 진행
 function isDoubleChk (){
    
+
+   
+   
    //회원가입 진행 폼태그
    const joinForm = document.querySelector('#joinForm');
    
@@ -116,7 +119,8 @@ function idDoubleCheck (){
        inputTeacherId.focus();
        return;
    }   
-   
+  
+  
    //ajax start
    $.ajax({
       url: '/teacher/idDoubleCheckAjax', //요청경로
@@ -130,6 +134,7 @@ function idDoubleCheck (){
                     icon: 'error',
                     title: '가입 불가',
                     text: '사용 불가능한 아이디입니다',
+                    
                     confirmButtonText: '확인'
                 });
                    inputTeacherId.value='';
