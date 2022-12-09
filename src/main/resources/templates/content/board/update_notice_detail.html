@@ -11,7 +11,7 @@
 	<div class="col-6 ">
 			<!-- 제목 영역 -->
 			<div class="row justify-content-center">
-			<div class="col-6 mb-4">
+			<div class="col-6 mb-4 mt-5">
 				<div style="text-align: center;"><h2>공지사항</h2> </div>
 					</div>
 				<div class="col-12 " style="font-size: 18px;">
@@ -67,7 +67,7 @@
 						<th:block th:each="notice : ${notice}">
 							<input type="hidden" name="boardNum" th:value="${notice.boardNum}">
 						</th:block>
-						<div class="offset-2 col-9 my-5">
+						<div class="offset-2 col-9 my-3">
 							<div class=" d-grid gap-2 col-2 mx-auto ">
 							  <button type="submit" id="updateSuccess" class="btn btn-warning text-center">
 							  수정완료
