@@ -88,7 +88,7 @@ for(const chk of chks){
 
 // 교실등록 페이지에서 삭제버튼 클릭 시
 
-function lessonRoomDeleteAjax(){
+function lessonRoomDelete(){
 
 	const LessonRoomForm = document.querySelector('#deleteLessonRoomForm')
    
@@ -187,7 +187,7 @@ for(const chk of chks){
 }
 
 
-function updateIsUseY(lessonRoomCode, isUse){	
+function updateIsUseYAjax(lessonRoomCode, isUse){	
 		
 		$.ajax({	
 		url: '/admin/updateIsUseAjax', //요청경로
@@ -215,7 +215,7 @@ function updateIsUseY(lessonRoomCode, isUse){
 		}); 
 } 
 
-function updateIsUseN(lessonRoomCode, isUse){	
+function updateIsUseNAjax(lessonRoomCode, isUse){	
 	$.ajax({	
 		url: '/admin/updateIsUseAjax', //요청경로	
 		type: 'post',	data: {'lessonRoomCode' : lessonRoomCode, 'isUse' : isUse}, //필요한 데이터를 컨트롤러로 전달	

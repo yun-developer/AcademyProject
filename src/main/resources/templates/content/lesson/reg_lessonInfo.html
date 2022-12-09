@@ -235,7 +235,7 @@
 												<div class="form-group input-group mb-1">
 													<div class="col-6 col-lg-2 px-0"><span class="input-group-text h-100 rounded-0"  >과목구분</span></div>
 													  <div class="col-6 col-lg-3 px-1 rounded-0">
-														<select class="form-select selectBox" id="subjectCode" name="subjectCode" onchange="selectSubjectCheck();" required>
+														<select class="form-select selectBox" id="subjectCode" name="subjectCode" onchange="selectSubjectCheckAjax();" required>
 															
 															<option th:value="${subject.subjectCode}" th:each="subject, status : ${subjectList}" th:text="${subject.subjectName}" >전체</option>
 
@@ -277,7 +277,7 @@
 								<div class="form-group input-group mb-1">
 									<div class="col-6 col-lg-2 px-0"><span class="input-group-text h-100 rounded-0">요일</span></div>
 									<div class="col-6 col-lg-3 px-1 rounded-0">
-										<select class="form-select selectBox" id="lessonDayCode" name="lessonDayCode" onchange="selectUseCheck();" required>
+										<select class="form-select selectBox" id="lessonDayCode" name="lessonDayCode" onchange="selectUseCheckAjax();" required>
 											<option th:value="${lessonDay.lessonDayCode}" th:each="lessonDay : ${lessonDayList}"  th:text="${lessonDay.lessonDayName}"  ></option>
 										</select>
 									</div>
@@ -349,7 +349,7 @@
 									<div class="row">
 										<div class="col-6">
 										
-					                       		 <button type="button" id="updateAmountBtn" class="btn btn-primary form-control"  th:onclick="goRegLessonInfoAjax([[${lessonDayCode}]]);">등록</button>
+					                       		 <button type="button" id="updateAmountBtn" class="btn btn-primary form-control"  th:onclick="regLessonInfoAjax([[${lessonDayCode}]]);">등록</button>
 						              
 										</div>
 										<div class="col-6">

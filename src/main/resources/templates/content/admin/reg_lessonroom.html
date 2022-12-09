@@ -78,8 +78,8 @@
 								
 								</th:block >
 									<th:block >
-										<input type="radio"  th:name="${status.count}"  th:checked="${LessonRoom.isUse eq 'Y'}" th:onclick="updateIsUseN([[${LessonRoom.lessonRoomCode}]], 'Y' );" > 사용중
-										<input type="radio" th:name="${status.count}" th:checked="${LessonRoom.isUse eq 'N'}" th:onclick="updateIsUseY([[${LessonRoom.lessonRoomCode}]], 'N' );" > 미사용
+										<input type="radio"  th:name="${status.count}"  th:checked="${LessonRoom.isUse eq 'Y'}" th:onclick="updateIsUseNAjax([[${LessonRoom.lessonRoomCode}]], 'Y' );" > 사용중
+										<input type="radio" th:name="${status.count}" th:checked="${LessonRoom.isUse eq 'N'}" th:onclick="updateIsUseYAjax([[${LessonRoom.lessonRoomCode}]], 'N' );" > 미사용
 									</th:block>
 								</td>
 							</tr>
@@ -106,7 +106,7 @@
 						</div>
 						
 						<div class="col-6">
-							<button th:onclick="lessonRoomDeleteAjax();" type="button"
+							<button th:onclick="lessonRoomDelete();" type="button"
 								class="btn btn-danger form-control">삭제
 							</button>
 						</div>

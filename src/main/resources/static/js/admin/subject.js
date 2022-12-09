@@ -55,7 +55,7 @@ for(const chk of chks){
 
 
 // 과목등록 페이지에서 삭제버튼 클릭 시
-function subjectDeleteAjax(){
+function subjectDelete(){
 
 	const subjectForm = document.querySelector('#deleteSubjectForm')
    

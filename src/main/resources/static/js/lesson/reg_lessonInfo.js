@@ -2,7 +2,7 @@
 const updateAmountBtn = document.querySelector('#updateAmountBtn');
 
 // 학급 편성 등록 시 교실장소, 수업시간 겹치지 않게 조회
-function selectUseCheck(){
+function selectUseCheckAjax(){
 	
 	const lessonDayCode = document.querySelector('#lessonDayCode option:checked').value;
 	//  lessonDayCode(변수) = id가 lessonDayCode(selectBox id)인 option:checked -> Css문법처럼 그냥 써준다.
@@ -267,7 +267,7 @@ for(const chk of chks){
 
 //모달창에서 저장 버튼을 클릭하면 실행되는 함수
 //수강료를 숫자 형태로 바꾼 후 submit 시킴.
-function regLessonInfo(){
+function regLessonInfoAjax(){
 	
 	//교실명
 	const lessonRoomCode =document.querySelector('#lessonRoomCode'); 
