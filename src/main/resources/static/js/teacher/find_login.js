@@ -143,7 +143,7 @@ $(document).on("click", "#sendPhoneNumber", function() {
 
 						$.ajax({
 							type: "post",
-							url: "/teacher/updateTemporaryPw",
+							url: "/teacher/updateTemporaryPwAjax",
 							data: {
 								"teacherPw": $('#inputCertifiedNumber').val(), "teacherTell": teacherTell
 							},

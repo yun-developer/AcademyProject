@@ -161,7 +161,7 @@ public class TeacherController {
 	
 	//연락처 인증성공 시 그 인증번호로 임시비밀번호 업데이트
 	@ResponseBody
-	@PostMapping("/updateTemporaryPw")
+	@PostMapping("/updateTemporaryPwAjax")
 	public String updateTemporaryPw(TeacherVO teacherVO) {
 		
 
