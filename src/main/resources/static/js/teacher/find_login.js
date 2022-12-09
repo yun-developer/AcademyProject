@@ -1,5 +1,27 @@
 //아이디 찾기 버튼을 누르면 진행되는 함수
 function findLoginIdAjax(){
+	
+	//부트스트랩 유효성 검사
+	// Example starter JavaScript for disabling form submissions if there are invalid fields
+	(() => {
+		'use strict'
+
+		// Fetch all the forms we want to apply custom Bootstrap validation styles to
+		const forms = document.querySelectorAll('.needs-validation')
+
+		// Loop over them and prevent submission
+		Array.from(forms).forEach(form => {
+			form.addEventListener('click', event => {
+				if (!form.checkValidity()) {
+					event.preventDefault()
+					event.stopPropagation()
+				}
+
+				form.classList.add('was-validated')
+			}, false)
+		})
+	})()
+
 
 	//teacherName 값 
 	const teacherName = document.querySelector('#findName').value;
@@ -197,3 +219,5 @@ $(document).on("click", "#sendPhoneNumber", function() {
 		}
 	})
 });
+
+
