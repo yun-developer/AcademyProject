@@ -132,7 +132,7 @@ function regTest()  {
 	
 	
 	//DBinsert 후 지우기~~~~~~~~~~~~~~~~~~~~~~
-	const selectDateValueForDB = document.querySelector('#selectDateValueForDB');	
+	/*const selectDateValueForDB = document.querySelector('#selectDateValueForDB');	
 	const randomScore = document.querySelector('#randomScore');	
 	
 	for (var option of selectDate.options) {
@@ -215,7 +215,7 @@ function regTest()  {
 	
 	
 	}
-	
+	*/
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	
 	
@@ -239,11 +239,12 @@ function regTest()  {
 	
 	//중복데이터가 있으면 얼럿 
 	//ajax start
-/*	$.ajax({
+	$.ajax({
 		url: '/test/regScoreAjax', //요청경로
 		type: 'post',
-		// insert후 복귀 data: {'studentCode':stuentCodeValue,'subjectCode':selectSubValue,'testDate':selectDateValue}, //필요한 데이터
-		data: {'studentCode':stuentCodeValue,'subjectCode':selectSubValue,'testDate':option.value}, //필요한 데이터
+		// insert후 복귀 
+		data: {'studentCode':stuentCodeValue,'subjectCode':selectSubValue,'testDate':selectDateValue}, //필요한 데이터
+		//data: {'studentCode':stuentCodeValue,'subjectCode':selectSubValue,'testDate':option.value}, //필요한 데이터
 		success: function(result) {
 			
 			if(result.check ==1){
@@ -299,7 +300,7 @@ function regTest()  {
 		error: function() {
 			alert('실패');
 		}
-	});*/
+	});
 	//ajax end
 	
 	
