@@ -87,7 +87,18 @@ $(document).on("click", "#sendPhoneNumber", function() {
 			//입력한 정보(이름 아이디 전화번호)에 맞는 회원이 있다면 인증번호 보내고 인증번호 입력창 생성 
 			if (res != "") {
 
-				Swal.fire('인증번호 발송 완료!')
+				//Swal.fire('인증번호 발송 완료!')
+				Swal.fire({
+					title: '인증번호 발송 완료!',
+					//icon: 'warning',
+					showCancelButton: false, // cancel버튼 보이기. 기본은 원래 없음
+					confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+					cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
+					confirmButtonText: '확인', // confirm 버튼 텍스트 지정
+					cancelButtonText: '취소', // cancel 버튼 텍스트 지정
+					reverseButtons: false, // 버튼 순서 거꾸로
+				})
+						
 
 				str += `<div class="row mb-3">
 							<div class="col-sm-12">
@@ -109,7 +120,16 @@ $(document).on("click", "#sendPhoneNumber", function() {
 			}
 			//입력한 정보(이름 아이디 전화번호)에 맞는 회원이 없다면 error 모달
 			else {
-				Swal.fire('인증번호 발송 실패!', '입력하신 데이터와 일치하는 회원이 없습니다', 'error')
+				//Swal.fire('인증번호 발송 실패!', '입력하신 데이터와 일치하는 회원이 없습니다', 'error')
+				Swal.fire({
+					title:'인증번호 발송 실패!',
+					text: '입력하신 데이터와 일치하는 회원이 없습니다!',
+					icon: 'error',
+					confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+					confirmButtonText: '확인', // confirm 버튼 텍스트 지정
+				})
+				
+				
 			}
 
 			//인증번호 확인 버튼을 눌렀을 때 
@@ -157,8 +177,10 @@ $(document).on("click", "#sendPhoneNumber", function() {
 							icon: 'error',
 							title: '인증오류',
 							text: '인증번호가 올바르지 않습니다!',
-							// footer: '<a href="/teacher/findLoginPage">다시 인증하기</a>'
+							confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+							confirmButtonText: '확인', // confirm 버튼 텍스트 지정
 						})
+						
 					}
 				}
 				//인증번호 input 데이터 값이 빈문자열이라면
@@ -167,7 +189,8 @@ $(document).on("click", "#sendPhoneNumber", function() {
 						icon: 'error',
 						title: '인증오류',
 						text: '인증번호를 입력하세요!',
-						// footer: '<a href="/teacher/findLoginPage">다시 인증하기</a>'
+						confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+						confirmButtonText: '확인', // confirm 버튼 텍스트 지정
 					})
 				}
 			})
