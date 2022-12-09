@@ -40,12 +40,12 @@ public class TeacherVO {
 	
 	private int check; 
 	
-	//이메일 형식 수정필요
+	//이메일 
 	@NotBlank(message = "* 이메일은 필수 입력입니다.")
 	private String teacherEmail;
 	
 	
-	//젠더는 not null이기 때문에 필수 입력이에용...!
+	//젠더
 	private String teacherGender;
 	
 	

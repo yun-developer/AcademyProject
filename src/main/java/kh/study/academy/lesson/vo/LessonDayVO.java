@@ -1,9 +1,12 @@
 package kh.study.academy.lesson.vo;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
-import lombok.Data;
-
-@Data
+@Getter
+@Setter
+@ToString
 public class LessonDayVO {
 	
 	
