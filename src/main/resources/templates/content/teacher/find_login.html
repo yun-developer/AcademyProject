@@ -28,7 +28,7 @@
 						<input type="text" class="form-control" id="findName"
 							placeholder="이름" required>
 							<div class="invalid-feedback">
-						      필수 입력 값입니다.
+						       &nbsp;필수 입력 값입니다.
 						    </div>
 					</div>
 				</div>
@@ -37,7 +37,7 @@
 						<input type="text" class="form-control" id="findTell"
 							placeholder="전화번호" required="required">
 							<div class="invalid-feedback">
-						      필수 입력 값입니다.
+						      &nbsp;필수 입력 값입니다.
 						    </div>
 					</div>
 				</div>
@@ -72,31 +72,42 @@
 				- 로그인 후 개인정보수정에서 비밀번호를 수정해주세요.
 			</p>
 		
-
-			<div class="row mb-3">
-				<div class="col-sm-12">
-					<input type="text" class="form-control" name="teacherId"
-						id="teacherId" placeholder="아이디" >
+			<form class="needs-validation2" novalidate>
+				<div class="row mb-3">
+					<div class="col-sm-12">
+						<input type="text" class="form-control" name="teacherId"
+							id="teacherId" placeholder="아이디" >
+							<div class="invalid-feedback">
+						      필수 입력 값입니다.
+						    </div>
+					</div>
 				</div>
-			</div>
-			<div class="row mb-3">
-				<div class="col-sm-12">
-					<input type="text" class="form-control" name="teacherName"
-						id="teacherName" placeholder="이름">
+				<div class="row mb-3">
+					<div class="col-sm-12">
+						<input type="text" class="form-control" name="teacherName"
+							id="teacherName" placeholder="이름">
+							<div class="invalid-feedback">
+						      필수 입력 값입니다.
+						    </div>
+					</div>
 				</div>
-			</div>
-			<div class="row mb-3">
-				<div class="col-sm-12">
-					<input type="text" class="form-control" name="teacherTell"
-						id="teacherTell" placeholder="전화번호">
+				<div class="row mb-3">
+					<div class="col-sm-12">
+						<input type="text" class="form-control" name="teacherTell"
+							id="teacherTell" placeholder="전화번호">
+							<div class="invalid-feedback">
+						      필수 입력 값입니다.
+						    </div>
+					</div>
 				</div>
-			</div>
-			<div class="row mb-3">
-				<div class="d-grid gap-2 mb-3">
-					<button th:onclick="" id="sendPhoneNumber" class="btn btn-primary"
-						type="button">문자 전송</button>
+				<div class="row mb-3">
+					<div class="d-grid gap-2 mb-3">
+						<button th:onclick="" id="sendPhoneNumber" class="btn btn-primary"
+							type="button">문자 전송</button>
+					</div>
 				</div>
-			</div>
+			</form>
+			
 			<!-- 인증번호 입력 div -->
 			<div id="changeFindPwDiv"></div>
 		</div>
