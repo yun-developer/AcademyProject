@@ -100,7 +100,7 @@
 
 			<thead>
 				<tr>
-					<th scope="col"><input type="checkbox" id="checkAll">
+					<th scope="col">NO
 					</th>
 					<th scope="col">학생이름</th>
 					<th scope="col">교사이름</th>
@@ -116,14 +116,13 @@
 					</tr>
 				</th:block>
 				<th:block th:unless="${#lists.size(search)==0}">
-					<tr th:each="student:${search}">
+					<tr th:each="student, status:${search}">
 
 
-						<td><input type="checkbox" class="chk"></td>
+						<td th:text="${status.count}"> </td>
 						<td class="stuName" th:id="${student.studentCode}"
 							th:text="${student.studentName}"
 							th:value="${student.studentCode}"></td>
-						<!-- <td th:text="${student.studentLessonInfoList[0].lessonInfoVO.teacherVO.teacherName}"></td> -->
 						<td><th:block
 								th:each="lesson:${student.studentLessonInfoList}">
 							[ [[${lesson.lessonInfoVO.teacherVO.teacherName}]] ]
@@ -132,7 +131,6 @@
 								th:each="lesson:${student.studentLessonInfoList}">
 						[	[[${lesson.lessonInfoVO.subjectVO.subjectName}]]-[[${lesson.lessonInfoVO.stepVO.stepName}]]-[[${lesson.lessonInfoVO.year}]] ]
 						</th:block></td>
-						<!-- <td th:text="${student.studentLessonInfoList[0].lessonInfoVO.subjectVO.subjectName+'-'+student.studentLessonInfoList[0].lessonInfoVO.stepVO.stepName+'-'+student.studentLessonInfoList[0].lessonInfoVO.year}"></td> -->
 						<td><input type="button" class="btn btn-outline-primary"
 							value="등록"
 							th:onclick="openRegTestModal([[${student.studentCode}]],[[${student.studentName}]], [[${student.studentLessonInfoList}]]);"
@@ -228,7 +226,7 @@
 								<div class="col-6 col-lg-10 px-1 rounded-1">
 
 									<!-- insert후 원래대로 바꾸기 name 있는 태그로-->
-									<!-- 									<select class="form-select" aria-label="Default select example" id="selectDate" > -->
+									<!-- <select class="form-select" aria-label="Default select example" id="selectDate" > -->
 									<select class="form-select" aria-label="Default select example"
 										id="selectDate" name="testDate">
 										<option value="" selected>전체</option>
@@ -269,7 +267,6 @@
 						<button type="button" class="btn btn-secondary"
 							data-bs-dismiss="modal">취소</button>
 						<button id="regBtn" type="button" class="btn btn-primary">저장</button>
-						<!--<button id="regBtn" type="button" onclick="regTest();" class="btn btn-primary">저장</button> -->
 					</div>
 				</div>
 			</div>
