@@ -63,8 +63,6 @@ public class TestController {
 		model.addAttribute("step", lessonService.selectStepList());
 
 		
-		
-		
 		model.addAttribute("paramMap", paramMap);
 		
 		
@@ -100,7 +98,6 @@ public class TestController {
 		
 		//이미 등록된 테스트가 있는지 조회
 		TestVO dubleTest = testService.checkDubleTest(testVO);
-		
 		
 		
 		//중복 없을때

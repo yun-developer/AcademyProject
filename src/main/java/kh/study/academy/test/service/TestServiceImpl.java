@@ -22,12 +22,10 @@ public class TestServiceImpl implements TestService{
 	}
 	
 	//평가 관리 페이지에서 검색
-	//검토 필요
 	@Override
 	public List<StudentVO> searchTest(Map<String, String> map) {
 		return sqlSession.selectList("testMapper.searchTest", map);
 	}
-	
 
 	
 	//점수 수정
@@ -42,8 +40,6 @@ public class TestServiceImpl implements TestService{
 	public void deleteScore(String testCode) {
 		sqlSession.delete("testMapper.deleteScore",testCode);
 	}
-
-	
 	
 	
 	//조회
@@ -58,16 +54,11 @@ public class TestServiceImpl implements TestService{
 		return sqlSession.selectOne("testMapper.checkDubleTest", testVO);
 	}
 	
-	////수정을 위해 특정 학생, 과목으로 등록된 테스트 정보 모두 조회
+	//수정을 위해 특정 학생, 과목으로 등록된 테스트 정보 모두 조회
 	@Override
 	public List<TestVO> testListForUpdate(TestVO testVO) {
 		return sqlSession.selectList("testMapper.testListForUpdate", testVO);
 	}
-	
-	
-	
-	
-	
 	
 	//db 인서트
 	@Override
@@ -81,8 +72,5 @@ public class TestServiceImpl implements TestService{
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("testMapper.getNextTestCode");
 	}
-
-	
-	
 	
 }

@@ -17,9 +17,6 @@
 	</resultMap>
 
 	
-	
-
-	
 	<!-- 점수 등록 -->
 	<insert id="regScore">
 		 <selectKey resultType="String" keyProperty="testCode" order="BEFORE">
@@ -67,10 +64,7 @@
 	</insert>
 	
 	
-	
-	
 	<!-- 평가 관리 페이지에서 검색 조회 -->
-	<!--수정필요// studentMapper 모든학생이 듣고 있는 수업 조회 참고 -->
 	<select id="searchTest" resultMap="studentMapper.student"
 		parameterType="hashMap">
 		SELECT S.STUDENT_CODE
@@ -103,17 +97,7 @@
 		<if test="lessonInfoCode != null and !lessonInfoCode.equals('')">
 			AND LESSON_INFO_CODE LIKE ('%'||#{lessonInfoCode}||'%')
 		</if>
-	<!-- 	<if test="stepCode != null and !stepCode.equals('')">
-			AND STEP_CODE LIKE ('%'||#{stepCode}||'%')
-		</if>
-		<if test="year != null and !year.equals('')">
-			AND YEAR LIKE ('%'||#{year}||'%')
-		</if> -->
 	</select>
-	
-	
-	
-	
 	
 	
 	<!-- 점수 수정  -->
@@ -153,8 +137,6 @@
 	</select>
 	
 	
-	
-	
 	<!-- 이미 등록된 테스트가 있는지 조회 --> 
 	<select id="checkDubleTest" resultMap="test">
 		SELECT TEST_CODE
@@ -186,27 +168,6 @@
 	
 	
 </mapper>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

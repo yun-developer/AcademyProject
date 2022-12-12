@@ -145,16 +145,6 @@ function openChangeTestModal(code, name, lessonList){
 
 
 
-
-
-
-
-
-
-
-
-//score 값 100이상이여도 저장되네..validation 넣어야...??
-
 //평가등록 모달 내 저장 버튼을 눌렀을 때 실행되는 함수
 function regTest()  {
 	
@@ -241,10 +231,6 @@ function regTest()  {
 	
 	
 	
-	
-	
-	
-	
 	   	}
 	
 	
@@ -268,8 +254,6 @@ function regTest()  {
 		Swal.fire('평가 등록 불가', '학생이 수강중인 과목이 아닙니다.', 'warning');
 		return;
 	}
-	
-	
 	
 	
 	//중복데이터가 있으면 얼럿 
@@ -640,31 +624,5 @@ var box = paginator({
 });
 box.className = "box";
 document.getElementById("table_box_bootstrap").appendChild(box);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
