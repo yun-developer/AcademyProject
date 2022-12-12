@@ -55,13 +55,10 @@
 					    		주소
 				    		</div>
 				    		<div class="col-9" th:text="${student.addr} "></div>
-				    		
 		    			</div>
-		    			
 			        </div>
 			      </div>
 			    </div>
-			    
 			  </div>
 			</div>
 			
@@ -129,10 +126,8 @@
 							      					+'학년 [' + lesson.teacherVO.teacherName  +' '+ lesson.lessonDayVO.lessonDayName +' '+ lesson.lessonTime + ':00'} + ']'" >
 							      </option>
 							    </th:block>	
-									
 							</select>
-			    		
-			    		</div>
+ㄴ			    		</div>
 	    			</div>
 	    			<div class="row mb-2 mt-3 align-items-center " >
 			    		<div class="col-4 ms-3 bg-secondary p-2 bg-opacity-10">
@@ -150,17 +145,15 @@
 			    
 			 </div>
 		  </div>
-		  			<!-- <form th:action="@{/stu/assingnStuProcess}" method="post" id="assingnStuForm"> -->
-	    			<div class="d-grid gap-2 col-6 mx-auto">
-	    				<input type="hidden" name="studentCode" id="inputStuCode" th:value="${student.studentCode}">
-	    				<input type="hidden" name="lessonInfoCode" id="inputLessonCode" value="">
-					  <button class="btn btn-primary" type="button" id="assingnBtn" th:onclick="assingnStudent();"> 저 장 </button>
-					</div>
-		  		<!-- 	</form> -->
-
-
+    			<div class="d-grid gap-2 col-6 mx-auto">
+    				<input type="hidden" name="studentCode" id="inputStuCode" th:value="${student.studentCode}">
+    				<input type="hidden" name="lessonInfoCode" id="inputLessonCode" value="">
+				  <button class="btn btn-primary" type="button" id="assingnBtn" th:onclick="assingnStudent();"> 저 장 </button>
+				</div>
 		</div>
 	</div>
+
+
 
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script> 
 	<!-- jquery 문법 로딩 -->

@@ -16,7 +16,7 @@
 	 	</h5>
  	</div>
 	
-
+	<!-- 검색 영역 -->
 	<div class="row mb-2">
 		<div class="col">
 			<form th:action="@{/stu/assignment}" method="post">
@@ -69,17 +69,13 @@
 		
 		</div>
 	</div>
-	
-	
-	
-	
+	<!-- 검색 영역 끝-->
 	
 	<div class="row mb-2">
 		<div class="col border-top">
 		
 				<div class="row">
 					<div class="col-12" style="margin-top: 40px;" id="table_box_bootstrap">
-						
 						
 						  <div class="row justify-content-between">
 						    <div class="col-4">
@@ -118,7 +114,6 @@
 							<thead class="table-light">
 								<tr>
 									<th scope="col"><input type="checkbox" id="checkAll" th:name="selectall" ></th>
-								
 									<th scope="col">이름</th>
 									<th scope="col">학년</th>
 									<th scope="col">성별</th>
@@ -140,16 +135,13 @@
 										<td th:name="stu" th:text=${SL.studentGender} ></td>
 										<td th:name="stu" th:id="${SL.studentCode}">
 											<th:block th:each="lesson:${SL.studentLessonInfoList}">
-												
 												<th:block th:if="${lesson.lessonInfoVO==null}">
 													<span style="color: red;">-</span>
 												</th:block>
 												<th:block th:unless="${lesson.lessonInfoVO==null}">
 													[	[[${lesson.lessonInfoVO.subjectVO.subjectName}]]-[[${lesson.lessonInfoVO.stepVO.stepName}]]-[[${lesson.lessonInfoVO.year}]] ]
 												</th:block>
-										
 											</th:block>
-										
 										</td>
 									</tr>
 								</th:block>
@@ -157,12 +149,13 @@
 						</table>
 					</div>
 				</div>
-				
-				
-			
-			
 		</div>
 	</div>
+	
+	
+	
+	
+	
 	<script th:src="@{/js/paginator.js}"></script>	
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script> 
 	<!-- jquery 문법 로딩 -->

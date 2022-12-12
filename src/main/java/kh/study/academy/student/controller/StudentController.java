@@ -135,18 +135,14 @@ public class StudentController {
 	}
 	
 	
-	
 	//학생을 학급에 배정하는페이지로 이동
 	@RequestMapping("/assignment")
 	public String assignmentStu(Model model, String studentName, StudentVO studentVO) {
-		
-		//model.addAttribute("stuList", studentService.selectStuList(studentName));
 		
 		List<StudentVO> testList = studentService.selectStuLessonList(studentVO);		
 		
 		model.addAttribute("stuLessonList", testList);
 		
-
 		
 		return "content/student/assignment_student_page";
 	}

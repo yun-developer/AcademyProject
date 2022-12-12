@@ -18,22 +18,18 @@ import kh.study.academy.student.vo.StudentVO;
 public class StudentServiceImpl implements StudentService{
 	 @Autowired
 	  SqlSessionTemplate sqlSession;
-	 
-	 @Override
-		public String getNextStudentCode() {
-		
-		 return sqlSession.selectOne("studentMapper.getNextStudentCode");
-		}
-	 
-	 //학생 등록
+	
+	//다음 학생코드 조회 
 	@Override
-	public void insertStudent(StudentVO studentVO) {
-		
-		sqlSession.insert("studentMapper.insertStudent", studentVO);
-		
-		
+	public String getNextStudentCode() {
+		return sqlSession.selectOne("studentMapper.getNextStudentCode");
 	}
 
+	// 학생 등록
+	@Override
+	public void insertStudent(StudentVO studentVO) {
+		sqlSession.insert("studentMapper.insertStudent", studentVO);
+	}
 	
 	// 학생 리스트 조회
 	@Override
@@ -55,7 +51,6 @@ public class StudentServiceImpl implements StudentService{
 		}
 	}
 
-	
 	//학생 삭제
 	@Transactional(rollbackFor = Exception.class)
 	@Override
@@ -147,10 +142,6 @@ public class StudentServiceImpl implements StudentService{
 	}
 	
 
-	
-
-	 
-	 
 	 
 	 
 }

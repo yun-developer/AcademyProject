@@ -26,9 +26,6 @@ public class AttendController {
 	@Resource(name = "attendService")
 	private AttendService attendService;
 	
-	
-	
-	
 	//매주 월요일 마다 수강중인 학생들에게 출결코드 생성
 	//@Scheduled(cron = "0 36 14 * * *") 초 분 시
 	//@Async
@@ -53,8 +50,6 @@ public class AttendController {
 		}
 	}
 	
-  
-	    
 	    
 		
 }
