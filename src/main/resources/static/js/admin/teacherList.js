@@ -1,70 +1,56 @@
-//////////////////////////////////////////////////////////////////////
-//---------------스크립트 실행과 동시에 필요한 변수 생성-----------//
-/////////////////////////////////////////////////////////////////////
-
-//제목 줄 체크박스
-const checkAll = document.querySelector('#checkAll');
-
-//제목 줄을 제외한 모든 체크박스 
-const chks = document.querySelectorAll('.chk');
-
-
-
-
-
-
-
-
 ////////////////////////////////////////////////////////////////////
 //-------------------------이벤트 정의 영역----------------------//
 ///////////////////////////////////////////////////////////////////
 
 
+/*엑셀 다운로드 버튼을 눌렀을 때*/
+const excelDownload = document.querySelector('#excelDownload');
 
-//전체선택, 전체해제 이벤트
-checkAll.addEventListener('click',function(){
-	//제목줄의 체크박스 체크여부
-	const isChecked = checkAll.checked; //true,false
-	
-	//교사 리스트 목록의 모든 체크박스
-	const checkboxes = document.querySelectorAll('.chk');
-	
-	//제목줄 체크박스가 체크되었다면,
-	if(isChecked){
-		for (const checkBox of checkboxes){
-			checkBox.checked = true;
-		}
-	}
-	else{
-		
-		for (const checkBox of checkboxes){
-			checkBox.checked = false;
-		}
-	}
-	
-	
+document.addEventListener('DOMContentLoaded', ()=>{
+    excelDownload.addEventListener('click', exportExcel);
 });
 
+function exportExcel(){ 
+  // step 1. workbook 생성
+  var wb = XLSX.utils.book_new();
 
-//리스트 체크박스 선택 시 제목줄 체크박스 이벤트
-for(const chk of chks){
-	chk.addEventListener('click', chk=>{ 
-		//아래에 있는 전체 체크박스의 수 
-		const cnt = chks.length;
-		//아래에 있는 전체 체크박스 중 체크된 수
-		const checkedCnt = document.querySelectorAll('.chk:checked').length;
-		
-		//수가 같으면 제목 체크박스도 체크
-		if(cnt ==checkedCnt ){
-			document.querySelector('#checkAll').checked = true;
-		}
-		//수가 다르면 제목 체크박스도 해체
-		else{
-			document.querySelector('#checkAll').checked = false;
-		}
-		
-	});
+  // step 2. 시트 만들기 
+  var newWorksheet = excelHandler.getWorksheet();
+
+  // step 3. workbook에 새로만든 워크시트에 이름을 주고 붙인다.  
+  XLSX.utils.book_append_sheet(wb, newWorksheet, excelHandler.getSheetName());
+
+  // step 4. 엑셀 파일 만들기 
+  var wbout = XLSX.write(wb, {bookType:'xlsx',  type: 'binary'});
+
+  // step 5. 엑셀 파일 내보내기 
+  saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), excelHandler.getExcelFileName());
 }
+
+var excelHandler = {
+    getExcelFileName : function(){
+        return 'Teacher_List.xlsx';	//파일명
+    },
+    getSheetName : function(){
+        return 'Table Test Sheet';	//시트명
+    },
+    getExcelData : function(){
+        return document.getElementById('tableData'); 	//TABLE id
+    },
+    getWorksheet : function(){
+        return XLSX.utils.table_to_sheet(this.getExcelData());
+    }
+}
+
+function s2ab(s) { 
+  var buf = new ArrayBuffer(s.length); //convert s to arrayBuffer
+  var view = new Uint8Array(buf);  //create uint8array as viewer
+  for (var i=0; i<s.length; i++) view[i] = s.charCodeAt(i) & 0xFF; //convert to octet
+  return buf;    
+}
+
+
+
 
 
 //페이징 라이브러리
@@ -96,5 +82,22 @@ function teacherPopup(teacherCode){
 	}
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
