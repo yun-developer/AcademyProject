@@ -34,7 +34,6 @@ public class StudentVO {
 	private String isAttandence;
 	
 	
-	/* private SubjectVO subjectVO; */
 	private List<String> studentCodeList;
 	
 	
