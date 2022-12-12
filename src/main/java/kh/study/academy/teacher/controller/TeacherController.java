@@ -49,7 +49,6 @@ public class TeacherController {
 	public String join(@Valid TeacherVO teacherVO
 						, BindingResult bindingResult
 						, Model model) {
-		//zz
 		//validation 체크
 		if(bindingResult.hasErrors()) {
 			System.out.println("~~~error~~~");
@@ -115,9 +114,7 @@ public class TeacherController {
 //	@PostMapping("/login")
 //	public String login(TeacherVO teacherVO) {
 //		
-//		
 //		teacherService.login(teacherVO);
-//		
 //		
 //		return"redirect:/lesson/main";
 //	}
@@ -135,8 +132,6 @@ public class TeacherController {
 		
 		return "content/teacher/find_login";
 	}
-	
-	
 	
 	
 	//아이디 정보 찾기 에이작스
@@ -157,14 +152,11 @@ public class TeacherController {
 	}
 	
 	
-
-	
 	//연락처 인증성공 시 그 인증번호로 임시비밀번호 업데이트
 	@ResponseBody
 	@PostMapping("/updateTemporaryPwAjax")
 	public String updateTemporaryPw(TeacherVO teacherVO) {
 		
-
 		//pw암호화
 		teacherVO.setTeacherPw(encoder.encode(teacherVO.getTeacherPw()));
 		
@@ -172,7 +164,6 @@ public class TeacherController {
 		
 		return "성공";
 	}
-	
 	
 	
 	//비밀번호 정보 찾기 에이작스
@@ -186,7 +177,6 @@ public class TeacherController {
 	//회원정보 조회
 	@GetMapping("/selectInfo")
 	public String selectTeacherInfo(Authentication authentication, Model model) {
-		
 		
 		//security에 저장한 정보 사용
 		//로그인한 유저의 정보를 가져 옴
@@ -214,9 +204,6 @@ public class TeacherController {
 			
 			teacherService.updateProfileImg(uploadInfo);
 			
-			System.out.println("!@!@!@!@"+profileImgVO.getTeacherCode());
-			//session.removeAttribute("profileImg");
-			///////////////////////////////////////////////문제....////////////////////////////////
 			session.removeAttribute("profileImg");
 			session.setAttribute("profileImg", teacherService.selectProfileImg(profileImgVO).getStoredFileName());
 		}
@@ -234,8 +221,6 @@ public class TeacherController {
 		
 		return "content/teacher/img_update_result";
 	}
-	
-	
 	
 	
 	//개인정보 수정
@@ -282,9 +267,6 @@ public class TeacherController {
 		
 		return "redirect:/teacher/selectInfo";
 	}
-	
-	
-	
 	
 	
 	

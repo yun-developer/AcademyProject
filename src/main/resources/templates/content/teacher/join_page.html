@@ -46,11 +46,9 @@
 		    <label for="pwDoubleCheck" class="col-sm-2 col-form-label">비밀번호 확인</label>
 		    <div class="col-sm-6">
 		      <input type="password" class="form-control" id="pwDoubleCheck" onkeyup="passChk();" >
-		      <!-- <span class="hasError" th:if="${#fields.hasErrors('teacherPw')}" th:errors="*{teacherPw}"></span> -->
-		      
-		      
 		    </div>
 		  </div>
+		  
 		  <div class="row mt-1 ps-2 justify-content-center">
 		    <div class="col-2"> </div>
 		    <div class="col-5">
@@ -58,14 +56,12 @@
 		     </div>
 		  </div> 
 		  
-		  
 		  <div class="mt-3 row justify-content-center  form-group">
 		  	
 		    <label for="inputTeacherName" class="col-sm-2 col-form-label">이름</label>
 			    <div class="col-sm-6 ">
 			      <input type="text" class="form-control" id="inputTeacherName" name="teacherName" required>
  			      <span class="hasError" th:if="${#fields.hasErrors('teacherName')}" th:errors="*{teacherName}"></span>
-			    
 			    </div>
 		    
 		  </div>
@@ -86,7 +82,6 @@
 		  </div>
 		  
 		  
-		  
 		   <div class="mt-3 row justify-content-center ">
 		  	<label for="inlineRadio1" class="col-sm-2 col-form-label">성별</label>
 		  	<div class="col-sm-6">
@@ -104,8 +99,6 @@
 		  <div class="mt-3 row justify-content-center ">
 		    <label for="inputCareer" class="col-sm-2 col-form-label">강의과목</label>
 		    <div class="col-sm-6">
-		      <!-- <input type="text" class="form-control" id="inputCareer" name="lessonsCode" value="SUBJECT_001" placeholder="셀렉트박스로 수정 예정"> -->
-		      <!-- name="lessonsCode"... 데이터 가져와서 뽑기 -->
 		      <select id="subjectCode" name="subjectCode" class="form-select">
 			    <th:block th:each ="subject:${subjectList}"  >
 			      <option 

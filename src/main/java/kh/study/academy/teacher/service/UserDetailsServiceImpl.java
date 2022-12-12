@@ -32,17 +32,10 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 		
 		TeacherVO loginInfo = sqlSession.selectOne("teacherMapper.login", username);
 		
-		//아이디를 잘 못 입력한 경우
-//		if(loginInfo == null) {
-			//throw new UsernameNotFoundException("로그인정보가 일치하지 않습니다");
-//		}
-		
-		
 		UserDetails userDetails = User.withUsername(loginInfo.getTeacherId())
 									.password(loginInfo.getTeacherPw())
 									.roles(loginInfo.getTeacherRole())
 									.build();
-		
 		
 		if(loginInfo != null){
 			HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();

@@ -92,8 +92,6 @@ function findLoginIdAjax(){
 //비밀번호 찾기에서 연락처로 문자전송을 눌렀을 때 
 
 
-//$('#sendPhoneNumber').click(function(){
-
 $(document).on("click", "#sendPhoneNumber", function() {
 	
 	//부트스트랩 유효성 검사

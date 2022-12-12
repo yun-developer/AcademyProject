@@ -4,7 +4,7 @@ const role = document.querySelector('#alertButton').value;
 
 ///////////////////////////////////////////////////////////
 
-
+//페이지 이동 후 바로 버튼 실행
 document.getElementById("alertButton").click();
 
 function loginResult(){

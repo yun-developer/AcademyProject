@@ -38,27 +38,20 @@ public class TeacherVO {
 	private String lessonsCode;
 	private String teacherRole;
 	
-	private int check; 
-	
-	//이메일 
 	@NotBlank(message = "* 이메일은 필수 입력입니다.")
 	private String teacherEmail;
 	
-	
-	//젠더
 	private String teacherGender;
-	
-	
 	private String teacherBirthday;
+	
+	
+	//DB 컬럼 외 변수들
 	
 	//회원가입 여부
 	private String isNew;
-	
-	
-  
+	private int check; 
 	
 	private SubjectVO subjectVO;
 	private ProfileImgVO profileImgVO;
-	
 	
 }
