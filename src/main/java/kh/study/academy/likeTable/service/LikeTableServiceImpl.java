@@ -9,6 +9,7 @@ import kh.study.academy.likeTable.vo.LikeTableVO;
 
 @Service("likeTableService")
 public class LikeTableServiceImpl implements LikeTableService{
+	
 	@Autowired
 	SqlSessionTemplate sqlSession;
 

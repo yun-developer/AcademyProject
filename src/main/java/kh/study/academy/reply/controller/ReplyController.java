@@ -20,10 +20,10 @@ public class ReplyController {
 	@Resource(name = "replyService")
 	private ReplyService replyService;
 	
-	
 	//공지사항 댓글 작성
 	@RequestMapping("/writeNoticeReply")
 	public String writeNoticeReply(ReplyVO replyVO, Authentication authentication, int boardNum, RedirectAttributes redirect) {
+	
 		User user = (User)authentication.getPrincipal();
 		replyVO.setTeacherId(user.getUsername());
 		
@@ -39,15 +39,18 @@ public class ReplyController {
 	//공지사항 댓글 삭제
 	@GetMapping("/noticeDelete")
 	public String replyNoticeDelete(String replyNum, int boardNum, RedirectAttributes redirect) {
+		
 		replyService.deleteReply(replyNum);
 		
 		redirect.addAttribute("boardNum", boardNum);
 		return "redirect:/board/noticeDetail";
 	}
 	
+	
 	//자유게시판 댓글 작성
 	@RequestMapping("/writeFreeReply")
 	public String writeFreeReply(ReplyVO replyVO, Authentication authentication, int boardNum, RedirectAttributes redirect) {
+	
 		User user = (User)authentication.getPrincipal();
 		replyVO.setTeacherId(user.getUsername());
 		replyVO.setBoardNum(boardNum);
@@ -58,20 +61,18 @@ public class ReplyController {
 	}
 	
 
-
 	//자유게시판 댓글 삭제
 	@GetMapping("/freeDelete")
 	public String replyFreeDelete(String replyNum, ReplyVO replyVO, Authentication authentication, int boardNum, RedirectAttributes redirect) {
+		
 		User user = (User)authentication.getPrincipal();
 		replyVO.setTeacherId(user.getUsername());
-		
 		
 		replyService.deleteReply(replyNum);
 
 		redirect.addAttribute("boardNum", boardNum);
 		return "redirect:/board/freeDetail";
 	}
-	
 	
 	
 	// 공지사항 댓글 수정
@@ -83,7 +84,6 @@ public class ReplyController {
 		return "redirect:/board/noticeDetail?boardNum="+replyVO.getBoardNum();
 	}
 	
-
 	
 	// 자유게시판 댓글 수정
 	@PostMapping("/updateReply")

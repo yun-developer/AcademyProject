@@ -9,6 +9,5 @@ public interface LikeTableService {
 	
 	void insertLike(LikeTableVO likeTableVO);
 	void deleteLike(LikeTableVO likeTableVO);
-	
 	int likeCheck(LikeTableVO likeTableVO);
 }

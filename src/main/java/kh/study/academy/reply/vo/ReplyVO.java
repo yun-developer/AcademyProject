@@ -1,12 +1,18 @@
 package kh.study.academy.reply.vo;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
-@Data
+@Getter
+@Setter
+@ToString
 public class ReplyVO {
+	
 	private String replyNum;
 	private int boardNum;
 	private String teacherId;
 	private String replyContent;
 	private String replyCreateDate;
+
 }

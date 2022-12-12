@@ -65,13 +65,11 @@ public class LessonController {
 	public String mainPage( Model model,String isNew) {
 		model.addAttribute("noticeList", boardService.selectNoticeMain());
 		model.addAttribute("freeList", boardService.selectFreeMain());
-		System.out.println("mainPage컨트롤러 실행");
-		
 		model.addAttribute("isNew", null);
+		
 		if(isNew != null) {
 			model.addAttribute("isNew", isNew);
 		}
-		
 		
 		return "content/lesson/lesson_main";
 	}
@@ -112,25 +110,24 @@ public class LessonController {
 
 	
 	
-	
 	//주별 학급목록
 	@GetMapping("/listByWeek")
 	public String listByWeek(Model model) {
 		
-		
 		return "content/lesson/lessonlist_byweek";
+		
 	}
 	
 	// 학급목록 페이지 달력을 그릴 데이터를 조회하는 메소드
 	@ResponseBody
 	@PostMapping("/lessonListAjax")
 	public List<Map<String, String>>lessonListAjax(Model model) {
+		
 		//DB학급 목록 불러오기
 		List<LessonInfoVO> lessonList = lessonService.selectLessonInfoList(null);
 		
 		//Ajax로 보내줄 리스트 데이터
 		List<Map<String, String>> lessonListForCalender = new ArrayList<>();
-		
 		
 		for (int i=0; i <lessonList.size(); i++) {
 			
@@ -146,12 +143,11 @@ public class LessonController {
 			lesson.put("id", lessonList.get(i).getLessonInfoCode());
 				
 				if(lessonList.get(i).getNowStudentCnt()==0) {
-					
 					lesson.put("color", "#B2B2B2");
 				}
 				else {
-			
 					lesson.put("color", "#6E85B7");
+					
 					if(i>0) {
 						if(!lessonList.get(i).getSubjectVO().getSubjectName().equals(lessonList.get(0).getSubjectVO().getSubjectName())) {
 							lesson.put("color", "#DBA39A");
@@ -159,15 +155,13 @@ public class LessonController {
 					}
 				}
 				
-				
-				
 			//각  map 객체를 Ajax로 보내줄 리스트 데이터에 담기
 			lessonListForCalender.add(lesson);
 		}
 		
-		
 		return lessonListForCalender;
 	}
+	
 	//학급별 출석체크
 	@ResponseBody
 	@PostMapping("/updateIsAttandenceAjax")
@@ -178,9 +172,8 @@ public class LessonController {
 		AttendVO attendVO = new AttendVO();
 		attendVO.setLessonDate(lessonDate);
 		attendVO.setLessonInfoCode(lessonInfoCode);
+		
 		for(int i = 0; i<stuCodeList.size(); i++) {
-			System.out.println("학생코드" + stuCodeList.get(i) +"출결상태"+ isAttendList.get(i));
-			
 			attendVO.setStudentCode(stuCodeList.get(i));
 			attendVO.setIsAttandence(isAttendList.get(i));
 			attendService.updateIsAttandence(attendVO);
@@ -207,9 +200,7 @@ public class LessonController {
 	
 	
 
-/////<학급 편성 등록 관련>//////////////////////////////////////////////////////////// 
-
-	
+/* 학급 편성 등록 관련============================================================================================================= */
 	
 		// 학급편성 등록 페이지 
 		@RequestMapping("/regLessonInfoPage")
@@ -219,14 +210,13 @@ public class LessonController {
 		int searchYear = 0;
 
 		
-		 // if는 null부터 써준다. input이 null이거나 ""일대 0 
+		 // if는 null부터 써준다. input이 null이거나 ""일때 0 
 		if(searchForYear == null || searchForYear == "") {
 			searchYear = 0;
 		}
 		else { // null도아니고 ""도 아닐 때 실행
 			searchYear=Integer.parseInt(searchForYear);
 		}
-		
 		
 		paramMap.put("searchYear", searchYear);
 		
@@ -248,7 +238,6 @@ public class LessonController {
 		
 		// 학급편성 리스트 조회
 		model.addAttribute("lessonInfoList",lessonService.searchLessonInfo(paramMap));
-		
 		
 		
 		if(lessonDayCode == null) {
@@ -296,9 +285,7 @@ public class LessonController {
 		@PostMapping("/doubleCheckLessonAjax")
 		public LessonInfoVO doubleCheckLessonAjax(LessonInfoVO lessonInfoVO) {
 			
-			
 			LessonInfoVO infoVO = lessonService.doubleCheckLesson(lessonInfoVO);
-			
 			
 			return infoVO;
 		}
@@ -306,23 +293,20 @@ public class LessonController {
 		
 		
 		// 학급 등록 버튼 모달창에서 데이터들을 저장
-		
 		@PostMapping("/saveLessonInfo")
-		
 		public String saveLessonInfo(LessonInfoVO lessonInfoVO, Model model, String selectYear) {
 		
-		int regYear = Integer.parseInt(selectYear);
-		lessonInfoVO.setYear(regYear);
-		
-		// 교실 사용 중복 여부 확인 조회
-		lessonService.doubleCheckLesson(lessonInfoVO);
-		// 학급 편성 등록 
-		lessonService.regLessonInfo(lessonInfoVO);
-		
-		return "redirect:/lesson/regLessonInfoPage";
+			int regYear = Integer.parseInt(selectYear);
+			lessonInfoVO.setYear(regYear);
+			
+			// 교실 사용 중복 여부 확인 조회
+			lessonService.doubleCheckLesson(lessonInfoVO);
+			// 학급 편성 등록 
+			lessonService.regLessonInfo(lessonInfoVO);
+			
+			return "redirect:/lesson/regLessonInfoPage";
 		}
 		
-
 		
 		// 학급 편성한 리스트들 삭제
 		@PostMapping("/deleteLessonInfo")
@@ -337,9 +321,6 @@ public class LessonController {
 			
 			return "redirect:/lesson/regLessonInfoPage";
 		}
-		
-		
-		
 		
 		
 	

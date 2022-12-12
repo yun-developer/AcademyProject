@@ -38,8 +38,6 @@ public class LessonInfoVO {
 	
 	private List<String> lessonInfoCodeList;
 	
-	
-	
 	// association 연결
 	private SubjectVO subjectVO;
 	private StepVO stepVO;
@@ -49,6 +47,5 @@ public class LessonInfoVO {
 	private LessonDayVO lessonDayVO;
 	
 	//collection 연결
-	
 	private List<String> subjectCodeList;
 }
