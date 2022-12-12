@@ -9,10 +9,13 @@
 	<div class="row">
 		<div class="col-12 mt-3">
 			<h5>
-				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter-left" viewBox="0 0 16 16">
-				  <path d="M2 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+					fill="currentColor" class="bi bi-filter-left" viewBox="0 0 16 16">
+				  <path
+						d="M2 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
 				</svg>
-			 과목 등록</h5>
+				과목 등록
+			</h5>
 		</div>
 		<form class="row g-1" th:action="@{/admin/regSubject}" method="post">
 			<div class="col-xs-12 col-lg-11">
@@ -27,15 +30,16 @@
 			</div>
 			<div class="col-12 mt-5">
 				<p class="card-text">
-					<small class="text-muted"> 
-						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+					<small class="text-muted"> <svg
+							xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 							fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
-						  <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+						  <path
+								d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
 						</svg> 총 <span th:text="${#lists.size(subjectList)}" style="color: red"></span>개의
 						과목이 조회되었습니다.
 					</small>
 				</p>
-			</div>	
+			</div>
 		</form>
 		<div class="col-12 mt-3">
 			<table class="table table-striped text-center table-hover ">
@@ -89,7 +93,7 @@
 		</form>
 	</div>
 
-			<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 	<script type="text/javascript" th:src="@{/js/admin/subject.js}"></script>
 
