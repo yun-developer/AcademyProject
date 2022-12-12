@@ -40,11 +40,6 @@ $("#replyLength").keyup(function(e) {
 		
 		if (content.length > 500) {
 			
-			/*Swal.fire({
-			  icon: 'warning',     
-			  title: '최대 500자까지 입력 가능합니다.',    
-			});*/
-			
 			Swal.fire({
 				title: '최대 500자까지 입력 가능합니다.',
 				icon: 'warning',
@@ -97,7 +92,6 @@ function DetailNoticeDelete() {
 
 //공지사항 수정 상세페이지에서 수정완료 버튼 클릭
 function updateNoticeDelete() {
-alert(1111);
 	const deleteForm = document.querySelector('#deleteStuForm');	
 	
 	
@@ -116,7 +110,6 @@ alert(1111);
 		   if (result.isConfirmed) { 
 
 			let boardNum = deleteForm.querySelector('input[type="hidden"]').value
-					
 				    
 			deleteForm.submit();
 			

@@ -3,11 +3,6 @@ function replyNoRegAjax(){
 	const content = document.querySelector('#replyLength')
 
 	if(content.value == ""){
-		/*Swal.fire({
-		  title: '내용을 입력해 주세요!',
-		  icon: 'error',
-		  confirmButtonText: '확인'
-		})*/
 		
 		Swal.fire({
 				title: '내용을 입력해 주세요!',
@@ -21,8 +16,6 @@ function replyNoRegAjax(){
 				reverseButtons: false, // 버튼 순서 거꾸로
 
 			})
-		
-		
 		
 		return;
 	}

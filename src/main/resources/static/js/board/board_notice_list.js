@@ -55,93 +55,87 @@ for(const chk of chks){
 
 //공지사항 리스트에서 삭제 버튼 클릭
 function goDelete() {
-	
-	const deleteForm = document.querySelector('#deleteStuForm');	
-	
+
+	const deleteForm = document.querySelector('#deleteStuForm');
+
 	//체크한 cartCode 다 들고 온다.
-	const checkedChks = document.querySelectorAll('.chk:checked');  
-	
-	if(checkedChks.length == 0) {
-		/*Swal.fire({
-		  title: '삭제할 게시글을 선택하세요!',
-		  icon: 'warning',
-		  confirmButtonText: '확인'
+	const checkedChks = document.querySelectorAll('.chk:checked');
+
+	if (checkedChks.length == 0) {
+
+		Swal.fire({
+			title: '삭제할 게시글을 선택하세요!',
+			icon: 'warning',
+			showCancelButton: false, // cancel버튼 보이기. 기본은 원래 없음
+			confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+			cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
+			confirmButtonText: '확인', // confirm 버튼 텍스트 지정
+			cancelButtonText: '취소', // cancel 버튼 텍스트 지정
+
+			reverseButtons: false, // 버튼 순서 거꾸로
+
 		})
-		*/
-		
-		Swal.fire({
-				title: '삭제할 게시글을 선택하세요!',
-				icon: 'warning',
-				showCancelButton: false, // cancel버튼 보이기. 기본은 원래 없음
-				confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
-				cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
-				confirmButtonText: '확인', // confirm 버튼 텍스트 지정
-				cancelButtonText: '취소', // cancel 버튼 텍스트 지정
 
-				reverseButtons: false, // 버튼 순서 거꾸로
-
-			})
-		
-		return ;
+		return;
 	}
-	
-	else{
+
+	else {
 		Swal.fire({
-		   title: '정말 삭제하시겠습니까?',
-		   icon: 'warning',
-		   
-		   showCancelButton: true, // cancel버튼 보이기. 기본은 원래 없음
-		   confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
-		   cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
-		   confirmButtonText: '확인', // confirm 버튼 텍스트 지정
-		   cancelButtonText: '취소', // cancel 버튼 텍스트 지정
-		   
-		   
-		}).then(result => {
-		   if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
-			
-			Swal.fire({
-				title: '게시글 삭제 완료',
-				text: '해당 게시글이 삭제되었습니다.',
-				icon: 'success',
+			title: '정말 삭제하시겠습니까?',
+			icon: 'warning',
 
-				showCancelButton: false, // cancel버튼 보이기. 기본은 원래 없음
-				confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
-				cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
-				confirmButtonText: '확인', // confirm 버튼 텍스트 지정
-				cancelButtonText: '취소', // cancel 버튼 텍스트 지정
+			showCancelButton: true, // cancel버튼 보이기. 기본은 원래 없음
+			confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+			cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
+			confirmButtonText: '확인', // confirm 버튼 텍스트 지정
+			cancelButtonText: '취소', // cancel 버튼 텍스트 지정
 
-				reverseButtons: true, // 버튼 순서 거꾸로
-				
+
 		}).then(result => {
-			
-			if (result.isConfirmed) {
-				
-			let boardNums = '';
-			for(const checkedChk of checkedChks) {				
-				boardNums = boardNums + checkedChk.value + ',';   
+			if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
+
+				Swal.fire({
+					title: '게시글 삭제 완료',
+					text: '해당 게시글이 삭제되었습니다.',
+					icon: 'success',
+
+					showCancelButton: false, // cancel버튼 보이기. 기본은 원래 없음
+					confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+					cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
+					confirmButtonText: '확인', // confirm 버튼 텍스트 지정
+					cancelButtonText: '취소', // cancel 버튼 텍스트 지정
+
+					reverseButtons: true, // 버튼 순서 거꾸로
+
+				}).then(result => {
+
+					if (result.isConfirmed) {
+
+						let boardNums = '';
+						for (const checkedChk of checkedChks) {
+							boardNums = boardNums + checkedChk.value + ',';
+						}
+
+						deleteForm.querySelector('input[type="hidden"]').value = boardNums;
+
+						deleteForm.submit();
+
+					}
+				});
 			}
-			
-			deleteForm.querySelector('input[type="hidden"]').value = boardNums;  
-			
-			deleteForm.submit();
-			
-}
-			});
-		}
 		});
 	}
 }
-	
-	
+
+
 
 
 
 
 //페이징 라이브러리
 var box = paginator({
-    table: document.getElementById("table_box_bootstrap").getElementsByTagName("table")[0],
-    box_mode: "list",
+	table: document.getElementById("table_box_bootstrap").getElementsByTagName("table")[0],
+	box_mode: "list",
 });
 box.className = "box";
 document.getElementById("table_box_bootstrap").appendChild(box);

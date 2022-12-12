@@ -41,13 +41,6 @@ $("#replyLength").keyup(function(e) {
 		
 		if (content.length > 500) {
 			
-			/*Swal.fire({
-			  icon: 'warning',  
-			  title: '최대 500자까지 입력 가능합니다.',    
-			  confirmButtonText: '확인'
-			});*/
-			
-			
 			Swal.fire({
 				title: '최대 500자까지 입력 가능합니다.',
 				icon: 'warning',
@@ -60,8 +53,6 @@ $("#replyLength").keyup(function(e) {
 				reverseButtons: false, // 버튼 순서 거꾸로
 
 			})
-			
-			
 			
 			$(this).val(content.substring(0, 500));
 			$('#replyLengthCheck').text("(500 / 최대 500자)");

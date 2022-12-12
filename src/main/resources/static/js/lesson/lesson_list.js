@@ -22,20 +22,14 @@ function getModal(lessonCode, lessonDate){
 	lessonCodeInput.value = lessonCode;
 	
 	let date1 = new Date(lessonDate); 
-	//alert(date1);
-	//alert('년도' + date1.getFullYear())
-	//alert('월 ' + date1.getMonth())
-	
 	
 	date1.getMonth() //0~11의 값을 불러옴.
 	
 	let month = date1.getMonth();
 	month = parseInt(month) + 1;
 	
-	
 	let eachDate = date1.getFullYear() +'-'+ month +'-'+ date1.getDate();
-	//alert(eachDate);
-	//ajax start
+
 	$.ajax({
 		url: '/lesson/stuListByLessonAjax', //요청경로
 		type: 'post',
@@ -45,7 +39,6 @@ function getModal(lessonCode, lessonDate){
 			
 			if(result ==''){
 				
-				//Swal.fire('수강생 없음', '현재 등록된 수강생이 없는 학급입니다.', 'warning');
 				Swal.fire({
 				  title: '수강생 없음',
 				  text: '현재 등록된 수강생이 없는 학급입니다.',
@@ -57,36 +50,40 @@ function getModal(lessonCode, lessonDate){
 				return;
 			}
 			else{
+				
 				for(const stu of result){
 					
 						str1 += `<tr>
-						      <td scope="row"><a href="/stu/detail?studentCode=${stu.studentCode}">${stu.studentName}</a></td>
-						      
-						      <td>
-						      	<div class="form-check form-check-inline">`;
+						     	 	<td scope="row"><a href="/stu/detail?studentCode=${stu.studentCode}">${stu.studentName}</a></td>
+						     		 <td>
+						      			<div class="form-check form-check-inline">`;
 						      	
-					if(stu.isAttandence =='Y'){
-						 str1 += ` <input class="form-check-input chk" name='${stu.studentCode}' type="radio" checked id="${stu.studentCode}" value="Y">`;
-					}
-					else if (stu.isAttandence =='N' || stu.isAttandence ==null){
-						 str1 += ` <input class="form-check-input chk" name='${stu.studentCode}' type="radio" id="${stu.studentCode}" value="Y">`;
-					}
-						 
-						 str1 += ` <label class="form-check-label" for="inlineCheckbox1">출석</label>
-								</div>
-								<div class="form-check form-check-inline">`;
-								
-					if(stu.isAttandence =='N'){			
-						 str1 += ` <input class="form-check-input chkNoAttend" name='${stu.studentCode}' checked type="radio" id="${stu.studentCode}" value="N">`;
-					}
-					else if (stu.isAttandence =='Y' || stu.isAttandence ==null){
-						 str1 += ` <input class="form-check-input chkNoAttend" name='${stu.studentCode}'type="radio" id="${stu.studentCode}" value="N">`;
-					}
+								if(stu.isAttandence =='Y'){
+									
+									 str1 += ` <input class="form-check-input chk" name='${stu.studentCode}' type="radio" checked id="${stu.studentCode}" value="Y">`;
+								}
+								else if (stu.isAttandence =='N' || stu.isAttandence ==null){
+									
+									 str1 += ` <input class="form-check-input chk" name='${stu.studentCode}' type="radio" id="${stu.studentCode}" value="Y">`;
+								}
+									 
+									 str1 += ` <label class="form-check-label" for="inlineCheckbox1">출석</label>
+											</div>
+											<div class="form-check form-check-inline">`;
+											
+								if(stu.isAttandence =='N'){		
+										
+									 str1 += ` <input class="form-check-input chkNoAttend" name='${stu.studentCode}' checked type="radio" id="${stu.studentCode}" value="N">`;
+								}
+								else if (stu.isAttandence =='Y' || stu.isAttandence ==null){
+									
+									 str1 += ` <input class="form-check-input chkNoAttend" name='${stu.studentCode}'type="radio" id="${stu.studentCode}" value="N">`;
+								}
 						 
 						 str1 += ` <label class="form-check-label" for="inlineCheckbox2">결석</label>
-								</div>
-						      </td>
-						    </tr>`;
+										</div>
+							     	 </td>
+							   	 </tr>`;
 				
 				
 				}
@@ -115,9 +112,7 @@ function getModal(lessonCode, lessonDate){
 	//ajax end
 	
 	
-	
 }
-
 
 
 //오자마자 실행되는 함수
@@ -200,8 +195,7 @@ function drawCalendar(result){
 
             calendar.render();
 	
-		/*document.addEventListener('DOMContentLoaded', function() {
-        });*/
+	
 	
 }
 

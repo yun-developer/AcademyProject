@@ -5,8 +5,6 @@ const updateAmountBtn = document.querySelector('#updateAmountBtn');
 function selectUseCheckAjax(){
 	
 	const lessonDayCode = document.querySelector('#lessonDayCode option:checked').value;
-	//  lessonDayCode(변수) = id가 lessonDayCode(selectBox id)인 option:checked -> Css문법처럼 그냥 써준다.
-	
 	
 	//ajax start
 	$.ajax({
@@ -94,10 +92,6 @@ function goRegLessonInfoAjax(){
 
 
 
-
-
-
-
 //학생등록 버튼 클릭 시 보여지는 모달에서
 //수강료를 벼경하면 화폐 단위로 바꾸어지는 함수
 function setformatCurrency(){
@@ -120,13 +114,7 @@ function setformatCurrency(){
 	
 	document.querySelector('#money').value = money;
 	
-	
-	
-	
-	
 }
-
-
 
 
 ////////////////함수 1///////////////////
@@ -260,11 +248,6 @@ for(const chk of chks){
 }
 
 
-
-
-//const selectBoxs = document.querySelectorAll('.selectBox');
-
-
 //모달창에서 저장 버튼을 클릭하면 실행되는 함수
 //수강료를 숫자 형태로 바꾼 후 submit 시킴.
 function regLessonInfoAjax(){
@@ -314,7 +297,6 @@ function regLessonInfoAjax(){
 		});	
 
 	
-	
 	//---수강료를 숫자로 바꾼다.---
 	//천단위 구분기호를 적용할 인풋태그의 값(value)을 가져온다.
 	let money = document.querySelector('#money').value;//￦1,000
@@ -326,7 +308,6 @@ function regLessonInfoAjax(){
 	let maxStudent = document.querySelector('#maxStudent');
 	
 
-	
 	
 }
 

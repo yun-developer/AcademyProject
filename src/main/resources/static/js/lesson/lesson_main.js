@@ -26,8 +26,6 @@ function drawChart(){
 //////////////////////////변수///////////////////////////////////////////////
 /*회원가입 진행여부*/
 const isNew = document.querySelector('#isNew');
-//const modal = new bootstrap.Modal('#idDouble_Yes');
-
 
 
 
@@ -35,7 +33,6 @@ if(isNew.value=='new'){
 	isNew.value='';
 	Swal.fire({
          title:'회원가입 완료',
-         /*text: 'Potato Academy의 회원이 되신것을 환영합니다. \n'+' 로그인 화면으로 이동하시겠습니까?',*/
          html: 'Potato Academy의 회원이 되신것을 환영합니다. <br> 로그인 화면으로 이동하시겠습니까?',
          icon: 'success',
          
@@ -58,11 +55,6 @@ if(isNew.value=='new'){
       
 	//modal.show();
 }
-
-
-
-
-
 
 
 
@@ -91,7 +83,6 @@ function drawChart1(data){
 	}
 
 	
-	
 	 var options = {
 		 series:chart_data_arr,
 		 chart: {
@@ -114,8 +105,6 @@ function drawChart1(data){
 
         var chart1 = new ApexCharts(document.querySelector("#chart1"), options);
         chart1.render();
-	
-
 
 
 }
@@ -263,7 +252,6 @@ function drawChart2(data) {
 
 
 }
-
 
 
 //분기별 과목2 테스트 평균 차트를 그림  
