@@ -287,9 +287,7 @@ function regLessonInfoAjax(){
 				return ;
 			}	
 			else {
-				
-				
-				document.querySelector('#regLessonForm').submit();
+
 			}
 		
 				}
@@ -329,7 +327,7 @@ function regLessonInfoAjax(){
      	 form.classList.add('was-validated')
       }
 	 else {
-		regLessonInfo()
+		document.querySelector('#regLessonForm').submit();
 	}
 		
     }, false)
