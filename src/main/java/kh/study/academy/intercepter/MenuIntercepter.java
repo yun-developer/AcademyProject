@@ -15,11 +15,8 @@ public class MenuIntercepter implements HandlerInterceptor {
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-		//???
-		//처음에는 아무것도 전해주고 싶지 않다면?
-		//값을 받은 이후에는 그 값을 전달
+
 		String menu = request.getParameter("menu");
-		
 		
 		if(menu == null) {
 			
@@ -31,7 +28,6 @@ public class MenuIntercepter implements HandlerInterceptor {
 		}
 		
 	}
-	
 	
 	
 }

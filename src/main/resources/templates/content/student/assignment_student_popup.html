@@ -17,148 +17,142 @@
 
 	<div class="row mx-3 my-4">
 		<div class="col">
-			<div class="card mb-3 mx-auto" >
-			  <div class="row g-0">
-			    
-			    <div class="col-md-12">
-			      <div class="card-body">
-			        <h3 class="card-title">학생 정보</h3>
-			        <!-- <p class="card-text"></p> -->
-			        <div class="card-text">
-			        
-						<div class="row mb-2 mt-3 align-items-center " >
-				    		<div class="col-2 ms-3 bg-secondary p-2 bg-opacity-10">
-					    		이름
-				    		</div>
-				    		<div class="col" th:text="${student.studentName}"></div>
-				    		<div class="col-2 ms-3 bg-secondary p-2 bg-opacity-10">
-					    		학년
-				    		</div>
-				    		<div class="col" th:text="${student.studentYear} + 학년"></div>
-				    		<div class="col-2 ms-3 bg-secondary p-2 bg-opacity-10">
-					    		성별
-				    		</div>
-				    		<div class="col" th:text=${student.studentGender}></div>
-		    			</div>
-		    			
-						<div class="row mb-2 align-items-center" >
-				    		<div class="col-2 ms-3 bg-secondary py-2  bg-opacity-10">
-					    		연락처
-				    		</div>
-				    		<div class="col-9" th:text="${student.studentTell}"></div>
-				    		
-				    		
-		    			</div>
-						<div class="row mb-2 align-items-center" >
-				    		
-				    		<div class="col-2 ms-3  bg-secondary py-2 bg-opacity-10">
-					    		주소
-				    		</div>
-				    		<div class="col-9" th:text="${student.addr} "></div>
-		    			</div>
-			        </div>
-			      </div>
-			    </div>
-			  </div>
+			<div class="card mb-3 mx-auto">
+				<div class="row g-0">
+
+					<div class="col-md-12">
+						<div class="card-body">
+							<h3 class="card-title">학생 정보</h3>
+							<!-- <p class="card-text"></p> -->
+							<div class="card-text">
+
+								<div class="row mb-2 mt-3 align-items-center ">
+									<div class="col-2 ms-3 bg-secondary p-2 bg-opacity-10">
+										이름</div>
+									<div class="col" th:text="${student.studentName}"></div>
+									<div class="col-2 ms-3 bg-secondary p-2 bg-opacity-10">
+										학년</div>
+									<div class="col" th:text="${student.studentYear} + 학년"></div>
+									<div class="col-2 ms-3 bg-secondary p-2 bg-opacity-10">
+										성별</div>
+									<div class="col" th:text=${student.studentGender}></div>
+								</div>
+
+								<div class="row mb-2 align-items-center">
+									<div class="col-2 ms-3 bg-secondary py-2  bg-opacity-10">
+										연락처</div>
+									<div class="col-9" th:text="${student.studentTell}"></div>
+
+
+								</div>
+								<div class="row mb-2 align-items-center">
+
+									<div class="col-2 ms-3  bg-secondary py-2 bg-opacity-10">
+										주소</div>
+									<div class="col-9" th:text="${student.addr} "></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-			
-			
-			<div class="card mb-5 mx-auto" >
-			  <div class="card-body">
-			    <h3 class="card-title">학급정보</h3>
-			    <p class="card-text "><small class="text-muted">학생을 등록할 학급을 선택하세요.</small></p>
-			    <div class="card-text">
-			    	<h5>학급 정보</h5>
-			    	
-			    	<div class="row mb-2 mt-3 align-items-center " >
-			    		<div class="col-2 ms-3 bg-secondary p-2 bg-opacity-10">
-				    		과목
-			    		</div>
-			    		<div class="col" >
-			    			
-			    			<select class="form-select selectChange"   aria-label="Default select example" id="searchSub">
-								<option value="">선택</option>
-								 <th:block th:each ="sub:${subjectList}" >
-							      <option th:value="${sub.subjectCode}" th:text="${sub.subjectName}" >
-							      </option>
-							    </th:block>	
-							</select>
-			    		
-			    		
-			    		</div>
-			    		<div class="col-2 ms-3 bg-secondary p-2 bg-opacity-10">
-				    		단계
-			    		</div>
-			    		<div class="col" >
-			    		
-			    			<select class="form-select selectChange"   aria-label="Default select example" id="searchStep">
-								<option value="">선택</option>
-								 <th:block th:each ="step:${step}" >
-							      <option th:value="${step.stepCode}" th:text="${step.stepName}" >
-							      </option>
-							    </th:block>	
-							</select>
-			    		
-			    		</div>
-			    		<div class="col-2 ms-3 bg-secondary p-2 bg-opacity-10">
-				    		학년
-			    		</div>
-			    		<div class="col" >
-			    			<select class="form-select selectChange"   aria-label="Default select example" id="searchYear">
+
+
+			<div class="card mb-5 mx-auto">
+				<div class="card-body">
+					<h3 class="card-title">학급정보</h3>
+					<p class="card-text ">
+						<small class="text-muted">학생을 등록할 학급을 선택하세요.</small>
+					</p>
+					<div class="card-text">
+						<h5>학급 정보</h5>
+
+						<div class="row mb-2 mt-3 align-items-center ">
+							<div class="col-2 ms-3 bg-secondary p-2 bg-opacity-10">과목</div>
+							<div class="col">
+
+								<select class="form-select selectChange"
+									aria-label="Default select example" id="searchSub">
+									<option value="">선택</option>
+									<th:block th:each="sub:${subjectList}">
+										<option th:value="${sub.subjectCode}"
+											th:text="${sub.subjectName}"></option>
+									</th:block>
+								</select>
+
+
+							</div>
+							<div class="col-2 ms-3 bg-secondary p-2 bg-opacity-10">단계</div>
+							<div class="col">
+
+								<select class="form-select selectChange"
+									aria-label="Default select example" id="searchStep">
+									<option value="">선택</option>
+									<th:block th:each="step:${step}">
+										<option th:value="${step.stepCode}" th:text="${step.stepName}">
+										</option>
+									</th:block>
+								</select>
+
+							</div>
+							<div class="col-2 ms-3 bg-secondary p-2 bg-opacity-10">학년</div>
+							<div class="col">
+								<select class="form-select selectChange"
+									aria-label="Default select example" id="searchYear">
 									<option value="">선택</option>
 									<option value="1">고등1</option>
 									<option value="2">고등2</option>
 									<option value="3">고등3</option>
-							</select>
-			    		
-			    		</div>
-	    			</div>
-			    	<div class="row mb-2 mt-3 align-items-center " >
-			    		<div class="col-2 ms-3 bg-secondary p-2 bg-opacity-10">
-				    		편성학급
-			    		</div>
-			    		<div class="col" id="lessonList">
-			    			<select class="form-select"   aria-label="Default select example" id="selectLesson" name="lessonInfoCode">
-								<option value="">선택</option>
-								 <th:block th:each ="lesson:${lessonList}" >
-							      <option th:value="${lesson.lessonInfoCode}" 
-							      			th:text="${lesson.subjectVO.subjectName + '-' +lesson.stepVO.stepName +'-'+lesson.year 
-							      					+'학년 [' + lesson.teacherVO.teacherName  +' '+ lesson.lessonDayVO.lessonDayName +' '+ lesson.lessonTime + ':00'} + ']'" >
-							      </option>
-							    </th:block>	
-							</select>
-ㄴ			    		</div>
-	    			</div>
-	    			<div class="row mb-2 mt-3 align-items-center " >
-			    		<div class="col-4 ms-3 bg-secondary p-2 bg-opacity-10">
-				    		현재정원 / 최대정원
-			    		</div>
-			    		<div class="col-2" id="capacity"></div>
-			    		
-			    		<div class="col-2 bg-secondary p-2 bg-opacity-10">
-				    		수강료
-			    		</div>
-			    		<div class="col" id="money"> </div>
-	    			</div>
-			    	
-		    	</div>
-			    
-			 </div>
-		  </div>
-    			<div class="d-grid gap-2 col-6 mx-auto">
-    				<input type="hidden" name="studentCode" id="inputStuCode" th:value="${student.studentCode}">
-    				<input type="hidden" name="lessonInfoCode" id="inputLessonCode" value="">
-				  <button class="btn btn-primary" type="button" id="assingnBtn" th:onclick="assingnStudent();"> 저 장 </button>
+								</select>
+
+							</div>
+						</div>
+						<div class="row mb-2 mt-3 align-items-center ">
+							<div class="col-2 ms-3 bg-secondary p-2 bg-opacity-10">
+								편성학급</div>
+							<div class="col" id="lessonList">
+								<select class="form-select" aria-label="Default select example"
+									id="selectLesson" name="lessonInfoCode">
+									<option value="">선택</option>
+									<th:block th:each="lesson:${lessonList}">
+										<option th:value="${lesson.lessonInfoCode}"
+											th:text="${lesson.subjectVO.subjectName + '-' +lesson.stepVO.stepName +'-'+lesson.year 
+							      					+'학년 [' + lesson.teacherVO.teacherName  +' '+ lesson.lessonDayVO.lessonDayName +' '+ lesson.lessonTime + ':00'} + ']'">
+										</option>
+									</th:block>
+								</select> ㄴ
+							</div>
+						</div>
+						<div class="row mb-2 mt-3 align-items-center ">
+							<div class="col-4 ms-3 bg-secondary p-2 bg-opacity-10">
+								현재정원 / 최대정원</div>
+							<div class="col-2" id="capacity"></div>
+
+							<div class="col-2 bg-secondary p-2 bg-opacity-10">수강료</div>
+							<div class="col" id="money"></div>
+						</div>
+
+					</div>
+
 				</div>
+			</div>
+			<div class="d-grid gap-2 col-6 mx-auto">
+				<input type="hidden" name="studentCode" id="inputStuCode"
+					th:value="${student.studentCode}"> <input type="hidden"
+					name="lessonInfoCode" id="inputLessonCode" value="">
+				<button class="btn btn-primary" type="button" id="assingnBtn"
+					th:onclick="assingnStudent();">저 장</button>
+			</div>
 		</div>
 	</div>
 
 
 
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script> 
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 	<!-- jquery 문법 로딩 -->
 	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
-	<script type="text/javascript" th:src="@{/js/student/assign_stu_pop.js}"></script>
+	<script type="text/javascript"
+		th:src="@{/js/student/assign_stu_pop.js}"></script>
 	<!-- <script type="text/javascript" th:src="@{/js/student/popup_test.js}"></script> -->
 
 

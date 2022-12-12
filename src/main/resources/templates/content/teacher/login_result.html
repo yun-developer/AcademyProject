@@ -8,12 +8,13 @@
 
 <div layout:fragment="content">
 
-		<div style="display: none;">
-			<input type="button" id="alertButton" th:value="${#authentication.authorities}" th:onclick="loginResult();">
-		</div>
-	
+	<div style="display: none;">
+		<input type="button" id="alertButton"
+			th:value="${#authentication.authorities}" th:onclick="loginResult();">
+	</div>
 
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script> 
+
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 	<!-- jquery 문법 로딩 -->
 	<!--순서 잘 맞춰서 적어야 함  -->
 	<script src="https://code.jquery.com/jquery-latest.min.js"></script>

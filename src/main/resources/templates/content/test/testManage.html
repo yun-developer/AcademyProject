@@ -3,7 +3,7 @@
 	xmlns:layout="http://www.ultraq.net.nz.thymeleaf/layout"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 	layout:decorate="~{layout/base_layout}">
-	
+
 <th:block layout:fragment="css">
 	<link rel="stylesheet" th:href="@{}">
 </th:block>
@@ -13,32 +13,36 @@
 <div layout:fragment="content">
 	<div class="info mt-3 mb-3">
 		<h5>
-			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard2-data" viewBox="0 0 16 16">
-			  <path d="M9.5 0a.5.5 0 0 1 .5.5.5.5 0 0 0 .5.5.5.5 0 0 1 .5.5V2a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 2v-.5a.5.5 0 0 1 .5-.5.5.5 0 0 0 .5-.5.5.5 0 0 1 .5-.5h3Z"/>
-			  <path d="M3 2.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 0 0-1h-.5A1.5 1.5 0 0 0 2 2.5v12A1.5 1.5 0 0 0 3.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 12.5 1H12a.5.5 0 0 0 0 1h.5a.5.5 0 0 1 .5.5v12a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-12Z"/>
-			  <path d="M10 7a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V7Zm-6 4a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1Zm4-3a1 1 0 0 0-1 1v3a1 1 0 1 0 2 0V9a1 1 0 0 0-1-1Z"/>
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+				fill="currentColor" class="bi bi-clipboard2-data"
+				viewBox="0 0 16 16">
+			  <path
+					d="M9.5 0a.5.5 0 0 1 .5.5.5.5 0 0 0 .5.5.5.5 0 0 1 .5.5V2a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 2v-.5a.5.5 0 0 1 .5-.5.5.5 0 0 0 .5-.5.5.5 0 0 1 .5-.5h3Z" />
+			  <path
+					d="M3 2.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 0 0-1h-.5A1.5 1.5 0 0 0 2 2.5v12A1.5 1.5 0 0 0 3.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 12.5 1H12a.5.5 0 0 0 0 1h.5a.5.5 0 0 1 .5.5v12a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-12Z" />
+			  <path
+					d="M10 7a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V7Zm-6 4a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1Zm4-3a1 1 0 0 0-1 1v3a1 1 0 1 0 2 0V9a1 1 0 0 0-1-1Z" />
 			</svg>
 			평가 관리
-	 	</h5>
-	 </div>
-	
+		</h5>
+	</div>
+
 	<!--조회 div 시작  -->
 	<form th:action="@{/test/testManage}" method="post">
 		<section>
-			<div class="info mt-3">
-			</div>
+			<div class="info mt-3"></div>
 			<div class="row search-detail-form">
 				<div class="col-xs-12 col-lg-4">
 					<div class="input-group mb-2">
-						<span class="input-group-addon col-3">학생이름</span> 
-						<input type="text" class="form-control" id="" name="studentName"
+						<span class="input-group-addon col-3">학생이름</span> <input
+							type="text" class="form-control" id="" name="studentName"
 							autocomplete="off" th:value="${paramMap['studentName']}">
 					</div>
 				</div>
 				<div class="col-xs-12 col-lg-4">
 					<div class="input-group mb-2">
-						<span class="input-group-addon col-3">교사이름</span> 
-						<input type="text" class="form-control" id="" name="teacherName"
+						<span class="input-group-addon col-3">교사이름</span> <input
+							type="text" class="form-control" id="" name="teacherName"
 							autocomplete="off" th:value="${paramMap['teacherName']}">
 					</div>
 				</div>
@@ -66,21 +70,24 @@
 	<!--학생 리스트 div 시작  -->
 	<div class="row mt-5" id="table_box_bootstrap">
 		<p class="card-text">
-			<small class="text-muted">
-				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-						fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
-				  <path	d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z" />
-				</svg> 학생이름, 교사이름으로 평가등록 및 수정 삭제할 학생을 검색할 수 있습니다. <br> 
-				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-						fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
-				  <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
-				</svg> 총 <span th:text="${#lists.size(search)}" style="color: red"></span>명이 조회되었습니다. 
+			<small class="text-muted"> <svg
+					xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+					fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
+				  <path
+						d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z" />
+				</svg> 학생이름, 교사이름으로 평가등록 및 수정 삭제할 학생을 검색할 수 있습니다. <br> <svg
+					xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+					fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+				  <path
+						d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+				</svg> 총 <span th:text="${#lists.size(search)}" style="color: red"></span>명이
+				조회되었습니다.
 			</small>
 		</p>
-	
-	
+
+
 		<table class="table table-hover text-center align-middle ">
-		
+
 			<colgroup>
 				<col width="5%">
 				<col width="*">
@@ -103,32 +110,37 @@
 				</tr>
 			</thead>
 			<tbody class="table-group-divider">
-				 <th:block th:if="${#lists.size(search)==0}">
+				<th:block th:if="${#lists.size(search)==0}">
 					<tr>
 						<td colspan="6">학생없음</td>
 					</tr>
 				</th:block>
 				<th:block th:unless="${#lists.size(search)==0}">
 					<tr th:each="student:${search}">
-						
-					
+
+
 						<td><input type="checkbox" class="chk"></td>
-						<td class="stuName" th:id="${student.studentCode}" th:text="${student.studentName}" th:value="${student.studentCode}"></td>
+						<td class="stuName" th:id="${student.studentCode}"
+							th:text="${student.studentName}"
+							th:value="${student.studentCode}"></td>
 						<!-- <td th:text="${student.studentLessonInfoList[0].lessonInfoVO.teacherVO.teacherName}"></td> -->
-						<td>
-							<th:block th:each="lesson:${student.studentLessonInfoList}">
+						<td><th:block
+								th:each="lesson:${student.studentLessonInfoList}">
 							[ [[${lesson.lessonInfoVO.teacherVO.teacherName}]] ]
-							</th:block>
-						</td>
-						<td class="stuLesson">
-						<th:block th:each="lesson:${student.studentLessonInfoList}">
+							</th:block></td>
+						<td class="stuLesson"><th:block
+								th:each="lesson:${student.studentLessonInfoList}">
 						[	[[${lesson.lessonInfoVO.subjectVO.subjectName}]]-[[${lesson.lessonInfoVO.stepVO.stepName}]]-[[${lesson.lessonInfoVO.year}]] ]
 						</th:block></td>
 						<!-- <td th:text="${student.studentLessonInfoList[0].lessonInfoVO.subjectVO.subjectName+'-'+student.studentLessonInfoList[0].lessonInfoVO.stepVO.stepName+'-'+student.studentLessonInfoList[0].lessonInfoVO.year}"></td> -->
 						<td><input type="button" class="btn btn-outline-primary"
-						value="등록" th:onclick="openRegTestModal([[${student.studentCode}]],[[${student.studentName}]], [[${student.studentLessonInfoList}]]);" data-bs-toggle="modal" data-bs-target="#testInfoReg"></td>
+							value="등록"
+							th:onclick="openRegTestModal([[${student.studentCode}]],[[${student.studentName}]], [[${student.studentLessonInfoList}]]);"
+							data-bs-toggle="modal" data-bs-target="#testInfoReg"></td>
 						<td><input type="button" class="btn btn-outline-warning"
-							value="수정" th:onclick="openChangeTestModal([[${student.studentCode}]],[[${student.studentName}]],[[${student.studentLessonInfoList}]]);" data-bs-toggle="modal" data-bs-target="#testInfoChange"></td>
+							value="수정"
+							th:onclick="openChangeTestModal([[${student.studentCode}]],[[${student.studentName}]],[[${student.studentLessonInfoList}]]);"
+							data-bs-toggle="modal" data-bs-target="#testInfoChange"></td>
 					</tr>
 				</th:block>
 			</tbody>
@@ -142,7 +154,8 @@
 	<!--평가 등록 모달 시작-------------------------------------------------------------------------------------------------------------------------------->
 
 	<!-- Modal -->
-	<form th:action="@{/test/regScore}" method="post" id="regTestForm"  class="needs-validation" novalidate name="regForm">
+	<form th:action="@{/test/regScore}" method="post" id="regTestForm"
+		class="needs-validation" novalidate name="regForm">
 		<div class="modal fade" id="testInfoReg" tabindex="-1"
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
@@ -153,9 +166,10 @@
 							aria-label="Close"></button>
 					</div>
 					<div class="modal-body">
-						
+
 						<!-- 학생코드  -->
-						<input id="stuCodeForReg" type="hidden" name="studentCode" value="" > 
+						<input id="stuCodeForReg" type="hidden" name="studentCode"
+							value="">
 
 						<div class="row mb-1">
 							<div class="form-group input-group mb-1">
@@ -163,69 +177,74 @@
 									<span class="input-group-text h-100 rounded-0">학생이름</span>
 								</div>
 								<div class="col-6 col-lg-10 px-1 rounded-1">
-									<input id="stuNameForReg" class="form-control" type="text" value="" aria-label="readonly input example" readonly>
+									<input id="stuNameForReg" class="form-control" type="text"
+										value="" aria-label="readonly input example" readonly>
 								</div>
 							</div>
 						</div>
-						
-						
+
+
 						<div class="row mb-1">
 							<div class="form-group input-group mb-1">
 								<div class="col-6 col-lg-2 px-0">
 									<span class="input-group-text h-100 rounded-0">수강학급</span>
 								</div>
 								<div class="col-6 col-lg-10 px-1 rounded-1">
-									<input id="stuLessons" class="form-control" type="text" value=" " aria-label="readonly input example" readonly>
-									<input id="stuLessonSub" class="form-control" type="hidden" value="" aria-label="readonly input example" >
-									
+									<input id="stuLessons" class="form-control" type="text"
+										value=" " aria-label="readonly input example" readonly>
+									<input id="stuLessonSub" class="form-control" type="hidden"
+										value="" aria-label="readonly input example">
+
 								</div>
 							</div>
 						</div>
-						
-						
+
+
 						<div class="row mb-1">
 							<div class="form-group input-group mb-1">
 								<div class="col-6 col-lg-2 px-0">
 									<span class="input-group-text h-100 rounded-0">과목</span>
 								</div>
 								<div class="col-6 col-lg-10 px-1 rounded-1">
-									
-									<select class="form-select selectChange" name="subjectCode"  aria-label="Default select example" id="selectSub">
+
+									<select class="form-select selectChange" name="subjectCode"
+										aria-label="Default select example" id="selectSub">
 										<option value="">선택</option>
-										 <th:block th:each ="sub:${subjectList}" >
-									      <option th:value="${sub.subjectCode}" th:text="${sub.subjectName}" >
-									      </option>
-									    </th:block>	
+										<th:block th:each="sub:${subjectList}">
+											<option th:value="${sub.subjectCode}"
+												th:text="${sub.subjectName}"></option>
+										</th:block>
 									</select>
-									
+
 								</div>
 							</div>
 						</div>
-						
+
 						<div class="row mb-1">
 							<div class="form-group input-group mb-1">
 								<div class="col-6 col-lg-2 px-0">
 									<span class="input-group-text h-100 rounded-0">평가일</span>
 								</div>
 								<div class="col-6 col-lg-10 px-1 rounded-1">
-									
-									<!-- insert후 원래대로 바꾸기 name 있는 태그로-->	
-<!-- 									<select class="form-select" aria-label="Default select example" id="selectDate" > -->
-									<select class="form-select" aria-label="Default select example" id="selectDate" name="testDate">
+
+									<!-- insert후 원래대로 바꾸기 name 있는 태그로-->
+									<!-- 									<select class="form-select" aria-label="Default select example" id="selectDate" > -->
+									<select class="form-select" aria-label="Default select example"
+										id="selectDate" name="testDate">
 										<option value="" selected>전체</option>
 										<option value="0101">[1차] 1월 1일</option>
 										<option value="0401">[2차] 4월 1일</option>
-										<option value="0701">[3차] 7월 1일 </option>
+										<option value="0701">[3차] 7월 1일</option>
 										<option value="1001">[4차] 10월 1일</option>
 									</select>
-									
+
 									<!-- insert후 삭제 -->
 									<!-- <input type="hidden" id="selectDateValueForDB" name="testDate" value=""> -->
-										
+
 								</div>
 							</div>
 						</div>
-						
+
 						<div class="row">
 							<div class="form-group input-group mb-1">
 								<div class="col-6 col-lg-2 px-0">
@@ -234,16 +253,15 @@
 								<div class="col-6 col-lg-10 px-1 rounded-1">
 									<input type="number" id="inputScore" name="score"
 										class="form-control rounded-0 h-100" placeholder="점수를 입력하세요"
-										aria-label="8" aria-describedby="cpaCn" min="0" max="100" required>
-										<!-- insert후 삭제 -->
+										aria-label="8" aria-describedby="cpaCn" min="0" max="100"
+										required>
+									<!-- insert후 삭제 -->
 									<!-- <input type="number" id="randomScore" name="score"
 										class="form-control rounded-0 h-100" placeholder="점수를 입력하세요"
 										aria-label="8" aria-describedby="cpaCn" min="0" max="100" > -->
-									 <div class="invalid-feedback">
-								        0~100 사이의 점수 입력!
-								      </div>
+									<div class="invalid-feedback">0~100 사이의 점수 입력!</div>
 								</div>
-								
+
 							</div>
 						</div>
 					</div>
@@ -251,7 +269,7 @@
 						<button type="button" class="btn btn-secondary"
 							data-bs-dismiss="modal">취소</button>
 						<button id="regBtn" type="button" class="btn btn-primary">저장</button>
-					<!--<button id="regBtn" type="button" onclick="regTest();" class="btn btn-primary">저장</button> -->
+						<!--<button id="regBtn" type="button" onclick="regTest();" class="btn btn-primary">저장</button> -->
 					</div>
 				</div>
 			</div>
@@ -260,7 +278,6 @@
 
 
 	<!--평가 등록 모달 끝---------------------------------------------------------------------------------------------------------------------------------->
-	
 
 
 
@@ -268,10 +285,12 @@
 
 
 
-    <!-- 평가 수정 삭제 모달 시작-------------------------------------------------------------------------------------------------------------------------------->            
-    <!-- Modal -->
-	<div class="modal fade" id="testInfoChange" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	  <div class="modal-dialog">
+
+	<!-- 평가 수정 삭제 모달 시작-------------------------------------------------------------------------------------------------------------------------------->
+	<!-- Modal -->
+	<div class="modal fade" id="testInfoChange" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h1 class="modal-title fs-5" id="exampleModalLabel">평가결과 수정</h1>
@@ -279,57 +298,61 @@
 						aria-label="Close"></button>
 				</div>
 				<!-- Modal body 시작 -->
-				<form action="{}"  method="post" id="UpdateOrDeleteForm" name="UpdateOrDeleteForm">
+				<form action="{}" method="post" id="UpdateOrDeleteForm"
+					name="UpdateOrDeleteForm">
 					<div class="modal-body">
-								<div class="row mb-1">
+						<div class="row mb-1">
 							<div class="form-group input-group mb-1">
 								<div class="col-6 col-lg-2 px-0">
 									<span class="input-group-text h-100 rounded-0">학생이름</span>
 								</div>
 								<div class="col-6 col-lg-10 px-1 rounded-1">
 									<!-- 학생코드  -->
-									<input id="stuCodeForChange" type="hidden" name="studentCode" value="" > 
-								
-								
-									<input id="stuNameForChange" class="form-control" type="text" value="" aria-label="readonly input example" readonly>
+									<input id="stuCodeForChange" type="hidden" name="studentCode"
+										value=""> <input id="stuNameForChange"
+										class="form-control" type="text" value=""
+										aria-label="readonly input example" readonly>
 								</div>
 							</div>
 						</div>
-						
-						
+
+
 						<div class="row mb-1">
 							<div class="form-group input-group mb-1">
 								<div class="col-6 col-lg-2 px-0">
 									<span class="input-group-text h-100 rounded-0">수강학급</span>
 								</div>
 								<div class="col-6 col-lg-10 px-1 rounded-1">
-									<input id ="stuLessonsForChange" class="form-control" type="text" value="" aria-label="readonly input example" readonly>
-									
+									<input id="stuLessonsForChange" class="form-control"
+										type="text" value="" aria-label="readonly input example"
+										readonly>
+
 								</div>
 							</div>
 						</div>
-						
+
 						<div class="row mb-1">
 							<div class="form-group input-group mb-1">
 								<div class="col-6 col-lg-2 px-0">
 									<span class="input-group-text h-100 rounded-0">과목</span>
 								</div>
 								<div class="col-6 col-lg-10 px-1 rounded-1">
-									
-									
-									<select class="form-select selectChange" name="subjectCode"  aria-label="Default select example" id="selectSubforChange">
+
+
+									<select class="form-select selectChange" name="subjectCode"
+										aria-label="Default select example" id="selectSubforChange">
 										<option value="">선택</option>
-										 <th:block th:each ="sub:${subjectList}" >
-									      <option th:value="${sub.subjectCode}" th:text="${sub.subjectName}" >
-									      </option>
-									    </th:block>	
+										<th:block th:each="sub:${subjectList}">
+											<option th:value="${sub.subjectCode}"
+												th:text="${sub.subjectName}"></option>
+										</th:block>
 									</select>
-									
-									
+
+
 								</div>
 							</div>
 						</div>
-						
+
 
 						<div class="row mb-1">
 							<div class="form-group input-group mb-1">
@@ -337,24 +360,25 @@
 									<span class="input-group-text h-100 rounded-0">평가일</span>
 								</div>
 								<div class="col-6 col-lg-10 px-1 rounded-1" id="forChangeDiv">
-									<select
-										class="form-select" aria-label="Default select example" id="selectDateforChange" name="testDate">
-										<option value="" selected >평가 정보가 없습니다.</option>
+									<select class="form-select" aria-label="Default select example"
+										id="selectDateforChange" name="testDate">
+										<option value="" selected>평가 정보가 없습니다.</option>
 									</select>
 								</div>
 							</div>
 						</div>
-						
+
 						<div class="row">
 							<div class="form-group input-group mb-1">
 								<div class="col-6 col-lg-2 px-0">
 									<span class="input-group-text h-100 rounded-0">점수</span>
 								</div>
 								<div class="col-6 col-lg-10 px-1 rounded-1">
-									<input type="hidden" id="testCodeForchange" name="testCode" value="">
-									<input type="number" id="changeScoreInput" name="score" value=""
-										class="form-control rounded-0 h-100" placeholder="점수를 입력하세요"
-										aria-label="8" aria-describedby="cpaCn" min="0" max="100" >
+									<input type="hidden" id="testCodeForchange" name="testCode"
+										value=""> <input type="number" id="changeScoreInput"
+										name="score" value="" class="form-control rounded-0 h-100"
+										placeholder="점수를 입력하세요" aria-label="8"
+										aria-describedby="cpaCn" min="0" max="100">
 								</div>
 							</div>
 						</div>
@@ -363,18 +387,20 @@
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary"
 							data-bs-dismiss="modal">취소</button>
-						<button onclick="deleteTest();" type="button" id="deleteBtn" class="btn btn-danger">삭제</button>
-						<button onclick="updateTest();" type="button" id="updateBtn" class="btn btn-primary">저장</button>
+						<button onclick="deleteTest();" type="button" id="deleteBtn"
+							class="btn btn-danger">삭제</button>
+						<button onclick="updateTest();" type="button" id="updateBtn"
+							class="btn btn-primary">저장</button>
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
-    
-    
-    
-    
-    <!--평가 수정 삭제 모달 끝---------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+
+
+	<!--평가 수정 삭제 모달 끝---------------------------------------------------------------------------------------------------------------------------------------------------->
 
 
 
@@ -382,7 +408,7 @@
 	<!-- jquery 문법 로딩 -->
 	<!--순서 잘 맞춰서 적어야 함 -->
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-	<script th:src="@{/js/paginator.js}"></script>	
+	<script th:src="@{/js/paginator.js}"></script>
 	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 	<script type="text/javascript" th:src="@{/js/test/testManage.js}"></script>
 

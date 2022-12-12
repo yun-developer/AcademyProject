@@ -7,15 +7,18 @@
 <div layout:fragment="content">
 	<div class="info mt-3 mb-3">
 		<h5>
-				 
-			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-mortarboard" viewBox="0 0 16 16">
-			  <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917l-7.5-3.5ZM8 8.46 1.758 5.965 8 3.052l6.242 2.913L8 8.46Z"/>
-			  <path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466 4.176 9.032Zm-.068 1.873.22-.748 3.496 1.311a.5.5 0 0 0 .352 0l3.496-1.311.22.748L8 12.46l-3.892-1.556Z"/>
+
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+				fill="currentColor" class="bi bi-mortarboard" viewBox="0 0 16 16">
+			  <path
+					d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917l-7.5-3.5ZM8 8.46 1.758 5.965 8 3.052l6.242 2.913L8 8.46Z" />
+			  <path
+					d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466 4.176 9.032Zm-.068 1.873.22-.748 3.496 1.311a.5.5 0 0 0 .352 0l3.496-1.311.22.748L8 12.46l-3.892-1.556Z" />
 			</svg>
 			학생 배정
-	 	</h5>
- 	</div>
-	
+		</h5>
+	</div>
+
 	<!-- 검색 영역 -->
 	<div class="row mb-2">
 		<div class="col">
@@ -30,21 +33,22 @@
 						</svg> 검색
 						</b>
 						<p class="card-text ">
-							<small class="text-muted"> - 학생이름, 교사이름으로 학급배정 및 이동 할 학생을 검색할 수 있습니다.</small>
+							<small class="text-muted"> - 학생이름, 교사이름으로 학급배정 및 이동 할 학생을
+								검색할 수 있습니다.</small>
 						</p>
 					</div>
 					<div class="row search-detail-form">
 						<div class="col-xs-12 col-lg-4">
 							<div class="input-group mb-2">
-								<span class="input-group-addon col-3">학생이름</span> 
-								<input type="text" class="form-control" id="" name="studentName"
+								<span class="input-group-addon col-3">학생이름</span> <input
+									type="text" class="form-control" id="" name="studentName"
 									autocomplete="off" value="">
 							</div>
 						</div>
 						<div class="col-xs-12 col-lg-4">
 							<div class="input-group mb-2">
-								<span class="input-group-addon col-3">교사이름</span> 
-								<input type="text" class="form-control" id="" name="teacherName"
+								<span class="input-group-addon col-3">교사이름</span> <input
+									type="text" class="form-control" id="" name="teacherName"
 									autocomplete="off" value="">
 							</div>
 						</div>
@@ -66,98 +70,115 @@
 					</div>
 				</section>
 			</form>
-		
+
 		</div>
 	</div>
 	<!-- 검색 영역 끝-->
-	
+
 	<div class="row mb-2">
 		<div class="col border-top">
-		
-				<div class="row">
-					<div class="col-12" style="margin-top: 40px;" id="table_box_bootstrap">
-						
-						  <div class="row justify-content-between">
-						    <div class="col-4">
-								총 <span th:text="${#lists.size(stuLessonList)}" style="color:red"></span>명 입니다.
-						    </div>
-						    <div class="col-4">
-								<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-								  <button class="btn btn-primary me-md-2 popup"  type="button">
-									  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
-										  <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
-										  <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+
+			<div class="row">
+				<div class="col-12" style="margin-top: 40px;"
+					id="table_box_bootstrap">
+
+					<div class="row justify-content-between">
+						<div class="col-4">
+							총 <span th:text="${#lists.size(stuLessonList)}"
+								style="color: red"></span>명 입니다.
+						</div>
+						<div class="col-4">
+							<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+								<button class="btn btn-primary me-md-2 popup" type="button">
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+										fill="currentColor" class="bi bi-person-plus"
+										viewBox="0 0 16 16">
+										  <path
+											d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+										  <path fill-rule="evenodd"
+											d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
 										</svg>
-								  학급배정</button>
-								  <button class="btn btn-warning me-md-2 updatePopup"  type="button">
-									  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
-										  <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
-										  <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+									학급배정
+								</button>
+								<button class="btn btn-warning me-md-2 updatePopup"
+									type="button">
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+										fill="currentColor" class="bi bi-person-plus"
+										viewBox="0 0 16 16">
+										  <path
+											d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+										  <path fill-rule="evenodd"
+											d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
 										</svg>
-								  학급이동</button>
-								</div>
-						    </div>
-						  </div>
-						
-						
-						<table class="table  text-center mb-5" style="margin-top: 20px;">
-						
-							<colgroup>
-								<col width="5%">
-								<col width="*">
-								<col width="*">
-								<col width="10%">
-								<col width="30%">
-							</colgroup>
-						
-						
-							<thead class="table-light">
+									학급이동
+								</button>
+							</div>
+						</div>
+					</div>
+
+
+					<table class="table  text-center mb-5" style="margin-top: 20px;">
+
+						<colgroup>
+							<col width="5%">
+							<col width="*">
+							<col width="*">
+							<col width="10%">
+							<col width="30%">
+						</colgroup>
+
+
+						<thead class="table-light">
+							<tr>
+								<th scope="col"><input type="checkbox" id="checkAll"
+									th:name="selectall"></th>
+								<th scope="col">이름</th>
+								<th scope="col">학년</th>
+								<th scope="col">성별</th>
+								<th scope="col">학급명</th>
+
+							</tr>
+						</thead>
+						<tbody>
+							<th:block th:if="${#lists.size(stuLessonList) == 0}">
 								<tr>
-									<th scope="col"><input type="checkbox" id="checkAll" th:name="selectall" ></th>
-									<th scope="col">이름</th>
-									<th scope="col">학년</th>
-									<th scope="col">성별</th>
-									<th scope="col">학급명</th>
-									
+									<td colspan="6">등록된 학생이 없습니다.</td>
 								</tr>
-							</thead>
-							<tbody>
-								<th:block th:if="${#lists.size(stuLessonList) == 0}">
-									<tr>
-										<td colspan="6">등록된 학생이 없습니다.</td>
-									</tr>
-								</th:block>
-								<th:block th:unless="${#lists.size(stuLessonList) == 0}">
-									<tr th:each="SL: ${stuLessonList}">
-										<td><input type="checkbox" class="form-check-input chk" th:value=${SL.studentCode} th:name="selectCount"  th:id="${SL.studentLessonInfoList[0].lessonInfoVO}" onclick='checkOnlyOne(this)'></td>
-										<td th:name="stu" class="sName"  th:onclick="goPopup([[${SL.studentCode}]]);">[[${SL.studentName}]]</td>
-										<td th:name="stu" th:text="${SL.studentYear} + 학년"></td>
-										<td th:name="stu" th:text=${SL.studentGender} ></td>
-										<td th:name="stu" th:id="${SL.studentCode}">
-											<th:block th:each="lesson:${SL.studentLessonInfoList}">
-												<th:block th:if="${lesson.lessonInfoVO==null}">
-													<span style="color: red;">-</span>
-												</th:block>
-												<th:block th:unless="${lesson.lessonInfoVO==null}">
+							</th:block>
+							<th:block th:unless="${#lists.size(stuLessonList) == 0}">
+								<tr th:each="SL: ${stuLessonList}">
+									<td><input type="checkbox" class="form-check-input chk"
+										th:value=${SL.studentCode} th:name="selectCount"
+										th:id="${SL.studentLessonInfoList[0].lessonInfoVO}"
+										onclick='checkOnlyOne(this)'></td>
+									<td th:name="stu" class="sName"
+										th:onclick="goPopup([[${SL.studentCode}]]);">[[${SL.studentName}]]</td>
+									<td th:name="stu" th:text="${SL.studentYear} + 학년"></td>
+									<td th:name="stu" th:text=${SL.studentGender}></td>
+									<td th:name="stu" th:id="${SL.studentCode}"><th:block
+											th:each="lesson:${SL.studentLessonInfoList}">
+											<th:block th:if="${lesson.lessonInfoVO==null}">
+												<span style="color: red;">-</span>
+											</th:block>
+											<th:block th:unless="${lesson.lessonInfoVO==null}">
 													[	[[${lesson.lessonInfoVO.subjectVO.subjectName}]]-[[${lesson.lessonInfoVO.stepVO.stepName}]]-[[${lesson.lessonInfoVO.year}]] ]
 												</th:block>
-											</th:block>
-										</td>
-									</tr>
-								</th:block>
-							</tbody>
-						</table>
-					</div>
+										</th:block></td>
+								</tr>
+							</th:block>
+						</tbody>
+					</table>
 				</div>
+			</div>
 		</div>
 	</div>
-	
-	
-	
-	
-	
-	<script th:src="@{/js/paginator.js}"></script>	
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script> 
+
+
+
+
+
+	<script th:src="@{/js/paginator.js}"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 	<!-- jquery 문법 로딩 -->
 	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 	<script type="text/javascript" th:src="@{/js/student/assign_page.js}"></script>

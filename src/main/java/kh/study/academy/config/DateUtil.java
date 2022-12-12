@@ -46,26 +46,20 @@ public class DateUtil {
 		/** 오늘날짜에 해당하는 월, 주,월요일 날짜를 가져오기 **/
 		Calendar startDate = Calendar.getInstance();
 		
-		//startDate.isSet(Calendar.MONTH); /** 오늘 날짜의 월 셋팅**/
-		//startDate.isSet(Calendar.WEEK_OF_MONTH); /** 오늘 날짜의 주 셋팅 **/
 		startDate.set(Calendar.DAY_OF_WEEK, 2); /** 월요일 셋팅 **/
-		//System.out.println("날짜 바로" + startDate.getTime());
 		
 		/** 오늘날짜에 해당하는 월, 주, 금요일 날짜를 가져오기 **/
 		Calendar endDate = Calendar.getInstance();
 		endDate.set(Calendar.DAY_OF_WEEK, 6); /** 금요일 셋팅 **/
 		
 //		필요한 데이터 형식
-//        start: '2022-07-12T10:30:00',
-//        end: '2022-07-12T12:30:00'
+//      start: '2022-07-12T10:30:00',
+//      end: '2022-07-12T12:30:00'
 		
 		String sdate ="";
 		sdate = df.format(startDate.getTime());
 		String edate ="";
 		edate = df.format(endDate.getTime());
-		
-		//System.out.println("해당 주의 월요일:"+ sdate);
-		//System.out.println("해당주의 금요일:"+edate);
 		
 		//하루 더하기
 		//startDate.add(Calendar.DAY_OF_WEEK, 1);
@@ -74,22 +68,16 @@ public class DateUtil {
 			
 		}
 		
-		
-		
 		//해당 주의 수업 날짜
 		Calendar lessonDate = Calendar.getInstance();
 		lessonDate.set(Calendar.DAY_OF_WEEK, dayNum);
 		String lessonDateStr ="";
 		lessonDateStr = df.format(lessonDate.getTime());
 		
-		
-		
 		//fullcal에 맞춘 양식
 		int lessonT = Integer.parseInt(lessonTime);
 		String startTime = lessonDateStr +"T" + lessonT + ":00:00";
 		String endTime = lessonDateStr +"T" + (lessonT+1) + ":00:00";
-		//System.out.println("수업 시작 시간" + startTime);
-		//System.out.println("수업 종료 시간" + endTime);
 		
 		String[] lessonTimes = new String[2];
 		lessonTimes[0] = startTime;
@@ -130,31 +118,11 @@ public class DateUtil {
 		String lessonDateStr ="";
 		lessonDateStr = df.format(lessonDate.getTime());
 		
-//		Calendar firstDate = Calendar.getInstance();
-//		Calendar finalDate = Calendar.getInstance();
-//		
-//		//첫번째 날짜
-//		firstDate.set(Calendar.DAY_OF_WEEK, 1);
-//		//마지막 날짜
-//		finalDate.set(Calendar.DAY_OF_WEEK, 7);
-//		
-//		//시작날짜와 끝 날짜를 비교해, 시작날짜가 작거나 같은 경우 출력
-//		while( firstDate.compareTo(finalDate) !=1 ){
-//			//출력
-//			System.out.println(firstDate.compareTo(finalDate));
-//			System.out.println("!"+firstDate.getTime());
-//			System.out.println("!!"+finalDate.getTime());
-//			//시작날짜 + 1 일
-//			firstDate.add(Calendar.DATE, 1);
-//		}
-		
 		return lessonDateStr;
 	}
 	
 	
-	////////////////////
-	
-	
+	////////////////////평가/////////////////////////////////////////
 	
 	
 	public static String getTestYearDate(String testDate) {
@@ -170,8 +138,6 @@ public class DateUtil {
 		
 		String thisYear ="";
 		thisYear = df.format(cal.getTime());
-		
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+thisYear);
 		
 		String result = thisYear+testDate;
 		

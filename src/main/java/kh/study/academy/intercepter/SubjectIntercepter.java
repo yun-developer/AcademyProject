@@ -19,10 +19,6 @@ public class SubjectIntercepter implements HandlerInterceptor {
 			ModelAndView modelAndView) throws Exception {
 		
 		request.setAttribute("subjectList", adminService.selectSubject());
-		
-		
 	}
-	
-	
 	
 }
