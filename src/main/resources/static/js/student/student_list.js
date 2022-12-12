@@ -59,11 +59,7 @@ function goDelete() {
 	const checkedChks = document.querySelectorAll('.chk:checked');
 	
 	if(checkedChks.length == 0) {
-		/*Swal.fire({
-		  title: '삭제할 학생을 선택하세요!',
-		  icon: 'error',
-		  confirmButtonText: '확인'
-		})*/
+	
 			Swal.fire({
 			title: '삭제할 학생을 선택하세요!',
 			icon: 'warning',
@@ -148,11 +144,6 @@ function changeIsPay(paymentCode, status) {
 		type: 'post',
 		data: {'paymentCode' : paymentCode, 'isPay' : status}, //필요한 데이터를 컨트롤러로 전달
 		success: function(result) { //컨트롤러에서 리턴된 데이터 result로 받음
-			/*Swal.fire({
-			  title: '수납 상태가 변경되었습니다',
-			  icon: 'success',
-			  confirmButtonText: '확인'
-			})*/
 			
 			Swal.fire({
 				title: '수납 상태가 변경되었습니다',
