@@ -96,7 +96,26 @@ function findLoginIdAjax(){
 
 $(document).on("click", "#sendPhoneNumber", function() {
 	
-	
+	//부트스트랩 유효성 검사
+	// Example starter JavaScript for disabling form submissions if there are invalid fields
+	(() => {
+		'use strict'
+
+		// Fetch all the forms we want to apply custom Bootstrap validation styles to
+		const forms = document.querySelectorAll('.needs-validation2')
+
+		// Loop over them and prevent submission
+		Array.from(forms).forEach(form => {
+			form.addEventListener('click', event => {
+				if (!form.checkValidity()) {
+					event.preventDefault()
+					event.stopPropagation()
+				}
+
+				form.classList.add('was-validated')
+			}, false)
+		})
+	})()
 	
 	//teacherName 값 
 	const teacherName = document.querySelector('#teacherName').value;
@@ -105,8 +124,7 @@ $(document).on("click", "#sendPhoneNumber", function() {
 
 	let str = '';
 	let teacherTell = $('#teacherTell').val();
-	
-	
+
 
 	$.ajax({
 		type: "GET",
@@ -164,7 +182,6 @@ $(document).on("click", "#sendPhoneNumber", function() {
 						confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
 						confirmButtonText: '확인', // confirm 버튼 텍스트 지정
 					})
-					
 					
 				}
 	
@@ -230,13 +247,7 @@ $(document).on("click", "#sendPhoneNumber", function() {
 						})
 					}
 				})
-				
-			
 			}
-			
-			
-			
-
 		}
 	})
 });
