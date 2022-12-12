@@ -36,7 +36,6 @@ function drawChart(){
 //분기별 과목1 테스트 평균 차트를 그림
 function drawChart1(data) {
 
-	console.log(data);
 	
 	//data가 배열로 넘어오니까 빈 배열 만들고 
 	chart_data_arr = [];
@@ -95,28 +94,10 @@ function drawChart1(data) {
 	chart_data_arr.push(chart_data2);
 	chart_data_arr.push(chart_data3);
 	
-	
-	console.log("chart_data.data    밑에");
-	console.log(chart_data.data);
-	
-
-	console.log("chart_data_arr 값 아래 ");
-	console.log(chart_data_arr);
-	
-	console.log(chart_category_arr);
 
 
 	var options = {
-		/*series: [
-			{
-				name: "High - 2013",
-				data: [28, 29, 33, 36, 32, 32, 33]
-			},
-			{
-				name: "Low - 2013",
-				data: [12, 11, 14, 18, 17, 13, 13]
-			}
-		]*/series:chart_data_arr,
+		series:chart_data_arr,
 		chart: {
 			width: '100%',
 			height: 350,
@@ -160,7 +141,7 @@ function drawChart1(data) {
 		grid: {
 			borderColor: '#e7e7e7',
 			row: {
-				colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+				colors: ['#f3f3f3', 'transparent'],
 				opacity: 0.5
 			},
 		},
@@ -168,7 +149,7 @@ function drawChart1(data) {
 			size: 1
 		},
 		xaxis: {
-			categories:chart_category_arr /*['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul']*/,
+			categories:chart_category_arr ,
 			title: {
 				text: 'Test Date'
 			}
@@ -266,16 +247,7 @@ function drawChart2(data) {
 	
 
 	var options = {
-		/*series: [
-			{
-				name: "High - 2013",
-				data: [28, 29, 33, 36, 32, 32, 33]
-			},
-			{
-				name: "Low - 2013",
-				data: [12, 11, 14, 18, 17, 13, 13]
-			}
-		]*/series:chart_data_arr,
+		series:chart_data_arr,
 		chart: {
 			width: '100%',
 			
@@ -320,7 +292,7 @@ function drawChart2(data) {
 		grid: {
 			borderColor: '#e7e7e7',
 			row: {
-				colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+				colors: ['#f3f3f3', 'transparent'],
 				opacity: 0.5
 			},
 		},
@@ -328,7 +300,7 @@ function drawChart2(data) {
 			size: 1
 		},
 		xaxis: {
-			categories:chart_category_arr /*['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul']*/,
+			categories:chart_category_arr ,
 			title: {
 				text: 'Test Date'
 			}

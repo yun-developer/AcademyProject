@@ -41,7 +41,6 @@ function drawChart(){
 //학년별 학생 수 차트를 그림
 function drawChart1(data){
 	
-	//console.log(data);
 	
 	//data가 배열로 넘어오니까 빈 배열 만들고 
 	chart_data_arr = [];
@@ -54,12 +53,8 @@ function drawChart1(data){
 		chart_data.y = grade.studentCnt;
 		chart_data_arr.push(chart_data);
 		
-	//	console.log(grade);
 	}
 	
-
-	//console.log("chart_data_arr 값 아래 ");
-	//console.log(chart_data_arr);
 
 	
 	options = {
@@ -76,16 +71,6 @@ function drawChart1(data){
 	   colors: ['#008FFB' ],
 	  series: [{
 		data:chart_data_arr
-	   /* data: [{
-	      x: 'category A',
-	      y: 10
-	    }, {
-	      x: 'category B',
-	      y: 18
-	    }, {
-	      x: 'category C',
-	      y: 13
-	    }]*/
 	  }]
 	}
 
@@ -97,13 +82,10 @@ function drawChart1(data){
 /*차트 ② -------------------------------------------------------------------------------------------------*/
 //과목별 학생 수 차트를 그림
 function drawChart2(data){
-	//console.log(data);
-	//console.log(data.과학);
 	
 	
 	//과학.수학
 	let keys = Object.keys(data);
-	//console.log(keys);
 
     //data가 배열로 넘어오니까 빈 배열 만들고 
 	chart_data_arr = [];
@@ -118,22 +100,8 @@ function drawChart2(data){
 		
 	}
 	
-
-	//console.log(chart_data_arr);
-	
-	
 	
 	var options = {
-		/*series: [{
-			name: 'PRODUCT A',
-			data: [44, 55, 41]
-		}, {
-			name: 'PRODUCT B',
-			data: [13, 23,32 ]
-		}, {
-			name: 'PRODUCT C',
-			data: [11, 17, 15]
-		}]*/
 		series : chart_data_arr
 		,
 		chart: {
@@ -177,17 +145,11 @@ function drawChart2(data){
 /*차트 ③ -------------------------------------------------------------------------------------------------*/
 // 22년 월별 학생수 차트를 그림
 function drawChart3(data){
-	
-	
-	
-	console.log(data);
-	
 
 	
 	//data가 배열로 넘어오니까 빈 배열 만들고 
 	chart_data_arr = [];
 	chart_category_arr = [];
-	//
 	studentCnt_arr = [];
 	//클래스를 만들고 변수를 정해줌
 	//하나씩 반복문으로 돌려서 위에서 만들어준 빈배열에 넣기 
@@ -209,19 +171,7 @@ function drawChart3(data){
 	
 	    var options = {
 		series:chart_data_arr
-          /*series: [{
-          name: 'Income',
-          type: 'column',
-          data: [1.4, 2, 2.5, 1.5, 2.5, 2.8, 3.8, 4.6]
-        }, {
-          name: 'Cashflow',
-          type: 'column',
-          data: [1.1, 3, 3.1, 4, 4.1, 4.9, 6.5, 8.5]
-        }, {
-          name: 'Revenue',
-          type: 'line',
-          data: [20, 29, 37, 36, 44, 45, 50, 58]
-        }]*/,
+          ,
           chart: {
           height: 300,
           type: 'line',
@@ -242,7 +192,6 @@ function drawChart3(data){
          colors: [ '#FF4560'], // 선 색상 속성 추가
         xaxis: {
 		 categories: chart_category_arr
-         /* categories: [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022]*/,
         },
         yaxis: [
           {
@@ -268,55 +217,10 @@ function drawChart3(data){
               enabled: true
             }
           },
-         /* {
-            seriesName: 'Income',
-            opposite: true,
-            axisTicks: {
-              show: true,
-            },
-            axisBorder: {
-              show: true,
-              color: '#00E396'
-            },
-            labels: {
-              style: {
-                colors: '#00E396',
-              }
-            },
-            title: {
-              text: "Operating Cashflow (thousand crores)",
-              style: {
-                color: '#00E396',
-              }
-            },
-          },
-          {
-            seriesName: 'Revenue',
-            opposite: true,
-            axisTicks: {
-              show: true,
-            },
-            axisBorder: {
-              show: true,
-              color: '#FEB019'
-            },
-            labels: {
-              style: {
-                colors: '#FEB019',
-              },
-            },
-            title: {
-              text: "Total (thousand crores)",
-              style: {
-                color: '#FEB019',
-              }
-            }
-          }*/,
         ],
         tooltip: {
           fixed: {
             enabled: true,
-            position: 'topLeft', // topRight, topLeft, bottomRight, bottomLeft
             offsetY: 30,
             offsetX: 60
           },
