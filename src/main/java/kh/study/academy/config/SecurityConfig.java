@@ -24,6 +24,7 @@ public class SecurityConfig {
 								, "/teacher/join"
 								, "/teacher/loginPage"
 								, "/teacher/login"
+								, "/teacher/loginResult"
 								, "/teacher/findLoginPage"
 								, "/teacher/findLoginIdAjax"
 								, "/teacher/**Ajax"
