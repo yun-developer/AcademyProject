@@ -2,28 +2,30 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-	layout:decorate="~{layout/base_layout}"> 
-	
+	layout:decorate="~{layout/base_layout}">
+
 <th:block layout:fragment="css">
 	<link rel="stylesheet" th:href="@{}">
 </th:block>
 
 <div layout:fragment="content">
 
-<div style="display: none;">
+	<div style="display: none;">
 		<form th:action="@{/board/updateFreeDetailFrom}" method="post">
-			<input type="button" id="freeButton"  name ="boardNum" th:onclick="imgloding([[${boardNum}]]);" th:value="${boardNum}">
+			<input type="button" id="freeButton" name="boardNum"
+				th:onclick="imgloding([[${boardNum}]]);" th:value="${boardNum}">
 		</form>
-</div>
+	</div>
 
 
 
 
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script> 
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 	<!-- jquery 문법 로딩 -->
 	<!--순서 잘 맞춰서 적어야 함  -->
 	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
-	<script type="text/javascript" th:src="@{/js/board/board_free_loding.js}"></script>
+	<script type="text/javascript"
+		th:src="@{/js/board/board_free_loding.js}"></script>
 
 </div>
 
