@@ -72,7 +72,7 @@ function openRegTestModal(code, name, lessonList) {
 		if (!lessonNames.includes(selectSubtext)) {
 
 			Swal.fire({
-				title: '이동 불가!',
+				title: '등록 불가!',
 				text: '학생이 수강중인 과목이 아닙니다.',
 				icon: 'warning',
 				showCancelButton: false, // cancel버튼 보이기. 기본은 원래 없음
