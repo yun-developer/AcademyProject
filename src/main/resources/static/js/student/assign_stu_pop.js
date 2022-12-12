@@ -68,7 +68,18 @@ function newCapacityandMoney(getCode){
 				assingnBtn.innerText = "배 정 불 가";
 				assingnBtn.disabled = true;
 
-				Swal.fire('정원 초과', '학급의 정원이 찬 학급입니다.', 'warning');
+				//Swal.fire('정원 초과', '학급의 정원이 찬 학급입니다.', 'warning');
+				Swal.fire({
+					title: '정원 초과!',
+					text: '학급의 정원이 찬 학급입니다.',
+					icon: 'warning',
+					showCancelButton: false, // cancel버튼 보이기. 기본은 원래 없음
+					confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+					cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
+					confirmButtonText: '확인', // confirm 버튼 텍스트 지정
+					cancelButtonText: '취소', // cancel 버튼 텍스트 지정
+					reverseButtons: false, // 버튼 순서 거꾸로
+				})
 				
 			}
 		},
@@ -95,7 +106,18 @@ function assingnStudent (){
 					for(let assingedCode of resultInfo){
 						if(assingedCode.lessonInfoCode == inputLessonCode.value){
 							
-							Swal.fire('중복 편성', '학생이 이미 수강중인 학급입니다.', 'warning');
+							//Swal.fire('중복 편성', '학생이 이미 수강중인 학급입니다.', 'warning');
+								Swal.fire({
+									title: '중복 편성!',
+									text: '학생이 이미 수강중인 학급입니다.',
+									icon: 'warning',
+									showCancelButton: false, // cancel버튼 보이기. 기본은 원래 없음
+									confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+									cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
+									confirmButtonText: '확인', // confirm 버튼 텍스트 지정
+									cancelButtonText: '취소', // cancel 버튼 텍스트 지정
+									reverseButtons: false, // 버튼 순서 거꾸로
+								})
 							return;
 						}
 					}

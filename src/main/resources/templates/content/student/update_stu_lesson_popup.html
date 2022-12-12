@@ -147,8 +147,8 @@
 							    		<select class="form-select"   aria-label="Default select example" id="selectBeforeLesson">
 											<option value="">선택</option>
 											 <th:block th:each ="lesson:${lessonList}" >
-										      <option th:value="${lesson.lessonInfoCode}" th:data-newSub="${lesson.subjectVO.subjectName}" th:text="${lesson.subjectVO.subjectName + '-' +lesson.stepVO.stepName +'-'+lesson.year +'학년 [' + lesson.teacherVO.teacherName + ' '+lesson.lessonDayVO.lessonDayName +' '+ lesson.lessonTime + ':00'+']' }" >
-										      </option>
+										      	<option th:value="${lesson.lessonInfoCode}" th:data-newSub="${lesson.subjectVO.subjectName}" th:text="${lesson.subjectVO.subjectName + '-' +lesson.stepVO.stepName +'-'+lesson.year +'학년 [' + lesson.teacherVO.teacherName + ' '+lesson.lessonDayVO.lessonDayName +' '+ lesson.lessonTime + ':00'+']' }" >
+										      	</option>
 										    </th:block>	
 												
 										</select>
@@ -156,7 +156,21 @@
 					    				
 									</div>
 						    	</div>
-						    	<div class="row  align-items-center pt-5">
+						    	
+						    	<div class="row mt-3 mb-2 align-items-center">
+								    		
+						    			<div class="col-4 ms-3 bg-secondary p-2 bg-opacity-10">
+								    		현재정원 / 최대정원
+							    		</div>
+							    		<div class="col" id="capacity"></div>
+						    			<div class="col-2 bg-secondary p-2 bg-opacity-10">
+								    		수강료
+							    		</div>
+							    		<div class="col" id="money" ></div>
+						    		
+						    	</div>
+						    	
+						    	<div class="row  align-items-center ">
 						    		<div class="col" >
 
 								  		<!-- <form th:action="@{/stu/assingnStuProcess}" method="post" id="updateStuForm"> -->
