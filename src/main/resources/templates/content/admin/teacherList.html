@@ -82,12 +82,14 @@
 									name="teacherStatus" value=""
 									th:checked="${paramMap['teacherStatus'] ==null or paramMap['teacherStatus'] eq ''}">
 									<span class="lg-ml-5">전체</span> <!-- 전체에도 밸류값 빈문자열 넣어줘야함(빈문자열은 null이 아님)  -->
-								</label> <label class="radio-inline lg-mr-10 md-mr-15 rating-form">
+								</label> 
+								<label class="radio-inline lg-mr-10 md-mr-15 rating-form">
 									<input type="radio" class="rating-chk focus" id="search_type2"
 									name="teacherStatus" value="Y"
 									th:checked="${paramMap['teacherStatus'] eq 'Y'}"> <span
 									class="lg-ml-5">재직중</span>
-								</label> <label class="radio-inline lg-mr-10 md-mr-15 rating-form">
+								</label> 
+								<label class="radio-inline lg-mr-10 md-mr-15 rating-form">
 									<input type="radio" class="rating-chk focus" id="search_type3"
 									name="teacherStatus" value="N"
 									th:checked="${paramMap['teacherStatus'] eq 'N'}"> <span
@@ -106,29 +108,26 @@
 									name="teacherRole" value=""
 									th:checked="${paramMap['teacherRole'] ==null or paramMap['teacherRole'] eq ''}">
 									<span class="lg-ml-5">전체</span> <!-- 전체에도 밸류값 빈문자열 넣어줘야함(빈문자열은 null이 아님)  -->
-								</label> <label class="radio-inline lg-mr-10 md-mr-15 rating-form">
+								</label> 
+								<label class="radio-inline lg-mr-10 md-mr-15 rating-form">
 									<input type="radio" class="rating-chk focus" id="search_type2"
 									name="teacherRole" value="TEACHER"
-									th:checked="${paramMap['teacherRole'] eq 'TEACHER'}"> <span
-									class="lg-ml-5">교사</span>
-								</label> <label class="radio-inline lg-mr-10 md-mr-15 rating-form">
+									th:checked="${paramMap['teacherRole'] eq 'TEACHER'}"> 
+									<span class="lg-ml-5">교사</span>
+								</label> 
+								<label class="radio-inline lg-mr-10 md-mr-15 rating-form">
 									<input type="radio" class="rating-chk focus" id="search_type3"
 									name="teacherRole" value="UNAPPROVED"
 									th:checked="${paramMap['teacherRole'] eq 'UNAPPROVED'}">
 									<span class="lg-ml-5">미승인</span>
 								</label>
-
 							</div>
 						</div>
 					</div>
-
 				</div>
-
-
 			</div>
 		</section>
 	</form>
-
 	<!--여기까지 검색 div  -->
 
 
@@ -149,8 +148,6 @@
 		</p>
 
 		<table class="table table-hover text-center align-middle ">
-			<!-- 세로로 가운데로 -->
-
 			<colgroup></colgroup>
 			<thead>
 				<tr>
@@ -174,11 +171,14 @@
 				<th:block th:unless="${#lists.size(searchTeacher)==0}">
 					<tr th:each="teacher:${searchTeacher}">
 						<td><input type="checkbox" class="chk"></td>
-						<td th:text="${teacher.teacherName}"><input
-							id=parentTeacherCode type="hidden"
-							th:value="${teacher.teacherCode}"></td>
-						<td><span class="sId" th:text="${teacher.teacherId}"
-							th:onclick="teacherPopup([[${teacher.teacherCode}]]);"></span></td>
+						<td th:text="${teacher.teacherName}">
+							<input id=parentTeacherCode type="hidden"
+							th:value="${teacher.teacherCode}">
+						</td>
+						<td>
+							<span class="sId" th:text="${teacher.teacherId}"
+							th:onclick="teacherPopup([[${teacher.teacherCode}]]);"></span>
+						</td>
 						<td th:text="${teacher.SubjectVO.subjectName}"
 							th:value="${teacher.subjectCode}"></td>
 						<td th:text="${teacher.teacherTell}"></td>
@@ -193,13 +193,9 @@
 
 	<!--여기까지  -->
 
-
 	<script th:src="@{/js/paginator.js}"></script>
 	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 	<script type="text/javascript" th:src="@{/js/admin/teacherList.js}"></script>
 
-
 </div>
-
-
 </html>

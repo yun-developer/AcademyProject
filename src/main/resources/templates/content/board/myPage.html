@@ -26,7 +26,9 @@
 				</colgroup>
 				<thead>
 					<tr>
-						<th scope="col"><input type="checkbox" id="checkAll"></th>
+						<th scope="col">
+							<input type="checkbox" id="checkAll">
+						</th>
 						<th scope="col">NO</th>
 						<th scope="col">제목</th>
 						<th scope="col">작성자</th>
@@ -46,15 +48,15 @@
 							<td><input type="checkbox" class="form-check-input chk"
 								th:value="${my.boardNum}"></td>
 							<td scope="row" th:text=${status.count}></td>
-							<td th:if="${my.boardKindCode == 0}"><a
-								th:href="@{/board/noticeDetail(boardNum=${my.boardNum})}">[[${my.boardTitle}]]</a>
-								<i class="fal fa-comment text-primary"></i> <span
-								class="text-primary" th:text="'(' + ${my.replyNumCnt} + ')'"></span>
+							<td th:if="${my.boardKindCode == 0}">
+								<a th:href="@{/board/noticeDetail(boardNum=${my.boardNum})}">[[${my.boardTitle}]]</a>
+								<i class="fal fa-comment text-primary"></i> 
+								<span class="text-primary" th:text="'(' + ${my.replyNumCnt} + ')'"></span>
 							</td>
-							<td th:unless="${my.boardKindCode == 0}"><a
-								th:href="@{/board/freeDetail(boardNum=${my.boardNum})}">[[${my.boardTitle}]]</a>
-								<i class="fal fa-comment text-primary"></i> <span
-								class="text-primary" th:text="'(' + ${my.replyNumCnt} + ')'"></span>
+							<td th:unless="${my.boardKindCode == 0}">
+								<a th:href="@{/board/freeDetail(boardNum=${my.boardNum})}">[[${my.boardTitle}]]</a>
+								<i class="fal fa-comment text-primary"></i> 
+								<span class="text-primary" th:text="'(' + ${my.replyNumCnt} + ')'"></span>
 							</td>
 							<td th:text="${my.teacherId}"></td>
 							<td th:text="${my.createDate}"></td>
@@ -84,7 +86,6 @@
 					</div>
 				</div>
 			</div>
-
 		</div>
 	</div>
 

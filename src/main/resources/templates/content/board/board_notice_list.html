@@ -61,8 +61,8 @@
 							<td scope="row" th:text="${status.count}"></td>
 							<td><a
 								th:href="@{/board/noticeDetail(boardNum=${notice.boardNum})}">[[${notice.boardTitle}]]</a>
-								<i class="fal fa-comment text-primary"></i> <span
-								class="text-primary" th:text="'(' + ${notice.replyNumCnt} + ')'"></span>
+								<i class="fal fa-comment text-primary"></i> 
+								<span class="text-primary" th:text="'(' + ${notice.replyNumCnt} + ')'"></span>
 							</td>
 							<td th:text="${notice.teacherId}"></td>
 							<td th:text="${notice.createDate}"></td>

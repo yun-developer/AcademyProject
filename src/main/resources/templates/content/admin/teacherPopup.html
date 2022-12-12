@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org"
@@ -7,10 +5,9 @@
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 
-
 <link rel="icon" href="favicon.ico" type="image/x-icon">
-<script src="https://kit.fontawesome.com/4a1b2cc96b.js" crossorigin="anonymous"></script>
-
+<script src="https://kit.fontawesome.com/4a1b2cc96b.js"
+	crossorigin="anonymous"></script>
 
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
@@ -18,89 +15,70 @@
 	integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
 	crossorigin="anonymous">
 <link href="/css/teacherPopup.css" rel="stylesheet">
-<!--위치 중요함 -->
 <script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
-		crossorigin="anonymous"></script>
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+	crossorigin="anonymous"></script>
 </head>
 <body>
 
+	<section>
+		<nav class="menu"></nav>
+		<article class="profile">
+			<img
+				th:src="|@{/images/profile/}${teacherDetail.profileImgVO.storedFileName}|">
+
+			<h1>[[${teacherDetail.teacherName}]]</h1>
+			<h2 id="childTeacherCode">[[${teacherDetail.teacherCode}]]</h2>
 
 
-<section>
-	<nav class="menu">
-	</nav>
-	<article class="profile">
-		<img th:src="|@{/images/profile/}${teacherDetail.profileImgVO.storedFileName}|">
-	
-		<h1>[[${teacherDetail.teacherName}]]</h1>
-		<h2 id="childTeacherCode">[[${teacherDetail.teacherCode}]]</h2>
-		
-		
-		<div id="changeTeacherRoleDiv">
-			<!-- 해당교사가 미승인 상태인 경우에만 교사 승인 버튼이 보이기 -->
-			<th:block th:if="${teacherDetail.teacherRole == '미승인'}">
-				<a href="#" class="btnView1" id="changeTeacherRoleBtn" >교사 승인</a>
-			</th:block>
-			<th:block th:if="${teacherDetail.teacherRole == '교사'}">
-				<a href="#" class="btnView" id="" th:text="${teacherDetail.teacherRole}">교사 승인</a>
-			</th:block>
-		</div>
-		
-		<ul class="contact">
-			<li>
-				<i class="fa-solid fa-pen"> 담당과목</i>
-				<span>[[${teacherDetail.SubjectVO.subjectName}]]</span>
-			</li>
-			<li>
-				<i class="fa-solid fa-id-card-clip"> 아이디</i>
-				<span>[[${teacherDetail.teacherId}]]</span>
-			</li>
-			<li>
-				<i class="fa-solid fa-venus-mars"> 성별</i>
-				<span>[[${teacherDetail.teacherGender}]]</span>
-			</li>
-			<li>
-				<i class="fa-solid fa-phone"> 전화번호</i>
-				<span>[[${teacherDetail.teacherTell}]]</span>
-			</li>
-			<li>
-				<i class="fas fa-envelope"> 이메일</i>
-				<span>[[${teacherDetail.teacherEmail}]]</span>
-			</li>
-			<li>
-				<i class="fa-solid fa-map-pin"> 경력</i>
-				<span>[[${teacherDetail.career}]]</span>
-			</li>
-			<li>
-				<i class="fa-solid fa-cake-candles"> 생년월일</i>
-				<span>[[${teacherDetail.teacherBirthday}]]</span>
-			</li>
-			<li>
-				<i class="fa-solid fa-bolt"> 재직상태</i>
+			<div id="changeTeacherRoleDiv">
+				<!-- 해당교사가 미승인 상태인 경우에만 교사 승인 버튼이 보이기 -->
+				<th:block th:if="${teacherDetail.teacherRole == '미승인'}">
+					<a href="#" class="btnView1" id="changeTeacherRoleBtn">교사 승인</a>
+				</th:block>
+				<th:block th:if="${teacherDetail.teacherRole == '교사'}">
+					<a href="#" class="btnView" id=""
+						th:text="${teacherDetail.teacherRole}">교사 승인</a>
+				</th:block>
+			</div>
 
-				<span id="changeStatusText">[[${teacherDetail.teacherStatus}]]</span>
-				
-				<div class="row justify-content-center">
-				<div class="col-1">
-						<div class="form-check form-switch">
-							<input class="form-check-input form-control" type="checkbox" style="margin-left: -36px;"
-								role="switch" id="teacherStatusSwitch" 
-								th:checked="${teacherDetail.teacherStatus eq '재직중'}"> 
-								<label class="form-check-label" for="teacherStatusSwitch"></label>
+			<ul class="contact">
+				<li><i class="fa-solid fa-pen"> 담당과목</i> <span>[[${teacherDetail.SubjectVO.subjectName}]]</span>
+				</li>
+				<li><i class="fa-solid fa-id-card-clip"> 아이디</i> <span>[[${teacherDetail.teacherId}]]</span>
+				</li>
+				<li><i class="fa-solid fa-venus-mars"> 성별</i> <span>[[${teacherDetail.teacherGender}]]</span>
+				</li>
+				<li><i class="fa-solid fa-phone"> 전화번호</i> <span>[[${teacherDetail.teacherTell}]]</span>
+				</li>
+				<li><i class="fas fa-envelope"> 이메일</i> <span>[[${teacherDetail.teacherEmail}]]</span>
+				</li>
+				<li><i class="fa-solid fa-map-pin"> 경력</i> <span>[[${teacherDetail.career}]]</span>
+				</li>
+				<li><i class="fa-solid fa-cake-candles"> 생년월일</i> <span>[[${teacherDetail.teacherBirthday}]]</span>
+				</li>
+				<li><i class="fa-solid fa-bolt"> 재직상태</i> <span
+					id="changeStatusText">[[${teacherDetail.teacherStatus}]]</span>
+
+					<div class="row justify-content-center">
+						<div class="col-1">
+							<div class="form-check form-switch">
+								<input class="form-check-input form-control" type="checkbox"
+									style="margin-left: -36px;" role="switch"
+									id="teacherStatusSwitch"
+									th:checked="${teacherDetail.teacherStatus eq '재직중'}"> <label
+									class="form-check-label" for="teacherStatusSwitch"></label>
+							</div>
 						</div>
 					</div>
-				</div>
-			</li>
-		</ul>
-	</article>
-</section>
+				</li>
+			</ul>
+		</article>
+	</section>
 
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-	
 	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
-
 	<script type="text/javascript" th:src="@{/js/admin/teacherPopup.js}"></script>
 </body>
 </html>
