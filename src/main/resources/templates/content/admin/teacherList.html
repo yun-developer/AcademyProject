@@ -17,32 +17,35 @@
 		<section>
 			<div class="info mt-3 mb-3">
 				<h5>
-				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter-left" viewBox="0 0 16 16">
-				  <path d="M2 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+						fill="currentColor" class="bi bi-filter-left" viewBox="0 0 16 16">
+				  <path
+							d="M2 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
 				</svg>
-			 교사 관리</h5>
+					교사 관리
+				</h5>
 			</div>
 			<div class="row search-detail-form">
 				<div class="row">
 
 					<div class="col-xs-12 col-lg-3">
 						<div class="input-group mb-2">
-							<span class="input-group-addon col-2">이름</span> 
-							<input type="text" class="form-control" id="" name="teacherName"
+							<span class="input-group-addon col-2">이름</span> <input
+								type="text" class="form-control" id="" name="teacherName"
 								autocomplete="off" th:value="${paramMap['teacherName']}">
 						</div>
 					</div>
 					<div class="col-xs-12 col-lg-3">
 						<div class="input-group mb-2">
-							<span class="input-group-addon col-2">아이디</span> 
-							<input type="text" class="form-control" id="" name="teacherId"
+							<span class="input-group-addon col-2">아이디</span> <input
+								type="text" class="form-control" id="" name="teacherId"
 								autocomplete="off" th:value="${paramMap['teacherId']}">
 						</div>
 					</div>
 					<div class="col-xs-12 col-lg-3">
 						<div class="input-group mb-2">
-							<span class="input-group-addon col-2">전화번호</span> 
-							<input type="text" class="form-control" id="" name="teacherTell"
+							<span class="input-group-addon col-2">전화번호</span> <input
+								type="text" class="form-control" id="" name="teacherTell"
 								autocomplete="off" th:value="${paramMap['teacherTell']}">
 						</div>
 					</div>
@@ -60,8 +63,8 @@
 
 					<div class="col-xs-12 col-lg-3">
 						<div class="input-group">
-							<span class="input-group-addon col-2"> 담당과목</span> 
-							<select class="form-select" aria-label="Default select example"
+							<span class="input-group-addon col-2"> 담당과목</span> <select
+								class="form-select" aria-label="Default select example"
 								name="subjectCode">
 								<option value=""
 									th:selected="${paramMap['subjectCode'] == null or paramMap['subjectCode'] eq ''}">전체</option>
@@ -82,14 +85,12 @@
 									name="teacherStatus" value=""
 									th:checked="${paramMap['teacherStatus'] ==null or paramMap['teacherStatus'] eq ''}">
 									<span class="lg-ml-5">전체</span> <!-- 전체에도 밸류값 빈문자열 넣어줘야함(빈문자열은 null이 아님)  -->
-								</label> 
-								<label class="radio-inline lg-mr-10 md-mr-15 rating-form">
+								</label> <label class="radio-inline lg-mr-10 md-mr-15 rating-form">
 									<input type="radio" class="rating-chk focus" id="search_type2"
 									name="teacherStatus" value="Y"
 									th:checked="${paramMap['teacherStatus'] eq 'Y'}"> <span
 									class="lg-ml-5">재직중</span>
-								</label> 
-								<label class="radio-inline lg-mr-10 md-mr-15 rating-form">
+								</label> <label class="radio-inline lg-mr-10 md-mr-15 rating-form">
 									<input type="radio" class="rating-chk focus" id="search_type3"
 									name="teacherStatus" value="N"
 									th:checked="${paramMap['teacherStatus'] eq 'N'}"> <span
@@ -108,14 +109,12 @@
 									name="teacherRole" value=""
 									th:checked="${paramMap['teacherRole'] ==null or paramMap['teacherRole'] eq ''}">
 									<span class="lg-ml-5">전체</span> <!-- 전체에도 밸류값 빈문자열 넣어줘야함(빈문자열은 null이 아님)  -->
-								</label> 
-								<label class="radio-inline lg-mr-10 md-mr-15 rating-form">
+								</label> <label class="radio-inline lg-mr-10 md-mr-15 rating-form">
 									<input type="radio" class="rating-chk focus" id="search_type2"
 									name="teacherRole" value="TEACHER"
-									th:checked="${paramMap['teacherRole'] eq 'TEACHER'}"> 
-									<span class="lg-ml-5">교사</span>
-								</label> 
-								<label class="radio-inline lg-mr-10 md-mr-15 rating-form">
+									th:checked="${paramMap['teacherRole'] eq 'TEACHER'}"> <span
+									class="lg-ml-5">교사</span>
+								</label> <label class="radio-inline lg-mr-10 md-mr-15 rating-form">
 									<input type="radio" class="rating-chk focus" id="search_type3"
 									name="teacherRole" value="UNAPPROVED"
 									th:checked="${paramMap['teacherRole'] eq 'UNAPPROVED'}">
@@ -129,20 +128,22 @@
 		</section>
 	</form>
 	<!--여기까지 검색 div  -->
-	
+
 	<!--여기부터 리스트  -->
 	<div class="row mt-5" id="table_box_bootstrap">
 		<p class="card-text col-6">
-			<small class="text-muted">
-				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-						fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
-				  <path	d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z" />
-				</svg> 아이디를 클릭하여 교사의 승인 및 재직상태 변경을 할 수 있습니다. <br> 
-				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-						fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
-				  <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+			<small class="text-muted"> <svg
+					xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+					fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
+				  <path
+						d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z" />
+				</svg> 아이디를 클릭하여 교사의 승인 및 재직상태 변경을 할 수 있습니다. <br> <svg
+					xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+					fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+				  <path
+						d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
 				</svg> 총 <span th:text="${#lists.size(searchTeacher)}" style="color: red"></span>명의
-					교사가 조회되었습니다. 
+				교사가 조회되었습니다.
 			</small>
 		</p>
 		<div class="col-6">
@@ -151,13 +152,13 @@
 					class="btn btn-success download">엑셀 다운로드</button>
 			</div>
 		</div>
-		<table class="table table-hover text-center align-middle " cellSpacing=0 id="tableData">
+		<table class="table table-hover text-center align-middle "
+			cellSpacing=0 id="tableData">
 			<colgroup></colgroup>
 			<thead>
 				<tr>
-					<th scope="col">NO
-					</th>
-					<th scope="col" >이름</th>
+					<th scope="col">NO</th>
+					<th scope="col">이름</th>
 					<th scope="col">아이디</th>
 					<th scope="col">담당과목</th>
 					<th scope="col">전화번호</th>
@@ -175,14 +176,11 @@
 				<th:block th:unless="${#lists.size(searchTeacher)==0}">
 					<tr th:each="teacher, status :${searchTeacher}">
 						<td th:text="${status.count}"></td>
-						<td th:text="${teacher.teacherName}">
-							<input id=parentTeacherCode type="hidden"
-							th:value="${teacher.teacherCode}">
-						</td>
-						<td>
-							<span class="sId" th:text="${teacher.teacherId}"
-							th:onclick="teacherPopup([[${teacher.teacherCode}]]);"></span>
-						</td>
+						<td th:text="${teacher.teacherName}"><input
+							id=parentTeacherCode type="hidden"
+							th:value="${teacher.teacherCode}"></td>
+						<td><span class="sId" th:text="${teacher.teacherId}"
+							th:onclick="teacherPopup([[${teacher.teacherCode}]]);"></span></td>
 						<td th:text="${teacher.SubjectVO.subjectName}"
 							th:value="${teacher.subjectCode}"></td>
 						<td th:text="${teacher.teacherTell}"></td>
@@ -196,8 +194,8 @@
 	</div>
 
 	<!--여기까지  -->
-	
-	
+
+
 	<!-- Sheet JS -->
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.3/xlsx.full.min.js"></script>

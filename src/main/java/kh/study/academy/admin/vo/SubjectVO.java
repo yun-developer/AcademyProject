@@ -11,9 +11,9 @@ import lombok.Setter;
 @ToString
 public class SubjectVO {
 
-		private String subjectCode;
-		private String subjectName;
-	
-		private List<String> subjectCodeList;
+	private String subjectCode;
+	private String subjectName;
+
+	private List<String> subjectCodeList;
 
 }

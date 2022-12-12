@@ -43,10 +43,6 @@ public class AdminController {
 	@RequestMapping("/teacherList")
 	public String teacherList(@RequestParam Map<String, String> paramMap, Model model) {
 
-		// 사용 확인 체크 후 삭제하기
-		// 교사리스트
-		// model.addAttribute("teacherList", adminService.selectTeacherList());
-
 		// 교사 검색 및 리스트
 		model.addAttribute("searchTeacher", adminService.searchTeacher(paramMap));
 
@@ -155,7 +151,6 @@ public class AdminController {
 		List<LessonRoomVO> lessonRoomList = adminService.selectLessonRoom(roomName);
 		model.addAttribute("LessonRoomList", lessonRoomList);
 
-		
 		return "content/admin/reg_lessonroom";
 	}
 
@@ -175,22 +170,20 @@ public class AdminController {
 
 	// 교실 사용중에서 미사용으로 클릭시 업데이트
 	// 그 교실에 들어가 있는 학생 수 조호
-	  @ResponseBody
-	  @PostMapping("/updateIsUseAjax") 
-	  public int updateStatus(LessonInfoVO lessonInfoVO, LessonRoomVO lessonRoomVO) { // 조회 List<String> StuCnt =
-	 
-		  int nowStudnet = 0;
-		 
-		  nowStudnet= adminService.selectStuCnt(lessonInfoVO);  // 교실 사용 업데이트문 if문실행
-		 
-		  
-	
-		  if(nowStudnet == 0) {
-			  
-			  adminService.updateStatus(lessonRoomVO);
-			  
-		  }
+	@ResponseBody
+	@PostMapping("/updateIsUseAjax")
+	public int updateStatus(LessonInfoVO lessonInfoVO, LessonRoomVO lessonRoomVO) { // 조회 List<String> StuCnt =
+
+		int nowStudnet = 0;
+
+		nowStudnet = adminService.selectStuCnt(lessonInfoVO); // 교실 사용 업데이트문 if문실행
+
+		if (nowStudnet == 0) {
+
+			adminService.updateStatus(lessonRoomVO);
+
+		}
 		return nowStudnet;
-	  }		
+	}
 
 }
