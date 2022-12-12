@@ -56,6 +56,9 @@ public class SecurityConfig {
 	 					.logout()
 	 					.invalidateHttpSession(true) 		//로그아웃되면 세션 데이터 삭제 (저절로 세션에 저장됨)
 	 					.logoutSuccessUrl("/lesson/main");			//로그아웃 성공 시 요청경로
+		
+		
+	
 	
 		return security.build();
 	}
