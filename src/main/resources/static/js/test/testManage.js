@@ -58,8 +58,43 @@ function openRegTestModal(code, name, lessonList){
 	//수강학급 모달 input value에 넣기
 	document.querySelector('#stuLessons').value = lessonNames;
 	stuLessonSub.value = subCodes;
+	
+	selectSub.addEventListener('change', function aaa(){
+		
+		//버튼 초기화
+		regBtn.setAttribute("class", "btn btn btn-primary");
+		regBtn.innerText = "저장";
+		regBtn.disabled = false;
+		
+		//수강 과목
+		let selectSubtext = selectSub.options[selectSub.selectedIndex].innerText;
+		
+		if (!lessonNames.includes(selectSubtext)){
+		
+		//Swal.fire('이동 불가', '학생이 수강중인 과목이 아닙니다.', 'warning');
+		Swal.fire({
+					title: '이동 불가!',
+					text: '학생이 수강중인 과목이 아닙니다.',
+					icon: 'warning',
+					showCancelButton: false, // cancel버튼 보이기. 기본은 원래 없음
+					confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+					cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
+					confirmButtonText: '확인', // confirm 버튼 텍스트 지정
+					cancelButtonText: '취소', // cancel 버튼 텍스트 지정
+					reverseButtons: false, // 버튼 순서 거꾸로
+				})
+				
+		//버튼 비활성화
+		//태그 속성 추가 변경
+		regBtn.setAttribute("class", "btn btn-secondary");
+		regBtn.innerText = "등록불가";
+		regBtn.disabled = true;
+		
+		return;
+		}
+		
+	})
 }
-
 
 
 
