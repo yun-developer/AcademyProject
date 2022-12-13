@@ -45,7 +45,6 @@ public class DateUtil {
 		
 		/** 오늘날짜에 해당하는 월, 주,월요일 날짜를 가져오기 **/
 		Calendar startDate = Calendar.getInstance();
-		
 		startDate.set(Calendar.DAY_OF_WEEK, 2); /** 월요일 셋팅 **/
 		
 		/** 오늘날짜에 해당하는 월, 주, 금요일 날짜를 가져오기 **/
@@ -55,6 +54,7 @@ public class DateUtil {
 //		필요한 데이터 형식
 //      start: '2022-07-12T10:30:00',
 //      end: '2022-07-12T12:30:00'
+
 		
 		String sdate ="";
 		sdate = df.format(startDate.getTime());
