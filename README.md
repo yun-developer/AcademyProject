@@ -1,6 +1,6 @@
 
 
-![header](https://capsule-render.vercel.app/api?type=Waving&color=FFE9A0&height=230&section=header&text=Potato%20Academy&desc=학원%20통합%20관리%20사이트&fontAlignY=40&fontSize=65&descSize=16&descAlignY=53&descAlign=65)
+![header](https://capsule-render.vercel.app/api?type=Waving&color=FFE9A0&height=230&section=header&text=Potato%20Academy&desc=학원%20통합%20관리%20사이트&fontAlignY=40&fontSize=70&descSize=16&descAlignY=53&descAlign=67.5)
 
 # Spring-Boot(AcademyProject)
 
@@ -20,11 +20,16 @@
 > - **ORM** : Mybatis
 >
 >## 👩‍👩‍👧‍👧 멤버구성
-> - [윤정은](https://github.com/bb9oo) : 레이아웃, Spring Security, 회원 CRUD, 학생 편성 관리, DB 설계
-> - 방현주 : 로그인, ID/PW 찾기, 관리자용 교사 CRUD, 평가 CRUD, 통계 관리, DB 설계
-> - 강우선 : 학생 CRUD, Paging 처리, 게시판/댓글 등록, 조회, 삭제 기능, 수납관리, DB 설계
+> - [윤정은](https://github.com/yun-developer) : 레이아웃, Spring Security, 회원 CRUD, 학생 편성 관리, DB 설계
+> - [방현주](https://github.com/bb9oo) : 로그인, ID/PW 찾기, 관리자용 교사 CRUD, 평가 CRUD, 통계 관리, DB 설계
+> - 강우선  : 학생 CRUD, Paging 처리, 게시판/댓글 등록, 조회, 삭제 기능, 수납관리, DB 설계
 > - 이소원 : 과목/교실/학급 CRUD, 게시판 및 댓글 수정, DB 설계, PPT 제작
-
+> 
+>|윤정은|방현주|강우선|이소원|
+>|:---:|:---:|:---:|:---:|
+>|테스트1|테스트2|테스트3|테스트3|
+>|<a href="https://github.com/bb9oo"><img src="https://img.shields.io/badge/텍스트-3DDC84?style=flat-square&logo=github&logoColor=white"/></a>|<a href="https://github.com/bb9oo"><img src="https://img.shields.io/badge/텍스트-3DDC84?style=flat-square&logo=Blogger&logoColor=white"/></a>|<a href="https://github.com/bb9oo"><img src="https://img.shields.io/badge/텍스트-3DDC84?style=flat-square&logo=Blogger&logoColor=white"/></a>|<a href="https://github.com/bb9oo"><img src="https://img.shields.io/badge/텍스트-3DDC84?style=flat-square&logo=Blogger&logoColor=white"/></a>|
+>|테스트1|테스트2|테스트3|테스트3|
 
 
 
