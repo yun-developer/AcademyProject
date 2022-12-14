@@ -69,61 +69,9 @@
 **Suggestions:**
 - Should be self-evident.
 
-### Banner
-**Status:** Optional.
 
-**Requirements:**
-- Must not have its own title.
-- Must link to local image in current repository.
-- Must appear directly after the title.
 
-### Badges
-**Status:** Optional.
 
-**Requirements:**
-- Must not have its own title.
-- Must be newline delimited.
-
-**Suggestions:**
-- Use http://shields.io or a similar service to create and host the images.
-- Add the [Standard Readme badge](https://github.com/RichardLitt/standard-readme#badge).
-
-### Short Description
-**Status:** Required.
-
-**Requirements:**
-- Must not have its own title.
-- Must be less than 120 characters.
-- Must not start with `> `
-- Must be on its own line.
-- Must match the description in the packager manager's `description` field.
-- Must match GitHub's description (if on GitHub).
-
-**Suggestions:**
-- Use [gh-description](https://github.com/RichardLitt/gh-description) to set and get GitHub description.
-- Use `npm show . description` to show the description from a local [npm](https://npmjs.com) package.
-
-### Long Description
-**Status:** Optional.
-
-**Requirements:**
-- Must not have its own title.
-- If any of the folder, repository, or package manager names do not match, there must be a note here as to why. See [Title section](#title).
-
-**Suggestions:**
-- If too long, consider moving to the [Background](#background) section.
-- Cover the main reasons for building the repository.
-- "This should describe your module in broad terms,
-generally in just a few paragraphs; more detail of the module's
-routines or methods, lengthy code examples, or other in-depth
-material should be given in subsequent sections.
-
-  Ideally, someone who's slightly familiar with your module should be
-able to refresh their memory without hitting "page down". As your
-reader continues through the document, they should receive a
-progressively greater amount of knowledge."
-
-  ~ [Kirrily "Skud" Robert, perlmodstyle](http://perldoc.perl.org/perlmodstyle.html)
 
 ### Table of Contents
 **Status:** Required; optional for READMEs shorter than 100 lines.
@@ -202,41 +150,6 @@ progressively greater amount of knowledge."
 - Describe caveats.
 - If using an external API generator (like go-doc, js-doc, or so on), point to an external `API.md` file. This can be the only item in the section, if present.
 
-### Maintainer(s)
-**Status**: Optional.
-
-**Requirements:**
-- Must be called `Maintainer` or `Maintainers`.
-- List maintainer(s) for a repository, along with one way of contacting them (e.g. GitHub link or email).
-
-**Suggestions:**
-- This should be a small list of people in charge of the repo. This should not be everyone with access rights, such as an entire organization, but the people who should be pinged and who are in charge of the direction and maintenance of the repository.
-- Listing past maintainers is good for attribution, and kind.
-
-### Thanks
-**Status**: Optional.
-
-**Requirements:**
-- Must be called `Thanks`, `Credits` or `Acknowledgements`.
-
-**Suggestions:**
-- State anyone or anything that significantly helped with the development of your project.
-- State public contact hyper-links if applicable.
-
-### Contributing
-**Status**: Required.
-
-**Requirements:**
-- State where users can ask questions.
-- State whether PRs are accepted.
-- List any requirements for contributing; for instance, having a sign-off on commits.
-
-**Suggestions:**
-- Link to a CONTRIBUTING file -- if there is one.
-- Be as friendly as possible.
-- Link to the GitHub issues.
-- Link to a Code of Conduct. A CoC is often in the Contributing section or document, or set elsewhere for an entire organization, so it may not be necessary to include the entire file in each repository. However, it is highly recommended to always link to the code, wherever it lives.
-- A subsection for listing contributors is also welcome here.
 
 ### License
 **Status:** Required.
