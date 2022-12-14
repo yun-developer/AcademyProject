@@ -11,21 +11,28 @@
 > <br> 다수의 학샐, 강사, 수업을 직접 효율적으로 관리할 수 있었으면 좋겠다는 생각에 프로그램을 기획하게 되었습니다.
 >## 🕰 개발 기간🎇
 > 2022.10 ~ 2022.12 🎃
->## 개발 환경
-> - 오라큰
->## 멤버구성
-> - 윤정은 :
-> - 방현주 :
-> - 강우선 :
-> - 이소원 : 
+>## ⚙ 개발 환경
+> - `Java 11`
+> - `JDK 11.0.15`
+> - **IDE** : STS 4.11
+> - **FrameWork** : Springboot(??????)
+> - **Database** : Oracle DB(18c)
+> - **ORM** : Mybatis
+
+>## 👩‍👩‍👧‍👧 멤버구성
+> - 윤정은 : 레이아웃, Spring Security, 회원 CRUD, 학생 편성 관리, DB 설계
+> - 방현주 : 로그인, ID/PW 찾기, 관리자용 교사 CRUD, 평가 CRUD, 통계 관리, DB 설계
+> - 강우선 : 학생 CRUD, Paging 처리, 게시판/댓글 등록, 조회, 삭제 기능, 수납관리, DB 설계
+> - 이소원 : 과목/교실/학급 CRUD, 게시판 및 댓글 수정, DB 설계, PPT 제작
 
 
-## Table of Contents
 
-_Note: This is only a navigation guide for the specification, and does not define or mandate terms for any specification-compliant documents._
+
+
+## 목차
 
 - [Sections](#sections)
-  - [Title](#title)
+  - [Title](#aaa)
   - [Banner](#banner)
   - [Badges](#badges)
   - [Short Description](#short-description)
@@ -45,7 +52,7 @@ _Note: This is only a navigation guide for the specification, and does not defin
 
 ## Sections
 
-### Title
+### aaa
 **Status:** Required.
 
 **Requirements:**
