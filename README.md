@@ -28,7 +28,7 @@
 >|윤정은|방현주|강우선|이소원|
 >|:---:|:---:|:---:|:---:|
 >|테스트1|테스트2|테스트3|테스트3|
->|<a href="https://github.com/bb9oo"><img src="https://img.shields.io/badge/텍스트-3DDC84?style=flat-square&logo=github&logoColor=white"/></a>|<a href="https://github.com/bb9oo"><img src="https://img.shields.io/badge/텍스트-3DDC84?style=flat-square&logo=Blogger&logoColor=white"/></a>|<a href="https://github.com/bb9oo"><img src="https://img.shields.io/badge/텍스트-3DDC84?style=flat-square&logo=Blogger&logoColor=white"/></a>|<a href="https://github.com/bb9oo"><img src="https://img.shields.io/badge/텍스트-3DDC84?style=flat-square&logo=Blogger&logoColor=white"/></a>|
+>|<a href="https://github.com/yun-developer"><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"/></a>|<a href="https://github.com/bb9oo"><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"/></a>|<a href="https://github.com/kwseon"><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"/></a>|<a href="https://github.com/SOWON22"><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"/></a>|
 >|테스트1|테스트2|테스트3|테스트3|
 
 
