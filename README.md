@@ -1,6 +1,6 @@
 
 
-![header](https://capsule-render.vercel.app/api?type=Waving&color=auto&height=250&section=header&text=Potato%20Academy&desc=학원%20통합%20관리%20사이트&fontSize=55&animation=twinkling)
+![header](https://capsule-render.vercel.app/api?type=Waving&color=FFE9A0&height=250&section=header&text=Potato%20Academy&desc=학원%20통합%20관리%20사이트&fontAlignY=40&fontSize=65&descAlignY=60)
 
 # Spring-Boot(AcademyProject)
 
