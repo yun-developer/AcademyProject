@@ -241,13 +241,22 @@
 														</select>
 													</div>
 
-											<div class="col-6 col-lg-2 px-1"><span class="input-group-text h-100 rounded-0"  >단계</span></div>
+											<div class="col-6 col-lg-2 px-1"><span class="input-group-text h-100 rounded-0"  >교사명</span></div>
 									
-												<div class="col-6 col-lg-5 px-">
+												<!-- <div class="col-6 col-lg-5 px-">
 										      	
 													<select class="form-select"   aria-label="Default select example" id="stepCode" name="stepCode" kor="과정구분" required>
 														<option th:each="step : ${stepList}" th:text="${step.stepName}" th:value="${step.stepCode}"></option>	
 														
+													</select>
+												</div> -->
+												<div class="col-6 col-lg-5 px-">
+													<select class="form-select"   aria-label="Default select example" id="teacherName" name="teacherCode" kor="과정구분" required>
+														 <option value="">전체</option>
+														 <th:block th:each="teacher, status : ${teacherList}">	
+												      		<option th:text="${teacher.teacherName}" th:value="${teacher.teacherCode}"></option>
+														</th:block>
+		
 													</select>
 												</div>
 											</div>
@@ -306,16 +315,17 @@
 										</select>
 									</div>
 									
-									<div class="col-6 col-lg-2 px-1"><span class="input-group-text h-100 rounded-0">교사명</span></div>
+									<div class="col-6 col-lg-2 px-1"><span class="input-group-text h-100 rounded-0">단계</span></div>
+										
 										<div class="col-6 col-lg-5 px-">
-											<select class="form-select"   aria-label="Default select example" id="teacherName" name="teacherCode" kor="과정구분" required>
-												 <option value="">전체</option>
-												 <th:block th:each="teacher, status : ${teacherList}">	
-										      		<option th:text="${teacher.teacherName}" th:value="${teacher.teacherCode}"></option>
-												</th:block>
-
-											</select>
-										</div>
+										      	
+													<select class="form-select"   aria-label="Default select example" id="stepCode" name="stepCode" kor="과정구분" required>
+														<option th:each="step : ${stepList}" th:text="${step.stepName}" th:value="${step.stepCode}"></option>	
+														
+													</select>
+												</div>
+										
+										
 									
 								</div>
 								
