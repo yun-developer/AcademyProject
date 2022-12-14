@@ -15,22 +15,19 @@
 > - `Java 11`
 > - `JDK 11.0.15`
 > - **IDE** : STS 4.11
-> - **FrameWork** : Springboot(??????)
+> - **FrameWork** : Spring (5.3.13)
+> - **Build Tool** : Maven 
 > - **Database** : Oracle DB(18c)
 > - **ORM** : Mybatis
+> - **Design tool** : Bootstrap5
 >
 >## 👩‍👩‍👧‍👧 멤버구성
-> - 윤정은 : 레이아웃, Spring Security, 회원 CRUD, 학생 편성 관리, DB 설계
-> - 방현주 : 로그인, ID/PW 찾기, 관리자용 교사 CRUD, 평가 CRUD, 통계 관리, DB 설계
-> - 강우선 : 학생 CRUD, Paging 처리, 게시판/댓글 등록, 조회, 삭제 기능, 수납관리, DB 설계
-> - 이소원 : 과목/교실/학급 CRUD, 게시판 및 댓글 수정, DB 설계, PPT 제작
 > 
->|윤정은|방현주|강우선|이소원|
+>|🍎 윤정은|🍞 방현주|☔ 강우선|💚 이소원|
 >|:---:|:---:|:---:|:---:|
 >|테스트1|테스트2|테스트3|테스트3|
 >|<a href="https://github.com/yun-developer"><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"/></a> <a href="https://github.com/yun-developer"><img src="https://img.shields.io/badge/윤노션-FFBF00?style=flat-square&logo=Notion&logoColor=black"/></a>|<a href="https://github.com/bb9oo"><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"/></a> <a href="https://github.com/yun-developer"><img src="https://img.shields.io/badge/방노션-FFBF00?style=flat-square&logo=Notion&logoColor=black"/></a>|<a href="https://github.com/kwseon"><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"/></a> <a href="https://github.com/yun-developer"><img src="https://img.shields.io/badge/강노션-FFBF00?style=flat-square&logo=Notion&logoColor=black"/></a>|<a href="https://github.com/SOWON22"><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"/></a> <a href="https://github.com/yun-developer"><img src="https://img.shields.io/badge/이노션-FFBF00?style=flat-square&logo=Notion&logoColor=black"/></a>|
->|테스트1|테스트2|테스트3|테스트3|
-
+>|레이아웃, Spring Security,  회원 CRUD, 학생 편성 관리, 출결 관리,  DB 설계|로그인, ID/PW 찾기,  관리자용 교사 CRUD, 평가 CRUD,  통계 관리, DB 설계|학생 CRUD, Paging 처리,  게시판/댓글 등록, 조회, 삭제 기능,  수납관리, DB 설계| 과목/교실 등록, 조회, 삭제 기능, 학급 CRUD, 게시판 및 댓글 수정,  DB 설계, PPT 제작|
 
 
 
