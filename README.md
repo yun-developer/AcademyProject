@@ -76,7 +76,8 @@
 
 
 ### 📺 구동 화면
-**Status**: Optional.
+**메인**  
+
 
 **Requirements:**
 - May go here if it is important to highlight security concerns. Otherwise, it should be in [Extra Sections](#extra-sections).
