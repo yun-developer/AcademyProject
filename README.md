@@ -146,12 +146,20 @@
 </details>
 
 <details>
-<summary>ㄹㅇㅎ</summary>
+<summary>통계</summary>
 <div markdown="1">
 
-ㅎ로
+![통계](https://user-images.githubusercontent.com/109609187/207760473-3d644a37-a129-473a-9294-d34bc5a8063f.gif)
   
 </div>
 </details>
 
+<details>
+<summary>게시판</summary>
+<div markdown="1">
+
+![게시판](https://user-images.githubusercontent.com/109609187/207763600-21e315ad-1091-4fd4-90fc-2b42456131bb.gif)
+  
+</div>
+</details>
 
