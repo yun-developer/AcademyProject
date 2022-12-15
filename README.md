@@ -39,17 +39,6 @@
   - [구동화면](https://github.com/yun-developer/AcademyProject#구동-화면)
   - [Short Description](#short-description)
   - [Long Description](#long-description)
-  - [Table of Contents](#table-of-contents-1)
-  - [Security](#security)
-  - [Background](#background)
-  - [Install](#install)
-  - [Usage](#usage)
-  - [Extra Sections](#extra-sections)
-  - [API](#api)
-  - [Maintainers](#maintainers)
-  - [Thanks](#thanks)
-  - [Contributing](#contributing)
-  - [License](#license)
 - [Definitions](#definitions)
 
 ## 프로젝트 주요 내용
