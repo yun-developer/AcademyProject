@@ -85,7 +85,7 @@
 <summary>회원가입</summary>
 <div markdown="1">
 
-![회원가입](https://user-images.githubusercontent.com/109609187/207757459-5ddfce93-f106-4cc5-bff3-e9ac664b9b56.gif)
+![회원가입](https://user-images.githubusercontent.com/109609187/207757815-9a842444-ebdf-4665-a218-b9ac58f15af4.gif)
 
 </div>
 </details>
