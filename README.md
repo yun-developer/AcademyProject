@@ -33,7 +33,7 @@
 
 ## 목차
 
-- [핵심기능](https://github.com/yun-developer/AcademyProject#-핵심기능)
+- [핵심기능](https://github.com/yun-developer/AcademyProject#핵심기능)
   - [Title](#aaa)
   - [Banner](#banner)
   - [Badges](#badges)
