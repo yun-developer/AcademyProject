@@ -68,9 +68,6 @@
 ![erd](https://user-images.githubusercontent.com/109609187/207746001-e6d40a4a-0f0b-4ff2-9b43-21199ee63ea8.png)
 
 
-**Requirements:**
-- Must be at least one-depth: must capture all `##` headings.
-
 
 
 ### 📺 구동 화면
@@ -139,8 +136,24 @@
 </div>
 </details>
 
-**Requirements:**
-- May go here if it is important to highlight security concerns. Otherwise, it should be in [Extra Sections](#extra-sections).
+<details>
+<summary>ㄹㅇㅎ</summary>
+<div markdown="1">
+
+ㅎ로
+  
+</div>
+</details>
+
+<details>
+<summary>ㄹㅇㅎ</summary>
+<div markdown="1">
+
+ㅎ로
+  
+</div>
+</details>
+
 
 
 ## Definitions
