@@ -103,10 +103,11 @@
 </details>
 
 <details>
-<summary>메인</summary>
+<summary>학생 CRUD</summary>
 <div markdown="1">
 
-ㄹ허ㅗㄹ
+![학생CRUD](https://user-images.githubusercontent.com/109609187/207756167-96b5f069-ad84-446d-9103-d3c92aec0f9d.gif)
+
 </div>
 </details>
 
