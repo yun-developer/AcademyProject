@@ -128,19 +128,19 @@
 </details>
 
 <details>
-<summary>ㄹㅇ</summary>
+<summary>평가관리</summary>
 <div markdown="1">
 
-ㅍㅌㅊ
+![평가관리](https://user-images.githubusercontent.com/109609187/207759168-d5a6dd3c-0586-4d46-8d42-1d83bfff5596.gif)
   
 </div>
 </details>
 
 <details>
-<summary>ㄹㅇㅎ</summary>
+<summary>출결관리</summary>
 <div markdown="1">
 
-ㅎ로
+![출결관리](https://user-images.githubusercontent.com/109609187/207759830-558dfa4b-3a8c-4708-8f62-bcf7d743d302.gif)
   
 </div>
 </details>
