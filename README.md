@@ -82,10 +82,10 @@
 </details>
 
 <details>
-<summary>회원가입/로그인</summary>
+<summary>회원가입</summary>
 <div markdown="1">
 
-ㅎㅎ
+![회원가입](https://user-images.githubusercontent.com/109609187/207757459-5ddfce93-f106-4cc5-bff3-e9ac664b9b56.gif)
 
 </div>
 </details>
