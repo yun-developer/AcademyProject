@@ -41,25 +41,28 @@
   - [Long Description](#long-description)
 - [Definitions](#definitions)
 
-## 프로젝트 주요 내용
+## 📍 프로젝트 주요 내용
 
 ### 핵심기능
-**Status:** Required.
 
-**Requirements:**
-- Title must match repository, folder and package manager names - or it may have another, relevant title with the repository, folder, and package manager title next to it in italics and in parentheses. For instance:
+**관리자** 
 
-  ```markdown
-  # Standard Readme Style _(standard-readme)_
-  ```
-
-  If any of the folder, repository, or package manager names do not match, there must be a note in the [Long Description](#long-description) explaining why.
-
-**Suggestions:**
-- Should be self-evident.
+- 운영관리  
+- 학급편성  
+- 교사관리  
+- 공지사항
 
 
+**교사**
 
+- 회원가입  
+- 로그인  
+- 학생관리  
+- 학급관리  
+- 평가관리  
+- 자유게시판
+
+ 
 
 
 ### ERD 다이어그램
