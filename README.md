@@ -69,15 +69,11 @@
 
 ![erd](https://user-images.githubusercontent.com/109609187/207746001-e6d40a4a-0f0b-4ff2-9b43-21199ee63ea8.png)
 
-**Status:** Required; optional for READMEs shorter than 100 lines.
 
 **Requirements:**
-- Must link to all Markdown sections in the file.
-- Must start with the next section; do not include the title or Table of Contents headings.
 - Must be at least one-depth: must capture all `##` headings.
 
-**Suggestions:**
-- May capture third and fourth depth headings. If it is a long ToC, these are optional.
+
 
 ### 📺 구동 화면
 **Status**: Optional.
