@@ -103,7 +103,7 @@
 <summary>학생 CRUD</summary>
 <div markdown="1">
 
-![학생CRUD](https://user-images.githubusercontent.com/109609187/207756167-96b5f069-ad84-446d-9103-d3c92aec0f9d.gif)
+![학생crud](https://user-images.githubusercontent.com/109609187/207758723-4308793f-6d10-4de2-9e5b-e2be3e01b875.gif)
 
 </div>
 </details>
@@ -113,16 +113,16 @@
 <summary>학급편성</summary>
 <div markdown="1">
 
-![학급편성](https://user-images.githubusercontent.com/109609187/207756531-1f93eac9-48e1-42dd-af66-d450b72bd07c.gif)
+![학급편성](https://user-images.githubusercontent.com/109609187/207758778-7587b510-f9f7-48c4-83da-b4b70d1b3a99.gif)
   
 </div>
 </details>
 
 <details>
-<summary>ㅇㄹ</summary>
+<summary>학급배정</summary>
 <div markdown="1">
 
-ㅀㅇㄴ
+![학급배정](https://user-images.githubusercontent.com/109609187/207758707-6beba47b-2d4f-4ab6-a590-d8fbd0865331.gif)
   
 </div>
 </details>
