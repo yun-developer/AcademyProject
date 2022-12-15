@@ -95,10 +95,10 @@
 </details>
 
 <details>
-<summary>메인</summary>
+<summary>ID/PW 찾기</summary>
 <div markdown="1">
 
-ㅗㄹ
+![아이디비번찾기](https://user-images.githubusercontent.com/109609187/207754645-0dcee4ed-4a10-4dfb-b434-3cf0b32533ae.gif)
 
 </div>
 </details>
