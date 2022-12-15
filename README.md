@@ -33,10 +33,10 @@
 
 ## 목차
 
-- [핵심기능](https://github.com/yun-developer/AcademyProject#핵심기능)
-  - [Title](#aaa)
-  - [Banner](#banner)
-  - [Badges](#badges)
+- [프로젝트 주요 내용](https://github.com/yun-developer/AcademyProject#프로젝트-주요-내용)
+  - [핵심기능](https://github.com/yun-developer/AcademyProject#핵심기능)
+  - [ERD 다이어그램](https://github.com/yun-developer/AcademyProject#ERD-다이어그램)
+  - [구동화면](https://github.com/yun-developer/AcademyProject#구동-화면)
   - [Short Description](#short-description)
   - [Long Description](#long-description)
   - [Table of Contents](#table-of-contents-1)
@@ -52,9 +52,9 @@
   - [License](#license)
 - [Definitions](#definitions)
 
-## 핵심기능
+## 프로젝트 주요 내용
 
-### aaa
+### 핵심기능
 **Status:** Required.
 
 **Requirements:**
@@ -73,7 +73,7 @@
 
 
 
-### Table of Contents
+### ERD 다이어그램
 **Status:** Required; optional for READMEs shorter than 100 lines.
 
 **Requirements:**
@@ -84,7 +84,7 @@
 **Suggestions:**
 - May capture third and fourth depth headings. If it is a long ToC, these are optional.
 
-### Security
+### 구동화면
 **Status**: Optional.
 
 **Requirements:**
