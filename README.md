@@ -34,7 +34,7 @@
 ## 목차
 
 - [프로젝트 주요 내용](https://github.com/yun-developer/AcademyProject#-프로젝트-주요-내용)
-  - [핵심기능](https://github.com/yun-developer/AcademyProject#핵심기능)
+  - [핵심기능](https://github.com/yun-developer/AcademyProject#-핵심기능)
   - [ERD 다이어그램](https://github.com/yun-developer/AcademyProject#ERD-다이어그램)
   - [구동화면](https://github.com/yun-developer/AcademyProject#구동-화면)
   - [Short Description](#short-description)
@@ -43,7 +43,7 @@
 
 ## 📍 프로젝트 주요 내용
 
-### 핵심기능
+### ⭐ 핵심기능
 
 **관리자** 
 
