@@ -112,6 +112,32 @@
 </details>
 
 
+<details>
+<summary>학급편성</summary>
+<div markdown="1">
+
+![학급편성](https://user-images.githubusercontent.com/109609187/207756531-1f93eac9-48e1-42dd-af66-d450b72bd07c.gif)
+  
+</div>
+</details>
+
+<details>
+<summary>ㅇㄹ</summary>
+<div markdown="1">
+
+ㅀㅇㄴ
+  
+</div>
+</details>
+
+<details>
+<summary>ㄹㅇ</summary>
+<div markdown="1">
+
+ㅍㅌㅊ
+  
+</div>
+</details>
 
 **Requirements:**
 - May go here if it is important to highlight security concerns. Otherwise, it should be in [Extra Sections](#extra-sections).
