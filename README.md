@@ -76,7 +76,7 @@
 <summary>메인</summary>
 <div markdown="1">
 
-![메인](https://user-images.githubusercontent.com/109609187/207751195-f768c6ba-f467-4fc2-b50b-3bd3cedfd97e.gif)
+![메인](https://user-images.githubusercontent.com/109609187/207758177-fb88cc2a-067b-4c5d-82ae-3a4d9f16e8aa.gif)
 
 </div>
 </details>
@@ -94,7 +94,7 @@
 <summary>ID/PW 찾기</summary>
 <div markdown="1">
 
-![아이디비번찾기](https://user-images.githubusercontent.com/109609187/207754645-0dcee4ed-4a10-4dfb-b434-3cf0b32533ae.gif)
+![아이디비번찾기](https://user-images.githubusercontent.com/109609187/207758283-68807a51-9a57-463b-840a-f27dd553c475.gif)
 
 </div>
 </details>
