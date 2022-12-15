@@ -63,6 +63,9 @@
 
 
 ### ERD 다이어그램
+
+https://github.com/yun-developer/AcademyProject/issues/1#issue-1497617225
+
 **Status:** Required; optional for READMEs shorter than 100 lines.
 
 **Requirements:**
