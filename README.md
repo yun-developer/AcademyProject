@@ -76,7 +76,7 @@
 **Suggestions:**
 - May capture third and fourth depth headings. If it is a long ToC, these are optional.
 
-### 구동화면
+### 구동 화면
 **Status**: Optional.
 
 **Requirements:**
