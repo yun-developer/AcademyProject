@@ -155,9 +155,3 @@
 </details>
 
 
-
-## Definitions
-
-_These definitions are provided to clarify any terms used above._
-
-- **Documentation repositories**: Repositories without any functional code. For instance, [RichardLitt/knowledge](https://github.com/RichardLitt/knowledge).
