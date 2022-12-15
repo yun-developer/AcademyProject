@@ -76,6 +76,17 @@
 
 
 ### 📺 구동 화면
+
+<details>
+<summary>**메인**</summary>
+<div markdown="1">
+
+![메인](https://user-images.githubusercontent.com/109609187/207751195-f768c6ba-f467-4fc2-b50b-3bd3cedfd97e.gif)
+
+</div>
+</details>
+
+
 **메인**  
 ![메인](https://user-images.githubusercontent.com/109609187/207751195-f768c6ba-f467-4fc2-b50b-3bd3cedfd97e.gif)
 
