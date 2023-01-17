@@ -14,6 +14,7 @@
 >## ⚙ 개발 환경
 > - `Java 11`
 > - `JDK 11.0.15`
+> - `Apache Tomcat 8.5`
 > - **IDE** : STS 4.11
 > - **FrameWork** : Spring (5.3.13), Mybatis
 > - **Build Tool** : Maven 
